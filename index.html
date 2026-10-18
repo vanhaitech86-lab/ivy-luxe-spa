@@ -258,16 +258,16 @@
             </div>
           </div>
 
-          <div class="mobile-nav-toggle js-open-booking" title="Menu Đặt Lịch">
+          <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" title="Danh Mục Sản Phẩm &amp; Dịch Vụ" aria-label="Mở danh mục dịch vụ">
             <i class="fa fa-bars"></i>
-          </div>
+          </button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- DÒNG NGÔN NGỮ NỔI BẬT TRÊN ĐIỆN THOẠI (TO BÊN TRÁI KÈM CỜ CÁC NƯỚC CHO KHÁCH DU LỊCH) -->
-  <div class="mobile-lang-strip" id="mobile-lang-strip">
+  <!-- DÒNG NGÔN NGỮ NỔI BẬT TRÊN ĐIỆN THOẠI (ẨN HOÀN TOÀN THEO YÊU CẦU) -->
+  <div class="mobile-lang-strip" id="mobile-lang-strip" style="display:none !important;">
     <div class="container">
       <div class="mobile-lang-strip-inner">
         <div class="mobile-lang-strip-label">
@@ -1264,6 +1264,457 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
       <i class="fa fa-phone"></i>
       <span class="dock-phone-pill">098 9713660</span>
     </a>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MOBILE SERVICES & PRODUCTS CATALOGUE DRAWER (MENU 3 VẠCH CHO MOBILE) -->
+  <!-- ========================================================================= -->
+  <div id="mobile-services-drawer" class="mobile-services-drawer">
+    <div class="ms-drawer-backdrop" id="ms-drawer-backdrop"></div>
+    <div class="ms-drawer-panel">
+      <!-- Drawer Header -->
+      <div class="ms-drawer-header">
+        <div class="ms-drawer-brand">
+          <img src="assets/images/logo.png" alt="IVY LUXE SPA" class="ms-drawer-logo">
+          <div>
+            <h3 class="ms-drawer-title">IVY LUXE SPA</h3>
+            <span class="ms-drawer-sub">DANH MỤC DỊCH VỤ &amp; BẢNG GIÁ</span>
+          </div>
+        </div>
+        <button type="button" class="ms-drawer-close" id="ms-drawer-close" aria-label="Đóng Menu">&times;</button>
+      </div>
+
+      <!-- Promo Banner -->
+      <div class="ms-drawer-promo-banner">
+        <div class="ms-promo-badge">ƯU ĐÃI ĐẶT TRỰC TUYẾN</div>
+        <div class="ms-promo-text"><strong>GIẢM 20% TOÀN BỘ MENU</strong> + TẶNG NGÂM CHÂN THẢO DƯỢC</div>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="ms-drawer-tabs-wrap">
+        <div class="ms-drawer-tabs" id="ms-drawer-tabs">
+          <button type="button" class="ms-tab-btn active" data-category="all">
+            <i class="fa fa-th-large"></i> <span>Tất Cả</span>
+          </button>
+          <button type="button" class="ms-tab-btn" data-category="combos">
+            <i class="fa fa-fire"></i> <span>Combo Hot 🔥</span>
+          </button>
+          <button type="button" class="ms-tab-btn" data-category="packages">
+            <i class="fa fa-diamond"></i> <span>Gói Hoàng Gia 👑</span>
+          </button>
+          <button type="button" class="ms-tab-btn" data-category="massage">
+            <i class="fa fa-heartbeat"></i> <span>Massage Body 💆</span>
+          </button>
+          <button type="button" class="ms-tab-btn" data-category="foot">
+            <i class="fa fa-leaf"></i> <span>Foot Massage 🦶</span>
+          </button>
+          <button type="button" class="ms-tab-btn" data-category="headspa">
+            <i class="fa fa-tint"></i> <span>Gội Đầu Dưỡng Sinh 🌿</span>
+          </button>
+          <button type="button" class="ms-tab-btn" data-category="nails">
+            <i class="fa fa-magic"></i> <span>Nails &amp; Waxing 💅</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Products & Services List -->
+      <div class="ms-drawer-body" id="ms-drawer-body">
+        <!-- 1. Combo 1 -->
+        <div class="ms-service-card" data-category="combos">
+          <div class="ms-service-thumb">
+            <img src="assets/images/couples_massage_suite.jpg" alt="IVY SPECIAL - COMBO 1 (HOT)" loading="lazy">
+            <span class="ms-service-badge badge-hot">HOT NHẤT</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 90 phút</span>
+              <span class="ms-service-tag">Tặng ngâm chân thảo dược</span>
+            </div>
+            <p class="ms-service-desc">Massage body chuyên sâu + Đá nóng + Tẩy tế bào chết lưng + Ngâm chân thảo dược miễn phí.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">1.000.000đ</span>
+                <span class="ms-price-discounted">800.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Combo 2 -->
+        <div class="ms-service-card" data-category="combos">
+          <div class="ms-service-thumb">
+            <img src="assets/images/four_hands_massage.jpg" alt="IVY SPECIAL - COMBO 2" loading="lazy">
+            <span class="ms-service-badge badge-popular">ƯU ĐÃI</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">IVY SPECIAL - COMBO 2 - 70/75 PHÚT</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 70/75 phút</span>
+              <span class="ms-service-tag">Combo Tiết Kiệm</span>
+            </div>
+            <p class="ms-service-desc">Massage lưng cổ vai gáy + Massage chân thư giãn + Đá nóng giảm nhức mỏi.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">560.000đ</span>
+                <span class="ms-price-discounted">450.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="IVY SPECIAL - COMBO 2 - 70/75 PHÚT">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Combo 3 -->
+        <div class="ms-service-card" data-category="combos">
+          <div class="ms-service-thumb">
+            <img src="assets/images/hot_stone_therapy.jpg" alt="IVY SPECIAL - COMBO 3" loading="lazy">
+            <span class="ms-service-badge badge-vip">VIP</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">IVY SPECIAL - COMBO 3 - 120 PHÚT</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 120 phút</span>
+              <span class="ms-service-tag">Trị liệu chuyên sâu</span>
+            </div>
+            <p class="ms-service-desc">Massage toàn thân 90' + Chăm sóc da mặt thảo mộc 30' + Tặng ngâm chân thảo dược.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">1.250.000đ</span>
+                <span class="ms-price-discounted">1.000.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="IVY SPECIAL - COMBO 3 - 120 PHÚT">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Combo 4 -->
+        <div class="ms-service-card" data-category="combos">
+          <div class="ms-service-thumb">
+            <img src="assets/images/facial_gold_care.jpg" alt="IVY SPECIAL - COMBO 4" loading="lazy">
+            <span class="ms-service-badge badge-vip">TOÀN DIỆN</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">IVY SPECIAL - COMBO 4 - 150 PHÚT</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 150 phút</span>
+              <span class="ms-service-tag">Gói trọn gói VIP</span>
+            </div>
+            <p class="ms-service-desc">Massage body + Tẩy tế bào chết + Gội đầu dưỡng sinh &amp; Vệ sinh tai + Chăm sóc da mặt.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">1.750.000đ</span>
+                <span class="ms-price-discounted">1.400.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="IVY SPECIAL - COMBO 4 - 150 PHÚT">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Gói Hoàng Gia 2H -->
+        <div class="ms-service-card" data-category="packages">
+          <div class="ms-service-thumb">
+            <img src="assets/images/couple_suite_bath.jpg" alt="Gói Trị Liệu Hoàng Gia 2 Giờ" loading="lazy">
+            <span class="ms-service-badge badge-vip">HOÀNG GIA</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">Gói Trị Liệu Hoàng Gia 2 Giờ</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 120 phút</span>
+              <span class="ms-service-tag">Phục hồi toàn diện</span>
+            </div>
+            <p class="ms-service-desc">Massage toàn thân chuyên sâu (75') + Chăm sóc phục hồi da mặt (45'). Thư giãn sâu cơ bắp và làn da.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">1.120.000đ</span>
+                <span class="ms-price-discounted">900.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="Gói Trị Liệu Hoàng Gia 2 Giờ">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Gói Hoàng Gia 3H -->
+        <div class="ms-service-card" data-category="packages">
+          <div class="ms-service-thumb">
+            <img src="assets/images/head_spa_ritual.jpg" alt="Gói Trị Liệu Hoàng Gia 3 Giờ" loading="lazy">
+            <span class="ms-service-badge badge-vip">HOÀNG GIA 3H</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">Gói Trị Liệu Hoàng Gia 3 Giờ</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 180 phút</span>
+              <span class="ms-service-tag">Thư giãn đỉnh cao</span>
+            </div>
+            <p class="ms-service-desc">Massage toàn thân (90') + Chăm sóc da mặt &amp; Gội đầu dưỡng sinh (90') + Tặng kèm vệ sinh tai miễn phí.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">2.060.000đ</span>
+                <span class="ms-price-discounted">1.650.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="Gói Trị Liệu Hoàng Gia 3 Giờ">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Gói Đế Vương VIP 4H -->
+        <div class="ms-service-card" data-category="packages">
+          <div class="ms-service-thumb">
+            <img src="assets/images/hero_spa_luxury.jpg" alt="Gói Đế Vương VIP Toàn Diện 4 Giờ" loading="lazy">
+            <span class="ms-service-badge badge-vip">ĐẾ VƯƠNG 4H</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">Gói Đế Vương VIP Toàn Diện 4 Giờ</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 240 phút</span>
+              <span class="ms-service-tag">Bao gồm trà bánh VIP</span>
+            </div>
+            <p class="ms-service-desc">Massage body (90') + Tẩy tế bào chết (60') + Da mặt &amp; Dưỡng tóc (90') + Vệ sinh tai + Trà thảo mộc &amp; đồ ăn nhẹ.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">2.380.000đ</span>
+                <span class="ms-price-discounted">1.900.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="Gói Đế Vương VIP Toàn Diện 4 Giờ">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Gội đầu dưỡng sinh -->
+        <div class="ms-service-card" data-category="headspa">
+          <div class="ms-service-thumb">
+            <img src="assets/images/head_spa_ritual.jpg" alt="Nourishing Shampoo (Gội Đầu Dưỡng Sinh)" loading="lazy">
+            <span class="ms-service-badge badge-popular">BÁN CHẠY</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">Nourishing Shampoo (Gội Đầu Dưỡng Sinh)</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 60 phút</span>
+              <span class="ms-service-tag">Thảo dược bồ kết</span>
+            </div>
+            <p class="ms-service-desc">Gội nước thảo dược cô đặc, xông đầu tuần hoàn ấm, massage đả thông kinh lạc vùng đầu - cổ - vai gáy.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">520.000đ</span>
+                <span class="ms-price-discounted">420.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="Nourishing Shampoo (Gội Đầu Dưỡng Sinh - Menu Mới)">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Gội đầu thư giãn -->
+        <div class="ms-service-card" data-category="headspa">
+          <div class="ms-service-thumb">
+            <img src="assets/images/head_spa_ritual.jpg" alt="Relaxing Hair Shampoo (Gội Đầu Thư Giãn)" loading="lazy">
+            <span class="ms-service-badge badge-popular">THƯ GIÃN</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">Relaxing Hair Shampoo (Gội Đầu Thư Giãn)</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 45 phút</span>
+              <span class="ms-service-tag">Dầu gội hữu cơ</span>
+            </div>
+            <p class="ms-service-desc">Làm sạch da đầu với dầu gội hữu cơ cao cấp, kết hợp massage day ấn thái dương và gáy nhẹ nhàng.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">400.000đ</span>
+                <span class="ms-price-discounted">320.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="Shampoo (Gội Đầu Thư Giãn - Menu Mới)">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Lấy ráy tai -->
+        <div class="ms-service-card" data-category="headspa">
+          <div class="ms-service-thumb">
+            <img src="assets/images/head_spa_ritual.jpg" alt="Ear Cleaning (Lấy Ráy Tai Chuyên Nghiệp)" loading="lazy">
+            <span class="ms-service-badge badge-popular">MENU MỚI</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">Ear Cleaning (Lấy Ráy Tai Chuyên Nghiệp)</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 30 phút</span>
+              <span class="ms-service-tag">Dụng cụ tiệt trùng</span>
+            </div>
+            <p class="ms-service-desc">Kỹ thuật lấy ráy tai êm ái nhẹ nhàng với bộ dụng cụ tiệt trùng y tế, mang lại cảm giác thư thái thông thoáng.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">250.000đ</span>
+                <span class="ms-price-discounted">200.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="Ear Cleaning (Lấy Ráy Tai Chuyên Nghiệp - Menu Mới)">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Hot Stone Therapy -->
+        <div class="ms-service-card" data-category="massage">
+          <div class="ms-service-thumb">
+            <img src="assets/images/hot_stone_therapy.jpg" alt="Hot Stone Therapy (Massage Đá Nóng)" loading="lazy">
+            <span class="ms-service-badge badge-hot">ĐÁ NÓNG</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">Hot Stone Therapy (Massage Đá Nóng)</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 90 phút</span>
+              <span class="ms-service-tag">Đá núi lửa bazan</span>
+            </div>
+            <p class="ms-service-desc">Nhiệt lượng từ đá nóng tự nhiên kết hợp tinh dầu cao cấp giúp xua tan hàn khí, giải tỏa căng cơ nhanh chóng.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">680.000đ</span>
+                <span class="ms-price-discounted">550.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="Hot Stone Therapy (Massage Đá Nóng)">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Aroma Herbal Massage -->
+        <div class="ms-service-card" data-category="massage">
+          <div class="ms-service-thumb">
+            <img src="assets/images/herbal_steam_bath.jpg" alt="Aroma Herbal Massage (Tinh Dầu Thảo Dược)" loading="lazy">
+            <span class="ms-service-badge badge-popular">THẢO DƯỢC</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">Aroma Herbal Massage (Tinh Dầu Thảo Dược)</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 90 phút</span>
+              <span class="ms-service-tag">Hương thơm tự nhiên</span>
+            </div>
+            <p class="ms-service-desc">Các động tác miết vuốt nhẹ nhàng với tinh dầu thiên nhiên cao cấp giúp thư giãn hệ thần kinh và làm mềm da.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">650.000đ</span>
+                <span class="ms-price-discounted">520.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="Aroma Herbal Massage (Massage Tinh Dầu Thảo Dược)">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. Traditional Thai Massage -->
+        <div class="ms-service-card" data-category="massage">
+          <div class="ms-service-thumb">
+            <img src="assets/images/foot_acupressure_lounge.jpg" alt="Traditional Thai Massage (Massage Thái Cổ Truyền)" loading="lazy">
+            <span class="ms-service-badge badge-popular">THÁI CỔ TRUYỀN</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">Traditional Thai Massage (Massage Thái Cổ Truyền)</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 90 phút</span>
+              <span class="ms-service-tag">Kéo giãn khớp</span>
+            </div>
+            <p class="ms-service-desc">Bấm huyệt dọc các đường kinh lạc kết hợp động tác kéo giãn kiểu yoga, mở khóa các khớp bị tắc nghẽn.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">620.000đ</span>
+                <span class="ms-price-discounted">500.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="Traditional Thai Massage (Massage Thái Cổ Truyền)">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Foot Reflexology -->
+        <div class="ms-service-card" data-category="foot">
+          <div class="ms-service-thumb">
+            <img src="assets/images/foot_acupressure_lounge.jpg" alt="Foot Reflexology Massage (Bấm Huyệt Chân)" loading="lazy">
+            <span class="ms-service-badge badge-popular">BẤM HUYỆT CHÂN</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">Foot Reflexology Massage (Bấm Huyệt Chân)</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 60 phút</span>
+              <span class="ms-service-tag">Ngâm chân thảo dược</span>
+            </div>
+            <p class="ms-service-desc">Ngâm chân muối khoáng thảo mộc gừng quế, kích thích 7200 đầu dây thần kinh lòng bàn chân giúp ngủ sâu.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">440.000đ</span>
+                <span class="ms-price-discounted">350.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="Foot Reflexology Massage (Bấm Huyệt Chân)">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. Gel Manicure & Pedicure -->
+        <div class="ms-service-card" data-category="nails">
+          <div class="ms-service-thumb">
+            <img src="assets/images/traditional_herbal_bath.jpg" alt="Gel Manicure &amp; Spa (Chăm Sóc Móng Gel)" loading="lazy">
+            <span class="ms-service-badge badge-popular">NAIL SPA</span>
+          </div>
+          <div class="ms-service-content">
+            <h4 class="ms-service-name">Gel Manicure &amp; Spa (Chăm Sóc Móng Gel)</h4>
+            <div class="ms-service-meta">
+              <span class="ms-service-duration"><i class="fa fa-clock-o"></i> 60 phút</span>
+              <span class="ms-service-tag">Sơn Gel cao cấp</span>
+            </div>
+            <p class="ms-service-desc">Tẩy tế bào chết da tay/chân, cắt da tạo hình móng chuyên nghiệp, sơn gel bền đẹp bóng lâu với đèn LED UV.</p>
+            <div class="ms-service-footer">
+              <div class="ms-service-pricing">
+                <span class="ms-price-original">370.000đ</span>
+                <span class="ms-price-discounted">300.000đ <small>(-20%)</small></span>
+              </div>
+              <button type="button" class="ms-btn-book js-select-service-book" data-service="Gel Manicure &amp; Spa (Chăm Sóc Móng Gel)">
+                <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="ms-drawer-footer">
+        <div class="ms-drawer-quicklinks">
+          <a href="#menu" class="ms-qlink" onclick="closeMobileServicesDrawer();"><i class="fa fa-book"></i> Menu Chi Tiết</a>
+          <a href="#affiliate" class="ms-qlink" onclick="closeMobileServicesDrawer();"><i class="fa fa-handshake-o"></i> Đối Tác Tiếp Thị</a>
+          <a href="tel:0989713660" class="ms-qlink" style="color:#25D366;"><i class="fa fa-phone"></i> 098 9713660</a>
+        </div>
+        
+        <div class="ms-drawer-lang-selector">
+          <span class="ms-lang-label"><i class="fa fa-globe"></i> Ngôn ngữ / Language:</span>
+          <div class="ms-lang-pills">
+            <button type="button" class="ms-lang-pill active" data-lang="vi">🇻🇳 Tiếng Việt</button>
+            <button type="button" class="ms-lang-pill" data-lang="en">🇬🇧 English</button>
+            <button type="button" class="ms-lang-pill" data-lang="zh">🇨🇳 中文</button>
+            <button type="button" class="ms-lang-pill" data-lang="ja">🇯🇵 日本語</button>
+            <button type="button" class="ms-lang-pill" data-lang="ko">🇰🇷 한국어</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ========================================================================= -->

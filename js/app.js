@@ -3305,6 +3305,97 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
+  // MOBILE SERVICES & PRODUCTS CATALOGUE DRAWER (MENU 3 VẠCH)
+  // =========================================================================
+  const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+  const mobileServicesDrawer = document.getElementById('mobile-services-drawer');
+  const msDrawerClose = document.getElementById('ms-drawer-close');
+  const msDrawerBackdrop = document.getElementById('ms-drawer-backdrop');
+
+  function openMobileServicesDrawer() {
+    if (!mobileServicesDrawer) return;
+    mobileServicesDrawer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  window.openMobileServicesDrawer = openMobileServicesDrawer;
+
+  function closeMobileServicesDrawer() {
+    if (!mobileServicesDrawer) return;
+    mobileServicesDrawer.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  window.closeMobileServicesDrawer = closeMobileServicesDrawer;
+
+  if (mobileNavToggle) {
+    mobileNavToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openMobileServicesDrawer();
+    });
+  }
+
+  if (msDrawerClose) {
+    msDrawerClose.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileServicesDrawer();
+    });
+  }
+
+  if (msDrawerBackdrop) {
+    msDrawerBackdrop.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileServicesDrawer();
+    });
+  }
+
+  // Category Tab Switching inside Drawer
+  const msTabs = document.querySelectorAll('.ms-tab-btn');
+  const msCards = document.querySelectorAll('.ms-service-card');
+
+  msTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      msTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.getAttribute('data-category');
+
+      msCards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (cat === 'all' || cardCat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Direct "Đặt Dịch Vụ Này" action from drawer
+  document.querySelectorAll('.js-select-service-book').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const s = btn.getAttribute('data-service') || '';
+      closeMobileServicesDrawer();
+      setTimeout(() => {
+        openBookingModalWithService(s);
+      }, 150);
+    });
+  });
+
+  // Language switcher inside drawer
+  document.querySelectorAll('.ms-lang-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      if (lang) {
+        document.querySelectorAll('.ms-lang-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.language = lang;
+        localStorage.setItem('ivy_lang', lang);
+        updatePageLanguage();
+      }
+    });
+  });
+
+  // =========================================================================
   // OFFICIAL MENU BOARD LIGHTBOX MODAL
   // =========================================================================
   const menuBoardModal = document.getElementById('menu-board-modal');
