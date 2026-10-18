@@ -2087,31 +2087,153 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('ivy_lang', lang);
   }
 
-  // Populate guest counts according to language
+  // Populate guest counts according to language with extended range and custom input
   function updateGuestOptions() {
     const lang = state.language;
-    const guestLabels = {
-      vi: ['1 Khách', '2 Khách', '3 Khách', 'Nhóm 4+ khách'],
-      en: ['1 Guest', '2 Guests', '3 Guests', '4+ Guests'],
-      zh: ['1位贵宾', '2位贵宾', '3位贵宾', '4位及以上'],
-      ja: ['1名様', '2名様', '3名様', '4名様以上'],
-      ko: ['1인', '2인', '3인', '4인 이상']
+    const guestData = {
+      vi: [
+        { val: '1', label: '1 Khách' },
+        { val: '2', label: '2 Khách (Đi 2 người / Cặp đôi)' },
+        { val: '3', label: '3 Khách' },
+        { val: '4', label: '4 Khách (Nhóm gia đình / bạn bè)' },
+        { val: '5', label: '5 Khách' },
+        { val: '6', label: '6 Khách' },
+        { val: '7', label: '7 Khách' },
+        { val: '8', label: '8 Khách' },
+        { val: '9', label: '9 Khách' },
+        { val: '10', label: '10 Khách' },
+        { val: '11-15', label: 'Đoàn 11 - 15 Khách' },
+        { val: '16-20', label: 'Đoàn 16 - 20 Khách' },
+        { val: '20+', label: 'Đoàn lớn trên 20 Khách (Ưu đãi đặc biệt)' },
+        { val: 'custom', label: '✦ Tự nhập số lượng khách khác...' }
+      ],
+      en: [
+        { val: '1', label: '1 Guest' },
+        { val: '2', label: '2 Guests (Couple / Pair)' },
+        { val: '3', label: '3 Guests' },
+        { val: '4', label: '4 Guests (Family / Friends)' },
+        { val: '5', label: '5 Guests' },
+        { val: '6', label: '6 Guests' },
+        { val: '7', label: '7 Guests' },
+        { val: '8', label: '8 Guests' },
+        { val: '9', label: '9 Guests' },
+        { val: '10', label: '10 Guests' },
+        { val: '11-15', label: 'Group 11 - 15 Guests' },
+        { val: '16-20', label: 'Group 16 - 20 Guests' },
+        { val: '20+', label: 'Large Group 20+ Guests (Special Offer)' },
+        { val: 'custom', label: '✦ Enter custom guest count...' }
+      ],
+      zh: [
+        { val: '1', label: '1位贵宾' },
+        { val: '2', label: '2位贵宾 (情侣 / 双人同行)' },
+        { val: '3', label: '3位贵宾' },
+        { val: '4', label: '4位贵宾 (家庭 / 亲友聚会)' },
+        { val: '5', label: '5位贵宾' },
+        { val: '6', label: '6位贵宾' },
+        { val: '7', label: '7位贵宾' },
+        { val: '8', label: '8位贵宾' },
+        { val: '9', label: '9位贵宾' },
+        { val: '10', label: '10位贵宾' },
+        { val: '11-15', label: '11 - 15人团队' },
+        { val: '16-20', label: '16 - 20人团队' },
+        { val: '20+', label: '20人以上大团队 (尊享特惠)' },
+        { val: 'custom', label: '✦ 自定义输入人数...' }
+      ],
+      ja: [
+        { val: '1', label: '1名様' },
+        { val: '2', label: '2名様 (ペア / カップル)' },
+        { val: '3', label: '3名様' },
+        { val: '4', label: '4名様 (グループ / ご家族)' },
+        { val: '5', label: '5名様' },
+        { val: '6', label: '6名様' },
+        { val: '7', label: '7名様' },
+        { val: '8', label: '8名様' },
+        { val: '9', label: '9名様' },
+        { val: '10', label: '10名様' },
+        { val: '11-15', label: '団体 11〜15名様' },
+        { val: '16-20', label: '団体 16〜20名様' },
+        { val: '20+', label: '大型団体 20名様以上 (特別割引)' },
+        { val: 'custom', label: '✦ 人数を自由入力...' }
+      ],
+      ko: [
+        { val: '1', label: '1인' },
+        { val: '2', label: '2인 (커플 / 2인 동반)' },
+        { val: '3', label: '3인' },
+        { val: '4', label: '4인 (가족 / 친구 모임)' },
+        { val: '5', label: '5인' },
+        { val: '6', label: '6인' },
+        { val: '7', label: '7인' },
+        { val: '8', label: '8인' },
+        { val: '9', label: '9인' },
+        { val: '10', label: '10인' },
+        { val: '11-15', label: '단체 11 ~ 15인' },
+        { val: '16-20', label: '단체 16 ~ 20인' },
+        { val: '20+', label: '20인 이상 단체 (특별 우대)' },
+        { val: 'custom', label: '✦ 인원 직접 입력...' }
+      ],
+      ru: [
+        { val: '1', label: '1 Гость' },
+        { val: '2', label: '2 Гостя (Пара)' },
+        { val: '3', label: '3 Гостя' },
+        { val: '4', label: '4 Гостя (Семья / Друзья)' },
+        { val: '5', label: '5 Гостей' },
+        { val: '6', label: '6 Гостей' },
+        { val: '7', label: '7 Гостей' },
+        { val: '8', label: '8 Гостей' },
+        { val: '9', label: '9 Гостей' },
+        { val: '10', label: '10 Гостей' },
+        { val: '11-15', label: 'Группа 11 - 15 Гостей' },
+        { val: '16-20', label: 'Группа 16 - 20 Гостей' },
+        { val: '20+', label: 'Большая группа 20+ (Спецпредложение)' },
+        { val: 'custom', label: '✦ Ввести другое количество...' }
+      ],
+      fr: [
+        { val: '1', label: '1 Invité' },
+        { val: '2', label: '2 Invités (Couple / Duo)' },
+        { val: '3', label: '3 Invités' },
+        { val: '4', label: '4 Invités (Famille / Amis)' },
+        { val: '5', label: '5 Invités' },
+        { val: '6', label: '6 Invités' },
+        { val: '7', label: '7 Invités' },
+        { val: '8', label: '8 Invités' },
+        { val: '9', label: '9 Invités' },
+        { val: '10', label: '10 Invités' },
+        { val: '11-15', label: 'Groupe 11 - 15 Invités' },
+        { val: '16-20', label: 'Groupe 16 - 20 Invités' },
+        { val: '20+', label: 'Grand groupe 20+ (Offre Spéciale)' },
+        { val: 'custom', label: '✦ Saisir un nombre personnalisé...' }
+      ]
     };
 
-    const labels = guestLabels[lang] || guestLabels.vi;
-    const values = ['1', '2', '3', '4+'];
+    const list = guestData[lang] || guestData.vi;
 
     const heroGuests = document.getElementById('hero-select-guests');
     if (heroGuests) {
       const cur = heroGuests.value || '2';
-      heroGuests.innerHTML = values.map((val, i) => `<option value="${val}" ${val === cur ? 'selected' : ''}>${labels[i]}</option>`).join('');
+      heroGuests.innerHTML = list.map(item => `<option value="${item.val}" ${item.val === cur ? 'selected' : ''}>${item.label}</option>`).join('');
     }
 
     const modalGuests = document.getElementById('modal-guest-count');
     if (modalGuests) {
       const cur = modalGuests.value || '2';
-      modalGuests.innerHTML = values.map((val, i) => `<option value="${val}" ${val === cur ? 'selected' : ''}>${labels[i]}</option>`).join('');
+      modalGuests.innerHTML = list.map(item => `<option value="${item.val}" ${item.val === cur ? 'selected' : ''}>${item.label}</option>`).join('');
     }
+
+    // Update custom input placeholders per language
+    const placeholders = {
+      vi: 'Nhập số khách (VD: 8, 15, 30...)',
+      en: 'Enter guest count (e.g. 8, 15, 30...)',
+      zh: '输入人数 (例: 8, 15, 30...)',
+      ja: '人数を入力 (例: 8, 15, 30...)',
+      ko: '인원수 입력 (예: 8, 15, 30...)',
+      ru: 'Количество гостей (напр. 8, 15...)',
+      fr: "Nombre d'invités (ex: 8, 15...)"
+    };
+    const ph = placeholders[lang] || placeholders.vi;
+    const heroCustomGuests = document.getElementById('hero-custom-guests');
+    if (heroCustomGuests) heroCustomGuests.placeholder = ph;
+    const modalCustomGuests = document.getElementById('modal-custom-guests');
+    if (modalCustomGuests) modalCustomGuests.placeholder = ph;
   }
 
   // Populate appointment times according to language (Full 30-min slots from 10:00 to 21:30 + Custom time)
@@ -2376,7 +2498,30 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    if (heroGuests && modalGuests) modalGuests.value = heroGuests;
+    const heroGuestsSelect = document.getElementById('hero-select-guests');
+    const heroCustomGuests = document.getElementById('hero-custom-guests');
+    const heroIsGuestCustom = heroCustomGuests && heroCustomGuests.style.display !== 'none';
+    const heroGuestVal = heroIsGuestCustom ? heroCustomGuests.value : heroGuestsSelect?.value;
+
+    const modalGuestsSelect = document.getElementById('modal-guest-count');
+    const modalCustomGuests = document.getElementById('modal-custom-guests');
+    const modalGuestModeText = document.getElementById('modal-guest-mode-text');
+
+    if (modalGuestsSelect) {
+      if (heroIsGuestCustom && heroCustomGuests?.value) {
+        modalGuestsSelect.style.display = 'none';
+        if (modalCustomGuests) {
+          modalCustomGuests.style.display = 'block';
+          modalCustomGuests.value = heroCustomGuests.value;
+        }
+        if (modalGuestModeText) modalGuestModeText.textContent = getModeLabel('list');
+      } else if (heroGuestVal && heroGuestVal !== 'custom') {
+        modalGuestsSelect.style.display = 'block';
+        modalGuestsSelect.value = heroGuestVal;
+        if (modalCustomGuests) modalCustomGuests.style.display = 'none';
+        if (modalGuestModeText) modalGuestModeText.textContent = getModeLabel('custom');
+      }
+    }
     if (heroLocation && modalBranch) modalBranch.value = heroLocation;
 
     if (serviceName) {
@@ -2555,6 +2700,83 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Setup guest mode toggles (Dropdown list vs Custom quantity)
+  function initGuestPickerHandlers() {
+    // Hero Guest Handlers
+    const heroSelectGuests = document.getElementById('hero-select-guests');
+    const heroCustomGuests = document.getElementById('hero-custom-guests');
+    const heroGuestModeBtn = document.getElementById('hero-guest-mode-btn');
+    const heroGuestModeText = document.getElementById('hero-guest-mode-text');
+
+    function setHeroGuestMode(isCustom) {
+      if (!heroSelectGuests || !heroCustomGuests) return;
+      if (isCustom) {
+        heroSelectGuests.style.display = 'none';
+        heroCustomGuests.style.display = 'block';
+        if (heroGuestModeText) heroGuestModeText.textContent = getModeLabel('list');
+        heroCustomGuests.focus();
+      } else {
+        heroCustomGuests.style.display = 'none';
+        heroSelectGuests.style.display = 'block';
+        if (heroSelectGuests.value === 'custom') heroSelectGuests.value = '2';
+        if (heroGuestModeText) heroGuestModeText.textContent = getModeLabel('custom');
+      }
+    }
+
+    if (heroGuestModeBtn) {
+      heroGuestModeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const currentlyCustom = heroCustomGuests && heroCustomGuests.style.display !== 'none';
+        setHeroGuestMode(!currentlyCustom);
+      });
+    }
+
+    if (heroSelectGuests) {
+      heroSelectGuests.addEventListener('change', () => {
+        if (heroSelectGuests.value === 'custom') {
+          setHeroGuestMode(true);
+        }
+      });
+    }
+
+    // Modal Guest Handlers
+    const modalSelectGuests = document.getElementById('modal-guest-count');
+    const modalCustomGuests = document.getElementById('modal-custom-guests');
+    const modalGuestModeBtn = document.getElementById('modal-guest-mode-btn');
+    const modalGuestModeText = document.getElementById('modal-guest-mode-text');
+
+    function setModalGuestMode(isCustom) {
+      if (!modalSelectGuests || !modalCustomGuests) return;
+      if (isCustom) {
+        modalSelectGuests.style.display = 'none';
+        modalCustomGuests.style.display = 'block';
+        if (modalGuestModeText) modalGuestModeText.textContent = getModeLabel('list');
+        modalCustomGuests.focus();
+      } else {
+        modalCustomGuests.style.display = 'none';
+        modalSelectGuests.style.display = 'block';
+        if (modalSelectGuests.value === 'custom') modalSelectGuests.value = '2';
+        if (modalGuestModeText) modalGuestModeText.textContent = getModeLabel('custom');
+      }
+    }
+
+    if (modalGuestModeBtn) {
+      modalGuestModeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const currentlyCustom = modalCustomGuests && modalCustomGuests.style.display !== 'none';
+        setModalGuestMode(!currentlyCustom);
+      });
+    }
+
+    if (modalSelectGuests) {
+      modalSelectGuests.addEventListener('change', () => {
+        if (modalSelectGuests.value === 'custom') {
+          setModalGuestMode(true);
+        }
+      });
+    }
+  }
+
   // Final confirmation in modal
   const bookingFormModal = document.getElementById('modal-booking-form');
   if (bookingFormModal) {
@@ -2572,7 +2794,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const modalCustomTime = document.getElementById('modal-custom-time');
       const isCustomTime = modalCustomTime && modalCustomTime.style.display !== 'none';
       const time = isCustomTime ? (modalCustomTime.value || '14:30') : (modalSelectTime?.value || '14:30');
-      const guests = document.getElementById('modal-guest-count')?.value || '1';
+      const modalSelectGuests = document.getElementById('modal-guest-count');
+      const modalCustomGuests = document.getElementById('modal-custom-guests');
+      const isCustomGuests = modalCustomGuests && modalCustomGuests.style.display !== 'none';
+      let guests = isCustomGuests ? (modalCustomGuests.value ? `${modalCustomGuests.value} Khách` : '2 Khách') : (modalSelectGuests?.value || '2');
+      if (guests === 'custom') guests = modalCustomGuests?.value ? `${modalCustomGuests.value} Khách` : '2 Khách';
 
       // Build WhatsApp message format
       const hotline = '0989713660';
@@ -3322,6 +3548,7 @@ document.addEventListener('DOMContentLoaded', () => {
   init3DTilt();
   updatePromoPrices();
   initTimePickerHandlers();
+  initGuestPickerHandlers();
   initHeroBackgroundSlider();
 
   // Set default minimum date in hero datepicker

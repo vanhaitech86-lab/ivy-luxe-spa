@@ -181,13 +181,18 @@
 
       <!-- Field 4: Guest -->
       <div class="hero-booking-field">
-        <span class="booking-field-caption" data-i18n="hero_field_guest">Số Khách</span>
-        <select id="hero-select-guests">
-          <option value="1">1 Khách</option>
-          <option value="2" selected>2 Khách</option>
-          <option value="3">3 Khách</option>
-          <option value="4+">Nhóm 4+ khách</option>
-        </select>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="booking-field-caption" data-i18n="hero_field_guest">Số Khách</span>
+          <button type="button" id="hero-guest-mode-btn" class="time-mode-btn" title="Chuyển chế độ số khách">
+            <i class="fa fa-users"></i> <span id="hero-guest-mode-text">Tùy chọn</span>
+          </button>
+        </div>
+        <div class="hero-guest-input-wrap">
+          <select id="hero-select-guests">
+            <!-- Dynamically populated per language in updateGuestOptions() -->
+          </select>
+          <input type="number" id="hero-custom-guests" class="hero-custom-time-input" min="1" max="100" placeholder="Nhập số khách (VD: 8, 15...)" style="display:none;">
+        </div>
       </div>
 
       <!-- Button Book Now (Olive Green exact screenshot 1) -->
@@ -788,10 +793,16 @@
           </div>
 
           <div class="modal-form-group">
-            <label class="field-label" data-i18n="modal_guests_label">Số Khách</label>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+              <label class="field-label" style="margin-bottom:0;" data-i18n="modal_guests_label">Số Khách</label>
+              <button type="button" id="modal-guest-mode-btn" class="time-mode-btn" style="color:#2A5A44;" title="Chuyển chế độ số khách">
+                <i class="fa fa-users"></i> <span id="modal-guest-mode-text">Tùy chọn</span>
+              </button>
+            </div>
             <select id="modal-guest-count" class="modal-input">
               <!-- Dynamically updated -->
             </select>
+            <input type="number" id="modal-custom-guests" class="modal-input" min="1" max="100" placeholder="Nhập số lượng khách (VD: 8, 15, 30...)" style="display:none; margin-top:5px;">
           </div>
 
           <div class="modal-form-group">

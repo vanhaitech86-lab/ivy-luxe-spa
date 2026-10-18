@@ -473,10 +473,30 @@ button, input, select, textarea {
   background: transparent;
 }
 
-.hero-time-input-wrap {
+.hero-time-input-wrap,
+.hero-guest-input-wrap {
   width: 100%;
   display: flex;
   align-items: center;
+}
+
+.hero-guest-input-wrap input[type="number"] {
+  font-family: inherit;
+  width: 100%;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #123023;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--color-olive-btn);
+  padding: 2px 4px;
+  outline: none;
+}
+
+.hero-guest-input-wrap input[type="number"]::placeholder {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #888888;
 }
 
 .time-mode-btn {
