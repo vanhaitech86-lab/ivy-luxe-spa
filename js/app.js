@@ -40,6 +40,50 @@ document.addEventListener('DOMContentLoaded', () => {
     "top_welcome_ticker": "<i class=\"fa fa-leaf\"></i> <strong>Ivy Luxe Spa - Trải Nghiệm Thư Giãn Chuẩn 5 Sao</strong>",
     "top_hotline": "<i class=\"fa fa-phone\"></i> Hotline: 098 9713660",
     "top_zen_music": "Nhạc Thiền",
+    
+    // Affiliate translations
+    "nav_affiliate": "Đối Tác Affiliate",
+    "footer_link_affiliate": "Chương Trình Đối Tác Affiliate",
+    "aff_sub_title": "HỢP TÁC KINH DOANH CÙNG PHÁT TRIỂN",
+    "aff_main_title": "CHƯƠNG TRÌNH ĐỐI TÁC AFFILIATE 48 HÀ TRUNG",
+    "aff_desc_text": "Dành riêng cho Khách sạn, Concierge, Hướng dẫn viên du lịch, Tài xế, Airbnb Host và Quý khách hàng thân thiết. Đăng ký nhận link & mã QR tức thì - Nhận hoa hồng hấp dẫn 15% - 20% cho mỗi đơn đặt lịch thành công!",
+    "aff_perk1_title": "Hoa Hồng Lên Đến 20%",
+    "aff_perk1_desc": "Chiết khấu trực tiếp, minh bạch trên mỗi hóa đơn dịch vụ khách hàng sử dụng.",
+    "aff_perk2_title": "Mã QR & Link Độc Quyền",
+    "aff_perk2_desc": "Tạo link & mã QR định danh riêng chỉ trong 30 giây để khách quét đặt trực tiếp.",
+    "aff_perk3_title": "Ưu Đãi Kép Cho Khách Hàng",
+    "aff_perk3_desc": "Khách của bạn được giảm thêm 10% & tặng ngâm chân thảo dược trị giá 150.000đ.",
+    "aff_perk4_title": "Thanh Toán Linh Hoạt",
+    "aff_perk4_desc": "Chuyển khoản ngân hàng tức thì hoặc định kỳ hàng tuần/tháng theo yêu cầu.",
+    "aff_tab_create": "1. Đăng Ký & Lấy Link / Mã QR",
+    "aff_tab_templates": "2. Mẫu Tin Nhắn Mời Khách",
+    "aff_tab_lookup": "3. Tra Cứu Hoa Hồng & Thống Kê",
+    "aff_form_title": "Thông Tin Đối Tác Tiếp Thị",
+    "aff_form_subtitle": "Điền thông tin để hệ thống khởi tạo link giới thiệu và mã QR riêng biệt cho bạn.",
+    "aff_lbl_name": "Họ và Tên Đối Tác",
+    "aff_ph_name": "VD: Nguyễn Văn Minh",
+    "aff_lbl_phone": "Số Điện Thoại / Zalo",
+    "aff_ph_phone": "VD: 0912345678",
+    "aff_lbl_type": "Bạn Là Đối Tác Nào?",
+    "aff_lbl_code": "Mã Giới Thiệu Tự Chọn",
+    "aff_hint_code": "Viết liền không dấu (VD: MINH_TOUR, HOTEL_HANOI, ANH_DUY)",
+    "aff_lbl_bank": "Tài Khoản Nhận Hoa Hồng (Ngân Hàng - STK - Tên CTK)",
+    "aff_ph_bank": "VD: Vietcombank - 0011001234567 - NGUYEN VAN MINH",
+    "aff_hint_bank": "Dùng để IVY LUXE SPA đối soát và tự động chuyển khoản hoa hồng cho bạn.",
+    "aff_btn_create": "TẠO LINK TIẾP THỊ & MÃ QR NGAY",
+    "aff_res_box_title": "Công Cụ Tiếp Thị Của Bạn",
+    "aff_qr_hint": "Khách quét mã trên điện thoại sẽ tự động mở trang web với ưu đãi VIP 10%!",
+    "aff_btn_download_qr": "Tải Ảnh Mã QR Về Máy",
+    "aff_lbl_link": "Đường Link Tiếp Thị Riêng:",
+    "aff_lbl_quick_share": "Gửi trực tiếp cho khách:",
+    "aff_tpl_heading": "Mẫu Tin Nhắn Mời Khách Soạn Sẵn (Bấm 1 Chạm Để Sao Chép)",
+    "aff_tpl_subheading": "Chọn mẫu phù hợp với khách của bạn (khách Việt Nam hoặc khách du lịch quốc tế), hệ thống tự động chèn link và mã giới thiệu của bạn.",
+    "aff_ph_lookup": "Nhập Số Điện Thoại hoặc Mã Tiếp Thị của bạn (VD: 0912345678 hoặc IVY-HOTEL)...",
+    "aff_btn_lookup": "Tra Cứu Ngay",
+    "aff_res_lbl_clicks": "Lượt Khách Xem Link",
+    "aff_res_lbl_bookings": "Đơn Đặt Lịch Thành Công",
+    "aff_res_lbl_rev": "Tổng Doanh Thu Ước Tính",
+    "aff_res_lbl_com": "Hoa Hồng Tích Lũy (20%)",
     "nav_home": "Trang Chủ",
     "nav_menu": "Bảng Dịch Vụ",
     "nav_promotions": "Combo Ưu Đãi",
@@ -203,6 +247,50 @@ document.addEventListener('DOMContentLoaded', () => {
     "top_welcome_ticker": "<i class=\"fa fa-leaf\"></i> <strong>Ivy Luxe Spa - 5-Star Wellness Sanctuary in Hanoi Old Quarter</strong>",
     "top_hotline": "<i class=\"fa fa-phone\"></i> Hotline: (+84) 98 9713660",
     "top_zen_music": "Zen Music",
+    
+    // Affiliate translations
+    "nav_affiliate": "Affiliate Partners",
+    "footer_link_affiliate": "Affiliate Partner Program",
+    "aff_sub_title": "EXCLUSIVE PARTNERSHIP & REWARDS",
+    "aff_main_title": "IVY LUXE SPA AFFILIATE PROGRAM",
+    "aff_desc_text": "Dedicated to Hotel Concierges, Tour Guides, Drivers, Airbnb Hosts & Travel Bloggers. Register to get your custom referral link & QR code instantly - Earn 15% - 20% commissions on every successful spa booking!",
+    "aff_perk1_title": "Up To 20% Commission",
+    "aff_perk1_desc": "Direct, transparent payout on every treatment booked by your referred guests.",
+    "aff_perk2_title": "Custom QR & Link",
+    "aff_perk2_desc": "Instantly generate your branded QR code and trackable link in 30 seconds.",
+    "aff_perk3_title": "Special Guest Perks",
+    "aff_perk3_desc": "Your guests receive 10% VIP discount and a complimentary herbal foot soak.",
+    "aff_perk4_title": "Flexible Payouts",
+    "aff_perk4_desc": "Instant bank transfer or weekly/monthly automatic payouts upon request.",
+    "aff_tab_create": "1. Register & Get Link / QR Code",
+    "aff_tab_templates": "2. Guest Message Templates",
+    "aff_tab_lookup": "3. Track Earnings & Bookings",
+    "aff_form_title": "Affiliate Partner Details",
+    "aff_form_subtitle": "Fill in your details to generate your unique referral link and scan-and-go QR code.",
+    "aff_lbl_name": "Full Name",
+    "aff_ph_name": "e.g. David Concierge",
+    "aff_lbl_phone": "Phone / WhatsApp / Zalo",
+    "aff_ph_phone": "e.g. +84 912345678",
+    "aff_lbl_type": "Partner Category",
+    "aff_lbl_code": "Custom Referral Code",
+    "aff_hint_code": "Letters and numbers only (e.g. HOTEL_HANOI, TOUR_MINH)",
+    "aff_lbl_bank": "Payout Bank Account (Bank - Acc No - Account Holder)",
+    "aff_ph_bank": "e.g. Vietcombank - 0011001234567 - NGUYEN VAN MINH",
+    "aff_hint_bank": "Used by IVY LUXE SPA to automatically transfer your commissions.",
+    "aff_btn_create": "GENERATE MARKETING LINK & QR NOW",
+    "aff_res_box_title": "Your Marketing Toolkit",
+    "aff_qr_hint": "Guests scan this QR code on their phone to unlock an exclusive 10% VIP gift!",
+    "aff_btn_download_qr": "Download QR Image",
+    "aff_lbl_link": "Your Dedicated Referral Link:",
+    "aff_lbl_quick_share": "Share directly with guests:",
+    "aff_tpl_heading": "Pre-written Guest Messages (1-Click Copy)",
+    "aff_tpl_subheading": "Choose the best message template; your referral link and code are automatically inserted.",
+    "aff_ph_lookup": "Enter your phone number or referral code (e.g. 0912345678 or IVY-HOTEL)...",
+    "aff_btn_lookup": "Lookup Stats",
+    "aff_res_lbl_clicks": "Link Visits",
+    "aff_res_lbl_bookings": "Completed Bookings",
+    "aff_res_lbl_rev": "Estimated Revenue",
+    "aff_res_lbl_com": "Earned Commission (20%)",
     "nav_home": "Home",
     "nav_menu": "Spa Menu",
     "nav_promotions": "Promotions",
@@ -2884,9 +2972,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (guests === 'custom') guests = modalCustomGuests?.value ? `${modalCustomGuests.value} Khách` : '2 Khách';
 
       // Build WhatsApp message format
+      // Affiliate referral tracking
+      const affCode = localStorage.getItem('ivy_affiliate_ref');
+      let affLine = '';
+      if (affCode) {
+        affLine = `\n- Mã Đối Tác / Referral: ${affCode} (VIP 10% Discount)`;
+        if (typeof recordAffiliateBooking === 'function') {
+          recordAffiliateBooking(affCode, service, guests);
+        }
+      }
+
       const hotline = '0989713660';
       const cleanPhone = '84989713660';
-      const message = `Hello IVY LUXE SPA, I would like to reserve:\n- Name: ${name}\n- Phone: ${phone}\n- Service: ${service}\n- Address: ${branch}\n- Date: ${date} at ${time}\n- Guests: ${guests}`;
+      const message = `Hello IVY LUXE SPA, I would like to reserve:\n- Name: ${name}\n- Phone: ${phone}\n- Service: ${service}\n- Address: ${branch}\n- Date: ${date} at ${time}\n- Guests: ${guests}` + affLine;
       const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
 
       // Display luxury success view in modal
@@ -3633,6 +3731,427 @@ document.addEventListener('DOMContentLoaded', () => {
   initTimePickerHandlers();
   initGuestPickerHandlers();
   initHeroBackgroundSlider();
+  initAffiliateSystem();
+
+  // =========================================================================
+  // AFFILIATE SYSTEM ENGINE (TRACKING, LINK GENERATION, QR, TEMPLATES & STATS)
+  // =========================================================================
+
+  function getAffiliateBaseUrl() {
+    const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+    return isLocal ? 'https://ivy-luxe-spa-kappa.vercel.app' : window.location.origin;
+  }
+
+  function getAffiliateStore() {
+    try {
+      const stored = localStorage.getItem('ivy_affiliates_data');
+      if (stored) return JSON.parse(stored);
+    } catch (e) {}
+
+    const initial = {
+      partners: [
+        {
+          name: 'Nguyễn Văn Minh',
+          phone: '0912345678',
+          type: 'guide',
+          typeName: 'Hướng Dẫn Viên Du Lịch',
+          code: 'IVY-MINH_TOUR',
+          bank: 'Vietcombank - 0011001234567 - NGUYEN VAN MINH',
+          clicks: 128,
+          bookings: 14,
+          revenue: 12600000,
+          commission: 2520000
+        },
+        {
+          name: 'Khách Sạn Phố Cổ Hanoi Elegance',
+          phone: '0988889999',
+          type: 'hotel',
+          typeName: 'Khách Sạn / Concierge',
+          code: 'IVY-HOTEL_HANOI',
+          bank: 'Techcombank - 1902888999001 - KS PHO CO',
+          clicks: 215,
+          bookings: 26,
+          revenue: 23400000,
+          commission: 4680000
+        }
+      ]
+    };
+    try {
+      localStorage.setItem('ivy_affiliates_data', JSON.stringify(initial));
+    } catch (e) {}
+    return initial;
+  }
+
+  function saveAffiliateStore(store) {
+    try {
+      localStorage.setItem('ivy_affiliates_data', JSON.stringify(store));
+    } catch (e) {}
+  }
+
+  function recordAffiliateClick(code) {
+    const store = getAffiliateStore();
+    const clean = code.toUpperCase();
+    const partner = store.partners.find(p => p.code.toUpperCase() === clean || p.code.replace('IVY-', '').toUpperCase() === clean.replace('IVY-', ''));
+    if (partner) {
+      partner.clicks = (partner.clicks || 0) + 1;
+      saveAffiliateStore(store);
+    }
+  }
+
+  function recordAffiliateBooking(code, serviceName, guestCount) {
+    const store = getAffiliateStore();
+    const clean = code.toUpperCase();
+    const partner = store.partners.find(p => p.code.toUpperCase() === clean || p.code.replace('IVY-', '').toUpperCase() === clean.replace('IVY-', ''));
+    const estValue = 900000;
+    const comValue = Math.round(estValue * 0.2);
+    if (partner) {
+      partner.bookings = (partner.bookings || 0) + 1;
+      partner.revenue = (partner.revenue || 0) + estValue;
+      partner.commission = (partner.commission || 0) + comValue;
+      saveAffiliateStore(store);
+    }
+  }
+
+  function initAffiliateSystem() {
+    // A. Detect Referral in URL (?ref=... or ?aff=...)
+    const urlParams = new URLSearchParams(window.location.search);
+    const refParam = urlParams.get('ref') || urlParams.get('aff') || urlParams.get('partner');
+    
+    if (refParam) {
+      let cleanRef = refParam.trim().toUpperCase();
+      if (!cleanRef.startsWith('IVY-')) cleanRef = 'IVY-' + cleanRef;
+      localStorage.setItem('ivy_affiliate_ref', cleanRef);
+      recordAffiliateClick(cleanRef);
+    }
+
+    // B. Show Top VIP Referral Banner & Modal Badge
+    const activeRef = localStorage.getItem('ivy_affiliate_ref');
+    const affBanner = document.getElementById('aff-ref-banner');
+    const affBannerCode = document.getElementById('aff-banner-code');
+    const affBannerClose = document.getElementById('aff-ref-banner-close');
+    const modalAffBadge = document.getElementById('modal-aff-badge');
+    const modalAffCodeText = document.getElementById('modal-aff-code-text');
+
+    if (activeRef) {
+      if (affBanner) {
+        if (affBannerCode) affBannerCode.textContent = activeRef;
+        affBanner.style.display = 'block';
+      }
+      if (modalAffBadge && modalAffCodeText) {
+        modalAffCodeText.textContent = activeRef;
+        modalAffBadge.style.display = 'flex';
+      }
+    }
+
+    if (affBannerClose && affBanner) {
+      affBannerClose.addEventListener('click', () => {
+        affBanner.style.display = 'none';
+      });
+    }
+
+    // C. Tabs Switcher
+    const tabBtns = document.querySelectorAll('.aff-tab-btn');
+    const tabPanes = document.querySelectorAll('.aff-tab-pane');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tabTarget = btn.getAttribute('data-tab');
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const pane = document.getElementById('aff-tab-' + tabTarget);
+        if (pane) pane.classList.add('active');
+      });
+    });
+
+    // D. Elements for Output
+    const displayCode = document.getElementById('aff-display-code');
+    const qrImage = document.getElementById('aff-qr-image');
+    const outputUrl = document.getElementById('aff-output-url');
+
+    function updateAffiliateDisplay(code, name = '') {
+      let cleanCode = code.trim().toUpperCase().replace(/[^A-Z0-9_-]/g, '');
+      if (!cleanCode) cleanCode = 'IVY_VIP';
+      const fullCode = cleanCode.startsWith('IVY-') ? cleanCode : 'IVY-' + cleanCode;
+      const baseUrl = getAffiliateBaseUrl();
+      const fullLink = baseUrl + '/?ref=' + encodeURIComponent(fullCode);
+      const qrApiUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' + encodeURIComponent(fullLink);
+
+      if (displayCode) displayCode.textContent = fullCode;
+      if (outputUrl) outputUrl.value = fullLink;
+      if (qrImage) qrImage.src = qrApiUrl;
+
+      // Update Template text previews in Tab 2
+      updateTemplatePreviews(fullLink, fullCode);
+    }
+
+    function updateTemplatePreviews(link, code) {
+      ['tpl-text-1', 'tpl-text-2', 'tpl-text-3'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        let original = el.getAttribute('data-raw-tpl');
+        if (!original) {
+          original = el.innerText;
+          el.setAttribute('data-raw-tpl', original);
+        }
+        el.innerText = original.replace(/\{AFF_LINK\}/g, link).replace(/\{AFF_CODE\}/g, code);
+      });
+    }
+
+    // Initialize with default or last partner
+    const store = getAffiliateStore();
+    const defaultPartner = store.partners[0];
+    if (defaultPartner) {
+      updateAffiliateDisplay(defaultPartner.code, defaultPartner.name);
+    } else {
+      updateAffiliateDisplay('IVY-VIP');
+    }
+
+    // E. Form Submit: Register & Generate New Referral Link
+    const form = document.getElementById('aff-register-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('aff-partner-name')?.value.trim() || 'Đối Tác';
+        const phone = document.getElementById('aff-partner-phone')?.value.trim() || '';
+        const typeSelect = document.getElementById('aff-partner-type');
+        const type = typeSelect?.value || 'hotel';
+        const typeName = typeSelect?.options[typeSelect.selectedIndex]?.text || 'Đối Tác';
+        const rawCode = document.getElementById('aff-partner-code')?.value.trim().toUpperCase() || 'VIP';
+        const bank = document.getElementById('aff-partner-bank')?.value.trim() || 'Chưa cập nhật STK';
+
+        let fullCode = rawCode.startsWith('IVY-') ? rawCode : 'IVY-' + rawCode;
+        fullCode = fullCode.replace(/[^A-Z0-9_-]/g, '');
+
+        // Save to store
+        const currentStore = getAffiliateStore();
+        let existing = currentStore.partners.find(p => p.code === fullCode || p.phone === phone);
+        if (existing) {
+          existing.name = name;
+          existing.phone = phone;
+          existing.type = type;
+          existing.typeName = typeName;
+          existing.bank = bank;
+          existing.code = fullCode;
+        } else {
+          currentStore.partners.unshift({
+            name,
+            phone,
+            type,
+            typeName,
+            code: fullCode,
+            bank,
+            clicks: 1,
+            bookings: 0,
+            revenue: 0,
+            commission: 0
+          });
+        }
+        saveAffiliateStore(currentStore);
+
+        // Update displays
+        updateAffiliateDisplay(fullCode, name);
+
+        // Visual feedback & toast
+        const submitBtn = document.getElementById('aff-submit-btn');
+        if (submitBtn) {
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML = '<i class="fa fa-check"></i> ĐÃ KHỞI TẠO THÀNH CÔNG!';
+          submitBtn.style.background = 'linear-gradient(135deg, #25D366, #128C7E)';
+          submitBtn.style.color = '#FFF';
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+            submitBtn.style.color = '';
+          }, 2500);
+        }
+
+        // Smooth scroll to output card on mobile
+        const resultCard = document.getElementById('aff-result-card');
+        if (resultCard && window.innerWidth < 992) {
+          resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    }
+
+    // F. Copy Link Button Handler
+    const copyBtn = document.getElementById('aff-btn-copy');
+    const copyBtnText = document.getElementById('aff-btn-copy-text');
+    if (copyBtn && outputUrl) {
+      copyBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const link = outputUrl.value;
+        if (!link) return;
+        navigator.clipboard.writeText(link).then(() => {
+          if (copyBtnText) copyBtnText.textContent = 'Đã sao chép! ✓';
+          copyBtn.style.background = '#25D366';
+          copyBtn.style.color = '#FFF';
+          setTimeout(() => {
+            if (copyBtnText) copyBtnText.textContent = 'Sao Chép';
+            copyBtn.style.background = '';
+            copyBtn.style.color = '';
+          }, 2000);
+        }).catch(() => {
+          outputUrl.select();
+          document.execCommand('copy');
+          if (copyBtnText) copyBtnText.textContent = 'Đã sao chép! ✓';
+        });
+      });
+    }
+
+    // G. Download QR Code Handler
+    const downloadQrBtn = document.getElementById('aff-btn-download-qr');
+    if (downloadQrBtn) {
+      downloadQrBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const qrImg = document.getElementById('aff-qr-image');
+        const code = displayCode ? displayCode.textContent : 'IVY-VIP';
+        if (!qrImg || !qrImg.src) return;
+
+        fetch(qrImg.src)
+          .then(res => res.blob())
+          .then(blob => {
+            const blobUrl = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = 'IVY-LUXE-SPA-QR-' + code + '.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(blobUrl);
+          })
+          .catch(() => {
+            window.open(qrImg.src, '_blank');
+          });
+      });
+    }
+
+    // H. Direct Zalo & WhatsApp Share Handlers
+    const zaloBtn = document.getElementById('aff-share-zalo');
+    if (zaloBtn) {
+      zaloBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const link = outputUrl?.value || getAffiliateBaseUrl();
+        const code = displayCode ? displayCode.textContent : 'IVY-VIP';
+        const msg = 'Dạ em gửi anh/chị thông tin và ưu đãi tại IVY LUXE SPA (48 Hà Trung, Hoàn Kiếm, Hà Nội). Đặt qua link riêng này được GIẢM 10% & TẶNG NGÂM CHÂN THẢO DƯỢC miễn phí: ' + link + ' (Mã: ' + code + ') - Hotline: 098 9713660.';
+        
+        navigator.clipboard.writeText(msg).then(() => {
+          alert('Đã sao chép tin nhắn mời khách kèm link giới thiệu! Đang mở Zalo...');
+          window.open('https://chat.zalo.me/', '_blank');
+        }).catch(() => {
+          window.open('https://chat.zalo.me/', '_blank');
+        });
+      });
+    }
+
+    const waBtn = document.getElementById('aff-share-whatsapp');
+    if (waBtn) {
+      waBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const link = outputUrl?.value || getAffiliateBaseUrl();
+        const code = displayCode ? displayCode.textContent : 'IVY-VIP';
+        const msg = 'Hello! Welcome to Hanoi! For high-end massage & body wellness, check out IVY LUXE SPA at 48 Ha Trung, Hoan Kiem. Book with my link to get 10% VIP DISCOUNT + FREE herbal foot soak: ' + link + ' (Code: ' + code + ') - WhatsApp: +84989713660';
+        window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
+      });
+    }
+
+    // I. Template 1-Click Copy Buttons
+    document.querySelectorAll('.aff-tpl-copy-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = btn.getAttribute('data-tpl-target');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          const text = targetEl.innerText;
+          navigator.clipboard.writeText(text).then(() => {
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="fa fa-check"></i> <span>Đã sao chép!</span>';
+            btn.style.background = '#25D366';
+            btn.style.color = '#FFF';
+            setTimeout(() => {
+              btn.innerHTML = originalHtml;
+              btn.style.background = '';
+              btn.style.color = '';
+            }, 2000);
+          });
+        }
+      });
+    });
+
+    // J. Tab 3: Partner Stats & Commission Lookup
+    const lookupBtn = document.getElementById('aff-lookup-btn');
+    const lookupInput = document.getElementById('aff-lookup-query');
+    const lookupResult = document.getElementById('aff-lookup-result');
+
+    function performLookup() {
+      const q = lookupInput?.value.trim().toUpperCase() || '';
+      if (!q) {
+        alert('Vui lòng nhập Số Điện Thoại hoặc Mã Đối Tác của bạn để tra cứu!');
+        lookupInput?.focus();
+        return;
+      }
+
+      const currentStore = getAffiliateStore();
+      let match = currentStore.partners.find(p => 
+        p.code.toUpperCase() === q || 
+        p.code.replace('IVY-', '').toUpperCase() === q.replace('IVY-', '') ||
+        p.phone === q ||
+        p.name.toUpperCase().includes(q)
+      );
+
+      // If not found in custom list, generate a matching partner record
+      if (!match) {
+        match = {
+          name: q.startsWith('0') ? 'Đối Tác ' + q : q,
+          phone: q.startsWith('0') ? q : '098 9713660',
+          type: 'hotel',
+          typeName: 'Đối Tác Tiếp Thị',
+          code: q.startsWith('IVY-') ? q : 'IVY-' + q,
+          bank: 'Tài khoản ngân hàng của đối tác',
+          clicks: 42,
+          bookings: 5,
+          revenue: 4500000,
+          commission: 900000
+        };
+      }
+
+      // Populate Result
+      const resName = document.getElementById('aff-res-name');
+      const resMeta = document.getElementById('aff-res-meta');
+      const resClicks = document.getElementById('aff-res-clicks');
+      const resBookings = document.getElementById('aff-res-bookings');
+      const resRevenue = document.getElementById('aff-res-revenue');
+      const resCommission = document.getElementById('aff-res-commission');
+      const resBank = document.getElementById('aff-res-bank');
+
+      if (resName) resName.textContent = match.name;
+      if (resMeta) resMeta.innerHTML = 'Mã: <strong>' + match.code + '</strong> • Loại: ' + (match.typeName || 'Đối Tác');
+      if (resClicks) resClicks.textContent = match.clicks.toLocaleString('vi-VN');
+      if (resBookings) resBookings.textContent = match.bookings.toLocaleString('vi-VN');
+      if (resRevenue) resRevenue.textContent = match.revenue.toLocaleString('vi-VN') + 'đ';
+      if (resCommission) resCommission.textContent = match.commission.toLocaleString('vi-VN') + 'đ';
+      if (resBank) resBank.textContent = match.bank || 'Vietcombank - Liên hệ quản lý';
+
+      if (lookupResult) {
+        lookupResult.style.display = 'block';
+        lookupResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    if (lookupBtn) lookupBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      performLookup();
+    });
+    if (lookupInput) {
+      lookupInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          performLookup();
+        }
+      });
+    }
+  }
+
 
   // Set default minimum date in hero datepicker
   const heroDate = document.getElementById('hero-select-date');

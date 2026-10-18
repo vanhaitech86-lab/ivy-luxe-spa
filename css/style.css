@@ -3003,3 +3003,932 @@ button, input, select, textarea {
   }
 }
 
+
+/* ==========================================================================
+   AFFILIATE PARTNER PROGRAM STYLES (IVY LUXE SPA 48 HÀ TRUNG)
+   ========================================================================== */
+
+/* Top VIP Welcome Referral Banner */
+.aff-ref-banner {
+  background: linear-gradient(90deg, #1b3d2b 0%, #0d271c 40%, #2e4d36 100%);
+  border-bottom: 2px solid #D4AF37;
+  color: #FFFFFF;
+  padding: 10px 0;
+  position: relative;
+  z-index: 1005;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  animation: slideDownBanner 0.4s ease-out;
+}
+
+@keyframes slideDownBanner {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.aff-ref-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.aff-ref-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  flex-wrap: wrap;
+}
+
+.aff-ref-tag {
+  background: linear-gradient(135deg, #ECC876, #D4AF37);
+  color: #051A12;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.35);
+}
+
+.aff-ref-banner-close {
+  background: transparent;
+  border: none;
+  color: #D4AF37;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 5px;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.aff-ref-banner-close:hover {
+  color: #FFFFFF;
+  transform: scale(1.15);
+}
+
+/* Modal Referral Badge */
+.modal-aff-badge {
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px dashed #D4AF37;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #0d271c;
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.modal-aff-badge i {
+  color: #A37E1C;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Affiliate Main Section */
+.section-orient-affiliate {
+  padding: 85px 0 95px;
+  background: linear-gradient(180deg, #071911 0%, #0d271c 45%, #081a12 100%);
+  position: relative;
+  color: #FAF7F2;
+  overflow: hidden;
+}
+
+.section-orient-affiliate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+}
+
+/* Perks Grid */
+.aff-perks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 45px;
+}
+
+.aff-perk-card {
+  background: rgba(15, 38, 27, 0.65);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 14px;
+  padding: 24px 20px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+}
+
+.aff-perk-card:hover {
+  transform: translateY(-5px);
+  border-color: #D4AF37;
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+  background: rgba(18, 48, 35, 0.8);
+}
+
+.aff-perk-icon {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
+  border: 1px solid #D4AF37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  color: #ECC876;
+}
+
+.aff-perk-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.aff-perk-desc {
+  font-size: 0.85rem;
+  color: #A3B5AD;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Workspace Box (Tabs container) */
+.aff-workspace-box {
+  background: rgba(11, 28, 20, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Tabs Navigation */
+.aff-tabs-nav {
+  display: flex;
+  background: rgba(6, 17, 12, 0.7);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.aff-tabs-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.aff-tab-btn {
+  flex: 1;
+  min-width: 220px;
+  padding: 18px 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #A3B5AD;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.aff-tab-btn i {
+  font-size: 1.1rem;
+}
+
+.aff-tab-btn:hover {
+  color: #ECC876;
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.aff-tab-btn.active {
+  color: #FFFFFF;
+  background: rgba(212, 175, 55, 0.12);
+  border-bottom-color: #D4AF37;
+  font-weight: 700;
+}
+
+.aff-tab-btn.active i {
+  color: #ECC876;
+}
+
+/* Tab Panes */
+.aff-tab-pane {
+  display: none;
+  padding: 35px 30px;
+  animation: fadeInPane 0.3s ease-out;
+}
+
+.aff-tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeInPane {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Pane 1 Layout (Form + Preview) */
+.aff-pane-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 35px;
+  align-items: start;
+}
+
+.aff-col-header {
+  margin-bottom: 22px;
+}
+
+.aff-col-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: #ECC876;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aff-col-subtitle {
+  font-size: 0.88rem;
+  color: #A3B5AD;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Form Styles */
+.aff-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.aff-form-field {
+  margin-bottom: 18px;
+}
+
+.aff-field-label {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #E0E8E3;
+  margin-bottom: 7px;
+}
+
+.aff-field-label .req {
+  color: #FF5A5A;
+}
+
+.aff-input {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(18, 48, 35, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-size: 0.92rem;
+  font-family: 'Montserrat', sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.aff-input:focus {
+  outline: none;
+  border-color: #D4AF37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+  background: rgba(22, 58, 42, 0.9);
+}
+
+.aff-input::placeholder {
+  color: #71887E;
+}
+
+select.aff-input option {
+  background: #0d271c;
+  color: #FFFFFF;
+}
+
+.aff-code-input-wrap {
+  display: flex;
+  align-items: center;
+  background: rgba(18, 48, 35, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.aff-code-input-wrap:focus-within {
+  border-color: #D4AF37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+}
+
+.aff-code-prefix {
+  background: rgba(212, 175, 55, 0.15);
+  color: #ECC876;
+  font-weight: 700;
+  padding: 12px 12px;
+  font-size: 0.9rem;
+  border-right: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.aff-code-inner {
+  border: none !important;
+  background: transparent !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.aff-code-inner:focus {
+  box-shadow: none !important;
+}
+
+.aff-field-hint {
+  display: block;
+  font-size: 0.78rem;
+  color: #7E968C;
+  margin-top: 5px;
+}
+
+.aff-submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #ECC876 0%, #D4AF37 50%, #A4791E 100%);
+  color: #051A12;
+  font-family: 'Cinzel', serif;
+  font-size: 0.96rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+  transition: all 0.3s ease;
+}
+
+.aff-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(212, 175, 55, 0.5);
+  background: linear-gradient(135deg, #FFF0B8 0%, #E5BF47 50%, #B88924 100%);
+}
+
+/* Result Card (Right Column) */
+.aff-result-card {
+  background: linear-gradient(145deg, rgba(16, 42, 30, 0.9), rgba(8, 22, 16, 0.95));
+  border: 1px solid #D4AF37;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.aff-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 14px;
+}
+
+.aff-badge-live {
+  background: rgba(37, 211, 102, 0.15);
+  color: #25D366;
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.aff-result-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* QR Code Preview Box */
+.aff-qr-preview-box {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(6, 17, 12, 0.6);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.aff-qr-frame {
+  background: #FFFFFF;
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.aff-qr-frame img {
+  width: 110px;
+  height: 110px;
+  display: block;
+}
+
+.aff-qr-meta {
+  flex: 1;
+}
+
+.aff-qr-code-tag {
+  font-size: 0.95rem;
+  color: #ECC876;
+  margin-bottom: 6px;
+}
+
+.aff-qr-code-tag strong {
+  color: #FFFFFF;
+  background: rgba(212, 175, 55, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.aff-qr-sub {
+  font-size: 0.78rem;
+  color: #98ADA3;
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+
+.aff-btn-download-qr {
+  background: transparent;
+  border: 1px solid #D4AF37;
+  color: #ECC876;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.aff-btn-download-qr:hover {
+  background: #D4AF37;
+  color: #051A12;
+}
+
+/* Link Output Row */
+.aff-link-output-box {
+  margin-bottom: 20px;
+}
+
+.aff-output-label {
+  display: block;
+  font-size: 0.82rem;
+  color: #ECC876;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.aff-link-copy-row {
+  display: flex;
+  background: rgba(6, 17, 12, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.aff-output-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+}
+
+.aff-btn-copy {
+  background: linear-gradient(135deg, #ECC876, #D4AF37);
+  border: none;
+  color: #051A12;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.aff-btn-copy:hover {
+  background: #FFF0B8;
+}
+
+/* Quick Share Buttons */
+.aff-quick-share-row {
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+  padding-top: 16px;
+}
+
+.aff-share-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #A3B5AD;
+  margin-bottom: 10px;
+}
+
+.aff-share-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.aff-share-btn {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.aff-share-zalo {
+  background: #0068FF;
+  color: #FFFFFF;
+}
+
+.aff-share-zalo:hover {
+  background: #0053cc;
+}
+
+.share-icon-letter {
+  background: #FFFFFF;
+  color: #0068FF;
+  font-weight: 900;
+  font-size: 0.72rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aff-share-wa {
+  background: #25D366;
+  color: #FFFFFF;
+}
+
+.aff-share-wa:hover {
+  background: #1fa851;
+}
+
+/* TAB 2: TEMPLATES */
+.aff-templates-header {
+  margin-bottom: 25px;
+}
+
+.aff-templates-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.aff-template-card {
+  background: rgba(14, 36, 25, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 12px;
+  padding: 20px 22px;
+  transition: border-color 0.2s;
+}
+
+.aff-template-card:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.aff-tpl-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.aff-tpl-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.aff-badge-vi {
+  background: rgba(212, 175, 55, 0.15);
+  color: #ECC876;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.aff-badge-en {
+  background: rgba(0, 104, 255, 0.15);
+  color: #82b5ff;
+  border: 1px solid rgba(0, 104, 255, 0.3);
+}
+
+.aff-badge-sms {
+  background: rgba(37, 211, 102, 0.15);
+  color: #72e59e;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.aff-tpl-copy-btn {
+  background: transparent;
+  border: 1px solid #D4AF37;
+  color: #ECC876;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.aff-tpl-copy-btn:hover {
+  background: #D4AF37;
+  color: #051A12;
+}
+
+.aff-tpl-body {
+  background: rgba(6, 17, 12, 0.65);
+  border-radius: 8px;
+  padding: 16px 18px;
+  font-size: 0.88rem;
+  color: #DDE5E1;
+  line-height: 1.65;
+  white-space: pre-line;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* TAB 3: LOOKUP STATS & COMMISSION */
+.aff-lookup-wrap {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.aff-lookup-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.aff-lookup-input-wrap {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.aff-lookup-input-wrap i {
+  position: absolute;
+  left: 16px;
+  color: #ECC876;
+  font-size: 1rem;
+}
+
+.aff-lookup-input {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  background: rgba(18, 48, 35, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.aff-lookup-input:focus {
+  border-color: #D4AF37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+}
+
+.aff-lookup-submit {
+  padding: 0 24px;
+  background: linear-gradient(135deg, #ECC876, #D4AF37);
+  border: none;
+  border-radius: 10px;
+  color: #051A12;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.aff-lookup-submit:hover {
+  background: #FFF0B8;
+  transform: translateY(-2px);
+}
+
+/* Lookup Results */
+.aff-partner-info-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(18, 48, 35, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.aff-pi-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.aff-pi-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ECC876, #D4AF37);
+  color: #051A12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.aff-pi-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  color: #FFFFFF;
+  margin: 0 0 4px;
+}
+
+.aff-pi-meta {
+  font-size: 0.82rem;
+  color: #A3B5AD;
+}
+
+.aff-pi-badge {
+  background: rgba(37, 211, 102, 0.15);
+  color: #25D366;
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* Stats Cards Grid */
+.aff-stats-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.aff-stat-card {
+  background: rgba(14, 36, 25, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  padding: 18px 16px;
+  text-align: center;
+}
+
+.aff-stat-card.aff-sc-highlight {
+  border-color: #D4AF37;
+  background: rgba(22, 58, 42, 0.85);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
+}
+
+.aff-sc-num {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.aff-sc-label {
+  font-size: 0.78rem;
+  color: #A3B5AD;
+  line-height: 1.35;
+}
+
+.aff-sc-label i {
+  color: #ECC876;
+}
+
+.aff-payout-box {
+  background: rgba(6, 17, 12, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  padding: 18px 20px;
+  font-size: 0.88rem;
+  color: #DDE5E1;
+}
+
+.aff-payout-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .aff-perks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .aff-pane-layout {
+    grid-template-columns: 1fr;
+  }
+  .aff-stats-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .aff-tab-btn {
+    min-width: 170px;
+    font-size: 0.88rem;
+    padding: 14px 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .aff-perks-grid {
+    grid-template-columns: 1fr;
+  }
+  .aff-form-row {
+    grid-template-columns: 1fr;
+  }
+  .aff-lookup-bar {
+    flex-direction: column;
+  }
+  .aff-lookup-submit {
+    padding: 12px;
+    justify-content: center;
+  }
+  .aff-stats-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .aff-tab-pane {
+    padding: 24px 16px;
+  }
+  .aff-share-btns {
+    grid-template-columns: 1fr;
+  }
+  .aff-qr-preview-box {
+    flex-direction: column;
+    text-align: center;
+  }
+}
