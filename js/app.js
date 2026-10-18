@@ -2254,9 +2254,10 @@ document.addEventListener('DOMContentLoaded', () => {
       "duration_zh": "30分钟",
       "duration_ja": "30分",
       "duration_ko": "30분",
-      "price_vnd": 150000,
-      "desc_vi": "Quy trình phá gel an toàn, êm dịu, bảo vệ cấu trúc móng nguyên bản.",
-      "desc_en": "Safe and gentle removal of gel and acrylic while protecting natural nails.",
+      "price_vnd": 200000,
+      "price_vnd_max": 300000,
+      "desc_vi": "Quy trình phá gel an toàn, êm dịu, bảo vệ cấu trúc móng nguyên bản (200.000 - 300.000đ tùy loại gel & móng bột).",
+      "desc_en": "Safe and gentle removal of gel and hard acrylic while protecting natural nails (200,000 - 300,000 VND).",
       "desc_zh": "温和卸除凝胶和水晶甲，不伤指甲天然甲层。",
       "desc_ja": "自爪を痛めない丁寧なジェル＆アクリルオフ。",
       "desc_ko": "자연 손톱 손상 없이 부드럽고 안전하게 젤과 아크릴을 제거합니다.",
@@ -2276,7 +2277,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "duration_zh": "20分钟",
       "duration_ja": "20分",
       "duration_ko": "20분",
-      "price_vnd": 150000,
+      "price_vnd": 180000,
       "desc_vi": "Triệt sạch lông vùng nách bằng sáp ấm nhập khẩu, giảm thâm và se khít lỗ chân lông.",
       "desc_en": "Gentle underarm waxing with premium wax, minimizing irritation and smoothing skin.",
       "desc_zh": "采用进口温蜡温和脱除腋下毛发，清爽净白且收敛毛孔。",
@@ -2286,22 +2287,22 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       "id": "wax-2",
-      "name_vi": "Waxing Ria Mép & Cằm",
-      "name_en": "Upper Lip & Chin Waxing",
-      "name_zh": "唇周与下巴脱毛",
-      "name_ja": "口元＆あごワックス脱毛",
-      "name_ko": "인중 & 턱 왁싱",
+      "name_vi": "Waxing Vùng Cằm (Chin Waxing)",
+      "name_en": "Chin Waxing",
+      "name_zh": "下巴脱毛 (Chin Waxing)",
+      "name_ja": "あごワックス脱毛 (Chin Waxing)",
+      "name_ko": "턱 왁싱 (Chin Waxing)",
       "duration_vi": "20 phút",
       "duration_en": "20 min",
       "duration_zh": "20分钟",
       "duration_ja": "20分",
       "duration_ko": "20분",
-      "price_vnd": 160000,
-      "desc_vi": "Làm sạch ria mép và lông cằm nhẹ nhàng, tạo làn da sáng mịn và ăn phấn.",
-      "desc_en": "Gentle facial waxing for lip and chin area, creating a smooth flawless canvas for makeup.",
-      "desc_zh": "温和去除唇周及下巴细软汗毛，提亮肤色更易上妆。",
-      "desc_ja": "お顔の印象を明るくする口周り＆あごの産毛ワックスケア。",
-      "desc_ko": "인중과 턱 부위의 잔털을 부드럽게 정리하여 메이크업 밀착력을 높여줍니다.",
+      "price_vnd": 180000,
+      "desc_vi": "Làm sạch lông cằm nhẹ nhàng với sáp hữu cơ dịu nhẹ, tạo làn da sáng mịn và đều màu.",
+      "desc_en": "Gentle chin waxing creating a smooth flawless canvas for glowing skin and makeup.",
+      "desc_zh": "温和去除下巴细软汗毛，提亮肤色更易上妆。",
+      "desc_ja": "お顔の印象を明るくするあごの産毛ワックスケア。",
+      "desc_ko": "턱 부위의 잔털을 부드럽게 정리하여 메이크업 밀착력을 높여줍니다.",
       "image": "assets/images/facial_gold_care.jpg"
     },
     {
@@ -2322,26 +2323,6 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_zh": "专用抗敏感温蜡，轻松拔除上唇细微唇毛，面容更显洁净光彩。",
       "desc_ja": "敏感肌用の温ワックスで、口元の産毛を痛みなく綺麗に除去。",
       "desc_ko": "민감성 부위 전용 왁스로 인중의 잔털을 깨끗하게 정리해 안색을 밝혀줍니다.",
-      "image": "assets/images/facial_gold_care.jpg"
-    },
-    {
-      "id": "wax-4",
-      "name_vi": "Waxing Định Hình Chân Mày",
-      "name_en": "Eyebrow Arch Sculpting Wax",
-      "name_zh": "眉毛艺术修整蜡脱",
-      "name_ja": "アイブロウワックス眉スタイリング",
-      "name_ko": "눈썹 라인 왁싱 디자인",
-      "duration_vi": "15 phút",
-      "duration_en": "15 min",
-      "duration_zh": "15分钟",
-      "duration_ja": "15分",
-      "duration_ko": "15분",
-      "price_vnd": 180000,
-      "desc_vi": "Dọn sạch lông mày thừa, tạo phom chân mày thanh tú gọn gàng.",
-      "desc_en": "Precision eyebrow arch sculpting and stray hair cleaning.",
-      "desc_zh": "依据个人骨骼五官精准设计眉形，清理杂毛，轮廓分明精神利落。",
-      "desc_ja": "眉周りの余分な毛をすっきり脱毛し、理想の美眉ラインを演出。",
-      "desc_ko": "얼굴형에 맞춘 섬세한 눈썹 왁싱으로 또렷하고 정돈된 눈썹 라인 완성.",
       "image": "assets/images/facial_gold_care.jpg"
     },
     {
@@ -2593,12 +2574,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // CURRENCY FORMATTER HELPER
   // =========================================================================
-  function formatPrice(vndPrice) {
+  function formatPrice(vndPrice, maxPrice = null) {
     if (state.currency === 'usd') {
       const usd = Math.round(vndPrice / state.rateVNDtoUSD);
+      if (maxPrice && maxPrice > vndPrice) {
+        const usdMax = Math.round(maxPrice / state.rateVNDtoUSD);
+        return `$${usd} - $${usdMax}`;
+      }
       return `$${usd}`;
     }
-    return new Intl.NumberFormat('vi-VN').format(vndPrice) + ' ₫';
+    const fmt = new Intl.NumberFormat('vi-VN');
+    if (maxPrice && maxPrice > vndPrice) {
+      return `${fmt.format(vndPrice)} - ${fmt.format(maxPrice)} ₫`;
+    }
+    return fmt.format(vndPrice) + ' ₫';
   }
 
   // =========================================================================
@@ -2623,7 +2612,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="menu-item-content">
             <div class="menu-item-header">
               <h3 class="menu-item-name">${name}</h3>
-              <span class="menu-item-price">${formatPrice(item.price_vnd)}</span>
+              <span class="menu-item-price">${formatPrice(item.price_vnd, item.price_vnd_max)}</span>
             </div>
             <div class="menu-item-meta">
               <span><i class="fa fa-clock-o"></i> ${duration}</span>
@@ -2631,7 +2620,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <p class="menu-item-desc">${desc}</p>
             <div class="menu-item-actions">
-              <button class="btn-book-service-now js-quick-book" data-service="${encodeURIComponent(name)}" data-price="${formatPrice(item.price_vnd)}">
+              <button class="btn-book-service-now js-quick-book" data-service="${encodeURIComponent(name)}" data-price="${formatPrice(item.price_vnd, item.price_vnd_max)}">
                 <i class="fa fa-calendar-check-o"></i> ${t.book_now_caps}
               </button>
               <span class="btn-service-details js-view-details" data-service-id="${item.id}">
@@ -2657,6 +2646,18 @@ document.addEventListener('DOMContentLoaded', () => {
         showServiceDetailsModal(id);
       });
     });
+  }
+
+  function showServiceDetailsModal(id) {
+    let found = null;
+    for (const cat in spaMenuData) {
+      const match = spaMenuData[cat].find(s => s.id === id);
+      if (match) { found = match; break; }
+    }
+    if (!found) return;
+    const lang = state.language;
+    const name = found['name_' + lang] || found.name_en || found.name_vi;
+    openBookingModalWithService(name);
   }
 
   // =========================================================================
@@ -3019,7 +3020,7 @@ document.addEventListener('DOMContentLoaded', () => {
       optionsHtml += `<optgroup label="${catLabel}">`;
       spaMenuData[cat].forEach(item => {
         const name = item['name_' + lang] || item.name_en || item.name_vi;
-        const priceStr = formatPrice(item.price_vnd);
+        const priceStr = formatPrice(item.price_vnd, item.price_vnd_max);
         optionsHtml += `<option value="${name} (${priceStr})">${name} (${priceStr})</option>`;
       });
       optionsHtml += `</optgroup>`;
