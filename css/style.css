@@ -2141,43 +2141,98 @@ button, input, select, textarea {
 
 @media (max-width: 768px) {
   .nav-menu-left, .nav-menu-right {
-    display: none;
+    display: none !important;
+  }
+  .header-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 6px 12px !important;
+    position: relative !important;
+    min-height: 52px !important;
+    width: 100% !important;
   }
   .mobile-header-lang-wrap {
     display: flex !important;
-    align-items: center;
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    align-items: center !important;
+    position: static !important;
+    transform: none !important;
+    flex: 0 0 auto !important;
     z-index: 60;
+  }
+  .mobile-lang-btn {
+    padding: 5px 9px !important;
+    gap: 5px !important;
+    font-size: 0.78rem !important;
+  }
+  .header-logo-center {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    padding: 0 4px !important;
+    text-align: center !important;
+  }
+  .header-logo-img {
+    width: 36px !important;
+    height: 36px !important;
+    margin: 0 auto !important;
+  }
+  .header-logo-text {
+    font-size: 1.05rem !important;
+    letter-spacing: 1.2px !important;
+    white-space: nowrap !important;
+    line-height: 1.15 !important;
+  }
+  .header-logo-sub {
+    font-size: 0.52rem !important;
+    letter-spacing: 0.5px !important;
+    white-space: nowrap !important;
+    line-height: 1.15 !important;
+  }
+  .mobile-header-right-group {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    position: static !important;
+    transform: none !important;
+    flex: 0 0 auto !important;
+    z-index: 60;
+  }
+  .mobile-header-auth-pill {
+    width: 36px !important;
+    height: 36px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1.5px solid var(--color-gold) !important;
+    background: rgba(212, 175, 55, 0.18) !important;
+  }
+  .mobile-header-auth-pill span {
+    display: none !important;
+  }
+  .mobile-header-auth-pill i {
+    font-size: 1.15rem !important;
+    color: #123023 !important;
+    margin: 0 !important;
+  }
+  .mobile-nav-toggle {
+    width: 36px !important;
+    height: 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: static !important;
+    transform: none !important;
+    font-size: 1.25rem !important;
+    color: #123023 !important;
   }
   .mobile-lang-strip {
     display: block !important;
-  }
-  .mobile-nav-toggle {
-    display: block;
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .header-inner {
-    justify-content: center;
-    padding: 8px 0;
-    min-height: 56px;
-  }
-  .header-logo-img {
-    width: 48px;
-    height: 48px;
-  }
-  .header-logo-text {
-    font-size: 1.15rem;
-    letter-spacing: 2px;
-  }
-  .header-logo-sub {
-    font-size: 0.62rem;
-    letter-spacing: 1px;
   }
   .hero-booking-box {
     flex-direction: column;
@@ -4936,26 +4991,19 @@ select.aff-input option {
 }
 
 @media (max-width: 768px) {
-  .mobile-header-right-group {
-    display: flex !important;
-    align-items: center;
-    gap: 8px;
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 60;
-  }
   .mobile-auth-strip {
     display: block !important;
   }
-  .mobile-nav-toggle {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    position: static !important;
-    transform: none !important;
-    width: 38px;
-    height: 38px;
+  .menu-tabs-wrapper {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    padding: 6px 4px 12px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin;
+  }
+  .menu-tab-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
   }
 }

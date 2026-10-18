@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "tab_combos": "<i class=\"fa fa-fire\"></i> IVY Special Combos",
     "tab_packages": "<i class=\"fa fa-diamond\"></i> Gói Trị Liệu Hoàng Gia (2h - 4h)",
     "tab_massage": "<i class=\"fa fa-heart\"></i> Massage Body Toàn Thân",
+    "tab_foot": "<i class=\"fa fa-paw\"></i> Foot Massage (Trị Liệu Chân)",
     "tab_nails": "<i class=\"fa fa-star\"></i> Chăm Sóc & Làm Đẹp Móng (Nails)",
     "tab_waxing": "<i class=\"fa fa-leaf\"></i> Dịch Vụ Waxing (Triệt Lông)",
     "tab_eyelash": "<i class=\"fa fa-eye\"></i> Nối Mi & Tạo Hình Chân Mày",
@@ -376,6 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "tab_combos": "<i class=\"fa fa-fire\"></i> IVY Special Combos",
     "tab_packages": "<i class=\"fa fa-diamond\"></i> Royal Packages (2h - 4h)",
     "tab_massage": "<i class=\"fa fa-heart\"></i> Body Massage",
+    "tab_foot": "<i class=\"fa fa-paw\"></i> Foot Massage & Reflexology",
     "tab_nails": "<i class=\"fa fa-star\"></i> Nail Services",
     "tab_waxing": "<i class=\"fa fa-leaf\"></i> Waxing Services",
     "tab_eyelash": "<i class=\"fa fa-eye\"></i> Eyelashes & Eyebrows",
@@ -1028,6 +1030,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "tab_combos": "<i class=\"fa fa-fire\"></i> Комбо IVY Special",
     "tab_packages": "<i class=\"fa fa-diamond\"></i> Королевские пакеты (2-4ч)",
     "tab_massage": "<i class=\"fa fa-heart\"></i> Массаж тела",
+    "tab_foot": "<i class=\"fa fa-paw\"></i> Массаж ног (Foot Care)",
     "tab_nails": "<i class=\"fa fa-star\"></i> Маникюр и педикюр",
     "tab_waxing": "<i class=\"fa fa-leaf\"></i> Депиляция воском",
     "tab_eyelash": "<i class=\"fa fa-eye\"></i> Ресницы и брови",
@@ -1191,6 +1194,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "tab_combos": "<i class=\"fa fa-fire\"></i> Combos Spéciaux IVY",
     "tab_packages": "<i class=\"fa fa-diamond\"></i> Forfaits Royaux (2h - 4h)",
     "tab_massage": "<i class=\"fa fa-heart\"></i> Massages Corporels",
+    "tab_foot": "<i class=\"fa fa-paw\"></i> Massage des pieds (Foot Care)",
     "tab_nails": "<i class=\"fa fa-star\"></i> Beauté des Ongles",
     "tab_waxing": "<i class=\"fa fa-leaf\"></i> Épilation à la Cire",
     "tab_eyelash": "<i class=\"fa fa-eye\"></i> Cils & Sourcils",
@@ -1498,6 +1502,110 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_ko": "두 명의 베테랑 테라피스트가 완벽한 호흡과 리듬으로 동시에 마사지하여 최상의 황홀한 힐링을 선사합니다.",
       "image": "assets/images/couple_suite_bath.jpg",
       "popular": true
+    }
+  ],
+  "foot": [
+    {
+      "id": "foot-1",
+      "name_vi": "Massage Chân Bấm Huyệt Cổ Truyền (Foot Reflexology)",
+      "name_en": "Traditional Foot Reflexology & Herbal Soak",
+      "name_zh": "传统中草药足底穴位反射理疗按摩",
+      "name_ja": "伝統足裏ツボ押しリフレクソロジー＆薬草足湯",
+      "name_ko": "전통 한방 족욕 & 발 반사요법 지압 마사지",
+      "duration_vi": "60 phút",
+      "duration_en": "60 min",
+      "duration_zh": "60分钟",
+      "duration_ja": "60分",
+      "duration_ko": "60분",
+      "price_vnd": 380000,
+      "desc_vi": "Ngâm chân thảo dược ấm kết hợp bấm huyệt đạo bàn chân và bắp chân, kích thích lưu thông khí huyết và giải tỏa mệt mỏi sau ngày dài đi bộ.",
+      "desc_en": "Warm herbal foot soak combined with reflexology pressure point massage on feet & lower legs to stimulate circulation and relieve travel fatigue.",
+      "desc_zh": "温热草本足浴配合足底经络穴位指压推拿，促进全身血液循环，迅速舒缓旅行逛街后的足部酸痛与疲劳。",
+      "desc_ja": "温かいハーブ足湯と足裏・ふくらはぎのツボ押しを組み合わせ、血行を促進し歩き疲れた脚のむくみと疲労をスッキリ解消します。",
+      "desc_ko": "따뜻한 한방 약초 족욕과 발바닥·종아리 경혈 지압을 결합하여 혈액순환을 촉진하고 여행과 도보 후 붓고 피로한 다리를 가볍게 해줍니다.",
+      "image": "assets/images/foot_soak_care.jpg",
+      "popular": true
+    },
+    {
+      "id": "foot-2",
+      "name_vi": "Combo Trị Liệu & Tẩy Da Chết Chân (Combo 2 Trong Menu Gốc)",
+      "name_en": "Deep Foot Care & Scrub Ritual (Ivy Combo 2)",
+      "name_zh": "深层足部滋养磨砂护理套餐 (招牌组合2)",
+      "name_ja": "極上フットケア＆角質スクラブコース (コンボ2)",
+      "name_ko": "딥 풋 케어 & 각질 스크럽 리추얼 (콤보 2)",
+      "duration_vi": "70 - 75 phút",
+      "duration_en": "70 - 75 min",
+      "duration_zh": "70 - 75分钟",
+      "duration_ja": "70〜75分",
+      "duration_ko": "70 - 75분",
+      "price_vnd": 450000,
+      "desc_vi": "Tặng ngâm chân thảo mộc + Massage chân bấm huyệt (30') + Tẩy da chết gót chân thảo dược (30') + Ủ mặt nạ dưỡng ẩm chuyên sâu (10').",
+      "desc_en": "Complimentary herbal soak + Foot reflexology (30') + Herbal foot scrub (30') + Intensive nourishing foot mask (10').",
+      "desc_zh": "免费赠送中草药足浴 + 足底穴位按摩 (30分钟) + 草本足部去死皮角质 (30分钟) + 深度滋润足膜 (10分钟)。",
+      "desc_ja": "無料薬草足湯 ＋ 足裏ツボ押し (30分) ＋ ハーブ角質除去 (30分) ＋ 集中保湿フットパック (10分)。",
+      "desc_ko": "무료 한방 족욕 + 발 지압 마사지 (30분) + 허브 발 각질 스크럽 (30분) + 딥 모이스처 풋 팩 (10분).",
+      "image": "assets/images/couple_suite_bath.jpg",
+      "popular": true
+    },
+    {
+      "id": "foot-3",
+      "name_vi": "Massage Chân Đá Nóng Đả Thông Kinh Lạc",
+      "name_en": "Hot Stone Foot & Leg Revival Therapy",
+      "name_zh": "火山热石通络舒缓足腿特护按摩",
+      "name_ja": "ホットストーン・フット＆レッグ温熱セラピー",
+      "name_ko": "핫 스톤 발 & 다리 힐링 온열 마사지",
+      "duration_vi": "75 - 90 phút",
+      "duration_en": "75 - 90 min",
+      "duration_zh": "75 - 90分钟",
+      "duration_ja": "75〜90分",
+      "duration_ko": "75 - 90분",
+      "price_vnd": 480000,
+      "desc_vi": "Sử dụng đá núi lửa giữ nhiệt truyền sâu vào các huyệt vị bắp chân và lòng bàn chân, xua tan hàn khí, hỗ trợ giấc ngủ ngon sâu.",
+      "desc_en": "Volcanic hot stones glide across legs and foot soles, infusing therapeutic warmth deeply into tension points and improving sound sleep.",
+      "desc_zh": "火山玄武岩温热能量渗透至小腿与足心穴位，祛湿驱寒，深度放松，显著改善夜间睡眠质量。",
+      "desc_ja": "温かい火山岩の熱が脚と足裏のツボへ深く浸透。冷えやコリを解消し、深いリラックスと上質な睡眠を導きます。",
+      "desc_ko": "따뜻한 화산석 온열이 종아리와 발바닥 경혈 깊숙이 전해져 냉기를 없애고 피로를 풀어 숙면을 도와줍니다.",
+      "image": "assets/images/hot_stone_massage.jpg"
+    },
+    {
+      "id": "foot-4",
+      "name_vi": "Chăm Sóc & Làm Sạch Móng Chân (Pedicure - Menu Niêm Yết)",
+      "name_en": "Pedicure (Only Clean Feet - Official Menu)",
+      "name_zh": "足部专业修甲清洁护理 (仅清洁修剪)",
+      "name_ja": "ペディキュア (フットネイルケア・甘皮処理)",
+      "name_ko": "페디큐어 (발톱 정리 & 케어 전용)",
+      "duration_vi": "45 phút",
+      "duration_en": "45 min",
+      "duration_zh": "45分钟",
+      "duration_ja": "45分",
+      "duration_ko": "45분",
+      "price_vnd": 150000,
+      "desc_vi": "Dịch vụ chăm sóc móng chân theo bảng giá niêm yết: Cắt tỉa tạo dáng móng, làm sạch da chết khóe móng, ngâm thảo dược làm mềm da.",
+      "desc_en": "Official menu item: Nail shaping, cuticle clean, dead skin removal, and gentle herbal softening soak for neat feet.",
+      "desc_zh": "官方价目表原价项目：指甲修型、清理甲周死皮死肉、草本软化浸泡，让双足洁净舒适。",
+      "desc_ja": "公式メニュー掲載：爪のファイリング整形、甘皮ケア、古い角質の除去、薬草足湯による保湿仕上げ。",
+      "desc_ko": "공식 메뉴 가격 기준: 발톱 모양 다듬기, 큐티클 제거, 각질 정리 및 부드러운 족욕 케어.",
+      "image": "assets/images/spa_water_basin_hero.jpg"
+    },
+    {
+      "id": "foot-5",
+      "name_vi": "Sơn Gel Móng Chân Cao Cấp (Pedicure Gel - Menu Niêm Yết)",
+      "name_en": "Pedicure Gel Polish (Official Menu)",
+      "name_zh": "足部光疗美甲凝胶 (官方价目表)",
+      "name_ja": "ペディキュア・ジェルカラー (公式メニュー)",
+      "name_ko": "페디큐어 젤 컬러 (공식 메뉴)",
+      "duration_vi": "60 phút",
+      "duration_en": "60 min",
+      "duration_zh": "60分钟",
+      "duration_ja": "60分",
+      "duration_ko": "60분",
+      "price_vnd": 380000,
+      "desc_vi": "Làm sạch chăm sóc móng + Sơn gel màu cao cấp nhập khẩu, khóa bóng bền đẹp bảo hành 7 ngày miễn phí.",
+      "desc_en": "Full nail prep & clean + premium high-gloss gel coating, lasting shine with 7-day warranty free.",
+      "desc_zh": "足部完整护理清洁 + 进口高光甲油胶上色，亮丽持久，享受7天免费质保。",
+      "desc_ja": "ネイルケア清潔処理 ＋ 上質インポートジェルカラー塗布。美しい艶が長持ちし7日間無料保証付き。",
+      "desc_ko": "발톱 케어 정리 + 프리미엄 젤 컬러링, 오랜 지속력과 광택 (7일 무료 보증).",
+      "image": "assets/images/head_spa_ritual.jpg"
     }
   ],
   "nails": [
@@ -2468,6 +2576,7 @@ document.addEventListener('DOMContentLoaded', () => {
       combos: { vi: '--- IVY SPECIAL COMBOS ---', en: '--- IVY SPECIAL COMBOS ---', zh: '--- IVY 特惠组合套餐 ---', ja: '--- IVY スペシャルコンボ ---', ko: '--- IVY 스페셜 콤보 ---' },
       packages: { vi: '--- GÓI HOÀNG GIA (2H - 4H) ---', en: '--- ROYAL PACKAGES (2H - 4H) ---', zh: '--- 皇室尊享套餐 (2-4小时) ---', ja: '--- ロイヤルパッケージ (2〜4時間) ---', ko: '--- 로열 패키지 (2-4시간) ---' },
       massage: { vi: '--- BODY MASSAGE ---', en: '--- BODY MASSAGE ---', zh: '--- 身体按摩 ---', ja: '--- ボディマッサージ ---', ko: '--- 바디 마사지 ---' },
+      foot: { vi: '--- FOOT MASSAGE & TRỊ LIỆU CHÂN ---', en: '--- FOOT MASSAGE & REFLEXOLOGY ---', zh: '--- 养生足疗与足部护理 ---', ja: '--- フットマッサージ＆足裏ケア ---', ko: '--- 풋 마사지 & 발 관리 ---' },
       nails: { vi: '--- DỊCH VỤ NAIL ---', en: '--- NAIL SERVICES ---', zh: '--- 美甲服务 ---', ja: '--- ネイルサービス ---', ko: '--- 네일 서비스 ---' },
       waxing: { vi: '--- WAXING TRIỆT LÔNG ---', en: '--- WAXING SERVICES ---', zh: '--- 脱毛服务 ---', ja: '--- ワックス脱毛 ---', ko: '--- 왁싱 제모 ---' },
       eyelash: { vi: '--- NỐI MI & MÀY ---', en: '--- EYELASH & EYEBROW ---', zh: '--- 美睫与美眉 ---', ja: '--- まつげ＆眉ケア ---', ko: '--- 속눈썹 & 눈썹 ---' }
@@ -2620,13 +2729,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // MODAL BOOKING ENGINE
   // =========================================================================
-  const modalOverlay = document.getElementById('booking-modal');
-  const modalCloseBtn = document.getElementById('modal-close-btn');
+  function getBookingModal() {
+    return document.getElementById('booking-modal');
+  }
 
   function openBookingModalWithService(serviceName = '') {
-    if (!modalOverlay) return;
-    modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    const modal = getBookingModal();
+    if (modal) {
+      modal.classList.add('active');
+      modal.style.display = 'flex';
+      modal.style.opacity = '1';
+      document.body.style.overflow = 'hidden';
+    } else {
+      const box = document.getElementById('booking-form-box');
+      if (box) box.scrollIntoView({ behavior: 'smooth' });
+    }
 
     // Synchronize values from Hero booking bar into Modal
     const heroDate = document.getElementById('hero-select-date')?.value;
@@ -2723,18 +2840,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeBookingModal() {
-    if (!modalOverlay) return;
-    modalOverlay.classList.remove('active');
+    const modal = getBookingModal();
+    if (!modal) return;
+    modal.classList.remove('active');
+    modal.style.display = 'none';
+    modal.style.opacity = '0';
     document.body.style.overflow = '';
   }
 
-  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeBookingModal);
-
-  if (modalOverlay) {
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) closeBookingModal();
-    });
-  }
+  // Delegated click listeners for modal close
+  document.addEventListener('click', (e) => {
+    if (e.target && (e.target.id === 'modal-close-btn' || e.target.closest('#modal-close-btn'))) {
+      closeBookingModal();
+    }
+    const modal = getBookingModal();
+    if (modal && e.target === modal) {
+      closeBookingModal();
+    }
+  });
 
   // Trigger modal from any .js-open-booking button
   document.querySelectorAll('.js-open-booking').forEach(btn => {
