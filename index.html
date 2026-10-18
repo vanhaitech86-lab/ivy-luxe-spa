@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>IVY LUXE SPA - Massage Body & Wellness | 48 Hà Trung, Hoàn Kiếm, Hà Nội</title>
+  <meta name="description" content="IVY LUXE SPA - Massage Body & Wellness tại 48 Hà Trung, Hoàn Kiếm, Hà Nội. Dịch vụ massage body, gội đầu dưỡng sinh, foot care cao cấp. Hotline: 098 9713660.">
+  <meta name="keywords" content="Ivy Luxe Spa, 48 ha trung, massage ha trung, spa pho co hanoi, orient spa hanoi, goi dau duong sinh, massage body">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="IVY LUXE SPA - 48 Hà Trung, Hoàn Kiếm, Hà Nội">
+  <meta property="og:description" content="Massage Body & Wellness đẳng cấp tại 48 Hà Trung, Hoàn Kiếm. Hotline: 098 9713660.">
+  <meta property="og:image" content="assets/images/spa_water_basin_hero.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="apple-touch-icon" href="assets/images/logo.png">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Three.js 3D Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Three.js 3D Ambient Dust Canvas -->
+  <div id="three-canvas-container"></div>
+
+  <!-- TOP NOTICE BAR (MARQUEE RUNNING TEXT LEFT TO RIGHT) -->
+  <div class="top-notice-bar">
+    <div class="container top-notice-inner">
+      <!-- Running text track -->
+      <div class="top-notice-marquee-wrapper">
+        <div class="top-notice-marquee-track">
+          <!-- Item set 1 -->
+          <div class="top-notice-marquee-content">
+            <span class="top-notice-item" data-i18n-html="top_address">
+              <i class="fa fa-map-marker"></i> <strong>48 Hà Trung, P. Hàng Bông, Q. Hoàn Kiếm, Hà Nội</strong>
+            </span>
+            <span class="top-notice-sep">✦</span>
+            <span class="top-notice-item" data-i18n-html="top_hours">
+              <i class="fa fa-clock-o"></i> Mở cửa hàng ngày: 10:00 Sáng - 10:00 Tối
+            </span>
+            <span class="top-notice-sep">✦</span>
+            <span class="top-notice-item" data-i18n-html="top_promo_ticker">
+              <i class="fa fa-tag"></i> <strong>Ưu đãi đặt trước: Giảm 20% các gói Spa & Massage Body</strong>
+            </span>
+            <span class="top-notice-sep">✦</span>
+            <span class="top-notice-item" data-i18n-html="top_welcome_ticker">
+              <i class="fa fa-leaf"></i> <strong>Ivy Luxe Spa - Trải Nghiệm Thư Giãn Chuẩn 5 Sao</strong>
+            </span>
+            <span class="top-notice-sep">✦</span>
+          </div>
+          <!-- Item set 2 (duplicate for continuous seamless loop) -->
+          <div class="top-notice-marquee-content" aria-hidden="true">
+            <span class="top-notice-item" data-i18n-html="top_address">
+              <i class="fa fa-map-marker"></i> <strong>48 Hà Trung, P. Hàng Bông, Q. Hoàn Kiếm, Hà Nội</strong>
+            </span>
+            <span class="top-notice-sep">✦</span>
+            <span class="top-notice-item" data-i18n-html="top_hours">
+              <i class="fa fa-clock-o"></i> Mở cửa hàng ngày: 10:00 Sáng - 10:00 Tối
+            </span>
+            <span class="top-notice-sep">✦</span>
+            <span class="top-notice-item" data-i18n-html="top_promo_ticker">
+              <i class="fa fa-tag"></i> <strong>Ưu đãi đặt trước: Giảm 20% các gói Spa & Massage Body</strong>
+            </span>
+            <span class="top-notice-sep">✦</span>
+            <span class="top-notice-item" data-i18n-html="top_welcome_ticker">
+              <i class="fa fa-leaf"></i> <strong>Ivy Luxe Spa - Trải Nghiệm Thư Giãn Chuẩn 5 Sao</strong>
+            </span>
+            <span class="top-notice-sep">✦</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Action Items (Hotline & Zen Music) -->
+      <div class="top-notice-actions">
+        <a href="tel:0989713660" class="top-hotline-link" data-i18n-html="top_hotline">
+          <i class="fa fa-phone"></i> Hotline: 098 9713660
+        </a>
+        <button id="audio-zen-toggle" class="top-zen-btn" type="button" aria-label="Toggle Zen Music">
+          <i class="fa fa-music"></i> <span data-i18n="top_zen_music">Nhạc Thiền</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HEADER: LOGO Ở GIỮA VÀ 2 BÊN LÀ CHỮ (THEO HÌNH ẢNH 1) -->
+  <header class="main-header">
+    <div class="container">
+      <div class="header-inner">
+        <!-- Left Navigation Menu -->
+        <ul class="nav-menu-left">
+          <li><a href="#home" class="nav-item-link active" data-i18n="nav_home">Trang Chủ</a></li>
+          <li><a href="#menu" class="nav-item-link" data-i18n="nav_menu">Bảng Dịch Vụ</a></li>
+          <li><a href="#promotions" class="nav-item-link" data-i18n="nav_promotions">Combo Ưu Đãi</a></li>
+          <li><a href="#healing-music" class="nav-item-link" data-i18n="nav_healing_music">Âm Nhạc Trị Liệu</a></li>
+        </ul>
+
+        <!-- Center Logo (Logo ở giữa) -->
+        <a href="#home" class="header-logo-center">
+          <img src="assets/images/logo.png" alt="IVY LUXE SPA" class="header-logo-img">
+          <span class="header-logo-text">IVY LUXE</span>
+          <span class="header-logo-sub">MASSAGE BODY & WELLNESS</span>
+        </a>
+
+        <!-- Right Navigation Menu -->
+        <ul class="nav-menu-right">
+          <li><a href="#locations" class="nav-item-link" data-i18n-html="nav_about">Về Chúng Tôi <i class="fa fa-angle-down"></i></a></li>
+          <li><a href="#contact" class="nav-item-link" data-i18n="nav_contact">Liên Hệ</a></li>
+          <li><a href="#booking-form-box" class="nav-item-link js-open-booking" style="color: #123023; font-weight: 700;" data-i18n="nav_book">Đặt Lịch Trực Tuyến</a></li>
+          <li class="lang-dropdown-wrap">
+            <i class="fa fa-globe"></i>
+            <select id="lang-select" aria-label="Select Language">
+              <option value="vi" selected>Tiếng Việt (VI)</option>
+              <option value="en">English (EN)</option>
+              <option value="zh">中文 (ZH)</option>
+              <option value="ja">日本語 (JA)</option>
+              <option value="ko">한국어 (KO)</option>
+              <option value="ru">Русский (RU)</option>
+              <option value="fr">Français (FR)</option>
+            </select>
+          </li>
+        </ul>
+
+        <!-- Mobile Nav Toggle -->
+        <div class="mobile-nav-toggle js-open-booking">
+          <i class="fa fa-bars"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION WITH INSTANT BOOKING BAR (THEO HÌNH ẢNH 1) -->
+  <section id="home" class="hero-orient-style">
+    <!-- Auto-Transitioning Background Slideshow (Booking box remains fixed in place on top) -->
+    <div class="hero-slides-container" id="hero-slides-container">
+      <div class="hero-slide active" style="background-image: linear-gradient(180deg, rgba(20,20,20,0.22) 0%, rgba(20,20,20,0.48) 100%), url('assets/images/spa_water_basin_hero.jpg');" data-index="0" role="img" aria-label="Ivy Luxe Spa - Chậu nước hoa trị liệu"></div>
+      <div class="hero-slide" style="background-image: linear-gradient(180deg, rgba(20,20,20,0.22) 0%, rgba(20,20,20,0.48) 100%), url('assets/images/hero_spa_luxury.jpg');" data-index="1" role="img" aria-label="Ivy Luxe Spa - Không gian massage body đẳng cấp"></div>
+      <div class="hero-slide" style="background-image: linear-gradient(180deg, rgba(20,20,20,0.22) 0%, rgba(20,20,20,0.48) 100%), url('assets/images/loc_hatrung_lounge.jpg');" data-index="2" role="img" aria-label="Ivy Luxe Spa - Sảnh tiếp đón 48 Hà Trung"></div>
+      <div class="hero-slide" style="background-image: linear-gradient(180deg, rgba(20,20,20,0.22) 0%, rgba(20,20,20,0.48) 100%), url('assets/images/couple_suite_bath.jpg');" data-index="3" role="img" aria-label="Ivy Luxe Spa - Phòng đôi VIP & bồn ngâm gỗ Pơ Mu"></div>
+      <div class="hero-slide" style="background-image: linear-gradient(180deg, rgba(20,20,20,0.22) 0%, rgba(20,20,20,0.48) 100%), url('assets/images/head_spa_ritual.jpg');" data-index="4" role="img" aria-label="Ivy Luxe Spa - Gội đầu dưỡng sinh & vòm nước ấm"></div>
+    </div>
+
+    <!-- Centered Floating Booking Bar (Exact Screenshot 1) -->
+    <div id="booking-form-box" class="hero-booking-box">
+      <!-- Field 1: Location -->
+      <div class="hero-booking-field">
+        <span class="booking-field-caption" data-i18n="hero_field_location">Chi Nhánh</span>
+        <select id="hero-select-location" required>
+          <option value="48 Hà Trung, Hoàn Kiếm, Hà Nội" selected>48 Hà Trung, Hoàn Kiếm, Hà Nội</option>
+        </select>
+      </div>
+
+      <!-- Field 2: Date -->
+      <div class="hero-booking-field hero-booking-field-date" title="Nhấn để chọn ngày đến">
+        <span class="booking-field-caption" data-i18n="hero_field_date">Ngày Đến</span>
+        <input type="date" id="hero-select-date" onclick="this.showPicker && this.showPicker()" required>
+      </div>
+
+      <!-- Field 3: Time -->
+      <div class="hero-booking-field hero-booking-field-time" title="Nhấn để chọn giờ hẹn">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="booking-field-caption" data-i18n="hero_field_time">Giờ Hẹn</span>
+          <button type="button" id="hero-time-mode-btn" class="time-mode-btn" title="Chuyển chế độ: Danh sách khung giờ hoặc Nhập giờ tùy ý">
+            <i class="fa fa-clock-o"></i> <span id="hero-time-mode-text">Tùy chọn</span>
+          </button>
+        </div>
+        <div class="hero-time-input-wrap">
+          <select id="hero-select-time" required>
+            <!-- Generated dynamically with all 24 half-hour slots + custom -->
+          </select>
+          <input type="time" id="hero-custom-time" class="hero-custom-time-input" min="10:00" max="22:00" step="900" style="display:none;" onclick="this.showPicker && this.showPicker()">
+        </div>
+      </div>
+
+      <!-- Field 4: Guest -->
+      <div class="hero-booking-field">
+        <span class="booking-field-caption" data-i18n="hero_field_guest">Số Khách</span>
+        <select id="hero-select-guests">
+          <option value="1">1 Khách</option>
+          <option value="2" selected>2 Khách</option>
+          <option value="3">3 Khách</option>
+          <option value="4+">Nhóm 4+ khách</option>
+        </select>
+      </div>
+
+      <!-- Button Book Now (Olive Green exact screenshot 1) -->
+      <button type="button" class="btn-book-now-green js-open-booking" data-i18n="hero_btn_book">
+        ĐẶT LỊCH NGAY!
+      </button>
+    </div>
+
+    <!-- 5 Slider Dots below (Interactive indicators) -->
+    <div class="hero-slider-dots" id="hero-slider-dots">
+      <span class="hero-dot active" data-slide="0" title="Ảnh 1: Chậu hoa thư giãn"></span>
+      <span class="hero-dot" data-slide="1" title="Ảnh 2: Không gian spa cao cấp"></span>
+      <span class="hero-dot" data-slide="2" title="Ảnh 3: Sảnh đón khách 48 Hà Trung"></span>
+      <span class="hero-dot" data-slide="3" title="Ảnh 4: Phòng VIP bồn ngâm Jacuzzi"></span>
+      <span class="hero-dot" data-slide="4" title="Ảnh 5: Gội đầu dưỡng sinh vòm nước ấm"></span>
+    </div>
+
+    <!-- Welcome text -->
+    <div class="hero-welcome-text" data-i18n="hero_welcome">CHÀO MỪNG QUÝ KHÁCH ĐẾN VỚI IVY LUXE SPA HÀ NỘI</div>
+  </section>
+
+  <!-- SUB-HERO DESCRIPTION STRIP (THEO HÌNH ẢNH 1) -->
+  <div class="sub-hero-strip">
+    <div class="container">
+      <h1 class="sub-hero-title" data-i18n="subhero_title">MASSAGE & TRỊ LIỆU THÂN TÂM PHỐ CỔ HÀ NỘI</h1>
+      <p class="sub-hero-desc">
+        <span data-i18n="subhero_desc">Liệu trình chuyên sâu. Đôi bàn tay điêu luyện. Lòng hiếu khách thuần khiết Hà Nội.</span><br>
+        <span data-i18n-html="subhero_addr_line">Địa chỉ chính thức: <strong>48 Hà Trung, P. Hàng Bông, Q. Hoàn Kiếm, Hà Nội</strong> &nbsp;|&nbsp; Hotline: <strong style="color:#B22222;">098 9713660</strong></span>
+      </p>
+    </div>
+  </div>
+
+  <!-- 2. BỐ CỤC ĐỊA CHỈ SPA: OUR LOCATIONS (THEO HÌNH ẢNH 2) -->
+  <section id="locations" class="section-orient-locations">
+    <div class="container">
+      <div class="orient-section-header">
+        <h2 class="orient-section-title" data-i18n="loc_title">KHÔNG GIAN NGHỈ DƯỠNG TẠI 48 HÀ TRUNG</h2>
+        <p class="orient-section-subtitle" data-i18n="loc_subtitle">Không gian spa trị liệu sang trọng & biệt lập tại số 48 Hà Trung, Hoàn Kiếm, Hà Nội</p>
+      </div>
+
+      <div class="locations-carousel-wrap">
+        <!-- Card 1: Sảnh Tiếp Đón -->
+        <div class="location-orient-card">
+          <div class="location-img-wrap">
+            <img src="assets/images/loc_hatrung_lounge.jpg" alt="IVY LUXE Spa 48 Ha Trung Reception">
+            <div class="location-inner-dots">
+              <span class="loc-dot active"></span>
+              <span class="loc-dot"></span>
+              <span class="loc-dot"></span>
+              <span class="loc-dot"></span>
+              <span class="loc-dot"></span>
+            </div>
+          </div>
+          <div class="location-card-content">
+            <h3 class="location-card-title" data-i18n="loc_card1_title">Ivy Luxe Spa (Sảnh Chờ & Tiếp Đón)</h3>
+            <div class="location-card-address" data-i18n="loc_card1_addr">48 Hà Trung, Hoàn Kiếm, Hà Nội</div>
+            <ul class="location-specs-list">
+              <li data-i18n="loc_card1_b1">Sức chứa tối đa: 25 khách cùng lúc</li>
+              <li data-i18n="loc_card1_b2">Không gian Indochine ấm cúng, sang trọng</li>
+              <li data-i18n="loc_card1_b3">Mở cửa hàng ngày: 10:00 Sáng - 10:00 Tối</li>
+              <li data-i18n-html="loc_card1_b4">Hotline / WhatsApp / Zalo: <strong>(+84) 98 971 3660</strong></li>
+            </ul>
+            <a href="#booking-form-box" class="location-link-discover js-open-booking" data-service="Sảnh Tiếp Đón 48 Hà Trung" data-i18n="loc_btn_discover">KHÁM PHÁ THÊM</a>
+          </div>
+        </div>
+
+        <!-- Card 2: Khu Trị Liệu VIP Indochine -->
+        <div class="location-orient-card">
+          <div class="location-img-wrap">
+            <img src="assets/images/loc_hatrung_living.jpg" alt="IVY LUXE Spa VIP Treatment Suites">
+            <div class="location-inner-dots">
+              <span class="loc-dot active"></span>
+              <span class="loc-dot"></span>
+              <span class="loc-dot"></span>
+              <span class="loc-dot"></span>
+              <span class="loc-dot"></span>
+            </div>
+          </div>
+          <div class="location-card-content">
+            <h3 class="location-card-title" data-i18n="loc_card2_title">Ivy Luxe Spa (Khu Phòng Trị Liệu VIP)</h3>
+            <div class="location-card-address" data-i18n="loc_card2_addr">48 Hà Trung, Hoàn Kiếm, Hà Nội</div>
+            <ul class="location-specs-list">
+              <li data-i18n="loc_card2_b1">Phòng đơn, phòng đôi VIP riêng tư tuyệt đối</li>
+              <li data-i18n="loc_card2_b2">Bồn tắm ngâm thảo dược gỗ Pơ Mu & Jacuzzi</li>
+              <li data-i18n="loc_card2_b3">Mở cửa hàng ngày: 10:00 Sáng - 10:00 Tối</li>
+              <li data-i18n-html="loc_card2_b4">Hotline / WhatsApp / Zalo: <strong>(+84) 98 971 3660</strong></li>
+            </ul>
+            <a href="#booking-form-box" class="location-link-discover js-open-booking" data-service="Phòng VIP 48 Hà Trung" data-i18n="loc_btn_discover">KHÁM PHÁ THÊM</a>
+          </div>
+        </div>
+
+        <!-- Card 3: Dưỡng Sinh & Foot Care -->
+        <div class="location-orient-card">
+          <div class="location-img-wrap">
+            <img src="assets/images/loc_hatrung_flora.jpg" alt="Ivy Luxe Spa Dưỡng Sinh & Chăm Sóc Toàn Diện">
+            <div class="location-inner-dots">
+              <span class="loc-dot active"></span>
+              <span class="loc-dot"></span>
+              <span class="loc-dot"></span>
+              <span class="loc-dot"></span>
+              <span class="loc-dot"></span>
+            </div>
+          </div>
+          <div class="location-card-content">
+            <h3 class="location-card-title" data-i18n="loc_card3_title">Ivy Luxe Spa (Dưỡng Sinh & Foot Care)</h3>
+            <div class="location-card-address" data-i18n="loc_card3_addr">48 Hà Trung, Hoàn Kiếm, Hà Nội</div>
+            <ul class="location-specs-list">
+              <li data-i18n="loc_card3_b1">Vòm nước ấm tuần hoàn thư giãn da đầu & cổ vai gáy</li>
+              <li data-i18n="loc_card3_b2">Ngâm chân thảo mộc hoa hồng & bấm huyệt chuyên sâu</li>
+              <li data-i18n="loc_card3_b3">Mở cửa hàng ngày: 10:00 Sáng - 10:00 Tối</li>
+              <li data-i18n-html="loc_card3_b4">Hotline / WhatsApp / Zalo: <strong>(+84) 98 971 3660</strong></li>
+            </ul>
+            <a href="#booking-form-box" class="location-link-discover js-open-booking" data-service="Dưỡng Sinh 48 Hà Trung" data-i18n="loc_btn_discover">KHÁM PHÁ THÊM</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. VỊ TRÍ MAP TRÊN BẢN ĐỒ: 48 HÀ TRUNG (THEO HÌNH ẢNH 3) -->
+  <section class="section-orient-map">
+    <div class="container">
+      <!-- Centered Green Button "MAKE A RESERVATION" (Screenshot 3) -->
+      <a href="#booking-form-box" class="btn-make-reservation-pill js-open-booking" data-i18n="map_btn_reserve">
+        ĐẶT LỊCH HẸN TRẢI NGHIỆM
+      </a>
+
+      <!-- Vintage Map Graphic with Pin at 48 Hà Trung (Screenshot 3) -->
+      <div class="map-card-wrapper">
+        <a href="https://maps.google.com/?q=48+Ha+Trung+Hoan+Kiem+Hanoi" target="_blank" rel="noopener" title="Xem trên Google Maps">
+          <img src="assets/images/hanoi_old_quarter_map.jpg" alt="Vị trí IVY LUXE SPA tại 48 Hà Trung, Hoàn Kiếm, Hà Nội">
+        </a>
+        <div class="map-overlay-badge">
+          <h4 data-i18n="map_badge_title">IVY LUXE SPA - 48 HÀ TRUNG</h4>
+          <p data-i18n="map_badge_desc">Phố Hà Trung, P. Hàng Bông, Q. Hoàn Kiếm, Hà Nội (Cách Hồ Hoàn Kiếm 500m)</p>
+          <a href="https://maps.google.com/?q=48+Ha+Trung+Hoan+Kiem+Hanoi" target="_blank" rel="noopener" class="btn-open-google-maps" data-i18n-html="map_btn_open">
+            <i class="fa fa-external-link"></i> Mở chỉ đường Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. BẢNG GIÁ GÓI DỊCH VỤ: SPECIAL PROMOTIONS (THEO HÌNH ẢNH 4) -->
+  <section id="promotions" class="section-orient-promotions">
+    <div class="container">
+      <div class="orient-section-header">
+        <h2 class="orient-section-title" data-i18n="promo_title">COMBO ƯU ĐÃI ĐẶC QUYỀN IVY SPECIAL</h2>
+        <p class="orient-section-subtitle" data-i18n="promo_subtitle">Tận hưởng các gói combo đặc quyền được yêu thích nhất tại Ivy Luxe Spa - 48 Hà Trung, Hoàn Kiếm, Hà Nội</p>
+      </div>
+
+      <!-- 4 Columns Promotions (4 Gói Combo Chính Thức Của Spa) -->
+      <div class="promotions-grid-4col">
+        <!-- Promo 1: Combo 1 (HOT) -->
+        <div class="promo-orient-card">
+          <div class="promo-img-holder">
+            <span class="promo-badge-hot" data-i18n-html="c1_badge_html"><i class="fa fa-fire"></i> GÓI HOT NHẤT</span>
+            <img src="assets/images/head_spa_ritual.jpg" alt="IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT">
+            <div class="promo-bar-bottom">
+              <span class="promo-bar-time" data-i18n-html="c1_time_html"><i class="fa fa-clock-o"></i> 90 phút</span>
+              <span class="promo-bar-price promo-price-current" data-vnd="800000">800.000 ₫</span>
+            </div>
+          </div>
+          <div class="promo-card-body">
+            <h3 class="promo-card-title" data-i18n="c1_title">IVY SPECIAL - COMBO 1 (HOT)</h3>
+            <ul class="promo-steps-list">
+              <li data-i18n-html="c1_s1"><i class="fa fa-gift" style="color:#D4AF37;"></i> <strong>Ngâm chân thảo dược miễn phí</strong></li>
+              <li data-i18n-html="c1_s2">Massage toàn thân: <strong>30 phút</strong></li>
+              <li data-i18n-html="c1_s3">Gội đầu dưỡng sinh: <strong>30 phút</strong></li>
+              <li data-i18n-html="c1_s4">Chăm sóc da mặt & Vệ sinh tai: <strong>30 phút</strong></li>
+            </ul>
+            <span class="promo-read-more-link js-open-booking" data-service="IVY SPECIAL - COMBO 1 (HOT) - 90 phút (800.000 VNĐ)" data-i18n="c1_btn">ĐẶT LỊCH COMBO 1</span>
+          </div>
+        </div>
+
+        <!-- Promo 2: Combo 2 -->
+        <div class="promo-orient-card">
+          <div class="promo-img-holder">
+            <span class="promo-badge-tag" data-i18n-html="c2_badge_html"><i class="fa fa-leaf"></i> FOOT CARE</span>
+            <img src="assets/images/foot_soak_care.jpg" alt="IVY SPECIAL - COMBO 2 - 70/75 PHÚT">
+            <div class="promo-bar-bottom">
+              <span class="promo-bar-time" data-i18n-html="c2_time_html"><i class="fa fa-clock-o"></i> 70 - 75 phút</span>
+              <span class="promo-bar-price promo-price-current" data-vnd="450000">450.000 ₫</span>
+            </div>
+          </div>
+          <div class="promo-card-body">
+            <h3 class="promo-card-title" data-i18n="c2_title">IVY SPECIAL - COMBO 2</h3>
+            <ul class="promo-steps-list">
+              <li data-i18n-html="c2_s1"><i class="fa fa-gift" style="color:#D4AF37;"></i> <strong>Ngâm chân thảo dược miễn phí</strong></li>
+              <li data-i18n-html="c2_s2">Foot massage bấm huyệt: <strong>30 phút</strong></li>
+              <li data-i18n-html="c2_s3">Foot scrub tẩy da chết chân: <strong>30 phút</strong></li>
+              <li data-i18n-html="c2_s4">Foot mask đắp ủ mặt nạ: <strong>10 phút</strong></li>
+            </ul>
+            <span class="promo-read-more-link js-open-booking" data-service="IVY SPECIAL - COMBO 2 - 70/75 phút (450.000 VNĐ)" data-i18n="c2_btn">ĐẶT LỊCH COMBO 2</span>
+          </div>
+        </div>
+
+        <!-- Promo 3: Combo 3 -->
+        <div class="promo-orient-card">
+          <div class="promo-img-holder">
+            <span class="promo-badge-tag" data-i18n-html="c3_badge_html"><i class="fa fa-heart"></i> THƯ GIÃN TOÀN DIỆN</span>
+            <img src="assets/images/hot_stone_massage.jpg" alt="IVY SPECIAL - COMBO 3 - 120 PHÚT">
+            <div class="promo-bar-bottom">
+              <span class="promo-bar-time" data-i18n-html="c3_time_html"><i class="fa fa-clock-o"></i> 120 phút</span>
+              <span class="promo-bar-price promo-price-current" data-vnd="1000000">1.000.000 ₫</span>
+            </div>
+          </div>
+          <div class="promo-card-body">
+            <h3 class="promo-card-title" data-i18n="c3_title">IVY SPECIAL - COMBO 3</h3>
+            <ul class="promo-steps-list">
+              <li data-i18n-html="c3_s1"><i class="fa fa-gift" style="color:#D4AF37;"></i> <strong>Ngâm chân thảo dược miễn phí</strong></li>
+              <li data-i18n-html="c3_s2">Massage body toàn thân: <strong>45 phút</strong></li>
+              <li data-i18n-html="c3_s3">Body Scrub tẩy tế bào chết: <strong>30 phút</strong></li>
+              <li data-i18n-html="c3_s4">Chăm sóc da mặt & Vệ sinh tai: <strong>45 phút</strong></li>
+            </ul>
+            <span class="promo-read-more-link js-open-booking" data-service="IVY SPECIAL - COMBO 3 - 120 phút (1.000.000 VNĐ)" data-i18n="c3_btn">ĐẶT LỊCH COMBO 3</span>
+          </div>
+        </div>
+
+        <!-- Promo 4: Combo 4 -->
+        <div class="promo-orient-card">
+          <div class="promo-img-holder">
+            <span class="promo-badge-vip" data-i18n-html="c4_badge_html"><i class="fa fa-diamond"></i> HOÀNG GIA ĐẾ VƯƠNG</span>
+            <img src="assets/images/facial_gold_care.jpg" alt="IVY SPECIAL - COMBO 4 - 150 PHÚT">
+            <div class="promo-bar-bottom">
+              <span class="promo-bar-time" data-i18n-html="c4_time_html"><i class="fa fa-clock-o"></i> 150 phút</span>
+              <span class="promo-bar-price promo-price-current" data-vnd="1400000">1.400.000 ₫</span>
+            </div>
+          </div>
+          <div class="promo-card-body">
+            <h3 class="promo-card-title" data-i18n="c4_title">IVY SPECIAL - COMBO 4</h3>
+            <ul class="promo-steps-list">
+              <li data-i18n-html="c4_s1"><i class="fa fa-gift" style="color:#D4AF37;"></i> <strong>Ngâm chân thảo dược miễn phí</strong></li>
+              <li data-i18n-html="c4_s2">Massage body (30') & Tẩy da chết (30')</li>
+              <li data-i18n-html="c4_s3">Gội đầu dưỡng sinh & Vệ sinh tai: <strong>45 phút</strong></li>
+              <li data-i18n-html="c4_s4">Chăm sóc da mặt chuyên sâu: <strong>45 phút</strong></li>
+            </ul>
+            <span class="promo-read-more-link js-open-booking" data-service="IVY SPECIAL - COMBO 4 - 150 phút (1.400.000 VNĐ)" data-i18n="c4_btn">ĐẶT LỊCH COMBO 4</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action: View Full Spa Menu & Menu Board Modal -->
+      <div class="promotions-bottom-action">
+        <a href="#menu" class="btn-view-spa-menu" data-i18n="promo_btn_menu">XEM TOÀN BỘ BẢNG GIÁ DỊCH VỤ</a>
+        <button type="button" class="btn-view-board-menu js-open-menu-board" data-i18n-html="promo_btn_board">
+          <i class="fa fa-picture-o"></i> XEM ẢNH BẢNG GIÁ MENU BOARD GỐC
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL SPA MENU CATEGORIES (TABBED WITH CURRENCY SWITCHER) -->
+  <section id="menu" class="section-spa-menu">
+    <div class="container">
+      <div class="orient-section-header">
+        <h2 class="orient-section-title" data-i18n="menu_title">IVY LUXE SPA - BẢNG GIÁ NIÊM YẾT CHÍNH THỨC</h2>
+        <p class="orient-section-subtitle" data-i18n="menu_subtitle">Bảng Giá Đầy Đủ Tất Cả Dịch Vụ Tại 48 Hà Trung, Hoàn Kiếm, Hà Nội (VNĐ & USD)</p>
+      </div>
+
+      <!-- Menu Board Announcement Banner -->
+      <div class="menu-board-banner-box">
+        <div class="menu-board-banner-info">
+          <i class="fa fa-certificate" style="color:#D4AF37; font-size:1.6rem;"></i>
+          <div>
+            <div style="font-weight:700; color:#12291E; font-size:1rem;" data-i18n="menu_banner_title">BẢNG GIÁ NIÊM YẾT MINH BẠCH - BẢO HÀNH 7 NGÀY MIỄN PHÍ DỊCH VỤ NAIL</div>
+            <div style="font-size:0.86rem; color:#666; margin-top:3px;" data-i18n="menu_banner_desc">
+              Quý khách có thể xem menu trực tuyến theo từng phân mục dưới đây hoặc mở xem ảnh chụp bảng giá gốc tại spa.
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-open-menu-board-modal js-open-menu-board" data-i18n-html="menu_btn_open_board">
+          <i class="fa fa-file-image-o"></i> Mở Bảng Giá Menu Gốc
+        </button>
+      </div>
+
+      <!-- Currency Switcher -->
+      <div class="currency-switch-bar">
+        <span class="currency-label" data-i18n="menu_currency_label">Đơn vị tiền tệ:</span>
+        <button class="currency-pill-btn active" data-currency="vnd">VNĐ (₫)</button>
+        <button class="currency-pill-btn" data-currency="usd">USD ($)</button>
+      </div>
+
+      <!-- Menu Tabs Matching spaMenuData categories -->
+      <div class="menu-tabs-wrapper">
+        <button class="menu-tab-btn active" data-tab="combos" data-i18n-html="tab_combos"><i class="fa fa-fire"></i> IVY Special Combos</button>
+        <button class="menu-tab-btn" data-tab="packages" data-i18n-html="tab_packages"><i class="fa fa-diamond"></i> Packages Hoàng Gia (2h - 4h)</button>
+        <button class="menu-tab-btn" data-tab="massage" data-i18n-html="tab_massage"><i class="fa fa-heart"></i> Body Massage</button>
+        <button class="menu-tab-btn" data-tab="nails" data-i18n-html="tab_nails"><i class="fa fa-star"></i> Dịch Vụ Móng (Nail)</button>
+        <button class="menu-tab-btn" data-tab="waxing" data-i18n-html="tab_waxing"><i class="fa fa-leaf"></i> Waxing Triệt Lông</button>
+        <button class="menu-tab-btn" data-tab="eyelash" data-i18n-html="tab_eyelash"><i class="fa fa-eye"></i> Nối Mi & Chăm Sóc Mày</button>
+      </div>
+
+      <!-- Dynamic Grid for Menu items -->
+      <div id="menu-items-grid" class="menu-items-grid"></div>
+    </div>
+  </section>
+
+  <!-- 5. ÂM NHẠC TRỊ LIỆU & THIỀN ĐỊNH: DEEP HEALING VIBES SOUND SANCTUARY -->
+  <section id="healing-music" class="section-orient-music">
+    <div class="container">
+      <div class="orient-section-header">
+        <span class="music-section-badge" data-i18n="zen_section_tag">ÂM THANH TRỊ LIỆU TỰ NHIÊN</span>
+        <h2 class="orient-section-title" data-i18n="zen_section_title">KHÔNG GIAN ÂM NHẠC TRỊ LIỆU & THIỀN ĐỊNH</h2>
+        <p class="orient-section-subtitle" data-i18n="zen_section_desc">
+          Đắm mình trong những giai điệu tần số chữa lành 432Hz độc quyền từ kênh Deep Healing Vibes, giúp xoa dịu hệ thần kinh, tái tạo năng lượng và mang lại sự an yên sâu thẳm trong từng phút giây tại Ivy Luxe Spa.
+        </p>
+      </div>
+
+      <div class="music-sanctuary-grid">
+        <!-- Left: Master Video Showcase Card -->
+        <div class="music-showcase-card">
+          <div class="music-video-wrap">
+            <iframe id="zen-hero-iframe" 
+                    src="https://www.youtube-nocookie.com/embed/2mKeS1-qwes?enablejsapi=1&rel=0&modestbranding=1" 
+                    title="Deep Healing Vibes Music - Ivy Luxe Spa" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
+          </div>
+          <div class="music-showcase-content">
+            <div class="music-channel-info">
+              <div class="music-channel-avatar">
+                <i class="fa fa-headphones"></i>
+              </div>
+              <div class="music-channel-meta">
+                <h3 class="music-channel-name">Deep Healing Vibes</h3>
+                <p class="music-channel-sub" data-i18n="zen_channel_sub">Kênh Âm Nhạc Trị Liệu & Tần Số Chữa Lành</p>
+              </div>
+            </div>
+            <a href="https://www.youtube.com/@DeepHealingVibes86" target="_blank" rel="noopener noreferrer" class="music-channel-cta-btn">
+              <i class="fa fa-youtube-play"></i> <span data-i18n="zen_visit_channel">Ghé Thăm Kênh Deep Healing Vibes</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: 4 Selectable Healing Frequency Tracks -->
+        <div class="music-tracks-column">
+          <div class="music-tracks-header">
+            <h4 class="music-tracks-title"><i class="fa fa-music" style="color:var(--color-gold);"></i> <span data-i18n="zen_tracklist_title">Danh Sách Nhạc Trị Liệu (432Hz)</span></h4>
+            <span class="music-tracks-count" data-i18n="zen_track_count">4 Tuyệt Tác Âm Thanh</span>
+          </div>
+
+          <div class="music-track-cards-list" id="music-track-cards-list">
+            <!-- Dynamically populated per language with live play buttons -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. ĐÁNH GIÁ KHÁCH HÀNG: WHAT GUESTS ARE SAYING... -->
+  <section id="reviews" class="section-orient-reviews">
+    <div class="container">
+      <div class="orient-section-header">
+        <h2 class="orient-section-title" data-i18n="reviews_title">CẢM NHẬN TỪ KHÁCH HÀNG</h2>
+        <p class="orient-section-subtitle" data-i18n="reviews_sub">Hơn 15,000+ du khách trong nước và quốc tế đã thư giãn và hài lòng tuyệt đối tại Ivy Luxe Spa 48 Hà Trung.</p>
+      </div>
+
+      <div class="reviews-carousel-grid">
+        <!-- Review 1 -->
+        <div class="review-orient-card">
+          <div>
+            <div class="review-star-rating">★★★★★</div>
+            <p class="review-quote-text" data-i18n="rev1_quote">
+              “Trước khi ra sân bay, chúng tôi ghé 48 Hà Trung để massage. Nhân viên chu đáo, tay nghề rất đỉnh! Chúng tôi làm gói massage tinh dầu 60' và gội đầu dưỡng sinh 60' cực kỳ sảng khoái. Chắc chắn sẽ quay lại mỗi khi tới Hà Nội!”
+            </p>
+          </div>
+          <div class="review-author-row">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Yujin" class="review-avatar-img">
+            <div>
+              <div class="review-name" data-i18n="rev1_name">Yujin Kim</div>
+              <div class="review-meta" data-i18n="rev1_meta">Hàn Quốc ● Cặp đôi</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-orient-card">
+          <div>
+            <div class="review-star-rating">★★★★★</div>
+            <p class="review-quote-text" data-i18n="rev2_quote">
+              “Sau 3 tuần công tác, Việt Nam là điểm dừng chân cuối cùng! Tôi đặt ngay buổi massage đá nóng tại 48 Hà Trung. Xác nhận lịch nhanh chóng, không gian ấm cúng và kỹ thuật viên rất điêu luyện. Rất đáng trải nghiệm!”
+            </p>
+          </div>
+          <div class="review-author-row">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Fenny" class="review-avatar-img">
+            <div>
+              <div class="review-name" data-i18n="rev2_name">Fenny Angela</div>
+              <div class="review-meta" data-i18n="rev2_meta">Indonesia / Hoa Kỳ ● Du khách một mình</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-orient-card">
+          <div>
+            <div class="review-star-rating">★★★★★</div>
+            <p class="review-quote-text" data-i18n="rev3_quote">
+              “Địa chỉ 48 Hà Trung rất dễ tìm, không gian yên tĩnh và sang trọng chuẩn phong cách phố cổ. Liệu trình gội đầu dưỡng sinh vòm nước và massage đá nóng cực kỳ thư giãn, nhân viên lịch sự, chu đáo!”
+            </p>
+          </div>
+          <div class="review-author-row">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Thu Hang" class="review-avatar-img">
+            <div>
+              <div class="review-name" data-i18n="rev3_name">Nguyễn Minh Châu</div>
+              <div class="review-meta" data-i18n="rev3_meta">Hà Nội ● Đi cùng gia đình</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. HÌNH ẢNH KHÁCH ĐÃ TRẢI NGHIỆM: OUR HAPPY GUESTS -->
+  <section class="section-orient-guests">
+    <div class="container">
+      <div class="orient-section-header">
+        <h2 class="orient-section-title" data-i18n="guests_title">HÌNH ẢNH KHÁCH HÀNG TRẢI NGHIỆM</h2>
+        <p class="orient-section-subtitle" data-i18n="guests_sub">Khoảnh khắc thư thái đáng nhớ của các cặp đôi và du khách quốc tế tại spa.</p>
+      </div>
+
+      <div class="guests-photo-gallery">
+        <div class="guest-photo-item">
+          <img src="assets/images/hero_spa_luxury.jpg" alt="Ivy Luxe Spa Experience 1">
+          <i class="fa fa-instagram guest-insta-icon"></i>
+        </div>
+        <div class="guest-photo-item">
+          <img src="assets/images/couple_suite_bath.jpg" alt="Ivy Luxe Spa Experience 2">
+          <i class="fa fa-instagram guest-insta-icon"></i>
+        </div>
+        <div class="guest-photo-item">
+          <img src="assets/images/head_spa_ritual.jpg" alt="Ivy Luxe Spa Experience 3">
+          <i class="fa fa-instagram guest-insta-icon"></i>
+        </div>
+        <div class="guest-photo-item">
+          <img src="assets/images/facial_gold_care.jpg" alt="Ivy Luxe Spa Experience 4">
+          <i class="fa fa-instagram guest-insta-icon"></i>
+        </div>
+        <div class="guest-photo-item">
+          <img src="assets/images/foot_soak_care.jpg" alt="Ivy Luxe Spa Experience 5">
+          <i class="fa fa-instagram guest-insta-icon"></i>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:35px;">
+        <a href="#menu" class="btn-view-spa-menu" data-i18n="guests_btn_more">XEM TOÀN BỘ ẢNH</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="orient-footer">
+    <div class="container">
+      <div class="footer-columns-grid">
+        <!-- Col 1: Our Location -->
+        <div class="footer-branches-block">
+          <h4 class="footer-col-title" data-i18n="footer_location_title">ĐỊA CHỈ DUY NHẤT</h4>
+          <dl>
+            <dt data-i18n="footer_hq_title">IVY LUXE SPA (Trụ Sở Chính)</dt>
+            <dd data-i18n-html="footer_addr_line">Địa chỉ: 48 Hà Trung, Hoàn Kiếm, Hà Nội <a href="https://maps.google.com/?q=48+Ha+Trung+Hoan+Kiem+Hanoi" target="_blank" rel="noopener">(Xem bản đồ)</a></dd>
+            <dd><i class="fa fa-phone"></i> 098 9713660</dd>
+          </dl>
+          <p style="font-size:0.85rem; color:#ECC876; margin-top:14px;">
+            <strong data-i18n="footer_hotline_prefix">Hotline 24/7 / Zalo / WhatsApp:</strong> 098 9713660
+          </p>
+          <p style="font-size:0.85rem; color:#A3B5AD; margin-top:6px; line-height:1.6;" data-i18n="footer_location_desc">
+            Vị trí trung tâm phố cổ Hà Nội, cách Hồ Hoàn Kiếm và chợ Hàng Da chỉ vài phút đi bộ.
+          </p>
+        </div>
+
+        <!-- Col 2: About -->
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer_about_title">VỀ IVY LUXE SPA</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home" data-i18n="footer_link_home">Trang Chủ</a></li>
+            <li><a href="#menu" data-i18n="footer_link_menu">Bảng Dịch Vụ & Giá</a></li>
+            <li><a href="#promotions" data-i18n="footer_link_promotions">Combo Ưu Đãi Đặc Biệt</a></li>
+            <li><a href="#locations" data-i18n="footer_link_locations">Không Gian Tại 48 Hà Trung</a></li>
+            <li><a href="#reviews" data-i18n="footer_link_reviews">Đánh Giá Của Khách Hàng</a></li>
+            <li><a href="#booking-form-box" class="js-open-booking" data-i18n="footer_link_book">Đặt Lịch Trực Tuyến</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Hours -->
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer_hours_title">GIỜ MỞ CỬA</h4>
+          <p style="font-size:0.9rem; color:#A3B5AD; line-height:1.7;" data-i18n-html="footer_hours_desc">
+            Mở cửa hàng ngày từ<br>
+            <strong style="color:#FFF; font-size:1.05rem;">10:00 Sáng - 10:00 Tối</strong><br>
+            Khuyến khích đặt lịch hẹn trước.
+          </p>
+        </div>
+
+        <!-- Col 4: Follow & Payments -->
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer_follow_title">KẾT NỐI VỚI CHÚNG TÔI</h4>
+          <div class="footer-social-row">
+            <a href="#" class="footer-social-circle" title="Facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="footer-social-circle" title="Instagram"><i class="fa fa-instagram"></i></a>
+            <a href="https://wa.me/84989713660" class="footer-social-circle" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+            <a href="tel:0989713660" class="footer-social-circle" title="Call"><i class="fa fa-phone"></i></a>
+          </div>
+          <h4 class="footer-col-title" style="margin-top:25px;" data-i18n="footer_payment_title">PHƯƠNG THỨC THANH TOÁN</h4>
+          <div style="display:flex; gap:10px; font-size:1.5rem; color:#ECC876;">
+            <i class="fa fa-cc-visa"></i>
+            <i class="fa fa-cc-mastercard"></i>
+            <i class="fa fa-credit-card"></i>
+            <i class="fa fa-money"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-copyright-bar">
+        <div data-i18n-html="footer_copyright">Bản quyền 2026 © <strong>IVY LUXE SPA</strong> (48 Hà Trung, Hoàn Kiếm, Hà Nội). Đã đăng ký bản quyền.</div>
+        <div>Hotline: <a href="tel:0989713660" style="color:#D4AF37; font-weight:700;">098 9713660</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING RIGHT SPEED DIAL (THEO SCREENSHOT 1) -->
+  <div class="orient-floating-dock">
+    <div id="dock-scroll-top" class="orient-dock-btn dock-btn-top" title="Về đầu trang">
+      <i class="fa fa-angle-up"></i>
+    </div>
+    <a href="https://wa.me/84989713660" target="_blank" rel="noopener" class="orient-dock-btn dock-btn-kakao" title="KakaoTalk / Line">
+      <span>TALK</span>
+    </a>
+    <a href="https://wa.me/84989713660" target="_blank" rel="noopener" class="orient-dock-btn dock-btn-whatsapp" title="WhatsApp">
+      <i class="fa fa-whatsapp"></i>
+    </a>
+    <a href="https://zalo.me/0989713660" target="_blank" rel="noopener" class="orient-dock-btn dock-btn-zalo" title="Zalo">
+      <span>Zalo</span>
+    </a>
+    <a href="tel:0989713660" class="orient-dock-btn dock-btn-phone" title="Gọi 098 9713660">
+      <i class="fa fa-phone"></i>
+      <span class="dock-phone-pill">098 9713660</span>
+    </a>
+  </div>
+
+  <!-- BOOKING MODAL -->
+  <div id="booking-modal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa fa-calendar-check-o" style="color:#D4AF37; font-size:1.3rem;"></i>
+          <h3 class="modal-title" data-i18n="modal_title">ĐẶT LỊCH HẸN TRỰC TUYẾN - IVY LUXE SPA</h3>
+        </div>
+        <span id="modal-close-btn" class="modal-close-btn">&times;</span>
+      </div>
+
+      <div class="modal-body">
+        <form id="modal-booking-form">
+          <div class="modal-form-row modal-form-group">
+            <div>
+              <label class="field-label" data-i18n="modal_name_label">Họ và Tên</label>
+              <input type="text" id="modal-cust-name" class="modal-input" placeholder="Ví dụ: Nguyễn Văn A" data-i18n-placeholder="modal_name_ph" required>
+            </div>
+            <div>
+              <label class="field-label" data-i18n="modal_phone_label">Số Điện Thoại / Zalo</label>
+              <input type="tel" id="modal-cust-phone" class="modal-input" placeholder="098 9713660" data-i18n-placeholder="modal_phone_ph" required>
+            </div>
+          </div>
+
+          <div class="modal-form-row modal-form-group">
+            <div>
+              <label class="field-label" data-i18n="modal_branch_label">Địa Điểm</label>
+              <select id="modal-branch-select" class="modal-input" required>
+                <option value="48 Hà Trung, Hoàn Kiếm, Hà Nội" selected>IVY LUXE SPA - 48 Hà Trung, Hoàn Kiếm, Hà Nội</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label" data-i18n="modal_service_label">Dịch Vụ Chọn</label>
+              <select id="modal-service-select" class="modal-input" required>
+                <!-- Dynamically populated per active language in updatePageLanguage() -->
+              </select>
+            </div>
+          </div>
+
+          <div class="modal-form-row modal-form-group">
+            <div>
+              <label class="field-label" data-i18n="modal_date_label">Ngày Đến</label>
+              <input type="date" id="modal-book-date" class="modal-input" onclick="this.showPicker && this.showPicker()" required>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                <label class="field-label" style="margin-bottom:0;" data-i18n="modal_time_label">Giờ Hẹn</label>
+                <button type="button" id="modal-time-mode-btn" class="time-mode-btn" style="color:#2A5A44;" title="Chuyển chế độ giờ">
+                  <i class="fa fa-clock-o"></i> <span id="modal-time-mode-text">Tùy chọn</span>
+                </button>
+              </div>
+              <select id="modal-book-time" class="modal-input" required>
+                <!-- Dynamically updated -->
+              </select>
+              <input type="time" id="modal-custom-time" class="modal-input" min="10:00" max="22:00" step="900" style="display:none;" onclick="this.showPicker && this.showPicker()">
+            </div>
+          </div>
+
+          <div class="modal-form-group">
+            <label class="field-label" data-i18n="modal_guests_label">Số Khách</label>
+            <select id="modal-guest-count" class="modal-input">
+              <!-- Dynamically updated -->
+            </select>
+          </div>
+
+          <div class="modal-form-group">
+            <label class="field-label" data-i18n="modal_notes_label">Ghi Chú Thêm</label>
+            <textarea id="modal-notes" class="modal-input" rows="2" placeholder="Yêu cầu lực massage, phòng riêng, kỹ thuật viên..." data-i18n-placeholder="modal_notes_ph"></textarea>
+          </div>
+
+          <div style="font-size:0.8rem; color:#788680; margin-bottom:15px;" data-i18n-html="modal_notice">
+            <i class="fa fa-info-circle" style="color:#D4AF37;"></i> Địa chỉ phục vụ: <strong>48 Hà Trung, Hoàn Kiếm, Hà Nội</strong>. Hotline hỗ trợ 24/7: <strong>098 9713660</strong>.
+          </div>
+
+          <button type="submit" class="modal-confirm-btn" style="width:100%;" data-i18n="modal_btn_submit">
+            XÁC NHẬN ĐẶT LỊCH NGAY
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU BOARD LIGHTBOX MODAL -->
+  <div id="menu-board-modal" class="modal-overlay">
+    <div class="modal-box modal-box-large">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa fa-book" style="color:#D4AF37; font-size:1.3rem;"></i>
+          <h3 class="modal-title" data-i18n="board_modal_title">BẢNG GIÁ DỊCH VỤ NIÊM YẾT CHÍNH THỨC - IVY LUXE SPA</h3>
+        </div>
+        <span id="menu-board-close-btn" class="modal-close-btn">&times;</span>
+      </div>
+      <div class="modal-body" style="text-align:center; padding: 20px; background:#0F241A;">
+        <img src="assets/images/menu_board_ivy.jpg" alt="Bảng giá gốc IVY LUXE SPA 48 Hà Trung" class="menu-board-lightbox-img">
+        <div class="menu-board-lightbox-contact">
+          <div><i class="fa fa-map-marker" style="color:#D4AF37;"></i> <strong>48 Hà Trung, Hoàn Kiếm, Hà Nội</strong></div>
+          <div><i class="fa fa-phone" style="color:#D4AF37;"></i> Hotline / Zalo: <a href="tel:0989713660" style="color:#ECC876; font-weight:700;">098 9713660</a></div>
+          <div><i class="fa fa-whatsapp" style="color:#25D366;"></i> WhatsApp / WeChat: <strong style="color:#ECC876;">0971 811 669</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING ZEN MUSIC PLAYER DOCK (DEEP HEALING VIBES) -->
+  <div id="ivy-zen-dock" class="ivy-zen-dock" aria-label="Zen Music Player">
+    <!-- Minimized pill trigger -->
+    <div id="zen-min-pill" class="zen-min-pill" title="Mở Trình Phát Nhạc Thiền">
+      <div class="zen-vinyl-disc zen-disc-sm">
+        <img src="https://img.youtube.com/vi/2mKeS1-qwes/mqdefault.jpg" id="zen-min-disc-img" alt="Deep Healing Vibes">
+        <span class="zen-disc-core"></span>
+      </div>
+      <div class="zen-min-label">
+        <span class="zen-min-soundwave">
+          <i></i><i></i><i></i><i></i>
+        </span>
+        <span class="zen-min-text" data-i18n="zen_player_min_hint">Nhạc Trị Liệu</span>
+      </div>
+    </div>
+
+    <!-- Full player panel -->
+    <div id="zen-full-player" class="zen-full-player">
+      <!-- Header bar with minimize -->
+      <div class="zen-player-top">
+        <div class="zen-brand-badge">
+          <i class="fa fa-leaf"></i> <span>Ivy Luxe Zen Sound</span>
+        </div>
+        <div class="zen-top-actions">
+          <button id="zen-playlist-toggle-btn" class="zen-icon-btn" type="button" title="Danh sách bài hát" aria-label="Playlist">
+            <i class="fa fa-list-ul"></i>
+          </button>
+          <button id="zen-minimize-btn" class="zen-icon-btn" type="button" title="Thu nhỏ trình phát" aria-label="Minimize">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main body with vinyl disc & info -->
+      <div class="zen-player-body">
+        <div class="zen-vinyl-disc zen-disc-lg" id="zen-vinyl-disc">
+          <img src="https://img.youtube.com/vi/2mKeS1-qwes/mqdefault.jpg" id="zen-disc-thumb" alt="Track Art">
+          <span class="zen-disc-core"></span>
+        </div>
+        <div class="zen-meta-wrap">
+          <div class="zen-track-marquee">
+            <div id="zen-track-title" class="zen-track-title">🌙 Deep Sleep & Stress Relief (432Hz)</div>
+          </div>
+          <div class="zen-artist-wrap">
+            <span class="zen-artist-name">Deep Healing Vibes</span>
+            <a href="https://www.youtube.com/@DeepHealingVibes86" target="_blank" rel="noopener noreferrer" class="zen-yt-badge" title="Mở kênh YouTube">
+              <i class="fa fa-youtube-play"></i> YouTube
+            </a>
+          </div>
+          <div class="zen-equalizer-bars" id="zen-equalizer">
+            <span class="eq-bar bar-1"></span>
+            <span class="eq-bar bar-2"></span>
+            <span class="eq-bar bar-3"></span>
+            <span class="eq-bar bar-4"></span>
+            <span class="eq-label" id="zen-eq-label">432Hz Healing Frequency</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls row (prev, play, next, volume) -->
+      <div class="zen-player-controls">
+        <div class="zen-main-ctrls">
+          <button id="zen-prev-btn" class="zen-ctrl-btn" type="button" title="Bài trước" aria-label="Previous Track">
+            <i class="fa fa-step-backward"></i>
+          </button>
+          <button id="zen-play-btn" class="zen-play-btn" type="button" title="Phát / Dừng" aria-label="Play/Pause">
+            <i class="fa fa-play" id="zen-play-icon"></i>
+          </button>
+          <button id="zen-next-btn" class="zen-ctrl-btn" type="button" title="Bài tiếp theo" aria-label="Next Track">
+            <i class="fa fa-step-forward"></i>
+          </button>
+        </div>
+
+        <div class="zen-volume-wrap">
+          <button id="zen-mute-btn" class="zen-ctrl-btn zen-mute-btn" type="button" title="Tắt / Bật tiếng" aria-label="Mute Toggle">
+            <i class="fa fa-volume-up" id="zen-vol-icon"></i>
+          </button>
+          <input type="range" id="zen-vol-slider" class="zen-vol-slider" min="0" max="100" value="75" aria-label="Volume Slider">
+        </div>
+      </div>
+
+      <!-- Expandable Playlist Drawer -->
+      <div id="zen-playlist-drawer" class="zen-playlist-drawer">
+        <div class="zen-playlist-title-row">
+          <span>Giai Điệu Trị Liệu @DeepHealingVibes86</span>
+          <span class="zen-playlist-badge">4 Bài</span>
+        </div>
+        <div class="zen-playlist-items" id="zen-playlist-items">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden YouTube Iframe Player Container for audio streaming -->
+  <div id="ivy-zen-player-container" class="ivy-zen-hidden-player" aria-hidden="true">
+    <div id="ivy-zen-yt-target"></div>
+  </div>
+
+  <!-- Scripts -->
+  <!-- Official YouTube Iframe Player API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="js/three-scene.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
