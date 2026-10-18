@@ -4102,21 +4102,50 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
 
   function getAuthUsers() {
+    let users = [];
     try {
       const stored = localStorage.getItem('ivy_users');
-      if (stored) return JSON.parse(stored);
+      if (stored) users = JSON.parse(stored);
     } catch (e) {}
 
-    const initial = [
-      { email: 'admin@ivyluxespa.com', phone: '0989713660', pass: 'admin123', name: 'Quản Trị Viên IVY LUXE', role: 'admin' },
-      { email: 'ivyspahanoi@gmail.com', phone: '0989713660', pass: 'admin123', name: 'Admin Ivy Luxe Spa', role: 'admin' },
-      { email: 'partner@hotel.com', phone: '0912345678', pass: 'partner123', name: 'Khách Sạn Silk Hanoi', role: 'partner' },
-      { email: 'khach@gmail.com', phone: '0901234567', pass: '123456', name: 'Nguyễn Thu Trang', role: 'customer' }
+    const ALLOWED_ADMINS = ['ivyspahanoi@gmail.com', 'vanhaitech.86@gmail.com'];
+    const initialAdmins = [
+      { email: 'ivyspahanoi@gmail.com', phone: '0989713660', pass: 'Admin6789a@', name: 'Quản Trị Viên IVY LUXE', role: 'admin' },
+      { email: 'vanhaitech.86@gmail.com', phone: '0989713660', pass: 'Admin6789a@', name: 'Admin Kỹ Thuật (Văn Hải)', role: 'admin' }
     ];
+
+    if (!Array.isArray(users) || users.length === 0) {
+      users = [
+        ...initialAdmins,
+        { email: 'partner@hotel.com', phone: '0912345678', pass: 'partner123', name: 'Khách Sạn Silk Hanoi', role: 'partner' },
+        { email: 'khach@gmail.com', phone: '0901234567', pass: '123456', name: 'Nguyễn Thu Trang', role: 'customer' }
+      ];
+    } else {
+      // Đảm bảo chỉ DUY NHẤT 2 email này được quyền admin với mật khẩu Admin6789a@
+      users.forEach(u => {
+        const uEmail = (u.email || '').toLowerCase().trim();
+        if (u.role === 'admin' && !ALLOWED_ADMINS.includes(uEmail)) {
+          u.role = 'customer';
+        }
+      });
+
+      // Cập nhật hoặc bổ sung 2 tài khoản admin
+      initialAdmins.forEach(adm => {
+        const idx = users.findIndex(u => (u.email || '').toLowerCase().trim() === adm.email);
+        if (idx !== -1) {
+          users[idx].role = 'admin';
+          users[idx].pass = 'Admin6789a@';
+          users[idx].name = adm.name;
+        } else {
+          users.unshift(adm);
+        }
+      });
+    }
+
     try {
-      localStorage.setItem('ivy_users', JSON.stringify(initial));
+      localStorage.setItem('ivy_users', JSON.stringify(users));
     } catch (e) {}
-    return initial;
+    return users;
   }
 
   function saveAuthUsers(users) {
@@ -4162,7 +4191,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileDdAdminLink = document.getElementById('mobile-dd-admin-link');
     const mobileDdPartnerLink = document.getElementById('mobile-dd-partner-link');
 
+    const ALLOWED_ADMINS = ['ivyspahanoi@gmail.com', 'vanhaitech.86@gmail.com'];
+
     if (user) {
+      const userEmail = (user.email || '').toLowerCase().trim();
+      // Bảo mật: Nếu tài khoản không thuộc 2 email admin được chỉ định mà có role admin thì lập tức hạ xuống customer
+      if (user.role === 'admin' && !ALLOWED_ADMINS.includes(userEmail)) {
+        user.role = 'customer';
+        setCurrentUser(user);
+      }
+
       const shortName = (user.name ? user.name.split(' ').slice(-1)[0] : 'Tài Khoản');
       if (authBtnText) authBtnText.innerHTML = `${shortName} <i class="fa fa-angle-down" style="font-size:0.75rem; margin-left:3px;"></i>`;
       if (mobileAuthBtnText) mobileAuthBtnText.innerHTML = `${shortName} <i class="fa fa-angle-down" style="font-size:0.75rem; margin-left:2px;"></i>`;
@@ -4172,7 +4210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let roleText = 'Khách Hàng VIP';
       let roleColor = '#25D366';
-      if (user.role === 'admin') {
+      if (user.role === 'admin' && ALLOWED_ADMINS.includes(userEmail)) {
         roleText = 'Quản Trị Viên';
         roleColor = '#D4AF37';
       } else if (user.role === 'partner') {
@@ -4189,9 +4227,9 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileDdRole.style.color = roleColor;
       }
 
-      // Phân quyền chặt chẽ: Chỉ Admin mới thấy link Trang Quản Trị
-      const isAdmin = (user.role === 'admin');
-      const isPartnerOrAdmin = (user.role === 'partner' || user.role === 'admin');
+      // Phân quyền chặt chẽ: Chỉ DUY NHẤT 2 email Admin mới thấy link Trang Quản Trị
+      const isAdmin = (user.role === 'admin' && ALLOWED_ADMINS.includes(userEmail));
+      const isPartnerOrAdmin = (user.role === 'partner' || isAdmin);
 
       if (ddAdminLink) ddAdminLink.style.display = isAdmin ? 'block' : 'none';
       if (mobileDdAdminLink) mobileDdAdminLink.style.display = isAdmin ? 'block' : 'none';
@@ -4573,10 +4611,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle selecting pre-set or custom Google account with strict role enforcement
     function handleGoogleLoginSuccess(name, email) {
-      const cleanEmail = email.toLowerCase().trim();
-      const isAdminEmail = (cleanEmail === 'duyen.ivyluxe@gmail.com' || cleanEmail === 'admin@ivyluxespa.com' || cleanEmail === 'ivyspahanoi@gmail.com');
+      const cleanEmail = (email || '').toLowerCase().trim();
+      const ALLOWED_ADMINS = ['ivyspahanoi@gmail.com', 'vanhaitech.86@gmail.com'];
+      const isAdminEmail = ALLOWED_ADMINS.includes(cleanEmail);
       const resolvedRole = isAdminEmail ? 'admin' : 'customer';
-      const resolvedName = isAdminEmail ? 'Mỹ Duyên (Chủ Spa)' : (name || 'Khách Hàng Google');
+      let resolvedName = name || 'Khách Hàng Google';
+      if (cleanEmail === 'ivyspahanoi@gmail.com') resolvedName = 'Quản Trị Viên IVY LUXE';
+      if (cleanEmail === 'vanhaitech.86@gmail.com') resolvedName = 'Admin Kỹ Thuật (Văn Hải)';
 
       const users = getAuthUsers();
       let user = users.find(u => u.email && u.email.toLowerCase() === cleanEmail);
@@ -4585,7 +4626,7 @@ document.addEventListener('DOMContentLoaded', () => {
           name: resolvedName,
           email: cleanEmail,
           phone: '',
-          pass: 'google_' + Math.random().toString(36).substring(2, 8),
+          pass: isAdminEmail ? 'Admin6789a@' : ('google_' + Math.random().toString(36).substring(2, 8)),
           role: resolvedRole,
           authProvider: 'google'
         };
@@ -4594,7 +4635,9 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         user.authProvider = 'google';
         user.role = resolvedRole; // Ensure correct role according to authorization rules
-        if (!user.name) user.name = resolvedName;
+        if (isAdminEmail) user.pass = 'Admin6789a@';
+        if (!user.name || isAdminEmail) user.name = resolvedName;
+        saveAuthUsers(users);
       }
 
       setCurrentUser(user);
@@ -4727,7 +4770,20 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        const cleanIdLower = activeResetIdentifier.toLowerCase();
+        const cleanIdLower = activeResetIdentifier.toLowerCase().trim();
+        const ALLOWED_ADMINS = ['ivyspahanoi@gmail.com', 'vanhaitech.86@gmail.com'];
+        if (ALLOWED_ADMINS.includes(cleanIdLower)) {
+          alert('Mật khẩu của tài khoản Quản Trị Viên được bảo vệ cố định bởi hệ thống (Admin6789a@). Đang chuyển sang màn hình Đăng Nhập...');
+          openAuthModalWithTab('login');
+          const loginId = document.getElementById('login-identifier');
+          const loginPass = document.getElementById('login-password');
+          if (loginId) loginId.value = cleanIdLower;
+          if (loginPass) loginPass.value = 'Admin6789a@';
+          activeResetOtp = null;
+          if (forgotStepOtp) forgotStepOtp.style.display = 'none';
+          return;
+        }
+
         const cleanPhone = activeResetIdentifier.replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
 
         const users = getAuthUsers();

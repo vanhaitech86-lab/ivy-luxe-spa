@@ -160,19 +160,25 @@ function checkAdminAuth() {
   const app = document.getElementById('admin-app');
   const displayName = document.getElementById('admin-display-name');
 
+  // Danh sách 2 email duy nhất có quyền quản trị tối cao
+  const ALLOWED_ADMINS = ['ivyspahanoi@gmail.com', 'vanhaitech.86@gmail.com'];
+  const ADMIN_PASS = 'Admin6789a@';
+
   let currentUser = null;
   try {
     currentUser = JSON.parse(localStorage.getItem('ivy_current_user') || 'null');
   } catch (e) {}
 
   if (currentUser) {
-    if (currentUser.role === 'admin') {
+    const userEmail = (currentUser.email || '').toLowerCase().trim();
+    if (currentUser.role === 'admin' && ALLOWED_ADMINS.includes(userEmail)) {
       if (overlay) overlay.style.display = 'none';
       if (app) app.style.display = 'flex';
-      if (displayName) displayName.textContent = currentUser.name || 'Quản Trị Viên IVY LUXE';
+      if (displayName) displayName.textContent = currentUser.name || (userEmail === 'vanhaitech.86@gmail.com' ? 'Admin Kỹ Thuật (Văn Hải)' : 'Quản Trị Viên IVY LUXE');
       return;
     } else {
-      alert('Truy cập bị từ chối!\nTài khoản của bạn ("' + (currentUser.name || currentUser.email) + '") có vai trò là "' + (currentUser.role === 'partner' ? 'Đối tác Affiliate' : 'Khách Hàng') + '" nên KHÔNG CÓ QUYỀN truy cập Trang Quản Trị Admin.\n\nVui lòng đăng nhập bằng tài khoản Quản Trị Viên.');
+      alert('Truy cập bị từ chối!\nChỉ duy nhất 2 email quản trị được cấp quyền:\n1. ivyspahanoi@gmail.com\n2. vanhaitech.86@gmail.com\nmới có thể truy cập Trang Quản Trị Admin.\n\nTài khoản hiện tại ("' + (currentUser.name || currentUser.email || 'Không xác định') + '") không có quyền quản trị.');
+      localStorage.removeItem('ivy_current_user');
       window.location.href = 'index.html';
       return;
     }
@@ -187,15 +193,18 @@ function checkAdminAuth() {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const rawUser = document.getElementById('admin-input-user')?.value.trim() || '';
-      const pass = document.getElementById('admin-input-pass')?.value.trim() || '';
-      const userLower = rawUser.toLowerCase();
+      const pass = document.getElementById('admin-input-pass')?.value || '';
+      const userLower = rawUser.toLowerCase().trim();
 
-      const validAdminEmails = ['admin@ivyluxespa.com', 'ivyspahanoi@gmail.com', 'duyen.ivyluxe@gmail.com', 'admin'];
-      if (validAdminEmails.includes(userLower) && (pass === 'admin123' || pass === 'ivy2026' || pass === '123456')) {
-        const adminName = (userLower === 'duyen.ivyluxe@gmail.com') ? 'Mỹ Duyên (Chủ Spa)' : 'Quản Trị Viên IVY LUXE';
+      const adminNames = {
+        'ivyspahanoi@gmail.com': 'Quản Trị Viên IVY LUXE',
+        'vanhaitech.86@gmail.com': 'Admin Kỹ Thuật (Văn Hải)'
+      };
+
+      if (ALLOWED_ADMINS.includes(userLower) && pass === ADMIN_PASS) {
         const adminUser = {
-          email: userLower.includes('@') ? userLower : 'admin@ivyluxespa.com',
-          name: adminName,
+          email: userLower,
+          name: adminNames[userLower] || 'Quản Trị Viên IVY LUXE',
           role: 'admin'
         };
         localStorage.setItem('ivy_current_user', JSON.stringify(adminUser));
@@ -204,7 +213,7 @@ function checkAdminAuth() {
         if (displayName) displayName.textContent = adminUser.name;
         renderDashboard();
       } else {
-        alert('Tài khoản hoặc mật khẩu quản trị không chính xác! Vui lòng kiểm tra lại quyền truy cập.');
+        alert('Đăng nhập thất bại!\nTài khoản hoặc mật khẩu không chính xác.\n\nLƯU Ý QUAN TRỌNG:\nTrang quản trị chỉ chấp nhận đúng 2 email:\n1. ivyspahanoi@gmail.com\n2. vanhaitech.86@gmail.com\nvới mật khẩu bảo mật theo quy định.');
       }
     });
   }
