@@ -4147,54 +4147,62 @@ document.addEventListener('DOMContentLoaded', () => {
     const user = getCurrentUser();
     const authBtnText = document.getElementById('header-auth-text');
     const mobileAuthBtnText = document.getElementById('mobile-auth-text');
+    
+    // Desktop Dropdown
     const userDropdown = document.getElementById('header-user-dropdown');
     const ddName = document.getElementById('user-dd-name');
     const ddRole = document.getElementById('user-dd-role');
     const ddAdminLink = document.getElementById('dd-admin-link');
     const ddPartnerLink = document.getElementById('dd-partner-link');
 
-    // Mobile Auth Strip Elements (Yêu cầu 2: Hiển thị trên điện thoại)
-    const mobileGuestActions = document.getElementById('mobile-auth-guest-actions');
-    const mobileLoggedActions = document.getElementById('mobile-auth-logged-actions');
-    const mobileStripUserName = document.getElementById('mobile-strip-user-name');
-    const mobileStripManageText = document.getElementById('mobile-strip-manage-text');
+    // Mobile Dropdown (Giao diện và phân quyền đồng nhất 100% với Web)
+    const mobileDropdown = document.getElementById('mobile-user-dropdown');
+    const mobileDdName = document.getElementById('mobile-user-dd-name');
+    const mobileDdRole = document.getElementById('mobile-user-dd-role');
+    const mobileDdAdminLink = document.getElementById('mobile-dd-admin-link');
+    const mobileDdPartnerLink = document.getElementById('mobile-dd-partner-link');
 
     if (user) {
-      const shortName = user.name.split(' ').slice(-1)[0] || 'Tài Khoản';
-      if (authBtnText) authBtnText.textContent = shortName;
-      if (mobileAuthBtnText) mobileAuthBtnText.textContent = shortName;
+      const shortName = (user.name ? user.name.split(' ').slice(-1)[0] : 'Tài Khoản');
+      if (authBtnText) authBtnText.innerHTML = `${shortName} <i class="fa fa-angle-down" style="font-size:0.75rem; margin-left:3px;"></i>`;
+      if (mobileAuthBtnText) mobileAuthBtnText.innerHTML = `${shortName} <i class="fa fa-angle-down" style="font-size:0.75rem; margin-left:2px;"></i>`;
+
       if (ddName) ddName.textContent = user.name;
+      if (mobileDdName) mobileDdName.textContent = user.name;
+
+      let roleText = 'Khách Hàng VIP';
+      let roleColor = '#25D366';
+      if (user.role === 'admin') {
+        roleText = 'Quản Trị Viên';
+        roleColor = '#D4AF37';
+      } else if (user.role === 'partner') {
+        roleText = 'Đối Tác Affiliate';
+        roleColor = '#ECC876';
+      }
+
       if (ddRole) {
-        if (user.role === 'admin') {
-          ddRole.textContent = 'Quản Trị Viên';
-          ddRole.style.color = '#D4AF37';
-        } else if (user.role === 'partner') {
-          ddRole.textContent = 'Đối Tác Affiliate';
-          ddRole.style.color = '#ECC876';
-        } else {
-          ddRole.textContent = 'Khách Hàng VIP';
-          ddRole.style.color = '#25D366';
-        }
+        ddRole.textContent = roleText;
+        ddRole.style.color = roleColor;
+      }
+      if (mobileDdRole) {
+        mobileDdRole.textContent = roleText;
+        mobileDdRole.style.color = roleColor;
       }
 
-      if (ddAdminLink) ddAdminLink.style.display = (user.role === 'admin') ? 'block' : 'none';
-      if (ddPartnerLink) ddPartnerLink.style.display = (user.role === 'partner' || user.role === 'admin') ? 'block' : 'none';
+      // Phân quyền chặt chẽ: Chỉ Admin mới thấy link Trang Quản Trị
+      const isAdmin = (user.role === 'admin');
+      const isPartnerOrAdmin = (user.role === 'partner' || user.role === 'admin');
 
-      // Update Mobile Strip for Logged In User
-      if (mobileGuestActions) mobileGuestActions.style.display = 'none';
-      if (mobileLoggedActions) mobileLoggedActions.style.display = 'flex';
-      if (mobileStripUserName) mobileStripUserName.textContent = shortName;
-      if (mobileStripManageText) {
-        mobileStripManageText.textContent = (user.role === 'admin') ? 'Quản Trị' : ((user.role === 'partner') ? 'Hoa Hồng' : 'Lịch Hẹn');
-      }
+      if (ddAdminLink) ddAdminLink.style.display = isAdmin ? 'block' : 'none';
+      if (mobileDdAdminLink) mobileDdAdminLink.style.display = isAdmin ? 'block' : 'none';
+
+      if (ddPartnerLink) ddPartnerLink.style.display = isPartnerOrAdmin ? 'block' : 'none';
+      if (mobileDdPartnerLink) mobileDdPartnerLink.style.display = isPartnerOrAdmin ? 'block' : 'none';
     } else {
       if (authBtnText) authBtnText.textContent = 'Đăng Nhập';
       if (mobileAuthBtnText) mobileAuthBtnText.textContent = 'Đăng Nhập';
       if (userDropdown) userDropdown.style.display = 'none';
-
-      // Update Mobile Strip for Guest User
-      if (mobileGuestActions) mobileGuestActions.style.display = 'flex';
-      if (mobileLoggedActions) mobileLoggedActions.style.display = 'none';
+      if (mobileDropdown) mobileDropdown.style.display = 'none';
     }
   }
 
@@ -4300,42 +4308,49 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Header Auth Button Click
+    // Global Header & Mobile Auth Button Toggle
     function toggleAuthOrDropdown(e) {
       if (e && e.stopPropagation) e.stopPropagation();
       const user = getCurrentUser();
+      const uDropdown = document.getElementById('header-user-dropdown');
+      const mDropdown = document.getElementById('mobile-user-dropdown');
+
       if (user) {
-        if (userDropdown) {
-          userDropdown.style.display = (userDropdown.style.display === 'block') ? 'none' : 'block';
+        const isMobile = (window.innerWidth <= 991) || (e && e.currentTarget && (e.currentTarget.id === 'mobile-auth-btn' || e.currentTarget.closest('#mobile-auth-btn')));
+        if (isMobile && mDropdown) {
+          if (uDropdown) uDropdown.style.display = 'none';
+          mDropdown.style.display = (mDropdown.style.display === 'block') ? 'none' : 'block';
+        } else if (uDropdown) {
+          if (mDropdown) mDropdown.style.display = 'none';
+          uDropdown.style.display = (uDropdown.style.display === 'block') ? 'none' : 'block';
         }
       } else {
         openAuthModalWithTab('login');
       }
     }
+    window.toggleAuthOrDropdown = toggleAuthOrDropdown;
 
     bindFastClick(headerAuthBtn, toggleAuthOrDropdown);
     bindFastClick(mobileAuthBtn, toggleAuthOrDropdown);
 
-    // Mobile Auth Strip Buttons (Dành riêng cho màn hình điện thoại)
-    const mobileStripLoginBtn = document.getElementById('mobile-strip-login-btn');
-    const mobileStripRegBtn = document.getElementById('mobile-strip-reg-btn');
-    const mobileStripManageBtn = document.getElementById('mobile-strip-manage-btn');
-    const mobileStripLogoutBtn = document.getElementById('mobile-strip-logout-btn');
+    // Mobile Dropdown action buttons (Giao diện đồng nhất với Web)
+    const mobileDdLogoutBtn = document.getElementById('mobile-dd-logout-btn');
+    const mobileDdHistoryBtn = document.getElementById('mobile-dd-history-btn');
 
-    bindFastClick(mobileStripLoginBtn, () => openAuthModalWithTab('login'));
-    bindFastClick(mobileStripRegBtn, () => openAuthModalWithTab('register'));
+    if (mobileDdLogoutBtn) {
+      bindFastClick(mobileDdLogoutBtn, () => {
+        setCurrentUser(null);
+        updateHeaderAuthState();
+        const mDropdown = document.getElementById('mobile-user-dropdown');
+        if (mDropdown) mDropdown.style.display = 'none';
+        alert('Bạn đã đăng xuất tài khoản thành công.');
+      });
+    }
 
-    bindFastClick(mobileStripManageBtn, () => {
-      const user = getCurrentUser();
-      if (!user) {
-        openAuthModalWithTab('login');
-        return;
-      }
-      if (user.role === 'admin') {
-        window.location.href = 'admin.html';
-      } else if (user.role === 'partner') {
-        window.location.hash = '#affiliate';
-      } else {
+    if (mobileDdHistoryBtn) {
+      bindFastClick(mobileDdHistoryBtn, () => {
+        const mDropdown = document.getElementById('mobile-user-dropdown');
+        if (mDropdown) mDropdown.style.display = 'none';
         const myBookingsModal = document.getElementById('my-bookings-modal');
         const myBookingsList = document.getElementById('my-bookings-list');
         if (myBookingsModal) {
@@ -4343,19 +4358,21 @@ document.addEventListener('DOMContentLoaded', () => {
           myBookingsModal.classList.add('active');
           myBookingsModal.style.display = 'flex';
         }
-      }
-    });
+      });
+    }
 
-    bindFastClick(mobileStripLogoutBtn, () => {
-      setCurrentUser(null);
-      updateHeaderAuthState();
-      alert('Bạn đã đăng xuất tài khoản thành công.');
-    });
-
-    // Close Dropdown when clicking outside
+    // Close Dropdowns when clicking outside
     document.addEventListener('click', (e) => {
-      if (userDropdown && !userDropdown.contains(e.target) && e.target !== headerAuthBtn && e.target !== mobileAuthBtn) {
-        userDropdown.style.display = 'none';
+      const uDropdown = document.getElementById('header-user-dropdown');
+      const mDropdown = document.getElementById('mobile-user-dropdown');
+      const hAuthBtn = document.getElementById('header-auth-btn');
+      const mAuthBtn = document.getElementById('mobile-auth-btn');
+
+      if (uDropdown && !uDropdown.contains(e.target) && (!hAuthBtn || !hAuthBtn.contains(e.target))) {
+        uDropdown.style.display = 'none';
+      }
+      if (mDropdown && !mDropdown.contains(e.target) && (!mAuthBtn || !mAuthBtn.contains(e.target))) {
+        mDropdown.style.display = 'none';
       }
     });
 
@@ -4454,7 +4471,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const rawEmail = document.getElementById('reg-email')?.value.trim() || '';
         const rawPhone = document.getElementById('reg-phone')?.value.trim() || '';
         const password = document.getElementById('reg-password')?.value.trim() || '';
-        const role = document.getElementById('reg-role')?.value || 'customer';
+        const role = 'customer'; // Tài khoản đăng ký mới luôn mặc định là Khách Hàng Thành Viên
 
         if (!fullname) {
           alert('Vui lòng nhập Họ và Tên của bạn.');
@@ -4554,25 +4571,30 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Handle selecting pre-set or custom Google account
-    function handleGoogleLoginSuccess(name, email, role = 'customer') {
+    // Handle selecting pre-set or custom Google account with strict role enforcement
+    function handleGoogleLoginSuccess(name, email) {
       const cleanEmail = email.toLowerCase().trim();
+      const isAdminEmail = (cleanEmail === 'duyen.ivyluxe@gmail.com' || cleanEmail === 'admin@ivyluxespa.com' || cleanEmail === 'ivyspahanoi@gmail.com');
+      const resolvedRole = isAdminEmail ? 'admin' : 'customer';
+      const resolvedName = isAdminEmail ? 'Mỹ Duyên (Chủ Spa)' : (name || 'Khách Hàng Google');
+
       const users = getAuthUsers();
       let user = users.find(u => u.email && u.email.toLowerCase() === cleanEmail);
       if (!user) {
         user = {
-          name,
+          name: resolvedName,
           email: cleanEmail,
           phone: '',
           pass: 'google_' + Math.random().toString(36).substring(2, 8),
-          role: role || 'customer',
+          role: resolvedRole,
           authProvider: 'google'
         };
         users.push(user);
         saveAuthUsers(users);
       } else {
         user.authProvider = 'google';
-        if (!user.name) user.name = name;
+        user.role = resolvedRole; // Ensure correct role according to authorization rules
+        if (!user.name) user.name = resolvedName;
       }
 
       setCurrentUser(user);
@@ -4581,7 +4603,7 @@ document.addEventListener('DOMContentLoaded', () => {
       closeGoogleAuthModal();
       closeAuthModal();
 
-      alert(`Đăng nhập bằng Google (${cleanEmail}) thành công!\nChào mừng ${user.name} đến với IVY LUXE SPA.`);
+      alert(`Đăng nhập Google (${cleanEmail}) thành công!\nChào mừng ${user.name} đến với IVY LUXE SPA.`);
 
       if (user.role === 'admin') {
         const goToAdmin = confirm('Đăng nhập Quản Trị Viên thành công! Bạn có muốn mở Trang Quản Trị Admin ngay bây giờ?');

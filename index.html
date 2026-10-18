@@ -229,12 +229,36 @@
           </li>
         </ul>
 
-        <!-- Mobile Header Right Actions: Auth Pill & Nav Toggle -->
+        <!-- Mobile Header Right Actions: Dedicated Book Button, Auth Pill & Dropdown -->
         <div class="mobile-header-right-group">
-          <button type="button" class="mobile-header-auth-pill" id="mobile-auth-btn" title="Đăng Nhập / Đăng Ký" onclick="openAuthModalWithTab('login'); return false;">
-            <i class="fa fa-user-circle"></i> <span id="mobile-auth-text">Đăng Nhập</span>
+          <button type="button" class="mobile-header-book-btn js-open-booking" title="Đặt Lịch Trực Tuyến 48 Hà Trung">
+            <i class="fa fa-calendar-check-o"></i> <span>Đặt Lịch</span>
           </button>
-          <div class="mobile-nav-toggle js-open-booking" title="Đặt lịch hẹn">
+          
+          <div class="mobile-auth-wrap" style="position:relative;">
+            <button type="button" class="mobile-header-auth-pill" id="mobile-auth-btn" title="Tài Khoản" onclick="toggleAuthOrDropdown(event); return false;">
+              <i class="fa fa-user-circle"></i> <span id="mobile-auth-text">Đăng Nhập</span>
+            </button>
+            
+            <!-- Mobile User Dropdown (Giao diện đồng nhất 100% với phiên bản Web) -->
+            <div class="header-user-dropdown mobile-dropdown-panel" id="mobile-user-dropdown" style="display: none;">
+              <div class="user-dd-header">
+                <div class="user-dd-avatar"><i class="fa fa-user-circle"></i></div>
+                <div class="user-dd-info">
+                  <strong id="mobile-user-dd-name">Khách Hàng</strong>
+                  <span id="mobile-user-dd-role" class="user-dd-badge">Khách Hàng VIP</span>
+                </div>
+              </div>
+              <div class="user-dd-body">
+                <a href="admin.html" class="user-dd-link" id="mobile-dd-admin-link" style="display:none;"><i class="fa fa-tachometer"></i> Trang Quản Trị Admin</a>
+                <a href="#affiliate" class="user-dd-link" id="mobile-dd-partner-link" style="display:none;"><i class="fa fa-handshake-o"></i> Quản Lý Affiliate</a>
+                <button type="button" class="user-dd-link" id="mobile-dd-history-btn"><i class="fa fa-history"></i> Lịch Sử Đặt Hẹn</button>
+                <button type="button" class="user-dd-link dd-logout" id="mobile-dd-logout-btn"><i class="fa fa-sign-out"></i> Đăng Xuất</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mobile-nav-toggle js-open-booking" title="Menu Đặt Lịch">
             <i class="fa fa-bars"></i>
           </div>
         </div>
@@ -277,29 +301,24 @@
     </div>
   </div>
 
-  <!-- THANH ĐĂNG KÝ VÀ ĐĂNG NHẬP DÀNH CHO GIAO DIỆN ĐIỆN THOẠI (YÊU CẦU 2) -->
-  <div class="mobile-auth-strip" id="mobile-auth-strip">
+  <!-- MỤC ĐẶT LỊCH RIÊNG DÀNH CHO ĐIỆN THOẠI (NẰM Ở TRÊN TIÊU ĐỀ, KHÔNG CHE GIAO DIỆN) -->
+  <div class="mobile-booking-header-strip js-open-booking" id="mobile-booking-header-strip">
     <div class="container">
-      <div class="mobile-auth-strip-inner">
-        <div class="mobile-auth-strip-label">
-          <i class="fa fa-user-circle" style="color: #ECC876;"></i>
-          <span id="mobile-auth-bar-label">TÀI KHOẢN:</span>
+      <div class="mobile-booking-header-card">
+        <div class="mbh-left">
+          <div class="mbh-icon-pulse">
+            <i class="fa fa-calendar-check-o"></i>
+          </div>
+          <div class="mbh-text">
+            <div class="mbh-tag"><i class="fa fa-bolt"></i> ĐẶT LỊCH TRỰC TUYẾN • GIẢM 20%</div>
+            <strong class="mbh-title">Đặt Chỗ Nhanh Tại 48 Hà Trung</strong>
+            <span class="mbh-sub">Giữ phòng VIP • Chọn giờ & chuyên viên thư giãn</span>
+          </div>
         </div>
-        <div class="mobile-auth-strip-buttons" id="mobile-auth-guest-actions">
-          <button type="button" class="mobile-auth-bar-btn btn-login" id="mobile-strip-login-btn" onclick="openAuthModalWithTab('login'); return false;">
-            <i class="fa fa-sign-in"></i> <span>Đăng Nhập</span>
-          </button>
-          <button type="button" class="mobile-auth-bar-btn btn-register" id="mobile-strip-reg-btn" onclick="openAuthModalWithTab('register'); return false;">
-            <i class="fa fa-user-plus"></i> <span>Đăng Ký</span>
-          </button>
-        </div>
-        <div class="mobile-auth-strip-logged" id="mobile-auth-logged-actions" style="display: none;">
-          <span class="mobile-auth-user-name">Xin chào, <strong id="mobile-strip-user-name">Quý Khách</strong>!</span>
-          <button type="button" class="mobile-auth-bar-btn btn-manage" id="mobile-strip-manage-btn">
-            <i class="fa fa-th-large"></i> <span id="mobile-strip-manage-text">Tài Khoản</span>
-          </button>
-          <button type="button" class="mobile-auth-bar-btn btn-logout" id="mobile-strip-logout-btn" title="Đăng Xuất">
-            <i class="fa fa-sign-out"></i>
+        <div class="mbh-right">
+          <button type="button" class="mbh-action-btn">
+            <span>ĐẶT NGAY</span>
+            <i class="fa fa-chevron-right"></i>
           </button>
         </div>
       </div>
@@ -380,8 +399,13 @@
       <span class="hero-dot" data-slide="4" title="Ảnh 5: Gội đầu dưỡng sinh vòm nước ấm"></span>
     </div>
 
-    <!-- Welcome text -->
+    <!-- Welcome text & Mobile CTA -->
     <div class="hero-welcome-text" data-i18n="hero_welcome">CHÀO MỪNG QUÝ KHÁCH ĐẾN VỚI IVY LUXE SPA HÀ NỘI</div>
+    <div class="hero-mobile-cta-wrap">
+      <button type="button" class="hero-mobile-cta-btn js-open-booking" title="Đặt lịch hẹn trực tuyến">
+        <i class="fa fa-calendar-check-o"></i> <span>ĐẶT LỊCH TRẢI NGHIỆM (GIẢM 20%)</span>
+      </button>
+    </div>
   </section>
 
   <!-- SUB-HERO DESCRIPTION STRIP (THEO HÌNH ẢNH 1) -->
@@ -1658,23 +1682,13 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
               <a href="#" id="auth-link-to-forgot" class="auth-forgot-link">Quên mật khẩu?</a>
             </div>
 
-            <!-- Quick Demo Login Presets -->
-            <div class="auth-presets-box">
-              <div class="auth-presets-title"><i class="fa fa-key"></i> Tài khoản trải nghiệm nhanh:</div>
-              <div class="auth-presets-buttons">
-                <button type="button" class="auth-preset-btn preset-admin" data-email="admin@ivyluxespa.com" data-pass="admin123">
-                  <i class="fa fa-shield"></i> Admin Quản Trị
-                </button>
-                <button type="button" class="auth-preset-btn preset-partner" data-email="partner@hotel.com" data-pass="partner123">
-                  <i class="fa fa-handshake-o"></i> Đối Tác Affiliate
-                </button>
-                <button type="button" class="auth-preset-btn preset-guest" data-email="khach@gmail.com" data-pass="123456">
-                  <i class="fa fa-user"></i> Khách Hàng VIP
-                </button>
-              </div>
+            <!-- Role Security Badge Note -->
+            <div class="auth-security-badge-note">
+              <i class="fa fa-shield" style="color:#D4AF37;"></i>
+              <span>Hệ thống phân quyền tự động theo vai trò (Khách Hàng / Đối Tác / Quản Trị Viên).</span>
             </div>
 
-            <button type="submit" class="modal-confirm-btn" style="width:100%; margin-top:6px;">
+            <button type="submit" class="modal-confirm-btn" style="width:100%; margin-top:8px;">
               <i class="fa fa-sign-in"></i> ĐĂNG NHẬP NGAY
             </button>
           </form>
@@ -1716,12 +1730,12 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
               <label class="field-label">Mật Khẩu</label>
               <input type="password" id="reg-password" class="modal-input" placeholder="Tối thiểu 6 ký tự" minlength="6" required>
             </div>
-            <div class="modal-form-group">
-              <label class="field-label">Bạn Đăng Ký Với Vai Trò Nào?</label>
-              <select id="reg-role" class="modal-input">
-                <option value="customer" selected>Khách Hàng (Tích điểm & Ưu đãi thành viên)</option>
-                <option value="partner">Đối Tác Tiếp Thị Affiliate (Nhận hoa hồng 20%)</option>
-              </select>
+            
+            <input type="hidden" id="reg-role" value="customer">
+
+            <div class="reg-customer-benefit-pill">
+              <i class="fa fa-star" style="color:#ECC876;"></i>
+              <span>Tài khoản thành viên VIP: Tích điểm ưu đãi và quản lý lịch hẹn trực tuyến tại 48 Hà Trung.</span>
             </div>
 
             <button type="submit" class="modal-confirm-btn" style="width:100%; margin-top:8px;">

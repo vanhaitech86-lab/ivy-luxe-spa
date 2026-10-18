@@ -160,29 +160,42 @@ function checkAdminAuth() {
   const app = document.getElementById('admin-app');
   const displayName = document.getElementById('admin-display-name');
 
-  const currentUser = JSON.parse(localStorage.getItem('ivy_current_user') || 'null');
+  let currentUser = null;
+  try {
+    currentUser = JSON.parse(localStorage.getItem('ivy_current_user') || 'null');
+  } catch (e) {}
 
-  if (currentUser && currentUser.role === 'admin') {
-    if (overlay) overlay.style.display = 'none';
-    if (app) app.style.display = 'flex';
-    if (displayName) displayName.textContent = currentUser.name || 'Quản Trị Viên';
-  } else {
-    if (overlay) overlay.style.display = 'flex';
-    if (app) app.style.display = 'none';
+  if (currentUser) {
+    if (currentUser.role === 'admin') {
+      if (overlay) overlay.style.display = 'none';
+      if (app) app.style.display = 'flex';
+      if (displayName) displayName.textContent = currentUser.name || 'Quản Trị Viên IVY LUXE';
+      return;
+    } else {
+      alert('Truy cập bị từ chối!\nTài khoản của bạn ("' + (currentUser.name || currentUser.email) + '") có vai trò là "' + (currentUser.role === 'partner' ? 'Đối tác Affiliate' : 'Khách Hàng') + '" nên KHÔNG CÓ QUYỀN truy cập Trang Quản Trị Admin.\n\nVui lòng đăng nhập bằng tài khoản Quản Trị Viên.');
+      window.location.href = 'index.html';
+      return;
+    }
   }
+
+  if (overlay) overlay.style.display = 'flex';
+  if (app) app.style.display = 'none';
 
   // Handle Login Form
   const loginForm = document.getElementById('admin-login-form');
   if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const user = document.getElementById('admin-input-user')?.value.trim();
-      const pass = document.getElementById('admin-input-pass')?.value.trim();
+      const rawUser = document.getElementById('admin-input-user')?.value.trim() || '';
+      const pass = document.getElementById('admin-input-pass')?.value.trim() || '';
+      const userLower = rawUser.toLowerCase();
 
-      if ((user === 'admin@ivyluxespa.com' || user === 'ivyspahanoi@gmail.com' || user === 'admin') && pass === 'admin123') {
+      const validAdminEmails = ['admin@ivyluxespa.com', 'ivyspahanoi@gmail.com', 'duyen.ivyluxe@gmail.com', 'admin'];
+      if (validAdminEmails.includes(userLower) && (pass === 'admin123' || pass === 'ivy2026' || pass === '123456')) {
+        const adminName = (userLower === 'duyen.ivyluxe@gmail.com') ? 'Mỹ Duyên (Chủ Spa)' : 'Quản Trị Viên IVY LUXE';
         const adminUser = {
-          email: user.includes('@') ? user : 'admin@ivyluxespa.com',
-          name: 'Quản Trị Viên IVY LUXE',
+          email: userLower.includes('@') ? userLower : 'admin@ivyluxespa.com',
+          name: adminName,
           role: 'admin'
         };
         localStorage.setItem('ivy_current_user', JSON.stringify(adminUser));
@@ -191,7 +204,7 @@ function checkAdminAuth() {
         if (displayName) displayName.textContent = adminUser.name;
         renderDashboard();
       } else {
-        alert('Sai tài khoản hoặc mật khẩu quản trị! (Mặc định: admin@ivyluxespa.com / admin123)');
+        alert('Tài khoản hoặc mật khẩu quản trị không chính xác! Vui lòng kiểm tra lại quyền truy cập.');
       }
     });
   }
