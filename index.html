@@ -94,6 +94,65 @@
   <header class="main-header">
     <div class="container">
       <div class="header-inner">
+        <!-- Mobile Header Language Selector (Nút chọn ngôn ngữ to bên trái cho khách du lịch) -->
+        <div class="mobile-header-lang-wrap">
+          <button id="mobile-lang-btn" class="mobile-lang-btn" type="button" aria-label="Chọn ngôn ngữ / Select Language">
+            <span class="mobile-lang-flag" id="mobile-current-flag">🇻🇳</span>
+            <span class="mobile-lang-name" id="mobile-current-name">VI</span>
+            <i class="fa fa-angle-down"></i>
+          </button>
+          <!-- Mobile Dropdown Popover -->
+          <div class="mobile-lang-popover" id="mobile-lang-popover">
+            <div class="mobile-lang-popover-title">
+              <i class="fa fa-globe"></i> <span>Language / Ngôn ngữ</span>
+            </div>
+            <ul class="mobile-lang-list">
+              <li data-lang="vi" class="active">
+                <span class="flag-icon">🇻🇳</span>
+                <span class="lang-title">Tiếng Việt</span>
+                <span class="lang-code">(VI)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="en">
+                <span class="flag-icon">🇬🇧</span>
+                <span class="lang-title">English</span>
+                <span class="lang-code">(EN)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="zh">
+                <span class="flag-icon">🇨🇳</span>
+                <span class="lang-title">中文</span>
+                <span class="lang-code">(ZH)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="ja">
+                <span class="flag-icon">🇯🇵</span>
+                <span class="lang-title">日本語</span>
+                <span class="lang-code">(JA)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="ko">
+                <span class="flag-icon">🇰🇷</span>
+                <span class="lang-title">한국어</span>
+                <span class="lang-code">(KO)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="ru">
+                <span class="flag-icon">🇷🇺</span>
+                <span class="lang-title">Русский</span>
+                <span class="lang-code">(RU)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="fr">
+                <span class="flag-icon">🇫🇷</span>
+                <span class="lang-title">Français</span>
+                <span class="lang-code">(FR)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <!-- Left Navigation Menu -->
         <ul class="nav-menu-left">
           <li><a href="#home" class="nav-item-link active" data-i18n="nav_home">Trang Chủ</a></li>
@@ -117,13 +176,13 @@
           <li class="lang-dropdown-wrap">
             <i class="fa fa-globe"></i>
             <select id="lang-select" aria-label="Select Language">
-              <option value="vi" selected>Tiếng Việt (VI)</option>
-              <option value="en">English (EN)</option>
-              <option value="zh">中文 (ZH)</option>
-              <option value="ja">日本語 (JA)</option>
-              <option value="ko">한국어 (KO)</option>
-              <option value="ru">Русский (RU)</option>
-              <option value="fr">Français (FR)</option>
+              <option value="vi" selected>🇻🇳 Tiếng Việt (VI)</option>
+              <option value="en">🇬🇧 English (EN)</option>
+              <option value="zh">🇨🇳 中文 (ZH)</option>
+              <option value="ja">🇯🇵 日本語 (JA)</option>
+              <option value="ko">🇰🇷 한국어 (KO)</option>
+              <option value="ru">🇷🇺 Русский (RU)</option>
+              <option value="fr">🇫🇷 Français (FR)</option>
             </select>
           </li>
         </ul>
@@ -135,6 +194,41 @@
       </div>
     </div>
   </header>
+
+  <!-- DÒNG NGÔN NGỮ NỔI BẬT TRÊN ĐIỆN THOẠI (TO BÊN TRÁI KÈM CỜ CÁC NƯỚC CHO KHÁCH DU LỊCH) -->
+  <div class="mobile-lang-strip" id="mobile-lang-strip">
+    <div class="container">
+      <div class="mobile-lang-strip-inner">
+        <div class="mobile-lang-strip-label">
+          <i class="fa fa-globe"></i>
+          <span>LANGUAGE:</span>
+        </div>
+        <div class="mobile-flags-track" id="mobile-flags-track">
+          <button type="button" class="mobile-flag-pill active" data-lang="vi" title="Tiếng Việt">
+            <span class="flag-symbol">🇻🇳</span> <span class="flag-text">Tiếng Việt</span>
+          </button>
+          <button type="button" class="mobile-flag-pill" data-lang="en" title="English">
+            <span class="flag-symbol">🇬🇧</span> <span class="flag-text">English</span>
+          </button>
+          <button type="button" class="mobile-flag-pill" data-lang="zh" title="中文">
+            <span class="flag-symbol">🇨🇳</span> <span class="flag-text">中文</span>
+          </button>
+          <button type="button" class="mobile-flag-pill" data-lang="ja" title="日本語">
+            <span class="flag-symbol">🇯🇵</span> <span class="flag-text">日本語</span>
+          </button>
+          <button type="button" class="mobile-flag-pill" data-lang="ko" title="한국어">
+            <span class="flag-symbol">🇰🇷</span> <span class="flag-text">한국어</span>
+          </button>
+          <button type="button" class="mobile-flag-pill" data-lang="ru" title="Русский">
+            <span class="flag-symbol">🇷🇺</span> <span class="flag-text">Русский</span>
+          </button>
+          <button type="button" class="mobile-flag-pill" data-lang="fr" title="Français">
+            <span class="flag-symbol">🇫🇷</span> <span class="flag-text">Français</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- HERO SECTION WITH INSTANT BOOKING BAR (THEO HÌNH ẢNH 1) -->
   <section id="home" class="hero-orient-style">
@@ -151,7 +245,7 @@
     <div id="booking-form-box" class="hero-booking-box">
       <!-- Field 1: Location -->
       <div class="hero-booking-field">
-        <span class="booking-field-caption" data-i18n="hero_field_location">Chi Nhánh</span>
+        <span class="booking-field-caption" data-i18n="hero_field_location">Cơ Sở Spa</span>
         <select id="hero-select-location" required>
           <option value="48 Hà Trung, Hoàn Kiếm, Hà Nội" selected>48 Hà Trung, Hoàn Kiếm, Hà Nội</option>
         </select>
@@ -168,7 +262,7 @@
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="booking-field-caption" data-i18n="hero_field_time">Giờ Hẹn</span>
           <button type="button" id="hero-time-mode-btn" class="time-mode-btn" title="Chuyển chế độ: Danh sách khung giờ hoặc Nhập giờ tùy ý">
-            <i class="fa fa-clock-o"></i> <span id="hero-time-mode-text">Tùy chọn</span>
+            <i class="fa fa-clock-o"></i> <span id="hero-time-mode-text">Nhập giờ</span>
           </button>
         </div>
         <div class="hero-time-input-wrap">
@@ -182,9 +276,9 @@
       <!-- Field 4: Guest -->
       <div class="hero-booking-field">
         <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span class="booking-field-caption" data-i18n="hero_field_guest">Số Khách</span>
+          <span class="booking-field-caption" data-i18n="hero_field_guest">Số Lượng Khách</span>
           <button type="button" id="hero-guest-mode-btn" class="time-mode-btn" title="Chuyển chế độ số khách">
-            <i class="fa fa-users"></i> <span id="hero-guest-mode-text">Tùy chọn</span>
+            <i class="fa fa-users"></i> <span id="hero-guest-mode-text">Tự nhập</span>
           </button>
         </div>
         <div class="hero-guest-input-wrap">
@@ -458,7 +552,7 @@
         <div class="menu-board-banner-info">
           <i class="fa fa-certificate" style="color:#D4AF37; font-size:1.6rem;"></i>
           <div>
-            <div style="font-weight:700; color:#12291E; font-size:1rem;" data-i18n="menu_banner_title">BẢNG GIÁ NIÊM YẾT MINH BẠCH - BẢO HÀNH 7 NGÀY MIỄN PHÍ DỊCH VỤ NAIL</div>
+            <div style="font-weight:700; color:#12291E; font-size:1rem;" data-i18n="menu_banner_title">BẢNG GIÁ NIÊM YẾT MINH BẠCH - BẢO HÀNH 7 NGÀY MIỄN PHÍ DỊCH VỤ NAILS</div>
             <div style="font-size:0.86rem; color:#666; margin-top:3px;" data-i18n="menu_banner_desc">
               Quý khách có thể xem menu trực tuyến theo từng phân mục dưới đây hoặc mở xem ảnh chụp bảng giá gốc tại spa.
             </div>
@@ -479,11 +573,11 @@
       <!-- Menu Tabs Matching spaMenuData categories -->
       <div class="menu-tabs-wrapper">
         <button class="menu-tab-btn active" data-tab="combos" data-i18n-html="tab_combos"><i class="fa fa-fire"></i> IVY Special Combos</button>
-        <button class="menu-tab-btn" data-tab="packages" data-i18n-html="tab_packages"><i class="fa fa-diamond"></i> Packages Hoàng Gia (2h - 4h)</button>
-        <button class="menu-tab-btn" data-tab="massage" data-i18n-html="tab_massage"><i class="fa fa-heart"></i> Body Massage</button>
-        <button class="menu-tab-btn" data-tab="nails" data-i18n-html="tab_nails"><i class="fa fa-star"></i> Dịch Vụ Móng (Nail)</button>
-        <button class="menu-tab-btn" data-tab="waxing" data-i18n-html="tab_waxing"><i class="fa fa-leaf"></i> Waxing Triệt Lông</button>
-        <button class="menu-tab-btn" data-tab="eyelash" data-i18n-html="tab_eyelash"><i class="fa fa-eye"></i> Nối Mi & Chăm Sóc Mày</button>
+        <button class="menu-tab-btn" data-tab="packages" data-i18n-html="tab_packages"><i class="fa fa-diamond"></i> Gói Trị Liệu Hoàng Gia (2h - 4h)</button>
+        <button class="menu-tab-btn" data-tab="massage" data-i18n-html="tab_massage"><i class="fa fa-heart"></i> Massage Body Toàn Thân</button>
+        <button class="menu-tab-btn" data-tab="nails" data-i18n-html="tab_nails"><i class="fa fa-star"></i> Chăm Sóc & Làm Đẹp Móng (Nails)</button>
+        <button class="menu-tab-btn" data-tab="waxing" data-i18n-html="tab_waxing"><i class="fa fa-leaf"></i> Dịch Vụ Waxing (Triệt Lông)</button>
+        <button class="menu-tab-btn" data-tab="eyelash" data-i18n-html="tab_eyelash"><i class="fa fa-eye"></i> Nối Mi & Tạo Hình Chân Mày</button>
       </div>
 
       <!-- Dynamic Grid for Menu items -->
@@ -495,10 +589,10 @@
   <section id="healing-music" class="section-orient-music">
     <div class="container">
       <div class="orient-section-header">
-        <span class="music-section-badge" data-i18n="zen_section_tag">ÂM THANH TRỊ LIỆU TỰ NHIÊN</span>
+        <span class="music-section-badge" data-i18n="zen_section_tag">ÂM THANH TRỊ LIỆU THIÊN NHIÊN</span>
         <h2 class="orient-section-title" data-i18n="zen_section_title">KHÔNG GIAN ÂM NHẠC TRỊ LIỆU & THIỀN ĐỊNH</h2>
         <p class="orient-section-subtitle" data-i18n="zen_section_desc">
-          Đắm mình trong những giai điệu tần số chữa lành 432Hz độc quyền từ kênh Deep Healing Vibes, giúp xoa dịu hệ thần kinh, tái tạo năng lượng và mang lại sự an yên sâu thẳm trong từng phút giây tại Ivy Luxe Spa.
+          Đắm mình trong những giai điệu tần số chữa lành 432Hz độc quyền từ kênh Deep Healing Vibes, giúp xoa dịu hệ thần kinh, tái tạo năng lượng và mang lại sự an yên sâu lắng trong từng phút giây tại Ivy Luxe Spa.
         </p>
       </div>
 
@@ -766,7 +860,7 @@
               </select>
             </div>
             <div>
-              <label class="field-label" data-i18n="modal_service_label">Dịch Vụ Chọn</label>
+              <label class="field-label" data-i18n="modal_service_label">Chọn Dịch Vụ</label>
               <select id="modal-service-select" class="modal-input" required>
                 <!-- Dynamically populated per active language in updatePageLanguage() -->
               </select>
@@ -782,7 +876,7 @@
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
                 <label class="field-label" style="margin-bottom:0;" data-i18n="modal_time_label">Giờ Hẹn</label>
                 <button type="button" id="modal-time-mode-btn" class="time-mode-btn" style="color:#2A5A44;" title="Chuyển chế độ giờ">
-                  <i class="fa fa-clock-o"></i> <span id="modal-time-mode-text">Tùy chọn</span>
+                  <i class="fa fa-clock-o"></i> <span id="modal-time-mode-text">Nhập giờ</span>
                 </button>
               </div>
               <select id="modal-book-time" class="modal-input" required>
@@ -794,9 +888,9 @@
 
           <div class="modal-form-group">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-              <label class="field-label" style="margin-bottom:0;" data-i18n="modal_guests_label">Số Khách</label>
+              <label class="field-label" style="margin-bottom:0;" data-i18n="modal_guests_label">Số Lượng Khách</label>
               <button type="button" id="modal-guest-mode-btn" class="time-mode-btn" style="color:#2A5A44;" title="Chuyển chế độ số khách">
-                <i class="fa fa-users"></i> <span id="modal-guest-mode-text">Tùy chọn</span>
+                <i class="fa fa-users"></i> <span id="modal-guest-mode-text">Tự nhập</span>
               </button>
             </div>
             <select id="modal-guest-count" class="modal-input">
@@ -806,7 +900,7 @@
           </div>
 
           <div class="modal-form-group">
-            <label class="field-label" data-i18n="modal_notes_label">Ghi Chú Thêm</label>
+            <label class="field-label" data-i18n="modal_notes_label">Ghi Chú Thêm (Nếu có)</label>
             <textarea id="modal-notes" class="modal-input" rows="2" placeholder="Yêu cầu lực massage, phòng riêng, kỹ thuật viên..." data-i18n-placeholder="modal_notes_ph"></textarea>
           </div>
 

@@ -374,6 +374,258 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
+   MOBILE PROMINENT LANGUAGE SELECTOR & QUICK FLAG STRIP
+   Designed for foreign travelers & international guests
+   ========================================================================== */
+.mobile-header-lang-wrap {
+  display: none;
+  position: relative;
+}
+
+.mobile-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--color-gold);
+  border-radius: 22px;
+  padding: 6px 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+  color: #123023;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-lang-btn:active, .mobile-lang-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: #B38E22;
+  transform: translateY(-1px);
+}
+
+.mobile-lang-btn .mobile-lang-flag {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mobile-lang-btn .mobile-lang-name {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #123023;
+}
+
+.mobile-lang-btn .fa-angle-down {
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  transition: transform 0.2s ease;
+}
+
+.mobile-header-lang-wrap.open .mobile-lang-btn .fa-angle-down {
+  transform: rotate(180deg);
+}
+
+/* Mobile Popover Menu */
+.mobile-lang-popover {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 230px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--color-gold);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  overflow: hidden;
+  animation: mobileLangPopFade 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-header-lang-wrap.open .mobile-lang-popover {
+  display: block;
+}
+
+@keyframes mobileLangPopFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.mobile-lang-popover-title {
+  padding: 9px 14px 7px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #8C7B5D;
+  background: #FDFBF7;
+  border-bottom: 1px solid #EFE8DC;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mobile-lang-list {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.mobile-lang-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  color: #2D3732;
+  transition: background 0.15s ease, color 0.15s ease;
+  border-bottom: 1px solid #F8F8F8;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-lang-list li:last-child {
+  border-bottom: none;
+}
+
+.mobile-lang-list li:active, .mobile-lang-list li:hover {
+  background: rgba(212, 175, 55, 0.12);
+  color: #123023;
+}
+
+.mobile-lang-list li.active {
+  background: rgba(212, 175, 55, 0.18);
+  color: #123023;
+  font-weight: 700;
+}
+
+.mobile-lang-list li .flag-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.mobile-lang-list li .lang-title {
+  flex: 1;
+}
+
+.mobile-lang-list li .lang-code {
+  font-size: 0.76rem;
+  color: #888;
+  font-weight: 600;
+}
+
+.mobile-lang-list li .lang-check {
+  color: #B38E22;
+  font-size: 0.85rem;
+  display: none;
+}
+
+.mobile-lang-list li.active .lang-check {
+  display: inline-block;
+}
+
+/* DÒNG NGÔN NGỮ NỔI BẬT TRÊN MOBILE (TO BÊN TRÁI KÈM CỜ CÁC NƯỚC) */
+.mobile-lang-strip {
+  display: none;
+  background: linear-gradient(90deg, #0A1C14 0%, #123023 55%, #163829 100%);
+  border-bottom: 2px solid var(--color-gold);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  padding: 7px 0;
+  position: relative;
+  z-index: 95;
+}
+
+.mobile-lang-strip-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-lang-strip-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--color-gold);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-left: 2px;
+}
+
+.mobile-flags-track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 3px 6px 3px 0;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-flags-track::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-flag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.38);
+  border-radius: 18px;
+  padding: 6px 12px;
+  color: #F0F4F2;
+  font-size: 0.86rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.22s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-flag-pill .flag-symbol {
+  font-size: 1.18rem;
+  line-height: 1;
+}
+
+.mobile-flag-pill .flag-text {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.mobile-flag-pill:hover, .mobile-flag-pill:active {
+  background: rgba(212, 175, 55, 0.22);
+  border-color: var(--color-gold);
+  color: #FFFFFF;
+}
+
+.mobile-flag-pill.active {
+  background: var(--color-gold);
+  border-color: #FFFFFF;
+  color: #0F241A;
+  font-weight: 800;
+  box-shadow: 0 3px 10px rgba(212, 175, 55, 0.45);
+  transform: translateY(-1px);
+}
+
+.mobile-flag-pill.active .flag-text {
+  font-weight: 800;
+}
+
+/* ==========================================================================
    HERO SECTION (THEO HÌNH ẢNH 1 - CHẬU NƯỚC HOA & THANH BOOKING NẰM NGAY GIỮA)
    ========================================================================== */
 .hero-orient-style {
@@ -1865,13 +2117,41 @@ button, input, select, textarea {
   .nav-menu-left, .nav-menu-right {
     display: none;
   }
+  .mobile-header-lang-wrap {
+    display: flex !important;
+    align-items: center;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 60;
+  }
+  .mobile-lang-strip {
+    display: block !important;
+  }
   .mobile-nav-toggle {
     display: block;
     position: absolute;
-    right: 15px;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
   }
   .header-inner {
     justify-content: center;
+    padding: 8px 0;
+    min-height: 56px;
+  }
+  .header-logo-img {
+    width: 48px;
+    height: 48px;
+  }
+  .header-logo-text {
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+  }
+  .header-logo-sub {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
   }
   .hero-booking-box {
     flex-direction: column;

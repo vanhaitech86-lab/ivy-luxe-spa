@@ -6,6 +6,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
+  // Supported Languages Configuration with National Flags
+  const languageConfig = {
+    vi: { code: 'VI', name: 'Tiếng Việt', flag: '🇻🇳', label: '🇻🇳 Tiếng Việt (VI)' },
+    en: { code: 'EN', name: 'English', flag: '🇬🇧', label: '🇬🇧 English (EN)' },
+    zh: { code: 'ZH', name: '中文', flag: '🇨🇳', label: '🇨🇳 中文 (ZH)' },
+    ja: { code: 'JA', name: '日本語', flag: '🇯🇵', label: '🇯🇵 日本語 (JA)' },
+    ko: { code: 'KO', name: '한국어', flag: '🇰🇷', label: '🇰🇷 한국어 (KO)' },
+    ru: { code: 'RU', name: 'Русский', flag: '🇷🇺', label: '🇷🇺 Русский (RU)' },
+    fr: { code: 'FR', name: 'Français', flag: '🇫🇷', label: '🇫🇷 Français (FR)' }
+  };
+
   // State Management
   const state = {
     language: localStorage.getItem('ivy_lang') || 'vi', // Default VI, supports vi, en, zh, ja, ko
@@ -25,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "doc_title": "IVY LUXE SPA - Massage Body & Wellness | 48 Hà Trung, Hoàn Kiếm, Hà Nội",
     "top_address": "<i class=\"fa fa-map-marker\"></i> <strong>48 Hà Trung, P. Hàng Bông, Q. Hoàn Kiếm, Hà Nội</strong>",
     "top_hours": "<i class=\"fa fa-clock-o\"></i> Mở cửa hàng ngày: 10:00 Sáng - 10:00 Tối",
-    "top_promo_ticker": "<i class=\"fa fa-tag\"></i> <strong>Ưu đãi đặt trước: Giảm 20% các gói Spa & Massage Body</strong>",
+    "top_promo_ticker": "<i class=\"fa fa-tag\"></i> <strong>Ưu đãi đặt trước: Giảm 20% các gói Spa & Massage Body cao cấp</strong>",
     "top_welcome_ticker": "<i class=\"fa fa-leaf\"></i> <strong>Ivy Luxe Spa - Trải Nghiệm Thư Giãn Chuẩn 5 Sao</strong>",
     "top_hotline": "<i class=\"fa fa-phone\"></i> Hotline: 098 9713660",
     "top_zen_music": "Nhạc Thiền",
@@ -35,10 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     "nav_about": "Về Chúng Tôi <i class=\"fa fa-angle-down\"></i>",
     "nav_contact": "Liên Hệ",
     "nav_book": "Đặt Lịch Trực Tuyến",
-    "hero_field_location": "Chi Nhánh",
+    "hero_field_location": "Cơ Sở Spa",
     "hero_field_date": "Ngày Đến",
     "hero_field_time": "Giờ Hẹn",
-    "hero_field_guest": "Số Khách",
+    "hero_field_guest": "Số Lượng Khách",
     "hero_btn_book": "ĐẶT LỊCH NGAY!",
     "hero_welcome": "CHÀO MỪNG QUÝ KHÁCH ĐẾN VỚI IVY LUXE SPA HÀ NỘI",
     "subhero_title": "MASSAGE & TRỊ LIỆU THÂN TÂM PHỐ CỔ HÀ NỘI",
@@ -74,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "c1_badge_html": "<i class=\"fa fa-fire\"></i> GÓI HOT NHẤT",
     "c1_time_html": "<i class=\"fa fa-clock-o\"></i> 90 phút",
     "c1_title": "IVY SPECIAL - COMBO 1 (HOT)",
-    "c1_s1": "<i class=\"fa fa-gift\" style=\"color:#D4AF37;\"></i> <strong>Ngâm chân thảo dược miễn phí</strong>",
+    "c1_s1": "<i class=\"fa fa-gift\" style=\"color:#D4AF37;\"></i> <strong>Tặng kèm ngâm chân thảo dược miễn phí</strong>",
     "c1_s2": "Massage toàn thân: <strong>30 phút</strong>",
     "c1_s3": "Gội đầu dưỡng sinh: <strong>30 phút</strong>",
     "c1_s4": "Chăm sóc da mặt & Vệ sinh tai: <strong>30 phút</strong>",
@@ -82,24 +93,24 @@ document.addEventListener('DOMContentLoaded', () => {
     "c2_badge_html": "<i class=\"fa fa-leaf\"></i> FOOT CARE",
     "c2_time_html": "<i class=\"fa fa-clock-o\"></i> 70 - 75 phút",
     "c2_title": "IVY SPECIAL - COMBO 2",
-    "c2_s1": "<i class=\"fa fa-gift\" style=\"color:#D4AF37;\"></i> <strong>Ngâm chân thảo dược miễn phí</strong>",
-    "c2_s2": "Foot massage bấm huyệt: <strong>30 phút</strong>",
-    "c2_s3": "Foot scrub tẩy da chết chân: <strong>30 phút</strong>",
-    "c2_s4": "Foot mask đắp ủ mặt nạ: <strong>10 phút</strong>",
+    "c2_s1": "<i class=\"fa fa-gift\" style=\"color:#D4AF37;\"></i> <strong>Tặng kèm ngâm chân thảo dược miễn phí</strong>",
+    "c2_s2": "Massage chân bấm huyệt: <strong>30 phút</strong>",
+    "c2_s3": "Tẩy tế bào chết chân (Scrub): <strong>30 phút</strong>",
+    "c2_s4": "Ủ mặt nạ dưỡng ẩm chân: <strong>10 phút</strong>",
     "c2_btn": "ĐẶT LỊCH COMBO 2",
     "c3_badge_html": "<i class=\"fa fa-heart\"></i> THƯ GIÃN TOÀN DIỆN",
     "c3_time_html": "<i class=\"fa fa-clock-o\"></i> 120 phút",
     "c3_title": "IVY SPECIAL - COMBO 3",
-    "c3_s1": "<i class=\"fa fa-gift\" style=\"color:#D4AF37;\"></i> <strong>Ngâm chân thảo dược miễn phí</strong>",
+    "c3_s1": "<i class=\"fa fa-gift\" style=\"color:#D4AF37;\"></i> <strong>Tặng kèm ngâm chân thảo dược miễn phí</strong>",
     "c3_s2": "Massage body toàn thân: <strong>45 phút</strong>",
-    "c3_s3": "Body Scrub tẩy tế bào chết: <strong>30 phút</strong>",
+    "c3_s3": "Tẩy tế bào chết toàn thân: <strong>30 phút</strong>",
     "c3_s4": "Chăm sóc da mặt & Vệ sinh tai: <strong>45 phút</strong>",
     "c3_btn": "ĐẶT LỊCH COMBO 3",
     "c4_badge_html": "<i class=\"fa fa-diamond\"></i> HOÀNG GIA ĐẾ VƯƠNG",
     "c4_time_html": "<i class=\"fa fa-clock-o\"></i> 150 phút",
     "c4_title": "IVY SPECIAL - COMBO 4",
-    "c4_s1": "<i class=\"fa fa-gift\" style=\"color:#D4AF37;\"></i> <strong>Ngâm chân thảo dược miễn phí</strong>",
-    "c4_s2": "Massage body (30') & Tẩy da chết (30')",
+    "c4_s1": "<i class=\"fa fa-gift\" style=\"color:#D4AF37;\"></i> <strong>Tặng kèm ngâm chân thảo dược miễn phí</strong>",
+    "c4_s2": "Massage body (30 phút) & Tẩy da chết (30 phút)",
     "c4_s3": "Gội đầu dưỡng sinh & Vệ sinh tai: <strong>45 phút</strong>",
     "c4_s4": "Chăm sóc da mặt chuyên sâu: <strong>45 phút</strong>",
     "c4_btn": "ĐẶT LỊCH COMBO 4",
@@ -107,28 +118,28 @@ document.addEventListener('DOMContentLoaded', () => {
     "promo_btn_board": "<i class=\"fa fa-picture-o\"></i> XEM ẢNH BẢNG GIÁ MENU BOARD GỐC",
     "menu_title": "IVY LUXE SPA - BẢNG GIÁ NIÊM YẾT CHÍNH THỨC",
     "menu_subtitle": "Bảng Giá Đầy Đủ Tất Cả Dịch Vụ Tại 48 Hà Trung, Hoàn Kiếm, Hà Nội (VNĐ & USD)",
-    "menu_banner_title": "BẢNG GIÁ NIÊM YẾT MINH BẠCH - BẢO HÀNH 7 NGÀY MIỄN PHÍ DỊCH VỤ NAIL",
+    "menu_banner_title": "BẢNG GIÁ NIÊM YẾT MINH BẠCH - BẢO HÀNH 7 NGÀY MIỄN PHÍ DỊCH VỤ NAILS",
     "menu_banner_desc": "Quý khách có thể xem menu trực tuyến theo từng phân mục dưới đây hoặc mở xem ảnh chụp bảng giá gốc tại spa.",
     "menu_btn_open_board": "<i class=\"fa fa-file-image-o\"></i> Mở Bảng Giá Menu Gốc",
     "menu_currency_label": "Đơn vị tiền tệ:",
     "tab_combos": "<i class=\"fa fa-fire\"></i> IVY Special Combos",
-    "tab_packages": "<i class=\"fa fa-diamond\"></i> Packages Hoàng Gia (2h - 4h)",
-    "tab_massage": "<i class=\"fa fa-heart\"></i> Body Massage",
-    "tab_nails": "<i class=\"fa fa-star\"></i> Dịch Vụ Móng (Nail)",
-    "tab_waxing": "<i class=\"fa fa-leaf\"></i> Waxing Triệt Lông",
-    "tab_eyelash": "<i class=\"fa fa-eye\"></i> Nối Mi & Chăm Sóc Mày",
+    "tab_packages": "<i class=\"fa fa-diamond\"></i> Gói Trị Liệu Hoàng Gia (2h - 4h)",
+    "tab_massage": "<i class=\"fa fa-heart\"></i> Massage Body Toàn Thân",
+    "tab_nails": "<i class=\"fa fa-star\"></i> Chăm Sóc & Làm Đẹp Móng (Nails)",
+    "tab_waxing": "<i class=\"fa fa-leaf\"></i> Dịch Vụ Waxing (Triệt Lông)",
+    "tab_eyelash": "<i class=\"fa fa-eye\"></i> Nối Mi & Tạo Hình Chân Mày",
     "book_now_caps": "ĐẶT LỊCH NGAY",
     "btn_ritual_details": "Chi tiết liệu trình",
     "vip_choice": "Lựa chọn VIP",
     "reviews_title": "CẢM NHẬN TỪ KHÁCH HÀNG",
-    "reviews_sub": "Hơn 15,000+ du khách trong nước và quốc tế đã thư giãn và hài lòng tuyệt đối tại Ivy Luxe Spa 48 Hà Trung.",
-    "rev1_quote": "“Trước khi ra sân bay, chúng tôi ghé 48 Hà Trung để massage. Nhân viên chu đáo, tay nghề rất đỉnh! Chúng tôi làm gói massage tinh dầu 60' và gội đầu dưỡng sinh 60' cực kỳ sảng khoái. Chắc chắn sẽ quay lại mỗi khi tới Hà Nội!”",
+    "reviews_sub": "Hơn 15,000+ du khách trong nước và quốc tế đã thư giãn và hài lòng trọn vẹn tại Ivy Luxe Spa 48 Hà Trung.",
+    "rev1_quote": "“Trước khi ra sân bay, chúng tôi ghé 48 Hà Trung để massage. Nhân viên chu đáo, tay nghề kỹ thuật viên rất đỉnh cao, chuyên nghiệp! Chúng tôi làm gói massage tinh dầu 60 phút và gội đầu dưỡng sinh 60 phút cực kỳ sảng khoái. Chắc chắn sẽ quay lại mỗi khi tới Hà Nội!”",
     "rev1_name": "Yujin Kim",
     "rev1_meta": "Hàn Quốc ● Cặp đôi",
-    "rev2_quote": "“Sau 3 tuần công tác, Việt Nam là điểm dừng chân cuối cùng! Tôi đặt ngay buổi massage đá nóng tại 48 Hà Trung. Xác nhận lịch nhanh chóng, không gian ấm cúng và kỹ thuật viên rất điêu luyện. Rất đáng trải nghiệm!”",
+    "rev2_quote": "“Sau 3 tuần công tác, Việt Nam là điểm dừng chân cuối cùng! Tôi đặt ngay buổi massage đá nóng tại 48 Hà Trung. Xác nhận lịch nhanh chóng, không gian ấm cúng và kỹ thuật viên rất điêu luyện. Rất đáng để trải nghiệm!”",
     "rev2_name": "Fenny Angela",
     "rev2_meta": "Indonesia / Hoa Kỳ ● Du khách một mình",
-    "rev3_quote": "“Địa chỉ 48 Hà Trung rất dễ tìm, không gian yên tĩnh và sang trọng chuẩn phong cách phố cổ. Liệu trình gội đầu dưỡng sinh vòm nước và massage đá nóng cực kỳ thư giãn, nhân viên lịch sự, chu đáo!”",
+    "rev3_quote": "“Địa chỉ 48 Hà Trung rất dễ tìm, không gian yên tĩnh và sang trọng chuẩn phong cách phố cổ Hà Nội. Liệu trình gội đầu dưỡng sinh vòm nước và massage đá nóng cực kỳ thư giãn, nhân viên lịch sự, chu đáo!”",
     "rev3_name": "Nguyễn Minh Châu",
     "rev3_meta": "Hà Nội ● Đi cùng gia đình",
     "guests_title": "HÌNH ẢNH KHÁCH HÀNG TRẢI NGHIỆM",
@@ -159,30 +170,30 @@ document.addEventListener('DOMContentLoaded', () => {
     "modal_phone_label": "Số Điện Thoại / Zalo",
     "modal_phone_ph": "098 9713660",
     "modal_branch_label": "Địa Điểm",
-    "modal_service_label": "Dịch Vụ Chọn",
+    "modal_service_label": "Chọn Dịch Vụ",
     "modal_date_label": "Ngày Đến",
     "modal_time_label": "Giờ Hẹn",
-    "modal_guests_label": "Số Khách",
-    "modal_notes_label": "Ghi Chú Thêm",
+    "modal_guests_label": "Số Lượng Khách",
+    "modal_notes_label": "Ghi Chú Thêm (Nếu có)",
     "modal_notes_ph": "Yêu cầu lực massage, phòng riêng, kỹ thuật viên...",
     "modal_notice": "<i class=\"fa fa-info-circle\" style=\"color:#D4AF37;\"></i> Địa chỉ phục vụ: <strong>48 Hà Trung, Hoàn Kiếm, Hà Nội</strong>. Hotline hỗ trợ 24/7: <strong>098 9713660</strong>.",
     "modal_btn_submit": "XÁC NHẬN ĐẶT LỊCH NGAY",
     "board_modal_title": "BẢNG GIÁ DỊCH VỤ NIÊM YẾT CHÍNH THỨC - IVY LUXE SPA",
-    "booking_success": "ĐẶT HẸN THÀNH CÔNG!",
+    "booking_success": "ĐẶT LỊCH THÀNH CÔNG!",
     "booking_success_desc": "IVY LUXE SPA đã ghi nhận lịch hẹn của Quý khách. Đội ngũ chuyên viên sẽ liên hệ hotline xác nhận trong vòng 5 phút.",
     "nav_healing_music": "Âm Nhạc Trị Liệu",
-    "zen_section_tag": "ÂM THANH TRỊ LIỆU TỰ NHIÊN",
+    "zen_section_tag": "ÂM THANH TRỊ LIỆU THIÊN NHIÊN",
     "zen_section_title": "KHÔNG GIAN ÂM NHẠC TRỊ LIỆU & THIỀN ĐỊNH",
-    "zen_section_desc": "Đắm mình trong những giai điệu tần số chữa lành 432Hz độc quyền từ kênh Deep Healing Vibes, giúp xoa dịu hệ thần kinh, tái tạo năng lượng và mang lại sự an yên sâu thẳm trong từng phút giây tại Ivy Luxe Spa.",
+    "zen_section_desc": "Đắm mình trong những giai điệu tần số chữa lành 432Hz độc quyền từ kênh Deep Healing Vibes, giúp xoa dịu hệ thần kinh, tái tạo năng lượng và mang lại sự an yên sâu lắng trong từng phút giây tại Ivy Luxe Spa.",
     "zen_channel_sub": "Kênh Âm Nhạc Trị Liệu & Tần Số Chữa Lành",
     "zen_visit_channel": "Ghé Thăm Kênh Deep Healing Vibes",
-    "zen_tracklist_title": "Danh Sách Nhạc Trị Liệu (432Hz)",
+    "zen_tracklist_title": "Danh Sách Bản Nhạc Trị Liệu (432Hz)",
     "zen_track_count": "4 Tuyệt Tác Âm Thanh",
     "zen_btn_play_now": "Lắng Nghe",
     "zen_btn_playing": "Đang Phát...",
     "zen_player_min_hint": "Nhạc Trị Liệu",
-    "zen_toast_playing": "Đang phát nhạc trị liệu",
-    "zen_toast_paused": "Đã tạm dừng nhạc thiền"
+    "zen_toast_playing": "Đang phát nhạc trị liệu thư giãn",
+    "zen_toast_paused": "Đã tạm dừng nhạc trị liệu"
   },
   "en": {
     "doc_title": "IVY LUXE SPA - Body Massage & Wellness | 48 Ha Trung, Hoan Kiem, Hanoi",
@@ -1182,7 +1193,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "duration_ja": "90分",
       "duration_ko": "90분",
       "price_vnd": 800000,
-      "desc_vi": "Ngâm chân thảo dược miễn phí + Massage Body (30') + Gội đầu dưỡng sinh (30') + Chăm sóc da mặt & Vệ sinh tai (30').",
+      "desc_vi": "Tặng kèm ngâm chân thảo dược miễn phí + Massage body (30') + Gội đầu dưỡng sinh (30') + Chăm sóc da mặt & Vệ sinh tai (30').",
       "desc_en": "Herbal foot soak free + Full body massage (30') + Nourishing shampoo (30') + Facial care and Clean Ear (30').",
       "desc_zh": "免费赠送中草药足浴 + 全身精油舒缓按摩 (30分钟) + 养生滋养洗头 (30分钟) + 面部护理与采耳 (30分钟)。",
       "desc_ja": "無料天然ハーブ足湯 ＋ 全身アロママッサージ (30分) ＋ 極上ヘッドスパ (30分) ＋ フェイシャル＆耳そうじ (30分)。",
@@ -1203,7 +1214,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "duration_ja": "70〜75分",
       "duration_ko": "70 - 75분",
       "price_vnd": 450000,
-      "desc_vi": "Ngâm chân thảo dược miễn phí + Massage chân bấm huyệt (30') + Tẩy da chết chân (30') + Đắp mặt nạ ủ chân (10').",
+      "desc_vi": "Tặng kèm ngâm chân thảo dược miễn phí + Massage chân bấm huyệt (30') + Tẩy tế bào chết chân (30') + Đắp mặt nạ ủ dưỡng chân (10').",
       "desc_en": "Herbal foot soak free + Foot reflexology massage (30') + Foot scrub exfoliation (30') + Nourishing foot mask (10').",
       "desc_zh": "免费赠送中草药足浴 + 足底穴位深度按摩 (30分钟) + 足部草本去角质 (30分钟) + 足部滋养修护膜 (10分钟)。",
       "desc_ja": "無料天然ハーブ足湯 ＋ 足裏ツボ押しマッサージ (30分) ＋ フットスクラブ角質除去 (30分) ＋ フット集中保湿パック (10分)。",
@@ -1224,7 +1235,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "duration_ja": "120分",
       "duration_ko": "120분",
       "price_vnd": 1000000,
-      "desc_vi": "Ngâm chân thảo dược miễn phí + Massage Body toàn thân (45') + Tẩy da chết body (30') + Chăm sóc da mặt & Vệ sinh tai (45').",
+      "desc_vi": "Tặng kèm ngâm chân thảo dược miễn phí + Massage body toàn thân (45') + Tẩy tế bào chết toàn thân (30') + Chăm sóc da mặt & Vệ sinh tai (45').",
       "desc_en": "Herbal foot soak free + Full body massage (45') + Body Scrub (30') + Facial care and Ear Clean (45').",
       "desc_zh": "免费赠送中草药足浴 + 全身草本精油按摩 (45分钟) + 全身深度去角质磨砂 (30分钟) + 面部深度护理与采耳 (45分钟)。",
       "desc_ja": "無料天然ハーブ足湯 ＋ 全身ボディマッサージ (45分) ＋ 全身スクラブ角質ケア (30分) ＋ フェイシャル＆耳そうじ (45分)。",
@@ -1245,7 +1256,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "duration_ja": "150分",
       "duration_ko": "150분",
       "price_vnd": 1400000,
-      "desc_vi": "Ngâm chân thảo dược miễn phí + Massage Body (30') + Tẩy tế bào chết body (30') + Gội đầu & Vệ sinh tai (45') + Chăm sóc da mặt (45').",
+      "desc_vi": "Tặng kèm ngâm chân thảo dược miễn phí + Massage body (30') + Tẩy tế bào chết toàn thân (30') + Gội đầu dưỡng sinh & Vệ sinh tai (45') + Chăm sóc da mặt chuyên sâu (45').",
       "desc_en": "Herbal foot soak free + Body massage (30') + Body scrub (30') + Nourishing shampoo & Ear Clean (45') + Intensive facial care (45').",
       "desc_zh": "免费赠送中草药足浴 + 身体按摩 (30分钟) 与身体磨砂 (30分钟) + 养生洗头与采耳 (45分钟) + 深层补水面部修护 (45分钟)。",
       "desc_ja": "無料天然ハーブ足湯 ＋ 全身マッサージ (30分)＆ボディスクラブ (30分) ＋ ヘッドスパ＆耳そうじ (45分) ＋ 集中フェイシャルケア (45分)。",
@@ -1309,7 +1320,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "duration_ja": "240分",
       "duration_ko": "240분",
       "price_vnd": 1900000,
-      "desc_vi": "Massage body (90') + Tẩy da chết toàn thân (60') + Chăm sóc da mặt & Dưỡng tóc (90') + Vệ sinh tai + Miễn phí đồ uống & đồ ăn nhẹ.",
+      "desc_vi": "Massage body (90') + Tẩy tế bào chết toàn thân (60') + Chăm sóc da mặt & Dưỡng tóc (90') + Vệ sinh tai + Miễn phí trà thảo mộc & đồ ăn nhẹ.",
       "desc_en": "Body massage (90') + Body scrub (60') + Facial care & Hair treatment (90') + Free ear cleaning + Free drinks & light bites.",
       "desc_zh": "全身按摩 (90分钟) + 身体草本去角质 (60分钟) + 面部护理与草本护发 (90分钟) + 专业采耳 + 免费茶水精美点心。",
       "desc_ja": "全身マッサージ (90分) ＋ ボディスクラブ (60分) ＋ フェイシャル＆ヘアケア (90分) ＋ 耳そうじ ＋ ドリンク＆スナック無料。",
@@ -2063,6 +2074,31 @@ document.addEventListener('DOMContentLoaded', () => {
       langSelect.value = lang;
     }
 
+    // Synchronize mobile language button & strip
+    const langMeta = languageConfig[lang] || languageConfig.vi;
+    const mobCurrentFlag = document.getElementById('mobile-current-flag');
+    const mobCurrentName = document.getElementById('mobile-current-name');
+    if (mobCurrentFlag) mobCurrentFlag.textContent = langMeta.flag;
+    if (mobCurrentName) mobCurrentName.textContent = langMeta.code;
+
+    // Update active class on mobile flag pills
+    document.querySelectorAll('.mobile-flag-pill').forEach(pill => {
+      if (pill.getAttribute('data-lang') === lang) {
+        pill.classList.add('active');
+      } else {
+        pill.classList.remove('active');
+      }
+    });
+
+    // Update active class on mobile dropdown popover list
+    document.querySelectorAll('.mobile-lang-list li').forEach(item => {
+      if (item.getAttribute('data-lang') === lang) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
     // Update guest dropdowns
     updateGuestOptions();
 
@@ -2370,17 +2406,64 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // LANGUAGE SWITCHER EVENT LISTENER
+  // LANGUAGE SWITCHER & CONFIGURATION (VI, EN, ZH, JA, KO, RU, FR)
+  // Complete synchronization across Desktop & Mobile UI with Flags
   // =========================================================================
+  // 1. Desktop select change
   const langSelect = document.getElementById('lang-select');
   if (langSelect) {
     langSelect.addEventListener('change', (e) => {
-      state.language = e.target.value;
+      const newLang = e.target.value;
+      state.language = newLang;
       updatePageLanguage();
-      const langNames = { vi: 'Tiếng Việt', en: 'English', zh: '中文', ja: '日本語', ko: '한국어' };
-      showToast(`Language: ${langNames[e.target.value] || e.target.value.toUpperCase()}`);
+      const conf = languageConfig[newLang] || { name: newLang.toUpperCase(), flag: '🌐' };
+      showToast(`${conf.flag} Ngôn ngữ / Language: ${conf.name}`);
     });
   }
+
+  // 2. Mobile Header Language Button & Popover Toggle
+  const mobileLangWrap = document.querySelector('.mobile-header-lang-wrap');
+  const mobileLangBtn = document.getElementById('mobile-lang-btn');
+  if (mobileLangBtn && mobileLangWrap) {
+    mobileLangBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileLangWrap.classList.toggle('open');
+    });
+  }
+
+  // Close mobile language popover when clicking anywhere outside
+  document.addEventListener('click', (e) => {
+    if (mobileLangWrap && !mobileLangWrap.contains(e.target)) {
+      mobileLangWrap.classList.remove('open');
+    }
+  });
+
+  // 3. Mobile Popover List items click
+  document.querySelectorAll('.mobile-lang-list li').forEach(item => {
+    item.addEventListener('click', () => {
+      const newLang = item.getAttribute('data-lang');
+      if (newLang && languageConfig[newLang]) {
+        state.language = newLang;
+        updatePageLanguage();
+        if (mobileLangWrap) mobileLangWrap.classList.remove('open');
+        const conf = languageConfig[newLang];
+        showToast(`${conf.flag} Ngôn ngữ / Language: ${conf.name}`);
+      }
+    });
+  });
+
+  // 4. Mobile Quick Language Strip Pills click
+  document.querySelectorAll('.mobile-flag-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const newLang = pill.getAttribute('data-lang');
+      if (newLang && languageConfig[newLang]) {
+        state.language = newLang;
+        updatePageLanguage();
+        const conf = languageConfig[newLang];
+        showToast(`${conf.flag} Ngôn ngữ / Language: ${conf.name}`);
+      }
+    });
+  });
 
   // =========================================================================
   // CURRENCY SWITCHER (VND / USD)
