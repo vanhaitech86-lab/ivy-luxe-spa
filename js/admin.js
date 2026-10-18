@@ -177,7 +177,7 @@ function checkAdminAuth() {
       if (displayName) displayName.textContent = currentUser.name || (userEmail === 'vanhaitech.86@gmail.com' ? 'Admin Kỹ Thuật (Văn Hải)' : 'Quản Trị Viên IVY LUXE');
       return;
     } else {
-      alert('Truy cập bị từ chối!\nChỉ duy nhất 2 email quản trị được cấp quyền:\n1. ivyspahanoi@gmail.com\n2. vanhaitech.86@gmail.com\nmới có thể truy cập Trang Quản Trị Admin.\n\nTài khoản hiện tại ("' + (currentUser.name || currentUser.email || 'Không xác định') + '") không có quyền quản trị.');
+      alert('Truy cập bị từ chối!\nTrang này chỉ dành riêng cho Quản Trị Viên được cấp quyền nội bộ. Tài khoản của bạn không có quyền truy cập.');
       localStorage.removeItem('ivy_current_user');
       window.location.href = 'index.html';
       return;
@@ -213,7 +213,7 @@ function checkAdminAuth() {
         if (displayName) displayName.textContent = adminUser.name;
         renderDashboard();
       } else {
-        alert('Đăng nhập thất bại!\nTài khoản hoặc mật khẩu không chính xác.\n\nLƯU Ý QUAN TRỌNG:\nTrang quản trị chỉ chấp nhận đúng 2 email:\n1. ivyspahanoi@gmail.com\n2. vanhaitech.86@gmail.com\nvới mật khẩu bảo mật theo quy định.');
+        alert('Đăng nhập thất bại!\nTài khoản hoặc mật khẩu quản trị viên không chính xác. Quyền truy cập bị từ chối.');
       }
     });
   }

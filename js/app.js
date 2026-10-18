@@ -4656,39 +4656,53 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    document.querySelectorAll('.js-google-choose').forEach(item => {
-      item.addEventListener('click', () => {
-        const name = item.getAttribute('data-name') || 'Google User';
-        const email = item.getAttribute('data-email');
-        const role = item.getAttribute('data-role') || 'customer';
-        handleGoogleLoginSuccess(name, email, role);
-      });
-    });
-
-    // Custom Google Input toggle & submit
-    const btnToggleCustomGoogle = document.getElementById('btn-toggle-custom-google');
-    const customGoogleBox = document.getElementById('custom-google-box');
+    // Google Sign-In Input Submission Handler (Đăng nhập riêng tư, không lộ thông tin)
     const btnCustomGoogleSubmit = document.getElementById('btn-custom-google-submit');
+    const customGoogleEmail = document.getElementById('custom-google-email');
+    const customGoogleName = document.getElementById('custom-google-name');
+    const googleForm = document.getElementById('google-auth-direct-form');
 
-    if (btnToggleCustomGoogle && customGoogleBox) {
-      btnToggleCustomGoogle.addEventListener('click', () => {
-        customGoogleBox.style.display = (customGoogleBox.style.display === 'block') ? 'none' : 'block';
-      });
+    function triggerGoogleLogin() {
+      const emailInput = customGoogleEmail?.value.trim() || '';
+      let nameInput = customGoogleName?.value.trim() || '';
+
+      if (!emailInput || !emailInput.includes('@')) {
+        alert('Vui lòng nhập địa chỉ Email hoặc Gmail hợp lệ.');
+        customGoogleEmail?.focus();
+        return;
+      }
+
+      if (!nameInput) {
+        nameInput = emailInput.split('@')[0];
+      }
+
+      handleGoogleLoginSuccess(nameInput, emailInput);
     }
 
     if (btnCustomGoogleSubmit) {
-      btnCustomGoogleSubmit.addEventListener('click', () => {
-        const nameInput = document.getElementById('custom-google-name')?.value.trim() || 'Người Dùng Google';
-        const emailInput = document.getElementById('custom-google-email')?.value.trim() || '';
-
-        if (!emailInput || !emailInput.includes('@')) {
-          alert('Vui lòng nhập địa chỉ Gmail hợp lệ (VD: tenban@gmail.com).');
-          return;
-        }
-
-        handleGoogleLoginSuccess(nameInput, emailInput, 'customer');
+      btnCustomGoogleSubmit.addEventListener('click', (e) => {
+        e.preventDefault();
+        triggerGoogleLogin();
       });
     }
+
+    if (googleForm) {
+      googleForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        triggerGoogleLogin();
+      });
+    }
+
+    [customGoogleEmail, customGoogleName].forEach(input => {
+      if (input) {
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            triggerGoogleLogin();
+          }
+        });
+      }
+    });
 
     // Forgot Password Flow via Gmail or Phone
     let activeResetOtp = null;
@@ -4773,12 +4787,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const cleanIdLower = activeResetIdentifier.toLowerCase().trim();
         const ALLOWED_ADMINS = ['ivyspahanoi@gmail.com', 'vanhaitech.86@gmail.com'];
         if (ALLOWED_ADMINS.includes(cleanIdLower)) {
-          alert('Mật khẩu của tài khoản Quản Trị Viên được bảo vệ cố định bởi hệ thống (Admin6789a@). Đang chuyển sang màn hình Đăng Nhập...');
+          alert('Tài khoản Quản Trị Viên được bảo mật bởi chính sách nội bộ. Đang chuyển về màn hình Đăng Nhập...');
           openAuthModalWithTab('login');
           const loginId = document.getElementById('login-identifier');
-          const loginPass = document.getElementById('login-password');
           if (loginId) loginId.value = cleanIdLower;
-          if (loginPass) loginPass.value = 'Admin6789a@';
           activeResetOtp = null;
           if (forgotStepOtp) forgotStepOtp.style.display = 'none';
           return;

@@ -1668,7 +1668,7 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
           <form id="auth-login-form">
             <div class="modal-form-group">
               <label class="field-label">Email hoặc Số Điện Thoại</label>
-              <input type="text" id="login-identifier" class="modal-input" placeholder="ivyspahanoi@gmail.com hoặc 0989713660" required>
+              <input type="text" id="login-identifier" class="modal-input" placeholder="Nhập Email hoặc Số điện thoại" required>
             </div>
             <div class="modal-form-group" style="margin-bottom:6px;">
               <label class="field-label">Mật Khẩu</label>
@@ -1752,7 +1752,7 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
             </p>
             <div class="modal-form-group">
               <label class="field-label">Gmail hoặc Số Điện Thoại</label>
-              <input type="text" id="forgot-identifier" class="modal-input" placeholder="VD: khach@gmail.com hoặc 0989713660" required>
+              <input type="text" id="forgot-identifier" class="modal-input" placeholder="Nhập Email hoặc Số điện thoại đã đăng ký" required>
             </div>
 
             <button type="button" id="btn-forgot-send-otp" class="modal-confirm-btn" style="width:100%; margin-top:6px;">
@@ -1807,53 +1807,31 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
         </div>
         <span id="google-auth-modal-close" class="modal-close-btn" style="color:#5F6368; font-size:1.6rem; cursor:pointer; line-height:1;" onclick="closeGoogleAuthModal(); return false;">&times;</span>
       </div>
-      <div style="padding:20px 24px;">
-        <p style="font-size:0.86rem; color:#5F6368; margin-bottom:14px; line-height:1.5;">
-          Chọn tài khoản Google để tiếp tục đồng bộ và đăng nhập vào <strong>Ivy Luxe Spa (48 Hà Trung)</strong>:
-        </p>
+      <div style="padding:24px;">
+        <div style="text-align:center; margin-bottom:20px;">
+          <h4 style="margin:0 0 6px; font-size:1.15rem; font-weight:600; color:#202124;">Đăng nhập bằng tài khoản Google</h4>
+          <p style="margin:0; font-size:0.86rem; color:#5F6368;">Để tiếp tục đồng bộ và đặt lịch tại Ivy Luxe Spa (48 Hà Trung)</p>
+        </div>
         
-        <div class="google-account-list">
-          <div class="google-account-item js-google-choose" data-name="Quản Trị Viên IVY LUXE" data-email="ivyspahanoi@gmail.com" data-role="admin">
-            <div class="google-avatar" style="background:#0F9D58;">I</div>
-            <div class="google-account-info">
-              <div class="google-account-name">Quản Trị Viên IVY LUXE</div>
-              <div class="google-account-email">ivyspahanoi@gmail.com</div>
-            </div>
-            <i class="fa fa-angle-right" style="color:#9AA0A6;"></i>
+        <form id="google-auth-direct-form" onsubmit="return false;">
+          <div style="margin-bottom:14px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; color:#3C4043; margin-bottom:6px;">Email hoặc Số điện thoại Gmail</label>
+            <input type="email" id="custom-google-email" class="modal-input" placeholder="Nhập tài khoản Gmail của bạn" required style="background:#FFFFFF; color:#202124; border:1px solid #DADCE0; padding:12px 14px; border-radius:6px; font-size:0.95rem; width:100%; box-sizing:border-box;">
           </div>
 
-          <div class="google-account-item js-google-choose" data-name="Admin Kỹ Thuật (Văn Hải)" data-email="vanhaitech.86@gmail.com" data-role="admin">
-            <div class="google-avatar" style="background:#1A73E8;">H</div>
-            <div class="google-account-info">
-              <div class="google-account-name">Văn Hải (Admin Kỹ Thuật)</div>
-              <div class="google-account-email">vanhaitech.86@gmail.com</div>
-            </div>
-            <i class="fa fa-angle-right" style="color:#9AA0A6;"></i>
+          <div style="margin-bottom:18px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; color:#3C4043; margin-bottom:6px;">Họ và Tên (Tùy chọn)</label>
+            <input type="text" id="custom-google-name" class="modal-input" placeholder="Họ và tên của bạn" style="background:#FFFFFF; color:#202124; border:1px solid #DADCE0; padding:12px 14px; border-radius:6px; font-size:0.95rem; width:100%; box-sizing:border-box;">
           </div>
 
-          <div class="google-account-item js-google-choose" data-name="Khách Hàng VIP Google" data-email="khachhang.vip@gmail.com" data-role="customer">
-            <div class="google-avatar" style="background:#EA4335;">K</div>
-            <div class="google-account-info">
-              <div class="google-account-name">Khách Hàng VIP Google</div>
-              <div class="google-account-email">khachhang.vip@gmail.com</div>
-            </div>
-            <i class="fa fa-angle-right" style="color:#9AA0A6;"></i>
-          </div>
-        </div>
-
-        <!-- Custom Google Account Input -->
-        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #E8EAED;">
-          <button type="button" id="btn-toggle-custom-google" style="background:none; border:none; color:#1A73E8; font-size:0.86rem; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; padding:6px 0;">
-            <i class="fa fa-user-plus"></i> Sử dụng tài khoản Gmail khác...
+          <button type="button" id="btn-custom-google-submit" class="modal-confirm-btn" style="width:100%; background:#1A73E8; color:#FFF; font-weight:700; padding:12px; border-radius:6px; font-size:0.95rem; border:none; cursor:pointer; display:flex; justify-content:center; align-items:center; gap:8px;">
+            <i class="fa fa-arrow-right"></i> TIẾP TỤC ĐĂNG NHẬP
           </button>
-          <div id="custom-google-box" style="display:none; margin-top:10px;">
-            <input type="text" id="custom-google-name" class="modal-input" placeholder="Họ và tên của bạn" style="background:#F1F3F4; color:#202124; border:1px solid #DADCE0; margin-bottom:8px; padding:10px 12px; border-radius:6px;">
-            <input type="email" id="custom-google-email" class="modal-input" placeholder="Địa chỉ Gmail (VD: tenban@gmail.com)" style="background:#F1F3F4; color:#202124; border:1px solid #DADCE0; margin-bottom:8px; padding:10px 12px; border-radius:6px;">
-            <button type="button" id="btn-custom-google-submit" class="modal-confirm-btn" style="width:100%; background:#1A73E8; color:#FFF; font-weight:700; padding:10px;">
-              TIẾP TỤC ĐĂNG NHẬP VỚI GMAIL NÀY
-            </button>
-          </div>
-        </div>
+        </form>
+
+        <p style="margin:18px 0 0; font-size:0.75rem; color:#70757A; line-height:1.45; text-align:center;">
+          Để tiếp tục, Google sẽ xác thực bảo mật và chia sẻ thông tin tài khoản với Ivy Luxe Spa.
+        </p>
       </div>
     </div>
   </div>
