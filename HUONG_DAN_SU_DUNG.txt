@@ -1,0 +1,48 @@
+================================================================================
+IVY LUXE SPA - BỘ MÃ NGUỒN WEBSITE TOÀN DIỆN (FULL SOURCE CODE)
+================================================================================
+Địa chỉ: 48 Hà Trung, Hoàn Kiếm, Hà Nội
+Hotline / Zalo: 098 9713660 / 0971 811 669 / 0973 169 599
+WhatsApp / WeChat: 0971 811 669
+Website Live: https://ivy-luxe-spa-kappa.vercel.app/
+GitHub: https://github.com/vanhaitech86-lab/ivy-luxe-spa
+
+--------------------------------------------------------------------------------
+1. CẤU TRÚC BỘ MÃ NGUỒN:
+--------------------------------------------------------------------------------
+- index.html: Giao diện website chính thức cho khách hàng.
+  + Đa ngôn ngữ (Tiếng Việt, Tiếng Anh, Tiếng Trung, Tiếng Nhật, Tiếng Hàn, Tiếng Pháp, Tiếng Nga) với cờ các nước.
+  + Bảng giá Authentic Vietnamese Wellness & Bảng giá Special Combos/Nails (mở xem trực tiếp và phóng to High-Resolution).
+  + Hệ thống Đặt Lịch Trực Tuyến với đầy đủ tuỳ chọn số lượng khách không giới hạn.
+  + Tích hợp Giảm giá 10% khi thanh toán qua mã VietQR Ngân hàng Sacombank (020113149011 - HKD IVY LUXE SPA).
+  + Bản đồ dẫn đường Google Maps 48 Hà Trung.
+  + Kênh mạng xã hội: Instagram (@ivyspahanoi), Facebook, TikTok, WhatsApp.
+  + Hệ thống Đăng ký / Đăng nhập / Lịch sử đặt chỗ thành viên.
+  + Hệ thống Đăng ký Cộng tác viên Affiliate (tạo link giới thiệu & theo dõi hoa hồng).
+
+- admin.html: Trang quản trị nội bộ dành cho chủ spa.
+  + Quản lý danh sách khách hàng đặt hẹn.
+  + Quản lý mã Affiliate, đối tác khách sạn, hướng dẫn viên du lịch.
+  + Báo cáo doanh thu & xác nhận thanh toán SePay / VietQR.
+
+- css/style.css: File định dạng CSS toàn bộ giao diện hoàng gia Indochine, màu xanh ngọc bích (Dark Emerald) & ánh kim vàng Gold.
+- js/app.js: File mã nguồn xử lý logic toàn bộ hệ thống website, bảng giá, giỏ hàng, đa ngôn ngữ, QR SePay, quản trị.
+- assets/images/: Thư mục chứa toàn bộ hình ảnh thực tế chất lượng cao của IVY LUXE SPA, ảnh brochure bảng giá gốc, mã QR Sacombank, logo, v.v.
+
+--------------------------------------------------------------------------------
+2. CÁCH SỬ DỤNG TRÊN MÁY TÍNH CÁ NHÂN:
+--------------------------------------------------------------------------------
+- Không cần cài đặt phần mềm phức tạp:
+  Chỉ cần giải nén file zip, nhấp đúp chuột vào file "index.html" để mở website ngay lập tức trên bất kỳ trình duyệt nào (Chrome, Cốc Cốc, Edge, Safari, Firefox).
+- Để mở trang quản trị admin, nhấp đúp chuột vào file "admin.html".
+- Để chạy máy chủ cục bộ (Localhost) nếu muốn:
+  Mở thư mục trong VS Code và cài tiện ích "Live Server", hoặc mở bằng Node.js / Python:
+  + Python: `python -m http.server 8088`
+  + Node.js: `npx serve .`
+
+--------------------------------------------------------------------------------
+3. UPLOAD LÊN HOSTING / TÊN MIỀN RIÊNG:
+--------------------------------------------------------------------------------
+- Mã nguồn là dạng HTML5/CSS3/JavaScript thuần (Static Web) chuẩn SEO tốt nhất hiện nay:
+  + Có thể tải trực tiếp lên bất kỳ Hosting cPanel nào (thư mục public_html).
+  + Hoặc kết nối trực tiếp với Vercel, Netlify, Cloudflare Pages, GitHub Pages hoàn toàn miễn phí chỉ với 1 cú nhấp chuột.
