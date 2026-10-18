@@ -189,7 +189,7 @@
         <!-- Right Navigation Menu -->
         <ul class="nav-menu-right">
           <li><a href="#locations" class="nav-item-link" data-i18n-html="nav_about">Về Chúng Tôi <i class="fa fa-angle-down"></i></a></li>
-          <li><a href="#affiliate" class="nav-item-link" data-i18n="nav_affiliate" style="color: #ECC876; font-weight: 700;"><i class="fa fa-handshake-o"></i> Đối Tác Affiliate</a></li>
+          <li><a href="affiliate.html" class="nav-item-link" data-i18n="nav_affiliate" style="color: #F05A28; font-weight: 700;"><i class="fa fa-handshake-o"></i> Đối Tác Affiliate (35%)</a></li>
           <li><a href="#contact" class="nav-item-link" data-i18n="nav_contact">Liên Hệ</a></li>
           <li><a href="#booking-form-box" class="nav-item-link js-open-booking" style="color: #123023; font-weight: 700;" data-i18n="nav_book">Đặt Lịch Trực Tuyến</a></li>
           
@@ -208,7 +208,7 @@
               </div>
               <div class="user-dd-body">
                 <a href="admin.html" class="user-dd-link" id="dd-admin-link" style="display:none;"><i class="fa fa-tachometer"></i> Trang Quản Trị Admin</a>
-                <a href="#affiliate" class="user-dd-link" id="dd-partner-link" style="display:none;"><i class="fa fa-handshake-o"></i> Quản Lý Affiliate</a>
+                <a href="affiliate.html?view=dashboard" class="user-dd-link" id="dd-partner-link" style="display:none;"><i class="fa fa-handshake-o"></i> Quản Lý Affiliate</a>
                 <button type="button" class="user-dd-link" id="dd-history-btn"><i class="fa fa-history"></i> Lịch Sử Đặt Hẹn</button>
                 <button type="button" class="user-dd-link dd-logout" id="dd-logout-btn"><i class="fa fa-sign-out"></i> Đăng Xuất</button>
               </div>
@@ -251,7 +251,7 @@
               </div>
               <div class="user-dd-body">
                 <a href="admin.html" class="user-dd-link" id="mobile-dd-admin-link" style="display:none;"><i class="fa fa-tachometer"></i> Trang Quản Trị Admin</a>
-                <a href="#affiliate" class="user-dd-link" id="mobile-dd-partner-link" style="display:none;"><i class="fa fa-handshake-o"></i> Quản Lý Affiliate</a>
+                <a href="affiliate.html?view=dashboard" class="user-dd-link" id="mobile-dd-partner-link" style="display:none;"><i class="fa fa-handshake-o"></i> Quản Lý Affiliate</a>
                 <button type="button" class="user-dd-link" id="mobile-dd-history-btn"><i class="fa fa-history"></i> Lịch Sử Đặt Hẹn</button>
                 <button type="button" class="user-dd-link dd-logout" id="mobile-dd-logout-btn"><i class="fa fa-sign-out"></i> Đăng Xuất</button>
               </div>
@@ -870,277 +870,274 @@
   <!-- ========================================================================= -->
   <!-- AFFILIATE PARTNER PROGRAM (CHƯƠNG TRÌNH ĐỐI TÁC TIẾP THỊ - IVY LUXE SPA) -->
   <!-- ========================================================================= -->
-  <section id="affiliate" class="section-orient-affiliate">
+  <section id="affiliate" class="section-orient-affiliate" style="background:#F8FAFC; padding: 60px 0 80px; color:#1E293B;">
     <div class="container">
-      <div class="section-title-wrap">
-        <span class="section-sub-gold" data-i18n="aff_sub_title">HỢP TÁC KINH DOANH CÙNG PHÁT TRIỂN</span>
-        <h2 class="section-main-title" data-i18n="aff_main_title">CHƯƠNG TRÌNH ĐỐI TÁC AFFILIATE 48 HÀ TRUNG</h2>
-        <div class="gold-leaf-divider">
-          <span class="gold-line"></span>
-          <i class="fa fa-handshake-o"></i>
-          <span class="gold-line"></span>
+      
+      <!-- Section Title & Link to full page -->
+      <div class="section-title-wrap" style="margin-bottom: 36px; text-align: center;">
+        <span class="section-sub-gold" style="color:#F05A28; font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size:0.9rem;">HỢP TÁC KINH DOANH HOA HỒNG 30% - 35%</span>
+        <h2 class="section-main-title" style="color:#1E293B; font-size:2.2rem; font-weight:800; margin:8px 0 12px; font-family:'Plus Jakarta Sans', sans-serif;">ĐỐI TÁC TIẾP THỊ &amp; DASHBOARD AFFILIATE</h2>
+        <div class="gold-leaf-divider" style="margin-bottom:14px;">
+          <span class="gold-line" style="background:#F05A28;"></span>
+          <i class="fa fa-handshake-o" style="color:#F05A28;"></i>
+          <span class="gold-line" style="background:#F05A28;"></span>
         </div>
-        <p class="section-desc-text" data-i18n="aff_desc_text">
-          Dành riêng cho Khách sạn, Concierge, Hướng dẫn viên du lịch, Tài xế, Airbnb Host và Quý khách hàng thân thiết. Đăng ký nhận link &amp; mã QR tức thì - Nhận hoa hồng hấp dẫn <strong>15% - 20%</strong> cho mỗi đơn đặt lịch thành công!
+        <p class="section-desc-text" style="max-width:760px; margin:0 auto 20px; color:#64748B; font-size:1rem; line-height:1.6;">
+          Dành riêng cho Khách sạn, Tour Guide, Lễ tân, Tài xế du lịch, Reviewer và Quý khách hàng. Đăng ký nhận link &amp; mã QR riêng chỉ trong 30 giây để kiếm thu nhập thụ động bền vững!
         </p>
-      </div>
-
-      <!-- HIGHLIGHT STATS / PERKS CARDS -->
-      <div class="aff-perks-grid">
-        <div class="aff-perk-card">
-          <div class="aff-perk-icon"><i class="fa fa-percent"></i></div>
-          <h3 class="aff-perk-title" data-i18n="aff_perk1_title">Hoa Hồng Lên Đến 20%</h3>
-          <p class="aff-perk-desc" data-i18n="aff_perk1_desc">Chiết khấu trực tiếp, minh bạch trên mỗi hóa đơn dịch vụ khách hàng sử dụng.</p>
-        </div>
-        <div class="aff-perk-card">
-          <div class="aff-perk-icon"><i class="fa fa-qrcode"></i></div>
-          <h3 class="aff-perk-title" data-i18n="aff_perk2_title">Mã QR &amp; Link Độc Quyền</h3>
-          <p class="aff-perk-desc" data-i18n="aff_perk2_desc">Tạo link &amp; mã QR định danh riêng chỉ trong 30 giây để khách quét đặt trực tiếp.</p>
-        </div>
-        <div class="aff-perk-card">
-          <div class="aff-perk-icon"><i class="fa fa-gift"></i></div>
-          <h3 class="aff-perk-title" data-i18n="aff_perk3_title">Ưu Đãi Kép Cho Khách Hàng</h3>
-          <p class="aff-perk-desc" data-i18n="aff_perk3_desc">Khách của bạn được giảm thêm 10% &amp; tặng ngâm chân thảo dược trị giá 150.000đ.</p>
-        </div>
-        <div class="aff-perk-card">
-          <div class="aff-perk-icon"><i class="fa fa-money"></i></div>
-          <h3 class="aff-perk-title" data-i18n="aff_perk4_title">Thanh Toán Linh Hoạt</h3>
-          <p class="aff-perk-desc" data-i18n="aff_perk4_desc">Chuyển khoản ngân hàng tức thì hoặc định kỳ hàng tuần/tháng theo yêu cầu.</p>
+        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+          <a href="affiliate.html" class="aff-mode-switch-btn" style="text-decoration:none; padding:10px 22px; font-size:0.95rem;">
+            <i class="fa fa-external-link"></i> Mở Trang Quản Lý Riêng (affiliate.html)
+          </a>
+          <button type="button" class="aff-btn-home" style="border:1px solid #CBD5E1; cursor:pointer;" onclick="toggleHomeAffiliateView()">
+            <i class="fa fa-exchange"></i> <span id="home-aff-toggle-text">Xem Dashboard Quản Lý</span>
+          </button>
         </div>
       </div>
 
-      <!-- AFFILIATE INTERACTIVE WORKSPACE TABS -->
-      <div class="aff-workspace-box">
-        <!-- Tabs Nav Header -->
-        <div class="aff-tabs-nav">
-          <button type="button" class="aff-tab-btn active" data-tab="create">
-            <i class="fa fa-link"></i> <span data-i18n="aff_tab_create">1. Đăng Ký &amp; Lấy Link / Mã QR</span>
-          </button>
-          <button type="button" class="aff-tab-btn" data-tab="templates">
-            <i class="fa fa-commenting-o"></i> <span data-i18n="aff_tab_templates">2. Mẫu Tin Nhắn Mời Khách</span>
-          </button>
-          <button type="button" class="aff-tab-btn" data-tab="lookup">
-            <i class="fa fa-bar-chart"></i> <span data-i18n="aff_tab_lookup">3. Tra Cứu Hoa Hồng &amp; Thống Kê</span>
-          </button>
-        </div>
-
-        <!-- TAB 1 CONTENT: CREATE / REGISTER LINK -->
-        <div class="aff-tab-pane active" id="aff-tab-create">
-          <div class="aff-pane-layout">
-            <!-- Left: Partner Form -->
-            <div class="aff-form-col">
-              <div class="aff-col-header">
-                <h3 class="aff-col-title"><i class="fa fa-user-plus"></i> <span data-i18n="aff_form_title">Thông Tin Đối Tác Tiếp Thị</span></h3>
-                <p class="aff-col-subtitle" data-i18n="aff_form_subtitle">Điền thông tin để hệ thống khởi tạo link giới thiệu và mã QR riêng biệt cho bạn.</p>
-              </div>
-
-              <form id="aff-register-form">
-                <div class="aff-form-row">
-                  <div class="aff-form-field">
-                    <label class="aff-field-label"><span data-i18n="aff_lbl_name">Họ và Tên Đối Tác</span> <span class="req">*</span></label>
-                    <input type="text" id="aff-partner-name" class="aff-input" placeholder="VD: Nguyễn Văn Minh" data-i18n-placeholder="aff_ph_name" required>
-                  </div>
-                  <div class="aff-form-field">
-                    <label class="aff-field-label"><span data-i18n="aff_lbl_phone">Số Điện Thoại / Zalo</span> <span class="req">*</span></label>
-                    <input type="tel" id="aff-partner-phone" class="aff-input" placeholder="VD: 0912345678" data-i18n-placeholder="aff_ph_phone" required>
-                  </div>
-                </div>
-
-                <div class="aff-form-row">
-                  <div class="aff-form-field">
-                    <label class="aff-field-label"><span data-i18n="aff_lbl_type">Bạn Là Đối Tác Nào?</span> <span class="req">*</span></label>
-                    <select id="aff-partner-type" class="aff-input" required>
-                      <option value="hotel">Khách Sạn / Concierge / Lễ Tân</option>
-                      <option value="guide">Hướng Dẫn Viên Du Lịch (Tour Guide)</option>
-                      <option value="driver">Tài Xế Taxi / Xe Du Lịch</option>
-                      <option value="airbnb">Chủ Homestay / Airbnb Phố Cổ</option>
-                      <option value="influencer">Reviewer / Travel Blogger</option>
-                      <option value="customer">Khách Hàng Thân Thiết Giới Thiệu Bạn Bè</option>
-                    </select>
-                  </div>
-                  <div class="aff-form-field">
-                    <label class="aff-field-label"><span data-i18n="aff_lbl_code">Mã Giới Thiệu Tự Chọn</span> <span class="req">*</span></label>
-                    <div class="aff-code-input-wrap">
-                      <span class="aff-code-prefix">IVY-</span>
-                      <input type="text" id="aff-partner-code" class="aff-input aff-code-inner" placeholder="HOTEL_HANOI" maxlength="15" required>
-                    </div>
-                    <span class="aff-field-hint" data-i18n="aff_hint_code">Viết liền không dấu (VD: MINH_TOUR, HOTEL_HANOI, ANH_DUY)</span>
-                  </div>
-                </div>
-
-                <div class="aff-form-field">
-                  <label class="aff-field-label"><span data-i18n="aff_lbl_bank">Tài Khoản Nhận Hoa Hồng (Ngân Hàng - STK - Tên CTK)</span></label>
-                  <input type="text" id="aff-partner-bank" class="aff-input" placeholder="VD: Vietcombank - 0011001234567 - NGUYEN VAN MINH" data-i18n-placeholder="aff_ph_bank">
-                  <span class="aff-field-hint" data-i18n="aff_hint_bank">Dùng để IVY LUXE SPA đối soát và tự động chuyển khoản hoa hồng cho bạn.</span>
-                </div>
-
-                <button type="submit" class="aff-submit-btn" id="aff-submit-btn">
-                  <i class="fa fa-magic"></i> <span data-i18n="aff_btn_create">TẠO LINK TIẾP THỊ &amp; MÃ QR NGAY</span>
-                </button>
-              </form>
+      <!-- ===================================================================== -->
+      <!-- VIEW 1: TRANG / MỤC ĐĂNG KÝ AFFILIATE (CHUẨN 100% ẢNH 2)              -->
+      <!-- ===================================================================== -->
+      <div id="home-aff-view-register">
+        <!-- 3 Benefit Cards (Ảnh 2) -->
+        <div class="aff-benefits-grid">
+          <!-- Card 1 -->
+          <div class="aff-benefit-card">
+            <div class="aff-benefit-icon">
+              <i class="fa fa-usd"></i>
             </div>
+            <h3 class="aff-benefit-title">Hoa hồng 30–35%</h3>
+            <p class="aff-benefit-desc">
+              Nhận 30–35% hoa hồng (tuỳ sản phẩm) cho mỗi đơn hàng thành công qua link giới thiệu của bạn.
+            </p>
+          </div>
 
-            <!-- Right: Generated Link & QR Output Box -->
-            <div class="aff-result-col">
-              <div class="aff-result-card" id="aff-result-card">
-                <div class="aff-result-header">
-                  <span class="aff-badge-live"><i class="fa fa-check-circle"></i> SẴN SÀNG CHIA SẺ</span>
-                  <h4 class="aff-result-title" data-i18n="aff_res_box_title">Công Cụ Tiếp Thị Của Bạn</h4>
-                </div>
-
-                <div class="aff-qr-preview-box">
-                  <div class="aff-qr-frame">
-                    <img id="aff-qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&amp;data=https%3A%2F%2Fivy-luxe-spa-kappa.vercel.app%2F%3Fref%3DIVY_VIP" alt="Mã QR Tiếp Thị IVY LUXE SPA">
-                  </div>
-                  <div class="aff-qr-meta">
-                    <div class="aff-qr-code-tag">Mã Đối Tác: <strong id="aff-display-code">IVY_VIP</strong></div>
-                    <div class="aff-qr-sub" data-i18n="aff_qr_hint">Khách quét mã trên điện thoại sẽ tự động mở trang web với ưu đãi VIP 10%!</div>
-                    <button type="button" class="aff-btn-download-qr" id="aff-btn-download-qr">
-                      <i class="fa fa-download"></i> <span data-i18n="aff_btn_download_qr">Tải Ảnh Mã QR Về Máy</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="aff-link-output-box">
-                  <label class="aff-output-label"><i class="fa fa-globe"></i> <span data-i18n="aff_lbl_link">Đường Link Tiếp Thị Riêng:</span></label>
-                  <div class="aff-link-copy-row">
-                    <input type="text" id="aff-output-url" class="aff-output-input" value="https://ivy-luxe-spa-kappa.vercel.app/?ref=IVY_VIP" readonly>
-                    <button type="button" class="aff-btn-copy" id="aff-btn-copy" title="Sao chép đường link">
-                      <i class="fa fa-clone"></i> <span id="aff-btn-copy-text">Sao Chép</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="aff-quick-share-row">
-                  <span class="aff-share-label" data-i18n="aff_lbl_quick_share">Gửi trực tiếp cho khách:</span>
-                  <div class="aff-share-btns">
-                    <button type="button" class="aff-share-btn aff-share-zalo" id="aff-share-zalo" title="Chia sẻ qua Zalo">
-                      <span class="share-icon-letter">Z</span> Chia Sẻ Zalo
-                    </button>
-                    <button type="button" class="aff-share-btn aff-share-wa" id="aff-share-whatsapp" title="Gửi WhatsApp cho khách nước ngoài">
-                      <i class="fa fa-whatsapp"></i> Gửi WhatsApp
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <!-- Card 2 -->
+          <div class="aff-benefit-card">
+            <div class="aff-benefit-icon">
+              <i class="fa fa-magic"></i>
             </div>
+            <h3 class="aff-benefit-title">Theo dõi clicks</h3>
+            <p class="aff-benefit-desc">
+              Theo dõi số lượt click, đơn hàng và hoa hồng chi tiết trên dashboard.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="aff-benefit-card">
+            <div class="aff-benefit-icon">
+              <i class="fa fa-line-chart"></i>
+            </div>
+            <h3 class="aff-benefit-title">Thu nhập thụ động</h3>
+            <p class="aff-benefit-desc">
+              Chỉ cần chia sẻ link, hệ thống tự động theo dõi và tính hoa hồng cho bạn.
+            </p>
           </div>
         </div>
 
-        <!-- TAB 2 CONTENT: PRE-WRITTEN MESSAGE TEMPLATES -->
-        <div class="aff-tab-pane" id="aff-tab-templates">
-          <div class="aff-templates-header">
-            <h3 class="aff-col-title"><i class="fa fa-files-o"></i> <span data-i18n="aff_tpl_heading">Mẫu Tin Nhắn Mời Khách Soạn Sẵn (Bấm 1 Chạm Để Sao Chép)</span></h3>
-            <p class="aff-col-subtitle" data-i18n="aff_tpl_subheading">Chọn mẫu phù hợp với khách của bạn (khách Việt Nam hoặc khách du lịch quốc tế), hệ thống tự động chèn link và mã giới thiệu của bạn.</p>
-          </div>
-
-          <div class="aff-templates-grid">
-            <!-- Template 1: Tiếng Việt - Lịch sự, chu đáo -->
-            <div class="aff-template-card">
-              <div class="aff-tpl-top">
-                <span class="aff-tpl-badge aff-badge-vi">🇻🇳 Tiếng Việt - Khách Đoàn / Gia Đình / Bạn Bè</span>
-                <button type="button" class="aff-tpl-copy-btn" data-tpl-target="tpl-text-1">
-                  <i class="fa fa-copy"></i> <span>Sao Chép Tin Nhắn</span>
-                </button>
-              </div>
-              <div class="aff-tpl-body" id="tpl-text-1">Dạ chào anh/chị ạ! Nếu anh/chị đang tìm kiếm một địa chỉ Spa &amp; Massage Body thư giãn chuẩn 5 sao ngay tại trung tâm phố cổ Hà Nội, em xin giới thiệu anh/chị ghé **IVY LUXE SPA** tại số 48 Hà Trung, Hoàn Kiếm ạ.
-
-Kỹ thuật viên tại đây tay nghề rất chuyên nghiệp, không gian sang trọng và cực kỳ yên tĩnh. Đặc biệt, khi anh/chị đặt lịch qua link riêng của em bên dưới sẽ được **GIẢM THÊM 10%** và **TẶNG MIỄN PHÍ** một liệu trình ngâm chân thảo dược trị giá 150.000đ:
-👉 {AFF_LINK} (Mã ưu đãi: {AFF_CODE})
-
-Hotline tư vấn &amp; hỗ trợ: 098 9713660. Chúc anh/chị có những phút giây thư giãn thật tuyệt vời!</div>
-            </div>
-
-            <!-- Template 2: English - International Tourists / Hotel Guests -->
-            <div class="aff-template-card">
-              <div class="aff-tpl-top">
-                <span class="aff-tpl-badge aff-badge-en">🇬🇧 English - For International Travelers &amp; Hotel Guests</span>
-                <button type="button" class="aff-tpl-copy-btn" data-tpl-target="tpl-text-2">
-                  <i class="fa fa-copy"></i> <span>Copy English Message</span>
-                </button>
-              </div>
-              <div class="aff-tpl-body" id="tpl-text-2">Hello! Welcome to Hanoi! If you are looking for an authentic luxury spa and deep tissue massage after walking around the Old Quarter, I highly recommend **IVY LUXE SPA** at 48 Ha Trung, Hoan Kiem (just a 5-minute walk from Hoan Kiem Lake).
-
-As my special guest, you will receive an exclusive **10% VIP DISCOUNT** and a complimentary herbal foot soak ritual!
-👉 Book directly here: {AFF_LINK} (Referral Code: {AFF_CODE})
-Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div>
-            </div>
-
-            <!-- Template 3: Tin nhắn ngắn gọn Zalo / SMS -->
-            <div class="aff-template-card">
-              <div class="aff-tpl-top">
-                <span class="aff-tpl-badge aff-badge-sms">💬 Tin Nhắn Nhanh Qua Zalo / SMS / Messenger</span>
-                <button type="button" class="aff-tpl-copy-btn" data-tpl-target="tpl-text-3">
-                  <i class="fa fa-copy"></i> <span>Sao Chép Nhanh</span>
-                </button>
-              </div>
-              <div class="aff-tpl-body" id="tpl-text-3">Tặng bạn voucher giảm 10% + Ngâm chân thảo dược thư giãn tại IVY LUXE SPA (48 Hà Trung, Hoàn Kiếm, Hà Nội). Bạn bấm vào link này đặt lịch để nhận ưu đãi nhé: {AFF_LINK} (Mã: {AFF_CODE}) - Hotline: 098 9713660.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 3 CONTENT: LOOKUP STATS & COMMISSION -->
-        <div class="aff-tab-pane" id="aff-tab-lookup">
-          <div class="aff-lookup-wrap">
-            <div class="aff-lookup-bar">
-              <div class="aff-lookup-input-wrap">
-                <i class="fa fa-search"></i>
-                <input type="text" id="aff-lookup-query" class="aff-lookup-input" placeholder="Nhập Số Điện Thoại hoặc Mã Tiếp Thị của bạn (VD: 0912345678 hoặc IVY-HOTEL)..." data-i18n-placeholder="aff_ph_lookup">
-              </div>
-              <button type="button" id="aff-lookup-btn" class="aff-lookup-submit">
-                <i class="fa fa-bar-chart"></i> <span data-i18n="aff_btn_lookup">Tra Cứu Ngay</span>
+        <!-- Center Form Box (Ảnh 2) -->
+        <div class="aff-form-wrapper">
+          <div class="aff-form-card">
+            <!-- Switcher: [ Đăng ký Affiliate ] | [ Đăng nhập ] -->
+            <div class="aff-auth-tabs">
+              <button type="button" class="aff-auth-tab-btn active" id="home-btn-tab-reg" onclick="switchHomeAuthTab('register')">
+                Đăng ký Affiliate
+              </button>
+              <button type="button" class="aff-auth-tab-btn" id="home-btn-tab-login" onclick="switchHomeAuthTab('login')">
+                Đăng nhập
               </button>
             </div>
 
-            <!-- Lookup Results Container -->
-            <div id="aff-lookup-result" class="aff-lookup-result" style="display:none;">
-              <div class="aff-partner-info-bar">
-                <div class="aff-pi-left">
-                  <span class="aff-pi-avatar"><i class="fa fa-user"></i></span>
-                  <div>
-                    <h4 class="aff-pi-name" id="aff-res-name">Nguyễn Văn Minh</h4>
-                    <span class="aff-pi-meta" id="aff-res-meta">Mã: <strong>IVY-MINH_TOUR</strong> • Loại: Hướng Dẫn Viên Du Lịch</span>
-                  </div>
-                </div>
-                <div class="aff-pi-badge" id="aff-res-status">
-                  <i class="fa fa-check-circle"></i> Đang Hoạt Động (Hoa Hồng: 20%)
-                </div>
-              </div>
+            <!-- Google Button: Tiếp tục với Google -->
+            <button type="button" class="aff-btn-google" onclick="handleHomeAffiliateGoogle()">
+              <svg class="aff-google-icon" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+              <span>Tiếp tục với Google</span>
+            </button>
 
-              <!-- Metric Cards -->
-              <div class="aff-stats-cards-grid">
-                <div class="aff-stat-card">
-                  <div class="aff-sc-num" id="aff-res-clicks">128</div>
-                  <div class="aff-sc-label"><i class="fa fa-mouse-pointer"></i> <span data-i18n="aff_res_lbl_clicks">Lượt Khách Xem Link</span></div>
-                </div>
-                <div class="aff-stat-card">
-                  <div class="aff-sc-num" id="aff-res-bookings" style="color:#25D366;">14</div>
-                  <div class="aff-sc-label"><i class="fa fa-calendar-check-o"></i> <span data-i18n="aff_res_lbl_bookings">Đơn Đặt Lịch Thành Công</span></div>
-                </div>
-                <div class="aff-stat-card">
-                  <div class="aff-sc-num" id="aff-res-revenue" style="color:#ECC876;">12.600.000đ</div>
-                  <div class="aff-sc-label"><i class="fa fa-line-chart"></i> <span data-i18n="aff_res_lbl_rev">Tổng Doanh Thu Ước Tính</span></div>
-                </div>
-                <div class="aff-stat-card aff-sc-highlight">
-                  <div class="aff-sc-num" id="aff-res-commission" style="color:#D4AF37;">2.520.000đ</div>
-                  <div class="aff-sc-label"><i class="fa fa-money"></i> <span data-i18n="aff_res_lbl_com">Hoa Hồng Tích Lũy (20%)</span></div>
-                </div>
-              </div>
-
-              <!-- Bank & Payout Status -->
-              <div class="aff-payout-box">
-                <div class="aff-payout-row">
-                  <div><strong>Tài khoản nhận thưởng:</strong> <span id="aff-res-bank">Vietcombank - 0011001234567 - NGUYEN VAN MINH</span></div>
-                  <div><strong>Kỳ kết toán tiếp theo:</strong> <span style="color:#25D366; font-weight:700;">Thứ 6 hàng tuần / Theo yêu cầu</span></div>
-                </div>
-                <div style="margin-top:12px; font-size:0.85rem; color:#A3B5AD;">
-                  <i class="fa fa-info-circle" style="color:#ECC876;"></i> Cần hỗ trợ đối soát hoặc rút hoa hồng sớm, vui lòng liên hệ quản lý đối tác qua Zalo/Hotline: <strong style="color:#ECC876;">098 9713660</strong>.
-                </div>
-              </div>
+            <!-- Divider: hoặc dùng Gmail -->
+            <div class="aff-divider">
+              <span>hoặc dùng Gmail</span>
             </div>
+
+            <!-- Form Đăng Ký (Ảnh 2) -->
+            <form id="home-aff-reg-form" onsubmit="handleHomeAffiliateRegister(event)">
+              <div class="aff-input-group">
+                <label class="aff-input-label">Họ và tên</label>
+                <input type="text" id="home-aff-name" class="aff-input-field" placeholder="Nguyễn Văn A" required>
+              </div>
+
+              <div class="aff-input-group">
+                <label class="aff-input-label">Số điện thoại</label>
+                <input type="tel" id="home-aff-phone" class="aff-input-field" placeholder="0814488686" required>
+              </div>
+
+              <div class="aff-input-group">
+                <label class="aff-input-label">
+                  Mã giới thiệu <span class="aff-hint-orange">(link của bạn: .../?ref=mã_này)</span>
+                </label>
+                <input type="text" id="home-aff-refcode" class="aff-input-field" placeholder="vd: tencuaban (để trống sẽ tự tạo)">
+              </div>
+
+              <div class="aff-input-group">
+                <label class="aff-input-label">
+                  Gmail <span class="aff-hint-orange">(bắt buộc @gmail.com)</span>
+                </label>
+                <input type="email" id="home-aff-email" class="aff-input-field" placeholder="you@gmail.com" required>
+              </div>
+
+              <div class="aff-input-group">
+                <label class="aff-input-label">Mật khẩu</label>
+                <input type="password" id="home-aff-pass" class="aff-input-field" placeholder="••••••" required minlength="6">
+              </div>
+
+              <button type="submit" class="aff-btn-submit">
+                Đăng ký Affiliate
+              </button>
+            </form>
+
+            <!-- Form Đăng Nhập -->
+            <form id="home-aff-login-form" style="display:none;" onsubmit="handleHomeAffiliateLogin(event)">
+              <div class="aff-input-group">
+                <label class="aff-input-label">Gmail (hoặc Số điện thoại)</label>
+                <input type="text" id="home-aff-login-account" class="aff-input-field" placeholder="you@gmail.com hoặc 0814488686" required>
+              </div>
+
+              <div class="aff-input-group">
+                <label class="aff-input-label">Mật khẩu</label>
+                <input type="password" id="home-aff-login-pass" class="aff-input-field" placeholder="••••••" required>
+              </div>
+
+              <button type="submit" class="aff-btn-submit">
+                Đăng nhập Dashboard Affiliate
+              </button>
+            </form>
           </div>
         </div>
       </div>
+
+      <!-- ===================================================================== -->
+      <!-- VIEW 2: TRANG DASHBOARD QUẢN LÝ AFFILIATE (CHUẨN 100% ẢNH 1)          -->
+      <!-- ===================================================================== -->
+      <div id="home-aff-view-dashboard" style="display:none;">
+        
+        <!-- Header (Ảnh 1: Dashboard của tôi | Hoa hồng 35% | email) -->
+        <div class="aff-dash-header">
+          <div class="aff-dash-header-info">
+            <h3 class="aff-dash-title">Dashboard của tôi</h3>
+            <div class="aff-dash-sub">
+              Hoa hồng 35% | <span id="home-dash-email-display">nguyenduong2018vn@gmail.com</span>
+            </div>
+          </div>
+          <div class="aff-dash-header-actions">
+            <a href="affiliate.html?view=dashboard" class="aff-btn-copy-ref" style="text-decoration:none;">
+              <i class="fa fa-expand"></i> Mở Toàn Màn Hình
+            </a>
+            <button type="button" class="aff-btn-home" onclick="copyHomeAffLink()">
+              <i class="fa fa-clone"></i> <span id="home-dash-copy-text">Sao chép Link</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Capsule Navigation Bar (Ảnh 1) -->
+        <nav class="aff-dash-capsule-nav">
+          <button type="button" class="aff-nav-pill active" onclick="switchHomeDashTab('overview', this)">
+            📊 Tổng quan
+          </button>
+          <button type="button" class="aff-nav-pill" onclick="switchHomeDashTab('tools', this)">
+            🧰 Công cụ bán
+          </button>
+          <button type="button" class="aff-nav-pill" onclick="switchHomeDashTab('ranking', this)">
+            🏆 Vinh danh
+          </button>
+          <button type="button" class="aff-nav-pill" onclick="switchHomeDashTab('network', this)">
+            👥 Mạng lưới
+          </button>
+          <button type="button" class="aff-nav-pill" onclick="switchHomeDashTab('partner', this)">
+            🤝 Đối tác
+          </button>
+          <button type="button" class="aff-nav-pill" onclick="switchHomeDashTab('payout', this)">
+            💰 Thanh toán
+          </button>
+        </nav>
+
+        <!-- 4 Stat Metric Cards (Ảnh 1) -->
+        <div class="aff-stats-row">
+          <!-- Card 1 -->
+          <div class="aff-stat-box">
+            <div class="aff-stat-top-label">TỔNG CLICKS</div>
+            <div class="aff-stat-big-val val-blue" id="home-stat-clicks">0</div>
+            <div class="aff-stat-sub-label">tháng này: 0</div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="aff-stat-box">
+            <div class="aff-stat-top-label">ĐƠN THÀNH CÔNG</div>
+            <div class="aff-stat-big-val val-blue" id="home-stat-orders">0</div>
+            <div class="aff-stat-sub-label">đang chờ: 0</div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="aff-stat-box">
+            <div class="aff-stat-top-label">CHỜ XÁC NHẬN (15 NGÀY)</div>
+            <div class="aff-stat-big-val val-orange" id="home-stat-pending">0đ</div>
+            <div class="aff-stat-sub-label">đang trong thời gian bảo đảm</div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="aff-stat-box">
+            <div class="aff-stat-top-label">ĐÃ NHẬN</div>
+            <div class="aff-stat-big-val val-green" id="home-stat-received">0đ</div>
+            <div class="aff-stat-sub-label">chưa có giao dịch</div>
+          </div>
+        </div>
+
+        <!-- Section: Hiệu quả hoạt động (Ảnh 1) -->
+        <div class="aff-performance-card">
+          <div class="aff-perf-header">
+            <h3 class="aff-perf-title">
+              <i class="fa fa-bar-chart"></i> <span>Hiệu quả hoạt động</span>
+            </h3>
+            <div class="aff-time-pills">
+              <button type="button" class="aff-time-pill active" onclick="filterHomePerf(7, this)">7 ngày</button>
+              <button type="button" class="aff-time-pill" onclick="filterHomePerf(30, this)">30 ngày</button>
+              <button type="button" class="aff-time-pill" onclick="filterHomePerf(60, this)">60 ngày</button>
+              <button type="button" class="aff-time-pill" onclick="filterHomePerf(90, this)">90 ngày</button>
+            </div>
+          </div>
+
+          <div class="aff-perf-sub">
+            <strong id="home-perf-clicks">0</strong> <span id="home-perf-label">clicks 7 ngày qua</span>
+          </div>
+
+          <div class="aff-chart-wrapper">
+            <svg class="aff-chart-svg" viewBox="0 0 800 160" preserveAspectRatio="none">
+              <line x1="0" y1="40" x2="800" y2="40" stroke="#F1F5F9" stroke-width="1"/>
+              <line x1="0" y1="80" x2="800" y2="80" stroke="#F1F5F9" stroke-width="1"/>
+              <line x1="0" y1="120" x2="800" y2="120" stroke="#F1F5F9" stroke-width="1"/>
+              <path d="M0,140 Q200,120 400,130 T800,140 L800,150 L0,150 Z" fill="rgba(240, 90, 40, 0.15)"/>
+              <path d="M0,140 Q200,120 400,130 T800,140" fill="none" stroke="#F05A28" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="100" cy="130" r="4" fill="#F05A28" stroke="#FFFFFF" stroke-width="2"/>
+              <circle cx="260" cy="115" r="4" fill="#F05A28" stroke="#FFFFFF" stroke-width="2"/>
+              <circle cx="480" cy="125" r="4" fill="#F05A28" stroke="#FFFFFF" stroke-width="2"/>
+              <circle cx="680" cy="135" r="4" fill="#F05A28" stroke="#FFFFFF" stroke-width="2"/>
+            </svg>
+            <div class="aff-chart-x-labels" id="home-chart-labels">
+              <span>Hôm nay</span>
+              <span>2 ngày trước</span>
+              <span>4 ngày trước</span>
+              <span>6 ngày trước</span>
+              <span>7 ngày trước</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -1699,7 +1696,7 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
       <div class="ms-drawer-footer">
         <div class="ms-drawer-quicklinks">
           <a href="#menu" class="ms-qlink" onclick="closeMobileServicesDrawer();"><i class="fa fa-book"></i> Menu Chi Tiết</a>
-          <a href="#affiliate" class="ms-qlink" onclick="closeMobileServicesDrawer();"><i class="fa fa-handshake-o"></i> Đối Tác Tiếp Thị</a>
+          <a href="affiliate.html" class="ms-qlink" style="color:#F05A28; font-weight:700;"><i class="fa fa-handshake-o"></i> Đối Tác Affiliate (35%)</a>
           <a href="tel:0989713660" class="ms-qlink" style="color:#25D366;"><i class="fa fa-phone"></i> 098 9713660</a>
         </div>
         

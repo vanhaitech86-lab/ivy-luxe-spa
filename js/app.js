@@ -5512,6 +5512,269 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // =========================================================================
+  // HOMEPAGE AFFILIATE HANDLERS (INDEX.HTML SECTION #AFFILIATE)
+  // =========================================================================
+  function getHomeAffActivePartner() {
+    let store = { partners: [] };
+    try {
+      const raw = localStorage.getItem('ivy_affiliates_data');
+      if (raw) store = JSON.parse(raw);
+    } catch (e) {}
+
+    let current = null;
+    try {
+      current = JSON.parse(localStorage.getItem('ivy_current_user'));
+    } catch (e) {}
+
+    if (current && current.email) {
+      const found = store.partners.find(p => p.email && p.email.toLowerCase() === current.email.toLowerCase());
+      if (found) return found;
+    }
+    return store.partners[0] || {
+      name: 'Nguyễn Dương',
+      email: 'nguyenduong2018vn@gmail.com',
+      code: 'nguyenduong',
+      clicks: 0,
+      ordersSuccess: 0,
+      ordersPending: 0,
+      pendingAmount: 0,
+      receivedAmount: 0
+    };
+  }
+
+  window.toggleHomeAffiliateView = function() {
+    const regView = document.getElementById('home-aff-view-register');
+    const dashView = document.getElementById('home-aff-view-dashboard');
+    const toggleText = document.getElementById('home-aff-toggle-text');
+    if (!regView || !dashView) return;
+
+    if (dashView.style.display === 'none') {
+      regView.style.display = 'none';
+      dashView.style.display = 'block';
+      if (toggleText) toggleText.textContent = 'Đăng Ký & Đăng Nhập';
+      renderHomeDashData();
+    } else {
+      regView.style.display = 'block';
+      dashView.style.display = 'none';
+      if (toggleText) toggleText.textContent = 'Xem Dashboard Quản Lý';
+    }
+  };
+
+  function renderHomeDashData() {
+    const partner = getHomeAffActivePartner();
+    const emailDisp = document.getElementById('home-dash-email-display');
+    const statClicks = document.getElementById('home-stat-clicks');
+    const statOrders = document.getElementById('home-stat-orders');
+    const statPending = document.getElementById('home-stat-pending');
+    const statReceived = document.getElementById('home-stat-received');
+    const perfClicks = document.getElementById('home-perf-clicks');
+
+    if (emailDisp) emailDisp.textContent = partner.email || 'nguyenduong2018vn@gmail.com';
+    if (statClicks) statClicks.textContent = partner.clicks || 0;
+    if (statOrders) statOrders.textContent = partner.ordersSuccess || 0;
+    if (statPending) statPending.textContent = (partner.pendingAmount || 0).toLocaleString('vi-VN') + 'đ';
+    if (statReceived) statReceived.textContent = (partner.receivedAmount || 0).toLocaleString('vi-VN') + 'đ';
+    if (perfClicks) perfClicks.textContent = partner.clicks || 0;
+  }
+
+  window.switchHomeAuthTab = function(type) {
+    const btnReg = document.getElementById('home-btn-tab-reg');
+    const btnLogin = document.getElementById('home-btn-tab-login');
+    const formReg = document.getElementById('home-aff-reg-form');
+    const formLogin = document.getElementById('home-aff-login-form');
+
+    if (type === 'register') {
+      if (btnReg) btnReg.classList.add('active');
+      if (btnLogin) btnLogin.classList.remove('active');
+      if (formReg) formReg.style.display = 'block';
+      if (formLogin) formLogin.style.display = 'none';
+    } else {
+      if (btnReg) btnReg.classList.remove('active');
+      if (btnLogin) btnLogin.classList.add('active');
+      if (formReg) formReg.style.display = 'none';
+      if (formLogin) formLogin.style.display = 'block';
+    }
+  };
+
+  window.handleHomeAffiliateGoogle = function() {
+    const email = prompt('Nhập địa chỉ Gmail của bạn để tiếp tục với Google:', 'nguyenduong2018vn@gmail.com');
+    if (!email) return;
+
+    let store = { partners: [] };
+    try {
+      const raw = localStorage.getItem('ivy_affiliates_data');
+      if (raw) store = JSON.parse(raw);
+    } catch (e) {}
+
+    let partner = store.partners.find(p => p.email && p.email.toLowerCase() === email.toLowerCase());
+    if (!partner) {
+      partner = {
+        name: email.split('@')[0],
+        phone: '0814488686',
+        code: email.split('@')[0],
+        email: email,
+        commissionRate: '35%',
+        clicks: 0,
+        ordersSuccess: 0,
+        ordersPending: 0,
+        pendingAmount: 0,
+        receivedAmount: 0
+      };
+      store.partners.push(partner);
+      localStorage.setItem('ivy_affiliates_data', JSON.stringify(store));
+    }
+
+    try {
+      localStorage.setItem('ivy_current_user', JSON.stringify({
+        name: partner.name,
+        email: partner.email,
+        role: 'partner'
+      }));
+    } catch (e) {}
+
+    alert('Đăng nhập Google thành công! Đang chuyển sang Dashboard Affiliate...');
+    window.toggleHomeAffiliateView();
+  };
+
+  window.handleHomeAffiliateRegister = function(e) {
+    e.preventDefault();
+    const name = document.getElementById('home-aff-name')?.value.trim();
+    const phone = document.getElementById('home-aff-phone')?.value.trim();
+    let code = document.getElementById('home-aff-refcode')?.value.trim();
+    const email = document.getElementById('home-aff-email')?.value.trim();
+    const pass = document.getElementById('home-aff-pass')?.value.trim();
+
+    if (!email.toLowerCase().endsWith('@gmail.com')) {
+      alert('Vui lòng nhập đúng tài khoản Gmail (bắt buộc đuôi @gmail.com)!');
+      return;
+    }
+
+    if (!code) code = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '');
+
+    let store = { partners: [] };
+    try {
+      const raw = localStorage.getItem('ivy_affiliates_data');
+      if (raw) store = JSON.parse(raw);
+    } catch (err) {}
+
+    let partner = store.partners.find(p => p.email && p.email.toLowerCase() === email.toLowerCase());
+    if (partner) {
+      partner.name = name;
+      partner.phone = phone;
+      partner.code = code;
+      partner.pass = pass;
+    } else {
+      partner = {
+        name,
+        phone,
+        code,
+        email,
+        pass,
+        commissionRate: '35%',
+        clicks: 0,
+        ordersSuccess: 0,
+        ordersPending: 0,
+        pendingAmount: 0,
+        receivedAmount: 0
+      };
+      store.partners.push(partner);
+    }
+    localStorage.setItem('ivy_affiliates_data', JSON.stringify(store));
+
+    try {
+      localStorage.setItem('ivy_current_user', JSON.stringify({
+        name: partner.name,
+        email: partner.email,
+        role: 'partner'
+      }));
+    } catch (err) {}
+
+    alert('🎉 Đăng ký làm Đối Tác Tiếp Thị thành công với mức hoa hồng 35%!\nĐang mở Dashboard cho bạn...');
+    window.toggleHomeAffiliateView();
+  };
+
+  window.handleHomeAffiliateLogin = function(e) {
+    e.preventDefault();
+    const account = document.getElementById('home-aff-login-account')?.value.trim().toLowerCase();
+    
+    let store = { partners: [] };
+    try {
+      const raw = localStorage.getItem('ivy_affiliates_data');
+      if (raw) store = JSON.parse(raw);
+    } catch (err) {}
+
+    const partner = store.partners.find(p => 
+      (p.email && p.email.toLowerCase() === account) || 
+      (p.phone && p.phone === account)
+    ) || store.partners[0];
+
+    try {
+      localStorage.setItem('ivy_current_user', JSON.stringify({
+        name: partner.name,
+        email: partner.email,
+        role: 'partner'
+      }));
+    } catch (err) {}
+
+    alert('Đăng nhập Dashboard Affiliate thành công!');
+    window.toggleHomeAffiliateView();
+  };
+
+  window.copyHomeAffLink = function() {
+    const partner = getHomeAffActivePartner();
+    const baseUrl = window.location.origin;
+    const link = baseUrl + '/?ref=' + encodeURIComponent(partner.code || 'nguyenduong');
+    navigator.clipboard.writeText(link).then(() => {
+      const copyText = document.getElementById('home-dash-copy-text');
+      if (copyText) {
+        copyText.textContent = 'Đã sao chép! ✓';
+        setTimeout(() => { copyText.textContent = 'Sao chép Link'; }, 2000);
+      }
+    }).catch(() => {
+      prompt('Sao chép link tiếp thị:', link);
+    });
+  };
+
+  window.switchHomeDashTab = function(tab, btn) {
+    // If not overview, redirect to full page affiliate.html with active tab
+    if (tab === 'overview') {
+      document.querySelectorAll('#home-aff-view-dashboard .aff-nav-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    } else {
+      window.location.href = `affiliate.html?view=dashboard&tab=${tab}`;
+    }
+  };
+
+  window.filterHomePerf = function(days, btn) {
+    document.querySelectorAll('#home-aff-view-dashboard .aff-time-pill').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const partner = getHomeAffActivePartner();
+    const countEl = document.getElementById('home-perf-clicks');
+    const labelEl = document.getElementById('home-perf-label');
+    const labelsRow = document.getElementById('home-chart-labels');
+
+    let mult = 1;
+    if (days === 30) mult = 4;
+    if (days === 60) mult = 8;
+    if (days === 90) mult = 12;
+
+    if (countEl) countEl.textContent = (partner.clicks || 0) * mult;
+    if (labelEl) labelEl.textContent = `clicks ${days} ngày qua`;
+
+    if (labelsRow) {
+      if (days === 7) {
+        labelsRow.innerHTML = '<span>Hôm nay</span><span>2 ngày trước</span><span>4 ngày trước</span><span>6 ngày trước</span><span>7 ngày trước</span>';
+      } else if (days === 30) {
+        labelsRow.innerHTML = '<span>Tuần này</span><span>Tuần 2</span><span>Tuần 3</span><span>Tuần 4</span><span>30 ngày trước</span>';
+      } else if (days === 60) {
+        labelsRow.innerHTML = '<span>Tháng này</span><span>Tháng trước</span><span>60 ngày trước</span>';
+      } else {
+        labelsRow.innerHTML = '<span>Tháng này</span><span>Tháng 2</span><span>Tháng 3</span><span>90 ngày trước</span>';
+      }
+    }
+  };
 
   // Set default minimum date in hero datepicker
   const heroDate = document.getElementById('hero-select-date');

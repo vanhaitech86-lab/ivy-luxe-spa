@@ -6239,3 +6239,887 @@ select.aff-input option {
   border-color: var(--color-gold);
 }
 
+/* ========================================================================= */
+/* AFFILIATE SYSTEM - THEO CHUẨN 100% GIAO DIỆN ẢNH THAM CHIẾU (IMAGE 1 & 2)  */
+/* ========================================================================= */
+
+:root {
+  --aff-orange: #F05A28;
+  --aff-orange-hover: #E04815;
+  --aff-orange-light: #FFF1EB;
+  --aff-blue-dark: #1A3B8B;
+  --aff-navy-title: #1E293B;
+  --aff-gray-text: #64748B;
+  --aff-gray-sub: #94A3B8;
+  --aff-border: #E2E8F0;
+  --aff-bg-card: #FFFFFF;
+  --aff-bg-page: #F8FAFC;
+  --aff-green: #10B981;
+}
+
+/* Page wrapper for affiliate.html and standalone views */
+.aff-page-body {
+  background-color: var(--aff-bg-page);
+  color: #1E293B;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.aff-topbar {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--aff-border);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.aff-topbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aff-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.aff-brand-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.aff-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.aff-brand-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: 0.5px;
+}
+
+.aff-brand-sub {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--aff-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.aff-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.aff-btn-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background: #F1F5F9;
+  color: #334155;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.aff-btn-home:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.aff-mode-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: var(--aff-orange);
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aff-mode-switch-btn:hover {
+  background: var(--aff-orange-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(240, 90, 40, 0.3);
+}
+
+/* Container */
+.aff-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 36px 20px 80px;
+}
+
+/* ========================================================================= */
+/* VIEW 1: TRANG / MỤC ĐĂNG KÝ AFFILIATE (IMAGE 2)                           */
+/* ========================================================================= */
+
+/* 3 Benefit Cards Grid */
+.aff-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.aff-benefit-card {
+  background: var(--aff-bg-card);
+  border: 1px solid var(--aff-border);
+  border-radius: 18px;
+  padding: 24px 22px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.aff-benefit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.aff-benefit-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--aff-orange-light);
+  color: var(--aff-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+}
+
+.aff-benefit-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--aff-navy-title);
+  margin: 0 0 8px 0;
+}
+
+.aff-benefit-desc {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--aff-gray-text);
+  margin: 0;
+}
+
+/* Center Form Card */
+.aff-form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.aff-form-card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--aff-bg-card);
+  border: 1px solid var(--aff-border);
+  border-radius: 24px;
+  padding: 32px 30px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+/* Tab Switcher: [ Đăng ký Affiliate ] | [ Đăng nhập ] */
+.aff-auth-tabs {
+  display: flex;
+  background: #F1F5F9;
+  border-radius: 9999px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.aff-auth-tab-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 9999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #64748B;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.aff-auth-tab-btn.active {
+  background: var(--aff-orange);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(240, 90, 40, 0.35);
+}
+
+/* Google Sign-in button */
+.aff-btn-google {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  border: 1px solid var(--aff-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.aff-btn-google:hover {
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+}
+
+.aff-google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Or divider */
+.aff-divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: var(--aff-gray-sub);
+  font-size: 0.85rem;
+}
+
+.aff-divider::before,
+.aff-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.aff-divider span {
+  padding: 0 12px;
+}
+
+/* Input groups */
+.aff-input-group {
+  margin-bottom: 16px;
+}
+
+.aff-input-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 6px;
+}
+
+.aff-input-label .aff-hint-orange {
+  color: var(--aff-orange);
+  font-weight: 500;
+  font-size: 0.82rem;
+}
+
+.aff-input-field {
+  width: 100%;
+  padding: 12px 14px;
+  background: #FFFFFF;
+  border: 1px solid var(--aff-border);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #0F172A;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.aff-input-field:focus {
+  border-color: var(--aff-orange);
+  box-shadow: 0 0 0 3px rgba(240, 90, 40, 0.12);
+}
+
+.aff-input-field::placeholder {
+  color: #94A3B8;
+}
+
+/* Primary Submit Button */
+.aff-btn-submit {
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  background: var(--aff-orange);
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(240, 90, 40, 0.3);
+}
+
+.aff-btn-submit:hover {
+  background: var(--aff-orange-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(240, 90, 40, 0.4);
+}
+
+/* Floating Cookie Notice at Bottom-Left */
+.aff-cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  max-width: 440px;
+  background: #FFFFFF;
+  border: 1px solid var(--aff-border);
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.12);
+  z-index: 9990;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  animation: affSlideUp 0.3s ease;
+}
+
+@keyframes affSlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.aff-cookie-icon {
+  font-size: 1.4rem;
+  color: #F05A28;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.aff-cookie-text {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+.aff-cookie-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aff-btn-cookie-deny {
+  padding: 6px 14px;
+  border: 1px solid var(--aff-border);
+  border-radius: 9999px;
+  background: #FFFFFF;
+  color: #475569;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aff-btn-cookie-deny:hover {
+  background: #F1F5F9;
+}
+
+.aff-btn-cookie-accept {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 9999px;
+  background: var(--aff-orange);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aff-btn-cookie-accept:hover {
+  background: var(--aff-orange-hover);
+}
+
+/* ========================================================================= */
+/* VIEW 2: TRANG DASHBOARD QUẢN LÝ AFFILIATE (IMAGE 1)                       */
+/* ========================================================================= */
+
+/* Header section with orange border box highlight */
+.aff-dash-header {
+  border: 2px solid #F05A28;
+  border-radius: 14px;
+  padding: 16px 20px;
+  background: #FFFFFF;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.aff-dash-header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.aff-dash-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--aff-blue-dark);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.aff-dash-sub {
+  font-size: 0.95rem;
+  color: var(--aff-gray-text);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.aff-dash-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aff-btn-copy-ref {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background: var(--aff-orange-light);
+  color: var(--aff-orange);
+  border: 1px solid rgba(240, 90, 40, 0.2);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aff-btn-copy-ref:hover {
+  background: var(--aff-orange);
+  color: #FFFFFF;
+}
+
+/* Capsule Navigation Bar (Tổng quan, Công cụ bán, Vinh danh, Mạng lưới, Đối tác, Thanh toán) */
+.aff-dash-capsule-nav {
+  display: flex;
+  align-items: center;
+  background: #F1F5F9;
+  border-radius: 9999px;
+  padding: 6px;
+  margin-bottom: 28px;
+  overflow-x: auto;
+  gap: 4px;
+  scrollbar-width: none;
+}
+
+.aff-dash-capsule-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.aff-nav-pill {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  color: #475569;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.aff-nav-pill.active {
+  background: var(--aff-orange);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(240, 90, 40, 0.3);
+}
+
+.aff-nav-pill:not(.active):hover {
+  background: #E2E8F0;
+  color: #1E293B;
+}
+
+/* 4 Metric Stat Cards */
+.aff-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.aff-stat-box {
+  background: var(--aff-bg-card);
+  border: 1px solid var(--aff-border);
+  border-radius: 18px;
+  padding: 22px 20px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+  transition: transform 0.2s ease;
+}
+
+.aff-stat-box:hover {
+  transform: translateY(-2px);
+}
+
+.aff-stat-top-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--aff-gray-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.aff-stat-big-val {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.aff-stat-big-val.val-blue {
+  color: var(--aff-blue-dark);
+}
+
+.aff-stat-big-val.val-orange {
+  color: var(--aff-orange);
+}
+
+.aff-stat-big-val.val-green {
+  color: var(--aff-green);
+}
+
+.aff-stat-sub-label {
+  font-size: 0.82rem;
+  color: var(--aff-gray-sub);
+}
+
+/* Section "Hiệu quả hoạt động" */
+.aff-performance-card {
+  background: var(--aff-bg-card);
+  border: 1px solid var(--aff-border);
+  border-radius: 20px;
+  padding: 26px 28px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
+  margin-bottom: 28px;
+}
+
+.aff-perf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.aff-perf-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--aff-navy-title);
+  margin: 0;
+}
+
+.aff-perf-title i {
+  color: var(--aff-orange);
+}
+
+.aff-time-pills {
+  display: flex;
+  background: #F1F5F9;
+  border-radius: 9999px;
+  padding: 3px;
+  gap: 3px;
+}
+
+.aff-time-pill {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  color: #64748B;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aff-time-pill.active {
+  background: var(--aff-orange);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(240, 90, 40, 0.3);
+}
+
+.aff-perf-sub {
+  font-size: 1.05rem;
+  color: var(--aff-gray-text);
+  margin-bottom: 24px;
+}
+
+.aff-perf-sub strong {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--aff-blue-dark);
+}
+
+/* Dynamic Performance SVG Graph / Chart */
+.aff-chart-wrapper {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  background: #FAFCFE;
+  border: 1px dashed #E2E8F0;
+  border-radius: 14px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.aff-chart-svg {
+  width: 100%;
+  height: 160px;
+  overflow: visible;
+}
+
+.aff-chart-x-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #94A3B8;
+  font-weight: 600;
+  padding: 0 10px;
+}
+
+/* Tab Panes */
+.aff-dash-tab-pane {
+  display: none;
+  animation: affFadeIn 0.25s ease;
+}
+
+.aff-dash-tab-pane.active {
+  display: block;
+}
+
+@keyframes affFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tab 2: Sales Tools (Công cụ bán) */
+.aff-tools-card {
+  background: #FFFFFF;
+  border: 1px solid var(--aff-border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
+}
+
+.aff-tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.aff-tool-box {
+  background: #F8FAFC;
+  border: 1px solid var(--aff-border);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.aff-tool-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--aff-navy-title);
+  margin-top: 0;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aff-tool-title i {
+  color: var(--aff-orange);
+}
+
+.aff-link-copy-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.aff-link-display-input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--aff-border);
+  background: #FFFFFF;
+  font-size: 0.9rem;
+  color: #0F172A;
+  font-family: monospace;
+}
+
+.aff-qr-center-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 14px;
+}
+
+.aff-qr-preview-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  border: 1px solid var(--aff-border);
+  background: #FFFFFF;
+  padding: 6px;
+}
+
+/* Tab 3: Vinh danh (Leaderboard) */
+.aff-rank-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.aff-rank-table th {
+  background: #F1F5F9;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #475569;
+  border-bottom: 1px solid var(--aff-border);
+}
+
+.aff-rank-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #F1F5F9;
+  font-size: 0.92rem;
+  color: #1E293B;
+}
+
+.aff-rank-medal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.aff-rank-1 { background: #FEF3C7; color: #D97706; }
+.aff-rank-2 { background: #E2E8F0; color: #475569; }
+.aff-rank-3 { background: #FFEDD5; color: #C2410C; }
+
+/* Tab 5: Đối tác (Partner Info & Policy) */
+.aff-policy-box {
+  background: #FFFFFF;
+  border: 1px solid var(--aff-border);
+  border-radius: 20px;
+  padding: 28px;
+  line-height: 1.6;
+}
+
+.aff-policy-item {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.aff-policy-item i {
+  color: var(--aff-orange);
+  font-size: 1.25rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* Tab 6: Thanh toán (Payout & Banking) */
+.aff-bank-card {
+  background: #FFFFFF;
+  border: 1px solid var(--aff-border);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .aff-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .aff-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .aff-tools-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .aff-dash-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .aff-dash-title {
+    font-size: 1.5rem;
+  }
+
+  .aff-stat-big-val {
+    font-size: 1.8rem;
+  }
+
+  .aff-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .aff-cookie-banner {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    max-width: calc(100vw - 24px);
+  }
+}
+
+
