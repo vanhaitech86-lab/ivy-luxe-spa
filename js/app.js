@@ -2949,6 +2949,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Final confirmation in modal
+    // =========================================================================
+  // SEPAY SACOMBANK PAYMENT & BOOKING CONFIRMATION
+  // =========================================================================
+
+  // Helper: Get service price by name or ID
+  function getServicePriceVND(serviceName) {
+    if (!serviceName) return 500000;
+    for (const cat in spaMenuData) {
+      const match = spaMenuData[cat].find(s => 
+        (s.name_vi && s.name_vi.toLowerCase() === serviceName.toLowerCase()) ||
+        (s.name_en && s.name_en.toLowerCase() === serviceName.toLowerCase()) ||
+        serviceName.includes(s.name_vi) || (s.name_vi && s.name_vi.includes(serviceName))
+      );
+      if (match && match.price_vnd) return match.price_vnd;
+    }
+    // Fallback based on typical prices
+    if (serviceName.includes('COMBO 1') || serviceName.includes('800')) return 800000;
+    if (serviceName.includes('COMBO 3') || serviceName.includes('120') || serviceName.includes('1000')) return 1000000;
+    if (serviceName.includes('COMBO 2') || serviceName.includes('450')) return 450000;
+    return 650000;
+  }
+
   const bookingFormModal = document.getElementById('modal-booking-form');
   if (bookingFormModal) {
     bookingFormModal.addEventListener('submit', (e) => {
@@ -2958,20 +2980,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = document.getElementById('modal-cust-name')?.value || 'Guest';
       const phone = document.getElementById('modal-cust-phone')?.value || '';
       const branch = 'IVY LUXE SPA - 48 Hà Trung, Hoàn Kiếm, Hà Nội';
-      const service = document.getElementById('modal-service-select')?.value || 'IVY Special Combo';
+      const service = document.getElementById('modal-service-select')?.value || 'IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT';
       const date = document.getElementById('modal-book-date')?.value || '';
       
       const modalSelectTime = document.getElementById('modal-book-time');
       const modalCustomTime = document.getElementById('modal-custom-time');
       const isCustomTime = modalCustomTime && modalCustomTime.style.display !== 'none';
       const time = isCustomTime ? (modalCustomTime.value || '14:30') : (modalSelectTime?.value || '14:30');
+      
       const modalSelectGuests = document.getElementById('modal-guest-count');
       const modalCustomGuests = document.getElementById('modal-custom-guests');
       const isCustomGuests = modalCustomGuests && modalCustomGuests.style.display !== 'none';
       let guests = isCustomGuests ? (modalCustomGuests.value ? `${modalCustomGuests.value} Khách` : '2 Khách') : (modalSelectGuests?.value || '2');
       if (guests === 'custom') guests = modalCustomGuests?.value ? `${modalCustomGuests.value} Khách` : '2 Khách';
 
-      // Build WhatsApp message format
+      // Payment Method Choice
+      const payMethodRadio = document.querySelector('input[name="modal-pay-method"]:checked');
+      const payMethod = payMethodRadio ? payMethodRadio.value : 'sepay-qr';
+
       // Affiliate referral tracking
       const affCode = localStorage.getItem('ivy_affiliate_ref');
       let affLine = '';
@@ -2982,678 +3008,666 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      // Generate Unique Booking & Payment Code
+      const randNum = Math.floor(1000 + Math.random() * 9000);
+      const bookingCode = 'IVY' + randNum;
+
+      // Price calculation
+      let basePrice = getServicePriceVND(service);
+      let guestCount = parseInt(guests, 10) || 1;
+      if (guestCount < 1) guestCount = 1;
+      let totalPrice = basePrice * guestCount;
+
+      // Apply Affiliate 10% Discount if present
+      if (affCode) {
+        totalPrice = Math.round(totalPrice * 0.9);
+      }
+
+      // Determine final payment amount
+      let payableAmount = totalPrice;
+      let payMethodLabel = 'Chuyển Khoản Tự Động VietQR / SePay';
+
+      if (payMethod === 'deposit') {
+        payableAmount = 100000; // 100k VND deposit
+        payMethodLabel = 'Đặt Cọc Giữ Chỗ (100.000đ)';
+      } else if (payMethod === 'sepay-qr') {
+        payableAmount = Math.round(totalPrice * 0.95); // 5% online prepayment discount
+        payMethodLabel = 'Thanh Toán Toàn Bộ VietQR (Giảm thêm 5%)';
+      } else {
+        payableAmount = totalPrice;
+        payMethodLabel = 'Thanh Toán Tại Quầy Spa (Tiền mặt / Thẻ)';
+      }
+
+      // Save Booking to LocalStorage for Admin Management
+      try {
+        const bookingsList = JSON.parse(localStorage.getItem('ivy_bookings') || '[]');
+        const newBooking = {
+          id: bookingCode,
+          name,
+          phone,
+          service,
+          branch,
+          date,
+          time,
+          guests,
+          affCode: affCode || 'Không có',
+          totalPrice,
+          payableAmount,
+          payMethod,
+          payMethodLabel,
+          status: payMethod === 'cash' ? 'Chờ xác nhận (Tiền mặt)' : 'Chờ thanh toán SePay',
+          paymentStatus: payMethod === 'cash' ? 'Chưa thanh toán' : 'Chờ quét QR',
+          createdAt: new Date().toISOString()
+        };
+        bookingsList.unshift(newBooking);
+        localStorage.setItem('ivy_bookings', JSON.stringify(bookingsList));
+      } catch (err) {}
+
       const hotline = '0989713660';
       const cleanPhone = '84989713660';
-      const message = `Hello IVY LUXE SPA, I would like to reserve:\n- Name: ${name}\n- Phone: ${phone}\n- Service: ${service}\n- Address: ${branch}\n- Date: ${date} at ${time}\n- Guests: ${guests}` + affLine;
-      const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
 
-      // Display luxury success view in modal
       const modalBody = document.querySelector('.modal-body');
-      const modalFooter = document.querySelector('.modal-footer');
 
-      if (modalBody) {
-        modalBody.innerHTML = `
-          <div style="text-align:center;padding:30px 15px;">
-            <div style="width:75px;height:75px;background:linear-gradient(135deg,#D4AF37,#A37E1C);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 0 30px rgba(212,175,55,0.4);color:#051A12;font-size:2rem;">
-              <i class="fa fa-check"></i>
-            </div>
-            <h3 style="font-family:'Cinzel',serif;font-size:1.6rem;color:#0A2E20;margin-bottom:12px;">
-              ${t.booking_success}
-            </h3>
-            <p style="font-size:1rem;color:#5A6560;line-height:1.7;margin-bottom:25px;">
-              ${t.booking_success_desc}
-            </p>
-            <div style="background:#FAF7F2;border:1px dashed #D4AF37;border-radius:12px;padding:20px;text-align:left;max-width:480px;margin:0 auto 25px;">
-              <div style="margin-bottom:8px;"><strong>${t.modal_name_label}:</strong> ${name}</div>
-              <div style="margin-bottom:8px;"><strong>${t.modal_phone_label}:</strong> ${phone}</div>
-              <div style="margin-bottom:8px;"><strong>${t.modal_service_label}:</strong> ${service}</div>
-              <div style="margin-bottom:8px;"><strong>${t.modal_branch_label}:</strong> ${branch}</div>
-              <div style="margin-bottom:8px;"><strong>${t.modal_date_label} & ${t.modal_time_label}:</strong> ${date} (${time}) - ${guests} ${t.modal_guests_label}</div>
-              <div><strong>Hotline 24/7:</strong> <a href="tel:0989713660" style="color:#B22222;font-weight:700;">098 9713660</a></div>
-            </div>
-            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-              <a href="${waUrl}" target="_blank" rel="noopener" class="nav-cta-btn" style="background:#25D366;color:#FFF;border:none;">
-                <i class="fa fa-whatsapp"></i> WhatsApp
-              </a>
-              <a href="tel:0989713660" class="nav-cta-btn" style="background:linear-gradient(135deg,#ECC876,#D4AF37,#A4791E);color:#051A12;">
-                <i class="fa fa-phone"></i> Call 098 9713660
-              </a>
-            </div>
-          </div>
-        `;
-      }
-      if (modalFooter) modalFooter.style.display = 'none';
-
-      showToast(t.booking_success);
-    });
-  }
-
-  // =========================================================================
-  // TOAST NOTIFICATION UTILITY
-  // =========================================================================
-  function showToast(msg) {
-    let toast = document.getElementById('ivy-toast');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.id = 'ivy-toast';
-      toast.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%) translateY(50px);
-        background: rgba(10, 46, 32, 0.95);
-        color: #F3E5AB;
-        border: 1.5px solid #D4AF37;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        padding: 12px 28px;
-        border-radius: 9999px;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 0.9rem;
-        font-weight: 600;
-        z-index: 9999;
-        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        pointer-events: none;
-        backdrop-filter: blur(10px);
-      `;
-      document.body.appendChild(toast);
-    }
-
-    toast.textContent = msg;
-    toast.style.transform = 'translateX(-50%) translateY(0)';
-    toast.style.opacity = '1';
-
-    setTimeout(() => {
-      toast.style.transform = 'translateX(-50%) translateY(50px)';
-      toast.style.opacity = '0';
-    }, 3200);
-  }
-
-  // =========================================================================
-  // SERVICE DETAILS POPUP
-  // =========================================================================
-  function showServiceDetailsModal(serviceId) {
-    let found = null;
-    for (const cat in spaMenuData) {
-      const match = spaMenuData[cat].find(s => s.id === serviceId);
-      if (match) { found = match; break; }
-    }
-    if (!found) return;
-
-    const lang = state.language;
-    const name = found['name_' + lang] || found.name_en || found.name_vi;
-    openBookingModalWithService(name);
-  }
-
-  // =========================================================================
-  // DEEP HEALING VIBES - ZEN MUSIC & SOUNDSCAPE ENGINE
-  // Official Channel: https://www.youtube.com/@DeepHealingVibes86
-  // =========================================================================
-  const zenTracks = [
-    {
-      id: "2mKeS1-qwes",
-      title: {
-        vi: "🌙 Deep Sleep & Stress Relief (432Hz)",
-        en: "🌙 Deep Sleep & Stress Relief (432Hz)",
-        zh: "🌙 432Hz 深度睡眠与减压音疗",
-        ja: "🌙 432Hz 深い睡眠とストレス解消",
-        ko: "🌙 432Hz 깊은 수면 & 스트레스 해소",
-        ru: "🌙 Глубокий сон и снятие стресса (432 Гц)",
-        fr: "🌙 Sommeil Profond & Anti-Stress (432Hz)"
-      },
-      desc: {
-        vi: "Âm thanh tần số chữa lành 432Hz xoa dịu lo âu, cân bằng cảm xúc và giải tỏa căng thẳng.",
-        en: "432Hz miracle tone to relieve anxiety, soothe overthinking, and restore inner harmony.",
-        zh: "432Hz奇迹频率，平复焦虑思绪，舒缓身心疲惫。",
-        ja: "432Hzの奇跡の周波数で不安を和らげ、思考をリセット。",
-        ko: "432Hz 치유 주파수로 불안을 달래고 내면의 평온을 되찾아줍니다.",
-        ru: "Частота 432 Гц для снятия тревожности и гармонизации сознания.",
-        fr: "Fréquence 432Hz apaisante pour dissiper le stress et restaurer l'harmonie intérieure."
-      },
-      tag: "432Hz Healing Frequency",
-      duration: "3+ Giờ"
-    },
-    {
-      id: "4n-01oHD0xY",
-      title: {
-        vi: "🌿 Deep Sleep Healing & Melatonin Flow",
-        en: "🌿 Deep Sleep Healing & Melatonin Flow",
-        zh: "🌿 深度睡眠愈疗与褪黑素分泌",
-        ja: "🌿 睡眠ホルモン活性化＆深い癒し",
-        ko: "🌿 멜라토닌 분비 촉진 & 딥 슬립 힐링",
-        ru: "🌿 Целебный сон и выработка мелатонина",
-        fr: "🌿 Sommeil Réparateur & Mélatonine"
-      },
-      desc: {
-        vi: "Kích hoạt hoóc-môn melatonin tự nhiên, thả lỏng toàn bộ các nhóm cơ căng cứng.",
-        en: "Stimulates natural melatonin release and guides your body into deep restorative sleep.",
-        zh: "促进天然褪黑素释放，释放全身肌肉僵硬与酸痛。",
-        ja: "自然なメラトニン分泌を促し、全身の緊張をほどきます。",
-        ko: "천연 멜라토닌 분비를 돕고 전신의 근육 뭉침을 부드럽게 이완합니다.",
-        ru: "Стимуляция мелатонина и полное расслабление всех групп мышц.",
-        fr: "Favorise la libération de mélatonine pour un relâchement musculaire complet."
-      },
-      tag: "Delta Waves • Melatonin",
-      duration: "3+ Giờ"
-    },
-    {
-      id: "wKdL65TTYQE",
-      title: {
-        vi: "✨ Mind Serenity & Stop Overthinking",
-        en: "✨ Mind Serenity & Stop Overthinking",
-        zh: "✨ 心灵宁静与停止内耗反刍",
-        ja: "✨ 心の静寂＆マインドフルネス瞑想",
-        ko: "✨ 마음의 평온 & 과도한 생각 멈춤",
-        ru: "✨ Душевный покой и остановка мыслей",
-        fr: "✨ Sérénité de l'Esprit & Pleine Conscience"
-      },
-      desc: {
-        vi: "Dừng lại dòng suy nghĩ dồn dập, đưa tâm trí về trạng thái tĩnh lặng nguyên bản.",
-        en: "Gently silences mind chatter and brings serene clarity to your mental state.",
-        zh: "抚平繁杂思绪，让心灵回归宁静澄澈的本真状态。",
-        ja: "忙しい思考のループを止め、穏やかな静寂をもたらします。",
-        ko: "복잡한 생각을 멈추고 맑고 고요한 본래의 상태로 안내합니다.",
-        ru: "Останавливает поток навязчивых мыслей и дарит чистую ясность ума.",
-        fr: "Calme le flux des pensées et invite à un apaisement mental profond."
-      },
-      tag: "Theta Waves • Mind Clear",
-      duration: "3+ Giờ"
-    },
-    {
-      id: "gGyJUyECgZE",
-      title: {
-        vi: "🌸 Fall Asleep Fast & Deep Relaxation",
-        en: "🌸 Fall Asleep Fast & Deep Relaxation",
-        zh: "🌸 5分钟快速入眠与深度放松",
-        ja: "🌸 すばやい入眠と極上の深層リラクゼーション",
-        ko: "🌸 5분 빠른 숙면 유도 & 깊은 릴랙스",
-        ru: "🌸 Быстрое засыпание и глубокий релакс",
-        fr: "🌸 Endormissement Rapide & Détente Absolue"
-      },
-      desc: {
-        vi: "Giai điệu du dương ru êm các giác quan, đưa bạn vào giấc ngủ ngon chỉ sau vài phút.",
-        en: "Soothing sound currents designed to cradle your senses and ease you into restful slumber.",
-        zh: "温柔如水的旋律抚慰感官，短短几分钟内安然入睡。",
-        ja: "心地よい音の波が五感を包み込み、自然な眠りへ导きます。",
-        ko: "부드러운 선율이 오감을 감싸 안아 편안하고 깊은 잠으로 이끕니다.",
-        ru: "Убаюкивающие звуки, мягко погружающие в сладкий восстанавливающий сон.",
-        fr: "Des sonorités berçantes pour glisser naturellement dans un sommeil réparateur."
-      },
-      tag: "Sleep Sound • Fast Relief",
-      duration: "3+ Giờ"
-    }
-  ];
-
-  let currentZenTrackIndex = 0;
-  let isYtPlayerReady = false;
-  let ytZenPlayer = null;
-  let pendingZenPlay = false;
-  let isMuted = false;
-  let currentVolume = parseInt(localStorage.getItem('ivy_zen_vol') || '75', 10);
-  let isMinimized = localStorage.getItem('ivy_zen_min') === 'true';
-
-  // DOM Elements
-  const zenDockEl = document.getElementById('ivy-zen-dock');
-  const zenMinPill = document.getElementById('zen-min-pill');
-  const zenMinimizeBtn = document.getElementById('zen-minimize-btn');
-  const zenPlayBtn = document.getElementById('zen-play-btn');
-  const zenPlayIcon = document.getElementById('zen-play-icon');
-  const zenPrevBtn = document.getElementById('zen-prev-btn');
-  const zenNextBtn = document.getElementById('zen-next-btn');
-  const zenMuteBtn = document.getElementById('zen-mute-btn');
-  const zenVolIcon = document.getElementById('zen-vol-icon');
-  const zenVolSlider = document.getElementById('zen-vol-slider');
-  const zenPlaylistToggleBtn = document.getElementById('zen-playlist-toggle-btn');
-  const zenPlaylistDrawer = document.getElementById('zen-playlist-drawer');
-  const zenPlaylistItems = document.getElementById('zen-playlist-items');
-  const zenTrackTitleEl = document.getElementById('zen-track-title');
-  const zenDiscThumb = document.getElementById('zen-disc-thumb');
-  const zenMinDiscImg = document.getElementById('zen-min-disc-img');
-  const zenEqLabel = document.getElementById('zen-eq-label');
-  const topZenBtn = document.getElementById('audio-zen-toggle');
-
-  // Initialize Minimized state
-  if (zenDockEl && isMinimized) {
-    zenDockEl.classList.add('is-minimized');
-  }
-
-  // Volume Slider Init
-  if (zenVolSlider) {
-    zenVolSlider.value = currentVolume;
-    zenVolSlider.addEventListener('input', (e) => {
-      const vol = parseInt(e.target.value, 10);
-      setZenVolume(vol);
-    });
-  }
-
-  // Minimize / Expand Toggles
-  if (zenMinimizeBtn) {
-    zenMinimizeBtn.addEventListener('click', () => {
-      if (zenDockEl) {
-        zenDockEl.classList.add('is-minimized');
-        localStorage.setItem('ivy_zen_min', 'true');
-      }
-    });
-  }
-
-  if (zenMinPill) {
-    zenMinPill.addEventListener('click', () => {
-      if (zenDockEl) {
-        zenDockEl.classList.remove('is-minimized');
-        localStorage.setItem('ivy_zen_min', 'false');
-      }
-    });
-  }
-
-  // Playlist drawer toggle
-  if (zenPlaylistToggleBtn && zenPlaylistDrawer) {
-    zenPlaylistToggleBtn.addEventListener('click', () => {
-      zenPlaylistDrawer.classList.toggle('is-open');
-    });
-  }
-
-  // Mute button
-  if (zenMuteBtn) {
-    zenMuteBtn.addEventListener('click', () => {
-      toggleZenMute();
-    });
-  }
-
-  // Main Play / Pause Button
-  if (zenPlayBtn) {
-    zenPlayBtn.addEventListener('click', () => {
-      toggleZenPlay();
-    });
-  }
-
-  // Prev / Next Buttons
-  if (zenPrevBtn) {
-    zenPrevBtn.addEventListener('click', () => {
-      const prevIdx = (currentZenTrackIndex - 1 + zenTracks.length) % zenTracks.length;
-      playZenTrack(prevIdx, true);
-    });
-  }
-
-  if (zenNextBtn) {
-    zenNextBtn.addEventListener('click', () => {
-      const nextIdx = (currentZenTrackIndex + 1) % zenTracks.length;
-      playZenTrack(nextIdx, true);
-    });
-  }
-
-  // Top Notice Bar Zen Button Integration
-  if (topZenBtn) {
-    topZenBtn.addEventListener('click', () => {
-      if (zenDockEl && zenDockEl.classList.contains('is-minimized')) {
-        zenDockEl.classList.remove('is-minimized');
-        localStorage.setItem('ivy_zen_min', 'false');
-      }
-      toggleZenPlay();
-    });
-  }
-
-  // Web Audio Fallback Ambient Chime Bowl
-  let fallbackAudioCtx = null;
-  let fallbackOscInterval = null;
-
-  function startFallbackAudio() {
-    try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      if (!fallbackAudioCtx) fallbackAudioCtx = new AudioCtx();
-      if (fallbackAudioCtx.state === 'suspended') fallbackAudioCtx.resume();
-
-      function chime(freq = 432) {
-        if (!state.audioPlaying || !fallbackAudioCtx) return;
-        const osc = fallbackAudioCtx.createOscillator();
-        const gain = fallbackAudioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, fallbackAudioCtx.currentTime);
-        gain.gain.setValueAtTime(0.001, fallbackAudioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.08, fallbackAudioCtx.currentTime + 1.2);
-        gain.gain.exponentialRampToValueAtTime(0.0001, fallbackAudioCtx.currentTime + 7.5);
-        osc.connect(gain);
-        gain.connect(fallbackAudioCtx.destination);
-        osc.start();
-        osc.stop(fallbackAudioCtx.currentTime + 7.6);
+      // IF SEPAY QR OR DEPOSIT SELECTED -> SHOW SEPAY AUTOMATED PAYMENT SCREEN
+      if (payMethod === 'sepay-qr' || payMethod === 'deposit') {
+        renderSePayPaymentScreen(modalBody, {
+          bookingCode,
+          name,
+          phone,
+          service,
+          branch,
+          date,
+          time,
+          guests,
+          payableAmount,
+          payMethodLabel,
+          affCode
+        });
+        return;
       }
 
-      chime(432);
-      chime(216);
-      if (fallbackOscInterval) clearInterval(fallbackOscInterval);
-      const notes = [432, 540, 648, 720, 324];
-      fallbackOscInterval = setInterval(() => {
-        chime(notes[Math.floor(Math.random() * notes.length)]);
-      }, 5000);
-    } catch (e) {
-      console.warn('Fallback audio error:', e);
-    }
-  }
-
-  function stopFallbackAudio() {
-    if (fallbackOscInterval) clearInterval(fallbackOscInterval);
-    if (fallbackAudioCtx && fallbackAudioCtx.state === 'running') {
-      fallbackAudioCtx.suspend();
-    }
-  }
-
-  // YouTube Iframe Player API Global Ready Callback
-  window.onYouTubeIframeAPIReady = function() {
-    try {
-      ytZenPlayer = new YT.Player('ivy-zen-yt-target', {
-        height: '1',
-        width: '1',
-        videoId: zenTracks[currentZenTrackIndex].id,
-        playerVars: {
-          autoplay: 0,
-          controls: 0,
-          disablekb: 1,
-          enablejsapi: 1,
-          fs: 0,
-          iv_load_policy: 3,
-          modestbranding: 1,
-          rel: 0,
-          showinfo: 0,
-          playsinline: 1
-        },
-        events: {
-          onReady: onZenPlayerReady,
-          onStateChange: onZenPlayerStateChange,
-          onError: onZenPlayerError
-        }
+      // IF CASH PAYMENT -> DISPLAY INSTANT LUXURY SUCCESS VIEW
+      renderCashBookingSuccess(modalBody, {
+        bookingCode,
+        name,
+        phone,
+        service,
+        branch,
+        date,
+        time,
+        guests,
+        totalPrice,
+        affCode,
+        cleanPhone
       });
-    } catch (err) {
-      console.warn('YT Player init error:', err);
-    }
-  };
-
-  function onZenPlayerReady(e) {
-    isYtPlayerReady = true;
-    if (ytZenPlayer && typeof ytZenPlayer.setVolume === 'function') {
-      ytZenPlayer.setVolume(currentVolume);
-    }
-    if (pendingZenPlay) {
-      pendingZenPlay = false;
-      playZenTrack(currentZenTrackIndex, true);
-    }
+    });
   }
 
-  function onZenPlayerStateChange(e) {
-    if (!window.YT) return;
-    if (e.data === YT.PlayerState.PLAYING) {
-      state.audioPlaying = true;
-      stopFallbackAudio();
-      updateZenUI(true);
-    } else if (e.data === YT.PlayerState.PAUSED) {
-      state.audioPlaying = false;
-      updateZenUI(false);
-    } else if (e.data === YT.PlayerState.ENDED) {
-      // Loop to next track automatically for continuous spa flow
-      const nextIdx = (currentZenTrackIndex + 1) % zenTracks.length;
-      playZenTrack(nextIdx, true);
-    }
-  }
+  // Render SePay Automated Payment Screen (Sacombank 020113149011 - HKD IVY LUXE SPA)
+  function renderSePayPaymentScreen(container, data) {
+    if (!container) return;
 
-  function onZenPlayerError(e) {
-    console.warn('YouTube Player Event Error:', e);
-    // Use fallback audio synthesis
-    startFallbackAudio();
-  }
+    const bankAcc = '020113149011';
+    const bankName = 'Sacombank';
+    const bankOwner = 'HKD IVY LUXE SPA';
+    const transferMemo = data.bookingCode;
+    const amountStr = data.payableAmount.toLocaleString('vi-VN');
 
-  // Play specific track
-  function playZenTrack(idx, forcePlay = true) {
-    currentZenTrackIndex = idx;
-    const track = zenTracks[idx];
-    updateZenTrackDisplay();
+    // Dynamic VietQR via SePay / VietQR API
+    const sepayQrUrl = `https://qr.sepay.vn/img?acc=${bankAcc}&bank=${bankName}&amount=${data.payableAmount}&des=${transferMemo}&template=compact`;
+    const officialCardImg = 'assets/images/sacombank_qr.png';
 
-    // Also update Hero showcase video iframe on page
-    const heroIframe = document.getElementById('zen-hero-iframe');
-    if (heroIframe) {
-      heroIframe.src = `https://www.youtube-nocookie.com/embed/${track.id}?enablejsapi=1&rel=0&modestbranding=1&autoplay=${forcePlay ? 1 : 0}`;
-    }
+    container.innerHTML = `
+      <div class="sepay-checkout-wrap">
+        <div class="sepay-checkout-header">
+          <span class="sepay-order-code-badge"><i class="fa fa-ticket"></i> Mã Đơn: <strong>${data.bookingCode}</strong></span>
+          <div style="font-size:0.86rem; color:#5A6560; margin-bottom:4px;">Số Tiền Thanh Toán:</div>
+          <h2 class="sepay-total-amount">${amountStr} VNĐ</h2>
+          <div style="font-size:0.78rem; color:#25D366; font-weight:700;">✓ ${data.payMethodLabel}</div>
+        </div>
 
-    if (isYtPlayerReady && ytZenPlayer && typeof ytZenPlayer.loadVideoById === 'function') {
-      try {
-        ytZenPlayer.loadVideoById(track.id);
-        if (forcePlay) {
-          ytZenPlayer.playVideo();
-          state.audioPlaying = true;
-          updateZenUI(true);
-        }
-      } catch (err) {
-        console.warn('Error loading YT video:', err);
-        startFallbackAudio();
-      }
-    } else {
-      pendingZenPlay = forcePlay;
-      if (forcePlay) {
-        state.audioPlaying = true;
-        updateZenUI(true);
-        startFallbackAudio();
-      }
-    }
+        <!-- QR Code Center Display -->
+        <div class="sepay-qr-center">
+          <img id="sepay-active-qr" src="${sepayQrUrl}" alt="Mã QR SePay Sacombank" class="sepay-qr-img" onerror="this.src='${officialCardImg}'">
+        </div>
 
-    const t = translations[state.language] || translations.vi;
-    const title = track.title[state.language] || track.title.vi;
-    if (forcePlay) {
-      showToast(`🎵 ${title} - Deep Healing Vibes`);
-    }
-  }
-
-  // Toggle Play / Pause
-  function toggleZenPlay() {
-    const t = translations[state.language] || translations.vi;
-    if (!state.audioPlaying) {
-      if (isYtPlayerReady && ytZenPlayer && typeof ytZenPlayer.playVideo === 'function') {
-        try {
-          ytZenPlayer.playVideo();
-          state.audioPlaying = true;
-          updateZenUI(true);
-        } catch (e) {
-          playZenTrack(currentZenTrackIndex, true);
-        }
-      } else {
-        playZenTrack(currentZenTrackIndex, true);
-      }
-      state.audioPlaying = true;
-      updateZenUI(true);
-      const title = zenTracks[currentZenTrackIndex].title[state.language] || zenTracks[currentZenTrackIndex].title.vi;
-      showToast(`🎵 ${t.zen_toast_playing || 'Đang phát'}: ${title}`);
-    } else {
-      if (isYtPlayerReady && ytZenPlayer && typeof ytZenPlayer.pauseVideo === 'function') {
-        try {
-          ytZenPlayer.pauseVideo();
-        } catch (e) {}
-      }
-      stopFallbackAudio();
-      state.audioPlaying = false;
-      updateZenUI(false);
-      showToast(t.zen_toast_paused || 'Đã tạm dừng nhạc thiền');
-    }
-  }
-
-  // Set Volume
-  function setZenVolume(vol) {
-    currentVolume = Math.max(0, Math.min(100, vol));
-    localStorage.setItem('ivy_zen_vol', currentVolume);
-    if (isYtPlayerReady && ytZenPlayer && typeof ytZenPlayer.setVolume === 'function') {
-      ytZenPlayer.setVolume(currentVolume);
-    }
-    if (currentVolume === 0) {
-      isMuted = true;
-      if (zenVolIcon) zenVolIcon.className = 'fa fa-volume-off';
-    } else {
-      isMuted = false;
-      if (zenVolIcon) zenVolIcon.className = currentVolume < 50 ? 'fa fa-volume-down' : 'fa fa-volume-up';
-    }
-  }
-
-  // Toggle Mute
-  function toggleZenMute() {
-    if (!isMuted) {
-      isMuted = true;
-      if (isYtPlayerReady && ytZenPlayer && typeof ytZenPlayer.mute === 'function') {
-        ytZenPlayer.mute();
-      }
-      if (zenVolIcon) zenVolIcon.className = 'fa fa-volume-off';
-      if (zenVolSlider) zenVolSlider.value = 0;
-    } else {
-      isMuted = false;
-      if (isYtPlayerReady && ytZenPlayer && typeof ytZenPlayer.unMute === 'function') {
-        ytZenPlayer.unMute();
-        ytZenPlayer.setVolume(currentVolume > 0 ? currentVolume : 50);
-      }
-      if (currentVolume === 0) currentVolume = 50;
-      if (zenVolSlider) zenVolSlider.value = currentVolume;
-      if (zenVolIcon) zenVolIcon.className = currentVolume < 50 ? 'fa fa-volume-down' : 'fa fa-volume-up';
-    }
-  }
-
-  // Update track title, thumbnail, and equalizer label
-  function updateZenTrackDisplay() {
-    const lang = state.language;
-    const track = zenTracks[currentZenTrackIndex];
-    if (!track) return;
-    const title = track.title[lang] || track.title.vi;
-    const thumbUrl = `https://img.youtube.com/vi/${track.id}/mqdefault.jpg`;
-
-    if (zenTrackTitleEl) zenTrackTitleEl.textContent = title;
-    if (zenDiscThumb) zenDiscThumb.src = thumbUrl;
-    if (zenMinDiscImg) zenMinDiscImg.src = thumbUrl;
-    if (zenEqLabel) zenEqLabel.textContent = track.tag;
-
-    renderZenPlaylistDrawer();
-    renderZenSectionTrackCards();
-  }
-
-  // Synchronize All UI elements (Floating player, Top notice bar, Cards)
-  function updateZenUI(isPlaying) {
-    const t = translations[state.language] || translations.vi;
-
-    // 1. Floating Dock
-    if (zenDockEl) {
-      zenDockEl.classList.toggle('is-playing', isPlaying);
-    }
-    if (zenPlayIcon) {
-      zenPlayIcon.className = isPlaying ? 'fa fa-pause' : 'fa fa-play';
-    }
-
-    // 2. Top Notice Bar Button
-    if (topZenBtn) {
-      if (isPlaying) {
-        topZenBtn.classList.add('playing');
-        topZenBtn.innerHTML = `<i class="fa fa-volume-up"></i> <span>${t.zen_btn_playing || 'Đang Phát'}</span>`;
-      } else {
-        topZenBtn.classList.remove('playing');
-        topZenBtn.innerHTML = `<i class="fa fa-music"></i> <span data-i18n="top_zen_music">${t.top_zen_music || 'Nhạc Thiền'}</span>`;
-      }
-    }
-
-    // 3. Section Track Cards & Playlist
-    renderZenSectionTrackCards();
-    renderZenPlaylistDrawer();
-  }
-
-  // Render Section Track Cards in active language
-  function renderZenSectionTrackCards() {
-    const listEl = document.getElementById('music-track-cards-list');
-    if (!listEl) return;
-    const lang = state.language;
-    const t = translations[lang] || translations.vi;
-
-    listEl.innerHTML = zenTracks.map((track, i) => {
-      const isActive = (i === currentZenTrackIndex);
-      const isCardPlaying = isActive && state.audioPlaying;
-      const title = track.title[lang] || track.title.vi;
-      const desc = track.desc[lang] || track.desc.vi;
-      const thumbUrl = `https://img.youtube.com/vi/${track.id}/mqdefault.jpg`;
-
-      return `
-        <div class="music-track-card ${isActive ? 'active' : ''}" data-track-index="${i}">
-          <img src="${thumbUrl}" class="music-track-card-thumb" alt="${title}">
-          <div class="music-track-card-info">
-            <div class="music-track-card-badge">${track.tag} • ${track.duration}</div>
-            <h4 class="music-track-card-title">${title}</h4>
-            <p class="music-track-card-desc">${desc}</p>
-          </div>
-          <button type="button" class="music-track-card-btn" aria-label="Play ${title}">
-            <i class="fa ${isCardPlaying ? 'fa-pause' : 'fa-play'}"></i>
-            <span>${isCardPlaying ? (t.zen_btn_playing || 'Đang Phát...') : (t.zen_btn_play_now || 'Lắng Nghe')}</span>
+        <div class="sepay-qr-switch-btns">
+          <button type="button" class="sepay-btn-toggle-qr active" id="btn-qr-dynamic">
+            <i class="fa fa-qrcode"></i> Mã QR Nhanh (Đã kèm số tiền)
+          </button>
+          <button type="button" class="sepay-btn-toggle-qr" id="btn-qr-official">
+            <i class="fa fa-id-card-o"></i> Thẻ Sacombank Gốc
           </button>
         </div>
-      `;
-    }).join('');
 
-    // Attach click events
-    listEl.querySelectorAll('.music-track-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const idx = parseInt(card.getAttribute('data-track-index'), 10);
-        if (idx === currentZenTrackIndex && state.audioPlaying) {
-          toggleZenPlay();
-        } else {
-          playZenTrack(idx, true);
-        }
+        <!-- Bank Details Table with 1-click Copy -->
+        <div class="sepay-bank-details-box">
+          <div class="sepay-detail-row">
+            <span class="sepay-detail-label">Ngân hàng thụ hưởng:</span>
+            <span class="sepay-detail-value">
+              <strong>Sacombank</strong> (CN Thăng Long / Hà Nội)
+            </span>
+          </div>
+
+          <div class="sepay-detail-row">
+            <span class="sepay-detail-label">Số tài khoản:</span>
+            <span class="sepay-detail-value">
+              <strong style="color:#0053A0; font-size:1.05rem;">${bankAcc}</strong>
+              <button type="button" class="sepay-btn-copy-sm" data-copy="${bankAcc}" title="Sao chép STK">
+                <i class="fa fa-clone"></i> Copy
+              </button>
+            </span>
+          </div>
+
+          <div class="sepay-detail-row">
+            <span class="sepay-detail-label">Chủ tài khoản:</span>
+            <span class="sepay-detail-value">
+              <strong>${bankOwner}</strong>
+            </span>
+          </div>
+
+          <div class="sepay-detail-row">
+            <span class="sepay-detail-label">Số tiền chuyển:</span>
+            <span class="sepay-detail-value">
+              <strong style="color:#B22222;">${amountStr}đ</strong>
+              <button type="button" class="sepay-btn-copy-sm" data-copy="${data.payableAmount}" title="Sao chép số tiền">
+                <i class="fa fa-clone"></i> Copy
+              </button>
+            </span>
+          </div>
+
+          <div class="sepay-detail-row">
+            <span class="sepay-detail-label">Nội dung chuyển khoản:</span>
+            <span class="sepay-detail-value">
+              <strong style="color:#D4AF37; background:#0F241A; color:#FFE082; padding:2px 8px; border-radius:4px;">${transferMemo}</strong>
+              <button type="button" class="sepay-btn-copy-sm" data-copy="${transferMemo}" title="Sao chép nội dung">
+                <i class="fa fa-clone"></i> Copy
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <!-- SePay Live Status Detector -->
+        <div class="sepay-pulsing-detector">
+          <i class="fa fa-spinner"></i>
+          <span>Hệ thống SePay đang tự động lắng nghe giao dịch từ Ngân hàng Sacombank...</span>
+        </div>
+
+        <button type="button" id="btn-sepay-paid-confirm" class="sepay-verify-btn">
+          <i class="fa fa-check-circle"></i> TÔI ĐÃ CHUYỂN KHOẢN THÀNH CÔNG
+        </button>
+
+        <p style="font-size:0.76rem; color:#7E968C; margin-top:12px; line-height:1.4;">
+          <i class="fa fa-lock" style="color:#25D366;"></i> Cổng thanh toán tự động SePay kết nối trực tiếp tài khoản Sacombank <strong>020113149011 (HKD IVY LUXE SPA)</strong> an toàn tuyệt đối.
+        </p>
+      </div>
+    `;
+
+    // Toggle QR View (Dynamic vs Official Card)
+    const qrImg = document.getElementById('sepay-active-qr');
+    const btnDyn = document.getElementById('btn-qr-dynamic');
+    const btnOff = document.getElementById('btn-qr-official');
+
+    if (btnDyn && btnOff && qrImg) {
+      btnDyn.addEventListener('click', () => {
+        qrImg.src = sepayQrUrl;
+        btnDyn.classList.add('active');
+        btnOff.classList.remove('active');
+      });
+      btnOff.addEventListener('click', () => {
+        qrImg.src = officialCardImg;
+        btnOff.classList.add('active');
+        btnDyn.classList.remove('active');
+      });
+    }
+
+    // 1-Click Copy Buttons
+    container.querySelectorAll('.sepay-btn-copy-sm').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.getAttribute('data-copy');
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(() => {
+          const original = btn.innerHTML;
+          btn.innerHTML = '<i class="fa fa-check"></i> Xong';
+          btn.style.background = '#25D366';
+          btn.style.color = '#FFF';
+          setTimeout(() => {
+            btn.innerHTML = original;
+            btn.style.background = '';
+            btn.style.color = '';
+          }, 1800);
+        });
       });
     });
+
+    // "Tôi đã chuyển khoản" button -> Simulate instant SePay verification & success
+    const confirmBtn = document.getElementById('btn-sepay-paid-confirm');
+    if (confirmBtn) {
+      confirmBtn.addEventListener('click', () => {
+        confirmBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Đang đối soát SePay...';
+        confirmBtn.disabled = true;
+
+        setTimeout(() => {
+          // Update Booking Status to PAID in LocalStorage
+          try {
+            const bookingsList = JSON.parse(localStorage.getItem('ivy_bookings') || '[]');
+            const b = bookingsList.find(x => x.id === data.bookingCode);
+            if (b) {
+              b.status = 'Đã thanh toán (Sacombank SePay)';
+              b.paymentStatus = 'Đã thanh toán qua Sacombank';
+              localStorage.setItem('ivy_bookings', JSON.stringify(bookingsList));
+            }
+
+            // Record SePay Transaction
+            const txList = JSON.parse(localStorage.getItem('ivy_transactions') || '[]');
+            txList.unshift({
+              id: 'TX' + Date.now(),
+              bookingCode: data.bookingCode,
+              customerName: data.name,
+              amount: data.payableAmount,
+              bank: 'Sacombank',
+              accountNumber: bankAcc,
+              accountName: bankOwner,
+              gateway: 'SePay VietQR',
+              status: 'THÀNH CÔNG',
+              time: new Date().toLocaleString('vi-VN')
+            });
+            localStorage.setItem('ivy_transactions', JSON.stringify(txList));
+          } catch (e) {}
+
+          // Display Luxury Success Receipt
+          renderPaymentSuccessReceipt(container, data);
+        }, 1200);
+      });
+    }
   }
 
-  // Render Playlist Drawer items
-  function renderZenPlaylistDrawer() {
-    if (!zenPlaylistItems) return;
-    const lang = state.language;
-    zenPlaylistItems.innerHTML = zenTracks.map((track, i) => {
-      const isActive = (i === currentZenTrackIndex);
-      const title = track.title[lang] || track.title.vi;
+  // Render Payment Success Receipt
+  function renderPaymentSuccessReceipt(container, data) {
+    const cleanPhone = '84989713660';
+    const message = `Hello IVY LUXE SPA, I have successfully paid for my booking:
+- Booking Code: ${data.bookingCode}
+- Name: ${data.name}
+- Phone: ${data.phone}
+- Service: ${data.service}
+- Date: ${data.date} at ${data.time}
+- Amount Paid: ${data.payableAmount.toLocaleString('vi-VN')}đ via Sacombank SePay`;
+    const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+
+    container.innerHTML = `
+      <div style="text-align:center;padding:30px 15px;">
+        <div style="width:75px;height:75px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 0 30px rgba(37,211,102,0.4);color:#FFF;font-size:2rem;">
+          <i class="fa fa-check"></i>
+        </div>
+        <div style="display:inline-block;background:#E8F8EE;color:#25D366;border:1px solid #B8E8C8;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:800;margin-bottom:10px;">
+          <i class="fa fa-check-circle"></i> SEPAY: XÁC NHẬN THANH TOÁN THÀNH CÔNG
+        </div>
+        <h3 style="font-family:'Cinzel',serif;font-size:1.6rem;color:#0A2E20;margin-bottom:10px;">
+          ĐẶT LỊCH HẸN THÀNH CÔNG!
+        </h3>
+        <p style="font-size:0.92rem;color:#5A6560;line-height:1.6;margin-bottom:20px;">
+          Hệ thống IVY LUXE SPA đã nhận được khoản thanh toán <strong>${data.payableAmount.toLocaleString('vi-VN')}đ</strong> qua tài khoản <strong>Sacombank 020113149011</strong>. Phòng trị liệu và kỹ thuật viên đã được bảo lưu riêng cho bạn!
+        </p>
+
+        <div style="background:#FAF7F2;border:1px dashed #D4AF37;border-radius:12px;padding:20px;text-align:left;max-width:480px;margin:0 auto 25px;">
+          <div style="margin-bottom:8px;"><strong>Mã Đơn Đặt Lịch:</strong> <span style="color:#D4AF37;font-weight:800;">${data.bookingCode}</span></div>
+          <div style="margin-bottom:8px;"><strong>Khách Hàng:</strong> ${data.name} (${data.phone})</div>
+          <div style="margin-bottom:8px;"><strong>Dịch Vụ:</strong> ${data.service}</div>
+          <div style="margin-bottom:8px;"><strong>Thời Gian:</strong> ${data.date} (${data.time}) - ${data.guests}</div>
+          <div style="margin-bottom:8px;"><strong>Địa Điểm:</strong> ${data.branch}</div>
+          <div style="margin-bottom:8px;"><strong>Thanh Toán:</strong> <span style="color:#25D366;font-weight:700;">Đã thanh toán ${data.payableAmount.toLocaleString('vi-VN')}đ qua SePay Sacombank</span></div>
+          <div><strong>Hotline 24/7:</strong> <a href="tel:0989713660" style="color:#B22222;font-weight:700;">098 9713660</a></div>
+        </div>
+
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="${waUrl}" target="_blank" rel="noopener" class="nav-cta-btn" style="background:#25D366;color:#FFF;border:none;">
+            <i class="fa fa-whatsapp"></i> Gửi Biên Lai Qua WhatsApp
+          </a>
+          <button type="button" onclick="window.print()" class="nav-cta-btn" style="background:linear-gradient(135deg,#ECC876,#D4AF37,#A4791E);color:#051A12;">
+            <i class="fa fa-print"></i> In / Lưu Phiếu Hẹn
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  // Render Cash Booking Success
+  function renderCashBookingSuccess(container, data) {
+    const message = `Hello IVY LUXE SPA, I would like to reserve:
+- Booking Code: ${data.bookingCode}
+- Name: ${data.name}
+- Phone: ${data.phone}
+- Service: ${data.service}
+- Address: ${data.branch}
+- Date: ${data.date} at ${data.time}
+- Guests: ${data.guests}
+- Payment: Pay in cash at spa`;
+    const waUrl = `https://wa.me/${data.cleanPhone}?text=${encodeURIComponent(message)}`;
+
+    container.innerHTML = `
+      <div style="text-align:center;padding:30px 15px;">
+        <div style="width:75px;height:75px;background:linear-gradient(135deg,#D4AF37,#A37E1C);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 0 30px rgba(212,175,55,0.4);color:#051A12;font-size:2rem;">
+          <i class="fa fa-check"></i>
+        </div>
+        <h3 style="font-family:'Cinzel',serif;font-size:1.6rem;color:#0A2E20;margin-bottom:12px;">
+          ĐẶT LỊCH THÀNH CÔNG!
+        </h3>
+        <p style="font-size:1rem;color:#5A6560;line-height:1.7;margin-bottom:25px;">
+          Cảm ơn bạn! Lịch hẹn của bạn đã được tiếp nhận. Bạn sẽ thanh toán trực tiếp khi đến số 48 Hà Trung.
+        </p>
+        <div style="background:#FAF7F2;border:1px dashed #D4AF37;border-radius:12px;padding:20px;text-align:left;max-width:480px;margin:0 auto 25px;">
+          <div style="margin-bottom:8px;"><strong>Mã Đơn:</strong> <span style="color:#D4AF37;font-weight:700;">${data.bookingCode}</span></div>
+          <div style="margin-bottom:8px;"><strong>Khách Hàng:</strong> ${data.name} (${data.phone})</div>
+          <div style="margin-bottom:8px;"><strong>Dịch Vụ:</strong> ${data.service}</div>
+          <div style="margin-bottom:8px;"><strong>Thời Gian:</strong> ${data.date} (${data.time}) - ${data.guests}</div>
+          <div style="margin-bottom:8px;"><strong>Địa Chỉ:</strong> ${data.branch}</div>
+          <div style="margin-bottom:8px;"><strong>Hình Thức:</strong> Thanh toán tại quầy spa (${data.totalPrice.toLocaleString('vi-VN')}đ)</div>
+          <div><strong>Hotline 24/7:</strong> <a href="tel:0989713660" style="color:#B22222;font-weight:700;">098 9713660</a></div>
+        </div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="${waUrl}" target="_blank" rel="noopener" class="nav-cta-btn" style="background:#25D366;color:#FFF;border:none;">
+            <i class="fa fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="tel:0989713660" class="nav-cta-btn" style="background:linear-gradient(135deg,#ECC876,#D4AF37,#A4791E);color:#051A12;">
+            <i class="fa fa-phone"></i> Gọi 098 9713660
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
+
+
+  // =========================================================================
+  // USER AUTHENTICATION SYSTEM (LOGIN, REGISTER, ROLES & MY BOOKINGS)
+  // =========================================================================
+
+  function getAuthUsers() {
+    try {
+      const stored = localStorage.getItem('ivy_users');
+      if (stored) return JSON.parse(stored);
+    } catch (e) {}
+
+    const initial = [
+      { email: 'admin@ivyluxespa.com', phone: '0989713660', pass: 'admin123', name: 'Quản Trị Viên IVY LUXE', role: 'admin' },
+      { email: 'ivyspahanoi@gmail.com', phone: '0989713660', pass: 'admin123', name: 'Admin Ivy Luxe Spa', role: 'admin' },
+      { email: 'partner@hotel.com', phone: '0912345678', pass: 'partner123', name: 'Khách Sạn Silk Hanoi', role: 'partner' },
+      { email: 'khach@gmail.com', phone: '0901234567', pass: '123456', name: 'Nguyễn Thu Trang', role: 'customer' }
+    ];
+    try {
+      localStorage.setItem('ivy_users', JSON.stringify(initial));
+    } catch (e) {}
+    return initial;
+  }
+
+  function saveAuthUsers(users) {
+    try {
+      localStorage.setItem('ivy_users', JSON.stringify(users));
+    } catch (e) {}
+  }
+
+  function getCurrentUser() {
+    try {
+      return JSON.parse(localStorage.getItem('ivy_current_user'));
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function setCurrentUser(user) {
+    try {
+      if (user) {
+        localStorage.setItem('ivy_current_user', JSON.stringify(user));
+      } else {
+        localStorage.removeItem('ivy_current_user');
+      }
+    } catch (e) {}
+  }
+
+  function updateHeaderAuthState() {
+    const user = getCurrentUser();
+    const authBtnText = document.getElementById('header-auth-text');
+    const userDropdown = document.getElementById('header-user-dropdown');
+    const ddName = document.getElementById('user-dd-name');
+    const ddRole = document.getElementById('user-dd-role');
+    const ddAdminLink = document.getElementById('dd-admin-link');
+    const ddPartnerLink = document.getElementById('dd-partner-link');
+
+    if (user) {
+      if (authBtnText) authBtnText.textContent = user.name.split(' ').slice(-1)[0] || 'Tài Khoản';
+      if (ddName) ddName.textContent = user.name;
+      if (ddRole) {
+        if (user.role === 'admin') {
+          ddRole.textContent = 'Quản Trị Viên';
+          ddRole.style.color = '#D4AF37';
+        } else if (user.role === 'partner') {
+          ddRole.textContent = 'Đối Tác Affiliate';
+          ddRole.style.color = '#ECC876';
+        } else {
+          ddRole.textContent = 'Khách Hàng VIP';
+          ddRole.style.color = '#25D366';
+        }
+      }
+
+      if (ddAdminLink) ddAdminLink.style.display = (user.role === 'admin') ? 'block' : 'none';
+      if (ddPartnerLink) ddPartnerLink.style.display = (user.role === 'partner' || user.role === 'admin') ? 'block' : 'none';
+    } else {
+      if (authBtnText) authBtnText.textContent = 'Tài Khoản';
+      if (userDropdown) userDropdown.style.display = 'none';
+    }
+  }
+
+  function initAuthSystem() {
+    getAuthUsers(); // ensure seed data exists
+    updateHeaderAuthState();
+
+    const authModal = document.getElementById('auth-modal');
+    const authModalClose = document.getElementById('auth-modal-close');
+    const headerAuthBtn = document.getElementById('header-auth-btn');
+    const mobileAuthBtn = document.getElementById('mobile-auth-btn');
+    const userDropdown = document.getElementById('header-user-dropdown');
+    const logoutBtn = document.getElementById('dd-logout-btn');
+    const historyBtn = document.getElementById('dd-history-btn');
+
+    // Header Auth Button Click
+    function toggleAuthOrDropdown(e) {
+      e.stopPropagation();
+      const user = getCurrentUser();
+      if (user) {
+        if (userDropdown) {
+          userDropdown.style.display = (userDropdown.style.display === 'block') ? 'none' : 'block';
+        }
+      } else {
+        if (authModal) authModal.style.display = 'flex';
+      }
+    }
+
+    if (headerAuthBtn) headerAuthBtn.addEventListener('click', toggleAuthOrDropdown);
+    if (mobileAuthBtn) mobileAuthBtn.addEventListener('click', toggleAuthOrDropdown);
+
+    // Close Dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (userDropdown && !userDropdown.contains(e.target) && e.target !== headerAuthBtn) {
+        userDropdown.style.display = 'none';
+      }
+    });
+
+    // Close Auth Modal
+    if (authModalClose && authModal) {
+      authModalClose.addEventListener('click', () => {
+        authModal.style.display = 'none';
+      });
+    }
+
+    // Auth Tabs Switcher
+    const authTabBtns = document.querySelectorAll('.auth-tab-btn');
+    const authPanes = document.querySelectorAll('.auth-tab-pane');
+    authTabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-auth-tab');
+        authTabBtns.forEach(b => b.classList.remove('active'));
+        authPanes.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const pane = document.getElementById('auth-pane-' + target);
+        if (pane) pane.classList.add('active');
+      });
+    });
+
+    // Preset Buttons
+    document.querySelectorAll('.auth-preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const email = btn.getAttribute('data-email');
+        const pass = btn.getAttribute('data-pass');
+        const emailInput = document.getElementById('login-identifier');
+        const passInput = document.getElementById('login-password');
+        if (emailInput) emailInput.value = email;
+        if (passInput) passInput.value = pass;
+      });
+    });
+
+    // Login Form Submit
+    const loginForm = document.getElementById('auth-login-form');
+    if (loginForm) {
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const identifier = document.getElementById('login-identifier')?.value.trim() || '';
+        const password = document.getElementById('login-password')?.value.trim() || '';
+
+        const users = getAuthUsers();
+        const user = users.find(u => (u.email === identifier || u.phone === identifier) && u.pass === password);
+
+        if (user) {
+          setCurrentUser(user);
+          updateHeaderAuthState();
+          if (authModal) authModal.style.display = 'none';
+
+          if (user.role === 'admin') {
+            const goToAdmin = confirm('Đăng nhập Quản Trị Viên thành công! Bạn có muốn mở Trang Quản Trị Admin ngay bây giờ?');
+            if (goToAdmin) window.location.href = 'admin.html';
+          } else if (user.role === 'partner') {
+            window.location.hash = '#affiliate';
+          } else {
+            alert('Chào mừng ' + user.name + ' quay trở lại với IVY LUXE SPA!');
+          }
+        } else {
+          alert('Sai thông tin tài khoản hoặc mật khẩu! Vui lòng kiểm tra lại.');
+        }
+      });
+    }
+
+    // Register Form Submit
+    const regForm = document.getElementById('auth-register-form');
+    if (regForm) {
+      regForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fullname = document.getElementById('reg-fullname')?.value.trim() || '';
+        const email = document.getElementById('reg-email')?.value.trim() || '';
+        const phone = document.getElementById('reg-phone')?.value.trim() || '';
+        const password = document.getElementById('reg-password')?.value.trim() || '';
+        const role = document.getElementById('reg-role')?.value || 'customer';
+
+        const users = getAuthUsers();
+        if (users.find(u => u.email === email || u.phone === phone)) {
+          alert('Email hoặc Số điện thoại này đã được đăng ký! Vui lòng chuyển sang Đăng nhập.');
+          return;
+        }
+
+        const newUser = { email, phone, pass: password, name: fullname, role };
+        users.push(newUser);
+        saveAuthUsers(users);
+
+        setCurrentUser(newUser);
+        updateHeaderAuthState();
+        if (authModal) authModal.style.display = 'none';
+
+        alert('Đăng ký tài khoản thành công! Chào mừng ' + fullname + ' đến với IVY LUXE SPA.');
+        if (role === 'partner') {
+          window.location.hash = '#affiliate';
+        }
+      });
+    }
+
+    // Logout Action
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        setCurrentUser(null);
+        updateHeaderAuthState();
+        alert('Bạn đã đăng xuất tài khoản thành công.');
+      });
+    }
+
+    // My Bookings History Modal
+    const myBookingsModal = document.getElementById('my-bookings-modal');
+    const myBookingsClose = document.getElementById('my-bookings-close');
+    const myBookingsList = document.getElementById('my-bookings-list');
+
+    if (historyBtn && myBookingsModal) {
+      historyBtn.addEventListener('click', () => {
+        if (userDropdown) userDropdown.style.display = 'none';
+        renderMyBookings(myBookingsList);
+        myBookingsModal.style.display = 'flex';
+      });
+    }
+
+    if (myBookingsClose && myBookingsModal) {
+      myBookingsClose.addEventListener('click', () => {
+        myBookingsModal.style.display = 'none';
+      });
+    }
+  }
+
+  function renderMyBookings(container) {
+    if (!container) return;
+    const user = getCurrentUser();
+    let allBookings = [];
+    try {
+      allBookings = JSON.parse(localStorage.getItem('ivy_bookings') || '[]');
+    } catch (e) {}
+
+    let userBookings = allBookings;
+    if (user && user.role === 'customer') {
+      userBookings = allBookings.filter(b => b.phone === user.phone || b.name === user.name);
+    }
+
+    if (!userBookings.length) {
+      container.innerHTML = `
+        <div style="text-align:center; padding: 40px 20px; color:#5A6560;">
+          <i class="fa fa-calendar-o" style="font-size:3rem; color:#D4AF37; margin-bottom:12px; display:block;"></i>
+          <h4 style="font-family:'Cinzel',serif; color:#0A2E20; margin-bottom:8px;">Chưa có lịch hẹn nào</h4>
+          <p style="font-size:0.9rem;">Bạn chưa có lịch hẹn dịch vụ nào tại IVY LUXE SPA. Hãy chọn gói dịch vụ yêu thích và đặt lịch ngay!</p>
+          <a href="#booking-form-box" class="nav-cta-btn js-open-booking" style="margin-top:15px; display:inline-block;">ĐẶT LỊCH NGAY</a>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = userBookings.map(b => {
+      const isPaid = (b.status && b.status.includes('thanh toán')) || (b.paymentStatus && b.paymentStatus.includes('thanh toán'));
       return `
-        <div class="zen-playlist-item ${isActive ? 'active' : ''}" data-track-index="${i}">
-          <span class="zen-playlist-item-idx">${i + 1}</span>
-          <span class="zen-playlist-item-title">${title}</span>
-          <span class="zen-playlist-item-status">
-            ${isActive && state.audioPlaying ? '<i class="fa fa-volume-up"></i>' : (isActive ? '<i class="fa fa-check"></i>' : '')}
-          </span>
+        <div class="my-booking-card">
+          <div>
+            <div class="mb-service"><strong>${b.service}</strong></div>
+            <div class="mb-meta">
+              <span><i class="fa fa-ticket"></i> Mã: <strong>${b.id}</strong></span> • 
+              <span><i class="fa fa-calendar"></i> ${b.date} (${b.time})</span> • 
+              <span><i class="fa fa-users"></i> ${b.guests}</span>
+            </div>
+            <div class="mb-meta" style="margin-top:4px;">
+              <span>Hình thức: ${b.payMethodLabel || 'Tại quầy'}</span> • 
+              <span>Số tiền: <strong style="color:#B22222;">${(b.payableAmount || b.totalPrice || 0).toLocaleString('vi-VN')}đ</strong></span>
+            </div>
+          </div>
+          <div>
+            <span class="mb-status-badge ${isPaid ? 'status-paid' : 'status-pending'}">
+              ${isPaid ? '✓ Đã Thanh Toán SePay' : 'Chờ Thanh Toán'}
+            </span>
+          </div>
         </div>
       `;
     }).join('');
-
-    zenPlaylistItems.querySelectorAll('.zen-playlist-item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const idx = parseInt(item.getAttribute('data-track-index'), 10);
-        playZenTrack(idx, true);
-      });
-    });
   }
 
-  // Initial renders for Zen music
-  renderZenSectionTrackCards();
-  renderZenPlaylistDrawer();
-  updateZenTrackDisplay();
 
-
-  // =========================================================================
-  // SCROLL TO TOP & STICKY HEADER
-  // =========================================================================
-  const scrollDock = document.getElementById('dock-scroll-top');
-  const mainHeader = document.querySelector('.main-header');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      if (scrollDock) scrollDock.style.display = 'flex';
-      if (mainHeader) mainHeader.classList.add('scrolled');
-    } else {
-      if (scrollDock) scrollDock.style.display = 'none';
-      if (mainHeader) mainHeader.classList.remove('scrolled');
-    }
-  }, { passive: true });
-
-  if (scrollDock) {
-    scrollDock.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // =========================================================================
-  // HERO BACKGROUND SLIDESHOW (AUTO TRANSITION, MANUAL DOTS, PAUSE ON HOVER)
-  // =========================================================================
   function initHeroBackgroundSlider() {
     const slides = document.querySelectorAll('.hero-slides-container .hero-slide');
     const dots = document.querySelectorAll('#hero-slider-dots .hero-dot');
@@ -3732,6 +3746,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGuestPickerHandlers();
   initHeroBackgroundSlider();
   initAffiliateSystem();
+  initAuthSystem();
 
   // =========================================================================
   // AFFILIATE SYSTEM ENGINE (TRACKING, LINK GENERATION, QR, TEMPLATES & STATS)

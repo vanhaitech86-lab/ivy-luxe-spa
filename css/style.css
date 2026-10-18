@@ -3932,3 +3932,586 @@ select.aff-input option {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   AUTHENTICATION, SEPAY SACOMBANK PAYMENT & INSTAGRAM INTEGRATION STYLES
+   ========================================================================== */
+
+/* Instagram Enhancements */
+.guest-photo-overlay-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.guest-photo-item:hover .guest-photo-overlay-tag {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-insta-follow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #FFFFFF !important;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(220, 39, 67, 0.35);
+  transition: all 0.3s ease;
+}
+
+.btn-insta-follow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(220, 39, 67, 0.5);
+  filter: brightness(1.1);
+}
+
+.dock-btn-instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4) !important;
+}
+
+.footer-social-insta:hover {
+  background: linear-gradient(45deg, #f09433, #dc2743, #bc1888) !important;
+  border-color: transparent !important;
+  color: #FFF !important;
+}
+
+/* Header User Auth Button & Dropdown */
+.auth-nav-item {
+  position: relative;
+  list-style: none;
+}
+
+.nav-auth-btn {
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #ECC876;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.25s ease;
+}
+
+.nav-auth-btn:hover {
+  background: #D4AF37;
+  color: #051A12;
+  border-color: #D4AF37;
+  transform: translateY(-1px);
+}
+
+.header-user-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: #0A2016;
+  border: 1px solid #D4AF37;
+  border-radius: 12px;
+  width: 230px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+  overflow: hidden;
+  animation: fadeInDown 0.25s ease-out;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-dd-header {
+  padding: 14px 16px;
+  background: rgba(18, 48, 35, 0.8);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.user-dd-header strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #FFFFFF;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-dd-role-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #25D366;
+  background: rgba(37, 211, 102, 0.15);
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.user-dd-menu {
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.user-dd-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  color: #DDE5E1;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.user-dd-menu li a:hover {
+  background: rgba(212, 175, 55, 0.15);
+  color: #ECC876;
+}
+
+.user-dd-menu li a i {
+  color: #ECC876;
+  width: 16px;
+  text-align: center;
+}
+
+.dd-divider {
+  height: 1px;
+  background: rgba(212, 175, 55, 0.15);
+  margin: 6px 0;
+}
+
+/* Mobile Header Auth Button */
+.mobile-header-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-auth-icon-btn {
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #ECC876;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+/* Auth Modal Styles */
+.modal-box-auth {
+  max-width: 460px;
+}
+
+.auth-tabs-nav {
+  display: flex;
+  background: #06110C;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  margin: -15px -20px 20px;
+}
+
+.auth-tab-btn {
+  flex: 1;
+  padding: 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #A3B5AD;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.auth-tab-btn.active {
+  color: #FFFFFF;
+  background: rgba(212, 175, 55, 0.12);
+  border-bottom-color: #D4AF37;
+}
+
+.auth-tab-btn.active i {
+  color: #ECC876;
+}
+
+.auth-tab-pane {
+  display: none;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.auth-tab-pane.active {
+  display: block;
+}
+
+.auth-presets-box {
+  background: rgba(18, 48, 35, 0.4);
+  border: 1px dashed rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.auth-presets-title {
+  font-size: 0.78rem;
+  color: #ECC876;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.auth-presets-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.auth-preset-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #DDE5E1;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.auth-preset-btn:hover {
+  background: #D4AF37;
+  color: #051A12;
+  border-color: #D4AF37;
+}
+
+.preset-admin {
+  border-color: rgba(212, 175, 55, 0.4);
+  color: #ECC876;
+}
+
+/* Payment Method Selector in Booking Modal */
+.payment-method-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.pay-method-option {
+  cursor: pointer;
+  display: block;
+  margin: 0;
+}
+
+.pay-method-option input[type="radio"] {
+  display: none;
+}
+
+.pay-method-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #FAF7F2;
+  border: 1px solid #D5CEBF;
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.pay-method-option.active .pay-method-card,
+.pay-method-option input[type="radio"]:checked + .pay-method-card {
+  border-color: #D4AF37;
+  background: #FDF9F0;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.18);
+}
+
+.pay-method-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  border: 1px solid #E2DCCF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.pay-method-info {
+  flex: 1;
+}
+
+.pay-method-info strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #0d271c;
+  margin-bottom: 2px;
+}
+
+.pay-method-info span {
+  display: block;
+  font-size: 0.78rem;
+  color: #6C7A73;
+  line-height: 1.35;
+}
+
+.pay-method-tag {
+  background: linear-gradient(135deg, #ECC876, #D4AF37);
+  color: #051A12;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* SePay Checkout View in Modal */
+.sepay-checkout-wrap {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.sepay-checkout-header {
+  margin-bottom: 18px;
+}
+
+.sepay-order-code-badge {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid #D4AF37;
+  color: #0A2E20;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.sepay-total-amount {
+  font-family: 'Cinzel', serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #B22222;
+  margin: 0;
+}
+
+.sepay-qr-center {
+  background: #FFFFFF;
+  border: 2px solid #D4AF37;
+  border-radius: 16px;
+  padding: 16px;
+  display: inline-block;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  margin-bottom: 16px;
+}
+
+.sepay-qr-img {
+  width: 210px;
+  height: 210px;
+  display: block;
+  margin: 0 auto;
+}
+
+.sepay-qr-switch-btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.sepay-btn-toggle-qr {
+  background: transparent;
+  border: 1px solid #D4AF37;
+  color: #0A2E20;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sepay-btn-toggle-qr.active,
+.sepay-btn-toggle-qr:hover {
+  background: #D4AF37;
+  color: #051A12;
+}
+
+.sepay-bank-details-box {
+  background: #FAF7F2;
+  border: 1px dashed #D4AF37;
+  border-radius: 12px;
+  padding: 16px 20px;
+  text-align: left;
+  max-width: 480px;
+  margin: 0 auto 20px;
+  font-size: 0.88rem;
+}
+
+.sepay-detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.sepay-detail-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sepay-detail-label {
+  color: #5A6560;
+  font-weight: 500;
+}
+
+.sepay-detail-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #0d271c;
+}
+
+.sepay-btn-copy-sm {
+  background: #E8E2D5;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  color: #0d271c;
+  transition: all 0.2s;
+}
+
+.sepay-btn-copy-sm:hover {
+  background: #D4AF37;
+  color: #FFF;
+}
+
+.sepay-pulsing-detector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(37, 211, 102, 0.1);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  color: #128C7E;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.sepay-pulsing-detector .fa-spinner {
+  animation: spin 1.2s infinite linear;
+}
+
+.sepay-verify-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #FFFFFF;
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s;
+}
+
+.sepay-verify-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+}
+
+/* My Bookings List */
+.my-bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.my-booking-card {
+  background: #FAF7F2;
+  border: 1px solid #D5CEBF;
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.mb-service {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  color: #0d271c;
+  margin-bottom: 4px;
+}
+
+.mb-meta {
+  font-size: 0.82rem;
+  color: #5A6560;
+  line-height: 1.4;
+}
+
+.mb-status-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.status-paid {
+  background: #E8F8EE;
+  color: #25D366;
+  border: 1px solid #B8E8C8;
+}
+
+.status-pending {
+  background: #FEF7E6;
+  color: #B8860B;
+  border: 1px solid #F5DEB3;
+}

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Quản Trị - IVY LUXE SPA (48 Hà Trung)</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Admin Stylesheet -->
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ADMIN AUTH GUARD SCREEN (HIỂN THỊ NẾU CHƯA ĐĂNG NHẬP ADMIN) -->
+  <div id="admin-login-overlay" class="admin-login-overlay">
+    <div class="admin-login-box">
+      <div class="admin-login-header">
+        <img src="assets/images/logo.png" alt="IVY LUXE SPA" class="admin-logo-img">
+        <h2 class="admin-login-title">IVY LUXE SPA</h2>
+        <span class="admin-login-sub">CỔNG QUẢN TRỊ NỘI BỘ • 48 HÀ TRUNG</span>
+      </div>
+
+      <form id="admin-login-form" class="admin-login-form">
+        <div class="admin-form-group">
+          <label>Email hoặc Tên Quản Trị Viên</label>
+          <div class="admin-input-wrap">
+            <i class="fa fa-envelope"></i>
+            <input type="text" id="admin-input-user" value="admin@ivyluxespa.com" placeholder="admin@ivyluxespa.com" required>
+          </div>
+        </div>
+
+        <div class="admin-form-group">
+          <label>Mật Khẩu</label>
+          <div class="admin-input-wrap">
+            <i class="fa fa-lock"></i>
+            <input type="password" id="admin-input-pass" value="admin123" placeholder="••••••••" required>
+          </div>
+        </div>
+
+        <button type="submit" class="admin-btn-primary" style="width:100%; margin-top:10px;">
+          <i class="fa fa-shield"></i> ĐĂNG NHẬP HỆ THỐNG
+        </button>
+
+        <div style="text-align:center; margin-top:16px;">
+          <a href="index.html" class="admin-back-link"><i class="fa fa-arrow-left"></i> Quay lại Website chính</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN ADMIN APP CONTAINER -->
+  <div id="admin-app" class="admin-app-layout" style="display:none;">
+    
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <img src="assets/images/logo.png" alt="IVY LUXE" class="sb-logo">
+        <div>
+          <h3 class="sb-brand-name">IVY LUXE SPA</h3>
+          <span class="sb-brand-sub">Quản Trị 48 Hà Trung</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button type="button" class="sb-nav-item active" data-tab="dashboard">
+          <i class="fa fa-dashboard"></i> <span>Tổng Quan</span>
+        </button>
+        <button type="button" class="sb-nav-item" data-tab="bookings">
+          <i class="fa fa-calendar-check-o"></i> <span>Quản Lý Đặt Lịch</span>
+          <span class="sb-badge" id="sb-booking-count">0</span>
+        </button>
+        <button type="button" class="sb-nav-item" data-tab="services">
+          <i class="fa fa-cutlery"></i> <span>Quản Lý Dịch Vụ</span>
+        </button>
+        <button type="button" class="sb-nav-item" data-tab="affiliates">
+          <i class="fa fa-handshake-o"></i> <span>Đối Tác & Affiliate</span>
+        </button>
+        <button type="button" class="sb-nav-item" data-tab="sepay">
+          <i class="fa fa-credit-card"></i> <span>Thanh Toán SePay</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sb-user-card">
+          <i class="fa fa-user-circle sb-user-avatar"></i>
+          <div class="sb-user-info">
+            <strong id="admin-display-name">Quản Trị Viên</strong>
+            <span class="sb-user-status">Đang trực tuyến</span>
+          </div>
+        </div>
+        <div class="sb-actions">
+          <a href="index.html" target="_blank" class="sb-action-btn" title="Mở trang chủ Website"><i class="fa fa-globe"></i> Web</a>
+          <button type="button" id="admin-btn-logout" class="sb-action-btn sb-btn-danger" title="Đăng xuất"><i class="fa fa-sign-out"></i> Thoát</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main-content">
+      
+      <!-- TOP BAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <h2 class="topbar-page-title" id="admin-page-title">Bảng Tổng Quan Hoạt Động</h2>
+          <span class="topbar-current-time" id="admin-current-clock"></span>
+        </div>
+        <div class="topbar-right">
+          <a href="index.html" target="_blank" class="topbar-btn-site">
+            <i class="fa fa-external-link"></i> Xem Website Khách
+          </a>
+          <div class="topbar-bank-pill" title="Tài khoản Sacombank nhận tiền SePay">
+            <i class="fa fa-check-circle" style="color:#25D366;"></i>
+            <span>Sacombank: <strong>020113149011</strong> (HKD IVY LUXE SPA)</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- TAB 1: DASHBOARD -->
+      <section class="admin-section active" id="sec-dashboard">
+        <!-- KPI Metrics Grid -->
+        <div class="admin-kpi-grid">
+          <div class="admin-kpi-card">
+            <div class="kpi-icon" style="background:rgba(212,175,55,0.15); color:#ECC876;"><i class="fa fa-money"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-label">Tổng Doanh Thu</span>
+              <h3 class="kpi-value" id="kpi-revenue">0đ</h3>
+              <span class="kpi-trend positive"><i class="fa fa-arrow-up"></i> Bao gồm SePay & Tiền mặt</span>
+            </div>
+          </div>
+
+          <div class="admin-kpi-card">
+            <div class="kpi-icon" style="background:rgba(37,211,102,0.15); color:#25D366;"><i class="fa fa-calendar-check-o"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-label">Tổng Đơn Đặt Lịch</span>
+              <h3 class="kpi-value" id="kpi-bookings">0</h3>
+              <span class="kpi-trend" id="kpi-pending-bookings">0 đơn chờ xử lý</span>
+            </div>
+          </div>
+
+          <div class="admin-kpi-card">
+            <div class="kpi-icon" style="background:rgba(0,104,255,0.15); color:#82b5ff;"><i class="fa fa-qrcode"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-label">Giao Dịch SePay Sacombank</span>
+              <h3 class="kpi-value" id="kpi-sepay-tx">0</h3>
+              <span class="kpi-trend positive">✓ Tự động xác thực</span>
+            </div>
+          </div>
+
+          <div class="admin-kpi-card">
+            <div class="kpi-icon" style="background:rgba(186,104,200,0.15); color:#BA68C8;"><i class="fa fa-handshake-o"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-label">Đối Tác Affiliate</span>
+              <h3 class="kpi-value" id="kpi-affiliates">0</h3>
+              <span class="kpi-trend" id="kpi-aff-commission">Hoa hồng: 0đ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Tables Grid -->
+        <div class="admin-two-cols-grid">
+          <!-- Recent Bookings -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa fa-calendar"></i> Lịch Hẹn Đặt Mới Nhất</h3>
+              <button type="button" class="btn-sm-gold" onclick="switchAdminTab('bookings')">Xem tất cả</button>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Mã Đơn</th>
+                    <th>Khách Hàng</th>
+                    <th>Dịch Vụ</th>
+                    <th>Thời Gian</th>
+                    <th>Thanh Toán</th>
+                    <th>Trạng Thái</th>
+                  </tr>
+                </thead>
+                <tbody id="dash-recent-bookings">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Recent SePay Transactions -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa fa-credit-card"></i> Biến Động Số Dư SePay Sacombank</h3>
+              <button type="button" class="btn-sm-gold" onclick="switchAdminTab('sepay')">Xem chi tiết</button>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Mã GD</th>
+                    <th>Khách Hàng</th>
+                    <th>Số Tiền</th>
+                    <th>Thời Gian</th>
+                    <th>Trạng Thái</th>
+                  </tr>
+                </thead>
+                <tbody id="dash-recent-tx">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: BOOKINGS & CUSTOMERS -->
+      <section class="admin-section" id="sec-bookings">
+        <div class="admin-toolbar">
+          <div class="toolbar-search">
+            <i class="fa fa-search"></i>
+            <input type="text" id="booking-search-input" placeholder="Tìm kiếm theo Tên khách, Số điện thoại, Mã đơn...">
+          </div>
+          <div class="toolbar-filters">
+            <select id="booking-filter-status" class="admin-select">
+              <option value="all">Tất cả trạng thái</option>
+              <option value="pending">Chờ xác nhận</option>
+              <option value="paid">Đã thanh toán / Cọc SePay</option>
+              <option value="completed">Đã hoàn thành</option>
+              <option value="cancelled">Đã hủy</option>
+            </select>
+            <button type="button" id="btn-export-bookings-csv" class="admin-btn-secondary">
+              <i class="fa fa-download"></i> Xuất CSV / Excel
+            </button>
+            <button type="button" id="btn-open-add-booking-modal" class="admin-btn-primary">
+              <i class="fa fa-plus"></i> Thêm Lịch Đặt Mới
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Mã Đơn</th>
+                  <th>Khách Hàng</th>
+                  <th>Số Điện Thoại</th>
+                  <th>Dịch Vụ</th>
+                  <th>Thời Gian Hẹn</th>
+                  <th>Số Khách</th>
+                  <th>Số Tiền</th>
+                  <th>Hình Thức</th>
+                  <th>Đối Tác</th>
+                  <th>Trạng Thái</th>
+                  <th>Thao Tác</th>
+                </tr>
+              </thead>
+              <tbody id="admin-bookings-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: SERVICES MANAGEMENT -->
+      <section class="admin-section" id="sec-services">
+        <div class="admin-toolbar">
+          <div class="toolbar-search">
+            <i class="fa fa-search"></i>
+            <input type="text" id="service-search-input" placeholder="Tìm kiếm gói dịch vụ...">
+          </div>
+          <button type="button" id="btn-open-add-service-modal" class="admin-btn-primary">
+            <i class="fa fa-plus"></i> Thêm Dịch Vụ Mới
+          </button>
+        </div>
+
+        <div class="admin-services-grid" id="admin-services-container">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- TAB 4: AFFILIATE PARTNERS -->
+      <section class="admin-section" id="sec-affiliates">
+        <div class="admin-toolbar">
+          <div class="toolbar-search">
+            <i class="fa fa-search"></i>
+            <input type="text" id="aff-search-input" placeholder="Tìm kiếm đối tác theo Tên, SĐT, Mã...">
+          </div>
+          <button type="button" id="btn-open-add-partner-modal" class="admin-btn-primary">
+            <i class="fa fa-user-plus"></i> Thêm Đối Tác Mới
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Đối Tác</th>
+                  <th>Số Điện Thoại</th>
+                  <th>Loại</th>
+                  <th>Mã Giới Thiệu</th>
+                  <th>Link Tiếp Thị</th>
+                  <th>Lượt Click</th>
+                  <th>Đơn Chốt</th>
+                  <th>Doanh Thu</th>
+                  <th>Hoa Hồng (20%)</th>
+                  <th>Tài Khoản Nhận Thưởng</th>
+                  <th>Thao Tác</th>
+                </tr>
+              </thead>
+              <tbody id="admin-affiliates-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: SEPAY PAYMENT & SACOMBANK -->
+      <section class="admin-section" id="sec-sepay">
+        <div class="admin-two-cols-grid">
+          <!-- Left: Sacombank Account Info Card -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa fa-bank"></i> Tài Khoản Ngân Hàng Nhận Tiền</h3>
+              <span class="status-badge status-paid">Đang Hoạt Động</span>
+            </div>
+            
+            <div class="sepay-bank-config-box">
+              <div class="sb-qr-visual">
+                <img src="assets/images/sacombank_qr.png" alt="QR Sacombank Chính Thức" class="sb-qr-preview-img">
+              </div>
+              <div class="sb-config-details">
+                <div class="sb-field-row">
+                  <span class="sb-lbl">Ngân hàng:</span>
+                  <strong>Sacombank (Mã BIN: 970403)</strong>
+                </div>
+                <div class="sb-field-row">
+                  <span class="sb-lbl">Số tài khoản:</span>
+                  <strong style="color:#0053A0; font-size:1.2rem;">020113149011</strong>
+                </div>
+                <div class="sb-field-row">
+                  <span class="sb-lbl">Chủ tài khoản:</span>
+                  <strong>HKD IVY LUXE SPA</strong>
+                </div>
+                <div class="sb-field-row">
+                  <span class="sb-lbl">Cổng tự động:</span>
+                  <span style="color:#25D366; font-weight:700;"><i class="fa fa-check"></i> SePay VietQR Auto-Detector</span>
+                </div>
+                <div class="sb-field-row">
+                  <span class="sb-lbl">Cú pháp chuyển khoản:</span>
+                  <code>IVY&lt;MÃ_ĐƠN&gt;</code> (VD: IVY8892)
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:20px; padding:16px; background:#06110C; border-radius:10px; font-size:0.85rem; line-height:1.6; color:#A3B5AD;">
+              <strong style="color:#ECC876;"><i class="fa fa-lightbulb-o"></i> Cơ chế SePay tự động:</strong> Khi khách hàng quét mã QR hoặc chuyển khoản vào tài khoản Sacombank 020113149011 với nội dung mã đơn (VD: IVY8892), SePay đọc biến động số dư và tự động chuyển trạng thái đơn đặt sang "Đã Thanh Toán".
+            </div>
+          </div>
+
+          <!-- Right: SePay Webhook Settings -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa fa-cog"></i> Cấu Hình Cổng SePay</h3>
+            </div>
+            <form id="sepay-config-form" style="padding:15px 0;">
+              <div class="admin-form-group">
+                <label>SePay API Token / Secret Key</label>
+                <input type="password" id="sepay-api-key" class="admin-input" value="SP_LIVE_88912349011_IVYLUXE" placeholder="Nhập API Token SePay...">
+              </div>
+              <div class="admin-form-group">
+                <label>Webhook URL Nhận Biến Động Số Dư</label>
+                <input type="text" id="sepay-webhook-url" class="admin-input" value="https://ivy-luxe-spa-kappa.vercel.app/api/sepay-webhook" readonly>
+              </div>
+              <div class="admin-form-group">
+                <label>Mức Tiền Cọc Giữ Chỗ Mặc Định</label>
+                <input type="number" id="sepay-deposit-amount" class="admin-input" value="100000" step="50000">
+              </div>
+              <button type="submit" class="admin-btn-primary" style="margin-top:10px;">
+                <i class="fa fa-save"></i> Lưu Cấu Hình SePay
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Full SePay Transaction Ledger -->
+        <div class="admin-card" style="margin-top:25px;">
+          <div class="admin-card-header">
+            <h3 class="admin-card-title"><i class="fa fa-list"></i> Toàn Bộ Giao Dịch SePay Sacombank</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Mã Giao Dịch</th>
+                  <th>Mã Đơn</th>
+                  <th>Khách Hàng</th>
+                  <th>Số Tiền</th>
+                  <th>Ngân Hàng</th>
+                  <th>Số Tài Khoản</th>
+                  <th>Thời Gian</th>
+                  <th>Trạng Thái</th>
+                </tr>
+              </thead>
+              <tbody id="sepay-full-tx-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- MODAL: ADD MANUAL BOOKING -->
+  <div id="modal-add-booking" class="admin-modal-overlay">
+    <div class="admin-modal-box">
+      <div class="admin-modal-header">
+        <h3><i class="fa fa-plus-circle"></i> Thêm Lịch Hẹn Mới Bằng Tay</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('modal-add-booking')">&times;</span>
+      </div>
+      <form id="form-add-manual-booking">
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label>Họ và Tên Khách <span style="color:red;">*</span></label>
+            <input type="text" id="mb-name" class="admin-input" placeholder="VD: Trần Văn Bình" required>
+          </div>
+          <div class="admin-form-group">
+            <label>Số Điện Thoại <span style="color:red;">*</span></label>
+            <input type="tel" id="mb-phone" class="admin-input" placeholder="0981234567" required>
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label>Dịch Vụ Chọn</label>
+          <select id="mb-service" class="admin-select" required>
+            <!-- Dynamically populated -->
+          </select>
+        </div>
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label>Ngày Đến</label>
+            <input type="date" id="mb-date" class="admin-input" required>
+          </div>
+          <div class="admin-form-group">
+            <label>Giờ Hẹn</label>
+            <input type="time" id="mb-time" class="admin-input" value="14:30" required>
+          </div>
+        </div>
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label>Số Lượng Khách</label>
+            <input type="text" id="mb-guests" class="admin-input" value="2 Khách">
+          </div>
+          <div class="admin-form-group">
+            <label>Hình Thức Thanh Toán</label>
+            <select id="mb-payment-status" class="admin-select">
+              <option value="Chờ xác nhận (Tiền mặt)">Tiền mặt tại quầy</option>
+              <option value="Đã cọc (100.000đ)">Đã đặt cọc 100.000đ</option>
+              <option value="Đã thanh toán (Sacombank SePay)">Đã chuyển khoản Sacombank</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="admin-btn-primary" style="width:100%; margin-top:15px;">
+          <i class="fa fa-save"></i> LƯU ĐƠN ĐẶT LỊCH
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin JavaScript -->
+  <script src="js/admin.js"></script>
+</body>
+</html>
