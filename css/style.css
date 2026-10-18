@@ -2050,6 +2050,32 @@ button, input, select, textarea {
   border: 1px solid #CCC;
 }
 
+/* Google Maps White Dock Button (Yêu cầu 1) */
+.dock-btn-map {
+  background: #FFFFFF !important;
+  color: #EA4335 !important;
+  border: 1.5px solid #E5E5E5 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.dock-btn-map i {
+  font-size: 1.45rem !important;
+  color: #EA4335 !important;
+  line-height: 1;
+}
+
+.dock-btn-map:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 6px 20px rgba(234, 67, 53, 0.45) !important;
+  border-color: #EA4335 !important;
+}
+
 .dock-btn-kakao {
   background: #FFE812;
   color: #3C1E1E;
@@ -2505,13 +2531,17 @@ button, input, select, textarea {
   box-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
 }
 
-/* 2. FLOATING LUXURY ZEN MUSIC DOCK */
-.ivy-zen-dock {
+/* 2. FLOATING LUXURY ZEN MUSIC DOCK (ẨN HOÀN TOÀN THEO YÊU CẦU 3) */
+.ivy-zen-dock,
+#ivy-zen-dock {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
   position: fixed;
   bottom: 24px;
   left: 24px;
-  z-index: 1002;
-  font-family: var(--font-sans);
+  z-index: -1;
 }
 
 /* Minimized Pill Mode */
@@ -4664,4 +4694,268 @@ select.aff-input option {
   background: #25D366 !important;
   border-color: #25D366 !important;
   color: #FFF !important;
+}
+
+/* ==========================================================================
+   DESKTOP HEADER AUTH & USER DROPDOWN (YÊU CẦU 2)
+   ========================================================================== */
+.header-auth-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.header-auth-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1.5px solid var(--color-gold);
+  border-radius: 20px;
+  padding: 6px 14px;
+  color: #123023;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.header-auth-btn i {
+  color: #B38E22;
+  font-size: 1rem;
+}
+
+.header-auth-btn:hover {
+  background: var(--color-gold);
+  color: #123023;
+  box-shadow: 0 3px 12px rgba(212, 175, 55, 0.35);
+}
+
+.header-user-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: #11281E;
+  border: 1px solid var(--color-gold);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  min-width: 220px;
+  z-index: 1050;
+  overflow: hidden;
+}
+
+.user-dd-header {
+  padding: 12px 16px;
+  background: rgba(212, 175, 55, 0.1);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-dd-avatar {
+  font-size: 1.6rem;
+  color: #ECC876;
+}
+
+.user-dd-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-dd-info strong {
+  color: #FFFFFF;
+  font-size: 0.88rem;
+}
+
+.user-dd-badge {
+  color: #ECC876;
+  font-size: 0.72rem;
+}
+
+.user-dd-body {
+  padding: 8px 0;
+}
+
+.user-dd-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  color: #ECE5D8;
+  font-size: 0.82rem;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.user-dd-link:hover {
+  background: rgba(212, 175, 55, 0.15);
+  color: #D4AF37;
+}
+
+.user-dd-link.dd-logout {
+  color: #FF8A80;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   MOBILE AUTHENTICATION CONTROLS (YÊU CẦU 2: HIỂN THỊ TRÊN GIAO DIỆN ĐIỆN THOẠI)
+   ========================================================================== */
+.mobile-header-right-group {
+  display: none;
+}
+
+.mobile-header-auth-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0.32) 100%);
+  border: 1.5px solid var(--color-gold);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #123023;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.mobile-header-auth-pill i {
+  color: #B38E22;
+  font-size: 0.95rem;
+}
+
+.mobile-header-auth-pill:active {
+  background: var(--color-gold);
+}
+
+/* Dedicated Mobile Auth Strip (Thanh tài khoản nổi bật dành cho smartphone) */
+.mobile-auth-strip {
+  display: none;
+  background: linear-gradient(90deg, #11281E 0%, #17382B 100%);
+  border-bottom: 1.5px solid rgba(212, 175, 55, 0.35);
+  padding: 8px 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 55;
+}
+
+.mobile-auth-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mobile-auth-strip-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #ECC876;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.mobile-auth-strip-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-auth-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  border: none;
+}
+
+.mobile-auth-bar-btn.btn-login {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.mobile-auth-bar-btn.btn-login:active {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.mobile-auth-bar-btn.btn-register {
+  background: linear-gradient(135deg, #D4AF37 0%, #ECC876 100%);
+  color: #123023;
+  border: 1px solid #ECC876;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.35);
+}
+
+.mobile-auth-bar-btn.btn-register:active {
+  transform: scale(0.97);
+}
+
+.mobile-auth-strip-logged {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-auth-user-name {
+  color: #ECC876;
+  font-size: 0.76rem;
+  white-space: nowrap;
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobile-auth-bar-btn.btn-manage {
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid #D4AF37;
+  color: #ECC876;
+  padding: 4px 10px;
+}
+
+.mobile-auth-bar-btn.btn-logout {
+  background: rgba(234, 67, 53, 0.2);
+  border: 1px solid rgba(234, 67, 53, 0.5);
+  color: #FF8A80;
+  padding: 4px 8px;
+}
+
+@media (max-width: 768px) {
+  .mobile-header-right-group {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 60;
+  }
+  .mobile-auth-strip {
+    display: block !important;
+  }
+  .mobile-nav-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: static !important;
+    transform: none !important;
+    width: 38px;
+    height: 38px;
+  }
 }

@@ -187,6 +187,29 @@
           <li><a href="#affiliate" class="nav-item-link" data-i18n="nav_affiliate" style="color: #ECC876; font-weight: 700;"><i class="fa fa-handshake-o"></i> Đối Tác Affiliate</a></li>
           <li><a href="#contact" class="nav-item-link" data-i18n="nav_contact">Liên Hệ</a></li>
           <li><a href="#booking-form-box" class="nav-item-link js-open-booking" style="color: #123023; font-weight: 700;" data-i18n="nav_book">Đặt Lịch Trực Tuyến</a></li>
+          
+          <!-- Desktop Auth Trigger & Dropdown -->
+          <li class="header-auth-item">
+            <button type="button" class="header-auth-btn" id="header-auth-btn" title="Tài Khoản Thành Viên">
+              <i class="fa fa-user-circle"></i> <span id="header-auth-text">Đăng Nhập</span>
+            </button>
+            <div class="header-user-dropdown" id="header-user-dropdown" style="display: none;">
+              <div class="user-dd-header">
+                <div class="user-dd-avatar"><i class="fa fa-user-circle"></i></div>
+                <div class="user-dd-info">
+                  <strong id="user-dd-name">Khách Hàng</strong>
+                  <span id="user-dd-role" class="user-dd-badge">VIP Member</span>
+                </div>
+              </div>
+              <div class="user-dd-body">
+                <a href="admin.html" class="user-dd-link" id="dd-admin-link" style="display:none;"><i class="fa fa-tachometer"></i> Trang Quản Trị Admin</a>
+                <a href="#affiliate" class="user-dd-link" id="dd-partner-link" style="display:none;"><i class="fa fa-handshake-o"></i> Quản Lý Affiliate</a>
+                <button type="button" class="user-dd-link" id="dd-history-btn"><i class="fa fa-history"></i> Lịch Sử Đặt Hẹn</button>
+                <button type="button" class="user-dd-link dd-logout" id="dd-logout-btn"><i class="fa fa-sign-out"></i> Đăng Xuất</button>
+              </div>
+            </div>
+          </li>
+
           <li class="lang-dropdown-wrap">
             <i class="fa fa-globe"></i>
             <select id="lang-select" aria-label="Select Language">
@@ -201,9 +224,14 @@
           </li>
         </ul>
 
-        <!-- Mobile Nav Toggle -->
-        <div class="mobile-nav-toggle js-open-booking">
-          <i class="fa fa-bars"></i>
+        <!-- Mobile Header Right Actions: Auth Pill & Nav Toggle -->
+        <div class="mobile-header-right-group">
+          <button type="button" class="mobile-header-auth-pill" id="mobile-auth-btn" title="Đăng Nhập / Đăng Ký">
+            <i class="fa fa-user-circle"></i> <span id="mobile-auth-text">Đăng Nhập</span>
+          </button>
+          <div class="mobile-nav-toggle js-open-booking" title="Đặt lịch hẹn">
+            <i class="fa fa-bars"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -238,6 +266,35 @@
           </button>
           <button type="button" class="mobile-flag-pill" data-lang="fr" title="Français">
             <span class="flag-symbol">🇫🇷</span> <span class="flag-text">Français</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THANH ĐĂNG KÝ VÀ ĐĂNG NHẬP DÀNH CHO GIAO DIỆN ĐIỆN THOẠI (YÊU CẦU 2) -->
+  <div class="mobile-auth-strip" id="mobile-auth-strip">
+    <div class="container">
+      <div class="mobile-auth-strip-inner">
+        <div class="mobile-auth-strip-label">
+          <i class="fa fa-user-circle" style="color: #ECC876;"></i>
+          <span id="mobile-auth-bar-label">TÀI KHOẢN:</span>
+        </div>
+        <div class="mobile-auth-strip-buttons" id="mobile-auth-guest-actions">
+          <button type="button" class="mobile-auth-bar-btn btn-login" id="mobile-strip-login-btn">
+            <i class="fa fa-sign-in"></i> <span>Đăng Nhập</span>
+          </button>
+          <button type="button" class="mobile-auth-bar-btn btn-register" id="mobile-strip-reg-btn">
+            <i class="fa fa-user-plus"></i> <span>Đăng Ký</span>
+          </button>
+        </div>
+        <div class="mobile-auth-strip-logged" id="mobile-auth-logged-actions" style="display: none;">
+          <span class="mobile-auth-user-name">Xin chào, <strong id="mobile-strip-user-name">Quý Khách</strong>!</span>
+          <button type="button" class="mobile-auth-bar-btn btn-manage" id="mobile-strip-manage-btn">
+            <i class="fa fa-th-large"></i> <span id="mobile-strip-manage-text">Tài Khoản</span>
+          </button>
+          <button type="button" class="mobile-auth-bar-btn btn-logout" id="mobile-strip-logout-btn" title="Đăng Xuất">
+            <i class="fa fa-sign-out"></i>
           </button>
         </div>
       </div>
@@ -1135,9 +1192,10 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
 
   <!-- FLOATING RIGHT SPEED DIAL (THEO SCREENSHOT: FACEBOOK, INSTAGRAM, WHATSAPP, TIKTOK, ZALO, KAKAO, PHONE) -->
   <div class="orient-floating-dock">
-    <div id="dock-scroll-top" class="orient-dock-btn dock-btn-top" title="Về đầu trang">
-      <i class="fa fa-angle-up"></i>
-    </div>
+    <!-- Google Maps Directions Pin (48 Hà Trung, Hoàn Kiếm, Hà Nội) - Nút Trắng Bản Đồ Theo Yêu Cầu 1 -->
+    <a href="https://www.google.com/maps?q=48+Ha+Trung+Hoan+Kiem+Hanoi" target="_blank" rel="noopener noreferrer" class="orient-dock-btn dock-btn-map" id="dock-btn-map" title="Bản đồ chỉ đường Google Maps - 48 Hà Trung, Hoàn Kiếm, Hà Nội">
+      <i class="fa fa-map-marker"></i>
+    </a>
 
     <!-- Facebook Link -->
     <a href="https://www.facebook.com/share/1HvSgLCbyJ/?mibextid=wwXIfr" target="_blank" rel="noopener" class="orient-dock-btn dock-btn-facebook" title="Facebook IVY LUXE SPA">
@@ -1268,8 +1326,8 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
     </div>
   </div>
 
-  <!-- FLOATING ZEN MUSIC PLAYER DOCK (DEEP HEALING VIBES) -->
-  <div id="ivy-zen-dock" class="ivy-zen-dock" aria-label="Zen Music Player">
+  <!-- FLOATING ZEN MUSIC PLAYER DOCK (DEEP HEALING VIBES) - ẨN THEO YÊU CẦU 3 -->
+  <div id="ivy-zen-dock" class="ivy-zen-dock" aria-label="Zen Music Player" style="display: none !important; visibility: hidden !important; pointer-events: none !important;">
     <!-- Minimized pill trigger -->
     <div id="zen-min-pill" class="zen-min-pill" title="Mở Trình Phát Nhạc Thiền">
       <div class="zen-vinyl-disc zen-disc-sm">
@@ -1367,11 +1425,7 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
     <div id="ivy-zen-yt-target"></div>
   </div>
 
-  <!-- Scripts -->
-  <!-- Official YouTube Iframe Player API -->
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script src="js/three-scene.js"></script>
-  <script src="js/app.js"></script>
+
 
   <!-- ========================================================================= -->
   <!-- MODAL ĐĂNG NHẬP / ĐĂNG KÝ (AUTHENTICATION MODAL) -->
@@ -1489,5 +1543,10 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
     </div>
   </div>
 
+  <!-- Scripts -->
+  <!-- Official YouTube Iframe Player API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="js/three-scene.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

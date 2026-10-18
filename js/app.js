@@ -3427,14 +3427,23 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateHeaderAuthState() {
     const user = getCurrentUser();
     const authBtnText = document.getElementById('header-auth-text');
+    const mobileAuthBtnText = document.getElementById('mobile-auth-text');
     const userDropdown = document.getElementById('header-user-dropdown');
     const ddName = document.getElementById('user-dd-name');
     const ddRole = document.getElementById('user-dd-role');
     const ddAdminLink = document.getElementById('dd-admin-link');
     const ddPartnerLink = document.getElementById('dd-partner-link');
 
+    // Mobile Auth Strip Elements (Yêu cầu 2: Hiển thị trên điện thoại)
+    const mobileGuestActions = document.getElementById('mobile-auth-guest-actions');
+    const mobileLoggedActions = document.getElementById('mobile-auth-logged-actions');
+    const mobileStripUserName = document.getElementById('mobile-strip-user-name');
+    const mobileStripManageText = document.getElementById('mobile-strip-manage-text');
+
     if (user) {
-      if (authBtnText) authBtnText.textContent = user.name.split(' ').slice(-1)[0] || 'Tài Khoản';
+      const shortName = user.name.split(' ').slice(-1)[0] || 'Tài Khoản';
+      if (authBtnText) authBtnText.textContent = shortName;
+      if (mobileAuthBtnText) mobileAuthBtnText.textContent = shortName;
       if (ddName) ddName.textContent = user.name;
       if (ddRole) {
         if (user.role === 'admin') {
@@ -3451,10 +3460,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (ddAdminLink) ddAdminLink.style.display = (user.role === 'admin') ? 'block' : 'none';
       if (ddPartnerLink) ddPartnerLink.style.display = (user.role === 'partner' || user.role === 'admin') ? 'block' : 'none';
+
+      // Update Mobile Strip for Logged In User
+      if (mobileGuestActions) mobileGuestActions.style.display = 'none';
+      if (mobileLoggedActions) mobileLoggedActions.style.display = 'flex';
+      if (mobileStripUserName) mobileStripUserName.textContent = shortName;
+      if (mobileStripManageText) {
+        mobileStripManageText.textContent = (user.role === 'admin') ? 'Quản Trị' : ((user.role === 'partner') ? 'Hoa Hồng' : 'Lịch Hẹn');
+      }
     } else {
-      if (authBtnText) authBtnText.textContent = 'Tài Khoản';
+      if (authBtnText) authBtnText.textContent = 'Đăng Nhập';
+      if (mobileAuthBtnText) mobileAuthBtnText.textContent = 'Đăng Nhập';
       if (userDropdown) userDropdown.style.display = 'none';
+
+      // Update Mobile Strip for Guest User
+      if (mobileGuestActions) mobileGuestActions.style.display = 'flex';
+      if (mobileLoggedActions) mobileLoggedActions.style.display = 'none';
     }
+  }
+
+  function openAuthModalWithTab(tab) {
+    const authModal = document.getElementById('auth-modal');
+    if (!authModal) return;
+    const authTabBtns = document.querySelectorAll('.auth-tab-btn');
+    const authPanes = document.querySelectorAll('.auth-tab-pane');
+    authTabBtns.forEach(b => {
+      if (b.getAttribute('data-auth-tab') === tab) {
+        b.classList.add('active');
+      } else {
+        b.classList.remove('active');
+      }
+    });
+    authPanes.forEach(p => {
+      if (p.id === 'auth-pane-' + tab) {
+        p.classList.add('active');
+      } else {
+        p.classList.remove('active');
+      }
+    });
+    authModal.style.display = 'flex';
   }
 
   function initAuthSystem() {
@@ -3478,12 +3522,64 @@ document.addEventListener('DOMContentLoaded', () => {
           userDropdown.style.display = (userDropdown.style.display === 'block') ? 'none' : 'block';
         }
       } else {
-        if (authModal) authModal.style.display = 'flex';
+        openAuthModalWithTab('login');
       }
     }
 
     if (headerAuthBtn) headerAuthBtn.addEventListener('click', toggleAuthOrDropdown);
     if (mobileAuthBtn) mobileAuthBtn.addEventListener('click', toggleAuthOrDropdown);
+
+    // Mobile Auth Strip Buttons (Yêu cầu 2: Điện thoại)
+    const mobileStripLoginBtn = document.getElementById('mobile-strip-login-btn');
+    const mobileStripRegBtn = document.getElementById('mobile-strip-reg-btn');
+    const mobileStripManageBtn = document.getElementById('mobile-strip-manage-btn');
+    const mobileStripLogoutBtn = document.getElementById('mobile-strip-logout-btn');
+
+    if (mobileStripLoginBtn) {
+      mobileStripLoginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openAuthModalWithTab('login');
+      });
+    }
+
+    if (mobileStripRegBtn) {
+      mobileStripRegBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openAuthModalWithTab('register');
+      });
+    }
+
+    if (mobileStripManageBtn) {
+      mobileStripManageBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const user = getCurrentUser();
+        if (!user) {
+          openAuthModalWithTab('login');
+          return;
+        }
+        if (user.role === 'admin') {
+          window.location.href = 'admin.html';
+        } else if (user.role === 'partner') {
+          window.location.hash = '#affiliate';
+        } else {
+          const myBookingsModal = document.getElementById('my-bookings-modal');
+          const myBookingsList = document.getElementById('my-bookings-list');
+          if (myBookingsModal) {
+            renderMyBookings(myBookingsList);
+            myBookingsModal.style.display = 'flex';
+          }
+        }
+      });
+    }
+
+    if (mobileStripLogoutBtn) {
+      mobileStripLogoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        setCurrentUser(null);
+        updateHeaderAuthState();
+        alert('Bạn đã đăng xuất tài khoản thành công.');
+      });
+    }
 
     // Close Dropdown when clicking outside
     document.addEventListener('click', (e) => {
