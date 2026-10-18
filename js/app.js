@@ -2824,6 +2824,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }
+    updateModalBookingPriceAndQR();
   }
 
   function getModeLabel(type) {
@@ -3094,46 +3095,173 @@ document.addEventListener('DOMContentLoaded', () => {
     return 650000;
   }
 
-  const bookingFormModal = document.getElementById('modal-booking-form');
+  // Copy helper with feedback toast
+  function copyTextWithToast(text, msg = 'Đã sao chép vào bộ nhớ tạm!') {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(msg);
+      }).catch(() => {
+        fallbackCopy(text, msg);
+      });
+    } else {
+      fallbackCopy(text, msg);
+    }
+  }
+
+  function fallbackCopy(text, msg) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showToast(msg);
+    } catch (e) {
+      showToast(text);
+    }
+    document.body.removeChild(ta);
+  }
+
+  // Real-time Dynamic Calculation & QR Generator for Booking Modal (Yêu cầu 2: Giảm giá 10% khi thanh toán luôn)
+  function updateModalBookingPriceAndQR() {
+    const serviceSelect = document.getElementById('modal-service-select');
+    const guestSelect = document.getElementById('modal-guest-count');
+    const customGuests = document.getElementById('modal-custom-guests');
+    const isCustomGuest = customGuests && customGuests.style.display !== 'none';
+
+    const serviceName = serviceSelect?.value || 'IVY SPECIAL - COMBO 1 (HOT)';
+    let guests = 1;
+    if (isCustomGuest && customGuests.value) {
+      guests = parseInt(customGuests.value, 10) || 1;
+    } else if (guestSelect && guestSelect.value) {
+      guests = parseInt(guestSelect.value, 10) || 1;
+    }
+    if (guests < 1) guests = 1;
+
+    // Base price
+    const basePrice = getServicePriceVND(serviceName);
+    const totalOrig = basePrice * guests;
+    const discount10 = Math.round(totalOrig * 0.10);
+    const finalDiscountedPrice = totalOrig - discount10;
+
+    // Payment radio
+    const payMethodRadio = document.querySelector('input[name="modal-pay-method"]:checked');
+    const isQrDiscount = !payMethodRadio || payMethodRadio.value === 'qr-discount-10' || payMethodRadio.value === 'sepay-qr';
+
+    const qrLabel = document.getElementById('pay-opt-qr-label');
+    const cashLabel = document.getElementById('pay-opt-cash-label');
+    const qrBox = document.getElementById('modal-qr-preview-box');
+    const cashBox = document.getElementById('modal-cash-preview-box');
+
+    if (isQrDiscount) {
+      if (qrLabel) qrLabel.classList.add('active');
+      if (cashLabel) cashLabel.classList.remove('active');
+      if (qrBox) qrBox.style.display = 'block';
+      if (cashBox) cashBox.style.display = 'none';
+    } else {
+      if (qrLabel) qrLabel.classList.remove('active');
+      if (cashLabel) cashLabel.classList.add('active');
+      if (qrBox) qrBox.style.display = 'none';
+      if (cashBox) cashBox.style.display = 'block';
+    }
+
+    const origPriceEl = document.getElementById('modal-calc-orig-price');
+    const discountValEl = document.getElementById('modal-calc-discount-val');
+    const finalPriceEl = document.getElementById('modal-calc-final-price');
+    const cashTotalEl = document.getElementById('modal-cash-total-price');
+    const copyAmountEl = document.getElementById('modal-copy-amount');
+    const copyMemoEl = document.getElementById('modal-copy-memo');
+    const qrImgEl = document.getElementById('modal-bank-qr-img');
+
+    if (!window._currentBookingCode) {
+      window._currentBookingCode = 'IVY' + Math.floor(1000 + Math.random() * 9000);
+    }
+    const activeCode = window._currentBookingCode;
+
+    if (origPriceEl) origPriceEl.textContent = `${totalOrig.toLocaleString('vi-VN')} VNĐ` + (guests > 1 ? ` (${guests} khách)` : '');
+    if (discountValEl) discountValEl.textContent = `-${discount10.toLocaleString('vi-VN')} VNĐ`;
+    if (finalPriceEl) finalPriceEl.textContent = `${finalDiscountedPrice.toLocaleString('vi-VN')} VNĐ`;
+    if (cashTotalEl) cashTotalEl.textContent = `${totalOrig.toLocaleString('vi-VN')} VNĐ`;
+    if (copyAmountEl) copyAmountEl.textContent = `${finalDiscountedPrice.toLocaleString('vi-VN')} VNĐ`;
+    if (copyMemoEl) copyMemoEl.textContent = activeCode;
+
+    if (qrImgEl) {
+      const qrUrl = `https://img.vietqr.io/image/sacombank-020113149011-compact2.png?amount=${finalDiscountedPrice}&addInfo=${activeCode}&accountName=HKD%20IVY%20LUXE%20SPA`;
+      qrImgEl.src = qrUrl;
+    }
+  }
+
+  // Interactive event listeners for real-time recalculations in booking modal
+  document.addEventListener('change', (e) => {
+    if (e.target && (
+      e.target.id === 'modal-service-select' || 
+      e.target.id === 'modal-guest-count' || 
+      e.target.name === 'modal-pay-method'
+    )) {
+      updateModalBookingPriceAndQR();
+    }
+  });
+
+  document.addEventListener('input', (e) => {
+    if (e.target && e.target.id === 'modal-custom-guests') {
+      updateModalBookingPriceAndQR();
+    }
+  });
+
+  // Modal Copy Buttons
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('#btn-copy-acc, #btn-copy-amount, #btn-copy-memo');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (btn.id === 'btn-copy-acc') {
+      copyTextWithToast('020113149011', 'Đã sao chép STK Sacombank: 020113149011');
+    } else if (btn.id === 'btn-copy-amount') {
+      const amtEl = document.getElementById('modal-copy-amount');
+      const val = amtEl?.textContent.replace(/[^0-9]/g, '') || '720000';
+      copyTextWithToast(val, `Đã sao chép số tiền: ${parseInt(val).toLocaleString('vi-VN')} VNĐ`);
+    } else if (btn.id === 'btn-copy-memo') {
+      const memoEl = document.getElementById('modal-copy-memo');
+      copyTextWithToast(memoEl?.textContent || 'IVY_VIP', 'Đã sao chép Nội dung CK!');
+    }
+  });
+
+  // Booking Form Modal Submit Engine
+  const bookingFormModal = document.getElementById('booking-form-modal') || document.getElementById('modal-booking-form');
   if (bookingFormModal) {
     bookingFormModal.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const t = translations[state.language] || translations.vi;
-      const name = document.getElementById('modal-cust-name')?.value || 'Guest';
-      const phone = document.getElementById('modal-cust-phone')?.value || '';
+      const name = document.getElementById('modal-cust-name')?.value.trim() || 'Quý Khách';
+      const phone = document.getElementById('modal-cust-phone')?.value.trim() || '';
       const branch = 'IVY LUXE SPA - 48 Hà Trung, Hoàn Kiếm, Hà Nội';
       const service = document.getElementById('modal-service-select')?.value || 'IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT';
-      const date = document.getElementById('modal-book-date')?.value || '';
-      
+      const date = document.getElementById('modal-book-date')?.value || new Date().toISOString().split('T')[0];
+
       const modalSelectTime = document.getElementById('modal-book-time');
       const modalCustomTime = document.getElementById('modal-custom-time');
       const isCustomTime = modalCustomTime && modalCustomTime.style.display !== 'none';
       const time = isCustomTime ? (modalCustomTime.value || '14:30') : (modalSelectTime?.value || '14:30');
-      
+
       const modalSelectGuests = document.getElementById('modal-guest-count');
       const modalCustomGuests = document.getElementById('modal-custom-guests');
       const isCustomGuests = modalCustomGuests && modalCustomGuests.style.display !== 'none';
       let guests = isCustomGuests ? (modalCustomGuests.value ? `${modalCustomGuests.value} Khách` : '2 Khách') : (modalSelectGuests?.value || '2');
       if (guests === 'custom') guests = modalCustomGuests?.value ? `${modalCustomGuests.value} Khách` : '2 Khách';
 
-      // Payment Method Choice
+      // Payment method
       const payMethodRadio = document.querySelector('input[name="modal-pay-method"]:checked');
-      const payMethod = payMethodRadio ? payMethodRadio.value : 'sepay-qr';
+      const payMethod = payMethodRadio ? payMethodRadio.value : 'qr-discount-10';
 
       // Affiliate referral tracking
       const affCode = localStorage.getItem('ivy_affiliate_ref');
-      let affLine = '';
-      if (affCode) {
-        affLine = `\n- Mã Đối Tác / Referral: ${affCode} (VIP 10% Discount)`;
-        if (typeof recordAffiliateBooking === 'function') {
-          recordAffiliateBooking(affCode, service, guests);
-        }
+      if (affCode && typeof recordAffiliateBooking === 'function') {
+        recordAffiliateBooking(affCode, service, guests);
       }
 
-      // Generate Unique Booking & Payment Code
-      const randNum = Math.floor(1000 + Math.random() * 9000);
-      const bookingCode = 'IVY' + randNum;
+      // Unique booking code
+      const bookingCode = window._currentBookingCode || ('IVY' + Math.floor(1000 + Math.random() * 9000));
+      window._currentBookingCode = null; // Reset for next booking
 
       // Price calculation
       let basePrice = getServicePriceVND(service);
@@ -3141,24 +3269,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (guestCount < 1) guestCount = 1;
       let totalPrice = basePrice * guestCount;
 
-      // Apply Affiliate 10% Discount if present
-      if (affCode) {
-        totalPrice = Math.round(totalPrice * 0.9);
-      }
-
-      // Determine final payment amount
       let payableAmount = totalPrice;
-      let payMethodLabel = 'Chuyển Khoản Tự Động VietQR / SePay';
+      let payMethodLabel = 'Thanh Toán Tại Quầy Spa (Giá niêm yết)';
 
-      if (payMethod === 'deposit') {
-        payableAmount = 100000; // 100k VND deposit
-        payMethodLabel = 'Đặt Cọc Giữ Chỗ (100.000đ)';
-      } else if (payMethod === 'sepay-qr') {
-        payableAmount = Math.round(totalPrice * 0.95); // 5% online prepayment discount
-        payMethodLabel = 'Thanh Toán Toàn Bộ VietQR (Giảm thêm 5%)';
-      } else {
-        payableAmount = totalPrice;
-        payMethodLabel = 'Thanh Toán Tại Quầy Spa (Tiền mặt / Thẻ)';
+      if (payMethod === 'qr-discount-10' || payMethod === 'sepay-qr') {
+        const discount10 = Math.round(totalPrice * 0.10);
+        payableAmount = totalPrice - discount10;
+        payMethodLabel = 'Mã QR Sacombank (Ưu đãi Giảm 10% thanh toán luôn)';
       }
 
       // Save Booking to LocalStorage for Admin Management
@@ -3178,7 +3295,7 @@ document.addEventListener('DOMContentLoaded', () => {
           payableAmount,
           payMethod,
           payMethodLabel,
-          status: payMethod === 'cash' ? 'Chờ xác nhận (Tiền mặt)' : 'Chờ thanh toán SePay',
+          status: payMethod === 'cash' ? 'Chờ xác nhận (Tiền mặt)' : 'Chờ đối soát QR Sacombank',
           paymentStatus: payMethod === 'cash' ? 'Chưa thanh toán' : 'Chờ quét QR',
           createdAt: new Date().toISOString()
         };
@@ -3186,13 +3303,11 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('ivy_bookings', JSON.stringify(bookingsList));
       } catch (err) {}
 
-      const hotline = '0989713660';
       const cleanPhone = '84989713660';
-
       const modalBody = document.querySelector('.modal-body');
 
-      // IF SEPAY QR OR DEPOSIT SELECTED -> SHOW SEPAY AUTOMATED PAYMENT SCREEN
-      if (payMethod === 'sepay-qr' || payMethod === 'deposit') {
+      // IF QR PAYMENT SELECTED -> SHOW SEPAY AUTOMATED PAYMENT SCREEN WITH 10% DISCOUNT
+      if (payMethod === 'qr-discount-10' || payMethod === 'sepay-qr' || payMethod === 'deposit') {
         renderSePayPaymentScreen(modalBody, {
           bookingCode,
           name,
@@ -3209,7 +3324,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // IF CASH PAYMENT -> DISPLAY INSTANT LUXURY SUCCESS VIEW
+      // IF CASH PAYMENT -> DISPLAY INSTANT SUCCESS VIEW
       renderCashBookingSuccess(modalBody, {
         bookingCode,
         name,
@@ -3425,7 +3540,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="display:inline-block;background:#E8F8EE;color:#25D366;border:1px solid #B8E8C8;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:800;margin-bottom:10px;">
           <i class="fa fa-check-circle"></i> SEPAY: XÁC NHẬN THANH TOÁN THÀNH CÔNG
         </div>
-        <h3 style="font-family:'Cinzel',serif;font-size:1.6rem;color:#0A2E20;margin-bottom:10px;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:#0A2E20;margin-bottom:10px;">
           ĐẶT LỊCH HẸN THÀNH CÔNG!
         </h3>
         <p style="font-size:0.92rem;color:#5A6560;line-height:1.6;margin-bottom:20px;">
@@ -3472,7 +3587,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="width:75px;height:75px;background:linear-gradient(135deg,#D4AF37,#A37E1C);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 0 30px rgba(212,175,55,0.4);color:#051A12;font-size:2rem;">
           <i class="fa fa-check"></i>
         </div>
-        <h3 style="font-family:'Cinzel',serif;font-size:1.6rem;color:#0A2E20;margin-bottom:12px;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:#0A2E20;margin-bottom:12px;">
           ĐẶT LỊCH THÀNH CÔNG!
         </h3>
         <p style="font-size:1rem;color:#5A6560;line-height:1.7;margin-bottom:25px;">
@@ -3852,7 +3967,7 @@ document.addEventListener('DOMContentLoaded', () => {
       container.innerHTML = `
         <div style="text-align:center; padding: 40px 20px; color:#5A6560;">
           <i class="fa fa-calendar-o" style="font-size:3rem; color:#D4AF37; margin-bottom:12px; display:block;"></i>
-          <h4 style="font-family:'Cinzel',serif; color:#0A2E20; margin-bottom:8px;">Chưa có lịch hẹn nào</h4>
+          <h4 style="font-family:'Playfair Display',serif; color:#0A2E20; margin-bottom:8px;">Chưa có lịch hẹn nào</h4>
           <p style="font-size:0.9rem;">Bạn chưa có lịch hẹn dịch vụ nào tại IVY LUXE SPA. Hãy chọn gói dịch vụ yêu thích và đặt lịch ngay!</p>
           <a href="#booking-form-box" class="nav-cta-btn js-open-booking" style="margin-top:15px; display:inline-block;">ĐẶT LỊCH NGAY</a>
         </div>

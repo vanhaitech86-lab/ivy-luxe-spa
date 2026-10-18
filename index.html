@@ -17,6 +17,11 @@
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="apple-touch-icon" href="assets/images/logo.png">
 
+  <!-- Google Fonts (Playfair Display & Montserrat & Plus Jakarta Sans with full Vietnamese support) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -1253,6 +1258,17 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
         <form id="booking-form-modal">
           <div class="modal-form-row modal-form-group">
             <div>
+              <label class="field-label" data-i18n="modal_name_label">Họ &amp; Tên Quý Khách</label>
+              <input type="text" id="modal-cust-name" class="modal-input" placeholder="Ví dụ: Nguyễn Thị Hoa" required>
+            </div>
+            <div>
+              <label class="field-label" data-i18n="modal_phone_label">Số Điện Thoại / WhatsApp</label>
+              <input type="tel" id="modal-cust-phone" class="modal-input" placeholder="098... / +84..." required>
+            </div>
+          </div>
+
+          <div class="modal-form-row modal-form-group">
+            <div>
               <label class="field-label" data-i18n="modal_branch_label">Địa Điểm</label>
               <select id="modal-branch-select" class="modal-input" required>
                 <option value="48 Hà Trung, Hoàn Kiếm, Hà Nội" selected>IVY LUXE SPA - 48 Hà Trung, Hoàn Kiếm, Hà Nội</option>
@@ -1301,6 +1317,116 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
           <div class="modal-form-group">
             <label class="field-label" data-i18n="modal_notes_label">Ghi Chú Thêm (Nếu có)</label>
             <textarea id="modal-notes" class="modal-input" rows="2" placeholder="Yêu cầu lực massage, phòng riêng, kỹ thuật viên..." data-i18n-placeholder="modal_notes_ph"></textarea>
+          </div>
+
+          <!-- KHỐI CHỌN PHƯƠNG THỨC THANH TOÁN & ƯU ĐÃI GIẢM 10% (YÊU CẦU 2) -->
+          <div class="modal-payment-section">
+            <div class="modal-pay-header">
+              <label class="field-label" style="margin-bottom:0;" data-i18n="modal_pay_choice_label">Phương Thức Thanh Toán</label>
+              <span class="pay-discount-pill"><i class="fa fa-percent"></i> GIẢM NGAY 10% KHI THANH TOÁN LUÔN</span>
+            </div>
+
+            <div class="modal-pay-options-grid">
+              <label class="modal-pay-option-card active" id="pay-opt-qr-label">
+                <input type="radio" name="modal-pay-method" id="pay-method-qr" value="qr-discount-10" checked>
+                <div class="pay-option-content">
+                  <div class="pay-opt-top">
+                    <span class="pay-opt-icon"><i class="fa fa-qrcode"></i></span>
+                    <div>
+                      <strong class="pay-opt-title">Mã QR Ngân Hàng (Giảm 10%)</strong>
+                      <span class="pay-opt-badge-hot">🔥 Ưu tiên giữ phòng VIP</span>
+                    </div>
+                  </div>
+                  <div class="pay-opt-desc">Thanh toán chuyển khoản quét mã VietQR tự động, chiết khấu trực tiếp 10% trên tổng giá trị.</div>
+                </div>
+              </label>
+
+              <label class="modal-pay-option-card" id="pay-opt-cash-label">
+                <input type="radio" name="modal-pay-method" id="pay-method-cash" value="cash">
+                <div class="pay-option-content">
+                  <div class="pay-opt-top">
+                    <span class="pay-opt-icon"><i class="fa fa-money"></i></span>
+                    <div>
+                      <strong class="pay-opt-title">Thanh Toán Tại Quầy Spa</strong>
+                      <span class="pay-opt-badge-norm">Giá niêm yết</span>
+                    </div>
+                  </div>
+                  <div class="pay-opt-desc">Thanh toán bằng tiền mặt hoặc quẹt thẻ khi quý khách đến trải nghiệm tại 48 Hà Trung.</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- BẢNG TÍNH GIÁ CHI TIẾT & MÃ QR NGÂN HÀNG SACOMBANK DYNAMIC -->
+            <div id="modal-qr-preview-box" class="modal-qr-preview-box">
+              <div class="qr-price-summary-card">
+                <div class="qr-price-row">
+                  <span class="qr-price-lbl"><i class="fa fa-tag"></i> Giá gốc niêm yết:</span>
+                  <span id="modal-calc-orig-price" class="qr-price-orig">800.000 VNĐ</span>
+                </div>
+                <div class="qr-price-row discount-row">
+                  <span class="qr-price-lbl"><i class="fa fa-gift"></i> Ưu đãi thanh toán luôn (10%):</span>
+                  <span id="modal-calc-discount-val" class="qr-price-discount">-80.000 VNĐ</span>
+                </div>
+                <div class="qr-price-divider"></div>
+                <div class="qr-price-row total-row">
+                  <span class="qr-price-lbl-bold"><i class="fa fa-check-circle"></i> Số tiền cần thanh toán:</span>
+                  <span id="modal-calc-final-price" class="qr-price-final">720.000 VNĐ</span>
+                </div>
+              </div>
+
+              <!-- KHUNG MÃ QR & THÔNG TIN CHUYỂN KHOẢN -->
+              <div class="qr-bank-details-wrapper">
+                <div class="qr-code-img-frame">
+                  <img id="modal-bank-qr-img" src="https://img.vietqr.io/image/sacombank-020113149011-compact2.png?amount=720000&amp;addInfo=IVY_BOOKING&amp;accountName=HKD%20IVY%20LUXE%20SPA" alt="Mã QR VietQR Sacombank HKD IVY LUXE SPA" class="modal-qr-real-img">
+                  <span class="qr-scan-badge"><i class="fa fa-camera"></i> Quét mã thanh toán</span>
+                </div>
+                <div class="qr-bank-info-table">
+                  <div class="bank-row">
+                    <span class="bank-lbl">Ngân Hàng:</span>
+                    <strong class="bank-val">Sacombank</strong>
+                  </div>
+                  <div class="bank-row">
+                    <span class="bank-lbl">Số Tài Khoản:</span>
+                    <div class="bank-val-copy">
+                      <strong class="bank-acc-highlight">020113149011</strong>
+                      <button type="button" class="btn-copy-mini" id="btn-copy-acc"><i class="fa fa-copy"></i> Copy STK</button>
+                    </div>
+                  </div>
+                  <div class="bank-row">
+                    <span class="bank-lbl">Chủ Tài Khoản:</span>
+                    <strong class="bank-val">HKD IVY LUXE SPA</strong>
+                  </div>
+                  <div class="bank-row">
+                    <span class="bank-lbl">Số Tiền (Giảm 10%):</span>
+                    <div class="bank-val-copy">
+                      <strong id="modal-copy-amount" class="bank-amount-highlight">720.000 VNĐ</strong>
+                      <button type="button" class="btn-copy-mini" id="btn-copy-amount"><i class="fa fa-copy"></i> Copy Tiền</button>
+                    </div>
+                  </div>
+                  <div class="bank-row">
+                    <span class="bank-lbl">Nội Dung CK:</span>
+                    <div class="bank-val-copy">
+                      <strong id="modal-copy-memo" class="bank-memo-highlight">IVY_VIP</strong>
+                      <button type="button" class="btn-copy-mini" id="btn-copy-memo"><i class="fa fa-copy"></i> Copy ND</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="qr-helper-tip">
+                <i class="fa fa-shield"></i> Sau khi quét mã QR chuyển khoản, bấm nút <strong>XÁC NHẬN ĐẶT LỊCH NGAY</strong> bên dưới để hoàn tất giữ phòng VIP và hưởng trọn ưu đãi giảm giá 10%!
+              </div>
+            </div>
+
+            <!-- KHỐI THANH TOÁN TẠI QUẦY (ẨN MẶC ĐỊNH) -->
+            <div id="modal-cash-preview-box" class="modal-cash-preview-box" style="display:none;">
+              <div class="cash-notice-card">
+                <i class="fa fa-info-circle"></i>
+                <div>
+                  <strong>Thanh toán tại quầy khi đến:</strong> Tổng tiền dịch vụ là <strong id="modal-cash-total-price" style="color:#ECC876;">800.000 VNĐ</strong> (Giá niêm yết không áp dụng giảm 10% thanh toán trước).
+                  <div style="font-size:0.78rem; color:#A3B5AD; margin-top:4px;">Chuyên viên Spa sẽ liên hệ với quý khách để xác nhận phòng và giờ đến.</div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div id="modal-aff-badge" class="modal-aff-badge" style="display:none;">

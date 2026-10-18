@@ -69,7 +69,7 @@ body.admin-body {
 }
 
 .admin-login-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.6rem;
   letter-spacing: 1.5px;
   color: var(--admin-gold-light);
@@ -239,7 +239,7 @@ body.admin-body {
 }
 
 .sb-brand-name {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.05rem;
   color: var(--admin-gold-light);
   letter-spacing: 0.8px;
@@ -390,7 +390,7 @@ body.admin-body {
 }
 
 .topbar-page-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.45rem;
   color: #FFF;
   margin-bottom: 4px;
@@ -492,7 +492,7 @@ body.admin-body {
 }
 
 .kpi-value {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.45rem;
   font-weight: 800;
   color: #FFF;
@@ -534,7 +534,7 @@ body.admin-body {
 }
 
 .admin-card-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.1rem;
   color: var(--admin-gold-light);
   display: flex;
@@ -701,7 +701,7 @@ body.admin-body {
 }
 
 .admin-service-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1rem;
   color: #FFF;
   margin-bottom: 6px;

@@ -12,7 +12,7 @@
    - Full Footer & Floating Quick Action Dock
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   --color-primary: #123023;       /* Imperial Deep Emerald */
@@ -30,8 +30,8 @@
   --color-border: #E8E2D8;
 
   --font-serif: 'Playfair Display', Georgia, serif;
-  --font-display: 'Cinzel', serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -1737,6 +1737,349 @@ button, input, select, textarea {
   transform: translateY(-2px);
 }
 
+/* Modal Payment & 10% Discount QR Section */
+.modal-payment-section {
+  background: #0B1C14;
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-pay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.modal-pay-header .field-label {
+  color: #ECC876 !important;
+  margin-bottom: 0;
+}
+
+.pay-discount-pill {
+  background: linear-gradient(135deg, #E65100, #F57C00);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 8px rgba(230, 81, 0, 0.4);
+  animation: pulseDiscount 2s infinite ease-in-out;
+}
+
+@keyframes pulseDiscount {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.modal-pay-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.modal-pay-option-card {
+  display: block;
+  position: relative;
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+  background: rgba(18, 48, 35, 0.85);
+  border-radius: 10px;
+  padding: 12px 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.modal-pay-option-card input[type="radio"] {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  accent-color: #D4AF37;
+  width: 16px;
+  height: 16px;
+}
+
+.modal-pay-option-card.active,
+.modal-pay-option-card:hover {
+  border-color: #D4AF37;
+  background: rgba(26, 68, 50, 0.95);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
+}
+
+.pay-opt-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 6px;
+  padding-right: 22px;
+}
+
+.pay-opt-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.2);
+  color: #ECC876;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.pay-opt-title {
+  display: block;
+  font-size: 0.84rem;
+  color: #FFFFFF;
+  line-height: 1.3;
+}
+
+.pay-opt-badge-hot {
+  display: inline-block;
+  font-size: 0.68rem;
+  color: #25D366;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.pay-opt-badge-norm {
+  display: inline-block;
+  font-size: 0.68rem;
+  color: #A3B5AD;
+  margin-top: 2px;
+}
+
+.pay-opt-desc {
+  font-size: 0.74rem;
+  color: #B2C4BC;
+  line-height: 1.4;
+}
+
+/* Price summary card */
+.qr-price-summary-card {
+  background: rgba(5, 18, 12, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+
+.qr-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #CCD8D2;
+  padding: 3px 0;
+}
+
+.qr-price-orig {
+  text-decoration: line-through;
+  color: #8C9E96;
+}
+
+.discount-row {
+  color: #25D366;
+  font-weight: 700;
+}
+
+.qr-price-discount {
+  color: #25D366;
+  font-weight: 800;
+}
+
+.qr-price-divider {
+  height: 1px;
+  background: rgba(212, 175, 55, 0.2);
+  margin: 6px 0;
+}
+
+.total-row {
+  padding-top: 4px;
+}
+
+.qr-price-lbl-bold {
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.qr-price-final {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ECC876;
+  letter-spacing: 0.5px;
+}
+
+/* QR code and bank details */
+.qr-bank-details-wrapper {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 14px;
+  background: rgba(14, 38, 27, 0.9);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.qr-code-img-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-qr-real-img {
+  width: 100%;
+  max-width: 145px;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  display: block;
+}
+
+.qr-scan-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #123023;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.qr-bank-info-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #DDE5E1;
+}
+
+.bank-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 3px 0;
+  border-bottom: 1px dashed rgba(212, 175, 55, 0.15);
+}
+
+.bank-row:last-child {
+  border-bottom: none;
+}
+
+.bank-lbl {
+  color: #8FA299;
+  font-size: 0.76rem;
+}
+
+.bank-val {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.bank-val-copy {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bank-acc-highlight {
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: #ECC876;
+  letter-spacing: 1px;
+}
+
+.bank-amount-highlight {
+  color: #25D366;
+  font-weight: 800;
+}
+
+.bank-memo-highlight {
+  font-family: monospace;
+  color: #FFE082;
+  font-weight: 700;
+}
+
+.btn-copy-mini {
+  background: rgba(212, 175, 55, 0.2);
+  color: #ECC876;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-copy-mini:hover {
+  background: #D4AF37;
+  color: #051A12;
+}
+
+.qr-helper-tip {
+  font-size: 0.74rem;
+  color: #A3B5AD;
+  line-height: 1.45;
+  background: rgba(37, 211, 102, 0.08);
+  border: 1px solid rgba(37, 211, 102, 0.25);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.qr-helper-tip i {
+  color: #25D366;
+}
+
+.cash-notice-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #DDE5E1;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.cash-notice-card i {
+  color: #ECC876;
+  font-size: 1.1rem;
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .modal-pay-options-grid {
+    grid-template-columns: 1fr;
+  }
+  .qr-bank-details-wrapper {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .qr-code-img-frame {
+    width: 160px;
+  }
+}
+
 .menu-board-lightbox-img {
   max-width: 100%;
   max-height: 75vh;
@@ -3238,7 +3581,7 @@ button, input, select, textarea {
 }
 
 .aff-perk-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: #FFFFFF;
@@ -3344,7 +3687,7 @@ button, input, select, textarea {
 }
 
 .aff-col-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.3rem;
   color: #ECC876;
   margin-bottom: 6px;
@@ -3460,7 +3803,7 @@ select.aff-input option {
   padding: 15px;
   background: linear-gradient(135deg, #ECC876 0%, #D4AF37 50%, #A4791E 100%);
   color: #051A12;
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 0.96rem;
   font-weight: 800;
   letter-spacing: 1px;
@@ -3515,7 +3858,7 @@ select.aff-input option {
 }
 
 .aff-result-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.05rem;
   color: #FFFFFF;
   margin: 0;
@@ -3893,7 +4236,7 @@ select.aff-input option {
 }
 
 .aff-pi-name {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.15rem;
   color: #FFFFFF;
   margin: 0 0 4px;
@@ -3937,7 +4280,7 @@ select.aff-input option {
 }
 
 .aff-sc-num {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.5rem;
   font-weight: 800;
   color: #FFFFFF;
@@ -4053,7 +4396,7 @@ select.aff-input option {
   color: #FFFFFF !important;
   padding: 12px 24px;
   border-radius: 30px;
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 0.88rem;
   letter-spacing: 0.5px;
@@ -4405,7 +4748,7 @@ select.aff-input option {
 }
 
 .sepay-total-amount {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.7rem;
   font-weight: 800;
   color: #B22222;
@@ -4531,7 +4874,7 @@ select.aff-input option {
   padding: 14px;
   background: linear-gradient(135deg, #25D366, #128C7E);
   color: #FFFFFF;
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 0.95rem;
   font-weight: 800;
   border: none;
@@ -4570,7 +4913,7 @@ select.aff-input option {
 }
 
 .mb-service {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.05rem;
   color: #0d271c;
   margin-bottom: 4px;
@@ -4700,7 +5043,7 @@ select.aff-input option {
   gap: 7px;
   padding: 10px 18px;
   border-radius: 25px;
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 0.82rem;
   color: #FFFFFF !important;
