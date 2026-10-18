@@ -4217,8 +4217,59 @@ document.addEventListener('DOMContentLoaded', () => {
         p.classList.remove('active');
       }
     });
+    authModal.classList.add('active');
     authModal.style.display = 'flex';
+    authModal.style.opacity = '1';
+    authModal.style.visibility = 'visible';
+    authModal.style.pointerEvents = 'auto';
+    document.body.style.overflow = 'hidden';
   }
+  window.openAuthModalWithTab = openAuthModalWithTab;
+
+  function closeAuthModal() {
+    const authModal = document.getElementById('auth-modal');
+    if (authModal) {
+      authModal.classList.remove('active');
+      authModal.style.display = 'none';
+      authModal.style.opacity = '0';
+      authModal.style.visibility = 'hidden';
+      authModal.style.pointerEvents = 'none';
+    }
+    const googleAuthModal = document.getElementById('google-auth-modal');
+    if (!googleAuthModal || !googleAuthModal.classList.contains('active')) {
+      document.body.style.overflow = '';
+    }
+  }
+  window.closeAuthModal = closeAuthModal;
+
+  function openGoogleAuthModal() {
+    const googleAuthModal = document.getElementById('google-auth-modal');
+    if (googleAuthModal) {
+      googleAuthModal.classList.add('active');
+      googleAuthModal.style.display = 'flex';
+      googleAuthModal.style.opacity = '1';
+      googleAuthModal.style.visibility = 'visible';
+      googleAuthModal.style.pointerEvents = 'auto';
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  window.openGoogleAuthModal = openGoogleAuthModal;
+
+  function closeGoogleAuthModal() {
+    const googleAuthModal = document.getElementById('google-auth-modal');
+    if (googleAuthModal) {
+      googleAuthModal.classList.remove('active');
+      googleAuthModal.style.display = 'none';
+      googleAuthModal.style.opacity = '0';
+      googleAuthModal.style.visibility = 'hidden';
+      googleAuthModal.style.pointerEvents = 'none';
+    }
+    const authModal = document.getElementById('auth-modal');
+    if (!authModal || !authModal.classList.contains('active')) {
+      document.body.style.overflow = '';
+    }
+  }
+  window.closeGoogleAuthModal = closeGoogleAuthModal;
 
   function initAuthSystem() {
     getAuthUsers(); // ensure seed data exists
@@ -4232,9 +4283,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('dd-logout-btn');
     const historyBtn = document.getElementById('dd-history-btn');
 
+    // Helper for snappy mobile touch interaction
+    function bindFastClick(el, handler) {
+      if (!el) return;
+      let touched = false;
+      el.addEventListener('touchend', (e) => {
+        touched = true;
+        e.preventDefault();
+        handler(e);
+        setTimeout(() => { touched = false; }, 350);
+      }, { passive: false });
+      el.addEventListener('click', (e) => {
+        if (touched) return;
+        e.preventDefault();
+        handler(e);
+      });
+    }
+
     // Header Auth Button Click
     function toggleAuthOrDropdown(e) {
-      e.stopPropagation();
+      if (e && e.stopPropagation) e.stopPropagation();
       const user = getCurrentUser();
       if (user) {
         if (userDropdown) {
@@ -4245,72 +4313,60 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    if (headerAuthBtn) headerAuthBtn.addEventListener('click', toggleAuthOrDropdown);
-    if (mobileAuthBtn) mobileAuthBtn.addEventListener('click', toggleAuthOrDropdown);
+    bindFastClick(headerAuthBtn, toggleAuthOrDropdown);
+    bindFastClick(mobileAuthBtn, toggleAuthOrDropdown);
 
-    // Mobile Auth Strip Buttons (Yêu cầu 2: Điện thoại)
+    // Mobile Auth Strip Buttons (Dành riêng cho màn hình điện thoại)
     const mobileStripLoginBtn = document.getElementById('mobile-strip-login-btn');
     const mobileStripRegBtn = document.getElementById('mobile-strip-reg-btn');
     const mobileStripManageBtn = document.getElementById('mobile-strip-manage-btn');
     const mobileStripLogoutBtn = document.getElementById('mobile-strip-logout-btn');
 
-    if (mobileStripLoginBtn) {
-      mobileStripLoginBtn.addEventListener('click', (e) => {
-        e.preventDefault();
+    bindFastClick(mobileStripLoginBtn, () => openAuthModalWithTab('login'));
+    bindFastClick(mobileStripRegBtn, () => openAuthModalWithTab('register'));
+
+    bindFastClick(mobileStripManageBtn, () => {
+      const user = getCurrentUser();
+      if (!user) {
         openAuthModalWithTab('login');
-      });
-    }
-
-    if (mobileStripRegBtn) {
-      mobileStripRegBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openAuthModalWithTab('register');
-      });
-    }
-
-    if (mobileStripManageBtn) {
-      mobileStripManageBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const user = getCurrentUser();
-        if (!user) {
-          openAuthModalWithTab('login');
-          return;
+        return;
+      }
+      if (user.role === 'admin') {
+        window.location.href = 'admin.html';
+      } else if (user.role === 'partner') {
+        window.location.hash = '#affiliate';
+      } else {
+        const myBookingsModal = document.getElementById('my-bookings-modal');
+        const myBookingsList = document.getElementById('my-bookings-list');
+        if (myBookingsModal) {
+          renderMyBookings(myBookingsList);
+          myBookingsModal.classList.add('active');
+          myBookingsModal.style.display = 'flex';
         }
-        if (user.role === 'admin') {
-          window.location.href = 'admin.html';
-        } else if (user.role === 'partner') {
-          window.location.hash = '#affiliate';
-        } else {
-          const myBookingsModal = document.getElementById('my-bookings-modal');
-          const myBookingsList = document.getElementById('my-bookings-list');
-          if (myBookingsModal) {
-            renderMyBookings(myBookingsList);
-            myBookingsModal.style.display = 'flex';
-          }
-        }
-      });
-    }
+      }
+    });
 
-    if (mobileStripLogoutBtn) {
-      mobileStripLogoutBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        setCurrentUser(null);
-        updateHeaderAuthState();
-        alert('Bạn đã đăng xuất tài khoản thành công.');
-      });
-    }
+    bindFastClick(mobileStripLogoutBtn, () => {
+      setCurrentUser(null);
+      updateHeaderAuthState();
+      alert('Bạn đã đăng xuất tài khoản thành công.');
+    });
 
     // Close Dropdown when clicking outside
     document.addEventListener('click', (e) => {
-      if (userDropdown && !userDropdown.contains(e.target) && e.target !== headerAuthBtn) {
+      if (userDropdown && !userDropdown.contains(e.target) && e.target !== headerAuthBtn && e.target !== mobileAuthBtn) {
         userDropdown.style.display = 'none';
       }
     });
 
-    // Close Auth Modal
-    if (authModalClose && authModal) {
-      authModalClose.addEventListener('click', () => {
-        authModal.style.display = 'none';
+    // Close Auth Modal via Close Button and Backdrop Click
+    bindFastClick(authModalClose, closeAuthModal);
+
+    if (authModal) {
+      authModal.addEventListener('click', (e) => {
+        if (e.target === authModal) {
+          closeAuthModal();
+        }
       });
     }
 
@@ -4318,19 +4374,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const authTabBtns = document.querySelectorAll('.auth-tab-btn');
     const authPanes = document.querySelectorAll('.auth-tab-pane');
     authTabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
         const target = btn.getAttribute('data-auth-tab');
-        authTabBtns.forEach(b => b.classList.remove('active'));
-        authPanes.forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        const pane = document.getElementById('auth-pane-' + target);
-        if (pane) pane.classList.add('active');
+        openAuthModalWithTab(target);
       });
     });
 
-    // Preset Buttons
+    // Preset Demo Buttons
     document.querySelectorAll('.auth-preset-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
         const email = btn.getAttribute('data-email');
         const pass = btn.getAttribute('data-pass');
         const emailInput = document.getElementById('login-identifier');
@@ -4340,21 +4394,42 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Login Form Submit
+    // Login Form Submit (Chuẩn hóa tự động cho bàn phím điện thoại)
     const loginForm = document.getElementById('auth-login-form');
     if (loginForm) {
       loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const identifier = document.getElementById('login-identifier')?.value.trim() || '';
-        const password = document.getElementById('login-password')?.value.trim() || '';
+        const rawId = document.getElementById('login-identifier')?.value || '';
+        const rawPass = document.getElementById('login-password')?.value || '';
+
+        const cleanId = rawId.trim();
+        const cleanIdLower = cleanId.toLowerCase();
+        const cleanPhone = cleanId.replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
+        const cleanPass = rawPass.trim();
+
+        if (!cleanId) {
+          alert('Vui lòng nhập Email hoặc Số điện thoại đăng nhập.');
+          return;
+        }
+        if (!cleanPass) {
+          alert('Vui lòng nhập Mật khẩu.');
+          return;
+        }
 
         const users = getAuthUsers();
-        const user = users.find(u => (u.email === identifier || u.phone === identifier) && u.pass === password);
+        const user = users.find(u => {
+          const uEmail = (u.email || '').toLowerCase().trim();
+          const uPhone = (u.phone || '').replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
+          const emailMatch = uEmail && (uEmail === cleanIdLower);
+          const phoneMatch = uPhone && (uPhone === cleanPhone || (u.phone || '').trim() === cleanId);
+          const passMatch = (u.pass || '').trim() === cleanPass;
+          return (emailMatch || phoneMatch) && passMatch;
+        });
 
         if (user) {
           setCurrentUser(user);
           updateHeaderAuthState();
-          if (authModal) authModal.style.display = 'none';
+          closeAuthModal();
 
           if (user.role === 'admin') {
             const goToAdmin = confirm('Đăng nhập Quản Trị Viên thành công! Bạn có muốn mở Trang Quản Trị Admin ngay bây giờ?');
@@ -4362,38 +4437,77 @@ document.addEventListener('DOMContentLoaded', () => {
           } else if (user.role === 'partner') {
             window.location.hash = '#affiliate';
           } else {
-            alert('Chào mừng ' + user.name + ' quay trở lại với IVY LUXE SPA!');
+            alert('Chào mừng ' + (user.name || 'Quý khách') + ' quay trở lại với IVY LUXE SPA!');
           }
         } else {
-          alert('Sai thông tin tài khoản hoặc mật khẩu! Vui lòng kiểm tra lại.');
+          alert('Sai thông tin tài khoản hoặc mật khẩu! Vui lòng kiểm tra lại.\n\n(Quý khách có thể bấm "Quên Mật Khẩu" hoặc chọn "Đăng Nhập Nhanh Bằng Google" ở phía trên).');
         }
       });
     }
 
-    // Register Form Submit
+    // Register Form Submit (Chuẩn hóa tự động cho điện thoại)
     const regForm = document.getElementById('auth-register-form');
     if (regForm) {
       regForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const fullname = document.getElementById('reg-fullname')?.value.trim() || '';
-        const email = document.getElementById('reg-email')?.value.trim() || '';
-        const phone = document.getElementById('reg-phone')?.value.trim() || '';
+        const rawEmail = document.getElementById('reg-email')?.value.trim() || '';
+        const rawPhone = document.getElementById('reg-phone')?.value.trim() || '';
         const password = document.getElementById('reg-password')?.value.trim() || '';
         const role = document.getElementById('reg-role')?.value || 'customer';
 
-        const users = getAuthUsers();
-        if (users.find(u => u.email === email || u.phone === phone)) {
-          alert('Email hoặc Số điện thoại này đã được đăng ký! Vui lòng chuyển sang Đăng nhập.');
+        if (!fullname) {
+          alert('Vui lòng nhập Họ và Tên của bạn.');
           return;
         }
 
-        const newUser = { email, phone, pass: password, name: fullname, role };
+        const cleanEmail = rawEmail.toLowerCase();
+        const cleanPhone = rawPhone.replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
+
+        if (!cleanEmail && !cleanPhone) {
+          alert('Vui lòng nhập Email hoặc Số điện thoại để tạo tài khoản.');
+          return;
+        }
+
+        if (cleanEmail && (!cleanEmail.includes('@') || !cleanEmail.includes('.'))) {
+          alert('Địa chỉ Email không đúng định dạng.');
+          return;
+        }
+
+        if (!password || password.length < 4) {
+          alert('Mật khẩu cần tối thiểu 4 ký tự.');
+          return;
+        }
+
+        const users = getAuthUsers();
+        const existing = users.find(u => {
+          const uEmail = (u.email || '').toLowerCase().trim();
+          const uPhone = (u.phone || '').replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
+          return (cleanEmail && uEmail === cleanEmail) || (cleanPhone && uPhone === cleanPhone);
+        });
+
+        if (existing) {
+          alert('Email hoặc Số điện thoại này đã được đăng ký! Đang chuyển sang màn hình Đăng Nhập...');
+          openAuthModalWithTab('login');
+          const loginId = document.getElementById('login-identifier');
+          if (loginId) loginId.value = cleanEmail || rawPhone;
+          return;
+        }
+
+        const newUser = {
+          email: cleanEmail,
+          phone: rawPhone,
+          pass: password,
+          name: fullname,
+          role: role
+        };
+
         users.push(newUser);
         saveAuthUsers(users);
 
         setCurrentUser(newUser);
         updateHeaderAuthState();
-        if (authModal) authModal.style.display = 'none';
+        closeAuthModal();
 
         alert('Đăng ký tài khoản thành công! Chào mừng ' + fullname + ' đến với IVY LUXE SPA.');
         if (role === 'partner') {
@@ -4424,31 +4538,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const googleButtons = document.querySelectorAll('.js-btn-google-auth');
 
     googleButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (googleAuthModal) googleAuthModal.style.display = 'flex';
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openGoogleAuthModal();
       });
     });
 
-    if (googleAuthModalClose && googleAuthModal) {
-      googleAuthModalClose.addEventListener('click', () => {
-        googleAuthModal.style.display = 'none';
-      });
-    }
+    bindFastClick(googleAuthModalClose, closeGoogleAuthModal);
 
     if (googleAuthModal) {
       googleAuthModal.addEventListener('click', (e) => {
-        if (e.target === googleAuthModal) googleAuthModal.style.display = 'none';
+        if (e.target === googleAuthModal) {
+          closeGoogleAuthModal();
+        }
       });
     }
 
     // Handle selecting pre-set or custom Google account
     function handleGoogleLoginSuccess(name, email, role = 'customer') {
+      const cleanEmail = email.toLowerCase().trim();
       const users = getAuthUsers();
-      let user = users.find(u => u.email && u.email.toLowerCase() === email.toLowerCase());
+      let user = users.find(u => u.email && u.email.toLowerCase() === cleanEmail);
       if (!user) {
         user = {
           name,
-          email,
+          email: cleanEmail,
           phone: '',
           pass: 'google_' + Math.random().toString(36).substring(2, 8),
           role: role || 'customer',
@@ -4464,10 +4578,10 @@ document.addEventListener('DOMContentLoaded', () => {
       setCurrentUser(user);
       updateHeaderAuthState();
 
-      if (googleAuthModal) googleAuthModal.style.display = 'none';
-      if (authModal) authModal.style.display = 'none';
+      closeGoogleAuthModal();
+      closeAuthModal();
 
-      alert(`Đăng nhập bằng tài khoản Google (${email}) thành công!\nChào mừng ${user.name} đến với IVY LUXE SPA.`);
+      alert(`Đăng nhập bằng Google (${cleanEmail}) thành công!\nChào mừng ${user.name} đến với IVY LUXE SPA.`);
 
       if (user.role === 'admin') {
         const goToAdmin = confirm('Đăng nhập Quản Trị Viên thành công! Bạn có muốn mở Trang Quản Trị Admin ngay bây giờ?');
@@ -4522,18 +4636,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnSendOtp) {
       btnSendOtp.addEventListener('click', () => {
-        const identifier = document.getElementById('forgot-identifier')?.value.trim();
-        if (!identifier) {
+        const rawId = document.getElementById('forgot-identifier')?.value.trim() || '';
+        if (!rawId) {
           alert('Vui lòng nhập Gmail hoặc Số điện thoại đã đăng ký!');
           document.getElementById('forgot-identifier')?.focus();
           return;
         }
 
-        const isEmail = identifier.includes('@');
-        // Generate random 6-digit OTP
+        const isEmail = rawId.includes('@');
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
         activeResetOtp = otp;
-        activeResetIdentifier = identifier;
+        activeResetIdentifier = rawId;
 
         if (forgotOtpNotice) {
           forgotOtpNotice.innerHTML = `
@@ -4542,7 +4655,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <strong>Mã xác thực đã được tạo thành công!</strong>
             </div>
             <div style="margin-top:6px;">
-              Mã OTP gửi đến ${isEmail ? 'Gmail' : 'Số điện thoại'} <strong>${identifier}</strong> là:
+              Mã OTP gửi đến ${isEmail ? 'Gmail' : 'Số điện thoại'} <strong>${rawId}</strong> là:
               <span class="auth-otp-code-highlight">${otp}</span>
             </div>
             <div style="margin-top:4px; font-size:0.78rem; color:#DDE5E1;">
@@ -4557,7 +4670,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const otpInput = document.getElementById('forgot-otp-input');
         if (otpInput) {
-          otpInput.value = otp; // Pre-fill for instant UX convenience
+          otpInput.value = otp;
           otpInput.focus();
         }
 
@@ -4582,8 +4695,8 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        if (!newPass || newPass.length < 6) {
-          alert('Mật khẩu mới phải có tối thiểu 6 ký tự!');
+        if (!newPass || newPass.length < 4) {
+          alert('Mật khẩu mới phải có tối thiểu 4 ký tự!');
           return;
         }
 
@@ -4592,16 +4705,22 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
+        const cleanIdLower = activeResetIdentifier.toLowerCase();
+        const cleanPhone = activeResetIdentifier.replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
+
         const users = getAuthUsers();
-        let user = users.find(u => u.email === activeResetIdentifier || u.phone === activeResetIdentifier);
+        let user = users.find(u => {
+          const uEmail = (u.email || '').toLowerCase().trim();
+          const uPhone = (u.phone || '').replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
+          return (uEmail && uEmail === cleanIdLower) || (uPhone && uPhone === cleanPhone);
+        });
 
         if (user) {
           user.pass = newPass;
         } else {
-          // If identifier wasn't in users list, create user with new pass
           const isEmail = activeResetIdentifier.includes('@');
           user = {
-            email: isEmail ? activeResetIdentifier : '',
+            email: isEmail ? cleanIdLower : '',
             phone: !isEmail ? activeResetIdentifier : '',
             pass: newPass,
             name: isEmail ? activeResetIdentifier.split('@')[0] : 'Khách Hàng',
@@ -4614,14 +4733,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         alert(`Đặt lại mật khẩu thành công!\nMật khẩu mới cho tài khoản "${activeResetIdentifier}" đã được cập nhật.\nĐang chuyển sang màn hình Đăng Nhập...`);
 
-        // Switch back to login with pre-filled credentials
         openAuthModalWithTab('login');
         const loginIdentifier = document.getElementById('login-identifier');
         const loginPassword = document.getElementById('login-password');
         if (loginIdentifier) loginIdentifier.value = activeResetIdentifier;
         if (loginPassword) loginPassword.value = newPass;
 
-        // Reset forgot form
         activeResetOtp = null;
         if (forgotStepOtp) forgotStepOtp.style.display = 'none';
         if (btnSendOtp) btnSendOtp.innerHTML = '<i class="fa fa-paper-plane"></i> GỬI MÃ XÁC THỰC (OTP)';
@@ -4650,12 +4767,14 @@ document.addEventListener('DOMContentLoaded', () => {
       historyBtn.addEventListener('click', () => {
         if (userDropdown) userDropdown.style.display = 'none';
         renderMyBookings(myBookingsList);
+        myBookingsModal.classList.add('active');
         myBookingsModal.style.display = 'flex';
       });
     }
 
     if (myBookingsClose && myBookingsModal) {
       myBookingsClose.addEventListener('click', () => {
+        myBookingsModal.classList.remove('active');
         myBookingsModal.style.display = 'none';
       });
     }

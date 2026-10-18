@@ -231,7 +231,7 @@
 
         <!-- Mobile Header Right Actions: Auth Pill & Nav Toggle -->
         <div class="mobile-header-right-group">
-          <button type="button" class="mobile-header-auth-pill" id="mobile-auth-btn" title="Đăng Nhập / Đăng Ký">
+          <button type="button" class="mobile-header-auth-pill" id="mobile-auth-btn" title="Đăng Nhập / Đăng Ký" onclick="openAuthModalWithTab('login'); return false;">
             <i class="fa fa-user-circle"></i> <span id="mobile-auth-text">Đăng Nhập</span>
           </button>
           <div class="mobile-nav-toggle js-open-booking" title="Đặt lịch hẹn">
@@ -286,10 +286,10 @@
           <span id="mobile-auth-bar-label">TÀI KHOẢN:</span>
         </div>
         <div class="mobile-auth-strip-buttons" id="mobile-auth-guest-actions">
-          <button type="button" class="mobile-auth-bar-btn btn-login" id="mobile-strip-login-btn">
+          <button type="button" class="mobile-auth-bar-btn btn-login" id="mobile-strip-login-btn" onclick="openAuthModalWithTab('login'); return false;">
             <i class="fa fa-sign-in"></i> <span>Đăng Nhập</span>
           </button>
-          <button type="button" class="mobile-auth-bar-btn btn-register" id="mobile-strip-reg-btn">
+          <button type="button" class="mobile-auth-bar-btn btn-register" id="mobile-strip-reg-btn" onclick="openAuthModalWithTab('register'); return false;">
             <i class="fa fa-user-plus"></i> <span>Đăng Ký</span>
           </button>
         </div>
@@ -1607,7 +1607,7 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
           <i class="fa fa-user-circle" style="color:#D4AF37; font-size:1.4rem;"></i>
           <h3 class="modal-title" id="auth-modal-title">TÀI KHOẢN IVY LUXE SPA</h3>
         </div>
-        <span id="auth-modal-close" class="modal-close-btn">&times;</span>
+        <span id="auth-modal-close" class="modal-close-btn" onclick="closeAuthModal(); return false;">&times;</span>
       </div>
 
       <div class="modal-body auth-modal-body">
@@ -1791,7 +1791,7 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
           </svg>
           <span style="font-weight:700; font-size:1.05rem; color:#202124;">Đăng nhập với Google</span>
         </div>
-        <span id="google-auth-modal-close" class="modal-close-btn" style="color:#5F6368; font-size:1.6rem; cursor:pointer; line-height:1;">&times;</span>
+        <span id="google-auth-modal-close" class="modal-close-btn" style="color:#5F6368; font-size:1.6rem; cursor:pointer; line-height:1;" onclick="closeGoogleAuthModal(); return false;">&times;</span>
       </div>
       <div style="padding:20px 24px;">
         <p style="font-size:0.86rem; color:#5F6368; margin-bottom:14px; line-height:1.5;">
