@@ -649,7 +649,7 @@
       <!-- Menu Tabs Matching spaMenuData categories -->
       <div class="menu-tabs-wrapper">
         <button class="menu-tab-btn active" data-tab="combos" data-i18n-html="tab_combos"><i class="fa fa-fire"></i> IVY Special Combos</button>
-        <button class="menu-tab-btn" data-tab="packages" data-i18n-html="tab_packages"><i class="fa fa-diamond"></i> Gói Trị Liệu Hoàng Gia (2h - 4h)</button>
+        <button class="menu-tab-btn" data-tab="packages" data-i18n-html="tab_packages"><i class="fa fa-diamond"></i> Gói Hoàng Gia &amp; Dưỡng Sinh, Da Mặt</button>
         <button class="menu-tab-btn" data-tab="massage" data-i18n-html="tab_massage"><i class="fa fa-heart"></i> Massage Body Toàn Thân</button>
         <button class="menu-tab-btn" data-tab="foot" data-i18n-html="tab_foot"><i class="fa fa-paw"></i> Foot Massage (Trị Liệu Chân)</button>
         <button class="menu-tab-btn" data-tab="nails" data-i18n-html="tab_nails"><i class="fa fa-star"></i> Chăm Sóc & Làm Đẹp Móng (Nails)</button>
@@ -1457,10 +1457,39 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
         <span id="menu-board-close-btn" class="modal-close-btn">&times;</span>
       </div>
       <div class="modal-body" style="text-align:center; padding: 20px; background:#0F241A;">
-        <img src="assets/images/menu_board_ivy.jpg" alt="Bảng giá gốc IVY LUXE SPA 48 Hà Trung" class="menu-board-lightbox-img">
+        
+        <!-- BOARD TABS SWITCHER -->
+        <div class="menu-board-tabs-bar">
+          <button type="button" class="board-tab-btn active" id="tab-board-wellness" data-board="wellness">
+            <i class="fa fa-leaf"></i> BẢNG GIÁ BODY MASSAGE &amp; WELLNESS (BẢN MỚI 48 HÀ TRUNG)
+          </button>
+          <button type="button" class="board-tab-btn" id="tab-board-combos" data-board="combos">
+            <i class="fa fa-tags"></i> BẢNG GIÁ SPECIAL COMBOS &amp; NAILS
+          </button>
+        </div>
+
+        <!-- BOARD IMAGE WRAPPER -->
+        <div class="menu-board-display-wrap">
+          <div id="board-view-wellness" class="board-view-pane active">
+            <img src="assets/images/menu_board_wellness.jpg" alt="Bảng giá Authentic Vietnamese Wellness IVY LUXE SPA 48 Hà Trung" class="menu-board-lightbox-img" id="img-board-wellness">
+            <div class="board-zoom-hint"><i class="fa fa-search-plus"></i> Bấm vào ảnh để mở xem toàn màn hình (High Resolution)</div>
+          </div>
+          <div id="board-view-combos" class="board-view-pane" style="display:none;">
+            <img src="assets/images/menu_board_ivy.jpg" alt="Bảng giá niêm yết gốc IVY LUXE SPA 48 Hà Trung" class="menu-board-lightbox-img" id="img-board-combos">
+            <div class="board-zoom-hint"><i class="fa fa-search-plus"></i> Bấm vào ảnh để mở xem toàn màn hình (High Resolution)</div>
+          </div>
+        </div>
+
+        <!-- QUICK BOOKING CTA INSIDE BOARD MODAL -->
+        <div class="menu-board-action-cta">
+          <a href="#booking-form-box" class="nav-cta-btn js-open-booking" style="background:linear-gradient(135deg, #ECC876, #D4AF37, #A4791E); color:#051A12; font-weight:800; padding:12px 24px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+            <i class="fa fa-calendar-check-o"></i> ĐẶT LỊCH DỊCH VỤ TRÊN BẢNG GIÁ NÀY (GIẢM NGAY 10%)
+          </a>
+        </div>
+
         <div class="menu-board-lightbox-contact">
           <div><i class="fa fa-map-marker" style="color:#D4AF37;"></i> <strong>48 Hà Trung, Hoàn Kiếm, Hà Nội</strong></div>
-          <div><i class="fa fa-phone" style="color:#D4AF37;"></i> Hotline / Zalo: <a href="tel:0989713660" style="color:#ECC876; font-weight:700;">098 9713660</a></div>
+          <div><i class="fa fa-phone" style="color:#D4AF37;"></i> Hotline / Zalo: <a href="tel:0989713660" style="color:#ECC876; font-weight:700;">098 9713660</a> / <a href="tel:0971811669" style="color:#ECC876; font-weight:700;">0971 811 669</a> / <a href="tel:0973169599" style="color:#ECC876; font-weight:700;">0973 169 599</a></div>
           <div><i class="fa fa-whatsapp" style="color:#25D366;"></i> WhatsApp / WeChat: <strong style="color:#ECC876;">0971 811 669</strong></div>
         </div>
       </div>

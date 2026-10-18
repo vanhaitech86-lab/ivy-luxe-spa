@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "menu_btn_open_board": "<i class=\"fa fa-file-image-o\"></i> Mở Bảng Giá Menu Gốc",
     "menu_currency_label": "Đơn vị tiền tệ:",
     "tab_combos": "<i class=\"fa fa-fire\"></i> IVY Special Combos",
-    "tab_packages": "<i class=\"fa fa-diamond\"></i> Gói Trị Liệu Hoàng Gia (2h - 4h)",
+    "tab_packages": "<i class=\"fa fa-diamond\"></i> Gói Hoàng Gia & Dưỡng Sinh, Da Mặt",
     "tab_massage": "<i class=\"fa fa-heart\"></i> Massage Body Toàn Thân",
     "tab_foot": "<i class=\"fa fa-paw\"></i> Foot Massage (Trị Liệu Chân)",
     "tab_nails": "<i class=\"fa fa-star\"></i> Chăm Sóc & Làm Đẹp Móng (Nails)",
@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "menu_btn_open_board": "<i class=\"fa fa-file-image-o\"></i> Open Official Menu Board",
     "menu_currency_label": "Currency:",
     "tab_combos": "<i class=\"fa fa-fire\"></i> IVY Special Combos",
-    "tab_packages": "<i class=\"fa fa-diamond\"></i> Royal Packages (2h - 4h)",
+    "tab_packages": "<i class=\"fa fa-diamond\"></i> Royal Packages & Wellness",
     "tab_massage": "<i class=\"fa fa-heart\"></i> Body Massage",
     "tab_foot": "<i class=\"fa fa-paw\"></i> Foot Massage & Reflexology",
     "tab_nails": "<i class=\"fa fa-star\"></i> Nail Services",
@@ -1419,6 +1419,232 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_ko": "전신 마사지 (90분) + 바디 스크럽 (60분) + 페이셜 & 헤어 트리트먼트 (90분) + 귀 청소 + 무료 음료 및 스낵.",
       "image": "assets/images/hero_spa_luxury.jpg",
       "popular": true
+    },
+    {
+      "id": "shampoo-ear-cleaning",
+      "name_vi": "Ear Cleaning (Lấy Ráy Tai Chuyên Nghiệp - Menu Mới)",
+      "name_en": "Ear Cleaning (New Official Menu)",
+      "name_zh": "专业采耳舒适清理护理 (最新官方价目表)",
+      "name_ja": "プロフェッショナルイヤーエステ・耳そうじ (最新公式メニュー)",
+      "name_ko": "전문 이어 클리닝 & 귀 청소 테라피 (최신 공식 메뉴)",
+      "duration_vi": "30 phút",
+      "duration_en": "30 min",
+      "duration_zh": "30分钟",
+      "duration_ja": "30分",
+      "duration_ko": "30분",
+      "price_vnd": 200000,
+      "desc_vi": "Kỹ thuật lấy ráy tai êm ái nhẹ nhàng với bộ dụng cụ tiệt trùng chuyên nghiệp, mang lại cảm giác thư thái thông thoáng màng nhĩ.",
+      "desc_en": "Gentle, meticulous professional ear cleaning using sterile micro-tools to relieve auditory canal pressure and deeply relax.",
+      "desc_zh": "资深技师采用经严格高温消毒的专用采耳工具，轻柔细致，让耳道通透清爽，带来酥麻惬意的深度放松。",
+      "desc_ja": "専用の滅菌器具を用い、熟練の技で耳腔内をやさしくクリーニング。心地よい刺激で頭がすっきりと軽くなります。",
+      "desc_ko": "철저히 멸균된 전문 도구로 부드럽고 섬세하게 귓속을 청결하게 케어하여 시원함과 깊은 이완감을 드립니다.",
+      "image": "assets/images/head_spa_ritual.jpg"
+    },
+    {
+      "id": "shampoo-wash",
+      "name_vi": "Shampoo (Gội Đầu Thư Giãn - Menu Mới)",
+      "name_en": "Relaxing Hair Shampoo (New Official Menu)",
+      "name_zh": "清爽舒缓洗发护理 (最新官方价目表)",
+      "name_ja": "リラクシングシャンプー (最新公式メニュー)",
+      "name_ko": "힐링 릴랙싱 샴푸 (최신 공식 메뉴)",
+      "duration_vi": "45 phút",
+      "duration_en": "45 min",
+      "duration_zh": "45分钟",
+      "duration_ja": "45分",
+      "duration_ko": "45분",
+      "price_vnd": 320000,
+      "desc_vi": "Làm sạch da đầu với dầu gội hữu cơ cao cấp, kết hợp massage day ấn nhẹ nhàng vùng thái dương và gáy.",
+      "desc_en": "Gentle scalp cleansing with premium organic botanicals combined with relaxing temple and nape acupressure.",
+      "desc_zh": "选用高品质草本洗发精，结合太阳穴与后颈部的柔和指压按摩，彻底清洁头皮油脂，唤醒清爽活力。",
+      "desc_ja": "上質ボタニカルシャンプーで頭皮をすっきり洗い上げ、こめかみや首筋のツボをやさしく刺激します。",
+      "desc_ko": "프리미엄 오가닉 샴푸로 두피를 상쾌하게 딥 클렌징하고 관자놀이와 목덜미를 부드럽게 지압합니다.",
+      "image": "assets/images/head_spa_ritual.jpg"
+    },
+    {
+      "id": "shampoo-nourishing",
+      "name_vi": "Nourishing Shampoo (Gội Đầu Dưỡng Sinh - Menu Mới)",
+      "name_en": "Nourishing Herbal Shampoo (New Official Menu)",
+      "name_zh": "草本养生滋养洗发与头疗 (最新官方价目表)",
+      "name_ja": "極上オーガニックハーブ養生ヘッドスパ (最新公式メニュー)",
+      "name_ko": "한방 오가닉 힐링 영양 헤드스파 (최신 공식 메뉴)",
+      "duration_vi": "60 phút",
+      "duration_en": "60 min",
+      "duration_zh": "60分钟",
+      "duration_ja": "60分",
+      "duration_ko": "60분",
+      "price_vnd": 420000,
+      "desc_vi": "Gội đầu dưỡng sinh bằng nước thảo dược bồ kết cô đặc, xông đầu tuần hoàn nước ấm, massage đả thông kinh lạc vùng đầu - cổ - vai gáy.",
+      "desc_en": "Vietnamese restorative head spa with warm herbal decoctions, circulating warm waterfall rings, and acupressure across skull, neck, and shoulders.",
+      "desc_zh": "传统皂角中草药温热熬汁慢洗，循环流水暖光水疗环，深层疏通头部与肩颈经络，缓解偏头痛与失眠。",
+      "desc_ja": "伝統ハーブ煮出し湯と温水循環リングを用い、頭皮から首・肩にかけてのツボを丁寧に刺激して頭重感を和らげます。",
+      "desc_ko": "전통 약초 우린 물과 순환 온수 링을 활용한 두피 마사지로 두통과 피로를 해소하고 깊은 숙면을 유도합니다.",
+      "image": "assets/images/head_spa_ritual.jpg",
+      "popular": true
+    },
+    {
+      "id": "shampoo-facial-care",
+      "name_vi": "Nourishing Shampoo & Facial Care (Gội Dưỡng Sinh & Chăm Sóc Mặt - Menu Mới)",
+      "name_en": "Nourishing Shampoo and Facial Care (New Official Menu)",
+      "name_zh": "养生滋养洗发与草本面部护理 (最新官方价目表)",
+      "name_ja": "極上ヘッドスパ＆オーガニックフェイシャルケア (最新公式メニュー)",
+      "name_ko": "영양 헤드스파 & 페이셜 케어 풀 코스 (최신 공식 메뉴)",
+      "duration_vi": "90 phút",
+      "duration_en": "90 min",
+      "duration_zh": "90分钟",
+      "duration_ja": "90分",
+      "duration_ko": "90분",
+      "price_vnd": 650000,
+      "desc_vi": "Gói kết hợp hoàn hảo giữa gội đầu dưỡng sinh thảo dược tuần hoàn nước ấm và chăm sóc da mặt thanh lọc cấp ẩm chuyên sâu.",
+      "desc_en": "Comprehensive dual ritual combining therapeutic warm herbal head spa with deep purifying and hydrating facial treatment.",
+      "desc_zh": "完美双重舒缓组合：草本循环流水头疗洗发，配合面部温和深层清洁、去角质、穴位提拉与滋润补水面膜。",
+      "desc_ja": "温水循環の養生ヘッドスパと、肌をいたわる保湿フェイシャルエステが一度に味わえる贅沢な組み合わせ。",
+      "desc_ko": "온수 순환 영양 헤드스파와 보습·진정 페이셜 케어를 함께 경험할 수 있는 인기 힐링 코스.",
+      "image": "assets/images/head_spa_ritual.jpg",
+      "popular": true
+    },
+    {
+      "id": "hair-treatment-facial",
+      "name_vi": "Hair Treatment with Facial Care (Ủ Phục Hồi Tóc & Chăm Sóc Da Mặt - Menu Mới)",
+      "name_en": "Hair Treatment with Facial Care (New Official Menu)",
+      "name_zh": "深层发丝修护水疗与奢华面部护理 (最新官方价目表)",
+      "name_ja": "集中ヘアトリートメント＆プレミアムフェイシャル (最新公式メニュー)",
+      "name_ko": "집중 헤어 트리트먼트 & 프리미엄 페이셜 케어 (최신 공식 메뉴)",
+      "duration_vi": "100 phút",
+      "duration_en": "100 min",
+      "duration_zh": "100分钟",
+      "duration_ja": "100分",
+      "duration_ko": "100분",
+      "price_vnd": 900000,
+      "desc_vi": "Hấp ủ dưỡng chất phục hồi tóc hư tổn cao cấp, kết hợp liệu trình chăm sóc da mặt chuyên sâu toàn diện 100 phút.",
+      "desc_en": "Intensive nourishing hair conditioning mask plus complete restorative facial spa therapy for silky hair and glowing skin.",
+      "desc_zh": "使用高滋养护发精华深度焗油修复受损毛鳞片，搭配全套高端面部提亮紧致水疗，焕发双重自然神采。",
+      "desc_ja": "傷んだ髪を贅沢なトリートメントマスクで集中補修し、素肌の美しさを引き出すフェイシャルエステを同時にご提供。",
+      "desc_ko": "손상된 모발에 집중 영양을 채워주는 헤어 마스크와 피부 탄력을 높여주는 페이셜 케어를 함께 진행합니다.",
+      "image": "assets/images/facial_gold_care.jpg",
+      "popular": true
+    },
+    {
+      "id": "facial-basic-care",
+      "name_vi": "Basic Facial Care (Chăm Sóc Da Mặt Cơ Bản - Menu Mới)",
+      "name_en": "Basic Facial Care (New Official Menu)",
+      "name_zh": "基础草本面部温和水润护理 (最新官方价目表)",
+      "name_ja": "ベーシックハーブフェイシャルケア (最新公式メニュー)",
+      "name_ko": "베이직 하이드로 페이셜 케어 (최신 공식 메뉴)",
+      "duration_vi": "60 phút",
+      "duration_en": "60 min",
+      "duration_zh": "60分钟",
+      "duration_ja": "60分",
+      "duration_ko": "60분",
+      "price_vnd": 450000,
+      "desc_vi": "Tẩy trang, rửa mặt sạch sâu, tẩy tế bào chết sinh học, xông hơi tinh dầu và đắp mặt nạ thảo dược làm dịu tươi mát làn da.",
+      "desc_en": "Gentle botanical cleansing, botanical exfoliation, aromatic herbal steam, and soothing hydration mask for a fresh, refreshed glow.",
+      "desc_zh": "温和卸妆洁面、植物温和去角质、精油芳香蒸面配合天然草本舒缓面膜，令面部水嫩清新。",
+      "desc_ja": "丁寧なクレンジング、角質ケア、アロマスチーム、植物パックで素肌本来のみずみずしさを取り戻します。",
+      "desc_ko": "딥 클렌징, 각질 제거, 스팀 테라피, 허브 보습 팩으로 맑고 촉촉한 피부로 가꿔주는 기본 관리 코스.",
+      "image": "assets/images/facial_gold_care.jpg"
+    },
+    {
+      "id": "facial-whitening-moisture",
+      "name_vi": "Skin Whitening & Increasing Moisture (Dưỡng Trắng & Cấp Ẩm Da - Menu Mới)",
+      "name_en": "Skin Whitening & Increasing Moisture (New Official Menu)",
+      "name_zh": "美白焕采与深度补水丰盈护理 (最新官方价目表)",
+      "name_ja": "美白ブライトニング＆高保湿ヒアルロンフェイシャル (最新公式メニュー)",
+      "name_ko": "스킨 브라이트닝 & 딥 모이스처 수분 케어 (최신 공식 메뉴)",
+      "duration_vi": "60 phút",
+      "duration_en": "60 min",
+      "duration_zh": "60分钟",
+      "duration_ja": "60分",
+      "duration_ko": "60분",
+      "price_vnd": 550000,
+      "desc_vi": "Điện di tinh chất ngọc trai và axit hyaluronic cấp ẩm tầng sâu, làm mờ thâm sạm và mang lại làn da trắng hồng căng bóng.",
+      "desc_en": "Deep infusion of pearl essence and hyaluronic acid to illuminate dull complexion and quench dry, sun-exposed skin.",
+      "desc_zh": "珍珠萃取精华与高纯透明质酸深层导入，淡化暗沉与日晒色斑，为干渴肌肤注入澎湃充盈水分。",
+      "desc_ja": "真珠エキスとヒアルロン酸を贅沢に角質層まで浸透させ、日焼けやくすみをケアして透明感あふれるツヤ肌へ導きます。",
+      "desc_ko": "진주 추출물과 히알루론산으로 칙칙해진 피부톤을 환하게 밝히고 메마른 피부에 풍부한 수분을 집중 공급합니다.",
+      "image": "assets/images/facial_gold_care.jpg",
+      "popular": true
+    },
+    {
+      "id": "facial-acnes-care",
+      "name_vi": "Face Acnes Care (Trị Liệu Mụn & Thanh Lọc Da Mặt - Menu Mới)",
+      "name_en": "Face Acnes Care (New Official Menu)",
+      "name_zh": "面部痘痘粉刺消炎净化调理 (最新官方价目表)",
+      "name_ja": "アクネ・ニキビ鎮静＆毛穴ディープクレンジング (最新公式メニュー)",
+      "name_ko": "여드름 진정 & 피지 조절 트러블 케어 (최신 공식 메뉴)",
+      "duration_vi": "90 phút",
+      "duration_en": "90 min",
+      "duration_zh": "90分钟",
+      "duration_ja": "90分",
+      "duration_ko": "90분",
+      "price_vnd": 700000,
+      "desc_vi": "Thanh lọc bã nhờn bít tắc, xử lý nhân mụn chuẩn y khoa nhẹ nhàng, đắp mặt nạ tràm trà và chiếu ánh sáng sinh học kháng khuẩn.",
+      "desc_en": "Deep pore purification, gentle clinical extraction, calming tea tree mask, and bio-light therapy to soothe inflammation.",
+      "desc_zh": "深层清理毛孔油脂阻塞，无痛专业清理粉刺痘痘，敷设茶树抑菌面膜并配合生物光波消炎修护。",
+      "desc_ja": "毛穴の詰まりを丁寧に除去し、ティーツリー鎮静パックとバイオライトで肌トラブルを健やかに落ち着かせます。",
+      "desc_ko": "모공 속 피지와 노폐물을 깨끗하게 정돈하고, 티트리 진정 팩과 바이오 라이트로 트러블을 케어합니다.",
+      "image": "assets/images/facial_gold_care.jpg"
+    },
+    {
+      "id": "facial-anti-aging-collagen",
+      "name_vi": "Anti-aging Facial with Collagen Mask (Trẻ Hóa Mặt Nạ Collagen - Menu Mới)",
+      "name_en": "Anti-aging Facial with Collagen Mask (New Official Menu)",
+      "name_zh": "抗衰老紧致抚纹胶原蛋白生化面膜 (最新官方价目表)",
+      "name_ja": "アンチエイジング・濃密コラーゲン生パック (最新公式メニュー)",
+      "name_ko": "안티에이징 탄력 리프팅 & 콜라겐 마스크 (최신 공식 메뉴)",
+      "duration_vi": "90 phút",
+      "duration_en": "90 min",
+      "duration_zh": "90分钟",
+      "duration_ja": "90分",
+      "duration_ko": "90분",
+      "price_vnd": 900000,
+      "desc_vi": "Liệu pháp nâng cơ trẻ hóa da cao cấp với mặt nạ collagen tươi thủy phân, xóa mờ nếp nhăn và tăng độ đàn hồi săn chắc cho làn da.",
+      "desc_en": "Premium firming lifting ritual infused with marine collagen mask, smoothing fine lines and restoring skin elasticity.",
+      "desc_zh": "顶级抗老紧致提拉手法配合纯净深海胶原蛋白面膜，抚平干纹细纹，全面提升面部轮廓紧致弹力。",
+      "desc_ja": "高純度マリンコラーゲンパックとリフトアップ手技により、小じわをケアしハリと弾力に満ちた若々しい素肌へ。",
+      "desc_ko": "마린 콜라겐 마스크와 탄력 리프팅 테라피로 잔주름을 개선하고 피부에 탱탱한 탄력과 생기를 채워줍니다.",
+      "image": "assets/images/facial_gold_care.jpg",
+      "popular": true
+    },
+    {
+      "id": "body-scrub-coffee-salt",
+      "name_vi": "Body Scrub Coffee Salt (Tẩy Tế Bào Chết Muối Cà Phê - Menu Mới)",
+      "name_en": "Body Scrub - Coffee Salt (New Official Menu)",
+      "name_zh": "身体天然咖啡海盐温和去角质磨砂 (最新官方价目表)",
+      "name_ja": "ベトナム産コーヒー＆シーソルト ボディスクラブ (最新公式メニュー)",
+      "name_ko": "베트남 오가닉 커피 솔트 바디 스크럽 (최신 공식 메뉴)",
+      "duration_vi": "30 phút",
+      "duration_en": "30 min",
+      "duration_zh": "30分钟",
+      "duration_ja": "30分",
+      "duration_ko": "30분",
+      "price_vnd": 350000,
+      "desc_vi": "Bột cà phê Robusta Đắk Lắk nguyên chất kết hợp muối khoáng biển giúp loại bỏ lớp sừng cằn cỗi, mang lại làn da body mịn màng tươi sáng.",
+      "desc_en": "Pure organic Vietnamese Robusta coffee grains blended with mineral sea salt to polish away dead skin cells and reveal velvety skin.",
+      "desc_zh": "精选越南得勒省纯天然有机罗布斯塔咖啡豆研磨微粒，配以天然矿物海盐，温和蜕褪老化角质，令肌肤白嫩细腻如丝缎。",
+      "desc_ja": "ベトナム特産の有機ロブスタコーヒー豆と天然ミネラル海塩で、古い角質をやさしくオフし、滑らかなツヤ肌へ整えます。",
+      "desc_ko": "베트남산 유기농 원두 가루와 미네랄 천연 소금으로 묵은 각질을 자극 없이 부드럽게 정돈해 매끄러운 바디 피부를 완성합니다.",
+      "image": "assets/images/couple_suite_bath.jpg"
+    },
+    {
+      "id": "body-scrub-coffee-massage",
+      "name_vi": "Body Scrub Coffee Salt and Massage (Tẩy Da Chết Cà Phê & Massage Body - Menu Mới)",
+      "name_en": "Body Scrub (Coffee Salt) and Massage (New Official Menu)",
+      "name_zh": "咖啡海盐去角质与全身精油舒缓按摩 (最新官方价目表)",
+      "name_ja": "コーヒースクラブ角質ケア＆全身アロママッサージ (最新公式メニュー)",
+      "name_ko": "커피 솔트 스크럽 & 전신 힐링 마사지 (최신 공식 메뉴)",
+      "duration_vi": "60 phút",
+      "duration_en": "60 min",
+      "duration_zh": "60分钟",
+      "duration_ja": "60分",
+      "duration_ko": "60분",
+      "price_vnd": 620000,
+      "desc_vi": "Gói chăm sóc kép: 30' tẩy tế bào chết muối cà phê làm mịn da toàn thân + 30' massage thư giãn giải tỏa nhức mỏi với tinh dầu ấm.",
+      "desc_en": "Dual indulgence: 30-min coffee sea salt exfoliating body scrub followed by a 30-min deeply relaxing warm aromatic massage.",
+      "desc_zh": "30分钟咖啡海盐全身丝滑去死皮，紧随30分钟天然植物温热精油舒压按摩，令身心肌肤彻底蜕变焕新。",
+      "desc_ja": "30分間のコーヒーソルトボディスクラブで肌を磨き上げた後、30分間の温感アロママッサージで全身の疲れを解き放ちます。",
+      "desc_ko": "30분 커피 솔트 각질 케어로 매끄러워진 피부 위에, 30분 따뜻한 에센셜 오일 전신 마사지로 피로를 말끔히 풀어줍니다.",
+      "image": "assets/images/couple_suite_bath.jpg",
+      "popular": true
     }
   ],
   "massage": [
@@ -1501,6 +1727,129 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_ja": "熟練のセラピスト2名が完璧な呼吸とシンクロした手技で全身を包み込み、これまでにない究極のリラクゼーションへと導きます。",
       "desc_ko": "두 명의 베테랑 테라피스트가 완벽한 호흡과 리듬으로 동시에 마사지하여 최상의 황홀한 힐링을 선사합니다.",
       "image": "assets/images/couple_suite_bath.jpg",
+      "popular": true
+    },
+    {
+      "id": "mass-ivy-special",
+      "name_vi": "IVY Special Massage (Menu Board Mới)",
+      "name_en": "Ivy Special Body Massage (New Official Menu)",
+      "name_zh": "IVY 特别身体按摩 (最新官方价目表)",
+      "name_ja": "IVY スペシャル ボディマッサージ (最新公式メニュー)",
+      "name_ko": "IVY 스페셜 바디 마사지 (최신 공식 메뉴)",
+      "duration_vi": "60 - 90 - 120 phút",
+      "duration_en": "60 - 90 - 120 min",
+      "duration_zh": "60 - 90 - 120分钟",
+      "duration_ja": "60〜90〜120分",
+      "duration_ko": "60 - 90 - 120분",
+      "price_vnd": 470000,
+      "desc_vi": "Liệu pháp massage đặc quyền mang thương hiệu IVY LUXE SPA kết hợp nhuần nhuyễn giữa kỹ thuật bấm huyệt và vuốt dầu thư giãn sâu toàn thân.",
+      "desc_en": "Signature therapy blending deep acupressure points and warm herbal aromatherapy oils for ultimate mind & body rejuvenation.",
+      "desc_zh": "IVY 品牌招牌特色理疗，融合东方经络穴位指压与天然草本芳香精油推拿，深层释放全身疲劳。",
+      "desc_ja": "東洋のツボ押し指圧と天然アロマオイルを融合したIVYブランド独自の極上シグネチャーマッサージ。",
+      "desc_ko": "IVY 시그니처 테라피로 동양의 지압과 따뜻한 아로마 오일 테라피를 결합하여 깊은 이완과 활력을 선사합니다.",
+      "image": "assets/images/hero_spa_luxury.jpg",
+      "popular": true
+    },
+    {
+      "id": "mass-vietnam",
+      "name_vi": "Viet Nam Massage (Massage Việt Nam - Menu Board Mới)",
+      "name_en": "Viet Nam Massage (New Official Menu)",
+      "name_zh": "越南传统草本按摩 (最新官方价目表)",
+      "name_ja": "ベトナム伝統マッサージ (最新公式メニュー)",
+      "name_ko": "베트남 전통 마사지 (최신 공식 메뉴)",
+      "duration_vi": "60 - 90 - 120 phút",
+      "duration_en": "60 - 90 - 120 min",
+      "duration_zh": "60 - 90 - 120分钟",
+      "duration_ja": "60〜90〜120分",
+      "duration_ko": "60 - 90 - 120분",
+      "price_vnd": 550000,
+      "desc_vi": "Phương pháp massage trị liệu dân gian Việt Nam bấm huyệt khai thông khí huyết, giải tỏa căng cơ mỏi nhức tức thì.",
+      "desc_en": "Authentic Vietnamese healing technique focusing on energy meridians, tension release, and revitalizing blood flow.",
+      "desc_zh": "纯正越南古法养生理疗手法，疏通经络气血，有效驱散深层肌筋酸痛与旅途疲倦。",
+      "desc_ja": "ベトナム伝統の手技療法で経絡の滞りを流し、筋肉の深部疲労をスッキリ取り除きます。",
+      "desc_ko": "베트남 전통 기법으로 기혈 순환을 돕고 뭉친 근육을 시원하게 풀어주는 힐링 마사지.",
+      "image": "assets/images/hot_stone_massage.jpg",
+      "popular": true
+    },
+    {
+      "id": "mass-aroma",
+      "name_vi": "Aroma Massage (Massage Tinh Dầu - Menu Board Mới)",
+      "name_en": "Aroma Massage (New Official Menu)",
+      "name_zh": "芳香精油舒缓按摩 (最新官方价目表)",
+      "name_ja": "アロマ精油マッサージ (最新公式メニュー)",
+      "name_ko": "아로마 에센셜 마사지 (최신 공식 메뉴)",
+      "duration_vi": "60 - 75 - 90 phút",
+      "duration_en": "60 - 75 - 90 min",
+      "duration_zh": "60 - 75 - 90分钟",
+      "duration_ja": "60〜75〜90分",
+      "duration_ko": "60 - 75 - 90분",
+      "price_vnd": 480000,
+      "desc_vi": "Chiết xuất tinh dầu thiên nhiên cao cấp làm dịu hệ thần kinh, nuôi dưỡng làn da mịn màng và giúp giấc ngủ sâu lắng.",
+      "desc_en": "Premium organic botanical essential oils combined with rhythmic Swedish long strokes to soothe nerves and restore inner peace.",
+      "desc_zh": "进口天然芳香植物精油结合轻柔舒缓手法，滋润肌肤，平复思绪，助您进入深度甜美梦乡。",
+      "desc_ja": "上質ボタニカルアロマ精油と優しいロングストロークで自律神経を整え、極上の癒しへと導きます。",
+      "desc_ko": "프리미엄 천연 에센셜 오일의 향기와 부드러운 터치로 스트레스를 해소하고 심신을 안정시켜 줍니다.",
+      "image": "assets/images/spa_water_basin_hero.jpg"
+    },
+    {
+      "id": "mass-thai-brochure",
+      "name_vi": "Thai Massage (Massage Thái - Menu Board Mới)",
+      "name_en": "Thai Massage (Oil / No Oil - New Official Menu)",
+      "name_zh": "泰式古法按摩 (可选精油/无精油 - 最新官方价目表)",
+      "name_ja": "タイ式マッサージ (オイルあり/なし - 最新公式メニュー)",
+      "name_ko": "타이 마사지 (오일/노오일 - 최신 공식 메뉴)",
+      "duration_vi": "60 - 75 - 90 - 120 phút",
+      "duration_en": "60 - 75 - 90 - 120 min",
+      "duration_zh": "60 - 75 - 90 - 120分钟",
+      "duration_ja": "60〜75〜90〜120分",
+      "duration_ko": "60 - 75 - 90 - 120분",
+      "price_vnd": 600000,
+      "desc_vi": "Ấn huyệt kết hợp kéo giãn cơ bắp theo phong cách Hoàng Gia Thái Lan, giúp cơ thể dẻo dai và tràn đầy năng lượng.",
+      "desc_en": "Passive yoga stretching and targeted pressure points (with or without aromatic oil) to unlock deep flexibility and vitality.",
+      "desc_zh": "泰式被动拉伸瑜伽与穴位重压相结合，放松骨骼肌肉，带来全身舒畅与充沛精力。",
+      "desc_ja": "ヨガのような優しいストレッチと的確な指圧で、身体全体の柔軟性と活力を呼び覚まします。",
+      "desc_ko": "스트레칭과 경혈 지압을 결합하여 전신의 뻐근함을 풀어주고 몸을 유연하고 가볍게 만들어 줍니다.",
+      "image": "assets/images/loc_hatrung_flora.jpg"
+    },
+    {
+      "id": "mass-shiatsu-brochure",
+      "name_vi": "Shiatsu Massage (Bấm Huyệt Nhật - Menu Board Mới)",
+      "name_en": "Shiatsu Massage (New Official Menu)",
+      "name_zh": "日式指压按摩 (最新官方价目表)",
+      "name_ja": "指圧マッサージ (最新公式メニュー)",
+      "name_ko": "시아추 정통 지압 마사지 (최신 공식 메뉴)",
+      "duration_vi": "60 - 75 - 90 phút",
+      "duration_en": "60 - 75 - 90 min",
+      "duration_zh": "60 - 75 - 90分钟",
+      "duration_ja": "60〜75〜90分",
+      "duration_ko": "60 - 75 - 90분",
+      "price_vnd": 470000,
+      "desc_vi": "Phương pháp ấn đè huyệt vị bằng ngón tay chuẩn xác của Nhật Bản giúp cân bằng dòng năng lượng và giải tỏa nhức mỏi xương khớp.",
+      "desc_en": "Authentic Japanese acupressure technique applying firm finger pressure on energy channels to restore balance and relieve aches.",
+      "desc_zh": "正统日式拇指指压经络技术，精准施力疏通阻滞，调节身体气血平衡，恢复肌肉活力。",
+      "desc_ja": "親指と手のひらで全身のツボに持続圧をかけ、生体エネルギーの巡りを整える伝統の日本式指圧手技。",
+      "desc_ko": "손가락과 손바닥의 압력을 이용해 경혈을 자극하여 신체의 균형을 되찾아주는 일본 전통 지압.",
+      "image": "assets/images/hero_spa_luxury.jpg"
+    },
+    {
+      "id": "mass-back-brochure",
+      "name_vi": "Back - Head and Shoulder (Trị Liệu Cổ Vai Gáy & Lưng - Menu Mới)",
+      "name_en": "Back - Head and Shoulder Massage (New Official Menu)",
+      "name_zh": "肩颈背头部深度理疗按摩 (最新官方价目表)",
+      "name_ja": "背中・首肩・ヘッド集中集中ケア (最新公式メニュー)",
+      "name_ko": "등·목·어깨·두피 집중 테라피 (최신 공식 메뉴)",
+      "duration_vi": "30 - 45 - 60 phút",
+      "duration_en": "30 - 45 - 60 min",
+      "duration_zh": "30 - 45 - 60分钟",
+      "duration_ja": "30〜45〜60分",
+      "duration_ko": "30 - 45 - 60분",
+      "price_vnd": 250000,
+      "desc_vi": "Tập trung giải tỏa căng thẳng cho vùng vai gáy, lưng trên và vùng đầu cho người ngồi văn phòng hay di chuyển nhiều.",
+      "desc_en": "Targeted relief dedicated to neck stiffness, chronic shoulder knots, lower back tension, and headache reduction.",
+      "desc_zh": "针对长期久坐及低头族的肩颈僵硬、背部酸沉及头部紧绷进行深度化解，疗效显著。",
+      "desc_ja": "デスクワークや旅行で凝り固まった首・肩甲骨・背中・頭皮を集中的に揉みほぐし、驚くほど軽くします。",
+      "desc_ko": "컴퓨터 작업과 장시간 여행으로 피로가 쌓인 목, 어깨, 등, 두피를 집중적으로 풀어주는 실속 테라피.",
+      "image": "assets/images/head_spa_ritual.jpg",
       "popular": true
     }
   ],
@@ -1606,6 +1955,89 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_ja": "ネイルケア清潔処理 ＋ 上質インポートジェルカラー塗布。美しい艶が長持ちし7日間無料保証付き。",
       "desc_ko": "발톱 케어 정리 + 프리미엄 젤 컬러링, 오랜 지속력과 광택 (7일 무료 보증).",
       "image": "assets/images/head_spa_ritual.jpg"
+    },
+    {
+      "id": "foot-vn-brochure",
+      "name_vi": "Foot VietNam Massage (Massage Chân Việt Nam - Menu Mới)",
+      "name_en": "Foot VietNam Massage (New Official Menu)",
+      "name_zh": "越南传统足底按摩 (最新官方价目表)",
+      "name_ja": "ベトナム式フットマッサージ (最新公式メニュー)",
+      "name_ko": "베트남 정통 풋 마사지 (최신 공식 메뉴)",
+      "duration_vi": "30 - 45 - 60 - 75 phút",
+      "duration_en": "30 - 45 - 60 - 75 min",
+      "duration_zh": "30 - 45 - 60 - 75分钟",
+      "duration_ja": "30〜45〜60〜75分",
+      "duration_ko": "30 - 45 - 60 - 75분",
+      "price_vnd": 200000,
+      "desc_vi": "Bấm huyệt giải tỏa đau mỏi lòng bàn chân và bắp chân theo bí quyết dân gian Việt Nam, giá chỉ từ 200.000đ.",
+      "desc_en": "Authentic Vietnamese reflexology targeting foot pressure points and calves to revitalize fatigued walking feet.",
+      "desc_zh": "越南传统古法足疗指压，精准按压足底反射区与小腿肌肉，迅速消除酸胀乏力。",
+      "desc_ja": "ベトナム伝統の手技で足裏の反射区を心地よく刺激し、歩行による足の重だるさを軽やかにします。",
+      "desc_ko": "발바닥 반사구와 종아리를 시원하게 자극하여 발의 피로를 즉각적으로 덜어주는 전통 풋 테라피.",
+      "image": "assets/images/foot_soak_care.jpg",
+      "popular": true
+    },
+    {
+      "id": "foot-thai-brochure",
+      "name_vi": "Foot Thai Massage (Massage Chân Kiểu Thái - Menu Mới)",
+      "name_en": "Foot Thai Massage (New Official Menu)",
+      "name_zh": "泰式足部舒缓按摩 (最新官方价目表)",
+      "name_ja": "タイ式フットマッサージ (最新公式メニュー)",
+      "name_ko": "타이 스타일 풋 마사지 (최신 공식 메뉴)",
+      "duration_vi": "30 - 45 - 60 phút",
+      "duration_en": "30 - 45 - 60 min",
+      "duration_zh": "30 - 45 - 60分钟",
+      "duration_ja": "30〜45〜60分",
+      "duration_ko": "30 - 45 - 60분",
+      "price_vnd": 250000,
+      "desc_vi": "Kết hợp gậy ấn huyệt gỗ và kéo giãn cổ chân nhẹ nhàng chuẩn phong cách massage Thái truyền thống.",
+      "desc_en": "Traditional Thai foot reflex stick and gentle ankle mobility stretches to stimulate vital organ meridians.",
+      "desc_zh": "采用泰式专用点穴木棒与脚踝柔和拉伸相结合，深度疏通足部经络阻滞。",
+      "desc_ja": "タイ伝統のツボ押しスティックとストレッチを組み合わせ、足元から全身の巡りを促します。",
+      "desc_ko": "태국 전통 지압봉과 발목 스트레칭을 활용하여 혈액 순환을 돕는 이색 힐링 풋 마사지.",
+      "image": "assets/images/loc_hatrung_flora.jpg"
+    },
+    {
+      "id": "foot-spa-brochure",
+      "name_vi": "Foot Spa Scrub & Massage (Tẩy Da Chết & Massage Chân - Menu Mới)",
+      "name_en": "Foot Spa Scrub and Massage (New Official Menu)",
+      "name_zh": "足部去角质磨砂与芳香按摩 (最新官方价目表)",
+      "name_ja": "フットスパ・スクラブ角質ケア＆マッサージ (最新公式メニュー)",
+      "name_ko": "풋 스파 스크럽 & 마사지 (최신 공식 메뉴)",
+      "duration_vi": "75 - 90 phút",
+      "duration_en": "75 - 90 min",
+      "duration_zh": "75 - 90分钟",
+      "duration_ja": "75〜90分",
+      "duration_ko": "75 - 90분",
+      "price_vnd": 420000,
+      "desc_vi": "Tẩy tế bào chết làm mềm gót chân nứt nẻ, tiếp theo là bài massage bấm huyệt chân chuyên sâu thư giãn tuyệt đỉnh.",
+      "desc_en": "Exfoliating foot scrub buffing away rough heel calluses, followed by a deeply soothing restorative foot massage.",
+      "desc_zh": "温和去除脚后跟粗糙死皮角质，配合全套足部深层经络推拿，令双足细腻柔滑、轻盈舒畅。",
+      "desc_ja": "かかとの古い角質をやさしく取り除いた後、贅沢な足裏マッサージで至福のひとときをお届けします。",
+      "desc_ko": "거친 발뒤꿈치 각질을 부드럽게 정돈하고, 집중 풋 마사지로 피로를 말끔히 씻어내는 스페셜 코스.",
+      "image": "assets/images/couple_suite_bath.jpg",
+      "popular": true
+    },
+    {
+      "id": "foot-ivy-coconut-brochure",
+      "name_vi": "Ivy Foot Spa (Tẩy Da Chết, Massage & Đắp Mặt Nạ Dừa - Menu Mới)",
+      "name_en": "Ivy Foot Spa - Scrub, Massage & Coconut Mask (New Official Menu)",
+      "name_zh": "Ivy 尊享足疗 (磨砂、经络按摩、天然椰子滋养足膜 - 最新官方价目表)",
+      "name_ja": "Ivy 贅沢フットスパ (スクラブ・マッサージ・ココナッツ足パック - 最新公式メニュー)",
+      "name_ko": "Ivy 프리미엄 풋 스파 (스크럽, 마사지, 코코넛 영양 팩 - 최신 공식 메뉴)",
+      "duration_vi": "90 phút",
+      "duration_en": "90 min",
+      "duration_zh": "90分钟",
+      "duration_ja": "90分",
+      "duration_ko": "90분",
+      "price_vnd": 700000,
+      "desc_vi": "Gói chăm sóc chân Hoàng Gia cao cấp nhất trên bảng giá: Tẩy da chết gót chân + Massage chân 60' + Đắp mặt nạ ủ dưỡng dừa tươi hữu cơ siêu mịn màng.",
+      "desc_en": "The ultimate foot indulgence: Callus peel, 60-min foot reflexology, and warm organic virgin coconut hydration mask.",
+      "desc_zh": "官方价目表最高级别足疗尊享：深度修脚去角质 + 60分钟穴位推拿 + 纯天然有机椰子深层保湿足膜。",
+      "desc_ja": "公式メニュー掲載の最高峰フットケア：角質ケア ＋ 60分足裏マッサージ ＋ オーガニックココナッツ濃厚保湿パック。",
+      "desc_ko": "공식 메뉴 최상급 발 관리: 각질 제거 딥 클렌징 + 60분 집중 풋 마사지 + 유기농 코코넛 영양 팩.",
+      "image": "assets/images/spa_water_basin_hero.jpg",
+      "popular": true
     }
   ],
   "nails": [
@@ -2574,7 +3006,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Group by category
     const catTitles = {
       combos: { vi: '--- IVY SPECIAL COMBOS ---', en: '--- IVY SPECIAL COMBOS ---', zh: '--- IVY 特惠组合套餐 ---', ja: '--- IVY スペシャルコンボ ---', ko: '--- IVY 스페셜 콤보 ---' },
-      packages: { vi: '--- GÓI HOÀNG GIA (2H - 4H) ---', en: '--- ROYAL PACKAGES (2H - 4H) ---', zh: '--- 皇室尊享套餐 (2-4小时) ---', ja: '--- ロイヤルパッケージ (2〜4時間) ---', ko: '--- 로열 패키지 (2-4시간) ---' },
+      packages: { vi: '--- GÓI HOÀNG GIA, GỘI DƯỠNG SINH, CHĂM SÓC MẶT & BODY SCRUB ---', en: '--- ROYAL PACKAGES, NOURISHING SHAMPOO, FACIAL & BODY SCRUB ---', zh: '--- 皇室套餐、养生洗发、面部护理与身体磨砂 ---', ja: '--- パッケージ・ヘッドスパ・フェイシャル＆スクラブ ---', ko: '--- 로열 패키지, 영양 헤드스파, 페이셜 & 바디 스크럽 ---' },
       massage: { vi: '--- BODY MASSAGE ---', en: '--- BODY MASSAGE ---', zh: '--- 身体按摩 ---', ja: '--- ボディマッサージ ---', ko: '--- 바디 마사지 ---' },
       foot: { vi: '--- FOOT MASSAGE & TRỊ LIỆU CHÂN ---', en: '--- FOOT MASSAGE & REFLEXOLOGY ---', zh: '--- 养生足疗与足部护理 ---', ja: '--- フットマッサージ＆足裏ケア ---', ko: '--- 풋 마사지 & 발 관리 ---' },
       nails: { vi: '--- DỊCH VỤ NAIL ---', en: '--- NAIL SERVICES ---', zh: '--- 美甲服务 ---', ja: '--- ネイルサービス ---', ko: '--- 네일 서비스 ---' },
@@ -2877,6 +3309,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openMenuBoardModal() {
     if (!menuBoardModal) return;
+    // Default to Wellness board active
+    const tabWellness = document.getElementById('tab-board-wellness');
+    const tabCombos = document.getElementById('tab-board-combos');
+    const viewWellness = document.getElementById('board-view-wellness');
+    const viewCombos = document.getElementById('board-view-combos');
+    if (tabWellness && tabCombos) {
+      tabWellness.classList.add('active');
+      tabCombos.classList.remove('active');
+    }
+    if (viewWellness && viewCombos) {
+      viewWellness.style.display = 'flex';
+      viewCombos.style.display = 'none';
+    }
     menuBoardModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -2893,6 +3338,39 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target === menuBoardModal) closeMenuBoardModal();
     });
   }
+
+  // Menu Board Tabs Switcher (Wellness vs Combos)
+  const tabBoardWellness = document.getElementById('tab-board-wellness');
+  const tabBoardCombos = document.getElementById('tab-board-combos');
+  const boardViewWellness = document.getElementById('board-view-wellness');
+  const boardViewCombos = document.getElementById('board-view-combos');
+
+  if (tabBoardWellness && tabBoardCombos) {
+    tabBoardWellness.addEventListener('click', () => {
+      tabBoardWellness.classList.add('active');
+      tabBoardCombos.classList.remove('active');
+      if (boardViewWellness) boardViewWellness.style.display = 'flex';
+      if (boardViewCombos) boardViewCombos.style.display = 'none';
+    });
+
+    tabBoardCombos.addEventListener('click', () => {
+      tabBoardCombos.classList.add('active');
+      tabBoardWellness.classList.remove('active');
+      if (boardViewCombos) boardViewCombos.style.display = 'flex';
+      if (boardViewWellness) boardViewWellness.style.display = 'none';
+    });
+  }
+
+  // Click on image to view full in new tab or zoom
+  ['img-board-wellness', 'img-board-combos'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.cursor = 'zoom-in';
+      el.addEventListener('click', () => {
+        window.open(el.src, '_blank');
+      });
+    }
+  });
 
   document.querySelectorAll('.js-open-menu-board').forEach(btn => {
     btn.addEventListener('click', (e) => {

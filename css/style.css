@@ -2080,6 +2080,63 @@ button, input, select, textarea {
   }
 }
 
+.menu-board-tabs-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.board-tab-btn {
+  background: rgba(18, 48, 35, 0.9);
+  color: #DDE5E1;
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.board-tab-btn:hover,
+.board-tab-btn.active {
+  background: linear-gradient(135deg, #ECC876, #D4AF37, #A4791E);
+  color: #051A12;
+  border-color: #D4AF37;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+  transform: translateY(-2px);
+}
+
+.menu-board-display-wrap {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.board-view-pane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board-zoom-hint {
+  font-size: 0.78rem;
+  color: #ECC876;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.menu-board-action-cta {
+  margin: 16px 0;
+  display: flex;
+  justify-content: center;
+}
+
 .menu-board-lightbox-img {
   max-width: 100%;
   max-height: 75vh;
@@ -2087,13 +2144,18 @@ button, input, select, textarea {
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   border: 2px solid var(--color-gold);
+  transition: transform 0.25s ease;
+}
+
+.menu-board-lightbox-img:hover {
+  transform: scale(1.01);
 }
 
 .menu-board-lightbox-contact {
   margin-top: 16px;
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
   color: #E0DACB;
   font-size: 0.88rem;
