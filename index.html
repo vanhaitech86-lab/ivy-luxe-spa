@@ -1619,18 +1619,43 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
           <button type="button" class="auth-tab-btn" data-auth-tab="register">
             <i class="fa fa-user-plus"></i> <span>Đăng Ký Mới</span>
           </button>
+          <button type="button" class="auth-tab-btn" data-auth-tab="forgot">
+            <i class="fa fa-key"></i> <span>Quên Mật Khẩu</span>
+          </button>
         </div>
 
         <!-- TAB 1: LOGIN -->
         <div class="auth-tab-pane active" id="auth-pane-login">
+          <!-- Google Sign-In Button -->
+          <button type="button" class="btn-social-google js-btn-google-auth">
+            <svg viewBox="0 0 48 48" width="20" height="20">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            <span>Đăng nhập nhanh bằng Google</span>
+          </button>
+
+          <div class="auth-or-divider">
+            <span>HOẶC ĐĂNG NHẬP BẰNG TÀI KHOẢN</span>
+          </div>
+
           <form id="auth-login-form">
             <div class="modal-form-group">
               <label class="field-label">Email hoặc Số Điện Thoại</label>
               <input type="text" id="login-identifier" class="modal-input" placeholder="admin@ivyluxespa.com hoặc 0989713660" required>
             </div>
-            <div class="modal-form-group">
+            <div class="modal-form-group" style="margin-bottom:6px;">
               <label class="field-label">Mật Khẩu</label>
               <input type="password" id="login-password" class="modal-input" placeholder="••••••••" required>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <label style="font-size:0.8rem; color:#A3B5AD; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                <input type="checkbox" id="login-remember" checked> Ghi nhớ
+              </label>
+              <a href="#" id="auth-link-to-forgot" class="auth-forgot-link">Quên mật khẩu?</a>
             </div>
 
             <!-- Quick Demo Login Presets -->
@@ -1649,7 +1674,7 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
               </div>
             </div>
 
-            <button type="submit" class="modal-confirm-btn" style="width:100%; margin-top:10px;">
+            <button type="submit" class="modal-confirm-btn" style="width:100%; margin-top:6px;">
               <i class="fa fa-sign-in"></i> ĐĂNG NHẬP NGAY
             </button>
           </form>
@@ -1657,6 +1682,21 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
 
         <!-- TAB 2: REGISTER -->
         <div class="auth-tab-pane" id="auth-pane-register">
+          <!-- Google Sign-In Button -->
+          <button type="button" class="btn-social-google js-btn-google-auth">
+            <svg viewBox="0 0 48 48" width="20" height="20">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            <span>Đăng ký nhanh bằng Google</span>
+          </button>
+
+          <div class="auth-or-divider">
+            <span>HOẶC ĐIỀN THÔNG TIN ĐĂNG KÝ</span>
+          </div>
+
           <form id="auth-register-form">
             <div class="modal-form-group">
               <label class="field-label">Họ và Tên</label>
@@ -1684,12 +1724,116 @@ Or message WhatsApp: +84989713660. Enjoy your blissful relaxation in Hanoi!</div
               </select>
             </div>
 
-            <button type="submit" class="modal-confirm-btn" style="width:100%; margin-top:10px;">
+            <button type="submit" class="modal-confirm-btn" style="width:100%; margin-top:8px;">
               <i class="fa fa-user-plus"></i> TẠO TÀI KHOẢN NGAY
             </button>
           </form>
         </div>
+
+        <!-- TAB 3: FORGOT PASSWORD (QUÊN MẬT KHẨU) -->
+        <div class="auth-tab-pane" id="auth-pane-forgot">
+          <form id="auth-forgot-form">
+            <p style="font-size:0.86rem; color:#DDE5E1; margin-bottom:14px; line-height:1.5;">
+              Nhập <strong>Gmail</strong> hoặc <strong>Số điện thoại</strong> đã đăng ký để lấy lại mật khẩu nhanh chóng qua mã OTP.
+            </p>
+            <div class="modal-form-group">
+              <label class="field-label">Gmail hoặc Số Điện Thoại</label>
+              <input type="text" id="forgot-identifier" class="modal-input" placeholder="VD: khach@gmail.com hoặc 0989713660" required>
+            </div>
+
+            <button type="button" id="btn-forgot-send-otp" class="modal-confirm-btn" style="width:100%; margin-top:6px;">
+              <i class="fa fa-paper-plane"></i> GỬI MÃ XÁC THỰC (OTP)
+            </button>
+
+            <!-- Step 2: OTP & New Password (revealed after sending OTP) -->
+            <div id="forgot-step-otp" style="display:none; margin-top:16px; padding-top:14px; border-top:1px dashed rgba(212,175,55,0.3);">
+              <div class="auth-otp-notice" id="forgot-otp-notice">
+                <!-- Populated dynamically with OTP notice -->
+              </div>
+              <div class="modal-form-group">
+                <label class="field-label">Nhập Mã Xác Thực OTP (6 Số)</label>
+                <input type="text" id="forgot-otp-input" class="modal-input" placeholder="••••••" maxlength="6" style="letter-spacing:4px; font-weight:700; font-size:1.1rem; text-align:center;">
+              </div>
+              <div class="modal-form-group">
+                <label class="field-label">Mật Khẩu Mới</label>
+                <input type="password" id="forgot-new-pass" class="modal-input" placeholder="Tối thiểu 6 ký tự" minlength="6">
+              </div>
+              <div class="modal-form-group">
+                <label class="field-label">Xác Nhận Mật Khẩu Mới</label>
+                <input type="password" id="forgot-confirm-pass" class="modal-input" placeholder="Nhập lại mật khẩu mới">
+              </div>
+              <button type="submit" id="btn-forgot-submit" class="modal-confirm-btn" style="width:100%; margin-top:8px; background:linear-gradient(135deg, #ECC876, #D4AF37, #A4791E); color:#051A12; font-weight:800;">
+                <i class="fa fa-check-circle"></i> XÁC NHẬN ĐẶT LẠI MẬT KHẨU
+              </button>
+            </div>
+
+            <div style="text-align:center; margin-top:14px;">
+              <a href="#" id="auth-link-back-login" class="auth-forgot-link">
+                <i class="fa fa-arrow-left"></i> Quay lại Đăng Nhập
+              </a>
+            </div>
+          </form>
+        </div>
       </div>
+    </div>
+  </div>
+
+  <!-- GOOGLE ACCOUNT CHOOSER MODAL -->
+  <div id="google-auth-modal" class="modal-overlay">
+    <div class="modal-box" style="max-width:440px; background:#FFFFFF; color:#202124; padding:0; border-radius:12px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.4);">
+      <div style="padding:18px 24px 16px; border-bottom:1px solid #E8EAED; display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg viewBox="0 0 48 48" width="22" height="22">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+          <span style="font-weight:700; font-size:1.05rem; color:#202124;">Đăng nhập với Google</span>
+        </div>
+        <span id="google-auth-modal-close" class="modal-close-btn" style="color:#5F6368; font-size:1.6rem; cursor:pointer; line-height:1;">&times;</span>
+      </div>
+      <div style="padding:20px 24px;">
+        <p style="font-size:0.86rem; color:#5F6368; margin-bottom:14px; line-height:1.5;">
+          Chọn tài khoản Google để tiếp tục đồng bộ và đăng nhập vào <strong>Ivy Luxe Spa (48 Hà Trung)</strong>:
+        </p>
+        
+        <div class="google-account-list">
+          <div class="google-account-item js-google-choose" data-name="Mỹ Duyên" data-email="duyen.ivyluxe@gmail.com" data-role="admin">
+            <div class="google-avatar" style="background:#0F9D58;">D</div>
+            <div class="google-account-info">
+              <div class="google-account-name">Mỹ Duyên (Chủ Spa / Quản lý)</div>
+              <div class="google-account-email">duyen.ivyluxe@gmail.com</div>
+            </div>
+            <i class="fa fa-angle-right" style="color:#9AA0A6;"></i>
+          </div>
+
+          <div class="google-account-item js-google-choose" data-name="Khách Hàng VIP Google" data-email="khachhang.vip@gmail.com" data-role="customer">
+            <div class="google-avatar" style="background:#4285F4;">K</div>
+            <div class="google-account-info">
+              <div class="google-account-name">Khách Hàng VIP Google</div>
+              <div class="google-account-email">khachhang.vip@gmail.com</div>
+            </div>
+            <i class="fa fa-angle-right" style="color:#9AA0A6;"></i>
+          </div>
+        </div>
+
+        <!-- Custom Google Account Input -->
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #E8EAED;">
+          <button type="button" id="btn-toggle-custom-google" style="background:none; border:none; color:#1A73E8; font-size:0.86rem; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; padding:6px 0;">
+            <i class="fa fa-user-plus"></i> Sử dụng tài khoản Gmail khác...
+          </button>
+          <div id="custom-google-box" style="display:none; margin-top:10px;">
+            <input type="text" id="custom-google-name" class="modal-input" placeholder="Họ và tên của bạn" style="background:#F1F3F4; color:#202124; border:1px solid #DADCE0; margin-bottom:8px; padding:10px 12px; border-radius:6px;">
+            <input type="email" id="custom-google-email" class="modal-input" placeholder="Địa chỉ Gmail (VD: tenban@gmail.com)" style="background:#F1F3F4; color:#202124; border:1px solid #DADCE0; margin-bottom:8px; padding:10px 12px; border-radius:6px;">
+            <button type="button" id="btn-custom-google-submit" class="modal-confirm-btn" style="width:100%; background:#1A73E8; color:#FFF; font-weight:700; padding:10px;">
+              TIẾP TỤC ĐĂNG NHẬP VỚI GMAIL NÀY
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     </div>
   </div>
 
