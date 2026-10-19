@@ -246,42 +246,55 @@ button, input, select, textarea {
   transition: all 0.3s ease;
 }
 
+.main-header .container {
+  max-width: 1440px;
+}
+
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 8px 0;
   position: relative;
+  gap: 8px;
 }
 
-/* Left & Right Nav Menu */
+/* Left & Right Nav Menu - Cân đối, chuyên nghiệp, không gãy dòng */
 .nav-menu-left, .nav-menu-right {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: clamp(8px, 1.1vw, 18px);
   list-style: none;
   flex: 1;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-menu-left {
   justify-content: flex-end;
-  padding-right: 35px;
+  padding-right: 16px;
 }
 
 .nav-menu-right {
   justify-content: flex-start;
-  padding-left: 35px;
+  padding-left: 16px;
 }
 
 .nav-item-link {
   font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #333333;
+  letter-spacing: 0.5px;
+  color: #222222;
   padding: 6px 0;
   position: relative;
+  white-space: nowrap; /* Tuyệt đối không để chữ bị gãy thành nhiều dòng dọc */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.25s ease;
 }
 
 .nav-item-link:hover, .nav-item-link.active {
@@ -295,6 +308,30 @@ button, input, select, textarea {
 
 .nav-item-link.nav-affiliate-link:hover {
   color: var(--color-primary) !important;
+}
+
+/* Nút Đặt Lịch Trực Tuyến: Nổi bật, sang trọng, ấn tượng ngay mắt nhìn */
+.nav-item-link.js-open-booking {
+  background: linear-gradient(135deg, #071F14 0%, #123826 100%);
+  color: #ECC876 !important;
+  padding: 7px 16px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 10px rgba(7, 31, 20, 0.25);
+  transition: all 0.25s ease;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.nav-item-link.js-open-booking:hover {
+  background: linear-gradient(135deg, #ECC876 0%, #D4AF37 100%);
+  color: #071F14 !important;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.4);
+  transform: translateY(-1px);
+}
+
+.nav-item-link.js-open-booking::after {
+  display: none;
 }
 
 .nav-item-link::after {
@@ -321,13 +358,14 @@ button, input, select, textarea {
   justify-content: center;
   text-align: center;
   text-decoration: none;
-  padding: 0 10px;
+  padding: 0 14px;
+  flex-shrink: 0;
   z-index: 2;
 }
 
 .header-logo-img {
-  width: 62px;
-  height: 62px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   object-fit: cover;
   border: 1.5px solid var(--color-gold);
@@ -341,37 +379,71 @@ button, input, select, textarea {
 
 .header-logo-text {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.38rem;
   font-weight: 800;
-  letter-spacing: 3px;
-  color: var(--color-primary);
-  line-height: 1;
+  letter-spacing: 2.8px;
+  color: #071F14;
+  line-height: 1.1;
   text-transform: uppercase;
 }
 
+/* CHỮ MASSAGE BODY & WELLNESS: ĐẬM LÊN VÀ CHUYỂN MÀU TÍM */
 .header-logo-sub {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.72rem;
-  color: var(--color-gold);
-  letter-spacing: 1.5px;
-  margin-top: 2px;
+  font-family: 'Plus Jakarta Sans', var(--font-sans);
+  font-style: normal;
+  font-weight: 800 !important;
+  font-size: 0.78rem;
+  color: #7B1FA2 !important; /* Màu tím quý phái đậm nét, cực kỳ bắt mắt và ấn tượng */
+  letter-spacing: 2px;
+  margin-top: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: block;
 }
 
-/* Language selector icon */
+/* Language selector & Auth button in header */
+.header-auth-item {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.header-auth-btn {
+  white-space: nowrap;
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid #D4AF37;
+  color: #071F14;
+  background: rgba(212, 175, 55, 0.12);
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+}
+
+.header-auth-btn:hover {
+  background: #D4AF37;
+  color: #071F14;
+}
+
 .lang-dropdown-wrap {
   display: flex;
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   color: #555;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .lang-dropdown-wrap select {
   cursor: pointer;
-  background: transparent;
+  background: #F8FAFC;
   font-weight: 600;
+  font-size: 0.8rem;
   color: #333;
 }
 
@@ -2601,10 +2673,12 @@ button, input, select, textarea {
     line-height: 1.15 !important;
   }
   .header-logo-sub {
-    font-size: 0.52rem !important;
-    letter-spacing: 0.5px !important;
+    font-size: 0.55rem !important;
+    letter-spacing: 0.8px !important;
     white-space: nowrap !important;
     line-height: 1.15 !important;
+    color: #7B1FA2 !important;
+    font-weight: 800 !important;
   }
   .mobile-header-right-group {
     display: flex !important;

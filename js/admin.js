@@ -1,6 +1,6 @@
 /**
  * IVY LUXE SPA - ADMIN PORTAL APPLICATION SCRIPT
- * Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội
+ * SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,7 +40,7 @@ function initSeedAdminData() {
         name: 'Trần Văn Bình',
         phone: '0981234567',
         service: 'IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT',
-        branch: 'Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội',
+        branch: 'SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI',
         date: '2026-10-19',
         time: '14:30',
         guests: '2 Khách',
@@ -58,7 +58,7 @@ function initSeedAdminData() {
         name: 'David Smith (Du khách Anh)',
         phone: '+44 7911 123456',
         service: 'IVY SPECIAL - COMBO 3 - 120 PHÚT',
-        branch: 'Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội',
+        branch: 'SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI',
         date: '2026-10-19',
         time: '16:00',
         guests: '1 Khách',
@@ -76,7 +76,7 @@ function initSeedAdminData() {
         name: 'Nguyễn Thị Hương',
         phone: '0912999888',
         service: 'IVY SPECIAL - COMBO 2 - 70/75 PHÚT',
-        branch: 'Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội',
+        branch: 'SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI',
         date: '2026-10-20',
         time: '18:30',
         guests: '3 Khách',
@@ -94,7 +94,7 @@ function initSeedAdminData() {
         name: 'Hoàng Minh Quân',
         phone: '0908777666',
         service: 'IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT',
-        branch: 'Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội',
+        branch: 'SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI',
         date: '2026-10-21',
         time: '15:00',
         guests: '2 Khách',
@@ -426,7 +426,7 @@ function renderBookingsTable() {
       </td>
       <td>
         <div style="display:flex; gap:6px;">
-          <a href="https://wa.me/84${b.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Chào bạn, IVY LUXE SPA (Số 48 phố Hà Trung, P. Hoàn Kiếm, Hà Nội) xin xác nhận lịch hẹn của bạn: ' + b.id)}" target="_blank" class="btn-sm-gold" title="Nhắn WhatsApp / Zalo"><i class="fa fa-whatsapp"></i></a>
+          <a href="https://wa.me/84${b.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Chào bạn, IVY LUXE SPA (SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI) xin xác nhận lịch hẹn của bạn: ' + b.id)}" target="_blank" class="btn-sm-gold" title="Nhắn WhatsApp / Zalo"><i class="fa fa-whatsapp"></i></a>
           <button type="button" class="btn-sm-gold" style="border-color:red; color:red;" onclick="deleteBooking('${b.id}')" title="Xóa đơn"><i class="fa fa-trash"></i></button>
         </div>
       </td>

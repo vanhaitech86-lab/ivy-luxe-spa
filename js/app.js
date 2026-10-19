@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   const translations = {
   "vi": {
-    "doc_title": "IVY LUXE SPA - Massage Body & Wellness | 48 Hà Trung, Hoàn Kiếm, Hà Nội",
-    "top_address": "<i class=\"fa fa-map-marker\"></i> <strong>48 Hà Trung, P. Hàng Bông, Q. Hoàn Kiếm, Hà Nội</strong>",
+    "doc_title": "IVY LUXE SPA - Massage Body & Wellness | Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI",
+    "top_address": "<i class=\"fa fa-map-marker\"></i> <strong>Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</strong>",
     "top_hours": "<i class=\"fa fa-clock-o\"></i> Mở cửa hàng ngày: 09:00 Sáng - 11:00 Tối",
     "top_promo_ticker": "<i class=\"fa fa-tag\"></i> <strong>Ưu đãi đặt lịch trong khoảng thời gian từ 10h tới 15h được giảm 10%</strong>",
     "top_welcome_ticker": "<i class=\"fa fa-leaf\"></i> <strong>Ivy Luxe Spa - Trải Nghiệm Thư Giãn Chuẩn 5 Sao</strong>",
@@ -98,22 +98,22 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "CHÀO MỪNG QUÝ KHÁCH ĐẾN VỚI IVY LUXE SPA HÀ NỘI",
     "subhero_title": "MASSAGE & TRỊ LIỆU THÂN TÂM PHỐ CỔ HÀ NỘI",
     "subhero_desc": "Liệu trình chuyên sâu. Đôi bàn tay điêu luyện. Lòng hiếu khách thuần khiết Hà Nội.",
-    "subhero_addr_line": "Địa chỉ chính thức: <strong>48 Hà Trung, P. Hàng Bông, Q. Hoàn Kiếm, Hà Nội</strong> &nbsp;|&nbsp; Hotline: <strong style=\"color:#B22222;\">098 9713660</strong>",
+    "subhero_addr_line": "Địa chỉ: <strong>SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</strong> &nbsp;|&nbsp; Hotline: <strong style=\"color:#B22222;\">098 9713660</strong>",
     "loc_title": "KHÔNG GIAN NGHỈ DƯỠNG TẠI 48 HÀ TRUNG",
-    "loc_subtitle": "Không gian spa trị liệu sang trọng & biệt lập tại số 48 Hà Trung, Hoàn Kiếm, Hà Nội",
+    "loc_subtitle": "Không gian spa trị liệu sang trọng & biệt lập tại SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI",
     "loc_card1_title": "Ivy Luxe Spa (Sảnh Chờ & Tiếp Đón)",
-    "loc_card1_addr": "48 Hà Trung, Hoàn Kiếm, Hà Nội",
+    "loc_card1_addr": "Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI",
     "loc_card1_b1": "Sức chứa tối đa: 25 khách cùng lúc",
     "loc_card1_b2": "Không gian Indochine ấm cúng, sang trọng",
     "loc_card1_b3": "Mở cửa hàng ngày: 09:00 Sáng - 11:00 Tối",
     "loc_card1_b4": "Hotline / WhatsApp / Zalo: <strong>(+84) 98 971 3660</strong>",
     "loc_card2_title": "Ivy Luxe Spa (Khu Phòng Trị Liệu VIP)",
-    "loc_card2_addr": "48 Hà Trung, Hoàn Kiếm, Hà Nội",
+    "loc_card2_addr": "Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI",
     "loc_card2_b1": "Phòng đơn, phòng đôi VIP riêng tư tuyệt đối",
     "loc_card2_b3": "Mở cửa hàng ngày: 09:00 Sáng - 11:00 Tối",
     "loc_card2_b4": "Hotline / WhatsApp / Zalo: <strong>(+84) 98 971 3660</strong>",
     "loc_card3_title": "Ivy Luxe Spa (Dưỡng Sinh & Foot Care)",
-    "loc_card3_addr": "48 Hà Trung, Hoàn Kiếm, Hà Nội",
+    "loc_card3_addr": "Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI",
     "loc_card3_b1": "Vòm nước ấm tuần hoàn thư giãn da đầu & cổ vai gáy",
     "loc_card3_b2": "Ngâm chân thảo mộc hoa hồng & bấm huyệt chuyên sâu",
     "loc_card3_b3": "Mở cửa hàng ngày: 09:00 Sáng - 11:00 Tối",
@@ -121,10 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
     "loc_btn_discover": "KHÁM PHÁ THÊM",
     "map_btn_reserve": "ĐẶT LỊCH HẸN TRẢI NGHIỆM",
     "map_badge_title": "IVY LUXE SPA - 48 HÀ TRUNG",
-    "map_badge_desc": "Phố Hà Trung, P. Hàng Bông, Q. Hoàn Kiếm, Hà Nội (Cách Hồ Hoàn Kiếm 500m)",
+    "map_badge_desc": "Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI (Cách Hồ Hoàn Kiếm 500m)",
     "map_btn_open": "<i class=\"fa fa-external-link\"></i> Mở chỉ đường Google Maps",
     "promo_title": "COMBO ƯU ĐÃI ĐẶC QUYỀN IVY SPECIAL",
-    "promo_subtitle": "Tận hưởng các gói combo đặc quyền được yêu thích nhất tại Ivy Luxe Spa - 48 Hà Trung, Hoàn Kiếm, Hà Nội",
+    "promo_subtitle": "Tận hưởng các gói combo đặc quyền được yêu thích nhất tại Ivy Luxe Spa - SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI",
     "c1_badge_html": "<i class=\"fa fa-fire\"></i> GÓI HOT NHẤT",
     "c1_time_html": "<i class=\"fa fa-clock-o\"></i> 90 phút",
     "c1_title": "IVY SPECIAL - COMBO 1 (HOT)",
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "promo_btn_menu": "XEM TOÀN BỘ BẢNG GIÁ DỊCH VỤ",
     "promo_btn_board": "<i class=\"fa fa-picture-o\"></i> XEM ẢNH BẢNG GIÁ MENU BOARD GỐC",
     "menu_title": "IVY LUXE SPA - BẢNG GIÁ NIÊM YẾT CHÍNH THỨC",
-    "menu_subtitle": "Bảng Giá Đầy Đủ Tất Cả Dịch Vụ Tại 48 Hà Trung, Hoàn Kiếm, Hà Nội (VNĐ & USD)",
+    "menu_subtitle": "Bảng Giá Đầy Đủ Tất Cả Dịch Vụ Tại SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI (VNĐ & USD)",
     "menu_banner_title": "BẢNG GIÁ NIÊM YẾT MINH BẠCH - BẢO HÀNH 7 NGÀY MIỄN PHÍ DỊCH VỤ NAILS",
     "menu_banner_desc": "Quý khách có thể xem menu trực tuyến theo từng phân mục dưới đây hoặc mở xem ảnh chụp bảng giá gốc tại spa.",
     "menu_btn_open_board": "<i class=\"fa fa-file-image-o\"></i> Mở Bảng Giá Menu Gốc",
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "guests_btn_more": "XEM TOÀN BỘ ẢNH",
     "footer_location_title": "ĐỊA CHỈ DUY NHẤT",
     "footer_hq_title": "IVY LUXE SPA (Trụ Sở Chính)",
-    "footer_addr_line": "Địa chỉ: 48 Hà Trung, Hoàn Kiếm, Hà Nội <a href=\"https://maps.google.com/?q=48+Ha+Trung+Hoan+Kiem+Hanoi\" target=\"_blank\" rel=\"noopener\">(Xem bản đồ)</a>",
+    "footer_addr_line": "Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI <a href=\"https://maps.google.com/?q=48+Ha+Trung+Hoan+Kiem+Hanoi\" target=\"_blank\" rel=\"noopener\">(Xem bản đồ)</a>",
     "footer_hotline_prefix": "Hotline 24/7 / Zalo / WhatsApp:",
     "footer_location_desc": "Vị trí trung tâm phố cổ Hà Nội, cách Hồ Hoàn Kiếm và chợ Hàng Da chỉ vài phút đi bộ.",
     "footer_about_title": "VỀ IVY LUXE SPA",
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "footer_hours_desc": "Mở cửa hàng ngày từ<br><strong style=\"color:#FFF; font-size:1.05rem;\">09:00 Sáng - 11:00 Tối</strong><br>Khuyến khích đặt lịch hẹn trước.",
     "footer_follow_title": "KẾT NỐI VỚI CHÚNG TÔI",
     "footer_payment_title": "PHƯƠNG THỨC THANH TOÁN",
-    "footer_copyright": "Bản quyền 2026 © <strong>IVY LUXE SPA</strong> (48 Hà Trung, Hoàn Kiếm, Hà Nội). Đã đăng ký bản quyền.",
+    "footer_copyright": "Bản quyền 2026 © <strong>IVY LUXE SPA</strong> (Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI). Đã đăng ký bản quyền.",
     "modal_title": "ĐẶT LỊCH HẸN TRỰC TUYẾN - IVY LUXE SPA",
     "modal_name_label": "Họ và Tên",
     "modal_name_ph": "Ví dụ: Nguyễn Văn A",
@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "modal_guests_label": "Số Lượng Khách",
     "modal_notes_label": "Ghi Chú Thêm (Nếu có)",
     "modal_notes_ph": "Yêu cầu lực massage, phòng riêng, kỹ thuật viên...",
-    "modal_notice": "<i class=\"fa fa-info-circle\" style=\"color:#D4AF37;\"></i> Địa chỉ phục vụ: <strong>48 Hà Trung, Hoàn Kiếm, Hà Nội</strong>. Hotline hỗ trợ 24/7: <strong>098 9713660</strong>.",
+    "modal_notice": "<i class=\"fa fa-info-circle\" style=\"color:#D4AF37;\"></i> Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI. Hotline hỗ trợ 24/7: <strong>098 9713660</strong>.",
     "modal_btn_submit": "XÁC NHẬN ĐẶT LỊCH NGAY",
     "board_modal_title": "BẢNG GIÁ DỊCH VỤ NIÊM YẾT CHÍNH THỨC - IVY LUXE SPA",
     "booking_success": "ĐẶT LỊCH THÀNH CÔNG!",
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
   },
   "en": {
     "doc_title": "IVY LUXE SPA - Body Massage & Wellness | 48 Ha Trung, Hoan Kiem, Hanoi",
-    "top_address": "<i class=\"fa fa-map-marker\"></i> <strong>48 Ha Trung, Hang Bong, Hoan Kiem, Hanoi</strong>",
+    "top_address": "<i class=\"fa fa-map-marker\"></i> <strong>48 Ha Trung, Hoan Kiem, Hanoi</strong>",
     "top_hours": "<i class=\"fa fa-clock-o\"></i> Open Daily: 09:00 AM - 11:00 PM",
     "top_promo_ticker": "<i class=\"fa fa-tag\"></i> <strong>Happy Hours Offer: 10% Off for Bookings between 10:00 - 15:00</strong>",
     "top_welcome_ticker": "<i class=\"fa fa-leaf\"></i> <strong>Ivy Luxe Spa - 5-Star Wellness Sanctuary in Hanoi Old Quarter</strong>",
@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "WELCOME TO IVY LUXE SPA HANOI",
     "subhero_title": "MASSAGE & SPA IN HANOI OLD QUARTER",
     "subhero_desc": "Professional treatments. Skilled hands. Genuine Hanoi hospitality.",
-    "subhero_addr_line": "Official Address: <strong>48 Ha Trung, Hang Bong, Hoan Kiem, Hanoi</strong> &nbsp;|&nbsp; Hotline: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "Official Address: <strong>48 Ha Trung, Hoan Kiem, Hanoi</strong> &nbsp;|&nbsp; Hotline: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "OUR SANCTUARY AT 48 HA TRUNG",
     "loc_subtitle": "Exclusive luxury wellness sanctuary located at 48 Ha Trung, Hoan Kiem, Hanoi",
     "loc_card1_title": "Ivy Luxe Spa (Lounge & Reception)",
@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "loc_btn_discover": "DISCOVER MORE",
     "map_btn_reserve": "MAKE A RESERVATION",
     "map_badge_title": "IVY LUXE SPA - 48 HA TRUNG",
-    "map_badge_desc": "48 Ha Trung, Hang Bong, Hoan Kiem, Hanoi (500m from Hoan Kiem Lake)",
+    "map_badge_desc": "48 Ha Trung, Hoan Kiem, Hanoi (500m from Hoan Kiem Lake)",
     "map_btn_open": "<i class=\"fa fa-external-link\"></i> Open in Google Maps",
     "promo_title": "IVY SPECIAL COMBOS & PACKAGES",
     "promo_subtitle": "Indulge in our most celebrated signature combo packages at Ivy Luxe Spa - 48 Ha Trung, Hanoi",
@@ -934,7 +934,7 @@ document.addEventListener('DOMContentLoaded', () => {
   },
   "ru": {
     "doc_title": "IVY LUXE SPA - Массаж тела и спа в Ханое | 48 Ha Trung, Hoan Kiem",
-    "top_address": "<i class=\"fa fa-map-marker\"></i> <strong>48 Ha Trung, Hang Bong, Hoan Kiem, Ханой</strong>",
+    "top_address": "<i class=\"fa fa-map-marker\"></i> <strong>48 Ha Trung, Hoan Kiem, Ханой</strong>",
     "top_hours": "<i class=\"fa fa-clock-o\"></i> Ежедневно: 09:00 - 23:00",
     "top_promo_ticker": "<i class=\"fa fa-tag\"></i> <strong>Специальная скидка 10% при бронировании с 10:00 до 15:00</strong>",
     "top_welcome_ticker": "<i class=\"fa fa-leaf\"></i> <strong>Ivy Luxe Spa - 5-звездочный спа-оазис в Старом квартале Ханоя</strong>",
@@ -954,7 +954,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "ДОБРО ПОЖАЛОВАТЬ В IVY LUXE SPA ХАНОЙ",
     "subhero_title": "МАССАЖ И ОЗДОРОВЛЕНИЕ В СТАРОМ КВАРТАЛЕ ХАНОЯ",
     "subhero_desc": "Глубокие техники. Мастерские руки. Искреннее ханойское гостеприимство.",
-    "subhero_addr_line": "Официальный адрес: <strong>48 Ha Trung, Hang Bong, Hoan Kiem, Ханой</strong> &nbsp;|&nbsp; Горячая линия: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "Официальный адрес: <strong>48 Ha Trung, Hoan Kiem, Ханой</strong> &nbsp;|&nbsp; Горячая линия: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "НАШ СПА-КОМПЛЕКС НА ХА ЧУНГ, 48",
     "loc_subtitle": "Эксклюзивный роскошный велнес-оазис в самом сердце Ханоя",
     "loc_card1_title": "Ivy Luxe Spa (Зона приема и лаундж)",
@@ -977,7 +977,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "loc_btn_discover": "УЗНАТЬ БОЛЬШЕ",
     "map_btn_reserve": "ЗАБРОНИРОВАТЬ ВИЗИТ",
     "map_badge_title": "IVY LUXE SPA - 48 HA TRUNG",
-    "map_badge_desc": "48 Ha Trung, Hang Bong, Hoan Kiem (500 м от озера Хоанкьем)",
+    "map_badge_desc": "48 Ha Trung, Hoan Kiem (500 м от озера Хоанкьем)",
     "map_btn_open": "<i class=\"fa fa-external-link\"></i> Открыть в Google Картах",
     "promo_title": "ФИРМЕННЫЕ ПАКЕТЫ IVY SPECIAL",
     "promo_subtitle": "Насладитесь нашими самыми популярными комплексными программами в Ivy Luxe Spa",
@@ -1097,7 +1097,7 @@ document.addEventListener('DOMContentLoaded', () => {
   },
   "fr": {
     "doc_title": "IVY LUXE SPA - Massage Corporel & Bien-être | 48 Ha Trung, Hanoï",
-    "top_address": "<i class=\"fa fa-map-marker\"></i> <strong>48 Ha Trung, Hang Bong, Hoan Kiem, Hanoï</strong>",
+    "top_address": "<i class=\"fa fa-map-marker\"></i> <strong>48 Ha Trung, Hoan Kiem, Hanoï</strong>",
     "top_hours": "<i class=\"fa fa-clock-o\"></i> Ouvert tous les jours : 10h00 - 22h00",
     "top_promo_ticker": "<i class=\"fa fa-tag\"></i> <strong>Offre spéciale : 10% de réduction pour toute réservation de 10h à 15h</strong>",
     "top_welcome_ticker": "<i class=\"fa fa-leaf\"></i> <strong>Ivy Luxe Spa - Sanctuaire de Bien-être 5 Étoiles dans le Vieux Quartier de Hanoï</strong>",
@@ -1117,7 +1117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "BIENVENUE À IVY LUXE SPA HANOÏ",
     "subhero_title": "MASSAGE & BIEN-ÊTRE AU CŒUR DU VIEUX QUARTIER DE HANOÏ",
     "subhero_desc": "Soins experts. Mains attentives. Hospitalité authentique de Hanoï.",
-    "subhero_addr_line": "Adresse officielle : <strong>48 Ha Trung, Hang Bong, Hoan Kiem, Hanoï</strong> &nbsp;|&nbsp; Ligne directe : <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "Adresse officielle : <strong>48 Ha Trung, Hoan Kiem, Hanoï</strong> &nbsp;|&nbsp; Ligne directe : <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "NOTRE SANCTUAIRE AU 48 HA TRUNG",
     "loc_subtitle": "Un havre de paix et de détente raffiné au cœur de Hanoï",
     "loc_card1_title": "Ivy Luxe Spa (Salon d'Accueil & Réception)",
@@ -1140,7 +1140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "loc_btn_discover": "DÉCOUVRIR PLUS",
     "map_btn_reserve": "RÉSERVER VOTRE EXPÉRIENCE",
     "map_badge_title": "IVY LUXE SPA - 48 HA TRUNG",
-    "map_badge_desc": "48 Ha Trung, Hang Bong, Hoan Kiem (à 500m du lac Hoan Kiem)",
+    "map_badge_desc": "48 Ha Trung, Hoan Kiem (à 500m du lac Hoan Kiem)",
     "map_btn_open": "<i class=\"fa fa-external-link\"></i> Ouvrir sur Google Maps",
     "promo_title": "FORFAITS COMBINÉS SIGNATURE IVY SPECIAL",
     "promo_subtitle": "Profitez de nos forfaits exclusifs les plus appréciés à Ivy Luxe Spa",
@@ -3684,7 +3684,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const name = document.getElementById('modal-cust-name')?.value.trim() || 'Quý Khách';
       const phone = document.getElementById('modal-cust-phone')?.value.trim() || '';
-      const branch = 'IVY LUXE SPA - 48 Hà Trung, Hoàn Kiếm, Hà Nội';
+      const branch = 'IVY LUXE SPA - SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI';
       const service = document.getElementById('modal-service-select')?.value || 'IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT';
       const date = document.getElementById('modal-book-date')?.value || new Date().toISOString().split('T')[0];
 
@@ -4041,7 +4041,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ĐẶT LỊCH THÀNH CÔNG!
         </h3>
         <p style="font-size:1rem;color:#5A6560;line-height:1.7;margin-bottom:25px;">
-          Cảm ơn bạn! Lịch hẹn của bạn đã được tiếp nhận. Bạn sẽ thanh toán trực tiếp khi đến số 48 Hà Trung.
+          Cảm ơn bạn! Lịch hẹn của bạn đã được tiếp nhận. Bạn sẽ thanh toán trực tiếp khi đến SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI.
         </p>
         <div style="background:#FAF7F2;border:1px dashed #D4AF37;border-radius:12px;padding:20px;text-align:left;max-width:480px;margin:0 auto 25px;">
           <div style="margin-bottom:8px;"><strong>Mã Đơn:</strong> <span style="color:#D4AF37;font-weight:700;">${data.bookingCode}</span></div>
@@ -5271,7 +5271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const link = outputUrl?.value || getAffiliateBaseUrl();
         const code = displayCode ? displayCode.textContent : 'IVY-VIP';
-        const msg = 'Dạ em gửi anh/chị thông tin và ưu đãi tại IVY LUXE SPA (48 Hà Trung, Hoàn Kiếm, Hà Nội). Đặt qua link riêng này được GIẢM 10% & TẶNG NGÂM CHÂN THẢO DƯỢC miễn phí: ' + link + ' (Mã: ' + code + ') - Hotline: 098 9713660.';
+        const msg = 'Dạ em gửi anh/chị thông tin và ưu đãi tại IVY LUXE SPA (Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI). Đặt qua link riêng này được GIẢM 10% & TẶNG NGÂM CHÂN THẢO DƯỢC miễn phí: ' + link + ' (Mã: ' + code + ') - Hotline: 098 9713660.';
         
         navigator.clipboard.writeText(msg).then(() => {
           alert('Đã sao chép tin nhắn mời khách kèm link giới thiệu! Đang mở Zalo...');
