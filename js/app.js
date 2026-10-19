@@ -5492,7 +5492,7 @@ document.addEventListener('DOMContentLoaded', () => {
         phone: '0814488686',
         code: email.split('@')[0],
         email: email,
-        commissionRate: '35%',
+        commissionRate: '30%',
         clicks: 0,
         ordersSuccess: 0,
         ordersPending: 0,
@@ -5549,7 +5549,7 @@ document.addEventListener('DOMContentLoaded', () => {
         code,
         email,
         pass,
-        commissionRate: '35%',
+        commissionRate: '30%',
         clicks: 0,
         ordersSuccess: 0,
         ordersPending: 0,
@@ -5568,7 +5568,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }));
     } catch (err) {}
 
-    alert('🎉 Đăng ký làm Đối Tác Tiếp Thị thành công với mức hoa hồng 35%!\nĐang mở Dashboard cho bạn...');
+    alert('🎉 Đăng ký làm Đối Tác Tiếp Thị thành công với mức hoa hồng 20% - 30%!\nĐang mở Dashboard cho bạn...');
     window.toggleHomeAffiliateView();
   };
 

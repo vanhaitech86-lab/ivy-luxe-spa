@@ -632,7 +632,7 @@ function renderAffiliatesTable(filterText = '') {
 
   tbody.innerHTML = partners.map(p => {
     const fullLink = originUrl + '/?ref=' + encodeURIComponent(p.code);
-    const ratePercent = parseInt((p.commissionRate || '35%').replace('%', ''), 10) || 35;
+    const ratePercent = parseInt((p.commissionRate || '30%').replace('%', ''), 10) || 30;
     const rev = p.revenue || (p.ordersSuccess ? p.ordersSuccess * 900000 : 0);
     const com = p.commission || p.pendingAmount || Math.round(rev * (ratePercent / 100));
     const paid = p.receivedAmount || 0;
@@ -658,7 +658,7 @@ function renderAffiliatesTable(filterText = '') {
         <td>${rev.toLocaleString('vi-VN')}đ</td>
         <td>
           <strong style="color:#D4AF37; font-size:0.95rem;">${com.toLocaleString('vi-VN')}đ</strong>
-          <div style="font-size:0.75rem; color:#8FA59B;">Tỷ lệ: ${p.commissionRate || '35%'}</div>
+          <div style="font-size:0.75rem; color:#8FA59B;">Tỷ lệ: ${p.commissionRate || '30%'}</div>
           ${paid > 0 ? `<div style="font-size:0.72rem; color:#25D366;">Đã chi trả: ${paid.toLocaleString('vi-VN')}đ</div>` : ''}
         </td>
         <td><small style="color:#DDE5E1;">${bankDetails}</small></td>
