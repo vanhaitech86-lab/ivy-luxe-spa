@@ -1283,7 +1283,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_zh": "免费赠送中草药足浴 + 全身精油舒缓按摩 (30分钟) + 养生滋养洗头 (30分钟) + 面部护理与采耳 (30分钟)。",
       "desc_ja": "無料天然ハーブ足湯 ＋ 全身アロママッサージ (30分) ＋ 極上ヘッドスパ (30分) ＋ フェイシャル＆耳そうじ (30分)。",
       "desc_ko": "무료 한방 약초 족욕 + 전신 바디 마사지 (30분) + 릴랙싱 영양 샴푸 (30분) + 페이셜 케어 & 귀 청소 (30분).",
-      "image": "assets/images/head_spa_ritual.jpg",
+      "image": "assets/images/real_ivy_headspa_suite.jpg",
       "popular": true
     },
     {
@@ -1304,7 +1304,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_zh": "免费赠送中草药足浴 + 足底穴位深度按摩 (30分钟) + 足部草本去角质 (30分钟) + 足部滋养修护膜 (10分钟)。",
       "desc_ja": "無料天然ハーブ足湯 ＋ 足裏ツボ押しマッサージ (30分) ＋ フットスクラブ角質除去 (30分) ＋ フット集中保湿パック (10分)。",
       "desc_ko": "무료 한방 약초 족욕 + 발 마사지 & 지압 (30분) + 발 스크럽 각질 제거 (30분) + 발 보습 마스크 팩 (10분).",
-      "image": "assets/images/foot_soak_care.jpg",
+      "image": "assets/images/real_ivy_foot_guests.jpg",
       "popular": true
     },
     {
@@ -1471,7 +1471,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_zh": "传统皂角中草药温热熬汁慢洗，循环流水暖光水疗环，深层疏通头部与肩颈经络，缓解偏头痛与失眠。",
       "desc_ja": "伝統ハーブ煮出し湯と温水循環リングを用い、頭皮から首・肩にかけてのツボを丁寧に刺激して頭重感を和らげます。",
       "desc_ko": "전통 약초 우린 물과 순환 온수 링을 활용한 두피 마사지로 두통과 피로를 해소하고 깊은 숙면을 유도합니다.",
-      "image": "assets/images/head_spa_ritual.jpg",
+      "image": "assets/images/real_ivy_headspa_suite.jpg",
       "popular": true
     },
     {
@@ -1492,7 +1492,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_zh": "完美双重舒缓组合：草本循环流水头疗洗发，配合面部温和深层清洁、去角质、穴位提拉与滋润补水面膜。",
       "desc_ja": "温水循環の養生ヘッドスパと、肌をいたわる保湿フェイシャルエステが一度に味わえる贅沢な組み合わせ。",
       "desc_ko": "온수 순환 영양 헤드스파와 보습·진정 페이셜 케어를 함께 경험할 수 있는 인기 힐링 코스.",
-      "image": "assets/images/head_spa_ritual.jpg",
+      "image": "assets/images/real_ivy_headspa_suite.jpg",
       "popular": true
     },
     {
@@ -1829,7 +1829,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_zh": "越南传统古法足疗指压：30分钟 (200.000đ) | 45分钟 (300.000đ) | 60分钟 (380.000đ) | 75分钟 (450.000đ)。",
       "desc_ja": "ベトナム伝統足裏ツボ押し：30分 (200.000đ) | 45分 (300.000đ) | 60分 (380.000đ) | 75分 (450.000đ)。",
       "desc_ko": "베트남 정통 발 반사요법 지압: 30분 (200.000đ) | 45분 (300.000đ) | 60분 (380.000đ) | 75분 (450.000đ).",
-      "image": "assets/images/foot_soak_care.jpg",
+      "image": "assets/images/real_ivy_foot_guests.jpg",
       "popular": true
     },
     {
@@ -1937,7 +1937,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_zh": "专业修除足部角质死皮，细致修剪指甲甲型并打磨抛光。",
       "desc_ja": "丁寧な甘皮処理、角質除去、爪のファイリングと表面磨き。",
       "desc_ko": "전문적인 큐티클 정리, 각질 제거, 발톱 쉐입 교정 및 매끄러운 버핑 케어.",
-      "image": "assets/images/loc_hatrung_flora.jpg"
+      "image": "assets/images/real_ivy_spa_nail_collage.jpg"
     },
     {
       "id": "nail-2",
@@ -1957,7 +1957,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_zh": "手部细致护理，修剪边缘倒刺死皮，打磨甲面修整甲型。",
       "desc_ja": "手元の丁寧なキューティクルケア、爪の成形と艶出し磨き。",
       "desc_ko": "손톱 주변 굳은살 및 큐티클 정리, 쉐입 정리와 자연스러운 광택 케어.",
-      "image": "assets/images/loc_hatrung_flora.jpg"
+      "image": "assets/images/real_ivy_spa_nail_collage.jpg"
     },
     {
       "id": "nail-3",
