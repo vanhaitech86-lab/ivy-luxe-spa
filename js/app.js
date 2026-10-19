@@ -237,7 +237,29 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "Đang Phát...",
     "zen_player_min_hint": "Nhạc Trị Liệu",
     "zen_toast_playing": "Đang phát nhạc trị liệu thư giãn",
-    "zen_toast_paused": "Đã tạm dừng nhạc trị liệu"
+    "zen_toast_paused": "Đã tạm dừng nhạc trị liệu",
+    // Exclusive Complimentary Perks
+    "perks_badge": "<i class=\"fa fa-gift\"></i> TIỆN ÍCH MIỄN PHÍ ĐỘC QUYỀN",
+    "perks_heading": "Đặc Quyền Dành Riêng Cho Quý Khách Tại IVY LUXE SPA",
+    "perks_sub": "Mang đến trải nghiệm thư giãn chu đáo, tiện nghi và trọn vẹn nhất ngay giữa lòng phố cổ Hà Nội",
+    "perk1_tag": "TIỆN ÍCH 100% MIỄN PHÍ",
+    "perk1_title": "Được Tắm Miễn Phí",
+    "perk1_desc": "Phòng tắm nóng lạnh riêng tư, sạch sẽ, chuẩn bị sẵn khăn tắm 5 sao, máy sấy tóc và sữa tắm thảo dược thư giãn sảng khoái trước hoặc sau liệu trình.",
+    "perk2_tag": "AN TOÀN & TIỆN LỢI",
+    "perk2_title": "Được Gửi Hành Lý Miễn Phí",
+    "perk2_desc": "Quý khách thoải mái gửi vali, balo hành lý an toàn tại spa để thảnh thơi dạo chơi phố cổ, hồ Hoàn Kiếm hoặc chờ giờ bay. <em>(Lưu ý: Spa không nhận giữ đồ giá trị cao)</em>.",
+    "perk3_tag": "TIẾT KIỆM TỐI ĐA",
+    "perk3_title": "Được Đặt Hộ Xe Sân Bay Giá Rẻ",
+    "perk3_desc": "Hỗ trợ đặt hộ xe ô tô riêng đưa đón sân bay Nội Bài 4 - 7 - 16 chỗ uy tín, đúng giờ, chu đáo với mức giá ưu đãi rẻ hơn nhiều so với taxi truyền thống.",
+    "menu_perks_title": "ĐẶC QUYỀN MIỄN PHÍ KHI ĐẾN VỚI IVY LUXE SPA:",
+    "menu_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#D4AF37;\"></i> <strong>Được tắm miễn phí</strong>",
+    "menu_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#D4AF37;\"></i> <strong>Được gửi hành lý miễn phí</strong> <small style=\"color:#64748B;\">(không nhận đồ giá trị)</small>",
+    "menu_perk_car": "<i class=\"fa fa-car\" style=\"color:#D4AF37;\"></i> <strong>Được đặt hộ xe sân bay giá rẻ</strong>",
+    "modal_perks_title": "<i class=\"fa fa-gift\"></i> ĐẶC QUYỀN MIỄN PHÍ DÀNH CHO BẠN:",
+    "modal_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#ECC876; width:18px;\"></i> <strong>Được tắm miễn phí</strong> trước hoặc sau liệu trình massage",
+    "modal_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#ECC876; width:18px;\"></i> <strong>Được gửi hành lý miễn phí</strong> <em>(không nhận đồ giá trị cao)</em>",
+    "modal_perk_car": "<i class=\"fa fa-car\" style=\"color:#ECC876; width:18px;\"></i> <strong>Được đặt hộ xe ô tô sân bay giá rẻ</strong> (Nội Bài)"
+
   },
   "en": {
     "doc_title": "IVY LUXE SPA - Body Massage & Wellness | 48 Ha Trung, Hoan Kiem, Hanoi",
@@ -444,7 +466,29 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "Playing...",
     "zen_player_min_hint": "Zen Audio",
     "zen_toast_playing": "Now playing healing soundscape",
-    "zen_toast_paused": "Zen audio paused"
+    "zen_toast_paused": "Zen audio paused",
+    // Exclusive Complimentary Perks
+    "perks_badge": "<i class=\"fa fa-gift\"></i> EXCLUSIVE COMPLIMENTARY PERKS",
+    "perks_heading": "Exclusive Privileges For Guests At IVY LUXE SPA",
+    "perks_sub": "Bringing you the most thoughtful, comfortable and complete relaxation experience in Hanoi Old Quarter",
+    "perk1_tag": "100% FREE AMENITY",
+    "perk1_title": "Free Hot Shower",
+    "perk1_desc": "Private, pristine hot & cold showers with 5-star fresh towels, hairdryer, and aromatic herbal shower gel for complete refreshment before or after treatments.",
+    "perk2_tag": "SAFE & CONVENIENT",
+    "perk2_title": "Free Luggage Storage",
+    "perk2_desc": "Leave your suitcases and backpacks safely at our spa to enjoy Hanoi Old Quarter, Hoan Kiem Lake, or await your flight. <em>(Note: High-value valuables cannot be accepted)</em>.",
+    "perk3_tag": "MAXIMUM SAVINGS",
+    "perk3_title": "Discounted Airport Car Assistance",
+    "perk3_desc": "Assistance in booking reliable private 4, 7, or 16-seater cars for Noi Bai Airport transfers with prompt, courteous drivers at rates much cheaper than regular taxis.",
+    "menu_perks_title": "FREE COMPLIMENTARY PERKS AT IVY LUXE SPA:",
+    "menu_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#D4AF37;\"></i> <strong>Free hot shower</strong>",
+    "menu_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#D4AF37;\"></i> <strong>Free luggage storage</strong> <small style=\"color:#64748B;\">(no high valuables)</small>",
+    "menu_perk_car": "<i class=\"fa fa-car\" style=\"color:#D4AF37;\"></i> <strong>Discounted airport transfers</strong>",
+    "modal_perks_title": "<i class=\"fa fa-gift\"></i> COMPLIMENTARY PRIVILEGES FOR YOU:",
+    "modal_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#ECC876; width:18px;\"></i> <strong>Free hot shower</strong> before or after your massage therapy",
+    "modal_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#ECC876; width:18px;\"></i> <strong>Free luggage storage</strong> <em>(no high-value items)</em>",
+    "modal_perk_car": "<i class=\"fa fa-car\" style=\"color:#ECC876; width:18px;\"></i> <strong>Budget airport car booking assistance</strong> (Noi Bai)"
+
   },
   "zh": {
     "doc_title": "常春藤奢华水疗 IVY LUXE SPA | 河内老城区河中村48号",
@@ -606,7 +650,29 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "播放中...",
     "zen_player_min_hint": "疗愈音乐",
     "zen_toast_playing": "正在播放疗愈声疗",
-    "zen_toast_paused": "已暂停禅意音乐"
+    "zen_toast_paused": "已暂停禅意音乐",
+    // Exclusive Complimentary Perks
+    "perks_badge": "<i class=\"fa fa-gift\"></i> 专属免费礼遇",
+    "perks_heading": "IVY LUXE SPA 尊贵宾客专属特权",
+    "perks_sub": "在河内老城区核心地带为您带来最贴心、舒适与完善的奢华养生体验",
+    "perk1_tag": "100% 免费便利",
+    "perk1_title": "免费热水淋浴",
+    "perk1_desc": "私密洁净的冷热水淋浴间，备齐五星级毛巾、电吹风及天然草本沐浴露，护理前后尽享清爽舒畅。",
+    "perk2_tag": "安全便捷",
+    "perk2_title": "免费行李寄存",
+    "perk2_desc": "安心寄存您的行李箱与背包，轻松漫游河内老街、还剑湖或安心等候登机。<em>（注：恕不保管高价值贵重物品）</em>。",
+    "perk3_tag": "超值省心",
+    "perk3_title": "平价代订机场专车",
+    "perk3_desc": "贴心协助代订内排机场往返4座、7座、16座优质私家专车，准时守信，价格远比普通出租车更划算。",
+    "menu_perks_title": "莅临 IVY LUXE SPA 尊享免费特权：",
+    "menu_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#D4AF37;\"></i> <strong>免费热水淋浴</strong>",
+    "menu_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#D4AF37;\"></i> <strong>免费行李寄存</strong> <small style=\"color:#64748B;\">(不含贵重物品)</small>",
+    "menu_perk_car": "<i class=\"fa fa-car\" style=\"color:#D4AF37;\"></i> <strong>优惠代订机场专车</strong>",
+    "modal_perks_title": "<i class=\"fa fa-gift\"></i> 为您提供专属免费特权：",
+    "modal_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#ECC876; width:18px;\"></i> <strong>免费热水淋浴</strong>（按摩理疗前后皆可）",
+    "modal_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#ECC876; width:18px;\"></i> <strong>免费行李寄存</strong> <em>(恕不保管贵重物品)</em>",
+    "modal_perk_car": "<i class=\"fa fa-car\" style=\"color:#ECC876; width:18px;\"></i> <strong>协助代订内排机场特价专车</strong>"
+
   },
   "ja": {
     "doc_title": "IVY LUXE SPA - ハノイ旧市街の極上マッサージ＆スパ | ハチュン48番地",
@@ -768,7 +834,29 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "再生中...",
     "zen_player_min_hint": "癒しの音",
     "zen_toast_playing": "癒しの音楽を再生中",
-    "zen_toast_paused": "癒しの音楽を一時停止しました"
+    "zen_toast_paused": "癒しの音楽を一時停止しました",
+    // Exclusive Complimentary Perks
+    "perks_badge": "<i class=\"fa fa-gift\"></i> 特別無料特典",
+    "perks_heading": "IVY LUXE SPA お客様だけの特別限定特典",
+    "perks_sub": "ハノイ旧市街の中心で、最も心地よく充実した癒しのひとときをお届けいたします",
+    "perk1_tag": "完全無料アメニティ",
+    "perk1_title": "無料温水シャワー完備",
+    "perk1_desc": "清潔なプライベート温水シャワールーム。5つ星ホテル仕様の清潔なタオル、ドライヤー、オーガニックハーブソープをご用意。施術前後にさっぱりとお使いいただけます。",
+    "perk2_tag": "安心＆便利",
+    "perk2_title": "手荷物・スーツケース無料預かり",
+    "perk2_desc": "大きなスーツケースやお荷物をスパで安全にお預かりします。身軽に旧市街散策や還剣湖観光、フライト待ち時間をお楽しみください。<em>（※高額な貴重品はお預かりできません）</em>。",
+    "perk3_tag": "お得な空港送迎",
+    "perk3_title": "格安空港送迎の手配代行",
+    "perk3_desc": "ノイバイ空港送迎の専用車（4・7・16人乗り）をお得な特別料金で手配代行いたします。一般タクシーより安く、時間厳守で安心です。",
+    "menu_perks_title": "IVY LUXE SPA ご来店特典（完全無料）：",
+    "menu_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#D4AF37;\"></i> <strong>無料温水シャワー</strong>",
+    "menu_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#D4AF37;\"></i> <strong>手荷物無料預かり</strong> <small style=\"color:#64748B;\">(貴重品除く)</small>",
+    "menu_perk_car": "<i class=\"fa fa-car\" style=\"color:#D4AF37;\"></i> <strong>格安空港送迎手配</strong>",
+    "modal_perks_title": "<i class=\"fa fa-gift\"></i> お客様への特別無料特典：",
+    "modal_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#ECC876; width:18px;\"></i> <strong>無料温水シャワー</strong>（マッサージ施術の前後）",
+    "modal_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#ECC876; width:18px;\"></i> <strong>無料手荷物預かり</strong> <em>(貴重品除く)</em>",
+    "modal_perk_car": "<i class=\"fa fa-car\" style=\"color:#ECC876; width:18px;\"></i> <strong>格安空港送迎の手配代行</strong>（ノイバイ空港）"
+
   },
   "ko": {
     "doc_title": "IVY LUXE SPA - 하노이 올드쿼터 최고급 럭셔리 마사지 | 하쭝 48번지",
@@ -930,7 +1018,29 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "재생 중...",
     "zen_player_min_hint": "힐링 오디오",
     "zen_toast_playing": "힐링 사운드스케이프 재생 중",
-    "zen_toast_paused": "명상 음악 일시정지됨"
+    "zen_toast_paused": "명상 음악 일시정지됨",
+    // Exclusive Complimentary Perks
+    "perks_badge": "<i class=\"fa fa-gift\"></i> 독점 무료 혜택",
+    "perks_heading": "IVY LUXE SPA 고객만을 위한 스페셜 특전",
+    "perks_sub": "하노이 올드쿼터 중심에서 가장 세심하고 쾌적한 힐링 경험을 선사합니다",
+    "perk1_tag": "100% 무료 편의시설",
+    "perk1_title": "무료 온수 샤워",
+    "perk1_desc": "프라이빗하고 청결한 온냉수 샤워실 구비. 5성급 호텔 수준의 타월, 헤어드라이어, 천연 허브 바디워시가 완비되어 마사지 전후 상쾌하게 이용하실 수 있습니다.",
+    "perk2_tag": "안전 & 편리함",
+    "perk2_title": "무료 수하물/캐리어 보관",
+    "perk2_desc": "스파에 캐리어와 무거운 짐을 안전하게 맡기시고, 가벼운 발걸음으로 호안끼엠 호수와 구시가지를 산책하시거나 비행기 시간을 편안하게 기다리세요. <em>(참고: 고가 귀중품은 보관 불가)</em>.",
+    "perk3_tag": "최고의 가성비",
+    "perk3_title": "노이바이 공항 특가 차량 대리 예약",
+    "perk3_desc": "노이바이 공항 픽업/샌딩 4인승, 7인승, 16인승 전용 차량을 일반 택시보다 훨씬 저렴하고 합리적인 요금으로 안전하게 예약 대행해 드립니다.",
+    "menu_perks_title": "IVY LUXE SPA 방문 고객 무료 혜택:",
+    "menu_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#D4AF37;\"></i> <strong>무료 온수 샤워</strong>",
+    "menu_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#D4AF37;\"></i> <strong>무료 수하물 보관</strong> <small style=\"color:#64748B;\">(귀중품 제외)</small>",
+    "menu_perk_car": "<i class=\"fa fa-car\" style=\"color:#D4AF37;\"></i> <strong>공항 샌딩 차량 할인 예약</strong>",
+    "modal_perks_title": "<i class=\"fa fa-gift\"></i> 고객님을 위한 무료 특전:",
+    "modal_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#ECC876; width:18px;\"></i> <strong>무료 온수 샤워</strong> (마사지 전/후 언제든 가능)",
+    "modal_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#ECC876; width:18px;\"></i> <strong>무료 짐/캐리어 보관</strong> <em>(고가 귀중품 제외)</em>",
+    "modal_perk_car": "<i class=\"fa fa-car\" style=\"color:#ECC876; width:18px;\"></i> <strong>노이바이 공항 특가 차량 대리 예약</strong>"
+
   },
   "ru": {
     "doc_title": "IVY LUXE SPA - Массаж тела и спа в Ханое | 48 Ha Trung, Hoan Kiem",
@@ -1093,7 +1203,29 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "Играет...",
     "zen_player_min_hint": "Дзен аудио",
     "zen_toast_playing": "Играет целебная музыка",
-    "zen_toast_paused": "Музыка приостановлена"
+    "zen_toast_paused": "Музыка приостановлена",
+    // Exclusive Complimentary Perks
+    "perks_badge": "<i class=\"fa fa-gift\"></i> ЭКСКЛЮЗИВНЫЕ БЕСПЛАТНЫЕ УСЛУГИ",
+    "perks_heading": "Эксклюзивные привилегии для гостей IVY LUXE SPA",
+    "perks_sub": "Заботливый, комфортный и полноценный отдых в самом сердце Старого квартала Ханоя",
+    "perk1_tag": "100% БЕСПЛАТНАЯ УСЛУГА",
+    "perk1_title": "Бесплатный горячий душ",
+    "perk1_desc": "Чистые индивидуальные душевые с горячей водой, 5-звездочными свежими полотенцами, феном и органическим травяным гелем до или после процедур.",
+    "perk2_tag": "БЕЗОПАСНО И УДОБНО",
+    "perk2_title": "Бесплатное хранение багажа",
+    "perk2_desc": "Оставьте чемоданы и рюкзаки под надежным присмотром в спа, чтобы налегке погулять по Старому кварталу, к озеру Хоанкьем или дождаться рейса. <em>(Ценные вещи не принимаются)</em>.",
+    "perk3_tag": "МАКСИМАЛЬНАЯ ЭКОНОМИЯ",
+    "perk3_title": "Помощь с трансфером в аэропорт",
+    "perk3_desc": "Помощь в бронировании надежного авто в аэропорт Нойбай (4, 7, 16 мест) с вежливыми водителями по ценам значительно ниже обычного такси.",
+    "menu_perks_title": "БЕСПЛАТНЫЕ ПРИВИЛЕГИИ В IVY LUXE SPA:",
+    "menu_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#D4AF37;\"></i> <strong>Бесплатный душ</strong>",
+    "menu_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#D4AF37;\"></i> <strong>Бесплатное хранение багажа</strong> <small style=\"color:#64748B;\">(без ценностей)</small>",
+    "menu_perk_car": "<i class=\"fa fa-car\" style=\"color:#D4AF37;\"></i> <strong>Недорогой трансфер в аэропорт</strong>",
+    "modal_perks_title": "<i class=\"fa fa-gift\"></i> БЕСПЛАТНЫЕ ПРИВИЛЕГИИ ДЛЯ ВАС:",
+    "modal_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#ECC876; width:18px;\"></i> <strong>Бесплатный горячий душ</strong> до или после массажа",
+    "modal_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#ECC876; width:18px;\"></i> <strong>Бесплатное хранение багажа</strong> <em>(без ценностей)</em>",
+    "modal_perk_car": "<i class=\"fa fa-car\" style=\"color:#ECC876; width:18px;\"></i> <strong>Помощь с бронированием авто в аэропорт Нойбай</strong>"
+
   },
   "fr": {
     "doc_title": "IVY LUXE SPA - Massage Corporel & Bien-être | 48 Ha Trung, Hanoï",
@@ -1256,7 +1388,29 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "Lecture en cours...",
     "zen_player_min_hint": "Audio Zen",
     "zen_toast_playing": "Lecture de la musique thérapeutique",
-    "zen_toast_paused": "Musique zen en pause"
+    "zen_toast_paused": "Musique zen en pause",
+    // Exclusive Complimentary Perks
+    "perks_badge": "<i class=\"fa fa-gift\"></i> AVANTAGES EXCLUSIFS OFFERTS",
+    "perks_heading": "Privilèges Exclusifs Pour les Clients d'IVY LUXE SPA",
+    "perks_sub": "L'expérience de relaxation la plus attentionnée, pratique et sereine au cœur du Vieux Quartier de Hanoï",
+    "perk1_tag": "SERVICE 100% GRATUIT",
+    "perk1_title": "Douche Chaude Gratuite",
+    "perk1_desc": "Douches chaudes et froides privatives et impeccables, équipées de serviettes 5 étoiles, sèche-cheveux et gel douche aux herbes fraîches avant ou après le soin.",
+    "perk2_tag": "SÛR & PRATIQUE",
+    "perk2_title": "Consigne à Bagages Gratuite",
+    "perk2_desc": "Déposez vos valises et sacs à dos en toute sécurité au spa pour flâner librement dans le Vieux Quartier, au lac Hoan Kiem ou avant votre vol. <em>(Objets de valeur non acceptés)</em>.",
+    "perk3_tag": "ÉCONOMIE MAXIMALE",
+    "perk3_title": "Assistance Transfert Aéroport Économique",
+    "perk3_desc": "Assistance pour réserver un véhicule privé (4, 7 ou 16 places) pour l'aéroport de Noi Bai, ponctuel, courtois et bien plus économique que les taxis traditionnels.",
+    "menu_perks_title": "AVANTAGES GRATUITS CHEZ IVY LUXE SPA :",
+    "menu_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#D4AF37;\"></i> <strong>Douche gratuite</strong>",
+    "menu_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#D4AF37;\"></i> <strong>Consigne gratuite</strong> <small style=\"color:#64748B;\">(hors objets de valeur)</small>",
+    "menu_perk_car": "<i class=\"fa fa-car\" style=\"color:#D4AF37;\"></i> <strong>Navette aéroport pas cher</strong>",
+    "modal_perks_title": "<i class=\"fa fa-gift\"></i> VOS PRIVILÈGES GRATUITS :",
+    "modal_perk_shower": "<i class=\"fa fa-shower\" style=\"color:#ECC876; width:18px;\"></i> <strong>Douche chaude gratuite</strong> avant ou après votre soin",
+    "modal_perk_luggage": "<i class=\"fa fa-suitcase\" style=\"color:#ECC876; width:18px;\"></i> <strong>Consigne à bagages gratuite</strong> <em>(hors objets de valeur)</em>",
+    "modal_perk_car": "<i class=\"fa fa-car\" style=\"color:#ECC876; width:18px;\"></i> <strong>Aide à la réservation de navette aéroport</strong> (Noi Bai)"
+
   }
 };
 

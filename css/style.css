@@ -364,8 +364,8 @@ button, input, select, textarea {
 }
 
 .header-logo-img {
-  width: 54px;
-  height: 54px;
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
   object-fit: cover;
   border: 1.5px solid var(--color-gold);
@@ -379,7 +379,7 @@ button, input, select, textarea {
 
 .header-logo-text {
   font-family: var(--font-display);
-  font-size: 1.38rem;
+  font-size: 1.52rem;
   font-weight: 800;
   letter-spacing: 2.8px;
   color: #071F14;
@@ -392,7 +392,7 @@ button, input, select, textarea {
   font-family: 'Plus Jakarta Sans', var(--font-sans);
   font-style: normal;
   font-weight: 800 !important;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: #7B1FA2 !important; /* Màu tím quý phái đậm nét, cực kỳ bắt mắt và ấn tượng */
   letter-spacing: 2px;
   margin-top: 3px;
@@ -2662,18 +2662,18 @@ button, input, select, textarea {
     text-align: center !important;
   }
   .header-logo-img {
-    width: 36px !important;
-    height: 36px !important;
+    width: 44px !important;
+    height: 44px !important;
     margin: 0 auto !important;
   }
   .header-logo-text {
-    font-size: 1.05rem !important;
+    font-size: 1.18rem !important;
     letter-spacing: 1.2px !important;
     white-space: nowrap !important;
     line-height: 1.15 !important;
   }
   .header-logo-sub {
-    font-size: 0.55rem !important;
+    font-size: 0.62rem !important;
     letter-spacing: 0.8px !important;
     white-space: nowrap !important;
     line-height: 1.15 !important;
