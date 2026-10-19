@@ -5815,4 +5815,64 @@ document.addEventListener('DOMContentLoaded', () => {
     heroDate.value = today;
     heroDate.min = today;
   }
+
+  // =========================================================================
+  // UNIVERSAL LANGUAGE SWITCHER CONTROLLER (TOP BAR, HEADER & FLOATING TOGGLE)
+  // =========================================================================
+  window.changeSiteLanguage = function(newLang) {
+    if (!newLang || !languageConfig[newLang]) return;
+    state.language = newLang;
+    localStorage.setItem('ivy_lang', newLang);
+    updatePageLanguage();
+    const conf = languageConfig[newLang];
+    showToast(`${conf.flag} Ngôn ngữ / Language: ${conf.name}`);
+    // Close popovers
+    const picker = document.getElementById('header-lang-picker');
+    if (picker) picker.classList.remove('open');
+  };
+
+  // Top bar quick pills click
+  document.querySelectorAll('.top-lang-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const l = pill.getAttribute('data-lang');
+      window.changeSiteLanguage(l);
+    });
+  });
+
+  // Header picker toggle button
+  const headerLangBtn = document.getElementById('header-lang-btn');
+  const headerLangPicker = document.getElementById('header-lang-picker');
+  if (headerLangBtn && headerLangPicker) {
+    headerLangBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      headerLangPicker.classList.toggle('open');
+    });
+  }
+
+  // Header popover option click
+  document.querySelectorAll('.hl-opt-item').forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const l = opt.getAttribute('data-lang');
+      window.changeSiteLanguage(l);
+    });
+  });
+
+  // Close header popover when clicking anywhere outside
+  document.addEventListener('click', (e) => {
+    if (headerLangPicker && !headerLangPicker.contains(e.target)) {
+      headerLangPicker.classList.remove('open');
+    }
+  });
+
+  // Floating language toggle button click (opens header popover or cycles next language)
+  const floatingLangToggle = document.getElementById('floating-lang-toggle');
+  if (floatingLangToggle) {
+    floatingLangToggle.addEventListener('click', () => {
+      // Toggle to English if currently Vietnamese, or back to Vietnamese if currently foreign
+      const nextLang = (state.language === 'vi') ? 'en' : 'vi';
+      window.changeSiteLanguage(nextLang);
+    });
+  }
+
 });
