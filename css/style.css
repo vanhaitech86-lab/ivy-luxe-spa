@@ -288,6 +288,15 @@ button, input, select, textarea {
   color: var(--color-primary);
 }
 
+.nav-item-link.nav-affiliate-link {
+  color: #000000 !important;
+  font-weight: 700;
+}
+
+.nav-item-link.nav-affiliate-link:hover {
+  color: var(--color-primary) !important;
+}
+
 .nav-item-link::after {
   content: '';
   position: absolute;
