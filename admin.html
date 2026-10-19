@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Quản Trị - IVY LUXE SPA (48 Hà Trung)</title>
+  <title>Admin Quản Trị - IVY LUXE SPA (Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội)</title>
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/logo.png">
@@ -67,7 +67,7 @@
         <img src="assets/images/logo.png" alt="IVY LUXE" class="sb-logo">
         <div>
           <h3 class="sb-brand-name">IVY LUXE SPA</h3>
-          <span class="sb-brand-sub">Quản Trị 48 Hà Trung</span>
+          <span class="sb-brand-sub">Số 48 phố Hà Trung, P. Hoàn Kiếm, Hà Nội</span>
         </div>
       </div>
 
@@ -311,7 +311,7 @@
                   <th>Lượt Click</th>
                   <th>Đơn Chốt</th>
                   <th>Doanh Thu</th>
-                  <th>Hoa Hồng (20%)</th>
+                  <th>Hoa Hồng (30% - 35%)</th>
                   <th>Tài Khoản Nhận Thưởng</th>
                   <th>Thao Tác</th>
                 </tr>
@@ -472,6 +472,66 @@
         </div>
         <button type="submit" class="admin-btn-primary" style="width:100%; margin-top:15px;">
           <i class="fa fa-save"></i> LƯU ĐƠN ĐẶT LỊCH
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD AFFILIATE PARTNER -->
+  <div id="modal-add-partner" class="admin-modal-overlay">
+    <div class="admin-modal-box">
+      <div class="admin-modal-header">
+        <h3><i class="fa fa-handshake-o"></i> Thêm Đối Tác Tiếp Thị Mới</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('modal-add-partner')">&times;</span>
+      </div>
+      <form id="form-add-affiliate-partner">
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label>Họ và Tên Đối Tác <span style="color:red;">*</span></label>
+            <input type="text" id="ap-name" class="admin-input" placeholder="VD: Khách Sạn Apricot / Tour Guide Minh" required>
+          </div>
+          <div class="admin-form-group">
+            <label>Số Điện Thoại / Zalo <span style="color:red;">*</span></label>
+            <input type="tel" id="ap-phone" class="admin-input" placeholder="0981234567" required>
+          </div>
+        </div>
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label>Email (Gmail)</label>
+            <input type="email" id="ap-email" class="admin-input" placeholder="doitac@gmail.com">
+          </div>
+          <div class="admin-form-group">
+            <label>Mã Giới Thiệu (Ref Code) <span style="color:red;">*</span></label>
+            <input type="text" id="ap-code" class="admin-input" placeholder="VD: APRICOT_HOTEL" required>
+          </div>
+        </div>
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label>Phân Loại Đối Tác</label>
+            <select id="ap-type" class="admin-select">
+              <option value="Khách Sạn & Concierge">Khách Sạn & Concierge</option>
+              <option value="Hướng Dẫn Viên Du Lịch">Hướng Dẫn Viên Du Lịch</option>
+              <option value="Airbnb & Homestay Host">Airbnb & Homestay Host</option>
+              <option value="Tài Xế Taxi / Grab VIP">Tài Xế Taxi / Grab VIP</option>
+              <option value="Travel Blogger / KOC">Travel Blogger / KOC</option>
+              <option value="Cộng Tác Viên Tự Do">Cộng Tác Viên Tự Do</option>
+            </select>
+          </div>
+          <div class="admin-form-group">
+            <label>Mức Hoa Hồng</label>
+            <select id="ap-commission-rate" class="admin-select">
+              <option value="35%">35% (Mức Tiêu Chuẩn VIP)</option>
+              <option value="30%">30% (Khởi điểm)</option>
+              <option value="38%">38% (Đặc Biệt Kim Cương)</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label>Tài Khoản Ngân Hàng Nhận Hoa Hồng (Ngân Hàng - STK - Tên Chủ TK)</label>
+          <input type="text" id="ap-bank" class="admin-input" placeholder="VD: Vietcombank - 0011001234567 - NGUYEN VAN A">
+        </div>
+        <button type="submit" class="admin-btn-primary" style="width:100%; margin-top:15px;">
+          <i class="fa fa-check-circle"></i> TẠO ĐỐI TÁC & PHÁT HÀNH MÃ TIẾP THỊ
         </button>
       </form>
     </div>

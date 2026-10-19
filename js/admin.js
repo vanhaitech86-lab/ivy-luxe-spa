@@ -1,6 +1,6 @@
 /**
  * IVY LUXE SPA - ADMIN PORTAL APPLICATION SCRIPT
- * 48 Hà Trung, Hoàn Kiếm, Hà Nội
+ * Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderAffiliatesTable();
   renderSePayTransactions();
   initManualBookingForm();
+  initPartnerAdminForm();
   initSePayConfigForm();
 });
 
@@ -39,7 +40,7 @@ function initSeedAdminData() {
         name: 'Trần Văn Bình',
         phone: '0981234567',
         service: 'IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT',
-        branch: '48 Hà Trung, Hoàn Kiếm, Hà Nội',
+        branch: 'Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội',
         date: '2026-10-19',
         time: '14:30',
         guests: '2 Khách',
@@ -57,7 +58,7 @@ function initSeedAdminData() {
         name: 'David Smith (Du khách Anh)',
         phone: '+44 7911 123456',
         service: 'IVY SPECIAL - COMBO 3 - 120 PHÚT',
-        branch: '48 Hà Trung, Hoàn Kiếm, Hà Nội',
+        branch: 'Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội',
         date: '2026-10-19',
         time: '16:00',
         guests: '1 Khách',
@@ -75,7 +76,7 @@ function initSeedAdminData() {
         name: 'Nguyễn Thị Hương',
         phone: '0912999888',
         service: 'IVY SPECIAL - COMBO 2 - 70/75 PHÚT',
-        branch: '48 Hà Trung, Hoàn Kiếm, Hà Nội',
+        branch: 'Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội',
         date: '2026-10-20',
         time: '18:30',
         guests: '3 Khách',
@@ -93,7 +94,7 @@ function initSeedAdminData() {
         name: 'Hoàng Minh Quân',
         phone: '0908777666',
         service: 'IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT',
-        branch: '48 Hà Trung, Hoàn Kiếm, Hà Nội',
+        branch: 'Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội',
         date: '2026-10-21',
         time: '15:00',
         guests: '2 Khách',
@@ -425,7 +426,7 @@ function renderBookingsTable() {
       </td>
       <td>
         <div style="display:flex; gap:6px;">
-          <a href="https://wa.me/84${b.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Chào bạn, IVY LUXE SPA (48 Hà Trung) xin xác nhận lịch hẹn của bạn: ' + b.id)}" target="_blank" class="btn-sm-gold" title="Nhắn WhatsApp / Zalo"><i class="fa fa-whatsapp"></i></a>
+          <a href="https://wa.me/84${b.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Chào bạn, IVY LUXE SPA (Số 48 phố Hà Trung, P. Hoàn Kiếm, Hà Nội) xin xác nhận lịch hẹn của bạn: ' + b.id)}" target="_blank" class="btn-sm-gold" title="Nhắn WhatsApp / Zalo"><i class="fa fa-whatsapp"></i></a>
           <button type="button" class="btn-sm-gold" style="border-color:red; color:red;" onclick="deleteBooking('${b.id}')" title="Xóa đơn"><i class="fa fa-trash"></i></button>
         </div>
       </td>
@@ -605,37 +606,62 @@ window.editServicePrice = function(serviceId) {
 };
 
 // 4. AFFILIATES PARTNERS TABLE
-function renderAffiliatesTable() {
+function renderAffiliatesTable(filterText = '') {
   const tbody = document.getElementById('admin-affiliates-tbody');
   if (!tbody) return;
 
   const affStore = JSON.parse(localStorage.getItem('ivy_affiliates_data') || '{"partners":[]}');
-  const partners = affStore.partners || [];
+  let partners = affStore.partners || [];
+
+  if (filterText) {
+    const q = filterText.toLowerCase();
+    partners = partners.filter(p => 
+      (p.name && p.name.toLowerCase().includes(q)) ||
+      (p.phone && p.phone.includes(q)) ||
+      (p.code && p.code.toLowerCase().includes(q)) ||
+      (p.email && p.email.toLowerCase().includes(q))
+    );
+  }
 
   if (!partners.length) {
-    tbody.innerHTML = '<tr><td colspan="11" style="text-align:center; padding:30px;">Chưa có đối tác tiếp thị nào đăng ký</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="11" style="text-align:center; padding:30px; color:#A3B5AD;">Không tìm thấy đối tác tiếp thị nào</td></tr>';
     return;
   }
 
+  const originUrl = window.location.origin;
+
   tbody.innerHTML = partners.map(p => {
-    const fullLink = 'https://ivy-luxe-spa-kappa.vercel.app/?ref=' + encodeURIComponent(p.code);
-    const com = p.commission || Math.round((p.revenue || 0) * 0.2);
+    const fullLink = originUrl + '/?ref=' + encodeURIComponent(p.code);
+    const ratePercent = parseInt((p.commissionRate || '35%').replace('%', ''), 10) || 35;
+    const rev = p.revenue || (p.ordersSuccess ? p.ordersSuccess * 900000 : 0);
+    const com = p.commission || p.pendingAmount || Math.round(rev * (ratePercent / 100));
+    const paid = p.receivedAmount || 0;
+    const ordersCount = p.ordersSuccess || p.bookings || 0;
+    const bankDetails = p.bankName ? `${p.bankName} - ${p.bankNum || ''} (${p.bankHolder || ''})` : (p.bank || 'Chưa cập nhật');
+
     return `
       <tr>
-        <td><strong>${p.name}</strong></td>
-        <td>${p.phone}</td>
-        <td><span class="status-badge status-completed">${p.typeName || 'Đối tác'}</span></td>
-        <td><strong style="color:#ECC876;">${p.code}</strong></td>
         <td>
-          <a href="${fullLink}" target="_blank" style="color:#82b5ff; font-size:0.78rem; text-decoration:none;">
-            ${p.code} <i class="fa fa-external-link"></i>
+          <strong>${p.name || 'Đối Tác'}</strong>
+          ${p.email ? `<div style="font-size:0.75rem; color:#8FA59B;">${p.email}</div>` : ''}
+        </td>
+        <td>${p.phone || '---'}</td>
+        <td><span class="status-badge status-completed">${p.typeName || p.type || 'Đối Tác VIP'}</span></td>
+        <td><strong style="color:#ECC876; font-size:1rem;">${p.code}</strong></td>
+        <td>
+          <a href="${fullLink}" target="_blank" style="color:#D4AF37; font-size:0.8rem; text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Mở link tiếp thị">
+            <span>/?ref=${p.code}</span> <i class="fa fa-external-link"></i>
           </a>
         </td>
         <td><strong>${(p.clicks || 0).toLocaleString('vi-VN')}</strong></td>
-        <td><strong style="color:#25D366;">${(p.bookings || 0).toLocaleString('vi-VN')}</strong></td>
-        <td>${(p.revenue || 0).toLocaleString('vi-VN')}đ</td>
-        <td><strong style="color:#D4AF37;">${com.toLocaleString('vi-VN')}đ</strong></td>
-        <td><small>${p.bank || 'Vietcombank'}</small></td>
+        <td><strong style="color:#25D366;">${ordersCount} đơn</strong></td>
+        <td>${rev.toLocaleString('vi-VN')}đ</td>
+        <td>
+          <strong style="color:#D4AF37; font-size:0.95rem;">${com.toLocaleString('vi-VN')}đ</strong>
+          <div style="font-size:0.75rem; color:#8FA59B;">Tỷ lệ: ${p.commissionRate || '35%'}</div>
+          ${paid > 0 ? `<div style="font-size:0.72rem; color:#25D366;">Đã chi trả: ${paid.toLocaleString('vi-VN')}đ</div>` : ''}
+        </td>
+        <td><small style="color:#DDE5E1;">${bankDetails}</small></td>
         <td>
           <button type="button" class="btn-sm-gold" onclick="payoutAffiliate('${p.code}', ${com})">
             <i class="fa fa-check"></i> Chi Trả
@@ -646,10 +672,93 @@ function renderAffiliatesTable() {
   }).join('');
 }
 
+// Search Partners Filter
+const affSearchInput = document.getElementById('aff-search-input');
+if (affSearchInput) {
+  affSearchInput.addEventListener('input', (e) => {
+    renderAffiliatesTable(e.target.value.trim());
+  });
+}
+
+// Add Partner Modal Handling
+function initPartnerAdminForm() {
+  const openBtn = document.getElementById('btn-open-add-partner-modal');
+  const modal = document.getElementById('modal-add-partner');
+  const form = document.getElementById('form-add-affiliate-partner');
+
+  if (openBtn && modal) {
+    openBtn.addEventListener('click', () => {
+      modal.style.display = 'flex';
+    });
+  }
+
+  if (form && modal) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('ap-name').value.trim();
+      const phone = document.getElementById('ap-phone').value.trim();
+      const email = document.getElementById('ap-email').value.trim();
+      let code = document.getElementById('ap-code').value.trim().toUpperCase().replace(/[^A-Z0-9_-]/g, '');
+      const type = document.getElementById('ap-type').value;
+      const rate = document.getElementById('ap-commission-rate').value;
+      const bank = document.getElementById('ap-bank').value.trim();
+
+      if (!code) code = 'IVY-' + Math.floor(1000 + Math.random() * 9000);
+
+      const affStore = JSON.parse(localStorage.getItem('ivy_affiliates_data') || '{"partners":[]}');
+      if (!affStore.partners) affStore.partners = [];
+
+      const existing = affStore.partners.find(p => p.code && p.code.toUpperCase() === code);
+      if (existing) {
+        alert('Mã tiếp thị [' + code + '] đã tồn tại. Vui lòng chọn mã khác!');
+        return;
+      }
+
+      affStore.partners.unshift({
+        name,
+        phone,
+        email,
+        code,
+        typeName: type,
+        commissionRate: rate,
+        bank,
+        clicks: 0,
+        monthClicks: 0,
+        ordersSuccess: 0,
+        ordersPending: 0,
+        pendingAmount: 0,
+        receivedAmount: 0,
+        orders: [],
+        createdAt: new Date().toISOString()
+      });
+
+      localStorage.setItem('ivy_affiliates_data', JSON.stringify(affStore));
+      modal.style.display = 'none';
+      form.reset();
+
+      renderAffiliatesTable();
+      alert(`🎉 Đã thêm đối tác mới [${name}] thành công!\nMã giới thiệu: ${code} (Hoa hồng: ${rate})`);
+    });
+  }
+}
+
 window.payoutAffiliate = function(code, amount) {
-  const confirmPayout = confirm('Xác nhận đã chuyển khoản chi trả hoa hồng ' + amount.toLocaleString('vi-VN') + 'đ cho đối tác [' + code + ']?');
+  if (amount <= 0) {
+    alert('Đối tác [' + code + '] chưa có hoa hồng khả dụng để chi trả!');
+    return;
+  }
+  const confirmPayout = confirm(`Xác nhận đã chuyển khoản chi trả hoa hồng ${amount.toLocaleString('vi-VN')}đ cho đối tác [${code}]?`);
   if (confirmPayout) {
-    alert('Đã ghi nhận kết toán thành công cho đối tác ' + code);
+    const affStore = JSON.parse(localStorage.getItem('ivy_affiliates_data') || '{"partners":[]}');
+    const partner = affStore.partners.find(p => p.code === code);
+    if (partner) {
+      partner.receivedAmount = (partner.receivedAmount || 0) + (partner.pendingAmount || amount);
+      partner.pendingAmount = 0;
+      partner.commission = 0;
+      localStorage.setItem('ivy_affiliates_data', JSON.stringify(affStore));
+      renderAffiliatesTable();
+      alert(`✓ Đã ghi nhận quyết toán thành công ${amount.toLocaleString('vi-VN')}đ cho đối tác ${code}!`);
+    }
   }
 };
 
