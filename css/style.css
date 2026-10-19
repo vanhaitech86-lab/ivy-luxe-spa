@@ -715,6 +715,7 @@ button, input, select, textarea {
 .hero-orient-style {
   position: relative;
   min-height: 620px;
+  scroll-margin-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

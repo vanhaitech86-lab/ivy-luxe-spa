@@ -2091,7 +2091,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_zh": "专业修除足部角质死皮，细致修剪指甲甲型并打磨抛光。",
       "desc_ja": "丁寧な甘皮処理、角質除去、爪のファイリングと表面磨き。",
       "desc_ko": "전문적인 큐티클 정리, 각질 제거, 발톱 쉐입 교정 및 매끄러운 버핑 케어.",
-      "image": "assets/images/real_ivy_spa_nail_collage.jpg"
+      "image": "assets/images/real_ivy_spa_nail_panoramic.jpg"
     },
     {
       "id": "nail-2",
@@ -2111,7 +2111,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "desc_zh": "手部细致护理，修剪边缘倒刺死皮，打磨甲面修整甲型。",
       "desc_ja": "手元の丁寧なキューティクルケア、爪の成形と艶出し磨き。",
       "desc_ko": "손톱 주변 굳은살 및 큐티클 정리, 쉐입 정리와 자연스러운 광택 케어.",
-      "image": "assets/images/real_ivy_spa_nail_collage.jpg"
+      "image": "assets/images/real_ivy_spa_nail_panoramic.jpg"
     },
     {
       "id": "nail-3",
