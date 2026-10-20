@@ -8544,3 +8544,80 @@ select.aff-input option {
 .hero-booking-field select {
   text-overflow: clip !important;
 }
+
+
+@media (max-width: 768px) {
+  /* ====== NÚT CHỌN NGÔN NGỮ NỔI BẬT NGAY TRÊN THANH TIÊU ĐỀ MOBILE ====== */
+  .mobile-header-right-group {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    z-index: 100 !important;
+  }
+  .mobile-header-lang-wrap {
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    z-index: 101 !important;
+  }
+  .mobile-lang-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid var(--color-gold, #D4AF37) !important;
+    border-radius: 20px !important;
+    padding: 4px 8px !important;
+    font-size: 0.74rem !important;
+    font-weight: 800 !important;
+    color: #123023 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+    height: 32px !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+  }
+  .mobile-lang-btn .mobile-lang-flag {
+    font-size: 1rem !important;
+    line-height: 1 !important;
+  }
+  .mobile-lang-btn .mobile-lang-name {
+    font-size: 0.75rem !important;
+    font-weight: 800 !important;
+    color: #0E271D !important;
+  }
+  .mobile-lang-btn .fa-angle-down {
+    font-size: 0.65rem !important;
+    color: var(--color-gold, #D4AF37) !important;
+    margin-left: 2px !important;
+  }
+  .mobile-header-lang-wrap.open .mobile-lang-btn .fa-angle-down {
+    transform: rotate(180deg) !important;
+  }
+  .mobile-lang-popover {
+    right: 0 !important;
+    left: auto !important;
+    top: calc(100% + 6px) !important;
+    width: 215px !important;
+    position: absolute !important;
+    z-index: 10002 !important;
+  }
+  .mobile-header-book-btn {
+    height: 32px !important;
+    padding: 4px 9px !important;
+    font-size: 0.73rem !important;
+    border-radius: 18px !important;
+  }
+  .mobile-header-auth-pill {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .mobile-nav-toggle {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 4px !important;
+    font-size: 1.15rem !important;
+  }
+}
