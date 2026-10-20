@@ -2742,7 +2742,8 @@ button, input, select, textarea {
     display: none !important;
   }
   .mobile-header-lang-wrap {
-    display: none !important;
+    display: flex !important;
+    align-items: center !important;
   }
   .hero-booking-box {
     flex-direction: column;
@@ -2784,6 +2785,105 @@ button, input, select, textarea {
   }
   .top-zen-btn span {
     display: none;
+  }
+
+  /* ========================================================================= */
+  /* COMPREHENSIVE MOBILE & DESKTOP DISPLAY OPTIMIZATIONS (HIỂN THỊ ĐẦY ĐỦ 100%) */
+  /* ========================================================================= */
+  /* 1. Nút ngôn ngữ nổi: Ẩn trên mobile vì ngôn ngữ đã chuyển lên trên cùng header & drawer */
+  .floating-lang-toggle {
+    display: none !important;
+  }
+
+  /* 2. Cột nút liên hệ bên phải trên điện thoại: Thu gọn nhẹ nhàng, không che nội dung */
+  .orient-floating-dock {
+    bottom: 22px !important;
+    right: 10px !important;
+    gap: 7px !important;
+  }
+  .orient-dock-btn {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 0.88rem !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3) !important;
+  }
+  /* Tuyệt đối ẩn thanh text Hotline màu trắng trên mobile để không đè lên nút Đặt Lịch */
+  .dock-phone-pill {
+    display: none !important;
+  }
+
+  /* 3. Tiêu đề chào mừng và nút đặt lịch mobile: Căn chỉnh an toàn, không bị nút liên hệ đè lên */
+  .hero-welcome-text {
+    padding: 0 45px 0 15px !important;
+    font-size: 0.92rem !important;
+    line-height: 1.4 !important;
+    word-break: break-word !important;
+  }
+  .hero-mobile-cta-wrap {
+    padding: 0 45px 0 15px !important;
+    margin-top: 12px !important;
+  }
+  .hero-mobile-cta-btn {
+    max-width: 290px !important;
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 0.82rem !important;
+    padding: 8px 14px !important;
+  }
+
+  /* 4. Tối ưu Header Mobile: Logo, chữ và nút không bị ép chật */
+  .header-logo-center {
+    max-width: calc(100% - 200px) !important;
+    overflow: hidden !important;
+  }
+  .header-logo-text {
+    font-size: 1.05rem !important;
+    letter-spacing: 1px !important;
+  }
+  .header-logo-sub {
+    font-size: 0.58rem !important;
+    letter-spacing: 0.6px !important;
+  }
+  .mobile-lang-btn {
+    padding: 4px 7px !important;
+    font-size: 0.74rem !important;
+    gap: 4px !important;
+  }
+  .mobile-header-book-btn {
+    padding: 4px 8px !important;
+    font-size: 0.73rem !important;
+    gap: 4px !important;
+  }
+  .mobile-header-right-group {
+    gap: 5px !important;
+  }
+
+  /* 5. Menu 3 vạch (Drawer) trên mobile */
+  .ms-drawer-tabs-wrap {
+    padding: 8px 12px !important;
+  }
+  .ms-drawer-tabs {
+    padding-bottom: 4px !important;
+    gap: 6px !important;
+  }
+  .ms-tab-btn {
+    padding: 6px 11px !important;
+    font-size: 0.75rem !important;
+  }
+  .ms-service-card {
+    padding: 10px !important;
+    gap: 10px !important;
+  }
+  .ms-service-thumb {
+    width: 76px !important;
+    height: 76px !important;
+  }
+  .ms-service-name {
+    font-size: 0.85rem !important;
+  }
+  .ms-service-desc {
+    font-size: 0.73rem !important;
+    line-height: 1.35 !important;
   }
 }
 
@@ -3062,10 +3162,9 @@ button, input, select, textarea {
   color: #9CB2A7;
   margin: 0;
   line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  /* Display full description so nothing is truncated */
+  display: block;
+  overflow: visible;
 }
 
 .music-track-card-btn {
@@ -6270,6 +6369,57 @@ select.aff-input option {
   box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
 }
 
+/* ======== LANGUAGE SELECTOR Ở TRÊN CÙNG DRAWER (Cho khách nước ngoài dễ nhìn) ======== */
+.ms-drawer-lang-top {
+  background: linear-gradient(135deg, #0A1C14 0%, #123023 60%, #163829 100%);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.35);
+  padding: 10px 16px 12px;
+  flex-shrink: 0;
+}
+
+.ms-drawer-lang-top .ms-lang-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-gold, #D4AF37);
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ms-drawer-lang-top .ms-lang-label .fa-globe {
+  margin-right: 5px;
+  font-size: 0.82rem;
+}
+
+.ms-drawer-lang-top .ms-lang-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ms-drawer-lang-top .ms-lang-pill {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #DDE5E1;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.ms-drawer-lang-top .ms-lang-pill.active,
+.ms-drawer-lang-top .ms-lang-pill:hover {
+  background: var(--color-gold, #D4AF37);
+  color: #051A12;
+  font-weight: 700;
+  border-color: var(--color-gold, #D4AF37);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
 /* Drawer Footer */
 .ms-drawer-footer {
   background: #071E15;
@@ -8375,4 +8525,22 @@ select.aff-input option {
     padding: 6px 12px;
     font-size: 0.76rem;
   }
+}
+
+
+/* Tối ưu các trường trong khung đặt lịch nhanh để chữ không bị cắt bớt */
+.hero-booking-field:nth-child(1) {
+  flex: 1.25 !important;
+}
+.hero-booking-field:nth-child(2) {
+  flex: 0.9 !important;
+}
+.hero-booking-field:nth-child(3) {
+  flex: 1 !important;
+}
+.hero-booking-field:nth-child(4) {
+  flex: 1.15 !important;
+}
+.hero-booking-field select {
+  text-overflow: clip !important;
 }

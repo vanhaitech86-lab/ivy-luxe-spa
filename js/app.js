@@ -2751,6 +2751,34 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Update active class on mobile drawer language pills
+    document.querySelectorAll('.ms-lang-pill').forEach(pill => {
+      if (pill.getAttribute('data-lang') === lang) {
+        pill.classList.add('active');
+      } else {
+        pill.classList.remove('active');
+      }
+    });
+
+    // Update desktop header language picker
+    const hlCurrentFlag = document.getElementById('hl-current-flag');
+    const hlCurrentCode = document.getElementById('hl-current-code');
+    if (hlCurrentFlag) hlCurrentFlag.textContent = langMeta.flag;
+    if (hlCurrentCode) hlCurrentCode.textContent = langMeta.code;
+    document.querySelectorAll('.hl-opt-item').forEach(item => {
+      if (item.getAttribute('data-lang') === lang) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // Update floating quick toggle if present
+    const flCurrentFlag = document.getElementById('fl-current-flag');
+    const flCurrentCode = document.getElementById('fl-current-code');
+    if (flCurrentFlag) flCurrentFlag.textContent = langMeta.flag;
+    if (flCurrentCode) flCurrentCode.textContent = langMeta.code;
+
     // Update active class on mobile dropdown popover list
     document.querySelectorAll('.mobile-lang-list li').forEach(item => {
       if (item.getAttribute('data-lang') === lang) {
@@ -2790,9 +2818,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const guestData = {
       vi: [
         { val: '1', label: '1 Khách' },
-        { val: '2', label: '2 Khách (Đi 2 người / Cặp đôi)' },
+        { val: '2', label: '2 Khách (Cặp đôi)' },
         { val: '3', label: '3 Khách' },
-        { val: '4', label: '4 Khách (Nhóm gia đình / bạn bè)' },
+        { val: '4', label: '4 Khách (Gia đình / Bạn bè)' },
         { val: '5', label: '5 Khách' },
         { val: '6', label: '6 Khách' },
         { val: '7', label: '7 Khách' },
@@ -2806,7 +2834,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       en: [
         { val: '1', label: '1 Guest' },
-        { val: '2', label: '2 Guests (Couple / Pair)' },
+        { val: '2', label: '2 Guests (Couple)' },
         { val: '3', label: '3 Guests' },
         { val: '4', label: '4 Guests (Family / Friends)' },
         { val: '5', label: '5 Guests' },
@@ -3398,6 +3426,8 @@ document.addEventListener('DOMContentLoaded', () => {
           card.style.display = 'none';
         }
       });
+      const drawerBody = document.getElementById('ms-drawer-body');
+      if (drawerBody) drawerBody.scrollTop = 0;
     });
   });
 
@@ -3418,11 +3448,15 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const lang = btn.getAttribute('data-lang');
       if (lang) {
-        document.querySelectorAll('.ms-lang-pill').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        state.language = lang;
-        localStorage.setItem('ivy_lang', lang);
-        updatePageLanguage();
+        if (typeof window.changeSiteLanguage === 'function') {
+          window.changeSiteLanguage(lang);
+        } else {
+          document.querySelectorAll('.ms-lang-pill').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.language = lang;
+          localStorage.setItem('ivy_lang', lang);
+          updatePageLanguage();
+        }
       }
     });
   });
