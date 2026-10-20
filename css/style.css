@@ -757,35 +757,31 @@ button, input, select, textarea {
   z-index: 2;
 }
 
-/* Centered Floating Booking Box (Nền trong suốt nhìn xuyên thấu cảnh phía sau nhưng chữ cực kỳ rõ nét) */
+/* Centered Floating Booking Box (Nền trắng sang trọng, tinh tế) */
 .hero-booking-box {
   position: relative;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.45); /* Nền kính trong suốt nhìn xuyên thấu cảnh nền */
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
-  border-radius: 12px;
+  background: #FFFFFF;
+  border-radius: var(--radius-sm);
   padding: 10px 14px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28), 0 2px 6px rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
   gap: 10px;
   max-width: 980px;
   width: 92%;
   margin-bottom: 25px;
-  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
 
 .hero-booking-box:hover {
-  background: rgba(255, 255, 255, 0.55);
-  border-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.4);
 }
 
 .hero-booking-field {
   flex: 1;
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 1px solid #E0E0E0;
   padding: 6px 12px;
   display: flex;
   flex-direction: column;
@@ -803,24 +799,22 @@ button, input, select, textarea {
 
 .booking-field-caption {
   font-size: 0.72rem;
-  color: #071F14;
+  color: #888888;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 600;
   margin-bottom: 2px;
-  letter-spacing: 0.6px;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.5px;
 }
 
 .hero-booking-field select, .hero-booking-field input {
-  font-size: 0.94rem;
-  font-weight: 700;
-  color: #071F14;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #222222;
   cursor: pointer;
   width: 100%;
   background: transparent;
   border: none;
   outline: none;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
 }
 
 .hero-booking-field select option {
@@ -856,45 +850,42 @@ button, input, select, textarea {
 }
 
 .time-mode-btn {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(7, 31, 20, 0.3);
-  color: #071F14;
+  background: rgba(125, 163, 124, 0.12);
+  border: 1px solid rgba(125, 163, 124, 0.35);
+  color: #123023;
   font-size: 0.65rem;
   font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 3px;
-  padding: 2px 8px;
+  padding: 1px 7px;
   border-radius: var(--radius-full);
   transition: all 0.2s ease;
   line-height: 1.2;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .time-mode-btn:hover {
-  background: #071F14;
-  color: #ECC876;
-  border-color: #071F14;
+  background: var(--color-olive-btn);
+  color: #FFF;
+  border-color: var(--color-olive-btn);
 }
 
 .hero-custom-time-input {
   width: 100%;
   font-size: 0.95rem;
   font-weight: 700;
-  color: #071F14;
+  color: #123023;
   cursor: pointer;
   background: transparent;
   border: none;
   outline: none;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
 }
 
 .hero-booking-field-date input[type="date"]::-webkit-calendar-picker-indicator,
 .hero-custom-time-input::-webkit-calendar-picker-indicator {
   cursor: pointer;
-  opacity: 0.9;
-  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.8));
+  opacity: 0.8;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -905,27 +896,24 @@ button, input, select, textarea {
 }
 
 .btn-book-now-green {
-  background: linear-gradient(135deg, #123826 0%, #071F14 100%);
-  color: #ECC876 !important;
+  background: var(--color-olive-btn);
+  color: #FFFFFF;
   font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 1.2px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 14px 30px;
-  border-radius: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   white-space: nowrap;
-  border: 1.5px solid rgba(212, 175, 55, 0.55);
-  box-shadow: 0 4px 16px rgba(7, 31, 20, 0.35);
-  transition: all 0.25s ease;
+  border: none;
+  transition: background 0.25s ease, transform 0.2s ease;
 }
 
 .btn-book-now-green:hover {
-  background: linear-gradient(135deg, #ECC876 0%, #D4AF37 100%);
-  color: #071F14 !important;
-  border-color: #071F14;
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+  background: var(--color-olive-btn-hover);
+  color: #FFFFFF;
   transform: translateY(-1px);
 }
 
