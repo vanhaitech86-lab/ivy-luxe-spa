@@ -2,12 +2,12 @@
   "cleanUrls": true,
   "redirects": [
     {
-      "source": "/:lang(en|vi|zh|ko|ru|fr|ja)",
+      "source": "/:lang(en|zh|ko|ru|fr|ja)",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/:lang(en|vi|zh|ko|ru|fr|ja)/:path*",
+      "source": "/:lang(en|zh|ko|ru|fr|ja)/:path*",
       "destination": "/",
       "permanent": true
     }

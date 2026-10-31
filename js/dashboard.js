@@ -455,7 +455,7 @@
     const list = state.products;
     $('#product-list').innerHTML = list.length ? list.map((p, i) => `
       <article class="product-card">
-        <img src="${esc(p.image || 'assets/images/hero_spa_luxury.jpg')}" alt="" loading="lazy">
+        <img src="${esc(p.image || 'assets/images/hero_spa_luxury.jpg')}" alt="${esc(p.name_vi || 'IVY Luxe Spa Service')}" loading="lazy">
         <div class="product-body">
           <span class="product-cat ${PALETTE[(state.categories.findIndex((c) => c.key === p.cat) + 2) % PALETTE.length]}">${esc(catLabel(p.cat))}</span>
           <h3>${esc(p.name_vi)}</h3>
@@ -622,7 +622,7 @@
       if (!rows.length) return '';
       return `<div class="menu-group"><h3 class="menu-group-title">${esc(catLabel(c))} <span>${rows.length}</span></h3>${rows.map(({ item, e }) => `
         <div class="menu-row${e.hidden ? ' is-hidden' : ''}">
-          <img src="${esc(e.image)}" alt="" loading="lazy">
+          <img src="${esc(e.image)}" alt="${esc(e.name_vi || 'IVY Luxe Spa Treatment')}" loading="lazy">
           <div class="menu-row-main">
             <strong>${esc(e.name_vi)}</strong>
             <small>${esc(e.name_en)}</small>
@@ -729,7 +729,7 @@
       const expired = p.validUntil && p.validUntil < today;
       return `
       <article class="product-card promo-card">
-        <img src="${esc(p.image)}" alt="" loading="lazy">
+        <img src="${esc(p.image)}" alt="${esc(p.title_vi || 'IVY Luxe Spa Promotion')}" loading="lazy">
         ${p.badge ? `<span class="tier-badge c-amber promo-badge">${esc(p.badge)}</span>` : ''}
         <div class="product-body">
           <h3>${esc(p.title_vi)}</h3>

@@ -282,7 +282,7 @@
     box.innerHTML = rows.length ? rows.map((r) => `
       <div class="aff-leader-row${r.me ? ' is-me' : ''}">
         ${medal(r.rank)}
-        <img class="aff-leader-avatar" src="${esc(r.avatar || 'assets/images/logo.png')}" alt="" loading="lazy">
+        <img class="aff-leader-avatar" src="${esc(r.avatar || 'assets/images/logo.png')}" alt="${esc(r.name || 'IVY Luxe Spa Partner')}" loading="lazy">
         <div class="aff-leader-name"><strong data-no-i18n>${esc(r.name)}</strong>${r.me ? ' <span class="aff-me-tag">Bạn</span>' : ''}<small>${esc(r.type)}</small></div>
         <div class="aff-leader-stat"><b>${r.orders}</b><small>đơn</small></div>
         <div class="aff-leader-stat"><b>${r.clicks}</b><small>click</small></div>

@@ -7,7 +7,7 @@ const path = require('node:path');
 const root = __dirname;
 const port = Number(process.env.PORT || 3000);
 try { process.loadEnvFile(path.join(root, '.env.local')); } catch {}
-const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.jpg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.json': 'application/json', '.ico': 'image/x-icon' };
+const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.jpg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.json': 'application/json', '.ico': 'image/x-icon', '.xml': 'application/xml; charset=utf-8', '.txt': 'text/plain; charset=utf-8' };
 
 function apiFile(p) {
   const base = path.join(root, p.slice(1));
@@ -25,6 +25,7 @@ http.createServer(async (req, res) => {
   let f = path.normalize(path.join(root, p === '/' ? 'index.html' : p));
   const blocked = path.relative(root, f).split(path.sep).some((x) => x.startsWith('.') || x === 'api' || x === 'node_modules');
   if (blocked || !f.startsWith(root + path.sep)) { res.statusCode = 403; return res.end(); }
+  if (fs.existsSync(f) && fs.statSync(f).isDirectory()) f = path.join(f, 'index.html');
   if (!fs.existsSync(f) && fs.existsSync(f + '.html')) f += '.html';
   fs.readFile(f, (err, buf) => {
     if (err) { res.statusCode = 404; return res.end('not found'); }
