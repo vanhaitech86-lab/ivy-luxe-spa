@@ -1,0 +1,23 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:lang(en|vi|zh|ko|ru|fr|ja)",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:lang(en|vi|zh|ko|ru|fr|ja)/:path*",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "functions": {
+    "api/telegram.js": {
+      "maxDuration": 60
+    },
+    "api/chat.js": {
+      "maxDuration": 60
+    }
+  }
+}

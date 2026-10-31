@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // State Management
   const state = {
-    language: localStorage.getItem('ivy_lang') || 'vi', // Default VI, supports vi, en, zh, ja, ko
+    language: localStorage.getItem('ivy_lang') || 'en', // Mặc định Tiếng Anh; hỗ trợ vi, en, zh, ja, ko, ru, fr
     currency: 'vnd',     // vnd or usd (exchange rate: ~25,000 VND = 1 USD)
     rateVNDtoUSD: 25000,
     activeMenuTab: 'combos',
@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "footer_link_affiliate": "Chương Trình Đối Tác Affiliate",
     "aff_sub_title": "HỢP TÁC KINH DOANH CÙNG PHÁT TRIỂN",
     "aff_main_title": "CHƯƠNG TRÌNH ĐỐI TÁC AFFILIATE 48 HÀ TRUNG",
-    "aff_desc_text": "Dành riêng cho Khách sạn, Concierge, Hướng dẫn viên du lịch, Tài xế, Airbnb Host và Quý khách hàng thân thiết. Đăng ký nhận link & mã QR tức thì - Nhận hoa hồng hấp dẫn 15% - 20% cho mỗi đơn đặt lịch thành công!",
-    "aff_perk1_title": "Hoa Hồng Lên Đến 20%",
+    "aff_desc_text": "Dành riêng cho Khách sạn, Concierge, Hướng dẫn viên du lịch, Tài xế, Airbnb Host và Quý khách hàng thân thiết. Đăng ký nhận link & mã QR tức thì - Nhận hoa hồng 10% cho mỗi khách bạn giới thiệu trực tiếp (1 tầng duy nhất)!",
+    "aff_perk1_title": "Hoa Hồng 10% · 1 Tầng",
     "aff_perk1_desc": "Chiết khấu trực tiếp, minh bạch trên mỗi hóa đơn dịch vụ khách hàng sử dụng.",
     "aff_perk2_title": "Mã QR & Link Độc Quyền",
     "aff_perk2_desc": "Tạo link & mã QR định danh riêng chỉ trong 30 giây để khách quét đặt trực tiếp.",
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "aff_res_lbl_clicks": "Lượt Khách Xem Link",
     "aff_res_lbl_bookings": "Đơn Đặt Lịch Thành Công",
     "aff_res_lbl_rev": "Tổng Doanh Thu Ước Tính",
-    "aff_res_lbl_com": "Hoa Hồng Tích Lũy (20%)",
+    "aff_res_lbl_com": "Hoa Hồng Tích Lũy (10%)",
     "nav_home": "Trang Chủ",
     "nav_menu": "Bảng Dịch Vụ",
     "nav_promotions": "Combo Ưu Đãi",
@@ -109,7 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "loc_card1_b4": "Hotline / WhatsApp / Zalo: <strong>(+84) 98 971 3660</strong>",
     "loc_card2_title": "Ivy Luxe Spa (Khu Phòng Trị Liệu VIP)",
     "loc_card2_addr": "Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI",
-    "loc_card2_b1": "Phòng đơn, phòng đôi VIP riêng tư tuyệt đối",
+    "loc_card2_b1": "Phòng đơn, phòng đôi VIP riêng tư tuyệt đối",
+
     "loc_card2_b3": "Mở cửa hàng ngày: 09:00 Sáng - 11:00 Tối",
     "loc_card2_b4": "Hotline / WhatsApp / Zalo: <strong>(+84) 98 971 3660</strong>",
     "loc_card3_title": "Ivy Luxe Spa (Dưỡng Sinh & Foot Care)",
@@ -237,7 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "Đang Phát...",
     "zen_player_min_hint": "Nhạc Trị Liệu",
     "zen_toast_playing": "Đang phát nhạc trị liệu thư giãn",
-    "zen_toast_paused": "Đã tạm dừng nhạc trị liệu",
+    "zen_toast_paused": "Đã tạm dừng nhạc trị liệu"
+,
     // Exclusive Complimentary Perks
     "perks_badge": "<i class=\"fa fa-gift\"></i> TIỆN ÍCH MIỄN PHÍ ĐỘC QUYỀN",
     "perks_heading": "Đặc Quyền Dành Riêng Cho Quý Khách Tại IVY LUXE SPA",
@@ -275,8 +277,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "footer_link_affiliate": "Affiliate Partner Program",
     "aff_sub_title": "EXCLUSIVE PARTNERSHIP & REWARDS",
     "aff_main_title": "IVY LUXE SPA AFFILIATE PROGRAM",
-    "aff_desc_text": "Dedicated to Hotel Concierges, Tour Guides, Drivers, Airbnb Hosts & Travel Bloggers. Register to get your custom referral link & QR code instantly - Earn 15% - 20% commissions on every successful spa booking!",
-    "aff_perk1_title": "Up To 20% Commission",
+    "aff_desc_text": "Dedicated to Hotel Concierges, Tour Guides, Drivers, Airbnb Hosts & Travel Bloggers. Register to get your custom referral link & QR code instantly - Earn a 10% commission on every guest you refer directly (single tier)!",
+    "aff_perk1_title": "10% Commission · Single Tier",
     "aff_perk1_desc": "Direct, transparent payout on every treatment booked by your referred guests.",
     "aff_perk2_title": "Custom QR & Link",
     "aff_perk2_desc": "Instantly generate your branded QR code and trackable link in 30 seconds.",
@@ -312,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "aff_res_lbl_clicks": "Link Visits",
     "aff_res_lbl_bookings": "Completed Bookings",
     "aff_res_lbl_rev": "Estimated Revenue",
-    "aff_res_lbl_com": "Earned Commission (20%)",
+    "aff_res_lbl_com": "Earned Commission (10%)",
     "nav_home": "Home",
     "nav_menu": "Spa Menu",
     "nav_promotions": "Promotions",
@@ -327,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "WELCOME TO IVY LUXE SPA HANOI",
     "subhero_title": "MASSAGE & SPA IN HANOI OLD QUARTER",
     "subhero_desc": "Professional treatments. Skilled hands. Genuine Hanoi hospitality.",
-    "subhero_addr_line": "Official Address: <strong>48 Ha Trung, Hoan Kiem, Hanoi</strong> &nbsp;|&nbsp; Hotline: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "Official Address: <strong>48 Ha Trung, Hoan Kiem, Hanoi</strong><br>Hotline: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "OUR SANCTUARY AT 48 HA TRUNG",
     "loc_subtitle": "Exclusive luxury wellness sanctuary located at 48 Ha Trung, Hoan Kiem, Hanoi",
     "loc_card1_title": "Ivy Luxe Spa (Lounge & Reception)",
@@ -338,7 +340,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "loc_card1_b4": "Hotline / WhatsApp / Kakao: <strong>(+84) 98 971 3660</strong>",
     "loc_card2_title": "Ivy Luxe Spa (VIP Treatment Suites)",
     "loc_card2_addr": "48 Ha Trung, Hoan Kiem, Hanoi",
-    "loc_card2_b1": "Private single & couple VIP suites",
+    "loc_card2_b1": "Private single & couple VIP suites",
+
     "loc_card2_b3": "Open daily: 09:00 AM - 11:00 PM",
     "loc_card2_b4": "Hotline / WhatsApp / Kakao: <strong>(+84) 98 971 3660</strong>",
     "loc_card3_title": "Ivy Luxe Spa (Head Spa & Foot Care)",
@@ -466,7 +469,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "Playing...",
     "zen_player_min_hint": "Zen Audio",
     "zen_toast_playing": "Now playing healing soundscape",
-    "zen_toast_paused": "Zen audio paused",
+    "zen_toast_paused": "Zen audio paused"
+,
     // Exclusive Complimentary Perks
     "perks_badge": "<i class=\"fa fa-gift\"></i> EXCLUSIVE COMPLIMENTARY PERKS",
     "perks_heading": "Exclusive Privileges For Guests At IVY LUXE SPA",
@@ -512,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "热烈欢迎莅临河内常春藤奢华水疗 IVY LUXE SPA",
     "subhero_title": "河内老城区顶级按摩与养生水疗",
     "subhero_desc": "专业草本理疗。资深技师娴熟手法。地道河内热情款待。",
-    "subhero_addr_line": "官方正规地址：<strong>河内市还剑区河中村48号</strong> &nbsp;|&nbsp; 贵宾热线：<strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "官方正规地址：<strong>河内市还剑区河中村48号</strong><br>贵宾热线：<strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "河中村48号私享疗愈圣境",
     "loc_subtitle": "位于河内还剑区核心黄金地段的高端私密法越风情水疗馆",
     "loc_card1_title": "Ivy Luxe Spa (接待大厅与贵宾休息室)",
@@ -523,7 +527,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "loc_card1_b4": "贵宾热线 / 微信 / WhatsApp: <strong>(+84) 98 971 3660</strong>",
     "loc_card2_title": "Ivy Luxe Spa (VIP尊享理疗套房)",
     "loc_card2_addr": "河内市还剑区河中村48号",
-    "loc_card2_b1": "单人及双人专属私密VIP套房",
+    "loc_card2_b1": "单人及双人专属私密VIP套房",
+
     "loc_card2_b3": "营业时间：每日 09:00 - 23:00",
     "loc_card2_b4": "贵宾热线: <strong>(+84) 98 971 3660</strong>",
     "loc_card3_title": "Ivy Luxe Spa (养生头疗与足道护理)",
@@ -650,7 +655,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "播放中...",
     "zen_player_min_hint": "疗愈音乐",
     "zen_toast_playing": "正在播放疗愈声疗",
-    "zen_toast_paused": "已暂停禅意音乐",
+    "zen_toast_paused": "已暂停禅意音乐"
+,
     // Exclusive Complimentary Perks
     "perks_badge": "<i class=\"fa fa-gift\"></i> 专属免费礼遇",
     "perks_heading": "IVY LUXE SPA 尊贵宾客专属特权",
@@ -696,7 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "ハノイ IVY LUXE SPA へようこそ",
     "subhero_title": "ハノイ旧市街の極上マッサージ＆スパ",
     "subhero_desc": "専門的なトリートメント。熟練セラピストの技。心温まるハノイのおもてなし。",
-    "subhero_addr_line": "公式所在地：<strong>ハノイ市ホアンキエム区ハチュン通り48番地</strong> &nbsp;|&nbsp; ホットライン：<strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "公式所在地：<strong>ハノイ市ホアンキエム区ハチュン通り48番地</strong><br>ホットライン：<strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "ハチュン48番地の癒しの空間",
     "loc_subtitle": "ハノイ・ホアンキエム区ハチュン通り48番地に佇むラグジュアリーな癒し空間",
     "loc_card1_title": "Ivy Luxe Spa (ラウンジ＆レセプション)",
@@ -707,7 +713,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "loc_card1_b4": "予約専用 / WhatsApp / LINE: <strong>(+84) 98 971 3660</strong>",
     "loc_card2_title": "Ivy Luxe Spa (VIPトリートメントスイート)",
     "loc_card2_addr": "ハノイ市ホアンキエム区ハチュン通り48番地",
-    "loc_card2_b1": "完全プライベートなシングル＆カップル用VIP個室",
+    "loc_card2_b1": "完全プライベートなシングル＆カップル用VIP個室",
+
     "loc_card2_b3": "営業時間：毎日 09:00 - 23:00",
     "loc_card2_b4": "ホットライン: <strong>(+84) 98 971 3660</strong>",
     "loc_card3_title": "Ivy Luxe Spa (ヘッドスパ＆フットケア)",
@@ -834,7 +841,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "再生中...",
     "zen_player_min_hint": "癒しの音",
     "zen_toast_playing": "癒しの音楽を再生中",
-    "zen_toast_paused": "癒しの音楽を一時停止しました",
+    "zen_toast_paused": "癒しの音楽を一時停止しました"
+,
     // Exclusive Complimentary Perks
     "perks_badge": "<i class=\"fa fa-gift\"></i> 特別無料特典",
     "perks_heading": "IVY LUXE SPA お客様だけの特別限定特典",
@@ -880,7 +888,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "하노이 IVY LUXE SPA에 오신 것을 환영합니다",
     "subhero_title": "하노이 올드쿼터 최고급 마사지 & 스파",
     "subhero_desc": "전문적인 테라피. 베테랑 테라피스트의 섬세한 손길. 따뜻한 하노이의 환대.",
-    "subhero_addr_line": "공식 주소: <strong>하노이 호안끼엠구 하쭝 48번지</strong> &nbsp;|&nbsp; 핫라인: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "공식 주소: <strong>하노이 호안끼엠구 하쭝 48번지</strong><br>핫라인: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "하쭝 48번지의 프라이빗 힐링 공간",
     "loc_subtitle": "하노이 호안끼엠구 하쭝 48번지에 위치한 최고급 프라이빗 스파 공간",
     "loc_card1_title": "Ivy Luxe Spa (라운지 & 리셉션)",
@@ -891,7 +899,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "loc_card1_b4": "예약 문의 / 카카오톡 / WhatsApp: <strong>(+84) 98 971 3660</strong>",
     "loc_card2_title": "Ivy Luxe Spa (VIP 프라이빗 룸)",
     "loc_card2_addr": "하노이시 호안끼엠구 하쭝 48번지",
-    "loc_card2_b1": "완벽한 프라이빗 싱글 및 커플 VIP 전용 룸",
+    "loc_card2_b1": "완벽한 프라이빗 싱글 및 커플 VIP 전용 룸",
+
     "loc_card2_b3": "영업 시간: 매일 09:00 - 23:00",
     "loc_card2_b4": "핫라인: <strong>(+84) 98 971 3660</strong>",
     "loc_card3_title": "Ivy Luxe Spa (헤드스파 & 풋케어)",
@@ -1018,7 +1027,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "재생 중...",
     "zen_player_min_hint": "힐링 오디오",
     "zen_toast_playing": "힐링 사운드스케이프 재생 중",
-    "zen_toast_paused": "명상 음악 일시정지됨",
+    "zen_toast_paused": "명상 음악 일시정지됨"
+,
     // Exclusive Complimentary Perks
     "perks_badge": "<i class=\"fa fa-gift\"></i> 독점 무료 혜택",
     "perks_heading": "IVY LUXE SPA 고객만을 위한 스페셜 특전",
@@ -1064,7 +1074,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "ДОБРО ПОЖАЛОВАТЬ В IVY LUXE SPA ХАНОЙ",
     "subhero_title": "МАССАЖ И ОЗДОРОВЛЕНИЕ В СТАРОМ КВАРТАЛЕ ХАНОЯ",
     "subhero_desc": "Глубокие техники. Мастерские руки. Искреннее ханойское гостеприимство.",
-    "subhero_addr_line": "Официальный адрес: <strong>48 Ha Trung, Hoan Kiem, Ханой</strong> &nbsp;|&nbsp; Горячая линия: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "Официальный адрес: <strong>48 Ha Trung, Hoan Kiem, Ханой</strong><br>Горячая линия: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "НАШ СПА-КОМПЛЕКС НА ХА ЧУНГ, 48",
     "loc_subtitle": "Эксклюзивный роскошный велнес-оазис в самом сердце Ханоя",
     "loc_card1_title": "Ivy Luxe Spa (Зона приема и лаундж)",
@@ -1075,7 +1085,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "loc_card1_b4": "Телефон / WhatsApp / Telegram: <strong>(+84) 98 971 3660</strong>",
     "loc_card2_title": "Ivy Luxe Spa (VIP-люксы для процедур)",
     "loc_card2_addr": "48 Ha Trung, Hoan Kiem, Ханой",
-    "loc_card2_b1": "Приватные люксы для одного и для пар",
+    "loc_card2_b1": "Приватные люксы для одного и для пар",
+
     "loc_card2_b3": "Ежедневно: 09:00 - 23:00",
     "loc_card2_b4": "Телефон / WhatsApp: <strong>(+84) 98 971 3660</strong>",
     "loc_card3_title": "Ivy Luxe Spa (Спа для головы и уход за ногами)",
@@ -1203,7 +1214,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "Играет...",
     "zen_player_min_hint": "Дзен аудио",
     "zen_toast_playing": "Играет целебная музыка",
-    "zen_toast_paused": "Музыка приостановлена",
+    "zen_toast_paused": "Музыка приостановлена"
+,
     // Exclusive Complimentary Perks
     "perks_badge": "<i class=\"fa fa-gift\"></i> ЭКСКЛЮЗИВНЫЕ БЕСПЛАТНЫЕ УСЛУГИ",
     "perks_heading": "Эксклюзивные привилегии для гостей IVY LUXE SPA",
@@ -1249,7 +1261,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "BIENVENUE À IVY LUXE SPA HANOÏ",
     "subhero_title": "MASSAGE & BIEN-ÊTRE AU CŒUR DU VIEUX QUARTIER DE HANOÏ",
     "subhero_desc": "Soins experts. Mains attentives. Hospitalité authentique de Hanoï.",
-    "subhero_addr_line": "Adresse officielle : <strong>48 Ha Trung, Hoan Kiem, Hanoï</strong> &nbsp;|&nbsp; Ligne directe : <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "Adresse officielle : <strong>48 Ha Trung, Hoan Kiem, Hanoï</strong><br>Ligne directe : <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "NOTRE SANCTUAIRE AU 48 HA TRUNG",
     "loc_subtitle": "Un havre de paix et de détente raffiné au cœur de Hanoï",
     "loc_card1_title": "Ivy Luxe Spa (Salon d'Accueil & Réception)",
@@ -1260,7 +1272,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "loc_card1_b4": "Téléphone / WhatsApp : <strong>(+84) 98 971 3660</strong>",
     "loc_card2_title": "Ivy Luxe Spa (Suites de Soins VIP)",
     "loc_card2_addr": "48 Ha Trung, Hoan Kiem, Hanoï",
-    "loc_card2_b1": "Suites privées individuelles et pour couples",
+    "loc_card2_b1": "Suites privées individuelles et pour couples",
+
     "loc_card2_b3": "Ouvert tous les jours : 10h00 - 22h00",
     "loc_card2_b4": "Téléphone / WhatsApp : <strong>(+84) 98 971 3660</strong>",
     "loc_card3_title": "Ivy Luxe Spa (Spa Capillaire & Soin des Pieds)",
@@ -1388,7 +1401,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "zen_btn_playing": "Lecture en cours...",
     "zen_player_min_hint": "Audio Zen",
     "zen_toast_playing": "Lecture de la musique thérapeutique",
-    "zen_toast_paused": "Musique zen en pause",
+    "zen_toast_paused": "Musique zen en pause"
+,
     // Exclusive Complimentary Perks
     "perks_badge": "<i class=\"fa fa-gift\"></i> AVANTAGES EXCLUSIFS OFFERTS",
     "perks_heading": "Privilèges Exclusifs Pour les Clients d'IVY LUXE SPA",
@@ -1417,1191 +1431,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // 2. SPA MENU COMPREHENSIVE DATA (OFFICIAL IVY LUXE SPA MENU - ALL LANGUAGES)
   // =========================================================================
-  const spaMenuData = {
-  "combos": [
-    {
-      "id": "combo-1",
-      "name_vi": "IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT",
-      "name_en": "IVY SPECIAL - COMBO 1 (HOT) - 90 MIN",
-      "name_zh": "IVY 招牌组合 1 (热门推荐) - 90分钟",
-      "name_ja": "IVY スペシャルコンボ 1 (人気No.1) - 90分",
-      "name_ko": "IVY 스페셜 콤보 1 (인기 핫) - 90분",
-      "duration_vi": "90 phút",
-      "duration_en": "90 min",
-      "duration_zh": "90分钟",
-      "duration_ja": "90分",
-      "duration_ko": "90분",
-      "price_vnd": 800000,
-      "desc_vi": "Tặng kèm ngâm chân thảo dược miễn phí + Massage body (30') + Gội đầu dưỡng sinh (30') + Chăm sóc da mặt & Vệ sinh tai (30').",
-      "desc_en": "Herbal foot soak free + Full body massage (30') + Nourishing shampoo (30') + Facial care and Clean Ear (30').",
-      "desc_zh": "免费赠送中草药足浴 + 全身精油舒缓按摩 (30分钟) + 养生滋养洗头 (30分钟) + 面部护理与采耳 (30分钟)。",
-      "desc_ja": "無料天然ハーブ足湯 ＋ 全身アロママッサージ (30分) ＋ 極上ヘッドスパ (30分) ＋ フェイシャル＆耳そうじ (30分)。",
-      "desc_ko": "무료 한방 약초 족욕 + 전신 바디 마사지 (30분) + 릴랙싱 영양 샴푸 (30분) + 페이셜 케어 & 귀 청소 (30분).",
-      "image": "assets/images/real_ivy_headspa_suite.jpg",
-      "popular": true
-    },
-    {
-      "id": "combo-2",
-      "name_vi": "IVY SPECIAL - COMBO 2 - 70/75 PHÚT",
-      "name_en": "IVY SPECIAL - COMBO 2 - 70/75 MIN",
-      "name_zh": "IVY 招牌组合 2 - 70/75分钟",
-      "name_ja": "IVY スペシャルコンボ 2 - 70〜75分",
-      "name_ko": "IVY 스페셜 콤보 2 - 70~75분",
-      "duration_vi": "70 - 75 phút",
-      "duration_en": "70 - 75 min",
-      "duration_zh": "70 - 75分钟",
-      "duration_ja": "70〜75分",
-      "duration_ko": "70 - 75분",
-      "price_vnd": 450000,
-      "desc_vi": "Tặng kèm ngâm chân thảo dược miễn phí + Massage chân bấm huyệt (30') + Tẩy tế bào chết chân (30') + Đắp mặt nạ ủ dưỡng chân (10').",
-      "desc_en": "Herbal foot soak free + Foot reflexology massage (30') + Foot scrub exfoliation (30') + Nourishing foot mask (10').",
-      "desc_zh": "免费赠送中草药足浴 + 足底穴位深度按摩 (30分钟) + 足部草本去角质 (30分钟) + 足部滋养修护膜 (10分钟)。",
-      "desc_ja": "無料天然ハーブ足湯 ＋ 足裏ツボ押しマッサージ (30分) ＋ フットスクラブ角質除去 (30分) ＋ フット集中保湿パック (10分)。",
-      "desc_ko": "무료 한방 약초 족욕 + 발 마사지 & 지압 (30분) + 발 스크럽 각질 제거 (30분) + 발 보습 마스크 팩 (10분).",
-      "image": "assets/images/real_ivy_foot_guests.jpg",
-      "popular": true
-    },
-    {
-      "id": "combo-3",
-      "name_vi": "IVY SPECIAL - COMBO 3 - 120 PHÚT",
-      "name_en": "IVY SPECIAL - COMBO 3 - 120 MIN",
-      "name_zh": "IVY 招牌组合 3 - 120分钟",
-      "name_ja": "IVY スペシャルコンボ 3 - 120分",
-      "name_ko": "IVY 스페셜 콤보 3 - 120분",
-      "duration_vi": "120 phút",
-      "duration_en": "120 min",
-      "duration_zh": "120分钟",
-      "duration_ja": "120分",
-      "duration_ko": "120분",
-      "price_vnd": 1000000,
-      "desc_vi": "Tặng kèm ngâm chân thảo dược miễn phí + Massage body toàn thân (45') + Tẩy tế bào chết toàn thân (30') + Chăm sóc da mặt & Vệ sinh tai (45').",
-      "desc_en": "Herbal foot soak free + Full body massage (45') + Body Scrub (30') + Facial care and Ear Clean (45').",
-      "desc_zh": "免费赠送中草药足浴 + 全身草本精油按摩 (45分钟) + 全身深度去角质磨砂 (30分钟) + 面部深度护理与采耳 (45分钟)。",
-      "desc_ja": "無料天然ハーブ足湯 ＋ 全身ボディマッサージ (45分) ＋ 全身スクラブ角質ケア (30分) ＋ フェイシャル＆耳そうじ (45分)。",
-      "desc_ko": "무료 한방 약초 족욕 + 전신 바디 마사지 (45분) + 전신 바디 스크럽 (30분) + 페이셜 케어 & 귀 청소 (45분).",
-      "image": "assets/images/hot_stone_massage.jpg",
-      "popular": true
-    },
-    {
-      "id": "combo-4",
-      "name_vi": "IVY SPECIAL - COMBO 4 - 150 PHÚT",
-      "name_en": "IVY SPECIAL - COMBO 4 - 150 MIN",
-      "name_zh": "IVY 招牌组合 4 - 150分钟",
-      "name_ja": "IVY スペシャルコンボ 4 - 150分",
-      "name_ko": "IVY 스페셜 콤보 4 - 150분",
-      "duration_vi": "150 phút",
-      "duration_en": "150 min",
-      "duration_zh": "150分钟",
-      "duration_ja": "150分",
-      "duration_ko": "150분",
-      "price_vnd": 1400000,
-      "desc_vi": "Tặng kèm ngâm chân thảo dược miễn phí + Massage body (30') + Tẩy tế bào chết toàn thân (30') + Gội đầu dưỡng sinh & Vệ sinh tai (45') + Chăm sóc da mặt chuyên sâu (45').",
-      "desc_en": "Herbal foot soak free + Body massage (30') + Body scrub (30') + Nourishing shampoo & Ear Clean (45') + Intensive facial care (45').",
-      "desc_zh": "免费赠送中草药足浴 + 身体按摩 (30分钟) 与身体磨砂 (30分钟) + 养生洗头与采耳 (45分钟) + 深层补水面部修护 (45分钟)。",
-      "desc_ja": "無料天然ハーブ足湯 ＋ 全身マッサージ (30分)＆ボディスクラブ (30分) ＋ ヘッドスパ＆耳そうじ (45分) ＋ 集中フェイシャルケア (45分)。",
-      "desc_ko": "무료 한방 약초 족욕 + 바디 마사지 (30분) & 바디 스크럽 (30분) + 샴푸 헤드스파 & 귀 청소 (45분) + 인텐시브 페이셜 케어 (45분).",
-      "image": "assets/images/facial_gold_care.jpg",
-      "popular": true
-    }
-  ],
-  "packages": [
-    {
-      "id": "pkg-2h",
-      "name_vi": "Gói Trị Liệu Hoàng Gia 2 Giờ",
-      "name_en": "Imperial Wellness Package (2 Hours)",
-      "name_zh": "皇室尊享2小时理疗套餐",
-      "name_ja": "ロイヤルウェルネスパッケージ (2時間)",
-      "name_ko": "로열 힐링 테라피 패키지 (2시간)",
-      "duration_vi": "120 phút",
-      "duration_en": "120 min",
-      "duration_zh": "120分钟",
-      "duration_ja": "120分",
-      "duration_ko": "120분",
-      "price_vnd": 900000,
-      "desc_vi": "Massage toàn thân chuyên sâu (75') + Chăm sóc phục hồi da mặt (45'). Thư giãn sâu cho cơ bắp và làn da.",
-      "desc_en": "Full body deep tissue massage (75') + Restorative facial care (45'). Deeply restoring for muscular and facial renewal.",
-      "desc_zh": "全身深度舒缓按摩 (75分钟) + 面部修护滋养 (45分钟)。舒缓肌肉酸痛，焕活面部水润光泽。",
-      "desc_ja": "深層全身ボディマッサージ (75分) ＋ 肌質改善フェイシャル (45分)。筋肉のコリを解きほぐし素肌を健やかに整えます。",
-      "desc_ko": "전신 딥 티슈 마사지 (75분) + 피부 재생 페이셜 케어 (45분). 근육 피로를 풀고 피부를 촉촉하게 가꿔줍니다.",
-      "image": "assets/images/couple_suite_bath.jpg"
-    },
-    {
-      "id": "pkg-3h",
-      "name_vi": "Gói Trị Liệu Hoàng Gia 3 Giờ",
-      "name_en": "Grand Imperial Retreat (3 Hours)",
-      "name_zh": "皇室至尊3小时舒缓套餐",
-      "name_ja": "グランドロイヤルリトリート (3時間)",
-      "name_ko": "그랜드 로열 리트리트 패키지 (3시간)",
-      "duration_vi": "180 phút",
-      "duration_en": "180 min",
-      "duration_zh": "180分钟",
-      "duration_ja": "180分",
-      "duration_ko": "180분",
-      "price_vnd": 1650000,
-      "desc_vi": "Massage toàn thân (90') + Chăm sóc da mặt & Gội đầu dưỡng sinh (90') + Tặng kèm vệ sinh tai miễn phí.",
-      "desc_en": "Full body massage (90') + Facial care & Nourishing shampoo (90') + Complimentary ear cleaning.",
-      "desc_zh": "全身舒缓按摩 (90分钟) + 面部深层护理与草本养生洗发 (90分钟) + 免费赠送专业采耳。",
-      "desc_ja": "全身マッサージ (90分) ＋ フェイシャル＆極上ヘッドスパ (90分) ＋ 耳そうじ無料サービス。",
-      "desc_ko": "전신 마사지 (90분) + 페이셜 & 힐링 영양 샴푸 (90분) + 무료 귀 청소 서비스.",
-      "image": "assets/images/head_spa_ritual.jpg",
-      "popular": true
-    },
-    {
-      "id": "pkg-4h",
-      "name_vi": "Gói Đế Vương VIP Toàn Diện 4 Giờ",
-      "name_en": "Imperial VIP Day Spa Experience (4 Hours)",
-      "name_zh": "帝王尊荣4小时全日套餐 (含免费茶点)",
-      "name_ja": "エンペラーVIP デイスパ (4時間 - ドリンク付)",
-      "name_ko": "황제 VIP 올데이 스파 (4시간 - 무료 다과)",
-      "duration_vi": "240 phút",
-      "duration_en": "240 min",
-      "duration_zh": "240分钟",
-      "duration_ja": "240分",
-      "duration_ko": "240분",
-      "price_vnd": 1900000,
-      "desc_vi": "Massage body (90') + Tẩy tế bào chết toàn thân (60') + Chăm sóc da mặt & Dưỡng tóc (90') + Vệ sinh tai + Miễn phí trà thảo mộc & đồ ăn nhẹ.",
-      "desc_en": "Body massage (90') + Body scrub (60') + Facial care & Hair treatment (90') + Free ear cleaning + Free drinks & light bites.",
-      "desc_zh": "全身按摩 (90分钟) + 身体草本去角质 (60分钟) + 面部护理与草本护发 (90分钟) + 专业采耳 + 免费茶水精美点心。",
-      "desc_ja": "全身マッサージ (90分) ＋ ボディスクラブ (60分) ＋ フェイシャル＆ヘアケア (90分) ＋ 耳そうじ ＋ ドリンク＆スナック無料。",
-      "desc_ko": "전신 마사지 (90분) + 바디 스크럽 (60분) + 페이셜 & 헤어 트리트먼트 (90분) + 귀 청소 + 무료 음료 및 스낵.",
-      "image": "assets/images/hero_spa_luxury.jpg",
-      "popular": true
-    },
-    {
-      "id": "shampoo-ear-cleaning",
-      "name_vi": "Ear Cleaning (Lấy Ráy Tai Chuyên Nghiệp - Menu Mới)",
-      "name_en": "Ear Cleaning (New Official Menu)",
-      "name_zh": "专业采耳舒适清理护理 (最新官方价目表)",
-      "name_ja": "プロフェッショナルイヤーエステ・耳そうじ (最新公式メニュー)",
-      "name_ko": "전문 이어 클리닝 & 귀 청소 테라피 (최신 공식 메뉴)",
-      "duration_vi": "30 phút",
-      "duration_en": "30 min",
-      "duration_zh": "30分钟",
-      "duration_ja": "30分",
-      "duration_ko": "30분",
-      "price_vnd": 200000,
-      "desc_vi": "Kỹ thuật lấy ráy tai êm ái nhẹ nhàng với bộ dụng cụ tiệt trùng chuyên nghiệp, mang lại cảm giác thư thái thông thoáng màng nhĩ.",
-      "desc_en": "Gentle, meticulous professional ear cleaning using sterile micro-tools to relieve auditory canal pressure and deeply relax.",
-      "desc_zh": "资深技师采用经严格高温消毒的专用采耳工具，轻柔细致，让耳道通透清爽，带来酥麻惬意的深度放松。",
-      "desc_ja": "専用の滅菌器具を用い、熟練の技で耳腔内をやさしくクリーニング。心地よい刺激で頭がすっきりと軽くなります。",
-      "desc_ko": "철저히 멸균된 전문 도구로 부드럽고 섬세하게 귓속을 청결하게 케어하여 시원함과 깊은 이완감을 드립니다.",
-      "image": "assets/images/head_spa_ritual.jpg"
-    },
-    {
-      "id": "shampoo-wash",
-      "name_vi": "Shampoo (Gội Đầu Thư Giãn - Menu Mới)",
-      "name_en": "Relaxing Hair Shampoo (New Official Menu)",
-      "name_zh": "清爽舒缓洗发护理 (最新官方价目表)",
-      "name_ja": "リラクシングシャンプー (最新公式メニュー)",
-      "name_ko": "힐링 릴랙싱 샴푸 (최신 공식 메뉴)",
-      "duration_vi": "45 phút",
-      "duration_en": "45 min",
-      "duration_zh": "45分钟",
-      "duration_ja": "45分",
-      "duration_ko": "45분",
-      "price_vnd": 320000,
-      "desc_vi": "Làm sạch da đầu với dầu gội hữu cơ cao cấp, kết hợp massage day ấn nhẹ nhàng vùng thái dương và gáy.",
-      "desc_en": "Gentle scalp cleansing with premium organic botanicals combined with relaxing temple and nape acupressure.",
-      "desc_zh": "选用高品质草本洗发精，结合太阳穴与后颈部的柔和指压按摩，彻底清洁头皮油脂，唤醒清爽活力。",
-      "desc_ja": "上質ボタニカルシャンプーで頭皮をすっきり洗い上げ、こめかみや首筋のツボをやさしく刺激します。",
-      "desc_ko": "프리미엄 오가닉 샴푸로 두피를 상쾌하게 딥 클렌징하고 관자놀이와 목덜미를 부드럽게 지압합니다.",
-      "image": "assets/images/head_spa_ritual.jpg"
-    },
-    {
-      "id": "shampoo-nourishing",
-      "name_vi": "Nourishing Shampoo (Gội Đầu Dưỡng Sinh - Menu Mới)",
-      "name_en": "Nourishing Herbal Shampoo (New Official Menu)",
-      "name_zh": "草本养生滋养洗发与头疗 (最新官方价目表)",
-      "name_ja": "極上オーガニックハーブ養生ヘッドスパ (最新公式メニュー)",
-      "name_ko": "한방 오가닉 힐링 영양 헤드스파 (최신 공식 메뉴)",
-      "duration_vi": "60 phút",
-      "duration_en": "60 min",
-      "duration_zh": "60分钟",
-      "duration_ja": "60分",
-      "duration_ko": "60분",
-      "price_vnd": 420000,
-      "desc_vi": "Gội đầu dưỡng sinh bằng nước thảo dược bồ kết cô đặc, xông đầu tuần hoàn nước ấm, massage đả thông kinh lạc vùng đầu - cổ - vai gáy.",
-      "desc_en": "Vietnamese restorative head spa with warm herbal decoctions, circulating warm waterfall rings, and acupressure across skull, neck, and shoulders.",
-      "desc_zh": "传统皂角中草药温热熬汁慢洗，循环流水暖光水疗环，深层疏通头部与肩颈经络，缓解偏头痛与失眠。",
-      "desc_ja": "伝統ハーブ煮出し湯と温水循環リングを用い、頭皮から首・肩にかけてのツボを丁寧に刺激して頭重感を和らげます。",
-      "desc_ko": "전통 약초 우린 물과 순환 온수 링을 활용한 두피 마사지로 두통과 피로를 해소하고 깊은 숙면을 유도합니다.",
-      "image": "assets/images/real_ivy_headspa_suite.jpg",
-      "popular": true
-    },
-    {
-      "id": "shampoo-facial-care",
-      "name_vi": "Nourishing Shampoo & Facial Care (Gội Dưỡng Sinh & Chăm Sóc Mặt - Menu Mới)",
-      "name_en": "Nourishing Shampoo and Facial Care (New Official Menu)",
-      "name_zh": "养生滋养洗发与草本面部护理 (最新官方价目表)",
-      "name_ja": "極上ヘッドスパ＆オーガニックフェイシャルケア (最新公式メニュー)",
-      "name_ko": "영양 헤드스파 & 페이셜 케어 풀 코스 (최신 공식 메뉴)",
-      "duration_vi": "90 phút",
-      "duration_en": "90 min",
-      "duration_zh": "90分钟",
-      "duration_ja": "90分",
-      "duration_ko": "90분",
-      "price_vnd": 650000,
-      "desc_vi": "Gói kết hợp hoàn hảo giữa gội đầu dưỡng sinh thảo dược tuần hoàn nước ấm và chăm sóc da mặt thanh lọc cấp ẩm chuyên sâu.",
-      "desc_en": "Comprehensive dual ritual combining therapeutic warm herbal head spa with deep purifying and hydrating facial treatment.",
-      "desc_zh": "完美双重舒缓组合：草本循环流水头疗洗发，配合面部温和深层清洁、去角质、穴位提拉与滋润补水面膜。",
-      "desc_ja": "温水循環の養生ヘッドスパと、肌をいたわる保湿フェイシャルエステが一度に味わえる贅沢な組み合わせ。",
-      "desc_ko": "온수 순환 영양 헤드스파와 보습·진정 페이셜 케어를 함께 경험할 수 있는 인기 힐링 코스.",
-      "image": "assets/images/real_ivy_headspa_suite.jpg",
-      "popular": true
-    },
-    {
-      "id": "hair-treatment-facial",
-      "name_vi": "Hair Treatment with Facial Care (Ủ Phục Hồi Tóc & Chăm Sóc Da Mặt - Menu Mới)",
-      "name_en": "Hair Treatment with Facial Care (New Official Menu)",
-      "name_zh": "深层发丝修护水疗与奢华面部护理 (最新官方价目表)",
-      "name_ja": "集中ヘアトリートメント＆プレミアムフェイシャル (最新公式メニュー)",
-      "name_ko": "집중 헤어 트리트먼트 & 프리미엄 페이셜 케어 (최신 공식 메뉴)",
-      "duration_vi": "100 phút",
-      "duration_en": "100 min",
-      "duration_zh": "100分钟",
-      "duration_ja": "100分",
-      "duration_ko": "100분",
-      "price_vnd": 900000,
-      "desc_vi": "Hấp ủ dưỡng chất phục hồi tóc hư tổn cao cấp, kết hợp liệu trình chăm sóc da mặt chuyên sâu toàn diện 100 phút.",
-      "desc_en": "Intensive nourishing hair conditioning mask plus complete restorative facial spa therapy for silky hair and glowing skin.",
-      "desc_zh": "使用高滋养护发精华深度焗油修复受损毛鳞片，搭配全套高端面部提亮紧致水疗，焕发双重自然神采。",
-      "desc_ja": "傷んだ髪を贅沢なトリートメントマスクで集中補修し、素肌の美しさを引き出すフェイシャルエステを同時にご提供。",
-      "desc_ko": "손상된 모발에 집중 영양을 채워주는 헤어 마스크와 피부 탄력을 높여주는 페이셜 케어를 함께 진행합니다.",
-      "image": "assets/images/facial_gold_care.jpg",
-      "popular": true
-    },
-    {
-      "id": "facial-basic-care",
-      "name_vi": "Basic Facial Care (Chăm Sóc Da Mặt Cơ Bản - Menu Mới)",
-      "name_en": "Basic Facial Care (New Official Menu)",
-      "name_zh": "基础草本面部温和水润护理 (最新官方价目表)",
-      "name_ja": "ベーシックハーブフェイシャルケア (最新公式メニュー)",
-      "name_ko": "베이직 하이드로 페이셜 케어 (최신 공식 메뉴)",
-      "duration_vi": "60 phút",
-      "duration_en": "60 min",
-      "duration_zh": "60分钟",
-      "duration_ja": "60分",
-      "duration_ko": "60분",
-      "price_vnd": 450000,
-      "desc_vi": "Tẩy trang, rửa mặt sạch sâu, tẩy tế bào chết sinh học, xông hơi tinh dầu và đắp mặt nạ thảo dược làm dịu tươi mát làn da.",
-      "desc_en": "Gentle botanical cleansing, botanical exfoliation, aromatic herbal steam, and soothing hydration mask for a fresh, refreshed glow.",
-      "desc_zh": "温和卸妆洁面、植物温和去角质、精油芳香蒸面配合天然草本舒缓面膜，令面部水嫩清新。",
-      "desc_ja": "丁寧なクレンジング、角質ケア、アロマスチーム、植物パックで素肌本来のみずみずしさを取り戻します。",
-      "desc_ko": "딥 클렌징, 각질 제거, 스팀 테라피, 허브 보습 팩으로 맑고 촉촉한 피부로 가꿔주는 기본 관리 코스.",
-      "image": "assets/images/facial_gold_care.jpg"
-    },
-    {
-      "id": "facial-whitening-moisture",
-      "name_vi": "Skin Whitening & Increasing Moisture (Dưỡng Trắng & Cấp Ẩm Da - Menu Mới)",
-      "name_en": "Skin Whitening & Increasing Moisture (New Official Menu)",
-      "name_zh": "美白焕采与深度补水丰盈护理 (最新官方价目表)",
-      "name_ja": "美白ブライトニング＆高保湿ヒアルロンフェイシャル (最新公式メニュー)",
-      "name_ko": "스킨 브라이트닝 & 딥 모이스처 수분 케어 (최신 공식 메뉴)",
-      "duration_vi": "60 phút",
-      "duration_en": "60 min",
-      "duration_zh": "60分钟",
-      "duration_ja": "60分",
-      "duration_ko": "60분",
-      "price_vnd": 550000,
-      "desc_vi": "Điện di tinh chất ngọc trai và axit hyaluronic cấp ẩm tầng sâu, làm mờ thâm sạm và mang lại làn da trắng hồng căng bóng.",
-      "desc_en": "Deep infusion of pearl essence and hyaluronic acid to illuminate dull complexion and quench dry, sun-exposed skin.",
-      "desc_zh": "珍珠萃取精华与高纯透明质酸深层导入，淡化暗沉与日晒色斑，为干渴肌肤注入澎湃充盈水分。",
-      "desc_ja": "真珠エキスとヒアルロン酸を贅沢に角質層まで浸透させ、日焼けやくすみをケアして透明感あふれるツヤ肌へ導きます。",
-      "desc_ko": "진주 추출물과 히알루론산으로 칙칙해진 피부톤을 환하게 밝히고 메마른 피부에 풍부한 수분을 집중 공급합니다.",
-      "image": "assets/images/facial_gold_care.jpg",
-      "popular": true
-    },
-    {
-      "id": "facial-acnes-care",
-      "name_vi": "Face Acnes Care (Trị Liệu Mụn & Thanh Lọc Da Mặt - Menu Mới)",
-      "name_en": "Face Acnes Care (New Official Menu)",
-      "name_zh": "面部痘痘粉刺消炎净化调理 (最新官方价目表)",
-      "name_ja": "アクネ・ニキビ鎮静＆毛穴ディープクレンジング (最新公式メニュー)",
-      "name_ko": "여드름 진정 & 피지 조절 트러블 케어 (최신 공식 메뉴)",
-      "duration_vi": "90 phút",
-      "duration_en": "90 min",
-      "duration_zh": "90分钟",
-      "duration_ja": "90分",
-      "duration_ko": "90분",
-      "price_vnd": 700000,
-      "desc_vi": "Thanh lọc bã nhờn bít tắc, xử lý nhân mụn chuẩn y khoa nhẹ nhàng, đắp mặt nạ tràm trà và chiếu ánh sáng sinh học kháng khuẩn.",
-      "desc_en": "Deep pore purification, gentle clinical extraction, calming tea tree mask, and bio-light therapy to soothe inflammation.",
-      "desc_zh": "深层清理毛孔油脂阻塞，无痛专业清理粉刺痘痘，敷设茶树抑菌面膜并配合生物光波消炎修护。",
-      "desc_ja": "毛穴の詰まりを丁寧に除去し、ティーツリー鎮静パックとバイオライトで肌トラブルを健やかに落ち着かせます。",
-      "desc_ko": "모공 속 피지와 노폐물을 깨끗하게 정돈하고, 티트리 진정 팩과 바이오 라이트로 트러블을 케어합니다.",
-      "image": "assets/images/facial_gold_care.jpg"
-    },
-    {
-      "id": "facial-anti-aging-collagen",
-      "name_vi": "Anti-aging Facial with Collagen Mask (Trẻ Hóa Mặt Nạ Collagen - Menu Mới)",
-      "name_en": "Anti-aging Facial with Collagen Mask (New Official Menu)",
-      "name_zh": "抗衰老紧致抚纹胶原蛋白生化面膜 (最新官方价目表)",
-      "name_ja": "アンチエイジング・濃密コラーゲン生パック (最新公式メニュー)",
-      "name_ko": "안티에이징 탄력 리프팅 & 콜라겐 마스크 (최신 공식 메뉴)",
-      "duration_vi": "90 phút",
-      "duration_en": "90 min",
-      "duration_zh": "90分钟",
-      "duration_ja": "90分",
-      "duration_ko": "90분",
-      "price_vnd": 900000,
-      "desc_vi": "Liệu pháp nâng cơ trẻ hóa da cao cấp với mặt nạ collagen tươi thủy phân, xóa mờ nếp nhăn và tăng độ đàn hồi săn chắc cho làn da.",
-      "desc_en": "Premium firming lifting ritual infused with marine collagen mask, smoothing fine lines and restoring skin elasticity.",
-      "desc_zh": "顶级抗老紧致提拉手法配合纯净深海胶原蛋白面膜，抚平干纹细纹，全面提升面部轮廓紧致弹力。",
-      "desc_ja": "高純度マリンコラーゲンパックとリフトアップ手技により、小じわをケアしハリと弾力に満ちた若々しい素肌へ。",
-      "desc_ko": "마린 콜라겐 마스크와 탄력 리프팅 테라피로 잔주름을 개선하고 피부에 탱탱한 탄력과 생기를 채워줍니다.",
-      "image": "assets/images/facial_gold_care.jpg",
-      "popular": true
-    },
-    {
-      "id": "body-scrub-coffee-salt",
-      "name_vi": "Body Scrub Coffee Salt (Tẩy Tế Bào Chết Muối Cà Phê - Menu Mới)",
-      "name_en": "Body Scrub - Coffee Salt (New Official Menu)",
-      "name_zh": "身体天然咖啡海盐温和去角质磨砂 (最新官方价目表)",
-      "name_ja": "ベトナム産コーヒー＆シーソルト ボディスクラブ (最新公式メニュー)",
-      "name_ko": "베트남 오가닉 커피 솔트 바디 스크럽 (최신 공식 메뉴)",
-      "duration_vi": "30 phút",
-      "duration_en": "30 min",
-      "duration_zh": "30分钟",
-      "duration_ja": "30分",
-      "duration_ko": "30분",
-      "price_vnd": 350000,
-      "desc_vi": "Bột cà phê Robusta Đắk Lắk nguyên chất kết hợp muối khoáng biển giúp loại bỏ lớp sừng cằn cỗi, mang lại làn da body mịn màng tươi sáng.",
-      "desc_en": "Pure organic Vietnamese Robusta coffee grains blended with mineral sea salt to polish away dead skin cells and reveal velvety skin.",
-      "desc_zh": "精选越南得勒省纯天然有机罗布斯塔咖啡豆研磨微粒，配以天然矿物海盐，温和蜕褪老化角质，令肌肤白嫩细腻如丝缎。",
-      "desc_ja": "ベトナム特産の有機ロブスタコーヒー豆と天然ミネラル海塩で、古い角質をやさしくオフし、滑らかなツヤ肌へ整えます。",
-      "desc_ko": "베트남산 유기농 원두 가루와 미네랄 천연 소금으로 묵은 각질을 자극 없이 부드럽게 정돈해 매끄러운 바디 피부를 완성합니다.",
-      "image": "assets/images/couple_suite_bath.jpg"
-    },
-    {
-      "id": "body-scrub-coffee-massage",
-      "name_vi": "Body Scrub Coffee Salt and Massage (Tẩy Da Chết Cà Phê & Massage Body - Menu Mới)",
-      "name_en": "Body Scrub (Coffee Salt) and Massage (New Official Menu)",
-      "name_zh": "咖啡海盐去角质与全身精油舒缓按摩 (最新官方价目表)",
-      "name_ja": "コーヒースクラブ角質ケア＆全身アロママッサージ (最新公式メニュー)",
-      "name_ko": "커피 솔트 스크럽 & 전신 힐링 마사지 (최신 공식 메뉴)",
-      "duration_vi": "60 phút",
-      "duration_en": "60 min",
-      "duration_zh": "60分钟",
-      "duration_ja": "60分",
-      "duration_ko": "60분",
-      "price_vnd": 620000,
-      "desc_vi": "Gói chăm sóc kép: 30' tẩy tế bào chết muối cà phê làm mịn da toàn thân + 30' massage thư giãn giải tỏa nhức mỏi với tinh dầu ấm.",
-      "desc_en": "Dual indulgence: 30-min coffee sea salt exfoliating body scrub followed by a 30-min deeply relaxing warm aromatic massage.",
-      "desc_zh": "30分钟咖啡海盐全身丝滑去死皮，紧随30分钟天然植物温热精油舒压按摩，令身心肌肤彻底蜕变焕新。",
-      "desc_ja": "30分間のコーヒーソルトボディスクラブで肌を磨き上げた後、30分間の温感アロママッサージで全身の疲れを解き放ちます。",
-      "desc_ko": "30분 커피 솔트 각질 케어로 매끄러워진 피부 위에, 30분 따뜻한 에센셜 오일 전신 마사지로 피로를 말끔히 풀어줍니다.",
-      "image": "assets/images/couple_suite_bath.jpg",
-      "popular": true
-    }
-  ],
-  "massage": [
-    {
-      "id": "mass-1",
-      "name_vi": "Massage Trị Liệu Đá Nóng Núi Lửa",
-      "name_en": "IVY Signature Hot Basalt Stone Massage",
-      "name_zh": "天然火山热石深度经络理疗按摩",
-      "name_ja": "IVY 特製 ホットバサルトストーンマッサージ",
-      "name_ko": "IVY 시그니처 핫 바잘트 스톤 마사지",
-      "duration_vi": "75 - 120 phút",
-      "duration_en": "75 - 120 min",
-      "duration_zh": "75 - 120分钟",
-      "duration_ja": "75〜120分",
-      "duration_ko": "75 - 120분",
-      "price_vnd": 620000,
-      "price_vnd_max": 950000,
-      "desc_vi": "Đá bazan giữ nhiệt lâu kết hợp tinh dầu oải hương, đả thông kinh lạc và giảm đau mỏi vai gáy tức thì (75' - 120').",
-      "desc_en": "Heated volcanic stones placed along energy meridian lines with essential lavender & sandalwood oils for deepest muscle release.",
-      "desc_zh": "温热火山玄武岩配合薰衣草与檀香精油，温通经络，深度释放深层疲劳与肩颈酸痛。",
-      "desc_ja": "温めた玄武岩とラベンダー＆サンダルウッドの精油を用い、経絡に沿って深層筋肉の緊張をじんわり解きほぐします。",
-      "desc_ko": "따뜻한 화산 현무암과 라벤더·샌달우드 천연 오일로 기혈 순환을 촉진하고 어깨와 등의 뭉친 피로를 깊숙이 풀어줍니다.",
-      "image": "assets/images/hot_stone_massage.jpg",
-      "popular": true
-    },
-    {
-      "id": "mass-4",
-      "name_vi": "Massage 4 Tay Đồng Điệu (2 Nghệ Nhân)",
-      "name_en": "Synchronized 4-Hands Imperial Massage",
-      "name_zh": "皇家双人四手默契同步奢华按摩",
-      "name_ja": "極上フォーハンズシンクロマッサージ",
-      "name_ko": "4핸즈 싱크로나이즈드 황제 마사지",
-      "duration_vi": "60 - 120 phút",
-      "duration_en": "60 - 120 min",
-      "duration_zh": "60 - 120分钟",
-      "duration_ja": "60〜120分",
-      "duration_ko": "60 - 120분",
-      "price_vnd": 1000000,
-      "price_vnd_max": 1900000,
-      "desc_vi": "Hai kỹ thuật viên tay nghề cao thực hiện đồng điệu nhịp nhàng mang lại cảm giác thư thái đỉnh cao.",
-      "desc_en": "Two master therapists choreographing synchronized strokes simultaneously in perfect harmony for the ultimate sensory high.",
-      "desc_zh": "两位资深按摩技师默契同步运作，和谐韵律如行云流水，带您领略超越凡尘的至高奢华放松境地。",
-      "desc_ja": "熟練のセラピスト2名が完璧な呼吸とシンクロした手技で全身を包み込み、これまでにない究極のリラクゼーションへと導きます。",
-      "desc_ko": "두 명의 베테랑 테라피스트가 완벽한 호흡과 리듬으로 동시에 마사지하여 최상의 황홀한 힐링을 선사합니다.",
-      "image": "assets/images/couple_suite_bath.jpg",
-      "popular": true
-    },
-    {
-      "id": "mass-ivy-special",
-      "name_vi": "IVY Special Massage (Menu Board Mới)",
-      "name_en": "Ivy Special Body Massage (New Official Menu)",
-      "name_zh": "IVY 特别身体按摩 (最新官方价目表)",
-      "name_ja": "IVY スペシャル ボディマッサージ (最新公式メニュー)",
-      "name_ko": "IVY 스페셜 바디 마사지 (최신 공식 메뉴)",
-      "duration_vi": "60 - 90 - 120 phút",
-      "duration_en": "60 - 90 - 120 min",
-      "duration_zh": "60 - 90 - 120分钟",
-      "duration_ja": "60〜90〜120分",
-      "duration_ko": "60 - 90 - 120분",
-      "price_vnd": 470000,
-      "desc_vi": "Liệu pháp massage đặc quyền mang thương hiệu IVY LUXE SPA kết hợp nhuần nhuyễn giữa kỹ thuật bấm huyệt và vuốt dầu thư giãn sâu toàn thân.",
-      "desc_en": "Signature therapy blending deep acupressure points and warm herbal aromatherapy oils for ultimate mind & body rejuvenation.",
-      "desc_zh": "IVY 品牌招牌特色理疗，融合东方经络穴位指压与天然草本芳香精油推拿，深层释放全身疲劳。",
-      "desc_ja": "東洋のツボ押し指圧と天然アロマオイルを融合したIVYブランド独自の極上シグネチャーマッサージ。",
-      "desc_ko": "IVY 시그니처 테라피로 동양의 지압과 따뜻한 아로마 오일 테라피를 결합하여 깊은 이완과 활력을 선사합니다.",
-      "image": "assets/images/hero_spa_luxury.jpg",
-      "popular": true
-    },
-    {
-      "id": "mass-vietnam",
-      "name_vi": "Viet Nam Massage (Massage Việt Nam - Menu Board Mới)",
-      "name_en": "Viet Nam Massage (New Official Menu)",
-      "name_zh": "越南传统草本按摩 (最新官方价目表)",
-      "name_ja": "ベトナム伝統マッサージ (最新公式メニュー)",
-      "name_ko": "베트남 전통 마사지 (최신 공식 메뉴)",
-      "duration_vi": "60 - 90 - 120 phút",
-      "duration_en": "60 - 90 - 120 min",
-      "duration_zh": "60 - 90 - 120分钟",
-      "duration_ja": "60〜90〜120分",
-      "duration_ko": "60 - 90 - 120분",
-      "price_vnd": 550000,
-      "desc_vi": "Phương pháp massage trị liệu dân gian Việt Nam bấm huyệt khai thông khí huyết, giải tỏa căng cơ mỏi nhức tức thì.",
-      "desc_en": "Authentic Vietnamese healing technique focusing on energy meridians, tension release, and revitalizing blood flow.",
-      "desc_zh": "纯正越南古法养生理疗手法，疏通经络气血，有效驱散深层肌筋酸痛与旅途疲倦。",
-      "desc_ja": "ベトナム伝統の手技療法で経絡の滞りを流し、筋肉の深部疲労をスッキリ取り除きます。",
-      "desc_ko": "베트남 전통 기법으로 기혈 순환을 돕고 뭉친 근육을 시원하게 풀어주는 힐링 마사지.",
-      "image": "assets/images/hot_stone_massage.jpg",
-      "popular": true
-    },
-    {
-      "id": "mass-aroma",
-      "name_vi": "Aroma Massage (Massage Tinh Dầu - Menu Board Mới)",
-      "name_en": "Aroma Massage (New Official Menu)",
-      "name_zh": "芳香精油舒缓按摩 (最新官方价目表)",
-      "name_ja": "アロマ精油マッサージ (最新公式メニュー)",
-      "name_ko": "아로마 에센셜 마사지 (최신 공식 메뉴)",
-      "duration_vi": "60 - 75 - 90 phút",
-      "duration_en": "60 - 75 - 90 min",
-      "duration_zh": "60 - 75 - 90分钟",
-      "duration_ja": "60〜75〜90分",
-      "duration_ko": "60 - 75 - 90분",
-      "price_vnd": 480000,
-      "desc_vi": "Chiết xuất tinh dầu thiên nhiên cao cấp làm dịu hệ thần kinh, nuôi dưỡng làn da mịn màng và giúp giấc ngủ sâu lắng.",
-      "desc_en": "Premium organic botanical essential oils combined with rhythmic Swedish long strokes to soothe nerves and restore inner peace.",
-      "desc_zh": "进口天然芳香植物精油结合轻柔舒缓手法，滋润肌肤，平复思绪，助您进入深度甜美梦乡。",
-      "desc_ja": "上質ボタニカルアロマ精油と優しいロングストロークで自律神経を整え、極上の癒しへと導きます。",
-      "desc_ko": "프리미엄 천연 에센셜 오일의 향기와 부드러운 터치로 스트레스를 해소하고 심신을 안정시켜 줍니다.",
-      "image": "assets/images/spa_water_basin_hero.jpg"
-    },
-    {
-      "id": "mass-thai-brochure",
-      "name_vi": "Thai Massage (Massage Thái - Menu Board Mới)",
-      "name_en": "Thai Massage (Oil / No Oil - New Official Menu)",
-      "name_zh": "泰式古法按摩 (可选精油/无精油 - 最新官方价目表)",
-      "name_ja": "タイ式マッサージ (オイルあり/なし - 最新公式メニュー)",
-      "name_ko": "타이 마사지 (오일/노오일 - 최신 공식 메뉴)",
-      "duration_vi": "60 - 75 - 90 - 120 phút",
-      "duration_en": "60 - 75 - 90 - 120 min",
-      "duration_zh": "60 - 75 - 90 - 120分钟",
-      "duration_ja": "60〜75〜90〜120分",
-      "duration_ko": "60 - 75 - 90 - 120분",
-      "price_vnd": 600000,
-      "desc_vi": "Ấn huyệt kết hợp kéo giãn cơ bắp theo phong cách Hoàng Gia Thái Lan, giúp cơ thể dẻo dai và tràn đầy năng lượng.",
-      "desc_en": "Passive yoga stretching and targeted pressure points (with or without aromatic oil) to unlock deep flexibility and vitality.",
-      "desc_zh": "泰式被动拉伸瑜伽与穴位重压相结合，放松骨骼肌肉，带来全身舒畅与充沛精力。",
-      "desc_ja": "ヨガのような優しいストレッチと的確な指圧で、身体全体の柔軟性と活力を呼び覚まします。",
-      "desc_ko": "스트레칭과 경혈 지압을 결합하여 전신의 뻐근함을 풀어주고 몸을 유연하고 가볍게 만들어 줍니다.",
-      "image": "assets/images/loc_hatrung_flora.jpg"
-    },
-    {
-      "id": "mass-shiatsu-brochure",
-      "name_vi": "Shiatsu Massage (Bấm Huyệt Nhật - Menu Board Mới)",
-      "name_en": "Shiatsu Massage (New Official Menu)",
-      "name_zh": "日式指压按摩 (最新官方价目表)",
-      "name_ja": "指圧マッサージ (最新公式メニュー)",
-      "name_ko": "시아추 정통 지압 마사지 (최신 공식 메뉴)",
-      "duration_vi": "60 - 75 - 90 phút",
-      "duration_en": "60 - 75 - 90 min",
-      "duration_zh": "60 - 75 - 90分钟",
-      "duration_ja": "60〜75〜90分",
-      "duration_ko": "60 - 75 - 90분",
-      "price_vnd": 470000,
-      "desc_vi": "Phương pháp ấn đè huyệt vị bằng ngón tay chuẩn xác của Nhật Bản giúp cân bằng dòng năng lượng và giải tỏa nhức mỏi xương khớp.",
-      "desc_en": "Authentic Japanese acupressure technique applying firm finger pressure on energy channels to restore balance and relieve aches.",
-      "desc_zh": "正统日式拇指指压经络技术，精准施力疏通阻滞，调节身体气血平衡，恢复肌肉活力。",
-      "desc_ja": "親指と手のひらで全身のツボに持続圧をかけ、生体エネルギーの巡りを整える伝統の日本式指圧手技。",
-      "desc_ko": "손가락과 손바닥의 압력을 이용해 경혈을 자극하여 신체의 균형을 되찾아주는 일본 전통 지압.",
-      "image": "assets/images/hero_spa_luxury.jpg"
-    },
-    {
-      "id": "mass-back-brochure",
-      "name_vi": "Back - Head and Shoulder (Trị Liệu Cổ Vai Gáy & Lưng - Menu Mới)",
-      "name_en": "Back - Head and Shoulder Massage (New Official Menu)",
-      "name_zh": "肩颈背头部深度理疗按摩 (最新官方价目表)",
-      "name_ja": "背中・首肩・ヘッド集中集中ケア (最新公式メニュー)",
-      "name_ko": "등·목·어깨·두피 집중 테라피 (최신 공식 메뉴)",
-      "duration_vi": "30 - 45 - 60 phút",
-      "duration_en": "30 - 45 - 60 min",
-      "duration_zh": "30 - 45 - 60分钟",
-      "duration_ja": "30〜45〜60分",
-      "duration_ko": "30 - 45 - 60분",
-      "price_vnd": 250000,
-      "desc_vi": "Tập trung giải tỏa căng thẳng cho vùng vai gáy, lưng trên và vùng đầu cho người ngồi văn phòng hay di chuyển nhiều.",
-      "desc_en": "Targeted relief dedicated to neck stiffness, chronic shoulder knots, lower back tension, and headache reduction.",
-      "desc_zh": "针对长期久坐及低头族的肩颈僵硬、背部酸沉及头部紧绷进行深度化解，疗效显著。",
-      "desc_ja": "デスクワークや旅行で凝り固まった首・肩甲骨・背中・頭皮を集中的に揉みほぐし、驚くほど軽くします。",
-      "desc_ko": "컴퓨터 작업과 장시간 여행으로 피로가 쌓인 목, 어깨, 등, 두피를 집중적으로 풀어주는 실속 테라피.",
-      "image": "assets/images/head_spa_ritual.jpg",
-      "popular": true
-    }
-  ],
-  "foot": [
-    {
-      "id": "foot-vn-brochure",
-      "name_vi": "Foot VietNam Massage (Massage Chân Việt Nam)",
-      "name_en": "Foot VietNam Massage",
-      "name_zh": "越南传统足部按摩 (Foot VietNam massage)",
-      "name_ja": "ベトナム式フットマッサージ (Foot VietNam Massage)",
-      "name_ko": "베트남 정통 풋 마사지 (Foot VietNam Massage)",
-      "duration_vi": "30 - 45 - 60 - 75 phút",
-      "duration_en": "30 - 45 - 60 - 75 min",
-      "duration_zh": "30 - 45 - 60 - 75分钟",
-      "duration_ja": "30〜45〜60〜75分",
-      "duration_ko": "30 - 45 - 60 - 75분",
-      "price_vnd": 200000,
-      "price_vnd_max": 450000,
-      "desc_vi": "Bấm huyệt giải tỏa đau mỏi bàn chân & bắp chân theo bí quyết dân gian Việt Nam: 30' (200.000đ) | 45' (300.000đ) | 60' (380.000đ) | 75' (450.000đ).",
-      "desc_en": "Authentic Vietnamese foot reflexology & pressure points: 30' (200,000₫) | 45' (300,000₫) | 60' (380,000₫) | 75' (450,000₫).",
-      "desc_zh": "越南传统古法足疗指压：30分钟 (200.000đ) | 45分钟 (300.000đ) | 60分钟 (380.000đ) | 75分钟 (450.000đ)。",
-      "desc_ja": "ベトナム伝統足裏ツボ押し：30分 (200.000đ) | 45分 (300.000đ) | 60分 (380.000đ) | 75分 (450.000đ)。",
-      "desc_ko": "베트남 정통 발 반사요법 지압: 30분 (200.000đ) | 45분 (300.000đ) | 60분 (380.000đ) | 75분 (450.000đ).",
-      "image": "assets/images/real_ivy_foot_guests.jpg",
-      "popular": true
-    },
-    {
-      "id": "foot-thai-brochure",
-      "name_vi": "Foot Thai Massage (Massage Chân Kiểu Thái)",
-      "name_en": "Foot Thai Massage",
-      "name_zh": "泰式足部舒缓按摩 (Foot Thai massage)",
-      "name_ja": "タイ式フットマッサージ (Foot Thai Massage)",
-      "name_ko": "타이 스타일 풋 마사지 (Foot Thai Massage)",
-      "duration_vi": "30 - 45 - 60 - 75 phút",
-      "duration_en": "30 - 45 - 60 - 75 min",
-      "duration_zh": "30 - 45 - 60 - 75分钟",
-      "duration_ja": "30〜45〜60〜75分",
-      "duration_ko": "30 - 45 - 60 - 75분",
-      "price_vnd": 250000,
-      "price_vnd_max": 550000,
-      "desc_vi": "Bấm huyệt kết hợp gậy gỗ và kéo giãn cổ chân chuẩn phong cách Thái: 30' (250.000đ) | 45' (350.000đ) | 60' (490.000đ) | 75' (550.000đ).",
-      "desc_en": "Traditional Thai foot reflex stick and gentle ankle mobility stretches: 30' (250,000₫) | 45' (350,000₫) | 60' (490,000₫) | 75' (550,000₫).",
-      "desc_zh": "泰式专用木棒点穴与脚踝拉伸理疗：30分钟 (250.000đ) | 45分钟 (350.000đ) | 60分钟 (490.000đ) | 75分钟 (550.000đ)。",
-      "desc_ja": "タイ伝統ツボ押し棒＆ストレッチ施術：30分 (250.000đ) | 45分 (350.000đ) | 60分 (490.000đ) | 75分 (550.000đ)。",
-      "desc_ko": "태국 전통 지압봉 & 발목 스트레칭 테라피: 30분 (250.000đ) | 45분 (350.000đ) | 60분 (490.000đ) | 75분 (550.000đ).",
-      "image": "assets/images/loc_hatrung_flora.jpg",
-      "popular": true
-    },
-    {
-      "id": "foot-spa-brochure",
-      "name_vi": "Foot Spa 足浴 (Scrub & Massage)",
-      "name_en": "Foot Spa (Scrub & Massage)",
-      "name_zh": "足部磨砂去角质与足疗按摩 (Foot spa 足浴)",
-      "name_ja": "フットスパ・スクラブ角質ケア＆マッサージ (Foot Spa 足浴)",
-      "name_ko": "풋 스파 스크럽 각질제거 & 마사지 (Foot Spa 足浴)",
-      "duration_vi": "60 - 75 phút",
-      "duration_en": "60 - 75 min",
-      "duration_zh": "60 - 75分钟",
-      "duration_ja": "60〜75分",
-      "duration_ko": "60 - 75분",
-      "price_vnd": 420000,
-      "price_vnd_max": 520000,
-      "desc_vi": "Tẩy tế bào chết gót chân nứt nẻ + massage bấm huyệt chuyên sâu: 60' (420.000đ) | 75' (520.000đ). Giúp đôi chân mềm mịn và nhẹ nhõm.",
-      "desc_en": "Exfoliating foot scrub buffing away calluses + restorative reflexology: 60' (420,000₫) | 75' (520,000₫).",
-      "desc_zh": "去脚跟粗糙死皮角质 + 全套足部深层经络推拿：60分钟 (420.000đ) | 75分钟 (520.000đ)。",
-      "desc_ja": "かかと角質スクラブケア ＋ 贅沢足裏リフレクソロジー：60分 (420.000đ) | 75分 (520.000đ)。",
-      "desc_ko": "발뒤꿈치 각질 제거 스크럽 + 집중 풋 마사지 테라피: 60분 (420.000đ) | 75분 (520.000đ).",
-      "image": "assets/images/couple_suite_bath.jpg",
-      "popular": true
-    },
-    {
-      "id": "foot-ivy-coconut-brochure",
-      "name_vi": "Ivy Foot Spa (Ivy 足浴 - Scrub, Massage & Coconut Mask)",
-      "name_en": "Ivy Foot Spa (Scrub, Massage & Coconut Mask)",
-      "name_zh": "Ivy 尊享足疗 (Ivy 足浴 - 磨砂、按摩、椰子面膜)",
-      "name_ja": "Ivy プレミアムフットスパ (Ivy 足浴 - スクラブ・マッサージ・ココナッツ足パック)",
-      "name_ko": "Ivy 프리미엄 풋 스파 (Ivy 足浴 - 스크럽, 마사지, 코코넛 영양팩)",
-      "duration_vi": "75 - 90 phút",
-      "duration_en": "75 - 90 min",
-      "duration_zh": "75 - 90分钟",
-      "duration_ja": "75〜90分",
-      "duration_ko": "75 - 90분",
-      "price_vnd": 700000,
-      "desc_vi": "Gói chăm sóc chân Hoàng Gia cao cấp nhất (700.000đ): Tẩy da chết gót chân + Massage chân 60' + Đắp mặt nạ ủ dưỡng dừa tươi hữu cơ siêu mềm mịn.",
-      "desc_en": "The ultimate royal foot indulgence (700,000₫): Exfoliating foot scrub + 60-min foot reflexology + Warm organic virgin coconut hydration mask.",
-      "desc_zh": "官方价目表最高级别足疗尊享 (700.000đ)：深度修脚去角质 + 60分钟穴位推拿 + 纯天然有机椰子深层保湿足膜。",
-      "desc_ja": "最高峰ロイヤルフットスパ (700.000đ)：角質スクラブ ＋ 60分足裏マッサージ ＋ オーガニックココナッツ濃厚保湿パック。",
-      "desc_ko": "최상급 로열 발 관리 코스 (700.000đ): 각질 제거 딥 클렌징 + 60분 집중 풋 마사지 + 유기농 코코넛 영양 팩.",
-      "image": "assets/images/spa_water_basin_hero.jpg",
-      "popular": true
-    },
-    {
-      "id": "foot-3",
-      "name_vi": "Massage Chân Đá Nóng Đả Thông Kinh Lạc",
-      "name_en": "Hot Stone Foot & Leg Revival Therapy",
-      "name_zh": "火山热石通络舒缓足腿特护按摩",
-      "name_ja": "ホットストーン・フット＆レッグ温熱セラピー",
-      "name_ko": "핫 스톤 발 & 다리 힐링 온열 마사지",
-      "duration_vi": "75 - 90 phút",
-      "duration_en": "75 - 90 min",
-      "duration_zh": "75 - 90分钟",
-      "duration_ja": "75〜90分",
-      "duration_ko": "75 - 90분",
-      "price_vnd": 480000,
-      "desc_vi": "Sử dụng đá núi lửa giữ nhiệt truyền sâu vào các huyệt vị bắp chân và lòng bàn chân, xua tan hàn khí, hỗ trợ giấc ngủ ngon sâu.",
-      "desc_en": "Volcanic hot stones glide across legs and foot soles, infusing therapeutic warmth deeply into tension points and improving sound sleep.",
-      "desc_zh": "火山玄武岩温热能量渗透至小腿与足心穴位，祛湿驱寒，深度放松，显著改善夜间睡眠质量。",
-      "desc_ja": "温かい火山岩の熱が脚と足裏のツボへ深く浸透。冷えやコリを解消し、深いリラックスと上質な睡眠を導きます。",
-      "desc_ko": "따뜻한 화산석 온열이 종아리와 발바닥 경혈 깊숙이 전해져 냉기를 없애고 피로를 풀어 숙면을 도와줍니다.",
-      "image": "assets/images/hot_stone_massage.jpg"
-    }
-  ],
-  "nails": [
-    {
-      "id": "nail-1",
-      "name_vi": "Chăm Sóc & Vệ Sinh Móng Chân",
-      "name_en": "Pedicure (Foot Care & Cuticle Cleaning)",
-      "name_zh": "专业足部护理与死皮死茧修剪",
-      "name_ja": "ペディキュア（足爪ケア＆甘皮処理）",
-      "name_ko": "페디큐어 (발톱 케어 & 큐티클 정리)",
-      "duration_vi": "30 phút",
-      "duration_en": "30 min",
-      "duration_zh": "30分钟",
-      "duration_ja": "30分",
-      "duration_ko": "30분",
-      "price_vnd": 150000,
-      "desc_vi": "Nhặt da chết chân tỉ mỉ, dũa tạo form gọn gàng sạch sẽ.",
-      "desc_en": "Professional cuticle care, dead skin removal, shaping, and nail smoothing.",
-      "desc_zh": "专业修除足部角质死皮，细致修剪指甲甲型并打磨抛光。",
-      "desc_ja": "丁寧な甘皮処理、角質除去、爪のファイリングと表面磨き。",
-      "desc_ko": "전문적인 큐티클 정리, 각질 제거, 발톱 쉐입 교정 및 매끄러운 버핑 케어.",
-      "image": "assets/images/real_ivy_spa_nail_collage.jpg"
-    },
-    {
-      "id": "nail-2",
-      "name_vi": "Chăm Sóc & Vệ Sinh Móng Tay",
-      "name_en": "Manicure (Hand Care & Cuticle Cleaning)",
-      "name_zh": "专业手部修剪与死皮修护",
-      "name_ja": "マニキュア（手爪ケア＆甘皮処理）",
-      "name_ko": "매니큐어 (손톱 케어 & 큐티클 정리)",
-      "duration_vi": "30 phút",
-      "duration_en": "30 min",
-      "duration_zh": "30分钟",
-      "duration_ja": "30分",
-      "duration_ko": "30분",
-      "price_vnd": 150000,
-      "desc_vi": "Chăm sóc móng tay, nhặt da sạch sẽ, dũa viền và làm bóng móng.",
-      "desc_en": "Detailed manicure hand care, cuticle clipping and nail buffing.",
-      "desc_zh": "手部细致护理，修剪边缘倒刺死皮，打磨甲面修整甲型。",
-      "desc_ja": "手元の丁寧なキューティクルケア、爪の成形と艶出し磨き。",
-      "desc_ko": "손톱 주변 굳은살 및 큐티클 정리, 쉐입 정리와 자연스러운 광택 케어.",
-      "image": "assets/images/real_ivy_spa_nail_collage.jpg"
-    },
-    {
-      "id": "nail-3",
-      "name_vi": "Sơn Thường Đổi Màu Móng Tự Nhiên",
-      "name_en": "Classic Regular Polish",
-      "name_zh": "经典天然单色甲油涂抹",
-      "name_ja": "クラシックマニキュアカラー",
-      "name_ko": "클래식 일반 컬러 네일",
-      "duration_vi": "30 phút",
-      "duration_en": "30 min",
-      "duration_zh": "30分钟",
-      "duration_ja": "30分",
-      "duration_ko": "30분",
-      "price_vnd": 280000,
-      "desc_vi": "Sơn màu thường cao cấp nhiều tông màu thanh lịch kèm lớp bóng bảo vệ.",
-      "desc_en": "Classic regular polish color application with base and protective top coat.",
-      "desc_zh": "涂刷精选品牌常规甲油，含底油防护与高光亮油锁色。",
-      "desc_ja": "豊富なカラーバリエーションのポリッシュ塗布（ベース＆トップコート込）。",
-      "desc_ko": "베이스 코트와 탑 코트를 포함한 고급 일반 매니큐어 컬러링.",
-      "image": "assets/images/loc_hatrung_flora.jpg"
-    },
-    {
-      "id": "nail-4",
-      "name_vi": "Sửa Móng & Vệ Sinh Phục Hồi Móng",
-      "name_en": "Nail Repair & Rejuvenation",
-      "name_zh": "断甲修补与指甲养护",
-      "name_ja": "爪の補修＆トリートメント",
-      "name_ko": "손상 네일 리페어 & 케어",
-      "duration_vi": "30 phút",
-      "duration_en": "30 min",
-      "duration_zh": "30分钟",
-      "duration_ja": "30分",
-      "duration_ko": "30분",
-      "price_vnd": 180000,
-      "desc_vi": "Khắc phục móng gãy nứt, vệ sinh và dưỡng móng chắc khỏe.",
-      "desc_en": "Repair broken nail, reshape, clean and polish refresh.",
-      "desc_zh": "修复断裂断层指甲，重塑甲型并涂抹滋养蛋白底油。",
-      "desc_ja": "割れ爪・亀裂の補修、補強ケア、表面の滑らかなリフレッシュ。",
-      "desc_ko": "깨지거나 갈라진 손톱 보수, 쉐입 교정 및 영양 공급 케어.",
-      "image": "assets/images/loc_hatrung_flora.jpg"
-    },
-    {
-      "id": "nail-5",
-      "name_vi": "Sơn Gel Móng Tay Cao Cấp (Bảo Hành 7 Ngày)",
-      "name_en": "Manicure Gel (7 Days Warranty)",
-      "name_zh": "高级手部凝胶光疗美甲 (7天质保)",
-      "name_ja": "ハンドジェルネイル（7日間保証付）",
-      "name_ko": "프리미엄 핸드 젤네일 (7일 무료 보증)",
-      "duration_vi": "45 phút",
-      "duration_en": "45 min",
-      "duration_zh": "45分钟",
-      "duration_ja": "45分",
-      "duration_ko": "45분",
-      "price_vnd": 380000,
-      "desc_vi": "Sơn gel bền màu bóng đẹp, không hại móng, bảo hành 7 ngày miễn phí.",
-      "desc_en": "Premium organic gel polish with high gloss and 7 days free warranty.",
-      "desc_zh": "优质透气环保凝胶，色泽饱满持久高亮，附赠7天免费质保。",
-      "desc_ja": "発色と艶が長持ちする高品質オーガニックジェル（7日間の安心保証付き）。",
-      "desc_ko": "고광택의 지속력이 뛰어난 프리미엄 유기농 젤네일 (7일 무료 A/S 보증).",
-      "image": "assets/images/loc_hatrung_flora.jpg",
-      "popular": true
-    },
-    {
-      "id": "nail-6",
-      "name_vi": "Sơn Gel Móng Chân Cao Cấp (Bảo Hành 7 Ngày)",
-      "name_en": "Pedicure Gel (7 Days Warranty)",
-      "name_zh": "高级足部凝胶光疗美甲 (7天质保)",
-      "name_ja": "フットジェルネイル（7日間保証付）",
-      "name_ko": "프리미엄 페디 젤네일 (7일 무료 보증)",
-      "duration_vi": "45 phút",
-      "duration_en": "45 min",
-      "duration_zh": "45分钟",
-      "duration_ja": "45分",
-      "duration_ko": "45분",
-      "price_vnd": 380000,
-      "desc_vi": "Sơn gel móng chân bền bỉ, sang trọng, bảo hành 7 ngày miễn phí.",
-      "desc_en": "Long lasting gel polish for feet with rich hues and 7 days warranty.",
-      "desc_zh": "足部持久防脱高光泽凝胶，色彩优雅大方，享有7天免费售后保障。",
-      "desc_ja": "足元を美しく彩る高耐久ジェルカラー（7日間の無料お直し保証付き）。",
-      "desc_ko": "발끝을 세련되게 연출하는 오랜 지속력의 젤 페디큐어 (7일 무료 보증).",
-      "image": "assets/images/loc_hatrung_flora.jpg"
-    },
-    {
-      "id": "nail-7",
-      "name_vi": "Úp Móng Giả Kèm Sơn Gel Màu",
-      "name_en": "Full Cover Soft Gel Tips with Color",
-      "name_zh": "全贴甲片延长含纯色凝胶",
-      "name_ja": "ネイルチップ装着＋ジェルカラー",
-      "name_ko": "소프트 젤 팁 연장 + 젤 컬러",
-      "duration_vi": "60 phút",
-      "duration_en": "60 min",
-      "duration_zh": "60分钟",
-      "duration_ja": "60分",
-      "duration_ko": "60분",
-      "price_vnd": 580000,
-      "desc_vi": "Úp móng form chuẩn đẹp tự nhiên, chắc chắn và sơn màu gel cao cấp.",
-      "desc_en": "Full-cover soft gel tips perfectly fitted and styled with your favorite gel color.",
-      "desc_zh": "贴合真甲的轻薄软胶甲片全贴延长，打造自然修长指尖并涂覆凝胶色。",
-      "desc_ja": "自爪に優しく自然な美しさを叶えるフルカバーチップ装着＋お好みのジェルカラー。",
-      "desc_ko": "손톱 모양에 맞춘 소프트 젤 팁 익스텐션과 원하는 젤 컬러링 완성.",
-      "image": "assets/images/loc_hatrung_flora.jpg"
-    },
-    {
-      "id": "nail-8",
-      "name_vi": "Nối Móng Đắp Gel Quang Học (Bao Gồm Màu)",
-      "name_en": "Sculpted Gel Extensions with Color",
-      "name_zh": "光疗凝胶真甲延长含色彩",
-      "name_ja": "スカルプチュアジェル長さ出し＋カラー",
-      "name_ko": "젤 익스텐션 연장 + 젤 컬러",
-      "duration_vi": "75 phút",
-      "duration_en": "75 min",
-      "duration_zh": "75分钟",
-      "duration_ja": "75分",
-      "duration_ko": "75분",
-      "price_vnd": 750000,
-      "desc_vi": "Kỹ thuật đắp gel kéo dài móng thanh thoát, nhẹ êm không nặng tay.",
-      "desc_en": "Sculpted gel nail extensions for elegant length and flawless natural durability.",
-      "desc_zh": "精细雕塑光疗延长甲，透气轻盈，坚固韧性佳，含定制色彩。",
-      "desc_ja": "ジェルで1本ずつ丁寧に形作る長さ出しスカルプチュア（カラーリング込）。",
-      "desc_ko": "가볍고 견고한 젤 익스텐션으로 이상적인 길이와 쉐입 연출 (컬러 포함).",
-      "image": "assets/images/loc_hatrung_flora.jpg"
-    },
-    {
-      "id": "nail-9",
-      "name_vi": "Dặm / Bổ Sung Móng Gel Cứng (Mới)",
-      "name_en": "Hard Gel Infill (NEW)",
-      "name_zh": "硬胶补甲修护 (新品)",
-      "name_ja": "ハードジェルリフィル・お直し (NEW)",
-      "name_ko": "하드 젤 리필 (NEW)",
-      "duration_vi": "45 phút",
-      "duration_en": "45 min",
-      "duration_zh": "45分钟",
-      "duration_ja": "45分",
-      "duration_ko": "45분",
-      "price_vnd": 600000,
-      "desc_vi": "Bổ sung chân móng mới mọc bằng gel cứng chuyên dụng bền đẹp.",
-      "desc_en": "Hard gel infill treatment to maintain length and strength seamlessly.",
-      "desc_zh": "为新长出指甲补充硬质光疗凝胶，平整衔接，维持完美指甲状态。",
-      "desc_ja": "伸びてきた根元をハードジェルで美しく補正し強度を保ちます。",
-      "desc_ko": "자라난 손톱 뿌리 부분을 하드 젤로 매끄럽게 메우고 보강하는 리필 케어.",
-      "image": "assets/images/loc_hatrung_flora.jpg"
-    },
-    {
-      "id": "nail-10",
-      "name_vi": "Dặm / Bổ Sung Móng Bột Acrylic (Mới)",
-      "name_en": "Acrylic Nail Infill (NEW)",
-      "name_zh": "水晶甲精准补甲 (新品)",
-      "name_ja": "アクリルスカルプリフィル (NEW)",
-      "name_ko": "아크릴 네일 리필 (NEW)",
-      "duration_vi": "60 phút",
-      "duration_en": "60 min",
-      "duration_zh": "60分钟",
-      "duration_ja": "60分",
-      "duration_ko": "60분",
-      "price_vnd": 850000,
-      "desc_vi": "Kỹ thuật dặm bột acrylic cao cấp tạo phom móng hoàn hảo.",
-      "desc_en": "High precision acrylic nail infill and reshaping.",
-      "desc_zh": "水晶粉专业补填与重塑抛光，恢复如初坚固饱满质感。",
-      "desc_ja": "アクリルネイルの根元補正と全体の美しいフォルム再調整。",
-      "desc_ko": "아크릴 파우더로 손톱 뿌리를 꼼꼼하게 채워 처음처럼 견고하게 리모델링.",
-      "image": "assets/images/loc_hatrung_flora.jpg"
-    },
-    {
-      "id": "nail-11",
-      "name_vi": "Phá Sơn Gel / Phá Gel Cứng / Phá Móng Bột",
-      "name_en": "Safe Removal (Gel / Hard Gel / Acrylic)",
-      "name_zh": "温和安全卸甲 (凝胶/硬胶/水晶)",
-      "name_ja": "安心オフ（ジェル／ハードジェル／アクリル）",
-      "name_ko": "안전 젤/아크릴 제거",
-      "duration_vi": "30 phút",
-      "duration_en": "30 min",
-      "duration_zh": "30分钟",
-      "duration_ja": "30分",
-      "duration_ko": "30분",
-      "price_vnd": 200000,
-      "price_vnd_max": 300000,
-      "desc_vi": "Quy trình phá gel an toàn, êm dịu, bảo vệ cấu trúc móng nguyên bản (200.000 - 300.000đ tùy loại gel & móng bột).",
-      "desc_en": "Safe and gentle removal of gel and hard acrylic while protecting natural nails (200,000 - 300,000 VND).",
-      "desc_zh": "温和卸除凝胶和水晶甲，不伤指甲天然甲层。",
-      "desc_ja": "自爪を痛めない丁寧なジェル＆アクリルオフ。",
-      "desc_ko": "자연 손톱 손상 없이 부드럽고 안전하게 젤과 아크릴을 제거합니다.",
-      "image": "assets/images/loc_hatrung_flora.jpg"
-    }
-  ],
-  "waxing": [
-    {
-      "id": "wax-1",
-      "name_vi": "Waxing Vùng Nách (Underarms)",
-      "name_en": "Underarm Waxing",
-      "name_zh": "腋下温和蜡脱",
-      "name_ja": "ワキ脱毛",
-      "name_ko": "겨드랑이 왁싱",
-      "duration_vi": "20 phút",
-      "duration_en": "20 min",
-      "duration_zh": "20分钟",
-      "duration_ja": "20分",
-      "duration_ko": "20분",
-      "price_vnd": 180000,
-      "desc_vi": "Triệt sạch lông vùng nách bằng sáp ấm nhập khẩu, giảm thâm và se khít lỗ chân lông.",
-      "desc_en": "Gentle underarm waxing with premium wax, minimizing irritation and smoothing skin.",
-      "desc_zh": "采用进口温蜡温和脱除腋下毛发，清爽净白且收敛毛孔。",
-      "desc_ja": "低刺激の高品質ワックスでワキの毛を根元からすっきり除去。",
-      "desc_ko": "저자극 프리미엄 왁스로 겨드랑이 털을 깔끔하게 제거하고 매끄러운 피부 유지.",
-      "image": "assets/images/facial_gold_care.jpg"
-    },
-    {
-      "id": "wax-2",
-      "name_vi": "Waxing Vùng Cằm (Chin Waxing)",
-      "name_en": "Chin Waxing",
-      "name_zh": "下巴脱毛 (Chin Waxing)",
-      "name_ja": "あごワックス脱毛 (Chin Waxing)",
-      "name_ko": "턱 왁싱 (Chin Waxing)",
-      "duration_vi": "20 phút",
-      "duration_en": "20 min",
-      "duration_zh": "20分钟",
-      "duration_ja": "20分",
-      "duration_ko": "20분",
-      "price_vnd": 180000,
-      "desc_vi": "Làm sạch lông cằm nhẹ nhàng với sáp hữu cơ dịu nhẹ, tạo làn da sáng mịn và đều màu.",
-      "desc_en": "Gentle chin waxing creating a smooth flawless canvas for glowing skin and makeup.",
-      "desc_zh": "温和去除下巴细软汗毛，提亮肤色更易上妆。",
-      "desc_ja": "お顔の印象を明るくするあごの産毛ワックスケア。",
-      "desc_ko": "턱 부위의 잔털을 부드럽게 정리하여 메이크업 밀착력을 높여줍니다.",
-      "image": "assets/images/facial_gold_care.jpg"
-    },
-    {
-      "id": "wax-3",
-      "name_vi": "Waxing Ria Mép Chuyên Biệt",
-      "name_en": "Upper Lip Waxing",
-      "name_zh": "上唇专项脱毛",
-      "name_ja": "上唇ワックス脱毛",
-      "name_ko": "인중 전용 왁싱",
-      "duration_vi": "15 phút",
-      "duration_en": "15 min",
-      "duration_zh": "15分钟",
-      "duration_ja": "15分",
-      "duration_ko": "15분",
-      "price_vnd": 180000,
-      "desc_vi": "Triệt ria mép không đau rát, giúp gương mặt sáng mịn tự tin.",
-      "desc_en": "Sensitive warm wax to remove fine upper lip hairs effortlessly.",
-      "desc_zh": "专用抗敏感温蜡，轻松拔除上唇细微唇毛，面容更显洁净光彩。",
-      "desc_ja": "敏感肌用の温ワックスで、口元の産毛を痛みなく綺麗に除去。",
-      "desc_ko": "민감성 부위 전용 왁스로 인중의 잔털을 깨끗하게 정리해 안색을 밝혀줍니다.",
-      "image": "assets/images/facial_gold_care.jpg"
-    },
-    {
-      "id": "wax-5",
-      "name_vi": "Waxing Nửa Cánh Tay",
-      "name_en": "Half Arm Waxing",
-      "name_zh": "半臂温和脱毛",
-      "name_ja": "腕半分（ひじ下）ワックス脱毛",
-      "name_ko": "팔 하프 왁싱",
-      "duration_vi": "25 phút",
-      "duration_en": "25 min",
-      "duration_zh": "25分钟",
-      "duration_ja": "25分",
-      "duration_ko": "25분",
-      "price_vnd": 250000,
-      "desc_vi": "Triệt lông nửa tay sạch sẽ, thoa gel lô hội làm dịu da.",
-      "desc_en": "Gentle hair removal for forearms with cooling aloe vera massage.",
-      "desc_zh": "前臂温和脱毛，去除多余毛发后附赠清凉芦荟舒缓按摩。",
-      "desc_ja": "ひじ下の腕の毛を綺麗にケアし、アロエジェルでみずみずしく鎮静。",
-      "desc_ko": "팔꿈치 아래 부위의 깔끔한 왁싱 후 쿨링 알로에 젤 진정 마사지 제공.",
-      "image": "assets/images/couple_suite_bath.jpg"
-    },
-    {
-      "id": "wax-6",
-      "name_vi": "Waxing Toàn Bộ Cánh Tay",
-      "name_en": "Full Arms Waxing",
-      "name_zh": "全手臂光洁脱毛",
-      "name_ja": "腕全体ワックス脱毛",
-      "name_ko": "팔 전체 왁싱",
-      "duration_vi": "40 phút",
-      "duration_en": "40 min",
-      "duration_zh": "40分钟",
-      "duration_ja": "40分",
-      "duration_ko": "40분",
-      "price_vnd": 350000,
-      "desc_vi": "Làm sạch toàn bộ lông tay, làn da mịn màng mướt mát.",
-      "desc_en": "Complete arm waxing including shoulders and hands.",
-      "desc_zh": "从上臂到手背全面脱毛净肤，恢复丝滑柔润触感。",
-      "desc_ja": "肩口から手首・指先まで両腕全体のムダ毛をきめ細かくケア。",
-      "desc_ko": "어깨 라인부터 손목까지 팔 전체의 잔털을 매끈하게 제거해 줍니다.",
-      "image": "assets/images/couple_suite_bath.jpg"
-    },
-    {
-      "id": "wax-7",
-      "name_vi": "Waxing Nửa Chân Dưới (Bắp Chân)",
-      "name_en": "Lower Legs Waxing",
-      "name_zh": "小腿丝滑脱毛",
-      "name_ja": "ひざ下・ふくらはぎワックス脱毛",
-      "name_ko": "종아리 하프 왁싱",
-      "duration_vi": "30 phút",
-      "duration_en": "30 min",
-      "duration_zh": "30分钟",
-      "duration_ja": "30分",
-      "duration_ko": "30분",
-      "price_vnd": 380000,
-      "desc_vi": "Làm sạch lông bắp chân, tự tin diện váy ngắn dạo phố.",
-      "desc_en": "Smooth leg waxing that weakens hair roots and slows regrowth.",
-      "desc_zh": "去除膝盖以下小腿部位毛发，毛根变细生长减缓，光滑自信。",
-      "desc_ja": "ひざ下の毛をすっきり取り除き、なめらかで透明感のある美脚へ。",
-      "desc_ko": "무릎 아래 종아리의 불필요한 털을 완벽히 정리하여 매끄러운 다리 완성.",
-      "image": "assets/images/foot_soak_care.jpg"
-    },
-    {
-      "id": "wax-8",
-      "name_vi": "Waxing Toàn Bộ Đôi Chân",
-      "name_en": "Full Legs Waxing",
-      "name_zh": "全腿丝滑脱毛",
-      "name_ja": "脚全体ワックス脱毛",
-      "name_ko": "다리 전체 왁싱",
-      "duration_vi": "50 phút",
-      "duration_en": "50 min",
-      "duration_zh": "50分钟",
-      "duration_ja": "50分",
-      "duration_ko": "50분",
-      "price_vnd": 550000,
-      "desc_vi": "Triệt lông cả chân từ đùi tới mắt cá, êm dịu và sạch mịn.",
-      "desc_en": "Full length leg waxing leaving silky soft touch from thigh to ankle.",
-      "desc_zh": "大腿至脚踝全长深度脱毛，肌肤如丝绸般莹润细滑。",
-      "desc_ja": "太ももから足首まで、脚全体のムダ毛を一度にすべすべに仕上げます。",
-      "desc_ko": "허벅지부터 발목까지 다리 전체를 실크처럼 부드럽고 매끈하게 가꿔줍니다.",
-      "image": "assets/images/foot_soak_care.jpg"
-    },
-    {
-      "id": "wax-9",
-      "name_vi": "Waxing Triệt Lông Vùng Lưng",
-      "name_en": "Full Back Waxing",
-      "name_zh": "背部舒爽脱毛",
-      "name_ja": "背中全体ワックス脱毛",
-      "name_ko": "등 전체 왁싱",
-      "duration_vi": "40 phút",
-      "duration_en": "40 min",
-      "duration_zh": "40分钟",
-      "duration_ja": "40分",
-      "duration_ko": "40분",
-      "price_vnd": 450000,
-      "desc_vi": "Làm sạch lông vùng lưng cho nam và nữ, ngăn ngừa mụn lưng.",
-      "desc_en": "Thorough back waxing for clean, smooth skin.",
-      "desc_zh": "男女适用的背部毛发清洁蜡脱，预防毛孔堵塞，后背清爽平滑。",
-      "desc_ja": "手の届かない背中のムダ毛をきれいにケアし、自信の持てる背中へ。",
-      "desc_ko": "등 전체의 잔털을 깨끗이 제모하여 트러블을 예방하고 매끄러운 등을 만듭니다.",
-      "image": "assets/images/hot_stone_massage.jpg"
-    },
-    {
-      "id": "wax-10",
-      "name_vi": "Waxing Triệt Lông Vùng Ngực",
-      "name_en": "Chest Waxing",
-      "name_zh": "胸部清爽脱毛",
-      "name_ja": "胸元ワックス脱毛",
-      "name_ko": "가슴 왁싱",
-      "duration_vi": "35 phút",
-      "duration_en": "35 min",
-      "duration_zh": "35分钟",
-      "duration_ja": "35分",
-      "duration_ko": "35분",
-      "price_vnd": 480000,
-      "desc_vi": "Làm sạch lông vùng ngực thẩm mỹ, an toàn vệ sinh.",
-      "desc_en": "Comfortable chest waxing suitable for men and women.",
-      "desc_zh": "胸部舒爽温和蜡脱，温和无刺激，保持整洁自信体态。",
-      "desc_ja": "胸元の毛を清潔かつ安全にワックス脱毛し、すっきりとした素肌に。",
-      "desc_ko": "가슴 부위의 털을 안전하고 위생적으로 제거하여 깔끔함을 유지합니다.",
-      "image": "assets/images/hot_stone_massage.jpg"
-    },
-    {
-      "id": "wax-11",
-      "name_vi": "Waxing Viền Bikini",
-      "name_en": "Bikini Line Waxing",
-      "name_zh": "比基尼线精修脱毛",
-      "name_ja": "ビキニラインワックス脱毛",
-      "name_ko": "비키니 라인 왁싱",
-      "duration_vi": "30 phút",
-      "duration_en": "30 min",
-      "duration_zh": "30分钟",
-      "duration_ja": "30分",
-      "duration_ko": "30분",
-      "price_vnd": 380000,
-      "desc_vi": "Tạo viền bikini gọn gàng, vệ sinh trong không gian phòng riêng tuyệt đối.",
-      "desc_en": "Clean, tidy bikini line waxing in complete privacy.",
-      "desc_zh": "在绝对私密的独立贵宾间修整比基尼线条，卫生整洁安心。",
-      "desc_ja": "完全個室のプライベート空間で、ビキニラインを美しく整えます。",
-      "desc_ko": "완벽한 프라이빗 룸에서 위생적이고 단정하게 비키니 라인을 정돈합니다.",
-      "image": "assets/images/hero_spa_luxury.jpg"
-    },
-    {
-      "id": "wax-12",
-      "name_vi": "Waxing Toàn Phần Bikini (Brazilian)",
-      "name_en": "Complete Brazilian Bikini Waxing",
-      "name_zh": "巴西全脱私密脱毛",
-      "name_ja": "ブラジリアンワックス（完全個室）",
-      "name_ko": "브라질리언 올누드 왁싱",
-      "duration_vi": "45 phút",
-      "duration_en": "45 min",
-      "duration_zh": "45分钟",
-      "duration_ja": "45分",
-      "duration_ko": "45분",
-      "price_vnd": 550000,
-      "desc_vi": "Triệt lông toàn phần bikini bởi chuyên viên nữ giàu kinh nghiệm, chu đáo và nhẹ nhàng.",
-      "desc_en": "Complete Brazilian bikini waxing by certified female specialists in private suites.",
-      "desc_zh": "由经验丰富的女性资深技师操作，在完全独立单间提供温柔私密的巴西全脱服务。",
-      "desc_ja": "経験豊富な女性スタッフによる、丁寧で痛みを抑えた完全個室ブラジリアンワックス。",
-      "desc_ko": "숙련된 여성 전문 테라피스트가 1인실에서 섬세하고 위생적으로 진행하는 브라질리언 왁싱.",
-      "image": "assets/images/hero_spa_luxury.jpg"
-    }
-  ],
-  "eyelash": [
-    {
-      "id": "eye-1",
-      "name_vi": "Nối Mi Thiết Kế Chuyên Nghiệp",
-      "name_en": "Silk Eyelash Extensions (Classic / Volume)",
-      "name_zh": "专业蚕丝睫毛嫁接 (经典/多簇浓密)",
-      "name_ja": "デザインまつげエクステ（セーブルラッシュ）",
-      "name_ko": "실크 속눈썹 연장 (클래식 / 볼륨 디자인)",
-      "duration_vi": "75 phút",
-      "duration_en": "75 min",
-      "duration_zh": "75分钟",
-      "duration_ja": "75分",
-      "duration_ko": "75분",
-      "price_vnd": 650000,
-      "desc_vi": "Sợi mi tơ lụa siêu nhẹ, không cộm ngứa, bền đẹp tự nhiên từ 4-6 tuần.",
-      "desc_en": "Featherlight silk lash extensions customized to flatter your eye shape naturally.",
-      "desc_zh": "轻若羽毛的优质蚕丝材质，根据眼型量身定制设计，持久服帖4至6周。",
-      "desc_ja": "つけているのを忘れるほど軽やかな極上セーブル毛。目元に合わせて自然に美しく。",
-      "desc_ko": "이물감 없이 가볍고 부드러운 고급 실크모로 눈매에 맞춘 자연스러운 연출 (4~6주 지속).",
-      "image": "assets/images/facial_gold_care.jpg",
-      "popular": true
-    },
-    {
-      "id": "eye-2",
-      "name_vi": "Uốn Mi Cong Tự Nhiên & Phủ Collagen",
-      "name_en": "Lash Lift & Collagen Nourishing Tint",
-      "name_zh": "胶原蛋白卷烫美睫与深层滋养",
-      "name_ja": "まつげパーマ＆コラーゲン補修トリートメント",
-      "name_ko": "속눈썹 펌 & 콜라겐 영양 틴팅",
-      "duration_vi": "45 phút",
-      "duration_en": "45 min",
-      "duration_zh": "45分钟",
-      "duration_ja": "45分",
-      "duration_ko": "45분",
-      "price_vnd": 350000,
-      "desc_vi": "Uốn cong mi thật bằng dưỡng chất collagen, hàng mi cong vút tự nhiên không lo gãy rụng.",
-      "desc_en": "Lash lift and tint creating stunning, open-eyed curl that lasts up to 2 months without mascara.",
-      "desc_zh": "蕴含水解胶原蛋白，自然卷翘提升自身睫毛，无需睫毛膏即可保持明眸电眼达2个月。",
-      "desc_ja": "自まつげを根元から立ち上げ、コラーゲンで保湿しながら印象的なカールを約2ヶ月キープ。",
-      "desc_ko": "콜라겐 영양 공급과 함께 본인 속눈썹을 또렷하게 컬링하여 마스카라 없이도 2달간 지속.",
-      "image": "assets/images/facial_gold_care.jpg"
-    },
-    {
-      "id": "eye-3",
-      "name_vi": "Tháo Mi Nối An Toàn & Dưỡng Mi Thật",
-      "name_en": "Gentle Safe Lash Removal",
-      "name_zh": "温和无痛卸除睫毛",
-      "name_ja": "まつげエクステ安全オフ＆ケア",
-      "name_ko": "속눈썹 무자극 쏙오프 & 영양 케어",
-      "duration_vi": "20 phút",
-      "duration_en": "20 min",
-      "duration_zh": "20分钟",
-      "duration_ja": "20分",
-      "duration_ko": "20분",
-      "price_vnd": 250000,
-      "desc_vi": "Kem tháo mi chuyên dụng không cay mắt, giữ nguyên vẹn hàng mi thật.",
-      "desc_en": "Gentle, pain-free lash removal cream protecting your natural eyelashes completely.",
-      "desc_zh": "植物配方温和卸胶膏，不熏眼不伤真睫毛，清洁彻底护养毛囊。",
-      "desc_ja": "目にしみない専用クリームを使用し、自まつげを守りながら優しく綺麗にオフ。",
-      "desc_ko": "눈 시림 없는 전용 리무버로 본래의 속눈썹 손상 없이 안전하게 제거합니다.",
-      "image": "assets/images/facial_gold_care.jpg"
-    },
-    {
-      "id": "eye-4",
-      "name_vi": "Nhuộm Màu Chân Mày Thảo Dược Tự Nhiên",
-      "name_en": "Herbal Eyebrow Tinting & Shaping",
-      "name_zh": "草本天然植物染眉定型",
-      "name_ja": "オーガニックハーブ眉カラー＆スタイリング",
-      "name_ko": "천연 허브 아이브로우 틴팅 & 정돈",
-      "duration_vi": "30 phút",
-      "duration_en": "30 min",
-      "duration_zh": "30分钟",
-      "duration_ja": "30分",
-      "duration_ko": "30분",
-      "price_vnd": 250000,
-      "desc_vi": "Nhuộm chân mày màu nâu đen hoặc hạt dẻ tự nhiên, hài hòa gương mặt.",
-      "desc_en": "Custom herbal brow tinting enhancing tone and defining natural arches.",
-      "desc_zh": "精选天然草本植物染料，调制自然棕黑或咖啡色，与发色肤色浑然一体。",
-      "desc_ja": "天然ハーブ成分で眉を優しくカラーリングし、お顔の骨格に合わせた立体美を演出。",
-      "desc_ko": "천연 허브 염료로 피부 톤과 헤어 컬러에 맞게 자연스럽고 또렷한 눈썹 톤 연출.",
-      "image": "assets/images/facial_gold_care.jpg"
-    }
-  ]
-};
+  const spaMenuData = window.IVY_MENU; // dữ liệu ở js/menu-data.js
 
   // =========================================================================
   // CURRENCY FORMATTER HELPER
@@ -2751,33 +1581,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update active class on mobile drawer language pills
-    document.querySelectorAll('.ms-lang-pill').forEach(pill => {
-      if (pill.getAttribute('data-lang') === lang) {
-        pill.classList.add('active');
-      } else {
-        pill.classList.remove('active');
-      }
+    // Đồng bộ lá cờ trên nút chọn ngôn ngữ ở header (máy tính) và nút nổi (điện thoại)
+    [['hl-current-flag', 'hl-current-code'], ['fl-current-flag', 'fl-current-code']].forEach(([flagId, codeId]) => {
+      const flagEl = document.getElementById(flagId);
+      const codeEl = document.getElementById(codeId);
+      if (flagEl) flagEl.textContent = langMeta.flag;
+      if (codeEl) codeEl.textContent = langMeta.code;
     });
-
-    // Update desktop header language picker
-    const hlCurrentFlag = document.getElementById('hl-current-flag');
-    const hlCurrentCode = document.getElementById('hl-current-code');
-    if (hlCurrentFlag) hlCurrentFlag.textContent = langMeta.flag;
-    if (hlCurrentCode) hlCurrentCode.textContent = langMeta.code;
-    document.querySelectorAll('.hl-opt-item').forEach(item => {
-      if (item.getAttribute('data-lang') === lang) {
-        item.classList.add('active');
-      } else {
-        item.classList.remove('active');
-      }
+    document.querySelectorAll('.hl-opt-item, .fl-opt-item').forEach(opt => {
+      const isActive = opt.getAttribute('data-lang') === lang;
+      opt.classList.toggle('active', isActive);
+      if (opt.classList.contains('fl-opt-item')) opt.setAttribute('aria-selected', isActive ? 'true' : 'false');
     });
-
-    // Update floating quick toggle if present
-    const flCurrentFlag = document.getElementById('fl-current-flag');
-    const flCurrentCode = document.getElementById('fl-current-code');
-    if (flCurrentFlag) flCurrentFlag.textContent = langMeta.flag;
-    if (flCurrentCode) flCurrentCode.textContent = langMeta.code;
+    document.documentElement.lang = lang;
 
     // Update active class on mobile dropdown popover list
     document.querySelectorAll('.mobile-lang-list li').forEach(item => {
@@ -2800,6 +1616,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Re-render menu cards in the active language
     renderSpaMenu();
 
+    // Ưu đãi Admin đăng (đổi ngôn ngữ hiển thị)
+    renderLivePromos();
+
     // Re-render Zen sound cards & track display
     if (typeof renderZenSectionTrackCards === 'function') {
       renderZenSectionTrackCards();
@@ -2807,6 +1626,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof updateZenTrackDisplay === 'function') {
       updateZenTrackDisplay();
     }
+
+    // Dịch nốt mọi chữ không gắn data-i18n (js/i18n-en.js); 'vi' thì trả lại chữ gốc
+    if (typeof window.ivyAutoTranslate === 'function') window.ivyAutoTranslate(lang);
 
     // Save language preference
     localStorage.setItem('ivy_lang', lang);
@@ -2818,9 +1640,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const guestData = {
       vi: [
         { val: '1', label: '1 Khách' },
-        { val: '2', label: '2 Khách (Cặp đôi)' },
+        { val: '2', label: '2 Khách (Đi 2 người / Cặp đôi)' },
         { val: '3', label: '3 Khách' },
-        { val: '4', label: '4 Khách (Gia đình / Bạn bè)' },
+        { val: '4', label: '4 Khách (Nhóm gia đình / bạn bè)' },
         { val: '5', label: '5 Khách' },
         { val: '6', label: '6 Khách' },
         { val: '7', label: '7 Khách' },
@@ -2834,7 +1656,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       en: [
         { val: '1', label: '1 Guest' },
-        { val: '2', label: '2 Guests (Couple)' },
+        { val: '2', label: '2 Guests (Couple / Pair)' },
         { val: '3', label: '3 Guests' },
         { val: '4', label: '4 Guests (Family / Friends)' },
         { val: '5', label: '5 Guests' },
@@ -3083,7 +1905,7 @@ document.addEventListener('DOMContentLoaded', () => {
       spaMenuData[cat].forEach(item => {
         const name = item['name_' + lang] || item.name_en || item.name_vi;
         const priceStr = formatPrice(item.price_vnd, item.price_vnd_max);
-        optionsHtml += `<option value="${name} (${priceStr})">${name} (${priceStr})</option>`;
+        optionsHtml += `<option value="${name} (${priceStr})" data-price="${item.price_vnd || 0}" data-name="${String(name).replace(/"/g, '&quot;')}">${name} (${priceStr})</option>`;
       });
       optionsHtml += `</optgroup>`;
     }
@@ -3109,7 +1931,7 @@ document.addEventListener('DOMContentLoaded', () => {
       state.language = newLang;
       updatePageLanguage();
       const conf = languageConfig[newLang] || { name: newLang.toUpperCase(), flag: '🌐' };
-      showToast(`${conf.flag} Ngôn ngữ / Language: ${conf.name}`);
+      showToast(newLang === 'vi' ? `${conf.flag} Ngôn ngữ: ${conf.name}` : `${conf.flag} Language: ${conf.name}`);
     });
   }
 
@@ -3139,7 +1961,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updatePageLanguage();
         if (mobileLangWrap) mobileLangWrap.classList.remove('open');
         const conf = languageConfig[newLang];
-        showToast(`${conf.flag} Ngôn ngữ / Language: ${conf.name}`);
+        showToast(newLang === 'vi' ? `${conf.flag} Ngôn ngữ: ${conf.name}` : `${conf.flag} Language: ${conf.name}`);
       }
     });
   });
@@ -3152,7 +1974,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.language = newLang;
         updatePageLanguage();
         const conf = languageConfig[newLang];
-        showToast(`${conf.flag} Ngôn ngữ / Language: ${conf.name}`);
+        showToast(newLang === 'vi' ? `${conf.flag} Ngôn ngữ: ${conf.name}` : `${conf.flag} Language: ${conf.name}`);
       }
     });
   });
@@ -3228,7 +2050,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return document.getElementById('booking-modal');
   }
 
-  function openBookingModalWithService(serviceName = '') {
+  // Ghi nhận khách đã tự đổi số khách ở thanh đặt lịch đầu trang (mặc định ở đó là 2)
+  document.getElementById('hero-select-guests')?.addEventListener('change', (e) => { e.target.dataset.touched = '1'; });
+
+  function openBookingModalWithService(serviceName = '', listedPrice = 0) {
     const modal = getBookingModal();
     if (modal) {
       modal.classList.add('active');
@@ -3290,20 +2115,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalCustomGuests = document.getElementById('modal-custom-guests');
     const modalGuestModeText = document.getElementById('modal-guest-mode-text');
 
-    if (modalGuestsSelect) {
-      if (heroIsGuestCustom && heroCustomGuests?.value) {
-        modalGuestsSelect.style.display = 'none';
-        if (modalCustomGuests) {
-          modalCustomGuests.style.display = 'block';
-          modalCustomGuests.value = heroCustomGuests.value;
-        }
-        if (modalGuestModeText) modalGuestModeText.textContent = getModeLabel('list');
-      } else if (heroGuestVal && heroGuestVal !== 'custom') {
-        modalGuestsSelect.style.display = 'block';
-        modalGuestsSelect.value = heroGuestVal;
-        if (modalCustomGuests) modalCustomGuests.style.display = 'none';
-        if (modalGuestModeText) modalGuestModeText.textContent = getModeLabel('custom');
-      }
+    // Số khách: luôn mở ô tự nhập số người; mặc định 1 (trừ khi khách đã tự chọn số khách ở thanh đặt lịch đầu trang)
+    if (modalGuestsSelect && modalCustomGuests) {
+      let n = 1;
+      if (heroIsGuestCustom && heroCustomGuests?.value) n = parseInt(heroCustomGuests.value, 10) || 1;
+      else if (heroGuestsSelect && heroGuestsSelect.dataset.touched && heroGuestVal && heroGuestVal !== 'custom') n = parseInt(heroGuestVal, 10) || 1;
+      modalGuestsSelect.style.display = 'none';
+      modalCustomGuests.style.display = 'block';
+      modalCustomGuests.value = String(Math.max(1, n));
+      if (modalGuestModeText) modalGuestModeText.textContent = getModeLabel('list');
     }
     if (heroLocation && modalBranch) modalBranch.value = heroLocation;
 
@@ -3311,12 +2131,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const serviceInput = document.getElementById('modal-service-select');
       if (serviceInput) {
         const options = Array.from(serviceInput.options);
-        const match = options.find(opt => opt.value === serviceName || opt.text.includes(serviceName.split(' (')[0]));
+        // Bỏ phần giá ở cuối: "(800.000 ₫)", "(800.000 VNĐ)", "(800.000đ)"
+        const bare = serviceName.replace(/\s*\([^()]*(₫|đ|vnđ|vnd)\)\s*$/i, '').trim();
+        // Dịch vụ trong Bảng giá (tên ở bất kỳ ngôn ngữ nào, không phân biệt hoa thường) → lựa chọn đúng ở ngôn ngữ đang hiển thị
+        const norm = (x) => String(x || '').normalize('NFC').toLowerCase().replace(/\s+/g, ' ').trim();
+        let shown = '';
+        for (const cat in spaMenuData) {
+          const it = spaMenuData[cat].find(i => Object.keys(i).some(k => k.startsWith('name_') && norm(i[k]) === norm(bare)));
+          if (it) { shown = it['name_' + state.language] || it.name_en || it.name_vi; break; }
+        }
+        const byName = (n) => n && options.find(opt => norm(opt.getAttribute('data-name')) === norm(n));
+        const match = options.find(opt => opt.value === serviceName) || byName(shown) || byName(bare);
+        const unit = getServicePriceVND(serviceName) || listedPrice;
         if (match) {
           serviceInput.value = match.value;
-        } else {
+        } else if (unit) {
+          // Dịch vụ / ưu đãi mới đăng từ Dashboard (ngoài Bảng giá) nhưng có giá: thêm 1 lần vào danh sách
+          let opt = options.find(o => o.value === serviceName);
+          if (!opt) {
+            opt = document.createElement('option');
+            opt.value = serviceName;
+            opt.textContent = serviceName;
+            opt.setAttribute('data-name', bare);
+            opt.setAttribute('data-price', unit);
+            serviceInput.appendChild(opt);
+          }
           serviceInput.value = serviceName;
         }
+        // Không phải dịch vụ (VD: nút "Discover more" của phòng/không gian) → giữ dịch vụ đang chọn, không tạo dòng giá 0đ
       }
     }
     updateModalBookingPriceAndQR();
@@ -3426,8 +2268,6 @@ document.addEventListener('DOMContentLoaded', () => {
           card.style.display = 'none';
         }
       });
-      const drawerBody = document.getElementById('ms-drawer-body');
-      if (drawerBody) drawerBody.scrollTop = 0;
     });
   });
 
@@ -3436,9 +2276,12 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const s = btn.getAttribute('data-service') || '';
+      // Giá niêm yết in trên thẻ (khoảng giá → giá khởi điểm) để tính đúng khi tên khác Bảng giá
+      const listed = btn.closest('.ms-service-footer')?.querySelector('.ms-price-original')?.textContent || '';
+      const listedPrice = parseInt(listed.split('-')[0].replace(/[^\d]/g, ''), 10) || 0;
       closeMobileServicesDrawer();
       setTimeout(() => {
-        openBookingModalWithService(s);
+        openBookingModalWithService(s, listedPrice);
       }, 150);
     });
   });
@@ -3448,15 +2291,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const lang = btn.getAttribute('data-lang');
       if (lang) {
-        if (typeof window.changeSiteLanguage === 'function') {
-          window.changeSiteLanguage(lang);
-        } else {
-          document.querySelectorAll('.ms-lang-pill').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          state.language = lang;
-          localStorage.setItem('ivy_lang', lang);
-          updatePageLanguage();
-        }
+        document.querySelectorAll('.ms-lang-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.language = lang;
+        localStorage.setItem('ivy_lang', lang);
+        updatePageLanguage();
       }
     });
   });
@@ -3716,21 +2555,35 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
 
   // Helper: Get service price by name or ID
+  // Giá 1 khách của dịch vụ theo Bảng giá (đã áp bản sửa của Admin). Nhận tên ở mọi ngôn ngữ,
+  // có hoặc không kèm phần "(giá ₫)" ở cuối như trong danh sách đặt lịch.
   function getServicePriceVND(serviceName) {
-    if (!serviceName) return 500000;
+    const label = String(serviceName || '').trim();
+    if (!label) return 0;
+    const norm = (x) => String(x || '').normalize('NFC').toLowerCase().replace(/\s+/g, ' ').trim();
+    const priceTail = /\s*\(([^()]*(₫|đ|VNĐ|VND))\)\s*$/i;
+    const names = [label, label.replace(priceTail, '')].map(norm);
     for (const cat in spaMenuData) {
-      const match = spaMenuData[cat].find(s => 
-        (s.name_vi && s.name_vi.toLowerCase() === serviceName.toLowerCase()) ||
-        (s.name_en && s.name_en.toLowerCase() === serviceName.toLowerCase()) ||
-        serviceName.includes(s.name_vi) || (s.name_vi && s.name_vi.includes(serviceName))
-      );
-      if (match && match.price_vnd) return match.price_vnd;
+      for (const item of spaMenuData[cat]) {
+        const itemNames = Object.keys(item).filter(k => k.startsWith('name_')).map(k => norm(item[k]));
+        if (names.some(n => itemNames.includes(n))) return item.price_vnd || 0;
+      }
     }
-    // Fallback based on typical prices
-    if (serviceName.includes('COMBO 1') || serviceName.includes('800')) return 800000;
-    if (serviceName.includes('COMBO 3') || serviceName.includes('120') || serviceName.includes('1000')) return 1000000;
-    if (serviceName.includes('COMBO 2') || serviceName.includes('450')) return 450000;
-    return 650000;
+    // Dịch vụ ngoài Bảng giá: lấy số tiền ghi trong ngoặc (khoảng giá → giá thấp nhất)
+    const m = priceTail.exec(label);
+    if (m) {
+      const n = parseInt(m[1].split('-')[0].replace(/[^\d]/g, ''), 10);
+      if (n) return n;
+    }
+    return 0;
+  }
+
+  // Giá 1 khách của dịch vụ đang chọn trong hộp đặt lịch (ưu tiên giá gắn sẵn trên lựa chọn)
+  function selectedServiceUnitPrice() {
+    const sel = document.getElementById('modal-service-select');
+    const opt = sel && sel.selectedOptions && sel.selectedOptions[0];
+    const fromOpt = opt ? parseInt(opt.getAttribute('data-price') || '0', 10) : 0;
+    return fromOpt || getServicePriceVND(sel ? sel.value : '');
   }
 
   // Copy helper with feedback toast
@@ -3776,8 +2629,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (guests < 1) guests = 1;
 
-    // Base price
-    const basePrice = getServicePriceVND(serviceName);
+    // Thành tiền = Đơn giá × Số khách; Ưu đãi QR = ROUND(Thành tiền × 10%)
+    const basePrice = selectedServiceUnitPrice();
     const totalOrig = basePrice * guests;
     const discount10 = Math.round(totalOrig * 0.10);
     const finalDiscountedPrice = totalOrig - discount10;
@@ -3902,7 +2755,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window._currentBookingCode = null; // Reset for next booking
 
       // Price calculation
-      let basePrice = getServicePriceVND(service);
+      let basePrice = selectedServiceUnitPrice();
       let guestCount = parseInt(guests, 10) || 1;
       if (guestCount < 1) guestCount = 1;
       let totalPrice = basePrice * guestCount;
@@ -3941,45 +2794,58 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('ivy_bookings', JSON.stringify(bookingsList));
       } catch (err) {}
 
-      const cleanPhone = '84989713660';
+      // Bước 1: lưu đơn + số tiền lên máy chủ (CRM, gắn đối tác giới thiệu để đo doanh số Affiliate)
+      const payKind = payMethod === 'cash' ? 'cash' : 'qr';
+      const notes = document.getElementById('modal-notes')?.value || '';
       const modalBody = document.querySelector('.modal-body');
-
-      // IF QR PAYMENT SELECTED -> SHOW SEPAY AUTOMATED PAYMENT SCREEN WITH 10% DISCOUNT
-      if (payMethod === 'qr-discount-10' || payMethod === 'sepay-qr' || payMethod === 'deposit') {
-        renderSePayPaymentScreen(modalBody, {
-          bookingCode,
-          name,
-          phone,
-          service,
-          branch,
-          date,
-          time,
-          guests,
-          payableAmount,
-          payMethodLabel,
-          affCode
-        });
-        return;
-      }
-
-      // IF CASH PAYMENT -> DISPLAY INSTANT SUCCESS VIEW
-      renderCashBookingSuccess(modalBody, {
-        bookingCode,
+      const data = {
+        bookingCode, name, phone, service: String(service).replace(/\s*\([^()]*(₫|đ|vnđ|vnd)\)\s*$/i, ''), branch, date, time,
+        guests: state.language === 'vi' ? guestCount + ' khách' : guestCount + (guestCount > 1 ? ' guests' : ' guest'),
+        totalPrice, discountAmount: totalPrice - payableAmount, payableAmount, payKind, affCode,
+      };
+      if (modalBody) modalBody.innerHTML = `<div style="text-align:center;padding:60px 15px;color:#5A6560;"><i class="fa fa-spinner fa-spin" style="font-size:2rem;color:#D4AF37;"></i><p style="margin-top:14px;">${T('Đang tạo đơn đặt dịch vụ…', 'Creating your booking…')}</p></div>`;
+      sendLead({
         name,
         phone,
-        service,
-        branch,
-        date,
-        time,
-        guests,
-        totalPrice,
-        affCode,
-        cleanPhone
+        need: `Đặt lịch: ${service} — ${date} ${time} — ${guests}${notes ? ' — Ghi chú: ' + notes : ''} (Mã ${bookingCode})`,
+        source: 'booking',
+        booking: { code: bookingCode, service, guests: guestCount, date, time, pay: payKind, unit: basePrice },
+      }).then(({ ok, data: res }) => {
+        // Số tiền theo Bảng giá trên máy chủ (đã trừ 10% nếu trả trước QR)
+        if (ok && res.booking) {
+          data.totalPrice = res.booking.gross;
+          data.discountAmount = res.booking.discount;
+          data.payableAmount = res.booking.total;
+        }
+        if (payKind === 'qr') renderSePayPaymentScreen(modalBody, data);
+        else renderBookingSuccess(modalBody, data);
       });
     });
   }
 
-  // Render SePay Automated Payment Screen (Sacombank 020113149011 - HKD IVY LUXE SPA)
+  const T = (vi, en) => (state.language === 'vi' ? vi : en);
+  const vnd = (n) => Number(n || 0).toLocaleString('vi-VN') + 'đ';
+
+  // Thanh tiến trình: 1 Thông tin & thanh toán → 2 Xác nhận thanh toán → 3 Đặt dịch vụ thành công
+  function bookingSteps(active) {
+    const steps = [T('Thông tin', 'Details'), T('Thanh toán', 'Payment'), T('Hoàn tất', 'Done')];
+    return `<div class="ivy-steps">${steps.map((t, i) => `<div class="ivy-step${i < active ? ' done' : i === active ? ' on' : ''}"><span>${i < active ? '<i class="fa fa-check"></i>' : i + 1}</span><small>${t}</small></div>`).join('<i class="ivy-step-line"></i>')}</div>`;
+  }
+
+  // Hoá đơn: giá niêm yết, ưu đãi trả trước QR −10%, thành tiền
+  function bookingInvoice(data, paidLabel) {
+    const row = (k, v, cls = '') => `<div class="ivy-inv-row ${cls}"><span>${k}</span><b>${v}</b></div>`;
+    return `<div class="ivy-invoice">
+      ${row(T('Mã đơn', 'Booking code'), `<span style="color:#B8932A;">${authEscape(data.bookingCode)}</span>`)}
+      ${row(T('Dịch vụ', 'Service'), authEscape(data.service))}
+      ${row(T('Thời gian', 'Time'), `${authEscape(data.date)} · ${authEscape(data.time)} · ${authEscape(String(data.guests))}`)}
+      ${row(T('Giá niêm yết', 'Listed price'), vnd(data.totalPrice))}
+      ${data.discountAmount ? row(T('Ưu đãi trả trước qua QR (−10%)', 'QR prepayment discount (−10%)'), '−' + vnd(data.discountAmount), 'ivy-inv-discount') : ''}
+      ${row(paidLabel, vnd(data.payableAmount), 'ivy-inv-total')}
+    </div>`;
+  }
+
+  // Bước 2–3: màn thanh toán QR — hoá đơn đã tự trừ 10%
   function renderSePayPaymentScreen(container, data) {
     if (!container) return;
 
@@ -3988,265 +2854,117 @@ document.addEventListener('DOMContentLoaded', () => {
     const bankOwner = 'HKD IVY LUXE SPA';
     const transferMemo = data.bookingCode;
     const amountStr = data.payableAmount.toLocaleString('vi-VN');
-
-    // Dynamic VietQR via SePay / VietQR API
     const sepayQrUrl = `https://qr.sepay.vn/img?acc=${bankAcc}&bank=${bankName}&amount=${data.payableAmount}&des=${transferMemo}&template=compact`;
     const officialCardImg = 'assets/images/sacombank_qr.png';
+    const copyBtn = (v, title) => `<button type="button" class="sepay-btn-copy-sm" data-copy="${v}" title="${title}"><i class="fa fa-clone"></i> Copy</button>`;
 
     container.innerHTML = `
       <div class="sepay-checkout-wrap">
+        ${bookingSteps(1)}
         <div class="sepay-checkout-header">
-          <span class="sepay-order-code-badge"><i class="fa fa-ticket"></i> Mã Đơn: <strong>${data.bookingCode}</strong></span>
-          <div style="font-size:0.86rem; color:#5A6560; margin-bottom:4px;">Số Tiền Thanh Toán:</div>
+          <div style="font-size:0.86rem; color:#5A6560; margin-bottom:4px;">${T('Số tiền thanh toán (đã giảm 10%):', 'Amount to pay (10% off applied):')}</div>
           <h2 class="sepay-total-amount">${amountStr} VNĐ</h2>
-          <div style="font-size:0.78rem; color:#25D366; font-weight:700;">✓ ${data.payMethodLabel}</div>
         </div>
+        ${bookingInvoice(data, T('Số tiền cần chuyển khoản', 'Amount to transfer'))}
 
-        <!-- QR Code Center Display -->
         <div class="sepay-qr-center">
-          <img id="sepay-active-qr" src="${sepayQrUrl}" alt="Mã QR SePay Sacombank" class="sepay-qr-img" onerror="this.src='${officialCardImg}'">
+          <img id="sepay-active-qr" src="${sepayQrUrl}" alt="QR Sacombank" class="sepay-qr-img" onerror="this.src='${officialCardImg}'">
         </div>
-
         <div class="sepay-qr-switch-btns">
-          <button type="button" class="sepay-btn-toggle-qr active" id="btn-qr-dynamic">
-            <i class="fa fa-qrcode"></i> Mã QR Nhanh (Đã kèm số tiền)
-          </button>
-          <button type="button" class="sepay-btn-toggle-qr" id="btn-qr-official">
-            <i class="fa fa-id-card-o"></i> Thẻ Sacombank Gốc
-          </button>
+          <button type="button" class="sepay-btn-toggle-qr active" id="btn-qr-dynamic"><i class="fa fa-qrcode"></i> ${T('Mã QR nhanh (đã kèm số tiền)', 'Quick QR (amount included)')}</button>
+          <button type="button" class="sepay-btn-toggle-qr" id="btn-qr-official"><i class="fa fa-id-card-o"></i> ${T('Thẻ Sacombank gốc', 'Sacombank card')}</button>
         </div>
 
-        <!-- Bank Details Table with 1-click Copy -->
         <div class="sepay-bank-details-box">
-          <div class="sepay-detail-row">
-            <span class="sepay-detail-label">Ngân hàng thụ hưởng:</span>
-            <span class="sepay-detail-value">
-              <strong>Sacombank</strong> (CN Thăng Long / Hà Nội)
-            </span>
-          </div>
-
-          <div class="sepay-detail-row">
-            <span class="sepay-detail-label">Số tài khoản:</span>
-            <span class="sepay-detail-value">
-              <strong style="color:#0053A0; font-size:1.05rem;">${bankAcc}</strong>
-              <button type="button" class="sepay-btn-copy-sm" data-copy="${bankAcc}" title="Sao chép STK">
-                <i class="fa fa-clone"></i> Copy
-              </button>
-            </span>
-          </div>
-
-          <div class="sepay-detail-row">
-            <span class="sepay-detail-label">Chủ tài khoản:</span>
-            <span class="sepay-detail-value">
-              <strong>${bankOwner}</strong>
-            </span>
-          </div>
-
-          <div class="sepay-detail-row">
-            <span class="sepay-detail-label">Số tiền chuyển:</span>
-            <span class="sepay-detail-value">
-              <strong style="color:#B22222;">${amountStr}đ</strong>
-              <button type="button" class="sepay-btn-copy-sm" data-copy="${data.payableAmount}" title="Sao chép số tiền">
-                <i class="fa fa-clone"></i> Copy
-              </button>
-            </span>
-          </div>
-
-          <div class="sepay-detail-row">
-            <span class="sepay-detail-label">Nội dung chuyển khoản:</span>
-            <span class="sepay-detail-value">
-              <strong style="color:#D4AF37; background:#0F241A; color:#FFE082; padding:2px 8px; border-radius:4px;">${transferMemo}</strong>
-              <button type="button" class="sepay-btn-copy-sm" data-copy="${transferMemo}" title="Sao chép nội dung">
-                <i class="fa fa-clone"></i> Copy
-              </button>
-            </span>
-          </div>
-        </div>
-
-        <!-- SePay Live Status Detector -->
-        <div class="sepay-pulsing-detector">
-          <i class="fa fa-spinner"></i>
-          <span>Hệ thống SePay đang tự động lắng nghe giao dịch từ Ngân hàng Sacombank...</span>
+          <div class="sepay-detail-row"><span class="sepay-detail-label">${T('Ngân hàng thụ hưởng:', 'Bank:')}</span><span class="sepay-detail-value"><strong>Sacombank</strong></span></div>
+          <div class="sepay-detail-row"><span class="sepay-detail-label">${T('Số tài khoản:', 'Account number:')}</span><span class="sepay-detail-value"><strong style="color:#0053A0; font-size:1.05rem;">${bankAcc}</strong> ${copyBtn(bankAcc, 'STK')}</span></div>
+          <div class="sepay-detail-row"><span class="sepay-detail-label">${T('Chủ tài khoản:', 'Account holder:')}</span><span class="sepay-detail-value"><strong>${bankOwner}</strong></span></div>
+          <div class="sepay-detail-row"><span class="sepay-detail-label">${T('Số tiền chuyển:', 'Amount:')}</span><span class="sepay-detail-value"><strong style="color:#B22222;">${amountStr}đ</strong> ${copyBtn(data.payableAmount, 'Amount')}</span></div>
+          <div class="sepay-detail-row"><span class="sepay-detail-label">${T('Nội dung chuyển khoản:', 'Transfer note:')}</span><span class="sepay-detail-value"><strong style="background:#0F241A; color:#FFE082; padding:2px 8px; border-radius:4px;">${transferMemo}</strong> ${copyBtn(transferMemo, 'Memo')}</span></div>
         </div>
 
         <button type="button" id="btn-sepay-paid-confirm" class="sepay-verify-btn">
-          <i class="fa fa-check-circle"></i> TÔI ĐÃ CHUYỂN KHOẢN THÀNH CÔNG
+          <i class="fa fa-check-circle"></i> ${T('TÔI ĐÃ CHUYỂN KHOẢN THÀNH CÔNG', 'I HAVE COMPLETED THE TRANSFER')}
         </button>
-
-        <p style="font-size:0.76rem; color:#7E968C; margin-top:12px; line-height:1.4;">
-          <i class="fa fa-lock" style="color:#25D366;"></i> Cổng thanh toán tự động SePay kết nối trực tiếp tài khoản Sacombank <strong>020113149011 (HKD IVY LUXE SPA)</strong> an toàn tuyệt đối.
+        <p style="font-size:0.78rem; color:#7E968C; margin-top:12px; line-height:1.5;">
+          <i class="fa fa-lock" style="color:#25D366;"></i> ${T('Chuyển khoản tới tài khoản Sacombank <strong>020113149011 (HKD IVY LUXE SPA)</strong>. IVY LUXE đối soát giao dịch và xác nhận với bạn qua điện thoại / Zalo.', 'Transfer to Sacombank account <strong>020113149011 (HKD IVY LUXE SPA)</strong>. IVY LUXE will verify the payment and confirm with you by phone / Zalo.')}
         </p>
       </div>
     `;
 
-    // Toggle QR View (Dynamic vs Official Card)
     const qrImg = document.getElementById('sepay-active-qr');
     const btnDyn = document.getElementById('btn-qr-dynamic');
     const btnOff = document.getElementById('btn-qr-official');
-
     if (btnDyn && btnOff && qrImg) {
-      btnDyn.addEventListener('click', () => {
-        qrImg.src = sepayQrUrl;
-        btnDyn.classList.add('active');
-        btnOff.classList.remove('active');
-      });
-      btnOff.addEventListener('click', () => {
-        qrImg.src = officialCardImg;
-        btnOff.classList.add('active');
-        btnDyn.classList.remove('active');
-      });
+      btnDyn.addEventListener('click', () => { qrImg.src = sepayQrUrl; btnDyn.classList.add('active'); btnOff.classList.remove('active'); });
+      btnOff.addEventListener('click', () => { qrImg.src = officialCardImg; btnOff.classList.add('active'); btnDyn.classList.remove('active'); });
     }
 
-    // 1-Click Copy Buttons
     container.querySelectorAll('.sepay-btn-copy-sm').forEach(btn => {
       btn.addEventListener('click', () => {
         const text = btn.getAttribute('data-copy');
-        if (!text) return;
+        if (!text || !navigator.clipboard) return;
         navigator.clipboard.writeText(text).then(() => {
           const original = btn.innerHTML;
-          btn.innerHTML = '<i class="fa fa-check"></i> Xong';
-          btn.style.background = '#25D366';
-          btn.style.color = '#FFF';
-          setTimeout(() => {
-            btn.innerHTML = original;
-            btn.style.background = '';
-            btn.style.color = '';
-          }, 1800);
+          btn.innerHTML = '<i class="fa fa-check"></i> OK';
+          setTimeout(() => { btn.innerHTML = original; }, 1500);
         });
       });
     });
 
-    // "Tôi đã chuyển khoản" button -> Simulate instant SePay verification & success
+    // Khách bấm "Tôi đã chuyển khoản" → ghi nhận lên máy chủ (chờ spa xác nhận) → báo đặt dịch vụ thành công
     const confirmBtn = document.getElementById('btn-sepay-paid-confirm');
     if (confirmBtn) {
       confirmBtn.addEventListener('click', () => {
-        confirmBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Đang đối soát SePay...';
+        confirmBtn.innerHTML = `<i class="fa fa-spinner fa-spin"></i> ${T('Đang ghi nhận thanh toán…', 'Recording your payment…')}`;
         confirmBtn.disabled = true;
-
-        setTimeout(() => {
-          // Update Booking Status to PAID in LocalStorage
+        fetch('/api/leads?a=paid', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code: data.bookingCode, phone: data.phone }),
+        }).catch(() => {}).finally(() => {
           try {
             const bookingsList = JSON.parse(localStorage.getItem('ivy_bookings') || '[]');
             const b = bookingsList.find(x => x.id === data.bookingCode);
-            if (b) {
-              b.status = 'Đã thanh toán (Sacombank SePay)';
-              b.paymentStatus = 'Đã thanh toán qua Sacombank';
-              localStorage.setItem('ivy_bookings', JSON.stringify(bookingsList));
-            }
-
-            // Record SePay Transaction
-            const txList = JSON.parse(localStorage.getItem('ivy_transactions') || '[]');
-            txList.unshift({
-              id: 'TX' + Date.now(),
-              bookingCode: data.bookingCode,
-              customerName: data.name,
-              amount: data.payableAmount,
-              bank: 'Sacombank',
-              accountNumber: bankAcc,
-              accountName: bankOwner,
-              gateway: 'SePay VietQR',
-              status: 'THÀNH CÔNG',
-              time: new Date().toLocaleString('vi-VN')
-            });
-            localStorage.setItem('ivy_transactions', JSON.stringify(txList));
+            if (b) { b.status = 'Đã chuyển khoản – chờ spa xác nhận'; b.paymentStatus = 'Đã chuyển khoản QR'; b.payableAmount = data.payableAmount; }
+            localStorage.setItem('ivy_bookings', JSON.stringify(bookingsList));
           } catch (e) {}
-
-          // Display Luxury Success Receipt
-          renderPaymentSuccessReceipt(container, data);
-        }, 1200);
+          renderBookingSuccess(container, data);
+        });
       });
     }
   }
 
-  // Render Payment Success Receipt
-  function renderPaymentSuccessReceipt(container, data) {
+  // Bước 4–5: đặt dịch vụ thành công + lời cảm ơn
+  function renderBookingSuccess(container, data) {
+    if (!container) return;
     const cleanPhone = '84989713660';
-    const message = `Hello IVY LUXE SPA, I have successfully paid for my booking:
+    const qr = data.payKind === 'qr';
+    const message = `Hello IVY LUXE SPA, my booking:
 - Booking Code: ${data.bookingCode}
 - Name: ${data.name}
 - Phone: ${data.phone}
 - Service: ${data.service}
 - Date: ${data.date} at ${data.time}
-- Amount Paid: ${data.payableAmount.toLocaleString('vi-VN')}đ via Sacombank SePay`;
+- ${qr ? 'Paid by QR: ' + vnd(data.payableAmount) + ' (10% off)' : 'Pay at the spa: ' + vnd(data.payableAmount)}`;
     const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
 
     container.innerHTML = `
-      <div style="text-align:center;padding:30px 15px;">
-        <div style="width:75px;height:75px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 0 30px rgba(37,211,102,0.4);color:#FFF;font-size:2rem;">
-          <i class="fa fa-check"></i>
-        </div>
-        <div style="display:inline-block;background:#E8F8EE;color:#25D366;border:1px solid #B8E8C8;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:800;margin-bottom:10px;">
-          <i class="fa fa-check-circle"></i> SEPAY: XÁC NHẬN THANH TOÁN THÀNH CÔNG
-        </div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:#0A2E20;margin-bottom:10px;">
-          ĐẶT LỊCH HẸN THÀNH CÔNG!
-        </h3>
-        <p style="font-size:0.92rem;color:#5A6560;line-height:1.6;margin-bottom:20px;">
-          Hệ thống IVY LUXE SPA đã nhận được khoản thanh toán <strong>${data.payableAmount.toLocaleString('vi-VN')}đ</strong> qua tài khoản <strong>Sacombank 020113149011</strong>. Phòng trị liệu và kỹ thuật viên đã được bảo lưu riêng cho bạn!
-        </p>
-
-        <div style="background:#FAF7F2;border:1px dashed #D4AF37;border-radius:12px;padding:20px;text-align:left;max-width:480px;margin:0 auto 25px;">
-          <div style="margin-bottom:8px;"><strong>Mã Đơn Đặt Lịch:</strong> <span style="color:#D4AF37;font-weight:800;">${data.bookingCode}</span></div>
-          <div style="margin-bottom:8px;"><strong>Khách Hàng:</strong> ${data.name} (${data.phone})</div>
-          <div style="margin-bottom:8px;"><strong>Dịch Vụ:</strong> ${data.service}</div>
-          <div style="margin-bottom:8px;"><strong>Thời Gian:</strong> ${data.date} (${data.time}) - ${data.guests}</div>
-          <div style="margin-bottom:8px;"><strong>Địa Điểm:</strong> ${data.branch}</div>
-          <div style="margin-bottom:8px;"><strong>Thanh Toán:</strong> <span style="color:#25D366;font-weight:700;">Đã thanh toán ${data.payableAmount.toLocaleString('vi-VN')}đ qua SePay Sacombank</span></div>
-          <div><strong>Hotline 24/7:</strong> <a href="tel:0989713660" style="color:#B22222;font-weight:700;">098 9713660</a></div>
-        </div>
-
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-          <a href="${waUrl}" target="_blank" rel="noopener" class="nav-cta-btn" style="background:#25D366;color:#FFF;border:none;">
-            <i class="fa fa-whatsapp"></i> Gửi Biên Lai Qua WhatsApp
-          </a>
-          <button type="button" onclick="window.print()" class="nav-cta-btn" style="background:linear-gradient(135deg,#ECC876,#D4AF37,#A4791E);color:#051A12;">
-            <i class="fa fa-print"></i> In / Lưu Phiếu Hẹn
-          </button>
-        </div>
-      </div>
-    `;
-  }
-
-  // Render Cash Booking Success
-  function renderCashBookingSuccess(container, data) {
-    const message = `Hello IVY LUXE SPA, I would like to reserve:
-- Booking Code: ${data.bookingCode}
-- Name: ${data.name}
-- Phone: ${data.phone}
-- Service: ${data.service}
-- Address: ${data.branch}
-- Date: ${data.date} at ${data.time}
-- Guests: ${data.guests}
-- Payment: Pay in cash at spa`;
-    const waUrl = `https://wa.me/${data.cleanPhone}?text=${encodeURIComponent(message)}`;
-
-    container.innerHTML = `
-      <div style="text-align:center;padding:30px 15px;">
-        <div style="width:75px;height:75px;background:linear-gradient(135deg,#D4AF37,#A37E1C);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 0 30px rgba(212,175,55,0.4);color:#051A12;font-size:2rem;">
-          <i class="fa fa-check"></i>
-        </div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:#0A2E20;margin-bottom:12px;">
-          ĐẶT LỊCH THÀNH CÔNG!
-        </h3>
-        <p style="font-size:1rem;color:#5A6560;line-height:1.7;margin-bottom:25px;">
-          Cảm ơn bạn! Lịch hẹn của bạn đã được tiếp nhận. Bạn sẽ thanh toán trực tiếp khi đến SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI.
-        </p>
-        <div style="background:#FAF7F2;border:1px dashed #D4AF37;border-radius:12px;padding:20px;text-align:left;max-width:480px;margin:0 auto 25px;">
-          <div style="margin-bottom:8px;"><strong>Mã Đơn:</strong> <span style="color:#D4AF37;font-weight:700;">${data.bookingCode}</span></div>
-          <div style="margin-bottom:8px;"><strong>Khách Hàng:</strong> ${data.name} (${data.phone})</div>
-          <div style="margin-bottom:8px;"><strong>Dịch Vụ:</strong> ${data.service}</div>
-          <div style="margin-bottom:8px;"><strong>Thời Gian:</strong> ${data.date} (${data.time}) - ${data.guests}</div>
-          <div style="margin-bottom:8px;"><strong>Địa Chỉ:</strong> ${data.branch}</div>
-          <div style="margin-bottom:8px;"><strong>Hình Thức:</strong> Thanh toán tại quầy spa (${data.totalPrice.toLocaleString('vi-VN')}đ)</div>
-          <div><strong>Hotline 24/7:</strong> <a href="tel:0989713660" style="color:#B22222;font-weight:700;">098 9713660</a></div>
+      <div class="ivy-success">
+        ${bookingSteps(3)}
+        <div class="ivy-success-icon"><i class="fa fa-check"></i></div>
+        <div class="ivy-success-badge">${qr
+          ? T('<i class="fa fa-check-circle"></i> Đã ghi nhận chuyển khoản · Đã trừ 10% trên hoá đơn', '<i class="fa fa-check-circle"></i> Transfer recorded · 10% off applied')
+          : T('<i class="fa fa-money"></i> Thanh toán tại quầy khi đến', '<i class="fa fa-money"></i> Pay at the spa on arrival')}</div>
+        <h3 class="ivy-success-title">${T('ĐẶT DỊCH VỤ THÀNH CÔNG!', 'BOOKING SUCCESSFUL!')}</h3>
+        ${bookingInvoice(data, qr ? T('Đã thanh toán', 'Paid') : T('Thanh toán tại quầy', 'Pay at the spa'))}
+        <div class="ivy-thanks">
+          <i class="fa fa-heart"></i>
+          <p>${T('Cảm ơn bạn đã sử dụng dịch vụ của IVY LUXE - Hẹn gặp bạn tại 48 Hà Trung - Phường Hoàn Kiếm - Thành phố Hà Nội để sử dụng dịch vụ của chúng tôi',
+            'Thank you for choosing IVY LUXE - See you at 48 Ha Trung Street - Hoan Kiem Ward - Hanoi to enjoy our services')}</p>
         </div>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-          <a href="${waUrl}" target="_blank" rel="noopener" class="nav-cta-btn" style="background:#25D366;color:#FFF;border:none;">
-            <i class="fa fa-whatsapp"></i> WhatsApp
-          </a>
-          <a href="tel:0989713660" class="nav-cta-btn" style="background:linear-gradient(135deg,#ECC876,#D4AF37,#A4791E);color:#051A12;">
-            <i class="fa fa-phone"></i> Gọi 098 9713660
-          </a>
+          <a href="${waUrl}" target="_blank" rel="noopener" class="nav-cta-btn" style="background:#25D366;color:#FFF;border:none;"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+          <a href="tel:0989713660" class="nav-cta-btn" style="background:linear-gradient(135deg,#ECC876,#D4AF37,#A4791E);color:#051A12;"><i class="fa fa-phone"></i> ${T('Gọi', 'Call')} 098 971 3660</a>
         </div>
       </div>
     `;
@@ -4267,18 +2985,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const ALLOWED_ADMINS = ['ivyspahanoi@gmail.com', 'vanhaitech.86@gmail.com'];
     const initialAdmins = [
-      { email: 'ivyspahanoi@gmail.com', phone: '0989713660', pass: 'Admin6789a@', name: 'Quản Trị Viên IVY LUXE', role: 'admin' },
-      { email: 'vanhaitech.86@gmail.com', phone: '0989713660', pass: 'Admin6789a@', name: 'Admin Kỹ Thuật (Văn Hải)', role: 'admin' }
+      { email: 'ivyspahanoi@gmail.com', phone: '0989713660', pass: '', name: 'Quản Trị Viên IVY LUXE', role: 'admin' },
+      { email: 'vanhaitech.86@gmail.com', phone: '0989713660', pass: '', name: 'Admin Kỹ Thuật (Văn Hải)', role: 'admin' }
     ];
 
     if (!Array.isArray(users) || users.length === 0) {
       users = [
         ...initialAdmins,
-        { email: 'partner@hotel.com', phone: '0912345678', pass: 'partner123', name: 'Khách Sạn Silk Hanoi', role: 'partner' },
-        { email: 'khach@gmail.com', phone: '0901234567', pass: '123456', name: 'Nguyễn Thu Trang', role: 'customer' }
+        { email: 'partner@hotel.com', phone: '0912345678', pass: '', name: 'Khách Sạn Silk Hanoi', role: 'partner' },
+        { email: 'khach@gmail.com', phone: '0901234567', pass: '', name: 'Nguyễn Thu Trang', role: 'customer' }
       ];
     } else {
-      // Đảm bảo chỉ DUY NHẤT 2 email này được quyền admin với mật khẩu Admin6789a@
+      // Đảm bảo chỉ DUY NHẤT 2 email này được quyền admin với mật khẩu 
       users.forEach(u => {
         const uEmail = (u.email || '').toLowerCase().trim();
         if (u.role === 'admin' && !ALLOWED_ADMINS.includes(uEmail)) {
@@ -4291,7 +3009,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const idx = users.findIndex(u => (u.email || '').toLowerCase().trim() === adm.email);
         if (idx !== -1) {
           users[idx].role = 'admin';
-          users[idx].pass = 'Admin6789a@';
+          users[idx].pass = '';
           users[idx].name = adm.name;
         } else {
           users.unshift(adm);
@@ -4348,15 +3066,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileDdAdminLink = document.getElementById('mobile-dd-admin-link');
     const mobileDdPartnerLink = document.getElementById('mobile-dd-partner-link');
 
-    const ALLOWED_ADMINS = ['ivyspahanoi@gmail.com', 'vanhaitech.86@gmail.com'];
+    // Quyền do máy chủ cấp: chỉ owner (Chủ Spa) / admin được vào Dashboard
+    const STAFF_ROLES = ['owner', 'admin'];
 
     if (user) {
-      const userEmail = (user.email || '').toLowerCase().trim();
-      // Bảo mật: Nếu tài khoản không thuộc 2 email admin được chỉ định mà có role admin thì lập tức hạ xuống customer
-      if (user.role === 'admin' && !ALLOWED_ADMINS.includes(userEmail)) {
-        user.role = 'customer';
-        setCurrentUser(user);
-      }
 
       const shortName = (user.name ? user.name.split(' ').slice(-1)[0] : 'Tài Khoản');
       if (authBtnText) authBtnText.innerHTML = `${shortName} <i class="fa fa-angle-down" style="font-size:0.75rem; margin-left:3px;"></i>`;
@@ -4367,8 +3080,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let roleText = 'Khách Hàng VIP';
       let roleColor = '#25D366';
-      if (user.role === 'admin' && ALLOWED_ADMINS.includes(userEmail)) {
-        roleText = 'Quản Trị Viên';
+      if (STAFF_ROLES.includes(user.role)) {
+        roleText = { owner: 'Chủ Spa', admin: 'Quản Trị Viên', staff: 'Nhân Viên CSKH' }[user.role];
         roleColor = '#D4AF37';
       } else if (user.role === 'partner') {
         roleText = 'Đối Tác Affiliate';
@@ -4384,8 +3097,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileDdRole.style.color = roleColor;
       }
 
-      // Phân quyền chặt chẽ: Chỉ DUY NHẤT 2 email Admin mới thấy link Trang Quản Trị
-      const isAdmin = (user.role === 'admin' && ALLOWED_ADMINS.includes(userEmail));
+      // Chỉ tài khoản được Chủ Spa cấp quyền mới thấy link Trang Quản Trị
+      const isAdmin = STAFF_ROLES.includes(user.role);
       const isPartnerOrAdmin = (user.role === 'partner' || isAdmin);
 
       if (ddAdminLink) ddAdminLink.style.display = isAdmin ? 'block' : 'none';
@@ -4474,9 +3187,217 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.closeGoogleAuthModal = closeGoogleAuthModal;
 
+  // =========================================================================
+  // TÀI KHOẢN THẬT TRÊN MÁY CHỦ (/api/account): đăng ký → xác nhận Gmail → đăng nhập, Google
+  // =========================================================================
+
+  // Dòng "MASSAGE BODY & WELLNESS" co giãn cho rộng đúng bằng dòng "IVYLUXE SPA & NAIL"
+  function fitLogoSub() {
+    const title = document.querySelector('.header-logo-text');
+    const sub = document.querySelector('.header-logo-sub');
+    if (!title || !sub || !title.offsetWidth) return;
+    sub.style.removeProperty('font-size');
+    // Lặp 2 lần vì khoảng cách chữ không co theo cỡ chữ
+    for (let i = 0; i < 2; i++) {
+      const base = parseFloat(getComputedStyle(sub).fontSize);
+      const ratio = title.scrollWidth / sub.scrollWidth;
+      if (base && ratio && isFinite(ratio)) sub.style.setProperty('font-size', (base * ratio).toFixed(2) + 'px', 'important');
+    }
+  }
+  fitLogoSub();
+  window.addEventListener('resize', () => { clearTimeout(fitLogoSub.t); fitLogoSub.t = setTimeout(fitLogoSub, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLogoSub);
+
+  // Thông báo nhỏ nổi lên rồi tự ẩn (dùng khi đổi ngôn ngữ...)
+  function showToast(message) {
+    let toast = document.getElementById('ivy-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'ivy-toast';
+      toast.className = 'ivy-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+
+  function authEscape(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  function accountApi(action, body) {
+    const opts = body === undefined
+      ? { credentials: 'same-origin', cache: 'no-store' }
+      : { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) };
+    return fetch('/api/account?a=' + action, opts)
+      .then(res => res.json().catch(() => ({})).then(data => ({ ok: res.ok, status: res.status, data })))
+      .catch(() => ({ ok: false, status: 0, data: { error: 'Không kết nối được máy chủ. Vui lòng kiểm tra mạng và thử lại.' } }));
+  }
+
+  function setBtnLoading(btn, loading) {
+    if (!btn) return;
+    if (loading) {
+      btn.dataset.html = btn.innerHTML;
+      btn.classList.add('is-loading');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> ĐANG XỬ LÝ...';
+    } else {
+      btn.classList.remove('is-loading');
+      btn.disabled = false;
+      if (btn.dataset.html) btn.innerHTML = btn.dataset.html;
+    }
+  }
+
+  function showRegisterVerifyStep(email) {
+    const form = document.getElementById('auth-register-form');
+    const panel = document.getElementById('auth-register-verify');
+    const pane = document.getElementById('auth-pane-register');
+    if (!panel) return;
+    if (form) form.style.display = 'none';
+    if (pane) pane.querySelectorAll('.js-btn-google-auth, .auth-or-divider').forEach(el => { el.style.display = 'none'; });
+    const emailEl = document.getElementById('auth-verify-email');
+    if (emailEl) emailEl.textContent = email;
+    panel.style.display = 'block';
+    openAuthModalWithTab('register');
+  }
+
+  function hideRegisterVerifyStep() {
+    const form = document.getElementById('auth-register-form');
+    const panel = document.getElementById('auth-register-verify');
+    const pane = document.getElementById('auth-pane-register');
+    if (panel) panel.style.display = 'none';
+    if (form) form.style.display = '';
+    if (pane) pane.querySelectorAll('.js-btn-google-auth, .auth-or-divider').forEach(el => { el.style.display = ''; });
+  }
+
+  function showLoginNotice(html, kind) {
+    const box = document.getElementById('auth-login-notice');
+    if (!box) return;
+    box.className = 'auth-login-notice ' + (kind === 'warn' ? 'is-warn' : 'is-ok');
+    box.innerHTML = html;
+    box.style.display = 'block';
+  }
+
+  function hideLoginNotice() {
+    const box = document.getElementById('auth-login-notice');
+    if (box) box.style.display = 'none';
+  }
+
+  function openLoginWithEmail(email, message) {
+    hideRegisterVerifyStep();
+    openAuthModalWithTab('login');
+    const loginId = document.getElementById('login-identifier');
+    const loginPass = document.getElementById('login-password');
+    if (loginId && email) loginId.value = email;
+    if (loginPass) {
+      loginPass.value = '';
+      if (email) setTimeout(() => loginPass.focus(), 50);
+    }
+    if (message) showLoginNotice('<i class="fa fa-check-circle"></i> ' + authEscape(message), 'ok');
+    else hideLoginNotice();
+  }
+
+  function resendVerifyMail(email, btn) {
+    if (!email) return;
+    if (btn) btn.disabled = true;
+    accountApi('resend', { email }).then(({ ok, data }) => {
+      if (ok && data.verified) {
+        openLoginWithEmail(email, 'Gmail này đã xác nhận rồi. Mời bạn đăng nhập.');
+        return;
+      }
+      alert(ok ? 'Đã gửi lại thư xác nhận tới ' + email + '. Vui lòng kiểm tra Gmail (cả mục Spam).' : (data.error || 'Chưa gửi lại được thư, vui lòng thử lại.'));
+      // Chờ 60 giây mới cho gửi tiếp để tránh spam hộp thư.
+      if (btn) setTimeout(() => { btn.disabled = false; }, ok ? 60000 : 0);
+    });
+  }
+
+  function showUnverifiedNotice(email) {
+    showLoginNotice(
+      '<i class="fa fa-envelope"></i> Tài khoản <strong>' + authEscape(email) + '</strong> chưa xác nhận Gmail. ' +
+      'Vui lòng mở thư xác nhận trong Gmail rồi đăng nhập lại. <button type="button" id="btn-login-resend">Gửi lại thư xác nhận</button>',
+      'warn'
+    );
+    const b = document.getElementById('btn-login-resend');
+    if (b) b.addEventListener('click', () => resendVerifyMail(email, b));
+  }
+
+  function afterServerLogin(user, welcome) {
+    setCurrentUser(user);
+    updateHeaderAuthState();
+    closeAuthModal();
+    if (['owner', 'admin'].includes(user.role)) {
+      const goToAdmin = confirm('Đăng nhập thành công! Bạn có muốn mở Dashboard Quản Trị ngay bây giờ?');
+      if (goToAdmin) window.location.href = '/admin';
+    } else if (welcome) {
+      alert(welcome);
+    }
+  }
+
+  function logoutEverywhere() {
+    setCurrentUser(null);
+    updateHeaderAuthState();
+    return accountApi('logout', {});
+  }
+
+  // Đồng bộ phiên đăng nhập với máy chủ + xử lý khi khách quay về từ thư xác nhận / trang Google
+  function syncServerSession() {
+    const params = new URLSearchParams(window.location.search);
+    const verifyResult = params.get('xac-nhan');
+    const googleResult = params.get('google');
+    if (verifyResult || googleResult) {
+      params.delete('xac-nhan');
+      params.delete('google');
+      const qs = params.toString();
+      history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+    }
+
+    if (verifyResult) {
+      let pending = '';
+      try { pending = localStorage.getItem('ivy_pending_email') || ''; } catch (e) {}
+      if (verifyResult === 'ok') {
+        try { localStorage.removeItem('ivy_pending_email'); } catch (e) {}
+        openLoginWithEmail(pending, 'Xác nhận Gmail thành công! Mời bạn đăng nhập bằng Gmail và mật khẩu vừa đăng ký.');
+      } else {
+        openLoginWithEmail(pending);
+        showLoginNotice('<i class="fa fa-exclamation-circle"></i> Liên kết xác nhận đã hết hạn hoặc đã được dùng. Hãy thử đăng nhập; nếu tài khoản chưa xác nhận, bấm "Gửi lại thư xác nhận".', 'warn');
+      }
+    }
+
+    const googleMessages = {
+      'huy': 'Bạn đã huỷ đăng nhập Google.',
+      'loi': 'Đăng nhập Google chưa thành công, vui lòng thử lại.',
+      'chua-cai': 'Đăng nhập Google đang được cài đặt, vui lòng dùng Gmail + mật khẩu.',
+      'sai-tai-khoan': 'Gmail này đã gắn với một tài khoản Google khác. Vui lòng đăng nhập bằng mật khẩu.'
+    };
+
+    accountApi('me').then(({ ok, data }) => {
+      if (!ok) return; // máy chủ chưa sẵn sàng: giữ nguyên trạng thái cũ
+      if (data.user) {
+        setCurrentUser(data.user);
+        updateHeaderAuthState();
+        if (googleResult === 'ok') afterServerLogin(data.user, 'Đăng nhập Google (' + data.user.email + ') thành công!\nChào mừng ' + data.user.name + ' đến với IVY LUXE SPA.');
+      } else {
+        // Phiên trên máy chủ đã hết/đăng xuất → xoá thông tin đăng nhập cũ lưu trong trình duyệt
+        if (getCurrentUser()) {
+          setCurrentUser(null);
+          updateHeaderAuthState();
+        }
+        if (googleResult && googleMessages[googleResult]) {
+          openAuthModalWithTab('login');
+          showLoginNotice('<i class="fa fa-exclamation-circle"></i> ' + googleMessages[googleResult], 'warn');
+        }
+      }
+    });
+  }
+
   function initAuthSystem() {
     getAuthUsers(); // ensure seed data exists
     updateHeaderAuthState();
+    syncServerSession();
 
     const authModal = document.getElementById('auth-modal');
     const authModalClose = document.getElementById('auth-modal-close');
@@ -4534,8 +3455,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (mobileDdLogoutBtn) {
       bindFastClick(mobileDdLogoutBtn, () => {
-        setCurrentUser(null);
-        updateHeaderAuthState();
+        logoutEverywhere();
         const mDropdown = document.getElementById('mobile-user-dropdown');
         if (mDropdown) mDropdown.style.display = 'none';
         alert('Bạn đã đăng xuất tài khoản thành công.');
@@ -4628,32 +3548,21 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        const users = getAuthUsers();
-        const user = users.find(u => {
-          const uEmail = (u.email || '').toLowerCase().trim();
-          const uPhone = (u.phone || '').replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
-          const emailMatch = uEmail && (uEmail === cleanIdLower);
-          const phoneMatch = uPhone && (uPhone === cleanPhone || (u.phone || '').trim() === cleanId);
-          const passMatch = (u.pass || '').trim() === cleanPass;
-          return (emailMatch || phoneMatch) && passMatch;
-        });
-
-        if (user) {
-          setCurrentUser(user);
-          updateHeaderAuthState();
-          closeAuthModal();
-
-          if (user.role === 'admin') {
-            const goToAdmin = confirm('Đăng nhập Quản Trị Viên thành công! Bạn có muốn mở Trang Quản Trị Admin ngay bây giờ?');
-            if (goToAdmin) window.location.href = 'admin.html';
-          } else if (user.role === 'partner') {
-            window.location.hash = '#affiliate';
-          } else {
-            alert('Chào mừng ' + (user.name || 'Quý khách') + ' quay trở lại với IVY LUXE SPA!');
-          }
-        } else {
-          alert('Sai thông tin tài khoản hoặc mật khẩu! Vui lòng kiểm tra lại.\n\n(Quý khách có thể bấm "Quên Mật Khẩu" hoặc chọn "Đăng Nhập Nhanh Bằng Google" ở phía trên).');
-        }
+        const submitBtn = loginForm.querySelector('button[type="submit"]');
+        const remember = document.getElementById('login-remember')?.checked !== false;
+        setBtnLoading(submitBtn, true);
+        accountApi('login', { identifier: cleanIdLower.includes('@') ? cleanIdLower : cleanPhone, password: rawPass, remember })
+          .then(({ ok, data }) => {
+            if (ok && data.user) {
+              hideLoginNotice();
+              afterServerLogin(data.user, 'Chào mừng ' + (data.user.name || 'Quý khách') + ' quay trở lại với IVY LUXE SPA!');
+            } else if (data.error === 'unverified') {
+              showUnverifiedNotice(data.email || cleanIdLower);
+            } else {
+              alert(data.error || 'Sai thông tin tài khoản hoặc mật khẩu! Vui lòng kiểm tra lại.');
+            }
+          })
+          .finally(() => setBtnLoading(submitBtn, false));
       });
     }
 
@@ -4665,8 +3574,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const fullname = document.getElementById('reg-fullname')?.value.trim() || '';
         const rawEmail = document.getElementById('reg-email')?.value.trim() || '';
         const rawPhone = document.getElementById('reg-phone')?.value.trim() || '';
-        const password = document.getElementById('reg-password')?.value.trim() || '';
-        const role = 'customer'; // Tài khoản đăng ký mới luôn mặc định là Khách Hàng Thành Viên
+        const password = document.getElementById('reg-password')?.value || '';
+        const confirmPass = document.getElementById('reg-password-confirm')?.value || '';
 
         if (!fullname) {
           alert('Vui lòng nhập Họ và Tên của bạn.');
@@ -4676,55 +3585,68 @@ document.addEventListener('DOMContentLoaded', () => {
         const cleanEmail = rawEmail.toLowerCase();
         const cleanPhone = rawPhone.replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
 
-        if (!cleanEmail && !cleanPhone) {
-          alert('Vui lòng nhập Email hoặc Số điện thoại để tạo tài khoản.');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(cleanEmail)) {
+          alert('Vui lòng nhập đúng địa chỉ Gmail (VD: lan@gmail.com).');
           return;
         }
 
-        if (cleanEmail && (!cleanEmail.includes('@') || !cleanEmail.includes('.'))) {
-          alert('Địa chỉ Email không đúng định dạng.');
+        if (password.length < 6) {
+          alert('Mật khẩu cần tối thiểu 6 ký tự.');
           return;
         }
 
-        if (!password || password.length < 4) {
-          alert('Mật khẩu cần tối thiểu 4 ký tự.');
+        if (password !== confirmPass) {
+          alert('Mật khẩu nhập lại không khớp. Vui lòng nhập lại.');
+          document.getElementById('reg-password-confirm')?.focus();
           return;
         }
 
-        const users = getAuthUsers();
-        const existing = users.find(u => {
-          const uEmail = (u.email || '').toLowerCase().trim();
-          const uPhone = (u.phone || '').replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
-          return (cleanEmail && uEmail === cleanEmail) || (cleanPhone && uPhone === cleanPhone);
-        });
+        const submitBtn = regForm.querySelector('button[type="submit"]');
+        setBtnLoading(submitBtn, true);
+        const website = document.getElementById('reg-website')?.value || '';
+        accountApi('register', { name: fullname, email: cleanEmail, phone: cleanPhone, password, confirm: confirmPass, website })
+          .then(({ ok, data }) => {
+            if (ok) {
+              try { localStorage.setItem('ivy_pending_email', cleanEmail); } catch (err) {}
+              regForm.reset();
+              showRegisterVerifyStep(cleanEmail);
+            } else if (data.error === 'exists') {
+              alert(data.google
+                ? 'Gmail này đã có tài khoản (đăng ký bằng Google). Vui lòng bấm "Đăng nhập nhanh bằng Google".'
+                : 'Gmail này đã có tài khoản! Đang chuyển sang màn hình Đăng Nhập...');
+              openAuthModalWithTab('login');
+              const loginId = document.getElementById('login-identifier');
+              if (loginId) loginId.value = cleanEmail;
+            } else {
+              alert(data.error || 'Chưa đăng ký được, vui lòng thử lại.');
+            }
+          })
+          .finally(() => setBtnLoading(submitBtn, false));
+      });
+    }
 
-        if (existing) {
-          alert('Email hoặc Số điện thoại này đã được đăng ký! Đang chuyển sang màn hình Đăng Nhập...');
-          openAuthModalWithTab('login');
-          const loginId = document.getElementById('login-identifier');
-          if (loginId) loginId.value = cleanEmail || rawPhone;
-          return;
-        }
-
-        const newUser = {
-          email: cleanEmail,
-          phone: rawPhone,
-          pass: password,
-          name: fullname,
-          role: role
-        };
-
-        users.push(newUser);
-        saveAuthUsers(users);
-
-        setCurrentUser(newUser);
-        updateHeaderAuthState();
-        closeAuthModal();
-
-        alert('Đăng ký tài khoản thành công! Chào mừng ' + fullname + ' đến với IVY LUXE SPA.');
-        if (role === 'partner') {
-          window.location.hash = '#affiliate';
-        }
+    // Bước 2: màn hình "Xác nhận đăng ký qua Gmail"
+    const btnVerifyResend = document.getElementById('btn-verify-resend');
+    const btnVerifyToLogin = document.getElementById('btn-verify-to-login');
+    const btnVerifyEdit = document.getElementById('btn-verify-edit');
+    if (btnVerifyResend) {
+      btnVerifyResend.addEventListener('click', () => {
+        const email = document.getElementById('auth-verify-email')?.textContent || '';
+        resendVerifyMail(email, btnVerifyResend);
+      });
+    }
+    if (btnVerifyToLogin) {
+      btnVerifyToLogin.addEventListener('click', () => {
+        const email = document.getElementById('auth-verify-email')?.textContent || '';
+        openLoginWithEmail(email);
+      });
+    }
+    if (btnVerifyEdit) {
+      btnVerifyEdit.addEventListener('click', () => {
+        const email = document.getElementById('auth-verify-email')?.textContent || '';
+        hideRegisterVerifyStep();
+        const regEmail = document.getElementById('reg-email');
+        if (regEmail) { regEmail.value = email; regEmail.focus(); }
       });
     }
 
@@ -4749,10 +3671,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const googleAuthModalClose = document.getElementById('google-auth-modal-close');
     const googleButtons = document.querySelectorAll('.js-btn-google-auth');
 
+    // Đăng nhập Google thật: chuyển sang trang chọn tài khoản của Google, xong quay về /?google=ok
     googleButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        openGoogleAuthModal();
+        const remember = document.getElementById('login-remember')?.checked !== false;
+        window.location.href = '/api/auth/google' + (remember ? '' : '?remember=0');
       });
     });
 
@@ -4783,7 +3707,7 @@ document.addEventListener('DOMContentLoaded', () => {
           name: resolvedName,
           email: cleanEmail,
           phone: '',
-          pass: isAdminEmail ? 'Admin6789a@' : ('google_' + Math.random().toString(36).substring(2, 8)),
+          pass: isAdminEmail ? '' : ('google_' + Math.random().toString(36).substring(2, 8)),
           role: resolvedRole,
           authProvider: 'google'
         };
@@ -4792,7 +3716,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         user.authProvider = 'google';
         user.role = resolvedRole; // Ensure correct role according to authorization rules
-        if (isAdminEmail) user.pass = 'Admin6789a@';
+        if (isAdminEmail) user.pass = '';
         if (!user.name || isAdminEmail) user.name = resolvedName;
         saveAuthUsers(users);
       }
@@ -4861,8 +3785,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Forgot Password Flow via Gmail or Phone
-    let activeResetOtp = null;
+    // Quên mật khẩu: gửi mã OTP 6 số tới Gmail của tài khoản, nhập mã + mật khẩu mới
     let activeResetIdentifier = null;
 
     const btnSendOtp = document.getElementById('btn-forgot-send-otp');
@@ -4879,128 +3802,89 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        const isEmail = rawId.includes('@');
-        const otp = Math.floor(100000 + Math.random() * 900000).toString();
-        activeResetOtp = otp;
-        activeResetIdentifier = rawId;
-
-        if (forgotOtpNotice) {
-          forgotOtpNotice.innerHTML = `
-            <div>
-              <i class="fa fa-check-circle" style="color:#25D366; font-size:1.1rem;"></i> 
-              <strong>Mã xác thực đã được tạo thành công!</strong>
-            </div>
-            <div style="margin-top:6px;">
-              Mã OTP gửi đến ${isEmail ? 'Gmail' : 'Số điện thoại'} <strong>${rawId}</strong> là:
-              <span class="auth-otp-code-highlight">${otp}</span>
-            </div>
-            <div style="margin-top:4px; font-size:0.78rem; color:#DDE5E1;">
-              (Mã OTP có hiệu lực trong 5 phút. Vui lòng nhập mã và thiết lập mật khẩu mới bên dưới)
-            </div>
-          `;
-        }
-
-        if (forgotStepOtp) {
-          forgotStepOtp.style.display = 'block';
-        }
-
-        const otpInput = document.getElementById('forgot-otp-input');
-        if (otpInput) {
-          otpInput.value = otp;
-          otpInput.focus();
-        }
-
-        btnSendOtp.innerHTML = '<i class="fa fa-refresh"></i> GỬI LẠI MÃ MỚI';
+        setBtnLoading(btnSendOtp, true);
+        accountApi('forgot', { identifier: rawId })
+          .then(({ ok, data }) => {
+            if (!ok) {
+              alert(data.error || 'Chưa gửi được mã, vui lòng thử lại.');
+              return;
+            }
+            activeResetIdentifier = rawId;
+            if (forgotOtpNotice) {
+              forgotOtpNotice.innerHTML = `
+                <div>
+                  <i class="fa fa-envelope" style="color:#25D366; font-size:1.1rem;"></i>
+                  <strong>Đã gửi mã xác thực!</strong>
+                </div>
+                <div style="margin-top:6px;">
+                  Nếu <strong>${authEscape(rawId)}</strong> đã đăng ký tài khoản, mã OTP 6 số vừa được gửi tới <strong>Gmail</strong> của tài khoản.
+                </div>
+                <div style="margin-top:4px; font-size:0.78rem;">
+                  (Mã có hiệu lực 15 phút. Không thấy thư? Xem mục Spam / Quảng cáo.)
+                </div>
+              `;
+            }
+            if (forgotStepOtp) forgotStepOtp.style.display = 'block';
+            const otpInput = document.getElementById('forgot-otp-input');
+            if (otpInput) {
+              otpInput.value = '';
+              otpInput.focus();
+            }
+            btnSendOtp.innerHTML = '<i class="fa fa-refresh"></i> GỬI LẠI MÃ MỚI';
+          })
+          .finally(() => setBtnLoading(btnSendOtp, false));
       });
     }
 
     if (forgotForm) {
       forgotForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const otpEntered = document.getElementById('forgot-otp-input')?.value.trim();
-        const newPass = document.getElementById('forgot-new-pass')?.value.trim();
-        const confirmPass = document.getElementById('forgot-confirm-pass')?.value.trim();
+        const otpEntered = document.getElementById('forgot-otp-input')?.value.trim() || '';
+        const newPass = document.getElementById('forgot-new-pass')?.value || '';
+        const confirmPass = document.getElementById('forgot-confirm-pass')?.value || '';
 
-        if (!activeResetOtp) {
+        if (!activeResetIdentifier) {
           alert('Vui lòng bấm "GỬI MÃ XÁC THỰC (OTP)" trước!');
           return;
         }
-
-        if (otpEntered !== activeResetOtp) {
-          alert('Mã OTP xác thực không đúng! Vui lòng kiểm tra lại.');
+        if (!/^\d{6}$/.test(otpEntered)) {
+          alert('Vui lòng nhập đủ mã OTP 6 số trong thư Gmail.');
           return;
         }
-
-        if (!newPass || newPass.length < 4) {
-          alert('Mật khẩu mới phải có tối thiểu 4 ký tự!');
+        if (newPass.length < 6) {
+          alert('Mật khẩu mới phải có tối thiểu 6 ký tự!');
           return;
         }
-
         if (newPass !== confirmPass) {
           alert('Mật khẩu mới và Xác nhận mật khẩu không trùng khớp!');
           return;
         }
 
-        const cleanIdLower = activeResetIdentifier.toLowerCase().trim();
-        const ALLOWED_ADMINS = ['ivyspahanoi@gmail.com', 'vanhaitech.86@gmail.com'];
-        if (ALLOWED_ADMINS.includes(cleanIdLower)) {
-          alert('Tài khoản Quản Trị Viên được bảo mật bởi chính sách nội bộ. Đang chuyển về màn hình Đăng Nhập...');
-          openAuthModalWithTab('login');
-          const loginId = document.getElementById('login-identifier');
-          if (loginId) loginId.value = cleanIdLower;
-          activeResetOtp = null;
-          if (forgotStepOtp) forgotStepOtp.style.display = 'none';
-          return;
-        }
-
-        const cleanPhone = activeResetIdentifier.replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
-
-        const users = getAuthUsers();
-        let user = users.find(u => {
-          const uEmail = (u.email || '').toLowerCase().trim();
-          const uPhone = (u.phone || '').replace(/[\s\.\-\(\)]/g, '').replace(/^\+84/, '0');
-          return (uEmail && uEmail === cleanIdLower) || (uPhone && uPhone === cleanPhone);
-        });
-
-        if (user) {
-          user.pass = newPass;
-        } else {
-          const isEmail = activeResetIdentifier.includes('@');
-          user = {
-            email: isEmail ? cleanIdLower : '',
-            phone: !isEmail ? activeResetIdentifier : '',
-            pass: newPass,
-            name: isEmail ? activeResetIdentifier.split('@')[0] : 'Khách Hàng',
-            role: 'customer'
-          };
-          users.push(user);
-        }
-
-        saveAuthUsers(users);
-
-        alert(`Đặt lại mật khẩu thành công!\nMật khẩu mới cho tài khoản "${activeResetIdentifier}" đã được cập nhật.\nĐang chuyển sang màn hình Đăng Nhập...`);
-
-        openAuthModalWithTab('login');
-        const loginIdentifier = document.getElementById('login-identifier');
-        const loginPassword = document.getElementById('login-password');
-        if (loginIdentifier) loginIdentifier.value = activeResetIdentifier;
-        if (loginPassword) loginPassword.value = newPass;
-
-        activeResetOtp = null;
-        if (forgotStepOtp) forgotStepOtp.style.display = 'none';
-        if (btnSendOtp) btnSendOtp.innerHTML = '<i class="fa fa-paper-plane"></i> GỬI MÃ XÁC THỰC (OTP)';
-        const forgotNewPassEl = document.getElementById('forgot-new-pass');
-        const forgotConfPassEl = document.getElementById('forgot-confirm-pass');
-        if (forgotNewPassEl) forgotNewPassEl.value = '';
-        if (forgotConfPassEl) forgotConfPassEl.value = '';
+        const submitBtn = document.getElementById('btn-forgot-submit');
+        setBtnLoading(submitBtn, true);
+        accountApi('reset', { identifier: activeResetIdentifier, otp: otpEntered, password: newPass, confirm: confirmPass })
+          .then(({ ok, data }) => {
+            if (!ok) {
+              alert(data.error || 'Chưa đặt lại được mật khẩu, vui lòng thử lại.');
+              return;
+            }
+            activeResetIdentifier = null;
+            if (forgotStepOtp) forgotStepOtp.style.display = 'none';
+            if (btnSendOtp) btnSendOtp.innerHTML = '<i class="fa fa-paper-plane"></i> GỬI MÃ XÁC THỰC (OTP)';
+            ['forgot-otp-input', 'forgot-new-pass', 'forgot-confirm-pass'].forEach(id => {
+              const el = document.getElementById(id);
+              if (el) el.value = '';
+            });
+            openLoginWithEmail(data.email, 'Đặt lại mật khẩu thành công! Vui lòng đăng nhập bằng mật khẩu mới.');
+          })
+          .finally(() => setBtnLoading(submitBtn, false));
       });
     }
 
     // Logout Action
     if (logoutBtn) {
       logoutBtn.addEventListener('click', () => {
-        setCurrentUser(null);
-        updateHeaderAuthState();
+        logoutEverywhere();
         alert('Bạn đã đăng xuất tài khoản thành công.');
       });
     }
@@ -5044,7 +3928,7 @@ document.addEventListener('DOMContentLoaded', () => {
       container.innerHTML = `
         <div style="text-align:center; padding: 40px 20px; color:#5A6560;">
           <i class="fa fa-calendar-o" style="font-size:3rem; color:#D4AF37; margin-bottom:12px; display:block;"></i>
-          <h4 style="font-family:'Playfair Display',serif; color:#0A2E20; margin-bottom:8px;">Chưa có lịch hẹn nào</h4>
+          <h4 style="font-family:'Be Vietnam Pro',serif; color:#0A2E20; margin-bottom:8px;">Chưa có lịch hẹn nào</h4>
           <p style="font-size:0.9rem;">Bạn chưa có lịch hẹn dịch vụ nào tại IVY LUXE SPA. Hãy chọn gói dịch vụ yêu thích và đặt lịch ngay!</p>
           <a href="#booking-form-box" class="nav-cta-btn js-open-booking" style="margin-top:15px; display:inline-block;">ĐẶT LỊCH NGAY</a>
         </div>
@@ -5165,78 +4049,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getAffiliateBaseUrl() {
     const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
-    return isLocal ? 'https://ivy-luxe-spa-kappa.vercel.app' : window.location.origin;
+    return isLocal ? 'https://ivyluxe.com.vn' : window.location.origin;
   }
+
+  // Dữ liệu Affiliate thật nằm trên máy chủ (/api/aff). Xoá dữ liệu mẫu cũ còn lưu trong trình duyệt khách.
+  try {
+    localStorage.removeItem('ivy_affiliates_data');
+    localStorage.removeItem('ivy_transactions');
+  } catch (e) {}
 
   function getAffiliateStore() {
-    try {
-      const stored = localStorage.getItem('ivy_affiliates_data');
-      if (stored) return JSON.parse(stored);
-    } catch (e) {}
-
-    const initial = {
-      partners: [
-        {
-          name: 'Nguyễn Văn Minh',
-          phone: '0912345678',
-          type: 'guide',
-          typeName: 'Hướng Dẫn Viên Du Lịch',
-          code: 'IVY-MINH_TOUR',
-          bank: 'Vietcombank - 0011001234567 - NGUYEN VAN MINH',
-          clicks: 128,
-          bookings: 14,
-          revenue: 12600000,
-          commission: 2520000
-        },
-        {
-          name: 'Khách Sạn Phố Cổ Hanoi Elegance',
-          phone: '0988889999',
-          type: 'hotel',
-          typeName: 'Khách Sạn / Concierge',
-          code: 'IVY-HOTEL_HANOI',
-          bank: 'Techcombank - 1902888999001 - KS PHO CO',
-          clicks: 215,
-          bookings: 26,
-          revenue: 23400000,
-          commission: 4680000
-        }
-      ]
-    };
-    try {
-      localStorage.setItem('ivy_affiliates_data', JSON.stringify(initial));
-    } catch (e) {}
-    return initial;
+    return { partners: [] };
   }
 
-  function saveAffiliateStore(store) {
-    try {
-      localStorage.setItem('ivy_affiliates_data', JSON.stringify(store));
-    } catch (e) {}
-  }
+  function saveAffiliateStore() {}
 
+  // Lượt click link giới thiệu được đếm trên máy chủ (mỗi khách / mã / ngày tính 1 lần)
   function recordAffiliateClick(code) {
-    const store = getAffiliateStore();
-    const clean = code.toUpperCase();
-    const partner = store.partners.find(p => p.code.toUpperCase() === clean || p.code.replace('IVY-', '').toUpperCase() === clean.replace('IVY-', ''));
-    if (partner) {
-      partner.clicks = (partner.clicks || 0) + 1;
-      saveAffiliateStore(store);
-    }
+    fetch('/api/aff?a=click', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code })
+    }).catch(() => {});
   }
 
-  function recordAffiliateBooking(code, serviceName, guestCount) {
-    const store = getAffiliateStore();
-    const clean = code.toUpperCase();
-    const partner = store.partners.find(p => p.code.toUpperCase() === clean || p.code.replace('IVY-', '').toUpperCase() === clean.replace('IVY-', ''));
-    const estValue = 900000;
-    const comValue = Math.round(estValue * 0.2);
-    if (partner) {
-      partner.bookings = (partner.bookings || 0) + 1;
-      partner.revenue = (partner.revenue || 0) + estValue;
-      partner.commission = (partner.commission || 0) + comValue;
-      saveAffiliateStore(store);
-    }
-  }
+  // Đơn đặt lịch được gắn với đối tác ngay trong CRM (xem sendLead) — không cần ghi ở trình duyệt
+  function recordAffiliateBooking() {}
 
   function initAffiliateSystem() {
     // A. Detect Referral in URL (?ref=... or ?aff=...)
@@ -5247,6 +4085,8 @@ document.addEventListener('DOMContentLoaded', () => {
       let cleanRef = refParam.trim().toUpperCase();
       if (!cleanRef.startsWith('IVY-')) cleanRef = 'IVY-' + cleanRef;
       localStorage.setItem('ivy_affiliate_ref', cleanRef);
+      // Cookie 30 ngày: máy chủ đọc khi khách tạo tài khoản → thành viên F1 của đối tác
+      document.cookie = 'ivy_ref=' + encodeURIComponent(cleanRef.replace(/^IVY-/, '')) + '; Max-Age=' + (30 * 86400) + '; Path=/; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');
       recordAffiliateClick(cleanRef);
     }
 
@@ -5579,34 +4419,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // HOMEPAGE AFFILIATE HANDLERS (INDEX.HTML SECTION #AFFILIATE)
+  // HOMEPAGE AFFILIATE (MỤC #AFFILIATE) — DỮ LIỆU THẬT TỪ MÁY CHỦ (/api/aff)
   // =========================================================================
-  function getHomeAffActivePartner() {
-    let store = { partners: [] };
-    try {
-      const raw = localStorage.getItem('ivy_affiliates_data');
-      if (raw) store = JSON.parse(raw);
-    } catch (e) {}
+  let homeAffData = null;
 
-    let current = null;
-    try {
-      current = JSON.parse(localStorage.getItem('ivy_current_user'));
-    } catch (e) {}
+  function affPost(action, body) {
+    return fetch('/api/aff?a=' + action, {
+      method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+    }).then(res => res.json().catch(() => ({})).then(data => ({ ok: res.ok, status: res.status, data })))
+      .catch(() => ({ ok: false, data: { error: 'Không kết nối được máy chủ.' } }));
+  }
 
-    if (current && current.email) {
-      const found = store.partners.find(p => p.email && p.email.toLowerCase() === current.email.toLowerCase());
-      if (found) return found;
-    }
-    return store.partners[0] || {
-      name: 'Nguyễn Dương',
-      email: 'nguyenduong2018vn@gmail.com',
-      code: 'nguyenduong',
-      clicks: 0,
-      ordersSuccess: 0,
-      ordersPending: 0,
-      pendingAmount: 0,
-      receivedAmount: 0
-    };
+  function loadHomeAff() {
+    // auto=1: tài khoản đã đăng nhập tự được kích hoạt Đối tác khi mở Dashboard
+    return fetch('/api/aff?a=me&auto=1', { credentials: 'same-origin', cache: 'no-store' })
+      .then(res => (res.ok ? res.json() : null))
+      .then(data => { homeAffData = data; return data; })
+      .catch(() => null);
   }
 
   window.toggleHomeAffiliateView = function() {
@@ -5619,7 +4448,7 @@ document.addEventListener('DOMContentLoaded', () => {
       regView.style.display = 'none';
       dashView.style.display = 'block';
       if (toggleText) toggleText.textContent = 'Đăng Ký & Đăng Nhập';
-      renderHomeDashData();
+      loadHomeAff().then(renderHomeDashData);
     } else {
       regView.style.display = 'block';
       dashView.style.display = 'none';
@@ -5628,20 +4457,17 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   function renderHomeDashData() {
-    const partner = getHomeAffActivePartner();
-    const emailDisp = document.getElementById('home-dash-email-display');
-    const statClicks = document.getElementById('home-stat-clicks');
-    const statOrders = document.getElementById('home-stat-orders');
-    const statPending = document.getElementById('home-stat-pending');
-    const statReceived = document.getElementById('home-stat-received');
-    const perfClicks = document.getElementById('home-perf-clicks');
-
-    if (emailDisp) emailDisp.textContent = partner.email || 'nguyenduong2018vn@gmail.com';
-    if (statClicks) statClicks.textContent = partner.clicks || 0;
-    if (statOrders) statOrders.textContent = partner.ordersSuccess || 0;
-    if (statPending) statPending.textContent = (partner.pendingAmount || 0).toLocaleString('vi-VN') + 'đ';
-    if (statReceived) statReceived.textContent = (partner.receivedAmount || 0).toLocaleString('vi-VN') + 'đ';
-    if (perfClicks) perfClicks.textContent = partner.clicks || 0;
+    const d = homeAffData && homeAffData.partner ? homeAffData : null;
+    const s = d ? d.summary : {};
+    const money = n => (n || 0).toLocaleString('vi-VN') + 'đ';
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    set('home-dash-email-display', d ? d.partner.email + ' · Mã: IVY-' + d.partner.code : (homeAffData ? 'Tài khoản chưa đăng ký đối tác' : 'Chưa đăng nhập'));
+    set('home-stat-clicks', d ? d.clicks.total : 0);
+    set('home-stat-orders', d ? s.ordersSuccess : 0);
+    set('home-stat-pending', money(d ? s.pendingAmount : 0));
+    set('home-stat-received', money(d ? s.availableAmount : 0));
+    const activePill = document.querySelector('#home-aff-view-dashboard .aff-time-pill.active');
+    window.filterHomePerf(activePill ? parseInt(activePill.textContent, 10) || 7 : 7, activePill);
   }
 
   window.switchHomeAuthTab = function(type) {
@@ -5649,148 +4475,67 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnLogin = document.getElementById('home-btn-tab-login');
     const formReg = document.getElementById('home-aff-reg-form');
     const formLogin = document.getElementById('home-aff-login-form');
-
-    if (type === 'register') {
-      if (btnReg) btnReg.classList.add('active');
-      if (btnLogin) btnLogin.classList.remove('active');
-      if (formReg) formReg.style.display = 'block';
-      if (formLogin) formLogin.style.display = 'none';
-    } else {
-      if (btnReg) btnReg.classList.remove('active');
-      if (btnLogin) btnLogin.classList.add('active');
-      if (formReg) formReg.style.display = 'none';
-      if (formLogin) formLogin.style.display = 'block';
-    }
+    const isReg = type === 'register';
+    if (btnReg) btnReg.classList.toggle('active', isReg);
+    if (btnLogin) btnLogin.classList.toggle('active', !isReg);
+    if (formReg) formReg.style.display = isReg ? 'block' : 'none';
+    if (formLogin) formLogin.style.display = isReg ? 'none' : 'block';
   };
 
+  // Đăng nhập Google thật → về trang Affiliate
   window.handleHomeAffiliateGoogle = function() {
-    const email = prompt('Nhập địa chỉ Gmail của bạn để tiếp tục với Google:', 'nguyenduong2018vn@gmail.com');
-    if (!email) return;
-
-    let store = { partners: [] };
-    try {
-      const raw = localStorage.getItem('ivy_affiliates_data');
-      if (raw) store = JSON.parse(raw);
-    } catch (e) {}
-
-    let partner = store.partners.find(p => p.email && p.email.toLowerCase() === email.toLowerCase());
-    if (!partner) {
-      partner = {
-        name: email.split('@')[0],
-        phone: '0814488686',
-        code: email.split('@')[0],
-        email: email,
-        commissionRate: '30%',
-        clicks: 0,
-        ordersSuccess: 0,
-        ordersPending: 0,
-        pendingAmount: 0,
-        receivedAmount: 0
-      };
-      store.partners.push(partner);
-      localStorage.setItem('ivy_affiliates_data', JSON.stringify(store));
-    }
-
-    try {
-      localStorage.setItem('ivy_current_user', JSON.stringify({
-        name: partner.name,
-        email: partner.email,
-        role: 'partner'
-      }));
-    } catch (e) {}
-
-    alert('Đăng nhập Google thành công! Đang chuyển sang Dashboard Affiliate...');
-    window.toggleHomeAffiliateView();
+    window.location.href = '/api/auth/google?next=/affiliate';
   };
 
   window.handleHomeAffiliateRegister = function(e) {
     e.preventDefault();
-    const name = document.getElementById('home-aff-name')?.value.trim();
-    const phone = document.getElementById('home-aff-phone')?.value.trim();
-    let code = document.getElementById('home-aff-refcode')?.value.trim();
-    const email = document.getElementById('home-aff-email')?.value.trim();
-    const pass = document.getElementById('home-aff-pass')?.value.trim();
-
-    if (!email.toLowerCase().endsWith('@gmail.com')) {
-      alert('Vui lòng nhập đúng tài khoản Gmail (bắt buộc đuôi @gmail.com)!');
-      return;
-    }
-
-    if (!code) code = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '');
-
-    let store = { partners: [] };
-    try {
-      const raw = localStorage.getItem('ivy_affiliates_data');
-      if (raw) store = JSON.parse(raw);
-    } catch (err) {}
-
-    let partner = store.partners.find(p => p.email && p.email.toLowerCase() === email.toLowerCase());
-    if (partner) {
-      partner.name = name;
-      partner.phone = phone;
-      partner.code = code;
-      partner.pass = pass;
-    } else {
-      partner = {
-        name,
-        phone,
-        code,
-        email,
-        pass,
-        commissionRate: '30%',
-        clicks: 0,
-        ordersSuccess: 0,
-        ordersPending: 0,
-        pendingAmount: 0,
-        receivedAmount: 0
-      };
-      store.partners.push(partner);
-    }
-    localStorage.setItem('ivy_affiliates_data', JSON.stringify(store));
-
-    try {
-      localStorage.setItem('ivy_current_user', JSON.stringify({
-        name: partner.name,
-        email: partner.email,
-        role: 'partner'
-      }));
-    } catch (err) {}
-
-    alert('🎉 Đăng ký làm Đối Tác Tiếp Thị thành công với mức hoa hồng 20% - 30%!\nĐang mở Dashboard cho bạn...');
-    window.toggleHomeAffiliateView();
+    const val = id => (document.getElementById(id)?.value || '').trim();
+    const btn = e.target.querySelector('button[type="submit"]');
+    if (btn) btn.disabled = true;
+    affPost('register', {
+      name: val('home-aff-name'), phone: val('home-aff-phone'), code: val('home-aff-refcode'),
+      email: val('home-aff-email'), password: document.getElementById('home-aff-pass')?.value || '',
+      website: val('home-aff-website')
+    }).then(({ ok, data }) => {
+      if (ok && data.needVerify) {
+        alert('Đã gửi thư xác nhận tới ' + data.email + '.\nMở Gmail, bấm "XÁC NHẬN ĐĂNG KÝ" rồi đăng nhập để vào Dashboard Đối Tác.');
+        e.target.reset();
+      } else if (ok) {
+        window.location.href = '/affiliate';
+      } else if (data.error === 'exists') {
+        alert(data.message || 'Gmail này đã có tài khoản. Vui lòng Đăng nhập.');
+        window.switchHomeAuthTab('login');
+      } else {
+        alert(data.error || 'Chưa đăng ký được, vui lòng thử lại.');
+      }
+    }).finally(() => { if (btn) btn.disabled = false; });
   };
 
   window.handleHomeAffiliateLogin = function(e) {
     e.preventDefault();
-    const account = document.getElementById('home-aff-login-account')?.value.trim().toLowerCase();
-    
-    let store = { partners: [] };
-    try {
-      const raw = localStorage.getItem('ivy_affiliates_data');
-      if (raw) store = JSON.parse(raw);
-    } catch (err) {}
-
-    const partner = store.partners.find(p => 
-      (p.email && p.email.toLowerCase() === account) || 
-      (p.phone && p.phone === account)
-    ) || store.partners[0];
-
-    try {
-      localStorage.setItem('ivy_current_user', JSON.stringify({
-        name: partner.name,
-        email: partner.email,
-        role: 'partner'
-      }));
-    } catch (err) {}
-
-    alert('Đăng nhập Dashboard Affiliate thành công!');
-    window.toggleHomeAffiliateView();
+    const btn = e.target.querySelector('button[type="submit"]');
+    if (btn) btn.disabled = true;
+    accountApi('login', {
+      identifier: (document.getElementById('home-aff-login-account')?.value || '').trim(),
+      password: document.getElementById('home-aff-login-pass')?.value || '',
+      remember: true
+    }).then(({ ok, data }) => {
+      if (!ok) {
+        alert(data.error === 'unverified' ? 'Tài khoản chưa xác nhận Gmail. Vui lòng mở thư xác nhận trong Gmail.' : (data.error || 'Đăng nhập chưa thành công.'));
+        return;
+      }
+      setCurrentUser(data.user);
+      updateHeaderAuthState();
+      window.location.href = '/affiliate';
+    }).finally(() => { if (btn) btn.disabled = false; });
   };
 
   window.copyHomeAffLink = function() {
-    const partner = getHomeAffActivePartner();
-    const baseUrl = window.location.origin;
-    const link = baseUrl + '/?ref=' + encodeURIComponent(partner.code || 'nguyenduong');
+    if (!homeAffData || !homeAffData.partner) {
+      alert('Vui lòng đăng ký / đăng nhập Đối tác để lấy link giới thiệu riêng.');
+      return;
+    }
+    const link = window.location.origin + '/?ref=' + encodeURIComponent(homeAffData.partner.code);
     navigator.clipboard.writeText(link).then(() => {
       const copyText = document.getElementById('home-dash-copy-text');
       if (copyText) {
@@ -5803,43 +4548,23 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.switchHomeDashTab = function(tab, btn) {
-    // If not overview, redirect to full page affiliate.html with active tab
     if (tab === 'overview') {
       document.querySelectorAll('#home-aff-view-dashboard .aff-nav-pill').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
     } else {
-      window.location.href = `affiliate.html?view=dashboard&tab=${tab}`;
+      window.location.href = '/affiliate?view=dashboard&tab=' + tab;
     }
   };
 
   window.filterHomePerf = function(days, btn) {
     document.querySelectorAll('#home-aff-view-dashboard .aff-time-pill').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
-
-    const partner = getHomeAffActivePartner();
+    const series = homeAffData && homeAffData.partner ? homeAffData.clicks.days : [];
+    const total = series.slice(-days).reduce((sum, x) => sum + x.n, 0);
     const countEl = document.getElementById('home-perf-clicks');
     const labelEl = document.getElementById('home-perf-label');
-    const labelsRow = document.getElementById('home-chart-labels');
-
-    let mult = 1;
-    if (days === 30) mult = 4;
-    if (days === 60) mult = 8;
-    if (days === 90) mult = 12;
-
-    if (countEl) countEl.textContent = (partner.clicks || 0) * mult;
+    if (countEl) countEl.textContent = total;
     if (labelEl) labelEl.textContent = `clicks ${days} ngày qua`;
-
-    if (labelsRow) {
-      if (days === 7) {
-        labelsRow.innerHTML = '<span>Hôm nay</span><span>2 ngày trước</span><span>4 ngày trước</span><span>6 ngày trước</span><span>7 ngày trước</span>';
-      } else if (days === 30) {
-        labelsRow.innerHTML = '<span>Tuần này</span><span>Tuần 2</span><span>Tuần 3</span><span>Tuần 4</span><span>30 ngày trước</span>';
-      } else if (days === 60) {
-        labelsRow.innerHTML = '<span>Tháng này</span><span>Tháng trước</span><span>60 ngày trước</span>';
-      } else {
-        labelsRow.innerHTML = '<span>Tháng này</span><span>Tháng 2</span><span>Tháng 3</span><span>90 ngày trước</span>';
-      }
-    }
   };
 
   // Set default minimum date in hero datepicker
@@ -5859,7 +4584,7 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('ivy_lang', newLang);
     updatePageLanguage();
     const conf = languageConfig[newLang];
-    showToast(`${conf.flag} Ngôn ngữ / Language: ${conf.name}`);
+    showToast(newLang === 'vi' ? `${conf.flag} Ngôn ngữ: ${conf.name}` : `${conf.flag} Language: ${conf.name}`);
     // Close popovers
     const picker = document.getElementById('header-lang-picker');
     if (picker) picker.classList.remove('open');
@@ -5899,14 +4624,206 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Floating language toggle button click (opens header popover or cycles next language)
+  // Nút ngôn ngữ nổi (lá cờ + tam giác): bấm để xổ danh sách 7 ngôn ngữ
+  const floatingLangWrap = document.getElementById('floating-lang-wrap');
   const floatingLangToggle = document.getElementById('floating-lang-toggle');
+  const setFloatingLangOpen = (open) => {
+    if (!floatingLangWrap) return;
+    floatingLangWrap.classList.toggle('open', open);
+    if (floatingLangToggle) floatingLangToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
   if (floatingLangToggle) {
-    floatingLangToggle.addEventListener('click', () => {
-      // Toggle to English if currently Vietnamese, or back to Vietnamese if currently foreign
-      const nextLang = (state.language === 'vi') ? 'en' : 'vi';
-      window.changeSiteLanguage(nextLang);
+    floatingLangToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setFloatingLangOpen(!floatingLangWrap.classList.contains('open'));
     });
   }
+  document.querySelectorAll('.fl-opt-item').forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      window.changeSiteLanguage(opt.getAttribute('data-lang'));
+      setFloatingLangOpen(false);
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (floatingLangWrap && !floatingLangWrap.contains(e.target)) setFloatingLangOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      setFloatingLangOpen(false);
+      if (headerLangPicker) headerLangPicker.classList.remove('open');
+    }
+  });
+
+  // Điện thoại: gom các nút liên hệ nổi vào 1 nút để không che nội dung
+  const floatingDock = document.getElementById('orient-floating-dock');
+  const dockMoreBtn = document.getElementById('dock-btn-more');
+  if (floatingDock && dockMoreBtn) {
+    dockMoreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = !floatingDock.classList.contains('dock-open');
+      floatingDock.classList.toggle('dock-open', open);
+      dockMoreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!floatingDock.contains(e.target)) {
+        floatingDock.classList.remove('dock-open');
+        dockMoreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+
+  // =========================================================================
+  // LEADS → CRM: form "Nhận tư vấn & ưu đãi riêng"
+  // =========================================================================
+  function sendLead(payload) {
+    try {
+      const ref = localStorage.getItem('ivy_affiliate_ref');
+      if (ref && !payload.ref) payload.ref = ref;
+    } catch (e) {}
+    return fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(res => res.json().catch(() => ({})).then(data => ({ ok: res.ok, data })))
+      .catch(() => ({ ok: false, data: { error: 'Không kết nối được máy chủ. Vui lòng gọi Hotline/Zalo 098 971 3660.' } }));
+  }
+
+  const leadForm = document.getElementById('lead-capture-form');
+  if (leadForm) {
+    leadForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const msg = document.getElementById('lead-form-msg');
+      const val = id => (document.getElementById(id)?.value || '').trim();
+      const name = val('lead-name');
+      const phone = val('lead-phone');
+      const chosen = [...leadForm.querySelectorAll('input[name="lead-need"]:checked')].map(c => c.value);
+      const extra = val('lead-need');
+      const setMsg = (text, ok) => { if (msg) { msg.textContent = text; msg.className = 'lead-form-msg ' + (ok ? 'is-ok' : 'is-err'); } };
+      if (name.length < 2) { setMsg('Vui lòng nhập Họ và tên. / Please enter your name.', false); document.getElementById('lead-name')?.focus(); return; }
+      if (!/^\+?\d{8,15}$/.test(phone.replace(/[\s.\-()]/g, ''))) { setMsg('Số điện thoại chưa đúng. / Please check your phone number.', false); document.getElementById('lead-phone')?.focus(); return; }
+      const btn = leadForm.querySelector('.lead-submit-btn');
+      if (btn) btn.disabled = true;
+      sendLead({
+        name, phone,
+        country: val('lead-country'),
+        residence: val('lead-residence'),
+        need: [chosen.join(', '), extra].filter(Boolean).join(' — '),
+        website: val('lead-website'),
+        source: 'form'
+      }).then(({ ok, data }) => {
+        if (ok) {
+          leadForm.reset();
+          setMsg('Cảm ơn bạn! IVYLUXE SPA & NAIL sẽ liên hệ trong ít phút. / Thank you! We will contact you shortly.', true);
+        } else {
+          setMsg(data.error || 'Chưa gửi được, vui lòng thử lại.', false);
+        }
+      }).finally(() => { if (btn) btn.disabled = false; });
+    });
+  }
+
+  // =========================================================================
+  // BẢN SỬA BẢNG GIÁ GỐC (giá, tên, ảnh, ẩn) + SẢN PHẨM ADMIN ĐĂNG TỪ DASHBOARD
+  // =========================================================================
+  function applyMenuOverrides(overrides) {
+    Object.keys(spaMenuData).forEach(cat => {
+      spaMenuData[cat] = spaMenuData[cat].filter(item => {
+        const o = overrides[item.id];
+        if (!o) return true;
+        if (o.hidden) return false;
+        if (o.name_vi) item.name_vi = o.name_vi;
+        if (o.name_en) {
+          // Tên tiếng Anh mới → các ngôn ngữ khác dùng tên này thay cho bản dịch cũ
+          item.name_en = o.name_en;
+          ['zh', 'ja', 'ko', 'ru', 'fr'].forEach(l => { delete item['name_' + l]; });
+        }
+        if (o.price_vnd) item.price_vnd = o.price_vnd;
+        if (o.price_vnd_max === 0) delete item.price_vnd_max;
+        else if (o.price_vnd_max) item.price_vnd_max = o.price_vnd_max;
+        if (o.image) item.image = o.image;
+        return true;
+      });
+    });
+  }
+
+  fetch('/api/products', { cache: 'no-store' })
+    .then(res => (res.ok ? res.json() : { products: [] }))
+    .then(({ products, overrides }) => {
+      const hasOverrides = overrides && typeof overrides === 'object' && Object.keys(overrides).length > 0;
+      if (hasOverrides) applyMenuOverrides(overrides);
+      if (!Array.isArray(products)) products = [];
+      if (!products.length && !hasOverrides) return;
+      products.forEach(p => {
+        if (!spaMenuData[p.cat]) return;
+        const list = spaMenuData[p.cat].filter(x => x.id !== p.id);
+        const item = {
+          id: p.id,
+          name_vi: p.name_vi,
+          name_en: p.name_en || p.name_vi,
+          desc_vi: p.desc_vi || '',
+          desc_en: p.desc_en || p.desc_vi || '',
+          duration_vi: p.duration_vi || '',
+          duration_en: p.duration_en || p.duration_vi || '',
+          price_vnd: p.price_vnd,
+          image: p.image || 'assets/images/hero_spa_luxury.jpg',
+          popular: p.popular
+        };
+        if (p.price_vnd_max) item.price_vnd_max = p.price_vnd_max;
+        spaMenuData[p.cat] = [item, ...list];
+      });
+      renderSpaMenu();
+      updateModalServiceOptions();
+    })
+    .catch(() => {});
+
+
+  // =========================================================================
+  // ƯU ĐÃI / PROMOTION ADMIN ĐĂNG TỪ DASHBOARD (ẢNH + MÔ TẢ)
+  // =========================================================================
+  var livePromos; // khai báo var: hàm có thể được gọi (đổi ngôn ngữ) trước khi tải xong
+  function renderLivePromos() {
+    const list = livePromos || [];
+    const section = document.getElementById('uu-dai');
+    const grid = document.getElementById('live-promos-grid');
+    if (!section || !grid) return;
+    section.hidden = !list.length;
+    if (!list.length) return;
+    const vi = state.language === 'vi';
+    const pick = (p, k) => (vi ? p[k + '_vi'] : (p[k + '_en'] || p[k + '_vi'])) || '';
+    const esc = authEscape;
+    const titleEl = document.getElementById('live-promos-title');
+    const subEl = document.getElementById('live-promos-sub');
+    if (titleEl) titleEl.textContent = vi ? 'ƯU ĐÃI & KHUYẾN MÃI MỚI' : 'LATEST OFFERS & PROMOTIONS';
+    if (subEl) subEl.textContent = vi ? 'Chương trình đang áp dụng tại IVYLUXE SPA & NAIL – Số 48 phố Hà Trung, Hoàn Kiếm, Hà Nội' : 'Current offers at IVYLUXE SPA & NAIL – 48 Ha Trung, Hoan Kiem, Hanoi';
+    grid.innerHTML = list.map(p => {
+      const until = p.validUntil ? p.validUntil.split('-').reverse().join('/') : '';
+      return `
+        <article class="live-promo-card">
+          <div class="live-promo-img">
+            <img src="${esc(p.image)}" alt="${esc(pick(p, 'title'))}" loading="lazy">
+            ${p.badge ? `<span class="live-promo-badge">${esc(p.badge)}</span>` : ''}
+          </div>
+          <div class="live-promo-body">
+            <h3 class="live-promo-title">${esc(pick(p, 'title'))}</h3>
+            ${pick(p, 'offer') ? `<div class="live-promo-offer"><i class="fa fa-gift"></i> ${esc(pick(p, 'offer'))}</div>` : ''}
+            <p class="live-promo-desc">${esc(pick(p, 'desc'))}</p>
+            ${until ? `<div class="live-promo-until"><i class="fa fa-clock-o"></i> ${vi ? 'Áp dụng đến' : 'Valid until'} ${until}</div>` : ''}
+            <button type="button" class="live-promo-btn" data-service="${esc(pick(p, 'title'))}"><i class="fa fa-calendar-check-o"></i> ${vi ? 'ĐẶT LỊCH ƯU ĐÃI NÀY' : 'BOOK THIS OFFER'}</button>
+          </div>
+        </article>`;
+    }).join('');
+    grid.querySelectorAll('.live-promo-btn').forEach(btn => {
+      btn.addEventListener('click', () => openBookingModalWithService(btn.getAttribute('data-service')));
+    });
+  }
+
+  fetch('/api/promos', { cache: 'no-store' })
+    .then(res => (res.ok ? res.json() : { promos: [] }))
+    .then(({ promos }) => {
+      livePromos = Array.isArray(promos) ? promos : [];
+      renderLivePromos();
+    })
+    .catch(() => {});
 
 });

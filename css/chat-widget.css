@@ -1,0 +1,486 @@
+/* Khung chat bot IVYLUXE trên website (js/chat-widget.js) — dùng chung bộ não với bot Telegram */
+#ivy-chat {
+  --ic-green: #123023;
+  --ic-green-2: #2A5A44;
+  --ic-gold: #D4AF37;
+  --ic-gold-light: #ECC876;
+  --ic-cream: #FAF8F5;
+  --ic-text: #242424;
+  --ic-muted: #6b6b6b;
+  --ic-border: #E8E2D8;
+  font-family: 'Arimo', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ic-text);
+}
+#ivy-chat *, #ivy-chat *::before, #ivy-chat *::after { box-sizing: border-box; }
+
+/* Nút mở chat — góc dưới bên trái (bên phải đã có dãy nút liên hệ) */
+#ivy-chat .ic-launcher {
+  position: fixed;
+  left: 24px;
+  bottom: 28px;
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px 0 6px;
+  height: 58px;
+  border: 1.5px solid var(--ic-gold);
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--ic-green), var(--ic-green-2));
+  color: #fff;
+  font: 600 15px/1 'Be Vietnam Pro', system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(18, 48, 35, .35);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+#ivy-chat .ic-launcher:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(18, 48, 35, .45); }
+#ivy-chat .ic-launcher-icon {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--ic-gold);
+  color: var(--ic-green);
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+}
+#ivy-chat .ic-launcher-icon::after { /* chấm xanh "đang trực tuyến" */
+  content: '';
+  position: absolute;
+  right: 1px;
+  bottom: 2px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #3ddc84;
+  border: 2px solid var(--ic-green);
+}
+#ivy-chat.ic-open .ic-launcher { display: none; }
+
+#ivy-chat .ic-teaser {
+  position: fixed;
+  left: 24px;
+  bottom: 98px;
+  z-index: 9990;
+  max-width: 250px;
+  padding: 12px 34px 12px 14px;
+  background: #fff;
+  border: 1px solid var(--ic-border);
+  border-radius: 14px 14px 14px 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+  font-size: 14px;
+  cursor: pointer;
+  animation: ic-pop .35s ease;
+}
+#ivy-chat .ic-teaser-x {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  border: 0;
+  background: none;
+  color: var(--ic-muted);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+#ivy-chat.ic-open .ic-teaser { display: none; }
+
+/* Khung chat */
+#ivy-chat .ic-panel {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 9991;
+  width: 380px;
+  height: min(600px, calc(100vh - 48px));
+  display: none;
+  flex-direction: column;
+  background: var(--ic-cream);
+  border: 1px solid rgba(212, 175, 55, .45);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .25);
+}
+#ivy-chat.ic-open .ic-panel { display: flex; animation: ic-pop .25s ease; }
+@keyframes ic-pop { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+
+#ivy-chat .ic-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px 14px 16px;
+  background: linear-gradient(135deg, var(--ic-green), var(--ic-green-2));
+  color: #fff;
+  border-bottom: 2px solid var(--ic-gold);
+}
+#ivy-chat .ic-avatar {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff url('../assets/images/logo.png') center / 82% no-repeat;
+  border: 2px solid var(--ic-gold);
+}
+#ivy-chat .ic-title { flex: 1; min-width: 0; }
+#ivy-chat .ic-name { font: 700 15px/1.2 'Be Vietnam Pro', system-ui, sans-serif; color: var(--ic-gold-light); letter-spacing: .02em; }
+#ivy-chat .ic-sub { font-size: 12.5px; opacity: .85; margin-top: 3px; }
+#ivy-chat .ic-sub::before { content: '●'; color: #3ddc84; margin-right: 5px; font-size: 10px; }
+#ivy-chat .ic-hbtn {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .1);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+#ivy-chat .ic-hbtn:hover { background: rgba(255, 255, 255, .2); }
+
+#ivy-chat .ic-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overscroll-behavior: contain;
+}
+#ivy-chat .ic-msg {
+  max-width: 86%;
+  padding: 10px 13px;
+  border-radius: 16px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 14.5px;
+}
+#ivy-chat .ic-msg a { color: inherit; font-weight: 700; text-decoration: underline; }
+#ivy-chat .ic-bot { align-self: flex-start; background: #fff; border: 1px solid var(--ic-border); border-bottom-left-radius: 4px; }
+#ivy-chat .ic-user { align-self: flex-end; background: var(--ic-green); color: #fff; border-bottom-right-radius: 4px; }
+#ivy-chat .ic-typing { display: inline-flex; gap: 4px; padding: 14px 16px; }
+#ivy-chat .ic-typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--ic-green-2); opacity: .4; animation: ic-dot 1.2s infinite; }
+#ivy-chat .ic-typing i:nth-child(2) { animation-delay: .2s; }
+#ivy-chat .ic-typing i:nth-child(3) { animation-delay: .4s; }
+@keyframes ic-dot { 0%, 60%, 100% { opacity: .3; transform: none; } 30% { opacity: 1; transform: translateY(-3px); } }
+
+#ivy-chat .ic-chips { display: flex; flex-wrap: wrap; gap: 7px; padding: 4px 14px 10px; }
+#ivy-chat .ic-chip {
+  border: 1px solid var(--ic-gold);
+  background: #fff;
+  color: var(--ic-green);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font: 600 13px/1.2 'Arimo', system-ui, sans-serif;
+  cursor: pointer;
+}
+#ivy-chat .ic-chip:hover { background: #FDF6E3; }
+
+#ivy-chat .ic-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #fff;
+  border-top: 1px solid var(--ic-border);
+}
+#ivy-chat .ic-input {
+  flex: 1;
+  resize: none;
+  max-height: 110px;
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid var(--ic-border);
+  border-radius: 21px;
+  font: 15px/1.4 'Arimo', system-ui, sans-serif;
+  color: var(--ic-text);
+  background: var(--ic-cream);
+  outline: none;
+}
+#ivy-chat .ic-input:focus { border-color: var(--ic-gold); background: #fff; }
+#ivy-chat .ic-send {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ic-gold);
+  color: var(--ic-green);
+  font-size: 17px;
+  cursor: pointer;
+}
+#ivy-chat .ic-send:disabled { opacity: .5; cursor: default; }
+#ivy-chat .ic-note { padding: 0 12px 10px; background: #fff; font-size: 11.5px; color: var(--ic-muted); text-align: center; }
+#ivy-chat .ic-note a { color: var(--ic-green-2); font-weight: 700; text-decoration: none; }
+
+/* Điện thoại: nút tròn gọn, khung chat gần toàn màn hình */
+@media (max-width: 767px) {
+  #ivy-chat .ic-launcher {
+    left: 12px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    height: 54px;
+    padding: 0 4px;
+  }
+  #ivy-chat .ic-launcher-icon { width: 44px; height: 44px; }
+  #ivy-chat .ic-launcher-text { display: none; }
+  #ivy-chat .ic-teaser { left: 12px; bottom: calc(80px + env(safe-area-inset-bottom, 0px)); max-width: 220px; }
+  #ivy-chat .ic-panel {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 88dvh;
+    border-radius: 20px 20px 0 0;
+    border-width: 1px 0 0;
+  }
+  #ivy-chat .ic-input { font-size: 16px; } /* iPhone không tự phóng to khi gõ */
+  #ivy-chat .ic-form { padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* ---------- Mục "Nhắn tin với Chuyên viên Tư vấn" — khung iPhone, giao diện giống ứng dụng Tin nhắn ---------- */
+.section-phone-chat {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #FAF8F5 0%, #F4EFE6 100%);
+}
+#ivy-phone-chat {
+  --ip-blue: #0A84FF;
+  --ip-gray: #E9E9EB;
+  --ip-text: #111;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Arimo', system-ui, sans-serif;
+}
+#ivy-phone-chat *, #ivy-phone-chat *::before, #ivy-phone-chat *::after { box-sizing: border-box; }
+#ivy-phone-chat .ip-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 64px;
+  align-items: center;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+#ivy-phone-chat .ip-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid rgba(197, 155, 39, .5);
+  border-radius: 999px;
+  color: #8a6a12;
+  background: #fff;
+  font: 700 12px/1 'Arimo', system-ui, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+#ivy-phone-chat .ip-title {
+  margin: 18px 0 14px;
+  font: 800 clamp(1.6rem, 3vw, 2.3rem)/1.2 'Be Vietnam Pro', system-ui, sans-serif;
+  color: #123023;
+}
+#ivy-phone-chat .ip-desc { margin: 0 0 22px; font: 1rem/1.65 'Arimo', system-ui, sans-serif; color: #4a4a4a; max-width: 480px; }
+#ivy-phone-chat .ip-points { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+#ivy-phone-chat .ip-points li { display: flex; gap: 10px; align-items: flex-start; font: 600 .95rem/1.45 'Arimo', system-ui, sans-serif; color: #123023; }
+#ivy-phone-chat .ip-points i { color: #C59B27; font-size: 1.15em; margin-top: 1px; }
+
+/* Thân máy */
+#ivy-phone-chat .ip-device {
+  width: 360px;
+  height: 740px;
+  padding: 12px;
+  border-radius: 58px;
+  background: linear-gradient(145deg, #2b2b2e, #0d0d0f);
+  box-shadow: 0 0 0 2px #3a3a3d, 0 40px 80px rgba(18, 48, 35, .28), inset 0 0 2px rgba(255, 255, 255, .25);
+}
+#ivy-phone-chat .ip-screen {
+  position: relative;
+  height: 100%;
+  border-radius: 46px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+#ivy-phone-chat .ip-status {
+  position: relative;
+  flex: none;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 28px 0 34px;
+  font: 600 15px/1 -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  color: #000;
+}
+#ivy-phone-chat .ip-island {
+  position: absolute;
+  left: 50%;
+  top: 11px;
+  width: 112px;
+  height: 32px;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  background: #000;
+}
+#ivy-phone-chat .ip-icons { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+#ivy-phone-chat .ip-battery { position: relative; width: 25px; height: 12px; border: 1.5px solid rgba(0, 0, 0, .45); border-radius: 4px; padding: 1.5px; }
+#ivy-phone-chat .ip-battery span { display: block; width: 80%; height: 100%; border-radius: 1.5px; background: #000; }
+#ivy-phone-chat .ip-battery::after { content: ''; position: absolute; right: -4px; top: 3px; width: 2px; height: 4px; border-radius: 0 1px 1px 0; background: rgba(0, 0, 0, .45); }
+
+#ivy-phone-chat .ip-head {
+  flex: none;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  padding: 2px 12px 10px;
+  background: rgba(249, 249, 249, .94);
+  border-bottom: 1px solid #e3e3e6;
+}
+#ivy-phone-chat .ip-back, #ivy-phone-chat .ip-call {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: none;
+  color: var(--ip-blue);
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+#ivy-phone-chat .ip-contact { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+#ivy-phone-chat .ip-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff url('../assets/images/logo.png') center / 80% no-repeat;
+  border: 1.5px solid #D4AF37;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+}
+#ivy-phone-chat .ip-name { font-size: 12px; color: #000; display: inline-flex; gap: 4px; align-items: center; }
+#ivy-phone-chat .ip-name i { color: #b0b0b5; font-size: 13px; }
+
+#ivy-phone-chat .ip-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 12px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+#ivy-phone-chat .ip-day { align-self: center; margin: 4px 0 8px; font-size: 11px; font-weight: 600; color: #8e8e93; }
+#ivy-phone-chat .ip-msg {
+  position: relative;
+  max-width: 78%;
+  padding: 8px 13px;
+  border-radius: 19px;
+  font-size: 15px;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: 6px;
+}
+#ivy-phone-chat .ip-msg a { color: inherit; text-decoration: underline; }
+#ivy-phone-chat .ip-bot { align-self: flex-start; background: var(--ip-gray); color: var(--ip-text); border-bottom-left-radius: 6px; }
+#ivy-phone-chat .ip-user { align-self: flex-end; background: var(--ip-blue); color: #fff; border-bottom-right-radius: 6px; }
+#ivy-phone-chat .ip-delivered { align-self: flex-end; margin: -2px 4px 4px; font-size: 11px; color: #8e8e93; }
+#ivy-phone-chat .ip-typing { display: inline-flex; gap: 4px; padding: 12px 14px; }
+#ivy-phone-chat .ip-typing i { width: 8px; height: 8px; border-radius: 50%; background: #8e8e93; opacity: .4; animation: ic-dot 1.2s infinite; }
+#ivy-phone-chat .ip-typing i:nth-child(2) { animation-delay: .2s; }
+#ivy-phone-chat .ip-typing i:nth-child(3) { animation-delay: .4s; }
+
+#ivy-phone-chat .ip-chips { flex: none; display: flex; gap: 6px; padding: 0 12px 8px; overflow-x: auto; scrollbar-width: none; }
+#ivy-phone-chat .ip-chips::-webkit-scrollbar { display: none; }
+#ivy-phone-chat .ip-chip {
+  flex: none;
+  border: 1px solid #d1d1d6;
+  background: #fff;
+  color: var(--ip-blue);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: 500 13px/1.2 -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  cursor: pointer;
+}
+#ivy-phone-chat .ip-form { flex: none; display: flex; align-items: flex-end; gap: 8px; padding: 6px 12px 8px; }
+#ivy-phone-chat .ip-plus {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #e9e9eb;
+  color: #8e8e93;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+}
+#ivy-phone-chat .ip-field {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  min-height: 36px;
+  border: 1px solid #d1d1d6;
+  border-radius: 19px;
+  padding: 3px 3px 3px 12px;
+  background: #fff;
+}
+#ivy-phone-chat .ip-input {
+  flex: 1;
+  min-height: 28px;
+  max-height: 110px;
+  resize: none;
+  border: 0;
+  outline: none;
+  padding: 5px 0;
+  font: 16px/1.3 -apple-system, BlinkMacSystemFont, 'Arimo', system-ui, sans-serif; /* 16px: iPhone không tự phóng to khi gõ */
+  color: #000;
+  background: transparent;
+}
+#ivy-phone-chat .ip-send {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ip-blue);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+#ivy-phone-chat .ip-send:disabled { opacity: .45; cursor: default; }
+#ivy-phone-chat .ip-home { flex: none; width: 128px; height: 5px; margin: 4px auto 8px; border-radius: 3px; background: #000; }
+
+/* Máy tính bảng: chữ trên, máy dưới */
+@media (max-width: 991px) {
+  #ivy-phone-chat .ip-wrap { grid-template-columns: 1fr; gap: 32px; justify-items: center; text-align: center; }
+  #ivy-phone-chat .ip-desc { margin-left: auto; margin-right: auto; }
+  #ivy-phone-chat .ip-points { justify-items: center; }
+}
+/* Điện thoại: bỏ viền máy, khung chat rộng hết màn hình như ứng dụng Tin nhắn thật */
+@media (max-width: 767px) {
+  .section-phone-chat { padding: 44px 0 0; }
+  #ivy-phone-chat .ip-wrap { gap: 22px; }
+  #ivy-phone-chat .ip-copy { padding: 0 4px; }
+  #ivy-phone-chat .ip-points { display: none; }
+  #ivy-phone-chat .ip-device {
+    width: 100vw;
+    margin: 0 0 0 calc(50% - 50vw); /* tràn hết chiều ngang màn hình, bất kể lề của .container */
+    justify-self: start;
+    height: min(640px, 82dvh);
+    padding: 0;
+    border-radius: 24px 24px 0 0;
+    background: none;
+    box-shadow: 0 -10px 30px rgba(18, 48, 35, .12);
+  }
+  #ivy-phone-chat .ip-screen { border-radius: 24px 24px 0 0; }
+  #ivy-phone-chat .ip-status, #ivy-phone-chat .ip-home { display: none; }
+  #ivy-phone-chat .ip-head { padding-top: 12px; }
+}
+#ivy-phone-chat .ip-device { text-align: left; }
+/* Điện thoại: khi khách đang ở mục nhắn tin thì tạm ẩn nút chat nổi + dãy nút liên hệ để không đè khung chat */
+@media (max-width: 767px) {
+  body.ivy-phone-chat-active #ivy-chat .ic-launcher,
+  body.ivy-phone-chat-active #ivy-chat .ic-teaser,
+  body.ivy-phone-chat-active .orient-floating-dock { opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+}

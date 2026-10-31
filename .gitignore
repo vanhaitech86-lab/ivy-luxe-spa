@@ -1,17 +1,9 @@
-# OS & IDE
-.DS_Store
-Thumbs.db
-*.log
-.vscode/
-.idea/
-
-# Dependencies & Environments
+.vercel
 node_modules/
 .env
 .env.local
+.env*.local
+.data/
 
-# Vercel
-.vercel/
-
-# Archives
-*.zip
+_backup_truoc_khi_dong_bo/
+IVY_LUXE_SPA_FULL_CODE.zip

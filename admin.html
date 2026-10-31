@@ -3,541 +3,416 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Quản Trị - IVY LUXE SPA (Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội)</title>
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/logo.png">
-
-  <!-- Google Fonts -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dashboard Quản Trị - IVYLUXE SPA &amp; NAIL</title>
+  <link rel="icon" href="assets/images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <!-- Admin Stylesheet -->
-  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/dashboard.css">
 </head>
-<body class="admin-body">
+<body>
+  <!-- Màn hình chờ / đăng nhập / chưa có quyền -->
+  <div id="gate" class="gate">
+    <div class="gate-card">
+      <img src="assets/images/logo.png" alt="IVYLUXE SPA & NAIL" class="gate-logo">
+      <h1 class="gate-title">IVYLUXE SPA &amp; NAIL</h1>
+      <p class="gate-sub">Dashboard Quản Trị &amp; CRM</p>
 
-  <!-- ADMIN AUTH GUARD SCREEN (HIỂN THỊ NẾU CHƯA ĐĂNG NHẬP ADMIN) -->
-  <div id="admin-login-overlay" class="admin-login-overlay">
-    <div class="admin-login-box">
-      <div class="admin-login-header">
-        <img src="assets/images/logo.png" alt="IVY LUXE SPA" class="admin-logo-img">
-        <h2 class="admin-login-title">IVY LUXE SPA</h2>
-        <span class="admin-login-sub">CỔNG QUẢN TRỊ NỘI BỘ • 48 HÀ TRUNG</span>
+      <div id="gate-loading" class="gate-loading"><i class="fa fa-spinner fa-spin"></i> Đang kiểm tra đăng nhập…</div>
+
+      <div id="gate-login" hidden>
+        <a href="/api/auth/google?next=/admin" class="btn-google">
+          <svg viewBox="0 0 48 48" width="20" height="20" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.220l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.550H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+          Đăng nhập bằng Google
+        </a>
+        <div class="gate-or"><span>hoặc tài khoản + mật khẩu</span></div>
+        <form id="gate-form" class="gate-form">
+          <input type="text" id="gate-id" placeholder="Gmail, số điện thoại hoặc tên đăng nhập" autocomplete="username" required>
+          <input type="password" id="gate-pass" placeholder="Mật khẩu" autocomplete="current-password" required>
+          <button type="submit" class="btn-gold"><i class="fa fa-sign-in"></i> ĐĂNG NHẬP</button>
+        </form>
+        <p id="gate-msg" class="gate-msg" role="status"></p>
+        <p class="gate-note">Chưa có tài khoản? Đăng ký ở <a href="/">trang chủ</a> (nút Đăng Nhập → Đăng Ký Mới), rồi nhờ Chủ Spa cấp quyền.</p>
       </div>
 
-      <form id="admin-login-form" class="admin-login-form">
-        <div class="admin-form-group">
-          <label>Email Quản Trị Viên (Admin)</label>
-          <div class="admin-input-wrap">
-            <i class="fa fa-envelope"></i>
-            <input type="text" id="admin-input-user" placeholder="Nhập email quản trị viên" required autocomplete="username">
-          </div>
-        </div>
-
-        <div class="admin-form-group">
-          <label>Mật Khẩu Quản Trị</label>
-          <div class="admin-input-wrap">
-            <i class="fa fa-lock"></i>
-            <input type="password" id="admin-input-pass" placeholder="••••••••" required autocomplete="current-password">
-          </div>
-        </div>
-
-        <button type="submit" class="admin-btn-primary" style="width:100%; margin-top:10px;">
-          <i class="fa fa-shield"></i> XÁC THỰC QUYỀN ADMIN
-        </button>
-
-        <div style="text-align:center; margin-top:16px;">
-          <a href="index.html" class="admin-back-link"><i class="fa fa-arrow-left"></i> Quay lại Website chính</a>
-        </div>
-      </form>
+      <div id="gate-denied" hidden>
+        <p class="gate-msg is-err"><i class="fa fa-lock"></i> Tài khoản <strong id="gate-denied-email"></strong> chưa được cấp quyền quản trị.</p>
+        <p class="gate-note">Vui lòng nhờ Chủ Spa vào mục <strong>Phân quyền</strong> để cấp quyền cho Gmail này.</p>
+        <button type="button" class="btn-outline js-logout"><i class="fa fa-sign-out"></i> Đăng xuất / đổi tài khoản</button>
+      </div>
     </div>
   </div>
 
-  <!-- MAIN ADMIN APP CONTAINER -->
-  <div id="admin-app" class="admin-app-layout" style="display:none;">
-    
-    <!-- SIDEBAR -->
-    <aside class="admin-sidebar">
-      <div class="sidebar-header">
-        <img src="assets/images/logo.png" alt="IVY LUXE" class="sb-logo">
-        <div>
-          <h3 class="sb-brand-name">IVY LUXE SPA</h3>
-          <span class="sb-brand-sub">Số 48 phố Hà Trung, P. Hoàn Kiếm, Hà Nội</span>
-        </div>
-      </div>
-
-      <nav class="sidebar-nav">
-        <button type="button" class="sb-nav-item active" data-tab="dashboard">
-          <i class="fa fa-dashboard"></i> <span>Tổng Quan</span>
-        </button>
-        <button type="button" class="sb-nav-item" data-tab="bookings">
-          <i class="fa fa-calendar-check-o"></i> <span>Quản Lý Đặt Lịch</span>
-          <span class="sb-badge" id="sb-booking-count">0</span>
-        </button>
-        <button type="button" class="sb-nav-item" data-tab="services">
-          <i class="fa fa-cutlery"></i> <span>Quản Lý Dịch Vụ</span>
-        </button>
-        <button type="button" class="sb-nav-item" data-tab="affiliates">
-          <i class="fa fa-handshake-o"></i> <span>Đối Tác & Affiliate</span>
-        </button>
-        <button type="button" class="sb-nav-item" data-tab="sepay">
-          <i class="fa fa-credit-card"></i> <span>Thanh Toán SePay</span>
-        </button>
+  <!-- Ứng dụng quản trị -->
+  <div id="app" class="app" hidden>
+    <aside class="side">
+      <a href="/" class="side-brand" title="Xem website">
+        <img src="assets/images/logo.png" alt="">
+        <span>IVYLUXE SPA &amp; NAIL</span>
+      </a>
+      <nav class="side-nav">
+        <button type="button" class="nav-btn c-forest active" data-view="overview"><i class="fa fa-th-large"></i><span>Tổng quan</span></button>
+        <button type="button" class="nav-btn c-glow" data-view="leads"><i class="fa fa-users"></i><span>CRM Leads</span></button>
+        <button type="button" class="nav-btn c-lime" data-view="promos" data-need="admin"><i class="fa fa-gift"></i><span>Ưu đãi</span></button>
+        <button type="button" class="nav-btn c-amber" data-view="products" data-need="admin"><i class="fa fa-shopping-bag"></i><span>Sản phẩm</span></button>
+        <button type="button" class="nav-btn c-pink" data-view="affiliates" data-need="admin"><i class="fa fa-handshake-o"></i><span>Affiliate</span></button>
+        <button type="button" class="nav-btn c-wine" data-view="roles" data-need="owner"><i class="fa fa-shield"></i><span>Phân quyền</span></button>
       </nav>
-
-      <div class="sidebar-footer">
-        <div class="sb-user-card">
-          <i class="fa fa-user-circle sb-user-avatar"></i>
-          <div class="sb-user-info">
-            <strong id="admin-display-name">Quản Trị Viên</strong>
-            <span class="sb-user-status">Đang trực tuyến</span>
-          </div>
-        </div>
-        <div class="sb-actions">
-          <a href="index.html" target="_blank" class="sb-action-btn" title="Mở trang chủ Website"><i class="fa fa-globe"></i> Web</a>
-          <button type="button" id="admin-btn-logout" class="sb-action-btn sb-btn-danger" title="Đăng xuất"><i class="fa fa-sign-out"></i> Thoát</button>
-        </div>
+      <div class="side-user">
+        <div class="side-user-name" id="me-name"></div>
+        <div class="side-user-role" id="me-role"></div>
+        <a href="/" class="side-link"><i class="fa fa-globe"></i> Xem website</a>
+        <button type="button" class="side-link js-logout"><i class="fa fa-sign-out"></i> Đăng xuất</button>
       </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
-    <main class="admin-main-content">
-      
-      <!-- TOP BAR -->
-      <header class="admin-topbar">
-        <div class="topbar-left">
-          <h2 class="topbar-page-title" id="admin-page-title">Bảng Tổng Quan Hoạt Động</h2>
-          <span class="topbar-current-time" id="admin-current-clock"></span>
-        </div>
-        <div class="topbar-right">
-          <a href="index.html" target="_blank" class="topbar-btn-site">
-            <i class="fa fa-external-link"></i> Xem Website Khách
-          </a>
-          <div class="topbar-bank-pill" title="Tài khoản Sacombank nhận tiền SePay">
-            <i class="fa fa-check-circle" style="color:#25D366;"></i>
-            <span>Sacombank: <strong>020113149011</strong> (HKD IVY LUXE SPA)</span>
+    <main class="main">
+      <!-- TỔNG QUAN -->
+      <section class="view" id="view-overview">
+        <header class="view-head">
+          <div>
+            <p class="eyebrow">IVYLUXE SPA &amp; NAIL · 48 Hà Trung</p>
+            <h1>Tổng quan</h1>
           </div>
-        </div>
-      </header>
-
-      <!-- TAB 1: DASHBOARD -->
-      <section class="admin-section active" id="sec-dashboard">
-        <!-- KPI Metrics Grid -->
-        <div class="admin-kpi-grid">
-          <div class="admin-kpi-card">
-            <div class="kpi-icon" style="background:rgba(212,175,55,0.15); color:#ECC876;"><i class="fa fa-money"></i></div>
-            <div class="kpi-info">
-              <span class="kpi-label">Tổng Doanh Thu</span>
-              <h3 class="kpi-value" id="kpi-revenue">0đ</h3>
-              <span class="kpi-trend positive"><i class="fa fa-arrow-up"></i> Bao gồm SePay & Tiền mặt</span>
-            </div>
+          <button type="button" class="btn-outline js-refresh"><i class="fa fa-refresh"></i> Làm mới</button>
+        </header>
+        <div class="stat-row" id="stat-row"></div>
+        <h2 class="block-title">Khách hàng theo tầng</h2>
+        <div class="tier-tiles" id="tier-tiles"></div>
+        <div class="two-col">
+          <div class="panel">
+            <h2 class="block-title">Lead mới nhất</h2>
+            <div id="recent-leads" class="recent-list"></div>
           </div>
-
-          <div class="admin-kpi-card">
-            <div class="kpi-icon" style="background:rgba(37,211,102,0.15); color:#25D366;"><i class="fa fa-calendar-check-o"></i></div>
-            <div class="kpi-info">
-              <span class="kpi-label">Tổng Đơn Đặt Lịch</span>
-              <h3 class="kpi-value" id="kpi-bookings">0</h3>
-              <span class="kpi-trend" id="kpi-pending-bookings">0 đơn chờ xử lý</span>
-            </div>
-          </div>
-
-          <div class="admin-kpi-card">
-            <div class="kpi-icon" style="background:rgba(0,104,255,0.15); color:#82b5ff;"><i class="fa fa-qrcode"></i></div>
-            <div class="kpi-info">
-              <span class="kpi-label">Giao Dịch SePay Sacombank</span>
-              <h3 class="kpi-value" id="kpi-sepay-tx">0</h3>
-              <span class="kpi-trend positive">✓ Tự động xác thực</span>
-            </div>
-          </div>
-
-          <div class="admin-kpi-card">
-            <div class="kpi-icon" style="background:rgba(186,104,200,0.15); color:#BA68C8;"><i class="fa fa-handshake-o"></i></div>
-            <div class="kpi-info">
-              <span class="kpi-label">Đối Tác Affiliate</span>
-              <h3 class="kpi-value" id="kpi-affiliates">0</h3>
-              <span class="kpi-trend" id="kpi-aff-commission">Hoa hồng: 0đ</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Recent Tables Grid -->
-        <div class="admin-two-cols-grid">
-          <!-- Recent Bookings -->
-          <div class="admin-card">
-            <div class="admin-card-header">
-              <h3 class="admin-card-title"><i class="fa fa-calendar"></i> Lịch Hẹn Đặt Mới Nhất</h3>
-              <button type="button" class="btn-sm-gold" onclick="switchAdminTab('bookings')">Xem tất cả</button>
-            </div>
-            <div class="table-responsive">
-              <table class="admin-table">
-                <thead>
-                  <tr>
-                    <th>Mã Đơn</th>
-                    <th>Khách Hàng</th>
-                    <th>Dịch Vụ</th>
-                    <th>Thời Gian</th>
-                    <th>Thanh Toán</th>
-                    <th>Trạng Thái</th>
-                  </tr>
-                </thead>
-                <tbody id="dash-recent-bookings">
-                  <!-- Populated dynamically -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- Recent SePay Transactions -->
-          <div class="admin-card">
-            <div class="admin-card-header">
-              <h3 class="admin-card-title"><i class="fa fa-credit-card"></i> Biến Động Số Dư SePay Sacombank</h3>
-              <button type="button" class="btn-sm-gold" onclick="switchAdminTab('sepay')">Xem chi tiết</button>
-            </div>
-            <div class="table-responsive">
-              <table class="admin-table">
-                <thead>
-                  <tr>
-                    <th>Mã GD</th>
-                    <th>Khách Hàng</th>
-                    <th>Số Tiền</th>
-                    <th>Thời Gian</th>
-                    <th>Trạng Thái</th>
-                  </tr>
-                </thead>
-                <tbody id="dash-recent-tx">
-                  <!-- Populated dynamically -->
-                </tbody>
-              </table>
-            </div>
+          <div class="panel">
+            <h2 class="block-title">Khách đến từ quốc gia</h2>
+            <div id="country-bars" class="bars"></div>
           </div>
         </div>
       </section>
 
-      <!-- TAB 2: BOOKINGS & CUSTOMERS -->
-      <section class="admin-section" id="sec-bookings">
-        <div class="admin-toolbar">
-          <div class="toolbar-search">
-            <i class="fa fa-search"></i>
-            <input type="text" id="booking-search-input" placeholder="Tìm kiếm theo Tên khách, Số điện thoại, Mã đơn...">
+      <!-- CRM LEADS -->
+      <section class="view" id="view-leads" hidden>
+        <header class="view-head">
+          <div>
+            <p class="eyebrow">CRM · Quản lý khách hàng đa tầng</p>
+            <h1>Leads</h1>
           </div>
-          <div class="toolbar-filters">
-            <select id="booking-filter-status" class="admin-select">
-              <option value="all">Tất cả trạng thái</option>
-              <option value="pending">Chờ xác nhận</option>
-              <option value="paid">Đã thanh toán / Cọc SePay</option>
-              <option value="completed">Đã hoàn thành</option>
-              <option value="cancelled">Đã hủy</option>
-            </select>
-            <button type="button" id="btn-export-bookings-csv" class="admin-btn-secondary">
-              <i class="fa fa-download"></i> Xuất CSV / Excel
-            </button>
-            <button type="button" id="btn-open-add-booking-modal" class="admin-btn-primary">
-              <i class="fa fa-plus"></i> Thêm Lịch Đặt Mới
-            </button>
+          <div class="head-actions">
+            <button type="button" class="btn-gold" id="btn-add-lead"><i class="fa fa-plus"></i> Thêm khách</button>
+            <button type="button" class="btn-outline" id="btn-export"><i class="fa fa-download"></i> Xuất Excel (CSV)</button>
+          </div>
+        </header>
+        <div class="toolbar">
+          <div class="search"><i class="fa fa-search"></i><input type="search" id="lead-search" placeholder="Tìm tên, số điện thoại, quốc gia, nhu cầu…"></div>
+          <div class="seg">
+            <button type="button" class="seg-btn active" data-layout="table"><i class="fa fa-table"></i> Bảng</button>
+            <button type="button" class="seg-btn" data-layout="kanban"><i class="fa fa-columns"></i> Theo tầng</button>
           </div>
         </div>
-
-        <div class="admin-card">
-          <div class="table-responsive">
-            <table class="admin-table">
-              <thead>
-                <tr>
-                  <th>Mã Đơn</th>
-                  <th>Khách Hàng</th>
-                  <th>Số Điện Thoại</th>
-                  <th>Dịch Vụ</th>
-                  <th>Thời Gian Hẹn</th>
-                  <th>Số Khách</th>
-                  <th>Số Tiền</th>
-                  <th>Hình Thức</th>
-                  <th>Đối Tác</th>
-                  <th>Trạng Thái</th>
-                  <th>Thao Tác</th>
-                </tr>
-              </thead>
-              <tbody id="admin-bookings-tbody">
-                <!-- Dynamically populated -->
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <div class="tier-filter" id="tier-filter"></div>
+        <div id="leads-table-wrap" class="table-wrap"></div>
+        <div id="leads-kanban" class="kanban" hidden></div>
       </section>
 
-      <!-- TAB 3: SERVICES MANAGEMENT -->
-      <section class="admin-section" id="sec-services">
-        <div class="admin-toolbar">
-          <div class="toolbar-search">
-            <i class="fa fa-search"></i>
-            <input type="text" id="service-search-input" placeholder="Tìm kiếm gói dịch vụ...">
+      <!-- ƯU ĐÃI / PROMOTION -->
+      <section class="view" id="view-promos" hidden>
+        <header class="view-head">
+          <div>
+            <p class="eyebrow">Ảnh + mô tả Promotion &amp; Offer hiện trên trang chủ</p>
+            <h1>Ưu đãi</h1>
           </div>
-          <button type="button" id="btn-open-add-service-modal" class="admin-btn-primary">
-            <i class="fa fa-plus"></i> Thêm Dịch Vụ Mới
-          </button>
-        </div>
-
-        <div class="admin-services-grid" id="admin-services-container">
-          <!-- Dynamically populated -->
-        </div>
+          <button type="button" class="btn-gold" id="btn-add-promo"><i class="fa fa-plus"></i> Đăng ưu đãi mới</button>
+        </header>
+        <p class="hint">Mỗi ưu đãi gồm 1 ảnh và phần mô tả bên dưới, hiện ở mục <strong>"Ưu đãi &amp; Khuyến mãi mới"</strong> trên trang chủ (ngay trên mục Combo). Ưu đãi hết hạn sẽ tự ẩn. Khách bấm "Đặt lịch ưu đãi này" sẽ mở form đặt lịch.</p>
+        <div id="promo-list" class="product-grid"></div>
       </section>
 
-      <!-- TAB 4: AFFILIATE PARTNERS -->
-      <section class="admin-section" id="sec-affiliates">
-        <div class="admin-toolbar">
-          <div class="toolbar-search">
-            <i class="fa fa-search"></i>
-            <input type="text" id="aff-search-input" placeholder="Tìm kiếm đối tác theo Tên, SĐT, Mã...">
+      <!-- SẢN PHẨM -->
+      <section class="view" id="view-products" hidden>
+        <header class="view-head">
+          <div>
+            <p class="eyebrow">Đăng mới &amp; sửa sản phẩm / dịch vụ trên Bảng giá website</p>
+            <h1>Sản phẩm</h1>
           </div>
-          <button type="button" id="btn-open-add-partner-modal" class="admin-btn-primary">
-            <i class="fa fa-user-plus"></i> Thêm Đối Tác Mới
-          </button>
-        </div>
+          <button type="button" class="btn-gold" id="btn-add-product"><i class="fa fa-plus"></i> Đăng sản phẩm mới</button>
+        </header>
+        <p class="hint">Sản phẩm đăng ở đây hiện trong mục <strong>Bảng giá</strong> trên trang chủ, đúng nhóm dịch vụ đã chọn (tải lại trang để thấy). Bảng giá gốc của spa vẫn giữ nguyên.</p>
+        <div id="product-list" class="product-grid"></div>
 
-        <div class="admin-card">
-          <div class="table-responsive">
-            <table class="admin-table">
-              <thead>
-                <tr>
-                  <th>Đối Tác</th>
-                  <th>Số Điện Thoại</th>
-                  <th>Loại</th>
-                  <th>Mã Giới Thiệu</th>
-                  <th>Link Tiếp Thị</th>
-                  <th>Lượt Click</th>
-                  <th>Đơn Chốt</th>
-                  <th>Doanh Thu</th>
-                  <th>Hoa Hồng (20% - 30%)</th>
-                  <th>Tài Khoản Nhận Thưởng</th>
-                  <th>Thao Tác</th>
-                </tr>
-              </thead>
-              <tbody id="admin-affiliates-tbody">
-                <!-- Dynamically populated -->
-              </tbody>
-            </table>
-          </div>
+        <h2 class="block-title" style="margin-top:30px;">Bảng giá gốc của spa</h2>
+        <p class="hint">Các dịch vụ có sẵn trên website. Bấm <strong>Sửa</strong> để đổi giá, tên, ảnh hoặc tạm ẩn khỏi web. Bấm <strong>Khôi phục bản gốc</strong> trong hộp sửa để trả lại như ban đầu. Web cập nhật sau khoảng 30 giây.</p>
+        <div class="toolbar">
+          <div class="search"><i class="fa fa-search"></i><input type="search" id="menu-search" placeholder="Tìm tên dịch vụ…"></div>
+          <select id="menu-cat" class="menu-cat-select" aria-label="Nhóm dịch vụ"></select>
         </div>
+        <div id="menu-list" class="menu-list"></div>
       </section>
 
-      <!-- TAB 5: SEPAY PAYMENT & SACOMBANK -->
-      <section class="admin-section" id="sec-sepay">
-        <div class="admin-two-cols-grid">
-          <!-- Left: Sacombank Account Info Card -->
-          <div class="admin-card">
-            <div class="admin-card-header">
-              <h3 class="admin-card-title"><i class="fa fa-bank"></i> Tài Khoản Ngân Hàng Nhận Tiền</h3>
-              <span class="status-badge status-paid">Đang Hoạt Động</span>
-            </div>
-            
-            <div class="sepay-bank-config-box">
-              <div class="sb-qr-visual">
-                <img src="assets/images/sacombank_qr.png" alt="QR Sacombank Chính Thức" class="sb-qr-preview-img">
-              </div>
-              <div class="sb-config-details">
-                <div class="sb-field-row">
-                  <span class="sb-lbl">Ngân hàng:</span>
-                  <strong>Sacombank (Mã BIN: 970403)</strong>
-                </div>
-                <div class="sb-field-row">
-                  <span class="sb-lbl">Số tài khoản:</span>
-                  <strong style="color:#0053A0; font-size:1.2rem;">020113149011</strong>
-                </div>
-                <div class="sb-field-row">
-                  <span class="sb-lbl">Chủ tài khoản:</span>
-                  <strong>HKD IVY LUXE SPA</strong>
-                </div>
-                <div class="sb-field-row">
-                  <span class="sb-lbl">Cổng tự động:</span>
-                  <span style="color:#25D366; font-weight:700;"><i class="fa fa-check"></i> SePay VietQR Auto-Detector</span>
-                </div>
-                <div class="sb-field-row">
-                  <span class="sb-lbl">Cú pháp chuyển khoản:</span>
-                  <code>IVY&lt;MÃ_ĐƠN&gt;</code> (VD: IVY8892)
-                </div>
-              </div>
-            </div>
-
-            <div style="margin-top:20px; padding:16px; background:#06110C; border-radius:10px; font-size:0.85rem; line-height:1.6; color:#A3B5AD;">
-              <strong style="color:#ECC876;"><i class="fa fa-lightbulb-o"></i> Cơ chế SePay tự động:</strong> Khi khách hàng quét mã QR hoặc chuyển khoản vào tài khoản Sacombank 020113149011 với nội dung mã đơn (VD: IVY8892), SePay đọc biến động số dư và tự động chuyển trạng thái đơn đặt sang "Đã Thanh Toán".
-            </div>
+      <!-- AFFILIATE -->
+      <section class="view" id="view-affiliates" hidden>
+        <header class="view-head">
+          <div>
+            <p class="eyebrow">Đối tác giới thiệu khách · hoa hồng theo doanh thu thật</p>
+            <h1>Affiliate</h1>
           </div>
-
-          <!-- Right: SePay Webhook Settings -->
-          <div class="admin-card">
-            <div class="admin-card-header">
-              <h3 class="admin-card-title"><i class="fa fa-cog"></i> Cấu Hình Cổng SePay</h3>
+          <button type="button" class="btn-outline" id="btn-aff-refresh"><i class="fa fa-refresh"></i> Làm mới</button>
+        </header>
+        <p class="hint">Khách vào web qua link <strong>ivyluxe.com.vn/?ref=MÃ</strong> rồi để lại thông tin / đặt lịch sẽ được gắn với đối tác. Khi khách <strong>đã đến spa</strong>, nhập <strong>Doanh thu</strong> trong thông tin khách (CRM Leads) → hoa hồng <strong>10% (1 tầng duy nhất)</strong> tự tính, chờ đối soát 15 ngày rồi đối tác mới rút được. Đối tác chỉ thấy thành viên F1 đăng ký trực tiếp qua link của mình.</p>
+        <div class="stat-row" id="aff-stat-row"></div>
+        <div class="panel aff-create">
+          <h2 class="block-title">Tạo link Affiliate cho tài khoản đã đăng ký</h2>
+          <form id="aff-form" class="aff-form" autocomplete="off">
+            <label class="span-2">Tài khoản đã đăng ký trên web
+              <select id="af-account" required><option value="">Đang tải danh sách tài khoản…</option></select>
+            </label>
+            <label>Tên đối tác / Họ tên<input type="text" id="af-name" maxlength="80" required></label>
+            <label>Số điện thoại (không bắt buộc)<input type="tel" id="af-phone" maxlength="20"></label>
+            <label>Loại hình<select id="af-type"></select></label>
+            <label>Mã giới thiệu (để trống = tự tạo)<input type="text" id="af-code" maxlength="24" placeholder="VD: MINHTOUR"></label>
+            <div class="span-2 aff-form-foot">
+              <button type="submit" class="btn-gold"><i class="fa fa-link"></i> Tạo link Affiliate</button>
+              <span class="hint" style="margin:0">Đối tác đăng nhập bằng chính tài khoản này ở <strong>ivyluxe.com.vn/affiliate</strong> để xem click, khách và hoa hồng.</span>
             </div>
-            <form id="sepay-config-form" style="padding:15px 0;">
-              <div class="admin-form-group">
-                <label>SePay API Token / Secret Key</label>
-                <input type="password" id="sepay-api-key" class="admin-input" value="SP_LIVE_88912349011_IVYLUXE" placeholder="Nhập API Token SePay...">
-              </div>
-              <div class="admin-form-group">
-                <label>Webhook URL Nhận Biến Động Số Dư</label>
-                <input type="text" id="sepay-webhook-url" class="admin-input" value="https://ivy-luxe-spa-kappa.vercel.app/api/sepay-webhook" readonly>
-              </div>
-              <div class="admin-form-group">
-                <label>Mức Tiền Cọc Giữ Chỗ Mặc Định</label>
-                <input type="number" id="sepay-deposit-amount" class="admin-input" value="100000" step="50000">
-              </div>
-              <button type="submit" class="admin-btn-primary" style="margin-top:10px;">
-                <i class="fa fa-save"></i> Lưu Cấu Hình SePay
-              </button>
+          </form>
+          <div id="aff-created" class="aff-created" hidden></div>
+        </div>
+        <h2 class="block-title">Yêu cầu rút tiền đang chờ</h2>
+        <div id="aff-payouts" class="role-list"></div>
+        <h2 class="block-title">Danh sách đối tác</h2>
+        <div id="aff-table-wrap" class="table-wrap"></div>
+      </section>
+
+      <!-- PHÂN QUYỀN -->
+      <section class="view" id="view-roles" hidden>
+        <header class="view-head">
+          <div>
+            <p class="eyebrow">Chỉ Chủ Spa</p>
+            <h1>Phân quyền</h1>
+          </div>
+        </header>
+        <div class="two-col">
+          <div class="panel">
+            <h2 class="block-title">Cấp quyền theo Gmail</h2>
+            <form id="role-form" class="role-form">
+              <input type="email" id="role-email" placeholder="nhanvien@gmail.com" required>
+              <select id="role-select">
+                <option value="admin">Quản trị viên — xem toàn bộ CRM, đăng sản phẩm, ưu đãi</option>
+              </select>
+              <button type="submit" class="btn-gold"><i class="fa fa-check"></i> Cấp quyền</button>
+            </form>
+            <p class="hint">Người được cấp quyền đăng nhập ở trang chủ (Google hoặc Gmail + mật khẩu), sau đó mở <strong>ivyluxe.com.vn/admin</strong>.</p>
+            <div id="role-list" class="role-list"></div>
+
+            <h2 class="block-title" style="margin-top:26px;">Tài khoản đăng nhập bằng tên</h2>
+            <p class="hint">Dùng chung cho nhân viên không có Gmail riêng (VD: <strong>IVYLUXE</strong>). Đăng nhập ở <strong>ivyluxe.com.vn/admin</strong> bằng tên + mật khẩu. Tạo lại cùng tên = đổi mật khẩu.</p>
+            <form id="account-form" class="role-form account-form" autocomplete="off">
+              <input type="text" id="acc-username" placeholder="Tên đăng nhập (VD: IVYLUXE)" maxlength="30" required autocomplete="off">
+              <select id="acc-role">
+                <option value="admin">Quản trị viên — xem toàn bộ CRM, đăng sản phẩm, ưu đãi</option>
+              </select>
+              <input type="password" id="acc-password" placeholder="Mật khẩu (≥ 8 ký tự, có chữ và số)" required autocomplete="new-password">
+              <input type="password" id="acc-confirm" placeholder="Nhập lại mật khẩu" required autocomplete="new-password">
+              <button type="submit" class="btn-gold"><i class="fa fa-user-plus"></i> Tạo tài khoản</button>
             </form>
           </div>
-        </div>
-
-        <!-- Full SePay Transaction Ledger -->
-        <div class="admin-card" style="margin-top:25px;">
-          <div class="admin-card-header">
-            <h3 class="admin-card-title"><i class="fa fa-list"></i> Toàn Bộ Giao Dịch SePay Sacombank</h3>
-          </div>
-          <div class="table-responsive">
-            <table class="admin-table">
-              <thead>
-                <tr>
-                  <th>Mã Giao Dịch</th>
-                  <th>Mã Đơn</th>
-                  <th>Khách Hàng</th>
-                  <th>Số Tiền</th>
-                  <th>Ngân Hàng</th>
-                  <th>Số Tài Khoản</th>
-                  <th>Thời Gian</th>
-                  <th>Trạng Thái</th>
-                </tr>
-              </thead>
-              <tbody id="sepay-full-tx-tbody">
-                <!-- Dynamically populated -->
-              </tbody>
-            </table>
+          <div class="panel">
+            <h2 class="block-title">Quyền hạn từng vai trò</h2>
+            <div class="table-wrap">
+              <table class="perm-table">
+                <thead><tr><th>Việc</th><th class="c-wine">Chủ Spa</th><th class="c-amber">Quản trị</th><th class="c-sky">Tài khoản khác</th></tr></thead>
+                <tbody>
+                  <tr><td>Xem toàn bộ thông tin khách trong CRM</td><td>✔</td><td>✔</td><td>—</td></tr>
+                  <tr><td>Chăm sóc Leads, thêm / xoá khách, xuất Excel</td><td>✔</td><td>✔</td><td>—</td></tr>
+                  <tr><td>Đăng / sửa / ẩn sản phẩm, dịch vụ, ưu đãi trên web</td><td>✔</td><td>✔</td><td>—</td></tr>
+                  <tr><td>Tạo link Affiliate cho tài khoản đã đăng ký</td><td>✔</td><td>✔</td><td>—</td></tr>
+                  <tr><td>Duyệt rút tiền hoa hồng</td><td>✔</td><td>—</td><td>—</td></tr>
+                  <tr><td>Cấp quyền, xoá toàn bộ dữ liệu</td><td>✔</td><td>—</td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tg-panel nb-panel">
+              <h3><i class="fa fa-bell"></i> Bot báo tin cho quản trị viên</h3>
+              <p class="hint">Gửi tin vào nhóm Telegram khi có khách đăng ký tài khoản, để lại thông tin, đặt lịch, báo đã chuyển khoản hoặc đối tác yêu cầu rút hoa hồng.</p>
+              <div id="nb-status" class="hint">Đang kiểm tra…</div>
+              <div class="nb-actions">
+                <button type="button" class="btn-gold" id="btn-nb-setup"><i class="fa fa-plug"></i> Kết nối bot</button>
+                <button type="button" class="btn-outline" id="btn-nb-pair"><i class="fa fa-key"></i> Tạo mã kết nối nhóm</button>
+                <button type="button" class="btn-outline" id="btn-nb-test"><i class="fa fa-paper-plane"></i> Gửi tin thử</button>
+              </div>
+              <div id="nb-code" class="nb-code" hidden></div>
+              <div id="nb-chats" class="role-list"></div>
+            </div>
+            <div class="tg-panel">
+              <h3><i class="fa fa-paper-plane"></i> Bot Telegram chăm sóc khách</h3>
+              <div id="tg-status" class="hint">Đang kiểm tra…</div>
+              <button type="button" class="btn-gold" id="btn-tg-setup"><i class="fa fa-plug"></i> Kết nối bot với website</button>
+            </div>
+            <div class="danger-zone">
+              <h3><i class="fa fa-exclamation-triangle"></i> Reset dữ liệu</h3>
+              <p>Xoá toàn bộ Leads trong CRM để bắt đầu lại từ đầu. Không thể hoàn tác.</p>
+              <button type="button" class="btn-danger" id="btn-reset"><i class="fa fa-trash"></i> Xoá toàn bộ Leads</button>
+            </div>
           </div>
         </div>
       </section>
-
     </main>
   </div>
 
-  <!-- MODAL: ADD MANUAL BOOKING -->
-  <div id="modal-add-booking" class="admin-modal-overlay">
-    <div class="admin-modal-box">
-      <div class="admin-modal-header">
-        <h3><i class="fa fa-plus-circle"></i> Thêm Lịch Hẹn Mới Bằng Tay</h3>
-        <span class="admin-modal-close" onclick="closeAdminModal('modal-add-booking')">&times;</span>
-      </div>
-      <form id="form-add-manual-booking">
-        <div class="admin-form-row">
-          <div class="admin-form-group">
-            <label>Họ và Tên Khách <span style="color:red;">*</span></label>
-            <input type="text" id="mb-name" class="admin-input" placeholder="VD: Trần Văn Bình" required>
-          </div>
-          <div class="admin-form-group">
-            <label>Số Điện Thoại <span style="color:red;">*</span></label>
-            <input type="tel" id="mb-phone" class="admin-input" placeholder="0981234567" required>
-          </div>
-        </div>
-        <div class="admin-form-group">
-          <label>Dịch Vụ Chọn</label>
-          <select id="mb-service" class="admin-select" required>
-            <!-- Dynamically populated -->
-          </select>
-        </div>
-        <div class="admin-form-row">
-          <div class="admin-form-group">
-            <label>Ngày Đến</label>
-            <input type="date" id="mb-date" class="admin-input" required>
-          </div>
-          <div class="admin-form-group">
-            <label>Giờ Hẹn</label>
-            <input type="time" id="mb-time" class="admin-input" value="14:30" required>
-          </div>
-        </div>
-        <div class="admin-form-row">
-          <div class="admin-form-group">
-            <label>Số Lượng Khách</label>
-            <input type="text" id="mb-guests" class="admin-input" value="2 Khách">
-          </div>
-          <div class="admin-form-group">
-            <label>Hình Thức Thanh Toán</label>
-            <select id="mb-payment-status" class="admin-select">
-              <option value="Chờ xác nhận (Tiền mặt)">Tiền mặt tại quầy</option>
-              <option value="Đã cọc (100.000đ)">Đã đặt cọc 100.000đ</option>
-              <option value="Đã thanh toán (Sacombank SePay)">Đã chuyển khoản Sacombank</option>
-            </select>
-          </div>
-        </div>
-        <button type="submit" class="admin-btn-primary" style="width:100%; margin-top:15px;">
-          <i class="fa fa-save"></i> LƯU ĐƠN ĐẶT LỊCH
-        </button>
+  <!-- Hộp sửa / thêm khách -->
+  <div id="lead-modal" class="modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+      <header class="modal-head">
+        <h2 id="lead-modal-title">Thông tin khách</h2>
+        <button type="button" class="modal-x" data-close aria-label="Đóng">&times;</button>
+      </header>
+      <form id="lead-form" class="form-grid">
+        <input type="hidden" id="lf-id">
+        <label><span>Họ tên *</span><input id="lf-name" maxlength="80" required></label>
+        <label><span>Số điện thoại *</span><input id="lf-phone" maxlength="20" required></label>
+        <label><span>Đến từ quốc gia</span><input id="lf-country" maxlength="60"></label>
+        <label><span>Nơi sống</span><input id="lf-residence" maxlength="120"></label>
+        <label class="full"><span>Nhu cầu khi đến IVYLUXE SPA &amp; NAIL</span><textarea id="lf-need" rows="3" maxlength="600"></textarea></label>
+        <div class="full field"><span>Tầng khách hàng</span><div id="lf-tiers" class="tier-picker"></div></div>
+        <label><span>Doanh thu khách đã dùng (VNĐ)</span><input id="lf-revenue" inputmode="numeric" placeholder="VD: 900000"></label>
+        <div class="field"><span>Đối tác giới thiệu</span><div id="lf-ref" class="ref-box">—</div></div>
+        <label class="full"><span>Ghi chú chăm sóc</span><textarea id="lf-note" rows="3" maxlength="2000" placeholder="Đã gọi lúc…, khách thích…, hẹn lại…"></textarea></label>
+        <div class="full field" id="lf-bookings-wrap" hidden><span>Đơn đặt dịch vụ trên web</span><div id="lf-bookings" class="bk-list"></div></div>
+        <div class="full history" id="lf-history"></div>
+        <footer class="modal-foot full">
+          <button type="button" class="btn-danger-outline" id="lf-delete" hidden><i class="fa fa-trash"></i> Xoá khách</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn-outline" data-close>Huỷ</button>
+          <button type="submit" class="btn-gold"><i class="fa fa-save"></i> Lưu</button>
+        </footer>
       </form>
     </div>
   </div>
 
-  <!-- MODAL: ADD AFFILIATE PARTNER -->
-  <div id="modal-add-partner" class="admin-modal-overlay">
-    <div class="admin-modal-box">
-      <div class="admin-modal-header">
-        <h3><i class="fa fa-handshake-o"></i> Thêm Đối Tác Tiếp Thị Mới</h3>
-        <span class="admin-modal-close" onclick="closeAdminModal('modal-add-partner')">&times;</span>
-      </div>
-      <form id="form-add-affiliate-partner">
-        <div class="admin-form-row">
-          <div class="admin-form-group">
-            <label>Họ và Tên Đối Tác <span style="color:red;">*</span></label>
-            <input type="text" id="ap-name" class="admin-input" placeholder="VD: Khách Sạn Apricot / Tour Guide Minh" required>
-          </div>
-          <div class="admin-form-group">
-            <label>Số Điện Thoại / Zalo <span style="color:red;">*</span></label>
-            <input type="tel" id="ap-phone" class="admin-input" placeholder="0981234567" required>
-          </div>
-        </div>
-        <div class="admin-form-row">
-          <div class="admin-form-group">
-            <label>Email (Gmail)</label>
-            <input type="email" id="ap-email" class="admin-input" placeholder="doitac@gmail.com">
-          </div>
-          <div class="admin-form-group">
-            <label>Mã Giới Thiệu (Ref Code) <span style="color:red;">*</span></label>
-            <input type="text" id="ap-code" class="admin-input" placeholder="VD: APRICOT_HOTEL" required>
-          </div>
-        </div>
-        <div class="admin-form-row">
-          <div class="admin-form-group">
-            <label>Phân Loại Đối Tác</label>
-            <select id="ap-type" class="admin-select">
-              <option value="Khách Sạn & Concierge">Khách Sạn & Concierge</option>
-              <option value="Hướng Dẫn Viên Du Lịch">Hướng Dẫn Viên Du Lịch</option>
-              <option value="Airbnb & Homestay Host">Airbnb & Homestay Host</option>
-              <option value="Tài Xế Taxi / Grab VIP">Tài Xế Taxi / Grab VIP</option>
-              <option value="Travel Blogger / KOC">Travel Blogger / KOC</option>
-              <option value="Cộng Tác Viên Tự Do">Cộng Tác Viên Tự Do</option>
-            </select>
-          </div>
-          <div class="admin-form-group">
-            <label>Mức Hoa Hồng</label>
-            <select id="ap-commission-rate" class="admin-select">
-              <option value="30%">30% (Mức Tiêu Chuẩn VIP)</option>
-              <option value="25%">25% (Tiêu Chuẩn)</option>
-              <option value="20%">20% (Khởi Điểm)</option>
-            </select>
+  <!-- Hộp đăng / sửa sản phẩm -->
+  <div id="product-modal" class="modal" hidden>
+    <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+      <header class="modal-head">
+        <h2 id="product-modal-title">Đăng sản phẩm</h2>
+        <button type="button" class="modal-x" data-close aria-label="Đóng">&times;</button>
+      </header>
+      <form id="product-form" class="form-grid">
+        <input type="hidden" id="pf-id">
+        <label class="full"><span>Nhóm dịch vụ trên Bảng giá *</span><select id="pf-cat"></select></label>
+        <label><span>Tên (tiếng Việt) *</span><input id="pf-name-vi" maxlength="120" required></label>
+        <label><span>Tên (English)</span><input id="pf-name-en" maxlength="120"></label>
+        <label><span>Mô tả (tiếng Việt)</span><textarea id="pf-desc-vi" rows="3" maxlength="600"></textarea></label>
+        <label><span>Mô tả (English)</span><textarea id="pf-desc-en" rows="3" maxlength="600"></textarea></label>
+        <label><span>Thời lượng (VD: 60 phút)</span><input id="pf-dur-vi" maxlength="40"></label>
+        <label><span>Duration (e.g. 60 min)</span><input id="pf-dur-en" maxlength="40"></label>
+        <label><span>Giá (VNĐ) *</span><input id="pf-price" inputmode="numeric" placeholder="450000" required></label>
+        <label><span>Giá đến (nếu là khoảng giá)</span><input id="pf-price-max" inputmode="numeric" placeholder="để trống nếu 1 giá"></label>
+        <div class="full field image-field">
+          <span>Ảnh sản phẩm</span>
+          <div class="image-row">
+            <img id="pf-preview" class="image-preview" alt="" hidden>
+            <div class="image-actions">
+              <label class="btn-outline file-btn"><i class="fa fa-upload"></i> Tải ảnh lên<input type="file" id="pf-file" accept="image/jpeg,image/png,image/webp" hidden></label>
+              <select id="pf-image-pick"><option value="">— hoặc chọn ảnh có sẵn của spa —</option></select>
+              <input type="hidden" id="pf-image">
+              <small id="pf-image-msg"></small>
+            </div>
           </div>
         </div>
-        <div class="admin-form-group">
-          <label>Tài Khoản Ngân Hàng Nhận Hoa Hồng (Ngân Hàng - STK - Tên Chủ TK)</label>
-          <input type="text" id="ap-bank" class="admin-input" placeholder="VD: Vietcombank - 0011001234567 - NGUYEN VAN A">
-        </div>
-        <button type="submit" class="admin-btn-primary" style="width:100%; margin-top:15px;">
-          <i class="fa fa-check-circle"></i> TẠO ĐỐI TÁC & PHÁT HÀNH MÃ TIẾP THỊ
-        </button>
+        <label class="check"><input type="checkbox" id="pf-popular"> Gắn nhãn "Lựa chọn VIP"</label>
+        <label class="check"><input type="checkbox" id="pf-hidden"> Tạm ẩn khỏi website</label>
+        <footer class="modal-foot full">
+          <button type="button" class="btn-danger-outline" id="pf-delete" hidden><i class="fa fa-trash"></i> Xoá sản phẩm</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn-outline" data-close>Huỷ</button>
+          <button type="submit" class="btn-gold"><i class="fa fa-cloud-upload"></i> Đăng lên website</button>
+        </footer>
       </form>
     </div>
   </div>
 
-  <!-- Admin JavaScript -->
-  <script src="js/admin.js"></script>
+  <!-- Hộp sửa dịch vụ gốc trong Bảng giá -->
+  <div id="menu-modal" class="modal" hidden>
+    <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="menu-modal-title">
+      <header class="modal-head">
+        <h2 id="menu-modal-title">Sửa dịch vụ</h2>
+        <button type="button" class="modal-x" data-close aria-label="Đóng">&times;</button>
+      </header>
+      <form id="menu-form" class="form-grid">
+        <input type="hidden" id="mf-id">
+        <p class="full menu-orig" id="mf-orig"></p>
+        <label><span>Tên (tiếng Việt) *</span><input id="mf-name-vi" maxlength="120" required></label>
+        <label><span>Tên (English)</span><input id="mf-name-en" maxlength="120"></label>
+        <label><span>Giá (VNĐ) *</span><input id="mf-price" inputmode="numeric" required></label>
+        <label><span>Giá đến (nếu là khoảng giá)</span><input id="mf-price-max" inputmode="numeric" placeholder="để trống nếu 1 giá"></label>
+        <div class="full field image-field">
+          <span>Ảnh dịch vụ</span>
+          <div class="image-row">
+            <img id="mf-preview" class="image-preview" alt="">
+            <div class="image-actions">
+              <label class="btn-outline file-btn"><i class="fa fa-upload"></i> Tải ảnh mới lên<input type="file" id="mf-file" accept="image/jpeg,image/png,image/webp" hidden></label>
+              <select id="mf-image-pick"><option value="">— hoặc chọn ảnh có sẵn của spa —</option></select>
+              <input type="hidden" id="mf-image">
+              <small id="mf-image-msg"></small>
+            </div>
+          </div>
+        </div>
+        <label class="check full"><input type="checkbox" id="mf-hidden"> Tạm ẩn dịch vụ này khỏi website (Bảng giá + form đặt lịch)</label>
+        <footer class="modal-foot full">
+          <button type="button" class="btn-danger-outline" id="mf-reset" hidden><i class="fa fa-undo"></i> Khôi phục bản gốc</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn-outline" data-close>Huỷ</button>
+          <button type="submit" class="btn-gold"><i class="fa fa-check"></i> Lưu lên website</button>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <!-- Hộp đăng / sửa ưu đãi -->
+  <div id="promo-modal" class="modal" hidden>
+    <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="promo-modal-title">
+      <header class="modal-head">
+        <h2 id="promo-modal-title">Đăng ưu đãi</h2>
+        <button type="button" class="modal-x" data-close aria-label="Đóng">&times;</button>
+      </header>
+      <form id="promo-form" class="form-grid">
+        <input type="hidden" id="kf-id">
+        <div class="full field image-field">
+          <span>Ảnh ưu đãi *</span>
+          <div class="image-row">
+            <img id="kf-preview" class="image-preview" alt="" hidden>
+            <div class="image-actions">
+              <label class="btn-outline file-btn"><i class="fa fa-upload"></i> Tải ảnh lên<input type="file" id="kf-file" accept="image/jpeg,image/png,image/webp" hidden></label>
+              <select id="kf-image-pick"></select>
+              <input type="hidden" id="kf-image">
+              <small id="kf-image-msg"></small>
+            </div>
+          </div>
+        </div>
+        <label><span>Tiêu đề (tiếng Việt) *</span><input id="kf-title-vi" maxlength="120" placeholder="VD: Ưu đãi Halloween – Nails mắt mèo" required></label>
+        <label><span>Title (English)</span><input id="kf-title-en" maxlength="120" placeholder="Halloween offer – Cat-eye nails"></label>
+        <label><span>Nhãn trên ảnh</span><input id="kf-badge" maxlength="24" placeholder="VD: GIẢM 20% / HOT / MỚI"></label>
+        <label><span>Áp dụng đến ngày</span><input id="kf-until" type="date"></label>
+        <label><span>Dòng ưu đãi nổi bật (tiếng Việt)</span><input id="kf-offer-vi" maxlength="120" placeholder="VD: Chỉ 450.000đ – tặng ngâm chân thảo dược"></label>
+        <label><span>Highlight offer (English)</span><input id="kf-offer-en" maxlength="120" placeholder="Only 450,000 VND – free herbal foot soak"></label>
+        <label class="full"><span>Mô tả ưu đãi / dịch vụ (tiếng Việt) *</span><textarea id="kf-desc-vi" rows="4" maxlength="1000" placeholder="Chi tiết dịch vụ, điều kiện áp dụng…" required></textarea></label>
+        <label class="full"><span>Description (English)</span><textarea id="kf-desc-en" rows="3" maxlength="1000"></textarea></label>
+        <label class="check full"><input type="checkbox" id="kf-hidden"> Tạm ẩn khỏi website</label>
+        <footer class="modal-foot full">
+          <button type="button" class="btn-danger-outline" id="kf-delete" hidden><i class="fa fa-trash"></i> Xoá ưu đãi</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn-outline" data-close>Huỷ</button>
+          <button type="submit" class="btn-gold"><i class="fa fa-cloud-upload"></i> Đăng lên website</button>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/menu-data.js"></script>
+  <script src="js/dashboard.js"></script>
 </body>
 </html>

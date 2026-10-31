@@ -12,7 +12,7 @@
    - Full Footer & Floating Quick Action Dock
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
   --color-primary: #123023;       /* Imperial Deep Emerald */
@@ -29,9 +29,9 @@
   --color-text-muted: #666666;
   --color-border: #E8E2D8;
 
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Be Vietnam Pro', 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans', 'Apple SD Gothic Neo', system-ui, sans-serif;
+  --font-display: 'Be Vietnam Pro', 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans', 'Apple SD Gothic Neo', system-ui, sans-serif;
+  --font-sans: 'Arimo', 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans', 'Apple SD Gothic Neo', system-ui, -apple-system, sans-serif;
 
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -52,7 +52,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: 18px; /* cỡ chữ gốc 18px — mọi cỡ chữ rem trên web tăng theo, giống nhau ở mọi ngôn ngữ */
   -webkit-font-smoothing: antialiased;
 }
 
@@ -392,7 +392,7 @@ button, input, select, textarea {
 
 /* CHỮ MASSAGE BODY & WELLNESS: ĐẬM LÊN VÀ CHUYỂN MÀU TÍM */
 .header-logo-sub {
-  font-family: 'Plus Jakarta Sans', var(--font-sans);
+  font-family: 'Arimo', var(--font-sans);
   font-style: normal;
   font-weight: 800 !important;
   font-size: 0.82rem;
@@ -2742,8 +2742,7 @@ button, input, select, textarea {
     display: none !important;
   }
   .mobile-header-lang-wrap {
-    display: flex !important;
-    align-items: center !important;
+    display: none !important;
   }
   .hero-booking-box {
     flex-direction: column;
@@ -2785,105 +2784,6 @@ button, input, select, textarea {
   }
   .top-zen-btn span {
     display: none;
-  }
-
-  /* ========================================================================= */
-  /* COMPREHENSIVE MOBILE & DESKTOP DISPLAY OPTIMIZATIONS (HIỂN THỊ ĐẦY ĐỦ 100%) */
-  /* ========================================================================= */
-  /* 1. Nút ngôn ngữ nổi: Ẩn trên mobile vì ngôn ngữ đã chuyển lên trên cùng header & drawer */
-  .floating-lang-toggle {
-    display: none !important;
-  }
-
-  /* 2. Cột nút liên hệ bên phải trên điện thoại: Thu gọn nhẹ nhàng, không che nội dung */
-  .orient-floating-dock {
-    bottom: 22px !important;
-    right: 10px !important;
-    gap: 7px !important;
-  }
-  .orient-dock-btn {
-    width: 38px !important;
-    height: 38px !important;
-    font-size: 0.88rem !important;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3) !important;
-  }
-  /* Tuyệt đối ẩn thanh text Hotline màu trắng trên mobile để không đè lên nút Đặt Lịch */
-  .dock-phone-pill {
-    display: none !important;
-  }
-
-  /* 3. Tiêu đề chào mừng và nút đặt lịch mobile: Căn chỉnh an toàn, không bị nút liên hệ đè lên */
-  .hero-welcome-text {
-    padding: 0 45px 0 15px !important;
-    font-size: 0.92rem !important;
-    line-height: 1.4 !important;
-    word-break: break-word !important;
-  }
-  .hero-mobile-cta-wrap {
-    padding: 0 45px 0 15px !important;
-    margin-top: 12px !important;
-  }
-  .hero-mobile-cta-btn {
-    max-width: 290px !important;
-    width: 100% !important;
-    justify-content: center !important;
-    font-size: 0.82rem !important;
-    padding: 8px 14px !important;
-  }
-
-  /* 4. Tối ưu Header Mobile: Logo, chữ và nút không bị ép chật */
-  .header-logo-center {
-    max-width: calc(100% - 200px) !important;
-    overflow: hidden !important;
-  }
-  .header-logo-text {
-    font-size: 1.05rem !important;
-    letter-spacing: 1px !important;
-  }
-  .header-logo-sub {
-    font-size: 0.58rem !important;
-    letter-spacing: 0.6px !important;
-  }
-  .mobile-lang-btn {
-    padding: 4px 7px !important;
-    font-size: 0.74rem !important;
-    gap: 4px !important;
-  }
-  .mobile-header-book-btn {
-    padding: 4px 8px !important;
-    font-size: 0.73rem !important;
-    gap: 4px !important;
-  }
-  .mobile-header-right-group {
-    gap: 5px !important;
-  }
-
-  /* 5. Menu 3 vạch (Drawer) trên mobile */
-  .ms-drawer-tabs-wrap {
-    padding: 8px 12px !important;
-  }
-  .ms-drawer-tabs {
-    padding-bottom: 4px !important;
-    gap: 6px !important;
-  }
-  .ms-tab-btn {
-    padding: 6px 11px !important;
-    font-size: 0.75rem !important;
-  }
-  .ms-service-card {
-    padding: 10px !important;
-    gap: 10px !important;
-  }
-  .ms-service-thumb {
-    width: 76px !important;
-    height: 76px !important;
-  }
-  .ms-service-name {
-    font-size: 0.85rem !important;
-  }
-  .ms-service-desc {
-    font-size: 0.73rem !important;
-    line-height: 1.35 !important;
   }
 }
 
@@ -3162,9 +3062,10 @@ button, input, select, textarea {
   color: #9CB2A7;
   margin: 0;
   line-height: 1.4;
-  /* Display full description so nothing is truncated */
-  display: block;
-  overflow: visible;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .music-track-card-btn {
@@ -3847,7 +3748,7 @@ button, input, select, textarea {
 }
 
 .aff-perk-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Be Vietnam Pro', Georgia, serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: #FFFFFF;
@@ -3892,7 +3793,7 @@ button, input, select, textarea {
   border: none;
   border-bottom: 3px solid transparent;
   color: #A3B5AD;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arimo', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -3953,7 +3854,7 @@ button, input, select, textarea {
 }
 
 .aff-col-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Be Vietnam Pro', Georgia, serif;
   font-size: 1.3rem;
   color: #ECC876;
   margin-bottom: 6px;
@@ -4000,7 +3901,7 @@ button, input, select, textarea {
   border-radius: 8px;
   color: #FFFFFF;
   font-size: 0.92rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arimo', sans-serif;
   transition: border-color 0.2s, box-shadow 0.2s;
   box-sizing: border-box;
 }
@@ -4069,7 +3970,7 @@ select.aff-input option {
   padding: 15px;
   background: linear-gradient(135deg, #ECC876 0%, #D4AF37 50%, #A4791E 100%);
   color: #051A12;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Be Vietnam Pro', Georgia, serif;
   font-size: 0.96rem;
   font-weight: 800;
   letter-spacing: 1px;
@@ -4124,7 +4025,7 @@ select.aff-input option {
 }
 
 .aff-result-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Be Vietnam Pro', Georgia, serif;
   font-size: 1.05rem;
   color: #FFFFFF;
   margin: 0;
@@ -4229,7 +4130,7 @@ select.aff-input option {
   color: #FFFFFF;
   padding: 10px 14px;
   font-size: 0.85rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arimo', sans-serif;
   outline: none;
 }
 
@@ -4438,7 +4339,7 @@ select.aff-input option {
   border-radius: 10px;
   color: #FFFFFF;
   font-size: 0.95rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arimo', sans-serif;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -4502,7 +4403,7 @@ select.aff-input option {
 }
 
 .aff-pi-name {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Be Vietnam Pro', Georgia, serif;
   font-size: 1.15rem;
   color: #FFFFFF;
   margin: 0 0 4px;
@@ -4546,7 +4447,7 @@ select.aff-input option {
 }
 
 .aff-sc-num {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Be Vietnam Pro', Georgia, serif;
   font-size: 1.5rem;
   font-weight: 800;
   color: #FFFFFF;
@@ -4662,7 +4563,7 @@ select.aff-input option {
   color: #FFFFFF !important;
   padding: 12px 24px;
   border-radius: 30px;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Be Vietnam Pro', Georgia, serif;
   font-weight: 700;
   font-size: 0.88rem;
   letter-spacing: 0.5px;
@@ -4699,7 +4600,7 @@ select.aff-input option {
   background: rgba(212, 175, 55, 0.12);
   border: 1px solid rgba(212, 175, 55, 0.35);
   color: #ECC876;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arimo', sans-serif;
   font-weight: 700;
   font-size: 0.82rem;
   padding: 6px 14px;
@@ -4838,7 +4739,7 @@ select.aff-input option {
   border: none;
   border-bottom: 2px solid transparent;
   color: #A3B5AD;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arimo', sans-serif;
   font-weight: 700;
   font-size: 0.88rem;
   cursor: pointer;
@@ -4924,7 +4825,7 @@ select.aff-input option {
   border: 1px solid #DADCE0;
   border-radius: 8px;
   padding: 11px 16px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arimo', sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
@@ -5162,7 +5063,7 @@ select.aff-input option {
 }
 
 .sepay-total-amount {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Be Vietnam Pro', Georgia, serif;
   font-size: 1.7rem;
   font-weight: 800;
   color: #B22222;
@@ -5288,7 +5189,7 @@ select.aff-input option {
   padding: 14px;
   background: linear-gradient(135deg, #25D366, #128C7E);
   color: #FFFFFF;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Be Vietnam Pro', Georgia, serif;
   font-size: 0.95rem;
   font-weight: 800;
   border: none;
@@ -5327,7 +5228,7 @@ select.aff-input option {
 }
 
 .mb-service {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Be Vietnam Pro', Georgia, serif;
   font-size: 1.05rem;
   color: #0d271c;
   margin-bottom: 4px;
@@ -5457,7 +5358,7 @@ select.aff-input option {
   gap: 7px;
   padding: 10px 18px;
   border-radius: 25px;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Be Vietnam Pro', Georgia, serif;
   font-weight: 700;
   font-size: 0.82rem;
   color: #FFFFFF !important;
@@ -6369,57 +6270,6 @@ select.aff-input option {
   box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
 }
 
-/* ======== LANGUAGE SELECTOR Ở TRÊN CÙNG DRAWER (Cho khách nước ngoài dễ nhìn) ======== */
-.ms-drawer-lang-top {
-  background: linear-gradient(135deg, #0A1C14 0%, #123023 60%, #163829 100%);
-  border-bottom: 2px solid rgba(212, 175, 55, 0.35);
-  padding: 10px 16px 12px;
-  flex-shrink: 0;
-}
-
-.ms-drawer-lang-top .ms-lang-label {
-  display: block;
-  font-size: 0.7rem;
-  color: var(--color-gold, #D4AF37);
-  font-weight: 800;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.ms-drawer-lang-top .ms-lang-label .fa-globe {
-  margin-right: 5px;
-  font-size: 0.82rem;
-}
-
-.ms-drawer-lang-top .ms-lang-pills {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.ms-drawer-lang-top .ms-lang-pill {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #DDE5E1;
-  padding: 5px 10px;
-  border-radius: 6px;
-  font-size: 0.74rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-}
-
-.ms-drawer-lang-top .ms-lang-pill.active,
-.ms-drawer-lang-top .ms-lang-pill:hover {
-  background: var(--color-gold, #D4AF37);
-  color: #051A12;
-  font-weight: 700;
-  border-color: var(--color-gold, #D4AF37);
-  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
-}
-
 /* Drawer Footer */
 .ms-drawer-footer {
   background: #071E15;
@@ -6520,7 +6370,7 @@ select.aff-input option {
 .aff-page-body {
   background-color: var(--aff-bg-page);
   color: #1A2E22;
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Arimo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -6570,7 +6420,7 @@ select.aff-input option {
   font-weight: 800;
   color: var(--aff-primary);
   letter-spacing: 0.5px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arimo', sans-serif;
 }
 
 .aff-brand-sub {
@@ -6680,7 +6530,7 @@ select.aff-input option {
   font-weight: 700;
   color: var(--aff-navy-title);
   margin: 0 0 8px 0;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Be Vietnam Pro', serif;
 }
 
 .aff-benefit-desc {
@@ -6722,7 +6572,7 @@ select.aff-input option {
 }
 
 .aff-calc-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Be Vietnam Pro', serif;
   font-size: 1.45rem;
   margin: 0;
   color: #FFFFFF;
@@ -7129,7 +6979,7 @@ select.aff-input option {
   color: var(--aff-primary);
   margin: 0;
   letter-spacing: -0.5px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Be Vietnam Pro', serif;
 }
 
 .aff-dash-sub {
@@ -7347,7 +7197,7 @@ select.aff-input option {
   font-weight: 700;
   color: var(--aff-navy-title);
   margin: 0;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Be Vietnam Pro', serif;
 }
 
 .aff-perf-title i {
@@ -7442,7 +7292,7 @@ select.aff-input option {
   margin: 0 0 6px 0;
   font-size: 1.15rem;
   color: #ECC876;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Be Vietnam Pro', serif;
 }
 
 .aff-action-banner-text p {
@@ -7519,7 +7369,7 @@ select.aff-input option {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Be Vietnam Pro', serif;
 }
 
 .aff-tool-title i {
@@ -7715,7 +7565,7 @@ select.aff-input option {
 }
 
 .aff-voucher-discount {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Be Vietnam Pro', serif;
   font-size: 1.8rem;
   font-weight: 800;
   color: #ECC876;
@@ -7765,7 +7615,7 @@ select.aff-input option {
   margin: 0 0 6px 0;
   font-size: 1.1rem;
   color: var(--aff-navy-title);
-  font-family: 'Playfair Display', serif;
+  font-family: 'Be Vietnam Pro', serif;
 }
 
 .aff-voucher-actions p {
@@ -8203,7 +8053,7 @@ select.aff-input option {
   color: #FFFFFF;
   font-size: 2rem;
   font-weight: 800;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Arimo', sans-serif;
   margin: 0 0 10px;
   letter-spacing: -0.5px;
 }
@@ -8278,7 +8128,7 @@ select.aff-input option {
   font-size: 1.25rem;
   font-weight: 700;
   margin: 0 0 10px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Arimo', sans-serif;
 }
 
 .free-perk-desc {
@@ -8527,97 +8377,1431 @@ select.aff-input option {
   }
 }
 
+/* =========================================================================
+   XÁC NHẬN ĐĂNG KÝ QUA GMAIL & THÔNG BÁO ĐĂNG NHẬP
+   ========================================================================= */
+.auth-verify-panel {
+  text-align: center;
+  padding: 6px 4px 4px;
+  animation: fadeIn 0.3s ease-out;
+}
+.auth-verify-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ECC876, #D4AF37, #A4791E);
+  color: #16271F;
+  font-size: 1.7rem;
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+}
+.auth-verify-title {
+  font-family: 'Be Vietnam Pro', serif;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  color: #16271F;
+  margin: 0 0 8px;
+}
+.auth-verify-text {
+  font-size: 0.92rem;
+  color: #33413A;
+  line-height: 1.55;
+  margin: 0 0 14px;
+}
+.auth-verify-text strong {
+  color: #16271F;
+  word-break: break-all;
+}
+.auth-verify-steps {
+  text-align: left;
+  background: #F8F5EC;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 10px;
+  padding: 12px 14px 12px 32px;
+  margin: 0 0 16px;
+  font-size: 0.84rem;
+  color: #33413A;
+  line-height: 1.55;
+}
+.auth-verify-steps li + li {
+  margin-top: 6px;
+}
+.auth-verify-open-gmail {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+.auth-verify-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 14px;
+  margin-top: 14px;
+}
+.auth-verify-link-btn {
+  background: none;
+  border: none;
+  padding: 4px 2px;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #8A6A16;
+  cursor: pointer;
+}
+.auth-verify-link-btn:hover {
+  color: #16271F;
+  text-decoration: underline;
+}
+.auth-verify-link-btn:disabled {
+  color: #9AA59F;
+  cursor: default;
+  text-decoration: none;
+}
+.auth-login-notice {
+  border-radius: 8px;
+  padding: 11px 14px;
+  margin: 0 0 14px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  animation: fadeIn 0.3s ease-out;
+}
+.auth-login-notice.is-ok {
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 160, 90, 0.45);
+  color: #14532D;
+}
+.auth-login-notice.is-warn {
+  background: rgba(212, 175, 55, 0.14);
+  border: 1px solid rgba(180, 140, 30, 0.5);
+  color: #5C4510;
+}
+.auth-login-notice button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  color: #8A6A16;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.modal-confirm-btn.is-loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
 
-/* Tối ưu các trường trong khung đặt lịch nhanh để chữ không bị cắt bớt */
-.hero-booking-field:nth-child(1) {
-  flex: 1.25 !important;
+/* =========================================================================
+   CHỌN NGÔN NGỮ NỔI (LÁ CỜ + TAM GIÁC XỔ DANH SÁCH) & GOM NÚT LIÊN HỆ TRÊN ĐIỆN THOẠI
+   ========================================================================= */
+.floating-lang-wrap {
+  position: fixed;
+  left: 16px;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  z-index: 998;
 }
-.hero-booking-field:nth-child(2) {
-  flex: 0.9 !important;
+.floating-lang-wrap .floating-lang-toggle {
+  position: static;
+  font-family: inherit;
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
 }
-.hero-booking-field:nth-child(3) {
-  flex: 1 !important;
+.floating-lang-toggle .fl-caret {
+  font-size: 0.85rem;
+  margin-left: 2px;
+  transition: transform 0.2s ease;
 }
-.hero-booking-field:nth-child(4) {
-  flex: 1.15 !important;
+.floating-lang-wrap.open .fl-caret {
+  transform: rotate(180deg);
 }
-.hero-booking-field select {
-  text-overflow: clip !important;
+.floating-lang-popover {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+  width: 236px;
+  max-height: min(70vh, 420px);
+  overflow-y: auto;
+  background: #FFFFFF;
+  border: 1.5px solid #D4AF37;
+  border-radius: 14px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+  animation: flPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.floating-lang-wrap.open .floating-lang-popover {
+  display: block;
+}
+@keyframes flPopIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.fl-pop-title {
+  padding: 10px 14px 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #8C7B5D;
+  background: #FDFBF7;
+  border-bottom: 1px solid #EFE8DC;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.fl-opt-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 14px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #F4EFE6;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: #123023;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.fl-opt-item:last-child {
+  border-bottom: none;
+}
+.fl-opt-item:hover,
+.fl-opt-item:focus-visible {
+  background: rgba(212, 175, 55, 0.12);
+  outline: none;
+}
+.fl-opt-item.active {
+  background: rgba(212, 175, 55, 0.18);
+  font-weight: 700;
+}
+.fl-opt-flag {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.fl-opt-name {
+  flex: 1;
+}
+.fl-opt-code {
+  font-size: 0.75rem;
+  color: #8C7B5D;
+}
+.fl-opt-check {
+  display: none;
+  color: #B38E22;
+}
+.fl-opt-item.active .fl-opt-check {
+  display: inline-block;
 }
 
+/* Nút gom liên hệ: chỉ dùng trên điện thoại */
+.orient-floating-dock .dock-btn-more {
+  display: none;
+  border: 1.5px solid #ECC876;
+  background: #071F14;
+  color: #ECC876;
+  font-size: 1.15rem;
+  padding: 0;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.dock-btn-more .dock-more-close {
+  display: none;
+}
+.orient-floating-dock.dock-open .dock-btn-more .dock-more-open {
+  display: none;
+}
+.orient-floating-dock.dock-open .dock-btn-more .dock-more-close {
+  display: inline-block;
+}
 
-@media (max-width: 768px) {
-  /* ====== NÚT CHỌN NGÔN NGỮ NỔI BẬT NGAY TRÊN THANH TIÊU ĐỀ MOBILE ====== */
+/* Máy tính: đã có nút chọn ngôn ngữ trên header → ẩn nút nổi */
+@media (min-width: 992px) {
+  .floating-lang-wrap {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .floating-lang-wrap .floating-lang-toggle {
+    padding: 9px 13px;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .orient-floating-dock {
+    right: 12px !important;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+    gap: 9px !important;
+  }
+  .orient-floating-dock .orient-dock-btn {
+    width: 46px !important;
+    height: 46px !important;
+    order: 0;
+  }
+  /* Thu gọn: chỉ hiện Zalo, Gọi điện và nút mở thêm; bấm nút để xổ các kênh còn lại */
+  .orient-floating-dock .orient-dock-btn:not(.dock-btn-more):not(.dock-btn-zalo):not(.dock-btn-phone) {
+    display: none !important;
+  }
+  .orient-floating-dock.dock-open .orient-dock-btn:not(.dock-btn-more):not(.dock-btn-zalo):not(.dock-btn-phone) {
+    display: flex !important;
+    animation: flPopIn 0.2s ease;
+  }
+  .orient-floating-dock .dock-btn-more {
+    display: flex;
+    order: 1;
+  }
+  .orient-floating-dock .dock-btn-zalo {
+    order: 2;
+  }
+  .orient-floating-dock .dock-btn-phone {
+    order: 3;
+  }
+  .orient-floating-dock .dock-phone-pill {
+    display: none !important;
+  }
+}
+
+/* Thông báo nhỏ (đổi ngôn ngữ...) */
+.ivy-toast {
+  position: fixed;
+  left: 50%;
+  top: 92px;
+  transform: translate(-50%, -12px);
+  z-index: 100000;
+  max-width: calc(100vw - 32px);
+  padding: 10px 18px;
+  border-radius: 9999px;
+  background: #071F14;
+  border: 1px solid #D4AF37;
+  color: #ECC876;
+  font-size: 0.88rem;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ivy-toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Chừa chỗ cuối trang cho nút ngôn ngữ & nút liên hệ nổi trên điện thoại */
+@media (max-width: 991px) {
+  body > footer,
+  footer.main-footer,
+  footer {
+    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+/* =========================================================================
+   MÁY TÍNH / MACBOOK (992px – 1439px): thu gọn thanh menu cho vừa màn hình
+   ========================================================================= */
+@media (min-width: 992px) and (max-width: 1439px) {
+  .main-header .header-inner {
+    gap: 10px;
+  }
+  .nav-menu-left,
+  .nav-menu-right {
+    gap: 9px !important;
+    flex-wrap: nowrap !important;
+    min-width: 0;
+  }
+  .nav-menu-left .nav-item-link,
+  .nav-menu-right .nav-item-link {
+    font-size: 11px !important;
+    letter-spacing: 0.2px !important;
+    white-space: nowrap;
+  }
+  .nav-menu-right .header-auth-btn {
+    padding: 6px 10px !important;
+    white-space: nowrap;
+  }
+  .nav-menu-right .header-auth-btn #header-auth-text {
+    display: none;
+  }
+  .header-logo-center {
+    flex: 0 0 auto;
+  }
+  .header-logo-center .header-logo-text {
+    font-size: 0.76rem !important;
+    letter-spacing: 1.4px !important;
+  }
+  .header-lang-popover {
+    right: 0 !important;
+    left: auto !important;
+  }
+}
+
+/* Laptop nhỏ / iPad ngang (992px – 1199px): bỏ bớt mục phụ (vẫn có ở chân trang & menu dịch vụ) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .nav-menu-left > li:nth-child(4),
+  .nav-menu-right > li:nth-child(3) {
+    display: none !important;
+  }
+  .nav-menu-left .nav-item-link,
+  .nav-menu-right .nav-item-link {
+    font-size: 10.5px !important;
+    letter-spacing: 0 !important;
+  }
+  .header-logo-center .header-logo-text {
+    font-size: 0.76rem !important;
+  }
+}
+
+/* Máy tính bảng dọc / cửa sổ MacBook thu nhỏ (769px – 991px): dùng thanh đầu trang kiểu điện thoại */
+@media (min-width: 769px) and (max-width: 991px) {
+  .nav-menu-left, .nav-menu-right {
+    display: none !important;
+  }
+  .header-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 8px 20px !important;
+    min-height: 60px !important;
+    width: 100% !important;
+  }
+  .header-logo-center {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+  .header-logo-img {
+    width: 50px !important;
+    height: 50px !important;
+    margin: 0 0 0 34px !important;
+  }
+  .header-logo-text {
+    font-size: 0.73rem !important;
+    white-space: nowrap !important;
+    line-height: 1.15 !important;
+  }
+  .header-logo-sub {
+    white-space: nowrap !important;
+  }
   .mobile-header-right-group {
     display: flex !important;
     align-items: center !important;
-    gap: 5px !important;
-    position: relative !important;
-    flex-shrink: 0 !important;
-    z-index: 100 !important;
-  }
-  .mobile-header-lang-wrap {
-    display: flex !important;
-    align-items: center !important;
-    position: relative !important;
-    flex-shrink: 0 !important;
-    z-index: 101 !important;
-  }
-  .mobile-lang-btn {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 4px !important;
-    background: #FFFFFF !important;
-    border: 1.5px solid var(--color-gold, #D4AF37) !important;
-    border-radius: 20px !important;
-    padding: 4px 8px !important;
-    font-size: 0.74rem !important;
-    font-weight: 800 !important;
-    color: #123023 !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
-    height: 32px !important;
-    cursor: pointer !important;
-    white-space: nowrap !important;
-  }
-  .mobile-lang-btn .mobile-lang-flag {
-    font-size: 1rem !important;
-    line-height: 1 !important;
-  }
-  .mobile-lang-btn .mobile-lang-name {
-    font-size: 0.75rem !important;
-    font-weight: 800 !important;
-    color: #0E271D !important;
-  }
-  .mobile-lang-btn .fa-angle-down {
-    font-size: 0.65rem !important;
-    color: var(--color-gold, #D4AF37) !important;
-    margin-left: 2px !important;
-  }
-  .mobile-header-lang-wrap.open .mobile-lang-btn .fa-angle-down {
-    transform: rotate(180deg) !important;
-  }
-  .mobile-lang-popover {
-    right: 0 !important;
-    left: auto !important;
-    top: calc(100% + 6px) !important;
-    width: 215px !important;
-    position: absolute !important;
-    z-index: 10002 !important;
-  }
-  .mobile-header-book-btn {
-    height: 32px !important;
-    padding: 4px 9px !important;
-    font-size: 0.73rem !important;
-    border-radius: 18px !important;
+    gap: 10px !important;
+    flex: 0 0 auto !important;
   }
   .mobile-header-auth-pill {
-    width: 32px !important;
-    height: 32px !important;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1.5px solid var(--color-gold) !important;
+    background: rgba(212, 175, 55, 0.18) !important;
+  }
+  .mobile-header-auth-pill span {
+    display: none !important;
+  }
+  .mobile-header-auth-pill i {
+    font-size: 1.2rem !important;
+    color: #123023 !important;
+    margin: 0 !important;
   }
   .mobile-nav-toggle {
-    width: 32px !important;
-    height: 32px !important;
-    border-radius: 4px !important;
-    font-size: 1.15rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.3rem !important;
+    color: #123023 !important;
   }
+  .hero-booking-box {
+    flex-wrap: wrap !important;
+  }
+  .hero-booking-field {
+    flex: 1 1 45% !important;
+    min-width: 0 !important;
+  }
+  .btn-book-now-green {
+    flex: 1 1 100% !important;
+    text-align: center;
+  }
+}
+
+/* =========================================================================
+   LOGO "IVYLUXE SPA & NAIL" (chữ = 1/2 cỡ gốc; dòng phụ co cho rộng bằng dòng chính – xem fitLogoSub trong app.js)
+   ========================================================================= */
+.header-logo-center .header-logo-text {
+  font-size: 0.76rem;
+  letter-spacing: 1.4px;
+  white-space: nowrap;
+}
+.header-logo-center .header-logo-sub {
+  white-space: nowrap;
+  letter-spacing: 0.6px;
+}
+@media (max-width: 768px) {
+  .header-logo-center .header-logo-text {
+    font-size: 0.59rem !important;
+    letter-spacing: 0.6px !important;
+  }
+}
+
+/* =========================================================================
+   NÚT CHỌN NGÔN NGỮ GÓC TRÊN BÊN PHẢI (thanh đen trên cùng) – điện thoại & máy tính bảng
+   ========================================================================= */
+.floating-lang-wrap.top-lang-wrap {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  z-index: 1200;
+  flex: 0 0 auto;
+}
+.top-lang-wrap .floating-lang-toggle {
+  padding: 5px 10px !important;
+  font-size: 0.78rem !important;
+  gap: 5px;
+  box-shadow: none;
+}
+.top-lang-wrap .floating-lang-toggle:hover {
+  transform: none;
+}
+.top-lang-wrap .floating-lang-popover {
+  top: calc(100% + 10px);
+  bottom: auto;
+  left: auto;
+  right: 0;
+}
+.top-notice-actions {
+  overflow: visible !important;
+}
+.top-notice-bar {
+  position: relative;
+  z-index: 1100;
+  overflow: visible !important;
+}
+@media (max-width: 768px) {
+  .top-lang-wrap .floating-lang-toggle .fl-globe {
+    display: none;
+  }
+  .top-lang-wrap .floating-lang-toggle {
+    padding: 4px 9px !important;
+  }
+}
+
+/* =========================================================================
+   ĐĂNG KÝ TƯ VẤN (LEADS)
+   ========================================================================= */
+.section-lead-capture {
+  padding: 70px 0;
+  background: linear-gradient(160deg, #071F14 0%, #0E3324 55%, #13402D 100%);
+}
+.lead-capture-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: 36px;
+  align-items: start;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+.lead-capture-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  color: #ECC876;
+  border: 1px solid rgba(236, 200, 118, 0.5);
+  border-radius: 9999px;
+  padding: 5px 12px;
+}
+.lead-capture-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: #FFFFFF;
+  margin: 14px 0 4px;
+  line-height: 1.2;
+}
+.lead-capture-sub {
+  color: #ECC876;
+  font-size: 0.95rem;
+  margin: 0 0 18px;
+}
+.lead-capture-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #DDE8E2;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.lead-capture-points li {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.lead-capture-points .fa {
+  color: #ECC876;
+  margin-top: 4px;
+}
+.lead-capture-points a {
+  color: #ECC876;
+  font-weight: 700;
+}
+.lead-capture-form {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px;
+}
+.lead-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.lead-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.lead-field > span {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: #123023;
+  text-transform: uppercase;
+}
+.lead-field input,
+.lead-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1.5px solid #D9D2C3;
+  border-radius: 10px;
+  padding: 11px 13px;
+  font: inherit;
+  font-size: 0.95rem;
+  color: #123023;
+  background: #FDFBF7;
+}
+.lead-field input:focus,
+.lead-field textarea:focus {
+  outline: none;
+  border-color: #D4AF37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+  background: #FFFFFF;
+}
+.lead-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.lead-chip {
+  position: relative;
+  cursor: pointer;
+}
+.lead-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.lead-chip span {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 9999px;
+  border: 1.5px solid #D9D2C3;
+  font-size: 0.84rem;
+  color: #123023;
+  background: #FFFFFF;
+  transition: all 0.2s ease;
+}
+.lead-chip input:checked + span {
+  background: #1B4332;
+  border-color: #1B4332;
+  color: #FFFFFF;
+}
+.lead-chip input:focus-visible + span {
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.35);
+}
+.lead-hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.lead-submit-btn {
+  width: 100%;
+  margin-top: 16px;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font: inherit;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #071F14;
+  background: linear-gradient(135deg, #ECC876, #D4AF37, #A4791E);
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+}
+.lead-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+.lead-form-msg {
+  margin: 12px 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-height: 1.2em;
+}
+.lead-form-msg.is-ok {
+  color: #1B6B3A;
+}
+.lead-form-msg.is-err {
+  color: #9B1C2C;
+}
+@media (max-width: 991px) {
+  .lead-capture-card {
+    grid-template-columns: 1fr;
+    padding: 22px;
+    gap: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .section-lead-capture {
+    padding: 44px 0;
+  }
+  .lead-capture-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  .lead-capture-title {
+    font-size: 1.55rem;
+  }
+  .lead-capture-form {
+    padding: 16px;
+  }
+  .lead-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================================
+   ƯU ĐÃI & KHUYẾN MÃI MỚI (Admin đăng ảnh + mô tả)
+   ========================================================================= */
+.section-live-promos {
+  padding: 70px 0;
+  background: linear-gradient(180deg, #FBF8EF 0%, #FFFFFF 100%);
+}
+.section-live-promos[hidden] {
+  display: none !important;
+}
+.live-promos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 28px;
+}
+.live-promo-card {
+  background: #FFFFFF;
+  border: 1px solid #EDE5CF;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(18, 48, 35, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.live-promo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(18, 48, 35, 0.14);
+}
+.live-promo-img {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #F1EEE4;
+  overflow: hidden;
+}
+.live-promo-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.live-promo-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, #ECC876, #D4AF37, #A4791E);
+  color: #071F14;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.live-promo-body {
+  padding: 18px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.live-promo-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: #123023;
+  margin: 0;
+  line-height: 1.3;
+}
+.live-promo-offer {
+  font-weight: 800;
+  color: #946C1E;
+  font-size: 0.95rem;
+}
+.live-promo-desc {
+  margin: 0;
+  color: #33413A;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  white-space: pre-line;
+  flex: 1;
+}
+.live-promo-until {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #7B1E2B;
+}
+.live-promo-btn {
+  margin-top: 6px;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  background: #1B4332;
+  cursor: pointer;
+}
+.live-promo-btn:hover {
+  background: #123023;
+}
+@media (max-width: 600px) {
+  .section-live-promos {
+    padding: 44px 0;
+  }
+  .live-promos-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* =========================================================================
+   DASHBOARD ĐỐI TÁC — BẢNG MÀU 5 TÔNG (tone sur tone, 2 ô cạnh nhau không trùng màu)
+   Xanh da trời → Royal blue → Vàng chanh → Vàng gold → Đỏ đô
+   ========================================================================= */
+#aff-view-dashboard {
+  --c-sky: #4FB3F0; --c-sky-2: #8FD0F7; --c-sky-ink: #06375A; --c-sky-soft: #E4F4FE;
+  --c-royal: #2747B8; --c-royal-2: #4169E1; --c-royal-ink: #FFFFFF; --c-royal-soft: #E6ECFB;
+  --c-lime: #DDE85A; --c-lime-2: #EEF59A; --c-lime-ink: #343A00; --c-lime-soft: #F8FBDD;
+  --c-gold: #D4AF37; --c-gold-2: #ECC876; --c-gold-ink: #2B2000; --c-gold-soft: #FBF4DF;
+  --c-wine: #7B1E2B; --c-wine-2: #A33244; --c-wine-ink: #FFF1F3; --c-wine-soft: #F8E6E9;
+}
+
+/* Đầu trang: nền royal blue, nhấn vàng gold */
+#aff-view-dashboard .aff-dash-header {
+  background: linear-gradient(135deg, #1B3591 0%, var(--c-royal) 45%, var(--c-royal-2) 100%);
+  border: none;
+  box-shadow: 0 14px 34px rgba(39, 71, 184, 0.28);
+  position: relative;
+  overflow: hidden;
+}
+#aff-view-dashboard .aff-dash-header::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 5px;
+  background: linear-gradient(90deg, var(--c-sky), var(--c-royal-2), var(--c-lime), var(--c-gold), var(--c-wine));
+}
+#aff-view-dashboard .aff-dash-badge { background: var(--c-lime); color: var(--c-lime-ink); border-color: transparent; align-self: flex-start; }
+#aff-view-dashboard .aff-dash-title { color: #FFFFFF; }
+#aff-view-dashboard .aff-dash-sub { color: #D6E2FF; }
+#aff-view-dashboard .aff-dash-sub strong { color: var(--c-gold-2) !important; }
+#aff-view-dashboard .aff-btn-copy-ref { background: var(--c-sky); color: var(--c-sky-ink); border-color: transparent; }
+#aff-view-dashboard .aff-btn-payout-quick { background: linear-gradient(135deg, var(--c-gold-2), var(--c-gold)); color: var(--c-gold-ink); border-color: transparent; }
+#aff-view-dashboard .aff-btn-logout { background: var(--c-wine); color: var(--c-wine-ink); border-color: transparent; }
+
+/* Thanh tab: mỗi tab một tông, tab đang mở tô đậm */
+#aff-view-dashboard .aff-dash-capsule-nav { background: #FFFFFF; border: 1px solid #E3E8F3; gap: 6px; }
+#aff-view-dashboard .aff-nav-pill { border: 1.5px solid transparent; font-weight: 700; }
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="overview"] { background: var(--c-sky-soft); color: var(--c-sky-ink); }
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="tools"] { background: var(--c-royal-soft); color: var(--c-royal); }
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="ranking"] { background: var(--c-lime-soft); color: var(--c-lime-ink); }
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="network"] { background: var(--c-gold-soft); color: #6B5310; }
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="partner"] { background: var(--c-wine-soft); color: var(--c-wine); }
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="payout"] { background: var(--c-sky-soft); color: var(--c-sky-ink); }
+#aff-view-dashboard .aff-nav-pill.active { box-shadow: 0 6px 16px rgba(20, 30, 60, 0.18); border-color: transparent; }
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="overview"].active,
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="payout"].active { background: var(--c-sky); color: var(--c-sky-ink); }
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="tools"].active { background: var(--c-royal); color: #FFFFFF; }
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="ranking"].active { background: var(--c-lime); color: var(--c-lime-ink); }
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="network"].active { background: var(--c-gold); color: var(--c-gold-ink); }
+#aff-view-dashboard .aff-nav-pill[data-dash-tab="partner"].active { background: var(--c-wine); color: var(--c-wine-ink); }
+#aff-view-dashboard .aff-nav-pill:not(.active):hover { filter: brightness(0.96); }
+
+/* 5 thẻ số liệu: xanh da trời · royal · vàng chanh · gold · đỏ đô */
+#aff-view-dashboard .aff-stats-row.aff-stats-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+#aff-view-dashboard .aff-stat-box { border: none; box-shadow: 0 10px 24px rgba(20, 30, 60, 0.12); }
+#aff-view-dashboard .aff-stat-box .aff-stat-top-label,
+#aff-view-dashboard .aff-stat-box .aff-stat-top-label .stat-icon,
+#aff-view-dashboard .aff-stat-box .aff-stat-big-val,
+#aff-view-dashboard .aff-stat-box .aff-stat-sub-label { color: inherit; }
+#aff-view-dashboard .aff-stat-box .aff-stat-sub-label { opacity: .85; }
+#aff-view-dashboard .aff-stat-box:nth-child(1) { background: linear-gradient(140deg, var(--c-sky-2), var(--c-sky)); color: var(--c-sky-ink); }
+#aff-view-dashboard .aff-stat-box:nth-child(2) { background: linear-gradient(140deg, var(--c-royal-2), var(--c-royal)); color: var(--c-royal-ink); }
+#aff-view-dashboard .aff-stat-box:nth-child(3) { background: linear-gradient(140deg, var(--c-lime-2), var(--c-lime)); color: var(--c-lime-ink); }
+#aff-view-dashboard .aff-stat-box:nth-child(4) { background: linear-gradient(140deg, var(--c-gold-2), var(--c-gold)); color: var(--c-gold-ink); }
+#aff-view-dashboard .aff-stat-box:nth-child(5) { background: linear-gradient(140deg, var(--c-wine-2), var(--c-wine)); color: var(--c-wine-ink); }
+
+/* Biểu đồ: đường royal blue, nền xanh da trời */
+#aff-view-dashboard .aff-performance-card { border-top: 5px solid var(--c-royal); }
+#aff-view-dashboard .aff-perf-title i { color: var(--c-royal); }
+#aff-view-dashboard .aff-perf-sub strong { color: var(--c-royal); }
+#aff-view-dashboard #chart-line-path { stroke: var(--c-royal-2); }
+#aff-view-dashboard #chartGrad stop:first-child { stop-color: var(--c-sky); }
+#aff-view-dashboard #chartGrad stop:last-child { stop-color: var(--c-sky-soft); }
+#aff-view-dashboard #chart-points circle { fill: var(--c-royal); stroke: var(--c-gold-2); }
+#aff-view-dashboard #chart-points circle:last-child { fill: var(--c-gold); stroke: #FFFFFF; }
+#aff-view-dashboard .aff-time-pill.active { background: var(--c-royal); color: #FFFFFF; }
+
+/* Băng gợi ý: đỏ đô, chữ gold */
+#aff-view-dashboard .aff-action-banner { background: linear-gradient(135deg, #5E1420 0%, var(--c-wine) 55%, var(--c-wine-2) 100%); border: none; }
+#aff-view-dashboard .aff-action-banner-text h3 { color: var(--c-gold-2); }
+#aff-view-dashboard .aff-btn-banner { background: var(--c-lime); color: var(--c-lime-ink); }
+
+/* Bảng: mỗi cột tiêu đề một tông, nối tiếp không trùng màu */
+#aff-view-dashboard .aff-rank-table th { border-bottom: none; }
+#aff-view-dashboard .aff-rank-table th:nth-child(5n+1) { background: var(--c-sky); color: var(--c-sky-ink); }
+#aff-view-dashboard .aff-rank-table th:nth-child(5n+2) { background: var(--c-royal); color: #FFFFFF; }
+#aff-view-dashboard .aff-rank-table th:nth-child(5n+3) { background: var(--c-lime); color: var(--c-lime-ink); }
+#aff-view-dashboard .aff-rank-table th:nth-child(5n+4) { background: var(--c-gold); color: var(--c-gold-ink); }
+#aff-view-dashboard .aff-rank-table th:nth-child(5n+5) { background: var(--c-wine); color: var(--c-wine-ink); }
+#aff-view-dashboard .aff-rank-table th:first-child { border-radius: 10px 0 0 0; }
+#aff-view-dashboard .aff-rank-table th:last-child { border-radius: 0 10px 0 0; }
+#aff-view-dashboard .aff-rank-table tbody tr:nth-child(even) td { background: #F7F9FD; }
+
+/* Khối thành viên F1 */
+#aff-view-dashboard .aff-f1-card { border-top: 5px solid var(--c-gold); margin-bottom: 22px; }
+#aff-view-dashboard .aff-f1-card .aff-tool-title i { color: var(--c-gold); }
+.aff-f1-tag { display: inline-block; padding: 3px 10px; border-radius: 9999px; font-size: .78rem; font-weight: 700; background: var(--c-sky-soft, #E4F4FE); color: var(--c-sky-ink, #06375A); }
+.aff-f1-tag.yes { background: var(--c-lime, #DDE85A); color: var(--c-lime-ink, #343A00); }
+
+/* Công cụ bán, chính sách, thanh toán */
+#aff-view-dashboard .aff-tool-box:nth-child(1) { border-top: 5px solid var(--c-sky); }
+#aff-view-dashboard .aff-tool-box:nth-child(2) { border-top: 5px solid var(--c-royal); }
+#aff-view-dashboard .aff-tool-box:nth-child(1) .aff-tool-title i { color: var(--c-sky); }
+#aff-view-dashboard .aff-tool-box:nth-child(2) .aff-tool-title i { color: var(--c-royal); }
+#aff-view-dashboard .aff-policy-box { border-top: 5px solid var(--c-wine); }
+#aff-view-dashboard .aff-policy-item:nth-of-type(1) > i { color: var(--c-sky); }
+#aff-view-dashboard .aff-policy-item:nth-of-type(2) > i { color: var(--c-royal); }
+#aff-view-dashboard .aff-policy-item:nth-of-type(3) > i { color: #A9B320; }
+#aff-view-dashboard .aff-policy-item:nth-of-type(4) > i { color: var(--c-wine); }
+#aff-view-dashboard .aff-bank-card { border-top: 5px solid var(--c-sky); }
+#aff-view-dashboard .aff-payout-overview-strip { background: linear-gradient(135deg, var(--c-gold-soft), #FFFFFF); border: 1px solid var(--c-gold-2); border-radius: 14px; padding: 18px 20px; }
+
+@media (max-width: 1200px) {
+  #aff-view-dashboard .aff-stats-row.aff-stats-5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 991px) {
+  #aff-view-dashboard .aff-stats-row.aff-stats-5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  #aff-view-dashboard .aff-stats-row.aff-stats-5 { grid-template-columns: 1fr; }
+}
+
+/* =========================================================================
+   TRANG AFFILIATE TRÊN ĐIỆN THOẠI (≤767px) — gọn như Dashboard máy tính:
+   đầu trang 1 dòng, 3 nút + 6 tab dạng lưới, thẻ số liệu 2 cột, bảng kéo ngang
+   ========================================================================= */
+@media (max-width: 767px) {
+  /* Đầu trang: logo + 2 nút trên 1 dòng */
+  .aff-page-body .aff-topbar { padding: 8px 0; }
+  .aff-page-body .aff-topbar-inner { padding: 0 12px; gap: 8px; }
+  .aff-page-body .aff-brand { gap: 8px; min-width: 0; }
+  .aff-page-body .aff-brand-img { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; }
+  .aff-page-body .aff-brand-text { min-width: 0; }
+  .aff-page-body .aff-brand-title { font-size: .92rem; white-space: nowrap; letter-spacing: .2px; }
+  .aff-page-body .aff-brand-sub { font-size: .5rem; white-space: nowrap; letter-spacing: .2px; }
+  .aff-page-body .aff-topbar-actions { gap: 6px; flex-shrink: 0; }
+  .aff-page-body .aff-btn-home { width: 36px; height: 36px; padding: 0; justify-content: center; font-size: 1rem; }
+  .aff-page-body .aff-btn-home span { display: none; }
+  .aff-page-body .aff-mode-switch-btn { padding: 8px 10px; font-size: .66rem; white-space: nowrap; gap: 4px; }
+
+  .aff-page-body .aff-container { padding: 14px 12px 90px; }
+
+  /* Khối đầu Dashboard */
+  #aff-view-dashboard .aff-dash-header { padding: 16px 14px 18px; border-radius: 16px; gap: 12px; margin-bottom: 14px; flex-direction: column; align-items: stretch; }
+  #aff-view-dashboard .aff-dash-badge { font-size: .64rem; padding: 3px 9px; margin-bottom: 6px; }
+  #aff-view-dashboard .aff-dash-title { font-size: 1.28rem; line-height: 1.25; }
+  #aff-view-dashboard .aff-dash-sub { font-size: .76rem; line-height: 1.5; word-break: break-word; }
+  #aff-view-dashboard .aff-dash-header-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%; }
+  #aff-view-dashboard .aff-dash-header-actions > button {
+    flex-direction: column; justify-content: center; gap: 4px; width: 100%; min-height: 56px;
+    padding: 8px 4px; border-radius: 12px; font-size: .7rem; line-height: 1.2; text-align: center; white-space: normal;
+  }
+  #aff-view-dashboard .aff-dash-header-actions > button i { font-size: 1rem; }
+
+  /* 6 tab: lưới 3 × 2, thấy hết không phải kéo */
+  #aff-view-dashboard .aff-dash-capsule-nav {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px;
+    padding: 6px; border-radius: 16px; overflow: visible; margin-bottom: 14px;
+  }
+  #aff-view-dashboard .aff-nav-pill {
+    justify-content: center; text-align: center; white-space: normal; line-height: 1.2;
+    padding: 8px 4px; min-height: 44px; border-radius: 12px; font-size: .7rem; gap: 3px;
+  }
+
+  /* Thẻ số liệu: 2 cột, thẻ thứ 5 trải rộng */
+  #aff-view-dashboard .aff-stats-row.aff-stats-5 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 14px; }
+  #aff-view-dashboard .aff-stats-row.aff-stats-5 .aff-stat-box:nth-child(5) { grid-column: 1 / -1; }
+  #aff-view-dashboard .aff-stat-box { padding: 13px 12px; border-radius: 14px; min-width: 0; }
+  #aff-view-dashboard .aff-stat-top-label { font-size: .62rem; letter-spacing: .3px; margin-bottom: 6px; gap: 4px; align-items: flex-start; }
+  #aff-view-dashboard .aff-stat-top-label .stat-icon { font-size: .85rem; }
+  #aff-view-dashboard .aff-stat-big-val { font-size: 1.45rem; margin-bottom: 4px; word-break: break-word; }
+  #aff-view-dashboard .aff-stat-sub-label { font-size: .68rem; line-height: 1.35; }
+
+  /* Biểu đồ */
+  #aff-view-dashboard .aff-performance-card { padding: 14px 12px; border-radius: 14px; margin-bottom: 14px; }
+  #aff-view-dashboard .aff-perf-header { flex-direction: column; align-items: stretch; gap: 10px; }
+  #aff-view-dashboard .aff-perf-title { font-size: 1rem; }
+  #aff-view-dashboard .aff-perf-sub { font-size: .76rem; }
+  #aff-view-dashboard .aff-time-pills { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; }
+  #aff-view-dashboard .aff-time-pill { padding: 6px 2px; font-size: .72rem; text-align: center; }
+  #aff-view-dashboard .aff-chart-wrapper { padding: 10px 6px 6px; }
+  #aff-view-dashboard .aff-chart-svg { height: 120px; }
+  #aff-view-dashboard .aff-chart-x-labels { font-size: .6rem; }
+
+  /* Băng gợi ý */
+  #aff-view-dashboard .aff-action-banner { padding: 14px; border-radius: 14px; gap: 10px; margin-bottom: 14px; }
+  #aff-view-dashboard .aff-action-banner-text h3 { font-size: .95rem; }
+  #aff-view-dashboard .aff-action-banner-text p { font-size: .76rem; }
+  #aff-view-dashboard .aff-btn-banner { width: 100%; justify-content: center; }
+
+  /* Thẻ nội dung các tab */
+  #aff-view-dashboard .aff-tools-card,
+  #aff-view-dashboard .aff-policy-box,
+  #aff-view-dashboard .aff-bank-card { padding: 14px 12px; border-radius: 14px; }
+  #aff-view-dashboard .aff-tool-box { padding: 14px 12px; }
+  #aff-view-dashboard .aff-tool-title { font-size: .98rem; line-height: 1.35; }
+  #aff-view-dashboard .aff-network-header,
+  #aff-view-dashboard .aff-rank-header { flex-direction: column; align-items: stretch; gap: 10px; }
+  #aff-view-dashboard .aff-btn-test-booking { align-self: flex-start; }
+
+  /* Bảng: giữ đủ cột như máy tính, vuốt ngang để xem */
+  #aff-view-dashboard .aff-rank-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 10px; }
+  #aff-view-dashboard .aff-rank-table th,
+  #aff-view-dashboard .aff-rank-table td { padding: 9px 10px; font-size: .74rem; white-space: nowrap; }
+  #aff-view-dashboard .aff-rank-table td:only-child { white-space: normal; min-width: 280px; }
+
+  /* Công cụ bán: QR, chia sẻ, voucher */
+  #aff-view-dashboard .aff-qr-center-box { flex-direction: column; align-items: center; text-align: center; }
+  #aff-view-dashboard .aff-link-copy-group { flex-direction: column; align-items: stretch; }
+  #aff-view-dashboard .aff-share-buttons-row { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  #aff-view-dashboard .aff-voucher-content { flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+
+  /* Thanh toán */
+  #aff-view-dashboard .aff-payout-overview-strip { flex-direction: column; align-items: stretch; }
+  #aff-view-dashboard .aff-payout-overview-strip .aff-btn-large { width: 100%; justify-content: center; }
+  #aff-bank-info-form > div[style*="grid"] { grid-template-columns: 1fr !important; gap: 10px !important; }
+
+  /* Thông báo cookie: dải gọn sát đáy, không che Dashboard */
+  .aff-page-body .aff-cookie-banner {
+    left: 8px; right: 8px; bottom: 8px; max-width: none; padding: 10px 12px; border-radius: 14px;
+    align-items: center; gap: 10px;
+  }
+  .aff-page-body .aff-cookie-icon { display: none; }
+  .aff-page-body .aff-cookie-text { font-size: .7rem; line-height: 1.35; margin-bottom: 6px; }
+}
+
+@media (max-width: 379px) {
+  .aff-page-body .aff-mode-switch-btn span { display: none; }
+  .aff-page-body .aff-mode-switch-btn { width: 36px; height: 36px; padding: 0; justify-content: center; }
+}
+
+/* ========================================================================= */
+/* MÃ QR LINK GIỚI THIỆU Ở ĐẦU DASHBOARD ĐỐI TÁC                              */
+/* ========================================================================= */
+#aff-view-dashboard .aff-dash-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 28px;
+  row-gap: 16px;
+  align-items: center;
+}
+#aff-view-dashboard .aff-dash-header-info { grid-column: 1; grid-row: 1; }
+#aff-view-dashboard .aff-dash-header-actions { grid-column: 1; grid-row: 2; }
+.aff-hero-qr {
+  grid-column: 2; grid-row: 1 / span 2;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  width: 188px; padding: 14px 14px 12px;
+  background: #FFFFFF; border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(10, 20, 70, 0.28);
+  text-align: center;
+}
+.aff-hero-qr-img { width: 132px; height: 132px; display: block; border-radius: 6px; image-rendering: pixelated; }
+.aff-hero-qr-side { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.aff-hero-qr-title { font-size: .8rem; font-weight: 800; color: #1B3591; }
+.aff-hero-qr-hint { font-size: .68rem; line-height: 1.35; color: #4A5A6A; }
+.aff-hero-qr-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%; padding: 7px 10px; border: none; border-radius: 9999px; cursor: pointer;
+  background: linear-gradient(135deg, #ECC876, #D4AF37); color: #2B2000;
+  font-size: .74rem; font-weight: 800; font-family: inherit;
+}
+.aff-hero-qr-btn:hover { filter: brightness(1.06); }
+
+@media (max-width: 767px) {
+  #aff-view-dashboard .aff-dash-header { display: flex; flex-direction: column; align-items: stretch; }
+  .aff-hero-qr { width: 100%; flex-direction: row; align-items: center; gap: 14px; padding: 12px; text-align: left; }
+  .aff-hero-qr-img { width: 104px; height: 104px; flex-shrink: 0; }
+  .aff-hero-qr-side { align-items: flex-start; flex: 1; min-width: 0; }
+  .aff-hero-qr-btn { width: auto; padding: 8px 14px; }
+}
+
+/* =========================================================================
+   TRANG CHỦ TRÊN ĐIỆN THOẠI (≤767px) — ít chữ, gọn: bỏ đoạn mô tả phụ,
+   thẻ dài chuyển thành hàng vuốt ngang, bảng giá dạng danh sách gọn
+   ========================================================================= */
+@media (max-width: 767px) {
+  /* Tiêu đề khối nhỏ lại, bỏ câu mô tả phụ dưới tiêu đề */
+  #locations .orient-section-title, #promotions .orient-section-title, #menu .orient-section-title,
+  #healing-music .orient-section-title, .section-orient-guests .orient-section-title,
+  #affiliate .section-main-title, .sub-hero-title { font-size: 1.55rem !important; line-height: 1.25 !important; letter-spacing: .5px !important; }
+  #locations .orient-section-subtitle, #promotions .orient-section-subtitle, #menu .orient-section-subtitle,
+  #healing-music .orient-section-subtitle, .section-orient-guests .orient-section-subtitle,
+  .free-perks-sub, #affiliate .section-desc-text, #affiliate .gold-leaf-divider, .lead-capture-points { display: none !important; }
+  #locations, #promotions, #menu, #healing-music, .section-orient-guests, #affiliate, #tu-van, #free-perks { padding-top: 42px !important; padding-bottom: 42px !important; }
+  #locations .orient-section-header, #promotions .orient-section-header, #menu .orient-section-header,
+  #healing-music .orient-section-header, .section-orient-guests .orient-section-header { margin-bottom: 18px !important; }
+  .sub-hero-strip { padding: 30px 0 !important; }
+  .sub-hero-desc { font-size: .86rem !important; line-height: 1.55 !important; }
+
+  /* Đặc quyền miễn phí: 3 ô nhỏ cạnh nhau, chỉ còn biểu tượng + tên */
+  .free-perks-header { margin-bottom: 16px !important; }
+  .free-perks-heading { font-size: 1.3rem !important; }
+  .free-perks-grid { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 8px !important; }
+  .free-perk-card { padding: 14px 8px !important; text-align: center; min-height: 0 !important; }
+  .free-perk-icon-circle { width: 44px !important; height: 44px !important; margin: 0 auto 8px !important; font-size: 1.1rem !important; }
+  .free-perk-tag, .free-perk-desc { display: none !important; }
+  .free-perk-title { font-size: .78rem !important; line-height: 1.3 !important; margin: 0 !important; }
+
+  /* Hàng vuốt ngang dùng chung */
+  .locations-carousel-wrap, #promotions .promotions-grid-4col, .guests-photo-gallery {
+    display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; gap: 12px !important;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 2px 2px 12px !important; margin: 0 !important;
+    scrollbar-width: none;
+  }
+  .locations-carousel-wrap::-webkit-scrollbar, #promotions .promotions-grid-4col::-webkit-scrollbar, .guests-photo-gallery::-webkit-scrollbar { display: none; }
+
+  /* Không gian spa: thẻ vuốt ngang, bỏ danh sách tiện nghi dài */
+  .location-orient-card { flex: 0 0 80% !important; scroll-snap-align: start; margin: 0 !important; }
+  .location-img-wrap, .location-img-wrap img { height: 190px !important; }
+  .location-specs-list { display: none !important; }
+  .location-card-content { padding: 14px !important; }
+
+  /* Combo / ưu đãi: thẻ vuốt ngang */
+  #promotions .promo-orient-card { flex: 0 0 78% !important; scroll-snap-align: start; margin: 0 !important; }
+  #promotions .promo-img-holder { height: 160px !important; }
+  #promotions .promo-card-body { padding: 14px !important; }
+  #promotions .promo-steps-list { font-size: .8rem !important; }
+  #promotions .promotions-bottom-action { margin-top: 10px !important; }
+
+  /* Bảng giá: danh sách gọn (ảnh nhỏ bên trái, bỏ mô tả dài) */
+  #menu .menu-free-perks-strip { display: none !important; }
+  #menu .menu-board-banner-box { padding: 14px !important; margin-bottom: 14px !important; }
+  #menu .menu-items-grid { display: flex !important; flex-direction: column !important; gap: 10px !important; }
+  #menu .menu-item-card { display: grid !important; grid-template-columns: 84px minmax(0, 1fr); align-items: center; min-height: 0 !important; }
+  #menu .menu-item-thumb { width: 84px !important; height: 100% !important; min-height: 96px; object-fit: cover; }
+  #menu .menu-item-content { padding: 10px 12px !important; }
+  #menu .menu-item-desc { display: none !important; }
+  #menu .menu-item-header { margin-bottom: 4px !important; }
+  #menu .menu-item-actions { margin-top: 6px !important; padding-top: 6px !important; gap: 8px !important; align-items: center; }
+  #menu .menu-item-name { font-size: .86rem !important; line-height: 1.3 !important; }
+  #menu .menu-item-price { font-size: .86rem !important; white-space: nowrap; }
+  #menu .btn-book-service-now { white-space: nowrap !important; padding: 7px 12px !important; font-size: .72rem !important; flex-direction: row !important; }
+  #menu .btn-service-details { font-size: .72rem !important; white-space: nowrap; }
+
+  /* Khách thực tế: ảnh vuốt ngang */
+  .guest-photo-item { flex: 0 0 62% !important; height: 200px !important; scroll-snap-align: start; }
+
+  /* Affiliate trên trang chủ: chỉ còn tiêu đề + nút sang trang Đối tác */
+  #home-aff-view-register { display: none !important; }
+  #affiliate .section-title-wrap { margin-bottom: 0 !important; }
+
+  /* Form tư vấn */
+  .lead-capture-intro { margin-bottom: 12px !important; }
+
+  /* Chân trang: bỏ cột liên kết dài (đã có trong menu) */
+  .footer-columns-grid > div:nth-child(2) { display: none !important; }
+  .footer-columns-grid { gap: 22px !important; }
+}
+
+/* Nút chuyển EN ⇄ VI trên trang Affiliate (đồng bộ ngôn ngữ với trang chủ) */
+.aff-lang-toggle { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 9999px; border: 1px solid var(--aff-gold-border);
+  background: #FFFFFF; color: var(--aff-primary); font-size: .85rem; font-weight: 700; cursor: pointer; white-space: nowrap; font-family: inherit; }
+.aff-lang-toggle:hover { background: var(--aff-gold-light); }
+@media (max-width: 767px) {
+  .aff-page-body .aff-lang-toggle { width: 36px; height: 36px; padding: 0; justify-content: center; font-size: 1rem; }
+  .aff-page-body .aff-lang-toggle span { display: none; }
+}
+@media (max-width: 420px) {
+  .aff-page-body .aff-brand-sub { display: none; }
+}
+
+
+/* =========================================================================
+   KIỂU CHỮ TOÀN WEBSITE: tiêu đề Be Vietnam Pro, chữ thường Arimo, cỡ gốc 18px.
+   Cùng một cỡ chữ cho mọi ngôn ngữ (không có quy tắc riêng theo ngôn ngữ).
+   ========================================================================= */
+body { font-family: var(--font-sans); line-height: 1.7; letter-spacing: 0; }
+p, li, dd, label, input, select, textarea, button { font-family: var(--font-sans); }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; letter-spacing: .005em; line-height: 1.25; }
+p { line-height: 1.7; }
+
+/* Ưu đãi đặt lịch trực tuyến 10% — hiện rõ trên ảnh đầu trang (máy tính) và dải đặt lịch (điện thoại) */
+.hero-booking-offer { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 12px;
+  padding: 9px 20px; border-radius: 9999px; background: linear-gradient(135deg, #F6E3A6, #D4AF37 70%); color: #1B2A12;
+  font-family: var(--font-sans); font-size: 1rem; font-weight: 600; box-shadow: 0 8px 24px rgba(0, 0, 0, .3); }
+.hero-booking-offer b { font-family: var(--font-display); font-weight: 800; letter-spacing: .03em; }
+.hero-booking-offer .fa { font-size: 1.1rem; color: #7B1E2B; }
+@media (max-width: 991px) { .hero-booking-offer { display: none; } }
+.mbh-title { white-space: normal !important; overflow: visible !important; text-overflow: clip !important; line-height: 1.3 !important; }
+.mbh-sub { white-space: normal !important; }
+
+/* Dòng chào mừng trên ảnh: chữ đậm, bóng rõ để tương phản với nền ảnh */
+.hero-welcome-text { font-family: var(--font-display) !important; font-weight: 700 !important; letter-spacing: .12em !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, .55), 0 4px 22px rgba(0, 0, 0, .65) !important; }
+
+/* =========================================================================
+   ĐIỆN THOẠI (≤767px): KHỐI TRÀN VIỀN — thẻ trải sát mép màn hình, bỏ bo góc,
+   hàng vuốt ngang chạy từ mép, bảng giá dạng danh sách có kẻ phân cách
+   ========================================================================= */
+@media (max-width: 767px) {
+  /* Dải đặt lịch: bỏ khung, chữ ưu đãi hiện đủ */
+  .mobile-booking-header-card { background: transparent !important; border: 0 !important; border-radius: 0 !important; padding: 6px 0 !important; }
+
+  /* Thẻ lớn tràn viền (khung .container lề 20px) */
+  .map-card-wrapper, .menu-board-banner-box, .music-showcase-card, .lead-capture-card {
+    margin-left: -20px !important; margin-right: -20px !important; border-radius: 0 !important;
+    border-left: 0 !important; border-right: 0 !important; box-shadow: none !important;
+  }
+  .lead-capture-card { padding-left: 20px !important; padding-right: 20px !important; }
+  .lead-capture-form { border-radius: 14px !important; }
+
+  /* Bảng giá: danh sách tràn viền, ngăn cách bằng đường kẻ */
+  #menu .menu-items-grid { margin: 0 -20px !important; gap: 0 !important; }
+  #menu .menu-item-card { border-radius: 0 !important; box-shadow: none !important; border: 0 !important;
+    border-bottom: 1px solid rgba(18, 56, 38, .1) !important; background: #fff; }
+  #menu .menu-item-card:first-child { border-top: 1px solid rgba(18, 56, 38, .1) !important; }
+  #menu .menu-item-thumb { width: 96px !important; min-height: 104px; }
+  #menu .menu-tabs-wrapper { margin-left: -20px !important; margin-right: -20px !important; padding-left: 20px !important; }
+
+  /* Hàng vuốt ngang chạy từ mép màn hình */
+  .locations-carousel-wrap, #promotions .promotions-grid-4col, .guests-photo-gallery {
+    margin-left: -20px !important; margin-right: -20px !important;
+    padding-left: 20px !important; padding-right: 20px !important; scroll-padding-left: 20px;
+  }
+
+  /* Thoáng hơn: chữ đoạn văn dễ đọc */
+  .sub-hero-desc, .free-perk-title, .location-card-title, .promo-card-title { line-height: 1.45 !important; }
+}
+
+/* Trang Affiliate trên điện thoại: khối Dashboard & các thẻ nội dung tràn viền (khung lề 12px) */
+@media (max-width: 767px) {
+  #aff-view-dashboard .aff-dash-header, #aff-view-dashboard .aff-dash-capsule-nav,
+  #aff-view-dashboard .aff-performance-card, #aff-view-dashboard .aff-action-banner,
+  #aff-view-dashboard .aff-tools-card, #aff-view-dashboard .aff-policy-box, #aff-view-dashboard .aff-bank-card,
+  .aff-page-body .aff-calc-box, .aff-page-body .aff-spa-showcase-box, .aff-page-body .aff-form-card {
+    margin-left: -12px !important; margin-right: -12px !important; border-radius: 0 !important;
+    border-left: 0 !important; border-right: 0 !important;
+  }
+  #aff-view-dashboard .aff-dash-header { margin-top: -14px !important; }
+  #aff-view-dashboard .aff-stats-row.aff-stats-5 { gap: 8px; }
+}
+@media (max-width: 767px) {
+  .mobile-booking-header-card { gap: 10px !important; }
+  .mbh-icon-pulse { width: 38px !important; height: 38px !important; min-width: 38px; font-size: 1rem !important; }
+  .mbh-tag { font-size: .62rem !important; white-space: nowrap !important; letter-spacing: .02em !important; }
+  .mbh-title { font-size: .84rem !important; margin-top: 2px; }
+  .mbh-sub { display: none !important; }
+  .mbh-action-btn { padding: 8px 12px !important; font-size: .72rem !important; white-space: nowrap; }
+}
+@media (max-width: 767px) {
+  .aff-page-body .aff-brand-title { font-size: .8rem !important; }
+  #aff-view-dashboard .aff-nav-pill { font-size: .64rem !important; }
+}
+@media (max-width: 767px) {
+  /* Nút đặt lịch trên ảnh: chừa chỗ cho nút chat nổi bên phải */
+  .hero-mobile-cta-wrap { padding-right: 62px !important; box-sizing: border-box; }
+  .hero-mobile-cta-btn { font-size: .74rem !important; padding-left: 14px !important; padding-right: 14px !important; white-space: nowrap; max-width: 100%; }
+}
+
+/* =========================================================================
+   QUY TRÌNH ĐẶT & THANH TOÁN: thanh tiến trình, hoá đơn (trừ 10% khi trả trước QR),
+   màn đặt dịch vụ thành công + lời cảm ơn
+   ========================================================================= */
+.ivy-steps { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 0 auto 16px; max-width: 420px; }
+.ivy-step { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 64px; }
+.ivy-step span { width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  background: #EEF2EF; color: #7E968C; font-weight: 800; font-size: .85rem; border: 2px solid #DDE5E0; }
+.ivy-step small { font-size: .7rem; font-weight: 700; color: #7E968C; letter-spacing: .02em; }
+.ivy-step.on span { background: #D4AF37; color: #1B2A12; border-color: #D4AF37; box-shadow: 0 0 0 4px rgba(212,175,55,.2); }
+.ivy-step.on small { color: #123826; }
+.ivy-step.done span { background: #2E9E4F; color: #fff; border-color: #2E9E4F; }
+.ivy-step.done small { color: #2E9E4F; }
+.ivy-step-line { flex: 1; height: 2px; background: linear-gradient(90deg, #2E9E4F, #D4AF37); margin-bottom: 18px; border-radius: 2px; }
+
+.ivy-invoice { background: #FAF7F2; border: 1px dashed #D4AF37; border-radius: 12px; padding: 12px 16px; text-align: left; max-width: 480px; margin: 0 auto 18px; }
+.ivy-inv-row { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid rgba(18,56,38,.07); font-size: .88rem; color: #33443B; }
+.ivy-inv-row:last-child { border-bottom: 0; }
+.ivy-inv-row b { text-align: right; color: #123826; }
+.ivy-inv-discount b { color: #2E9E4F; }
+.ivy-inv-total { margin-top: 4px; padding-top: 10px; border-top: 1.5px solid #D4AF37 !important; font-size: 1rem; }
+.ivy-inv-total b { color: #8B1A2B; font-size: 1.15rem; font-family: var(--font-display); }
+
+.ivy-success { text-align: center; padding: 22px 14px 26px; }
+.ivy-success-icon { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #2E9E4F, #128C7E); color: #fff; font-size: 2rem; box-shadow: 0 0 30px rgba(46,158,79,.35); }
+.ivy-success-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 9999px; margin-bottom: 10px;
+  background: #E8F8EE; color: #1F7A3E; border: 1px solid #B8E8C8; font-size: .8rem; font-weight: 800; }
+.ivy-success-title { font-family: var(--font-display); font-size: 1.6rem; color: #0A2E20; margin: 0 0 14px; }
+.ivy-thanks { max-width: 480px; margin: 0 auto 20px; padding: 16px 18px; border-radius: 14px; text-align: center;
+  background: linear-gradient(135deg, #123826, #1B4D36); color: #F6EED6; box-shadow: 0 10px 26px rgba(18,56,38,.25); }
+.ivy-thanks .fa { color: #ECC876; font-size: 1.2rem; margin-bottom: 6px; display: block; }
+.ivy-thanks p { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 1rem; line-height: 1.55; color: #FFF6DA; }
+
+/* =========================================================================
+   DASHBOARD ĐỐI TÁC: DOANH SỐ AFFILIATE · HỒ SƠ HIỂN THỊ · BẢNG VINH DANH TOP 20
+   ========================================================================= */
+#aff-view-dashboard .aff-sales-card { background: #fff; border-radius: 20px; padding: 22px; margin-bottom: 24px; border-top: 5px solid var(--c-gold);
+  box-shadow: 0 10px 28px rgba(20, 30, 60, .08); }
+#aff-view-dashboard .aff-sales-head { margin-bottom: 16px; }
+#aff-view-dashboard .aff-sales-head .aff-perf-title i { color: var(--c-gold); }
+#aff-view-dashboard .aff-sales-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 18px; }
+#aff-view-dashboard .aff-sale-box { border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 4px; }
+#aff-view-dashboard .aff-sale-box span { font-size: .7rem; font-weight: 800; letter-spacing: .06em; opacity: .9; }
+#aff-view-dashboard .aff-sale-box b { font-family: var(--font-display); font-size: 1.7rem; line-height: 1.1; }
+#aff-view-dashboard .aff-sale-box small { font-size: .75rem; opacity: .85; }
+#aff-view-dashboard .aff-sale-box.s1 { background: linear-gradient(140deg, var(--c-royal-2), var(--c-royal)); color: #fff; }
+#aff-view-dashboard .aff-sale-box.s2 { background: linear-gradient(140deg, var(--c-gold-2), var(--c-gold)); color: var(--c-gold-ink); }
+#aff-view-dashboard .aff-sale-box.s3 { background: linear-gradient(140deg, var(--c-sky-2), var(--c-sky)); color: var(--c-sky-ink); }
+#aff-view-dashboard .aff-sales-chart { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; align-items: end; height: 170px;
+  padding: 10px 6px 0; border-bottom: 1px solid #E6EAF2; }
+#aff-view-dashboard .aff-sale-col { display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; gap: 4px; }
+#aff-view-dashboard .aff-sale-col em { font-style: normal; font-size: .7rem; font-weight: 800; color: var(--c-royal); min-height: 1em; }
+#aff-view-dashboard .aff-sale-bars { display: flex; align-items: flex-end; gap: 4px; height: 120px; width: 100%; justify-content: center; }
+#aff-view-dashboard .aff-sale-bars i { display: block; width: 38%; max-width: 26px; min-height: 3px; border-radius: 6px 6px 0 0; }
+#aff-view-dashboard .aff-sale-bars .b-total { background: linear-gradient(180deg, var(--c-royal-2), var(--c-royal)); }
+#aff-view-dashboard .aff-sale-bars .b-conf { background: linear-gradient(180deg, var(--c-gold-2), var(--c-gold)); }
+#aff-view-dashboard .aff-sale-col small { font-size: .68rem; color: var(--aff-gray-sub); font-weight: 700; }
+#aff-view-dashboard .aff-sales-legend { display: flex; gap: 18px; justify-content: center; margin: 10px 0 14px; font-size: .78rem; font-weight: 700; color: var(--aff-gray-text); }
+#aff-view-dashboard .aff-sales-legend span::before { content: ''; display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+#aff-view-dashboard .aff-sales-legend .lg-total::before { background: var(--c-royal); }
+#aff-view-dashboard .aff-sales-legend .lg-conf::before { background: var(--c-gold); }
+#aff-view-dashboard .aff-sales-recent h4 { margin: 0 0 8px; font-size: .95rem; color: var(--aff-primary); }
+#aff-view-dashboard .aff-sale-item { display: flex; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 12px; background: #F7F9FD; margin-bottom: 8px; }
+#aff-view-dashboard .aff-sale-item small { display: block; font-size: .75rem; color: var(--aff-gray-sub); margin-top: 2px; }
+#aff-view-dashboard .aff-sale-item .r { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+#aff-view-dashboard .aff-sale-item .r b { color: var(--c-wine); font-family: var(--font-display); }
+#aff-view-dashboard .aff-status-pill { font-size: .66rem; font-weight: 700; padding: 3px 8px; border-radius: 9999px; background: var(--c-sky-soft); color: var(--c-sky-ink); }
+#aff-view-dashboard .aff-status-pill.st-hold { background: var(--c-lime-soft); color: var(--c-lime-ink); }
+#aff-view-dashboard .aff-status-pill.st-done { background: #E5F6EA; color: #1F7A3E; }
+#aff-view-dashboard .aff-status-pill.st-cancel { background: var(--c-wine-soft); color: var(--c-wine); }
+
+/* Hồ sơ hiển thị */
+#aff-view-dashboard .aff-profile-card { border-top: 5px solid var(--c-sky); margin-bottom: 22px; }
+#aff-view-dashboard .aff-profile-row { display: flex; gap: 28px; align-items: flex-start; margin-top: 14px; }
+#aff-view-dashboard .aff-profile-avatar-col { display: flex; flex-direction: column; align-items: center; gap: 12px; flex-shrink: 0; }
+#aff-view-dashboard .aff-profile-avatar { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; border: 4px solid var(--c-gold-2);
+  box-shadow: 0 0 0 4px rgba(39, 71, 184, .15); background: #fff; }
+#aff-view-dashboard .aff-btn-avatar { cursor: pointer; padding: 8px 18px; border-radius: 9999px; border: 1.5px solid #E1E6F2; color: var(--c-royal); font-weight: 700; font-size: .85rem; background: #fff; }
+#aff-view-dashboard .aff-profile-form { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+#aff-view-dashboard .aff-btn-save-profile { align-self: flex-start; padding: 11px 26px; border-radius: 14px; border: 0; cursor: pointer; font-weight: 800;
+  background: linear-gradient(135deg, var(--c-gold-2), var(--c-gold)); color: var(--c-gold-ink); font-size: .95rem; }
+#aff-view-dashboard .aff-profile-note { margin: 0; font-size: .8rem; color: var(--aff-gray-sub); }
+
+/* Bảng vinh danh Top 20 */
+#aff-view-dashboard .aff-leader-board { background: #fff; border-radius: 22px; overflow: hidden; box-shadow: 0 10px 28px rgba(20, 30, 60, .08); }
+#aff-view-dashboard .aff-leader-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 22px 24px;
+  background: linear-gradient(100deg, var(--c-gold) 0%, #C99A6B 30%, var(--c-royal-2) 62%, var(--c-royal) 100%); color: #fff; }
+#aff-view-dashboard .aff-leader-head h3 { margin: 0; font-family: var(--font-display); font-size: 1.5rem; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.2); }
+#aff-view-dashboard .aff-leader-head p { margin: 4px 0 0; font-size: .85rem; color: #F3F6FF; }
+#aff-view-dashboard .aff-leader-list { padding: 10px 14px 14px; }
+#aff-view-dashboard .aff-leader-row { display: grid; grid-template-columns: 34px 48px minmax(0, 1fr) 70px 70px; align-items: center; gap: 12px;
+  padding: 10px 10px; border-bottom: 1px solid #EEF1F7; }
+#aff-view-dashboard .aff-leader-row:last-child { border-bottom: 0; }
+#aff-view-dashboard .aff-leader-row.is-me { background: var(--c-gold-soft); border-radius: 12px; border-bottom-color: transparent; }
+#aff-view-dashboard .aff-leader-row .aff-rank-medal { width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: .85rem; background: #F1F5F9; color: #64748B; }
+#aff-view-dashboard .aff-leader-row .aff-rank-1 { background: linear-gradient(135deg, #F6E3A6, var(--c-gold)); color: var(--c-gold-ink); }
+#aff-view-dashboard .aff-leader-row .aff-rank-2 { background: linear-gradient(135deg, #E9EEF5, #B9C3D2); color: #334155; }
+#aff-view-dashboard .aff-leader-row .aff-rank-3 { background: linear-gradient(135deg, #F3D2B3, #C98B5C); color: #3B2210; }
+#aff-view-dashboard .aff-leader-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--c-gold-2); background: #fff; }
+#aff-view-dashboard .aff-leader-name strong { font-size: .95rem; color: var(--aff-primary); }
+#aff-view-dashboard .aff-leader-name small { display: block; font-size: .74rem; color: var(--aff-gray-sub); }
+#aff-view-dashboard .aff-me-tag { font-size: .65rem; font-weight: 800; padding: 2px 8px; border-radius: 9999px; background: var(--c-royal); color: #fff; vertical-align: 2px; }
+#aff-view-dashboard .aff-leader-stat { text-align: center; }
+#aff-view-dashboard .aff-leader-stat b { display: block; font-family: var(--font-display); font-size: 1.15rem; color: var(--c-royal); }
+#aff-view-dashboard .aff-leader-stat small { display: block; font-size: .68rem; font-weight: 700; color: var(--aff-gray-sub); }
+#aff-view-dashboard .aff-leader-empty { padding: 26px; text-align: center; color: var(--aff-gray-sub); font-size: .9rem; }
+
+@media (max-width: 767px) {
+  #aff-view-dashboard .aff-sales-card { margin-left: -12px !important; margin-right: -12px !important; border-radius: 0; padding: 16px 14px; }
+  #aff-view-dashboard .aff-sales-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  #aff-view-dashboard .aff-sale-box.s1 { grid-column: 1 / -1; }
+  #aff-view-dashboard .aff-sale-box b { font-size: 1.3rem; }
+  #aff-view-dashboard .aff-sales-chart { gap: 4px; height: 150px; }
+  #aff-view-dashboard .aff-profile-row { flex-direction: column; align-items: stretch; gap: 16px; }
+  #aff-view-dashboard .aff-profile-avatar { width: 104px; height: 104px; }
+  #aff-view-dashboard .aff-leader-board { margin-left: -12px; margin-right: -12px; border-radius: 0; }
+  #aff-view-dashboard .aff-leader-head { padding: 16px 14px; }
+  #aff-view-dashboard .aff-leader-head h3 { font-size: 1.2rem; }
+  #aff-view-dashboard .aff-leader-row { grid-template-columns: 28px 40px minmax(0, 1fr) 48px 48px; gap: 8px; padding: 9px 4px; }
+  #aff-view-dashboard .aff-leader-avatar { width: 38px; height: 38px; }
+}
+
+/* Hộp đặt lịch trên điện thoại: bảng giá & thông tin chuyển khoản không tràn mép, số tiền 1 dòng */
+@media (max-width: 767px) {
+  #modal-qr-preview-box, .qr-price-summary-card, .qr-bank-details-wrapper, .qr-bank-info-table { min-width: 0; max-width: 100%; box-sizing: border-box; }
+  .qr-price-summary-card { padding: 12px 12px !important; }
+  .qr-price-row { display: flex !important; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .qr-price-row > span:first-child { flex: 1 1 auto; min-width: 0; font-size: .78rem !important; line-height: 1.35; }
+  .qr-price-row > span:last-child { flex: 0 0 auto; white-space: nowrap; text-align: right; font-size: .82rem !important; }
+  .qr-price-row.total-row > span:last-child { font-size: 1.15rem !important; }
+  .qr-bank-details-wrapper { padding: 12px !important; }
+  .qr-bank-info-table { width: 100% !important; }
+  .bank-row { display: grid !important; grid-template-columns: 1fr; gap: 4px; padding: 8px 0 !important; }
+  .bank-row > span:first-child { font-size: .72rem !important; opacity: .85; }
+  .bank-val, .bank-val-copy { justify-self: stretch; min-width: 0; }
+  .bank-val { font-size: .9rem !important; word-break: break-word; text-align: left !important; }
+  .bank-val-copy { display: flex !important; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .bank-val-copy > strong, .bank-val-copy > span { font-size: .95rem !important; white-space: nowrap; }
+  .btn-copy-mini { white-space: nowrap; flex-shrink: 0; font-size: .7rem !important; padding: 5px 9px !important; }
 }

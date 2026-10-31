@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-auto-i18n>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Đối Tác Tiếp Thị & Quản Lý Affiliate | IVY LUXE SPA</title>
-  <meta name="description" content="Chương trình đối tác Affiliate IVY LUXE SPA - Nhận hoa hồng 20-30% cho mỗi lượt đặt lịch dịch vụ Massage Body & Spa tại Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI.">
+  <meta name="description" content="Chương trình đối tác Affiliate IVY LUXE SPA - Nhận hoa hồng 10% (1 tầng) cho mỗi khách giới thiệu trực tiếp dịch vụ Massage Body & Spa tại Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI.">
 
   <!-- OpenGraph -->
   <meta property="og:title" content="Đối Tác Tiếp Thị & Dashboard Quản Lý Affiliate - IVY LUXE SPA">
-  <meta property="og:description" content="Nhận 20-30% hoa hồng cho mỗi đơn hàng thành công qua link giới thiệu của bạn. Quản lý chi tiết click, đơn hàng và rút tiền minh bạch.">
+  <meta property="og:description" content="Nhận 10% hoa hồng (1 tầng duy nhất) trên doanh thu mỗi khách đến trực tiếp qua link giới thiệu của bạn. Quản lý chi tiết click, đơn hàng và rút tiền minh bạch.">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
@@ -18,13 +18,14 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+<meta name="robots" content="noindex,follow">
 </head>
 <body class="aff-page-body">
 
@@ -40,6 +41,7 @@
       </a>
 
       <div class="aff-topbar-actions">
+        <button type="button" class="aff-lang-toggle" data-ivy-lang-toggle data-no-i18n aria-label="Language">🇬🇧 <span>English</span></button>
         <a href="index.html" class="aff-btn-home">
           <i class="fa fa-home"></i> <span>Trang Chủ Spa</span>
         </a>
@@ -65,9 +67,9 @@
           <div class="aff-benefit-icon">
             <i class="fa fa-usd"></i>
           </div>
-          <h3 class="aff-benefit-title">Hoa hồng 20–30%</h3>
+          <h3 class="aff-benefit-title">Hoa hồng 10% · 1 tầng</h3>
           <p class="aff-benefit-desc">
-            Nhận mức chiết khấu cao nhất ngành Wellness (20% - 30%) cho mỗi khách đặt lịch thành công qua link giới thiệu.
+            Nhận 10% trên doanh thu dịch vụ của mỗi khách bạn giới thiệu trực tiếp (F1). Chỉ 1 tầng duy nhất, không tính tầng dưới.
           </p>
         </div>
 
@@ -102,7 +104,7 @@
             <h3 class="aff-calc-title">Bạn Có Thể Kiếm Được Bao Nhiêu Cùng IVY LUXE SPA?</h3>
           </div>
           <div class="aff-calc-rate-pill">
-            Hoa hồng chuẩn: <strong>20% – 30%</strong>
+            Hoa hồng cố định: <strong>10% · 1 tầng</strong>
           </div>
         </div>
 
@@ -129,11 +131,11 @@
               <strong class="aff-calc-res-val" id="calc-turnover-val">22.500.000đ</strong>
             </div>
             <div class="aff-calc-res-item highlight">
-              <span class="aff-calc-res-lbl">Hoa hồng đối tác thực nhận (30%):</span>
-              <strong class="aff-calc-res-val gold" id="calc-commission-val">6.750.000đ</strong>
+              <span class="aff-calc-res-lbl">Hoa hồng đối tác thực nhận (10%):</span>
+              <strong class="aff-calc-res-val gold" id="calc-commission-val">2.250.000đ</strong>
             </div>
             <div class="aff-calc-res-tier" id="calc-tier-badge">
-              <i class="fa fa-star"></i> Cấp bậc: <strong>Đối tác Vàng (Gold Partner)</strong>
+              <i class="fa fa-check-circle"></i> Hoa hồng <strong>10% cố định · chỉ khách F1 trực tiếp</strong>
             </div>
           </div>
         </div>
@@ -205,6 +207,8 @@
           </div>
 
           <!-- FORM ĐĂNG KÝ -->
+          <div id="aff-auth-notice" style="display:none; margin:0 0 16px; padding:12px 14px; border-radius:10px; font-size:0.9rem; line-height:1.5;"></div>
+
           <form id="aff-register-main-form" onsubmit="handleAffiliateRegister(event)">
             <!-- Họ và tên -->
             <div class="aff-input-group">
@@ -252,9 +256,11 @@
               <input type="password" id="aff-input-pass" class="aff-input-field" placeholder="••••••••" required minlength="6">
             </div>
 
+            <input type="text" id="aff-input-website" name="website" tabindex="-1" autocomplete="off" class="lead-hp" aria-hidden="true">
+
             <!-- Submit Button: Đăng ký Affiliate -->
             <button type="submit" class="aff-btn-submit" id="aff-btn-reg-submit">
-              <i class="fa fa-user-plus"></i> Đăng Ký Trở Thành Đối Tác (20% - 30%)
+              <i class="fa fa-user-plus"></i> Đăng Ký Trở Thành Đối Tác (Hoa hồng 10%)
             </button>
           </form>
 
@@ -274,11 +280,6 @@
               <i class="fa fa-sign-in"></i> Đăng Nhập Dashboard Quản Lý
             </button>
 
-            <div style="text-align: center; margin-top: 14px;">
-              <a href="javascript:void(0)" onclick="quickDemoLogin()" style="color: var(--aff-gold); font-size: 0.88rem; font-weight: 600; text-decoration: underline;">
-                Truy cập nhanh tài khoản đối tác Demo (1 click)
-              </a>
-            </div>
           </form>
 
         </div>
@@ -291,13 +292,13 @@
     <!-- ========================================================================= -->
     <div id="aff-view-dashboard" class="aff-view-section" style="display: none;">
       
-      <!-- HEADER: Dashboard của tôi | Hoa hồng 20% - 30% | email -->
+      <!-- HEADER: Dashboard của tôi | Hoa hồng 10% (1 tầng) | email -->
       <div class="aff-dash-header">
         <div class="aff-dash-header-info">
           <div class="aff-dash-badge"><i class="fa fa-diamond"></i> ĐỐI TÁC CHÍNH THỨC</div>
           <h1 class="aff-dash-title" id="aff-dash-partner-name">Dashboard Quản Lý Affiliate</h1>
           <div class="aff-dash-sub" id="aff-dash-account-sub">
-            Mức hoa hồng: <strong style="color: var(--aff-gold);">20% – 30%</strong> &bull; Email: <span id="aff-dash-email-display">nguyenduong2018vn@gmail.com</span> &bull; Mã: <strong id="aff-dash-code-display" style="color: var(--aff-gold);">IVY-NGUYENDUONG</strong>
+            Mức hoa hồng: <strong style="color: var(--aff-gold);" id="aff-dash-rate">10%</strong> (1 tầng) &bull; Email: <span id="aff-dash-email-display">—</span> &bull; Mã: <strong id="aff-dash-code-display" style="color: var(--aff-gold);">—</strong>
           </div>
         </div>
         <div class="aff-dash-header-actions">
@@ -310,6 +311,16 @@
           <button type="button" class="aff-btn-logout" onclick="handleAffiliateLogout()">
             <i class="fa fa-sign-out"></i> <span>Đăng Xuất</span>
           </button>
+        </div>
+        <div class="aff-hero-qr">
+          <img id="aff-hero-qr-img" class="aff-hero-qr-img" src="" alt="Mã QR link giới thiệu" width="132" height="132">
+          <div class="aff-hero-qr-side">
+            <div class="aff-hero-qr-title"><i class="fa fa-qrcode"></i> Mã QR giới thiệu</div>
+            <div class="aff-hero-qr-hint">Khách quét bằng camera điện thoại để mở thẳng link của bạn.</div>
+            <button type="button" class="aff-hero-qr-btn" onclick="downloadHeaderQR()">
+              <i class="fa fa-download"></i> Tải mã QR (PNG)
+            </button>
+          </div>
         </div>
       </div>
 
@@ -325,7 +336,7 @@
           🏆 Vinh danh
         </button>
         <button type="button" class="aff-nav-pill" data-dash-tab="network" onclick="switchDashboardTab('network', this)">
-          👥 Mạng lưới (<span id="pill-network-count">0</span>)
+          👥 Mạng lưới F1 (<span id="pill-network-count">0</span>)
         </button>
         <button type="button" class="aff-nav-pill" data-dash-tab="partner" onclick="switchDashboardTab('partner', this)">
           🤝 Chính sách đối tác
@@ -338,7 +349,7 @@
       <!-- TAB 1: TỔNG QUAN -->
       <div id="dash-tab-overview" class="aff-dash-tab-pane active">
         <!-- 4 METRIC STAT CARDS -->
-        <div class="aff-stats-row">
+        <div class="aff-stats-row aff-stats-5">
           <!-- Card 1: TỔNG CLICKS -->
           <div class="aff-stat-box">
             <div class="aff-stat-top-label">
@@ -378,6 +389,35 @@
             <div class="aff-stat-big-val val-green" id="stat-received-amount">0đ</div>
             <div class="aff-stat-sub-label" id="stat-received-sub">Sẵn sàng để rút về tài khoản</div>
           </div>
+
+          <!-- Card 5: THÀNH VIÊN F1 (đăng ký trực tiếp qua link) -->
+          <div class="aff-stat-box">
+            <div class="aff-stat-top-label">
+              <span>THÀNH VIÊN F1</span>
+              <i class="fa fa-user-plus stat-icon"></i>
+            </div>
+            <div class="aff-stat-big-val" id="stat-f1-count">0</div>
+            <div class="aff-stat-sub-label">Đăng ký trực tiếp qua link của bạn</div>
+          </div>
+        </div>
+
+        <!-- DOANH SỐ TỪ AFFILIATE: tổng giá trị dịch vụ khách F1 đã đặt -->
+        <div class="aff-sales-card">
+          <div class="aff-sales-head">
+            <h2 class="aff-perf-title"><i class="fa fa-line-chart"></i> <span>Doanh Số Từ Affiliate</span></h2>
+            <div class="aff-perf-sub">Tổng giá trị dịch vụ khách bạn giới thiệu (F1) đã đặt trên website</div>
+          </div>
+          <div class="aff-sales-grid">
+            <div class="aff-sale-box s1"><span>TỔNG DOANH SỐ GIỚI THIỆU</span><b id="sale-total">0đ</b><small id="sale-orders">0 đơn</small></div>
+            <div class="aff-sale-box s2"><span>ĐÃ THANH TOÁN / XÁC NHẬN</span><b id="sale-confirmed">0đ</b><small>Dùng để tính hoa hồng 10%</small></div>
+            <div class="aff-sale-box s3"><span>DOANH SỐ THÁNG NÀY</span><b id="sale-month">0đ</b><small id="sale-month-label">—</small></div>
+          </div>
+          <div class="aff-sales-chart" id="sale-chart"></div>
+          <div class="aff-sales-legend"><span class="lg-total">Doanh số đặt</span><span class="lg-conf">Đã xác nhận</span></div>
+          <div class="aff-sales-recent">
+            <h4>Đơn gần nhất</h4>
+            <div id="sale-recent"></div>
+          </div>
         </div>
 
         <!-- SECTION: HIỆU QUẢ HOẠT ĐỘNG (INTERACTIVE CHART) -->
@@ -413,14 +453,10 @@
               <line x1="0" y1="80" x2="800" y2="80" stroke="#E6EAE7" stroke-width="1" stroke-dasharray="4"/>
               <line x1="0" y1="120" x2="800" y2="120" stroke="#E6EAE7" stroke-width="1" stroke-dasharray="4"/>
               <!-- Curve Fill -->
-              <path id="chart-area-path" d="M0,140 Q150,90 300,105 T600,60 T800,45 L800,160 L0,160 Z" fill="url(#chartGrad)"/>
+              <path id="chart-area-path" d="M0,150 L800,150 L800,160 L0,160 Z" fill="url(#chartGrad)"/>
               <!-- Curve Stroke -->
-              <path id="chart-line-path" d="M0,140 Q150,90 300,105 T600,60 T800,45" fill="none" stroke="#D4AF37" stroke-width="3.5" stroke-linecap="round"/>
-              <!-- Interactive Points -->
-              <circle cx="150" cy="115" r="5" fill="#123826" stroke="#D4AF37" stroke-width="2.5"/>
-              <circle cx="300" cy="105" r="5" fill="#123826" stroke="#D4AF37" stroke-width="2.5"/>
-              <circle cx="600" cy="60" r="5" fill="#123826" stroke="#D4AF37" stroke-width="2.5"/>
-              <circle cx="800" cy="45" r="6" fill="#D4AF37" stroke="#FFFFFF" stroke-width="2.5"/>
+              <path id="chart-line-path" d="M0,150 L800,150" fill="none" stroke="#D4AF37" stroke-width="3.5" stroke-linecap="round"/>
+              <g id="chart-points"></g>
             </svg>
             <div class="aff-chart-x-labels" id="chart-x-labels">
               <span>Hôm nay</span>
@@ -469,14 +505,14 @@
 
               <label class="aff-input-label">ĐƯỜNG LINK TIẾP THỊ CỦA BẠN:</label>
               <div class="aff-link-copy-group">
-                <input type="text" id="dash-full-ref-link" class="aff-link-display-input" value="https://ivy-luxe-spa-kappa.vercel.app/?ref=nguyenduong" readonly>
+                <input type="text" id="dash-full-ref-link" class="aff-link-display-input" value="" readonly>
                 <button type="button" class="aff-btn-cookie-accept" onclick="copyInputVal('dash-full-ref-link')">
                   <i class="fa fa-clone"></i> Sao Chép
                 </button>
               </div>
 
               <div class="aff-qr-center-box">
-                <img id="dash-qr-img" class="aff-qr-preview-img" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fivy-luxe-spa-kappa.vercel.app%2F%3Fref%3Dnguyenduong" alt="Mã QR Tiếp Thị">
+                <img id="dash-qr-img" class="aff-qr-preview-img" src="" alt="Mã QR Tiếp Thị">
                 <div class="aff-qr-info">
                   <div class="aff-qr-code-row">
                     Mã Tiếp Thị: <span id="dash-code-tag" class="aff-code-pill">IVY-NGUYENDUONG</span>
@@ -560,79 +596,72 @@
 
       <!-- TAB 3: VINH DANH (LEADERBOARD) -->
       <div id="dash-tab-ranking" class="aff-dash-tab-pane">
-        <div class="aff-tools-card">
-          <div class="aff-rank-header">
+        <!-- Hồ sơ hiển thị trên Bảng vinh danh -->
+        <div class="aff-tools-card aff-profile-card">
+          <h3 class="aff-tool-title"><i class="fa fa-id-badge"></i> Hồ Sơ Hiển Thị</h3>
+          <div class="aff-profile-row">
+            <div class="aff-profile-avatar-col">
+              <img id="aff-avatar-img" class="aff-profile-avatar" src="assets/images/logo.png" alt="Ảnh đại diện">
+              <label class="aff-btn-avatar"><i class="fa fa-camera"></i> <span>Chọn ảnh</span><input type="file" id="aff-avatar-file" accept="image/jpeg,image/png,image/webp" hidden></label>
+            </div>
+            <form id="aff-profile-form" class="aff-profile-form" onsubmit="saveAffProfile(event)">
+              <label class="aff-input-label" for="aff-display-name">TÊN HIỂN THỊ</label>
+              <input id="aff-display-name" class="aff-input-field" maxlength="40" required placeholder="VD: Khách sạn Phố Cổ">
+              <button type="submit" class="aff-btn-save-profile" id="aff-btn-save-profile">Lưu hồ sơ</button>
+              <p class="aff-profile-note">Ảnh &amp; tên này hiển thị trên Bảng Vinh Danh. Không ai thấy doanh thu hay % hoa hồng của bạn.</p>
+            </form>
+          </div>
+        </div>
+
+        <!-- Bảng vinh danh Top 20 -->
+        <div class="aff-leader-board">
+          <div class="aff-leader-head">
             <div>
-              <h3 class="aff-tool-title" style="margin:0;"><i class="fa fa-trophy"></i> Bảng Vàng Vinh Danh Top Đối Tác Xuất Sắc Tháng</h3>
-              <p style="font-size:0.88rem; color:var(--aff-gray-text); margin:4px 0 0;">Cập nhật tự động theo tổng doanh số đặt lịch hoàn tất trong tháng.</p>
+              <h3><i class="fa fa-trophy"></i> BẢNG VINH DANH · Top 20</h3>
+              <p>Top đối tác xuất sắc nhất tháng theo đơn &amp; lượt click</p>
             </div>
             <span class="aff-bonus-pill"><i class="fa fa-gift"></i> Thưởng Nóng Top 1 Tháng: 5.000.000đ</span>
           </div>
-
-          <table class="aff-rank-table">
-            <thead>
-              <tr>
-                <th>Hạng</th>
-                <th>Đối Tác</th>
-                <th>Kênh Tiếp Thị</th>
-                <th>Số Đơn Đặt</th>
-                <th>Hoa Hồng Nhận</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="aff-rank-medal aff-rank-1">1</span></td>
-                <td><strong>Khách Sạn Silk Path Hanoi</strong></td>
-                <td>Lễ Tân & Concierge</td>
-                <td>68 đơn</td>
-                <td><strong style="color: var(--aff-gold);">23.800.000đ</strong></td>
-              </tr>
-              <tr>
-                <td><span class="aff-rank-medal aff-rank-2">2</span></td>
-                <td><strong>Nguyễn Văn Hùng (Tour Guide)</strong></td>
-                <td>Hướng Dẫn Viên Phố Cổ</td>
-                <td>49 đơn</td>
-                <td><strong style="color: var(--aff-gold);">17.150.000đ</strong></td>
-              </tr>
-              <tr>
-                <td><span class="aff-rank-medal aff-rank-3">3</span></td>
-                <td><strong>Hanoi Old Quarter Travel</strong></td>
-                <td>Đại Lý Du Lịch</td>
-                <td>37 đơn</td>
-                <td><strong style="color: var(--aff-gold);">12.950.000đ</strong></td>
-              </tr>
-              <tr>
-                <td><span class="aff-rank-medal" style="background:#F1F5F9; color:#64748B;">4</span></td>
-                <td><strong>Homestay Maison Hà Trung</strong></td>
-                <td>Airbnb Host</td>
-                <td>25 đơn</td>
-                <td><strong style="color: var(--aff-gold);">8.750.000đ</strong></td>
-              </tr>
-              <tr style="background: rgba(212, 175, 55, 0.08); border-left: 3px solid var(--aff-gold);">
-                <td><span class="aff-rank-medal" style="background: var(--aff-gold); color: #123826;">★</span></td>
-                <td><strong id="rank-my-name">Bạn (nguyenduong2018vn@gmail.com)</strong></td>
-                <td>Đối Tác Trực Tuyến</td>
-                <td id="rank-my-orders">0 đơn</td>
-                <td><strong style="color: var(--aff-green);" id="rank-my-earnings">0đ</strong></td>
-              </tr>
-            </tbody>
-          </table>
+          <div id="rank-rows" class="aff-leader-list"></div>
         </div>
       </div>
 
       <!-- TAB 4: MẠNG LƯỚI (NETWORK) & LIVE DEMO SIMULATOR -->
       <div id="dash-tab-network" class="aff-dash-tab-pane">
+        <div class="aff-tools-card aff-f1-card">
+          <div class="aff-network-header">
+            <div>
+              <h3 class="aff-tool-title"><i class="fa fa-user-plus"></i> Thành Viên Đăng Ký Trực Tiếp (F1) · <span id="f1-count">0</span></h3>
+              <p style="font-size:0.88rem; color:var(--aff-gray-text); margin:4px 0 0;">
+                Người mở link / quét QR của bạn rồi tạo tài khoản trên website trong vòng 30 ngày. Chỉ hiển thị tầng F1 trực tiếp — không có tầng F2.
+              </p>
+            </div>
+          </div>
+          <table class="aff-rank-table">
+            <thead>
+              <tr>
+                <th>Thành Viên</th>
+                <th>Gmail</th>
+                <th>Ngày Đăng Ký</th>
+                <th>Hình Thức</th>
+                <th>Đối Tác</th>
+              </tr>
+            </thead>
+            <tbody id="dash-f1-rows"></tbody>
+          </table>
+        </div>
+
         <div class="aff-tools-card">
           <div class="aff-network-header">
             <div>
-              <h3 class="aff-tool-title"><i class="fa fa-users"></i> Lịch Sử Đơn Đặt Lịch Qua Mã Của Bạn</h3>
+              <h3 class="aff-tool-title"><i class="fa fa-calendar-check-o"></i> Khách Đặt Lịch Qua Mã Của Bạn (F1)</h3>
               <p style="font-size:0.88rem; color:var(--aff-gray-text); margin:4px 0 0;">
                 Giao dịch được ghi nhận tự động theo thời gian thực khi khách ghé thăm hoặc hoàn tất thanh toán dịch vụ tại IVY LUXE SPA.
               </p>
             </div>
             <!-- Live interactive test booking generator -->
-            <button type="button" class="aff-btn-test-booking" onclick="simulateTestBooking()">
-              <i class="fa fa-bolt"></i> Tạo Đơn Đặt Lịch Thử Nghiệm Ngay
+            <button type="button" class="aff-btn-test-booking" onclick="refreshAffData(true)">
+              <i class="fa fa-refresh"></i> Làm Mới Dữ Liệu
             </button>
           </div>
 
@@ -643,7 +672,7 @@
                 <th>Khách Hàng</th>
                 <th>Dịch Vụ Sử Dụng</th>
                 <th>Giá Trị Đơn</th>
-                <th>Hoa Hồng (20% - 30%)</th>
+                <th>Hoa Hồng (10%)</th>
                 <th>Trạng Thái</th>
               </tr>
             </thead>
@@ -662,9 +691,9 @@
           <div class="aff-policy-item">
             <i class="fa fa-check-circle"></i>
             <div>
-              <strong style="color: #123826; font-size:1rem;">1. Mức Hoa Hồng Hấp Dẫn 20% - 30%:</strong>
+              <strong style="color: #123826; font-size:1rem;">1. Hoa Hồng 10% · Chỉ 1 Tầng (F1 Trực Tiếp):</strong>
               <p style="margin:4px 0 0; color:var(--aff-gray-text); font-size:0.9rem;">
-                Đối tác nhận ngay 20% - 30% trên tổng doanh thu hóa đơn dịch vụ của khách hàng do bạn giới thiệu (không giới hạn số lượng và số tiền hoa hồng tối đa).
+                Đối tác nhận 10% trên doanh thu hóa đơn dịch vụ của khách đến trực tiếp qua link / mã QR của bạn (F1). Chương trình chỉ có 1 tầng: không có hoa hồng từ người do F1 giới thiệu tiếp (F2), và Dashboard chỉ hiển thị thành viên F1 của bạn.
               </p>
             </div>
           </div>
@@ -763,22 +792,6 @@
       <div class="aff-modal-body">
         <p style="font-size:0.9rem; color:#4B5563; margin-top:0;">Chọn tài khoản Google để tiếp tục với IVY LUXE SPA Partner Portal:</p>
         
-        <div class="aff-google-account-list">
-          <div class="aff-google-account-item" onclick="selectGoogleAccount('nguyenduong2018vn@gmail.com', 'Nguyễn Dương')">
-            <div class="aff-account-avatar">ND</div>
-            <div>
-              <div style="font-weight:700; color:#111827;">Nguyễn Dương</div>
-              <div style="font-size:0.82rem; color:#6B7280;">nguyenduong2018vn@gmail.com</div>
-            </div>
-          </div>
-          <div class="aff-google-account-item" onclick="selectGoogleAccount('concierge.hanoi@gmail.com', 'Hanoi Concierge Partner')">
-            <div class="aff-account-avatar" style="background:#059669;">HC</div>
-            <div>
-              <div style="font-weight:700; color:#111827;">Hanoi Concierge Partner</div>
-              <div style="font-size:0.82rem; color:#6B7280;">concierge.hanoi@gmail.com</div>
-            </div>
-          </div>
-        </div>
 
         <div style="margin-top:16px;">
           <label class="aff-input-label" style="font-size:0.82rem;">Hoặc nhập Gmail khác của bạn:</label>
@@ -848,812 +861,8 @@
   <div id="aff-toast-container" class="aff-toast-container"></div>
 
   <!-- JAVASCRIPT LOGIC -->
-  <script>
-    // State & Store Management
-    const AFF_STORE_KEY = 'ivy_affiliates_data';
-    const AFF_CURRENT_USER_KEY = 'ivy_current_user';
-    const COOKIE_CHOICE_KEY = 'ivy_cookie_consent';
-
-    let currentAffiliate = null;
-
-    // Helper: Toast Notifications
-    function showAffToast(message, type = 'success') {
-      const container = document.getElementById('aff-toast-container');
-      if (!container) return;
-
-      const toast = document.createElement('div');
-      toast.className = `aff-toast aff-toast-${type}`;
-      
-      let icon = 'fa-check-circle';
-      if (type === 'error') icon = 'fa-exclamation-triangle';
-      if (type === 'info') icon = 'fa-info-circle';
-
-      toast.innerHTML = `
-        <i class="fa ${icon} aff-toast-icon"></i>
-        <div class="aff-toast-text">${message}</div>
-      `;
-
-      container.appendChild(toast);
-
-      setTimeout(() => {
-        toast.classList.add('aff-toast-hide');
-        setTimeout(() => {
-          if (toast.parentNode) toast.parentNode.removeChild(toast);
-        }, 300);
-      }, 3500);
-    }
-
-    // Helper: Get Base URL
-    function getAffiliateBaseUrl() {
-      return window.location.origin;
-    }
-
-    // Load store or defaults
-    function getAffStore() {
-      let store = { partners: [] };
-      try {
-        const raw = localStorage.getItem(AFF_STORE_KEY);
-        if (raw) store = JSON.parse(raw);
-      } catch (e) {}
-
-      if (!store.partners || store.partners.length === 0) {
-        store.partners = [
-          {
-            name: 'Nguyễn Dương',
-            email: 'nguyenduong2018vn@gmail.com',
-            phone: '0814488686',
-            code: 'nguyenduong',
-            commissionRate: '30%',
-            clicks: 34,
-            monthClicks: 34,
-            ordersSuccess: 3,
-            ordersPending: 1,
-            pendingAmount: 270000,
-            receivedAmount: 810000,
-            bankName: 'Vietcombank',
-            bankNum: '001100888999',
-            bankHolder: 'NGUYEN DUONG',
-            orders: [
-              {
-                id: 'IVY-ORD-7711',
-                date: '19/10/2026 16:20',
-                customer: 'Khách VIP Hà Nội (1 khách)',
-                service: 'Massage Body Hoàng Gia Trị Liệu (90 phút)',
-                amount: 900000,
-                commission: 270000,
-                rate: '30%',
-                status: 'Chờ đối soát (15 ngày)'
-              },
-              {
-                id: 'IVY-ORD-7680',
-                date: '16/10/2026 14:00',
-                customer: 'Khách quốc tế (2 khách)',
-                service: 'Combo Cặp Đôi Uyên Ương Luxury',
-                amount: 1800000,
-                commission: 540000,
-                rate: '30%',
-                status: 'Đã hoàn tất'
-              },
-              {
-                id: 'IVY-ORD-7652',
-                date: '14/10/2026 10:30',
-                customer: 'Khách đặt qua Zalo',
-                service: 'Gội Đầu Dưỡng Sinh & Chăm Sóc Da Mặt',
-                amount: 900000,
-                commission: 270000,
-                rate: '30%',
-                status: 'Đã hoàn tất'
-              }
-            ]
-          }
-        ];
-        saveAffStore(store);
-      }
-      return store;
-    }
-
-    function saveAffStore(store) {
-      try {
-        localStorage.setItem(AFF_STORE_KEY, JSON.stringify(store));
-      } catch (e) {}
-    }
-
-    // Switch between Register Tab & Login Tab in View 1
-    function switchAuthTab(type) {
-      const btnReg = document.getElementById('btn-tab-reg');
-      const btnLogin = document.getElementById('btn-tab-login');
-      const formReg = document.getElementById('aff-register-main-form');
-      const formLogin = document.getElementById('aff-login-main-form');
-
-      if (type === 'register') {
-        btnReg.classList.add('active');
-        btnLogin.classList.remove('active');
-        formReg.style.display = 'block';
-        formLogin.style.display = 'none';
-      } else {
-        btnReg.classList.remove('active');
-        btnLogin.classList.add('active');
-        formReg.style.display = 'none';
-        formLogin.style.display = 'block';
-      }
-    }
-
-    // Switch between View 1 (Register) and View 2 (Dashboard)
-    function showView(viewName) {
-      const viewReg = document.getElementById('aff-view-register');
-      const viewDash = document.getElementById('aff-view-dashboard');
-      const modeBtnText = document.getElementById('aff-mode-btn-text');
-
-      if (viewName === 'dashboard') {
-        viewReg.style.display = 'none';
-        viewDash.style.display = 'block';
-        if (modeBtnText) modeBtnText.textContent = 'Đăng Ký Đối Tác Mới';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        viewReg.style.display = 'block';
-        viewDash.style.display = 'none';
-        if (modeBtnText) modeBtnText.textContent = 'Xem Dashboard Quản Lý';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-
-    function toggleAffiliatePageMode() {
-      const viewDash = document.getElementById('aff-view-dashboard');
-      if (viewDash.style.display === 'none') {
-        showView('dashboard');
-      } else {
-        showView('register');
-      }
-    }
-
-    // Switch Tabs inside Dashboard
-    function switchDashboardTab(tabId, el) {
-      document.querySelectorAll('.aff-nav-pill').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.aff-dash-tab-pane').forEach(pane => pane.classList.remove('active'));
-
-      if (el) el.classList.add('active');
-      const target = document.getElementById('dash-tab-' + tabId);
-      if (target) target.classList.add('active');
-    }
-
-    // Commission Calculator Logic
-    function updateCommissionCalc(val) {
-      const guests = parseInt(val) || 1;
-      const countEl = document.getElementById('calc-guests-count');
-      const turnoverEl = document.getElementById('calc-turnover-val');
-      const commissionEl = document.getElementById('calc-commission-val');
-      const tierEl = document.getElementById('calc-tier-badge');
-
-      if (countEl) countEl.textContent = `${guests} khách`;
-
-      const turnover = guests * 900000;
-      let commission = Math.round(turnover * 0.30);
-
-      if (turnoverEl) turnoverEl.textContent = turnover.toLocaleString('vi-VN') + 'đ';
-      if (commissionEl) commissionEl.textContent = commission.toLocaleString('vi-VN') + 'đ';
-
-      if (tierEl) {
-        if (guests < 10) {
-          tierEl.innerHTML = '<i class="fa fa-star-o"></i> Cấp bậc: <strong>Đối tác Tiêu Chuẩn (20%)</strong>';
-        } else if (guests < 40) {
-          tierEl.innerHTML = '<i class="fa fa-star"></i> Cấp bậc: <strong>Đối tác Vàng (Gold Partner - 25%–30%)</strong>';
-        } else {
-          tierEl.innerHTML = '<i class="fa fa-trophy"></i> Cấp bậc: <strong>Đối tác Kim Cương (Diamond Leader - 30% + Thưởng)</strong>';
-        }
-      }
-    }
-
-    // Fill Dashboard with current Affiliate data
-    function renderDashboardData(partner) {
-      if (!partner) return;
-      currentAffiliate = partner;
-
-      // Header display
-      const nameDisplay = document.getElementById('aff-dash-partner-name');
-      const emailDisplay = document.getElementById('aff-dash-email-display');
-      const codeDisplay = document.getElementById('aff-dash-code-display');
-      if (nameDisplay) nameDisplay.textContent = `Dashboard: ${partner.name || 'Đối Tác Tiếp Thị'}`;
-      if (emailDisplay) emailDisplay.textContent = partner.email || 'nguyenduong2018vn@gmail.com';
-      if (codeDisplay) codeDisplay.textContent = partner.code ? (partner.code.startsWith('IVY-') ? partner.code : 'IVY-' + partner.code) : 'IVY-NGUYENDUONG';
-
-      // 4 Metric cards
-      const elClicks = document.getElementById('stat-total-clicks');
-      const elMonthClicks = document.getElementById('stat-month-clicks');
-      const elOrdersSuccess = document.getElementById('stat-orders-success');
-      const elOrdersPending = document.getElementById('stat-orders-pending');
-      const elPendingAmount = document.getElementById('stat-pending-amount');
-      const elReceivedAmount = document.getElementById('stat-received-amount');
-
-      if (elClicks) elClicks.textContent = partner.clicks || 0;
-      if (elMonthClicks) elMonthClicks.textContent = 'Tháng này: ' + (partner.monthClicks || partner.clicks || 0) + ' lượt truy cập';
-      if (elOrdersSuccess) elOrdersSuccess.textContent = partner.ordersSuccess || 0;
-      if (elOrdersPending) elOrdersPending.textContent = 'Đang chờ xử lý: ' + (partner.ordersPending || 0) + ' đơn';
-      if (elPendingAmount) elPendingAmount.textContent = (partner.pendingAmount || 0).toLocaleString('vi-VN') + 'đ';
-      if (elReceivedAmount) elReceivedAmount.textContent = (partner.receivedAmount || 0).toLocaleString('vi-VN') + 'đ';
-
-      // Performance clicks
-      const perfClicksCount = document.getElementById('perf-clicks-count');
-      if (perfClicksCount) perfClicksCount.textContent = partner.clicks || 0;
-
-      // Ref link in Tools tab
-      const baseUrl = getAffiliateBaseUrl();
-      const code = partner.code || 'nguyenduong';
-      const cleanCode = code.startsWith('IVY-') ? code : 'IVY-' + code;
-      const fullLink = baseUrl + '/?ref=' + encodeURIComponent(code);
-
-      const linkInput = document.getElementById('dash-full-ref-link');
-      if (linkInput) linkInput.value = fullLink;
-
-      const qrImg = document.getElementById('dash-qr-img');
-      if (qrImg) qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(fullLink);
-
-      const codeTag = document.getElementById('dash-code-tag');
-      if (codeTag) codeTag.textContent = cleanCode;
-
-      const voucherCode = document.getElementById('voucher-code-display');
-      if (voucherCode) voucherCode.textContent = cleanCode;
-
-      const voucherQr = document.getElementById('voucher-qr-img');
-      if (voucherQr) voucherQr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=' + encodeURIComponent(fullLink);
-
-      // Update Template message
-      const tplMsg = document.getElementById('dash-tpl-msg');
-      if (tplMsg) {
-        tplMsg.textContent = `Dạ em gửi anh/chị ưu đãi trải nghiệm Massage Body & Spa đẳng cấp 5 sao tại IVY LUXE SPA (Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI). Đặt qua link riêng này được GIẢM 10% & TẶNG NGÂM CHÂN THẢO DƯỢC HOÀNG CUNG miễn phí: ${fullLink} (Mã ưu đãi: ${cleanCode}) - Hotline: 098 9713660.`;
-      }
-
-      const tplMsgEn = document.getElementById('dash-tpl-msg-en');
-      if (tplMsgEn) {
-        tplMsgEn.textContent = `Hello! Welcome to Hanoi Old Quarter! For top-rated luxury massage & wellness therapy, check out IVY LUXE SPA at 48 Ha Trung, Hoan Kiem, Hanoi (Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI). Book with my VIP link to get 10% OFF + FREE Herbal Foot Soak: ${fullLink} (Code: ${cleanCode}) - WhatsApp: +84989713660.`;
-      }
-
-      // Ranking tab
-      const myRankName = document.getElementById('rank-my-name');
-      if (myRankName) myRankName.textContent = `Bạn (${partner.name || partner.email})`;
-      const myRankOrders = document.getElementById('rank-my-orders');
-      if (myRankOrders) myRankOrders.textContent = (partner.ordersSuccess || 0) + ' đơn';
-      const myRankEarn = document.getElementById('rank-my-earnings');
-      if (myRankEarn) myRankEarn.textContent = (partner.receivedAmount || 0).toLocaleString('vi-VN') + 'đ';
-
-      // Bank tab
-      const availEl = document.getElementById('payout-avail-amount');
-      if (availEl) availEl.textContent = (partner.receivedAmount || 0).toLocaleString('vi-VN') + 'đ';
-
-      const bankNameInput = document.getElementById('bank-name-input');
-      const bankNumInput = document.getElementById('bank-account-num');
-      const bankHolderInput = document.getElementById('bank-account-holder');
-
-      if (bankNameInput && partner.bankName) bankNameInput.value = partner.bankName;
-      if (bankNumInput && partner.bankNum) bankNumInput.value = partner.bankNum;
-      if (bankHolderInput && partner.bankHolder) bankHolderInput.value = partner.bankHolder;
-
-      // Network table render
-      renderNetworkTable(partner);
-    }
-
-    // Render Network Orders Table
-    function renderNetworkTable(partner) {
-      const tbody = document.getElementById('dash-network-rows');
-      const countPill = document.getElementById('pill-network-count');
-      if (!tbody) return;
-
-      const orders = partner.orders || [];
-      if (countPill) countPill.textContent = orders.length;
-
-      if (orders.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="6" style="text-align:center; padding:36px; color:var(--aff-gray-sub);">
-              <i class="fa fa-info-circle" style="font-size:1.5rem; display:block; margin-bottom:8px; color:var(--aff-gold);"></i>
-              Chưa phát sinh giao dịch mới. Hãy chia sẻ link tiếp thị của bạn hoặc nhấn nút <strong>"Tạo Đơn Đặt Lịch Thử Nghiệm Ngay"</strong> ở trên để trải nghiệm hệ thống!
-            </td>
-          </tr>
-        `;
-        return;
-      }
-
-      tbody.innerHTML = orders.map(ord => {
-        let badgeStyle = 'background:#EBF4EE; color:#123826;';
-        if (ord.status.includes('Chờ')) badgeStyle = 'background:#FDF8EE; color:#9A7516;';
-        if (ord.status.includes('Hoàn tất') || ord.status.includes('thành công')) badgeStyle = 'background:#E8F8F0; color:#15803D;';
-
-        return `
-          <tr>
-            <td>
-              <strong>${ord.id}</strong>
-              <div style="font-size:0.78rem; color:var(--aff-gray-sub);">${ord.date}</div>
-            </td>
-            <td><strong>${ord.customer}</strong></td>
-            <td>${ord.service}</td>
-            <td><strong>${(ord.amount || 0).toLocaleString('vi-VN')}đ</strong></td>
-            <td><strong style="color:var(--aff-gold);">${(ord.commission || 0).toLocaleString('vi-VN')}đ</strong> <span style="font-size:0.75rem; color:var(--aff-gray-sub);">(${ord.rate || '30%'})</span></td>
-            <td><span class="aff-status-pill" style="${badgeStyle}">${ord.status}</span></td>
-          </tr>
-        `;
-      }).join('');
-    }
-
-    // Interactive Demo / Test Booking Simulator
-    function simulateTestBooking() {
-      if (!currentAffiliate) return;
-
-      const services = [
-        { name: 'Massage Body Hoàng Gia Trị Liệu (90 phút)', price: 900000 },
-        { name: 'Combo Cặp Đôi Uyên Ương Luxury', price: 1800000 },
-        { name: 'Trị Liệu Cổ Vai Gáy Chuyên Sâu (60 phút)', price: 750000 },
-        { name: 'Gội Đầu Dưỡng Sinh & Chăm Sóc Da Mặt', price: 650000 }
-      ];
-
-      const s = services[Math.floor(Math.random() * services.length)];
-      const commission = Math.round(s.price * 0.30);
-      const newOrdId = 'IVY-ORD-' + Math.floor(1000 + Math.random() * 9000);
-      const now = new Date();
-      const dateStr = now.toLocaleDateString('vi-VN') + ' ' + now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
-
-      if (!Array.isArray(currentAffiliate.orders)) currentAffiliate.orders = [];
-      
-      currentAffiliate.orders.unshift({
-        id: newOrdId,
-        date: dateStr,
-        customer: 'Khách Đặt Thử Nghiệm Web (' + (s.price > 1000000 ? '2' : '1') + ' khách)',
-        service: s.name,
-        amount: s.price,
-        commission: commission,
-        rate: '30%',
-        status: 'Chờ đối soát (15 ngày)'
-      });
-
-      currentAffiliate.clicks = (currentAffiliate.clicks || 0) + 1;
-      currentAffiliate.monthClicks = (currentAffiliate.monthClicks || 0) + 1;
-      currentAffiliate.ordersSuccess = (currentAffiliate.ordersSuccess || 0) + 1;
-      currentAffiliate.pendingAmount = (currentAffiliate.pendingAmount || 0) + commission;
-
-      // Update store
-      const store = getAffStore();
-      const idx = store.partners.findIndex(p => p.email === currentAffiliate.email || p.code === currentAffiliate.code);
-      if (idx !== -1) {
-        store.partners[idx] = currentAffiliate;
-      } else {
-        store.partners.push(currentAffiliate);
-      }
-      saveAffStore(store);
-
-      renderDashboardData(currentAffiliate);
-      showAffToast(`🎉 Khách vừa đặt lịch thành công qua link của bạn! Mã: ${newOrdId} &bull; +${commission.toLocaleString('vi-VN')}đ hoa hồng chờ đối soát.`);
-    }
-
-    // Multi-Service Link Generator
-    function generateCustomServiceLink() {
-      if (!currentAffiliate) return;
-      const sel = document.getElementById('tool-service-select');
-      const val = sel ? sel.value : '';
-      const baseUrl = getAffiliateBaseUrl();
-      const code = currentAffiliate.code || 'nguyenduong';
-
-      let fullLink = baseUrl + '/?ref=' + encodeURIComponent(code);
-      if (val) fullLink += '&service=' + encodeURIComponent(val);
-
-      const input = document.getElementById('dash-full-ref-link');
-      if (input) input.value = fullLink;
-
-      const qr = document.getElementById('dash-qr-img');
-      if (qr) qr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(fullLink);
-    }
-
-    // Google Auth Simulation
-    function openGoogleAuthModal() {
-      const modal = document.getElementById('aff-modal-google');
-      if (modal) modal.style.display = 'flex';
-    }
-
-    function closeGoogleAuthModal() {
-      const modal = document.getElementById('aff-modal-google');
-      if (modal) modal.style.display = 'none';
-    }
-
-    function selectGoogleAccount(email, name) {
-      closeGoogleAuthModal();
-      authenticatePartner(email, name);
-    }
-
-    function confirmCustomGoogleAuth() {
-      const input = document.getElementById('custom-google-email');
-      const email = input ? input.value.trim() : '';
-      if (!email || !email.includes('@')) {
-        showAffToast('Vui lòng nhập địa chỉ Email hợp lệ!', 'error');
-        return;
-      }
-      closeGoogleAuthModal();
-      authenticatePartner(email, email.split('@')[0]);
-    }
-
-    function authenticatePartner(email, name) {
-      const store = getAffStore();
-      let partner = store.partners.find(p => p.email && p.email.toLowerCase() === email.toLowerCase());
-
-      if (!partner) {
-        partner = {
-          name: name || email.split('@')[0],
-          phone: '0814488686',
-          code: email.split('@')[0].replace(/[^a-zA-Z0-9]/g, ''),
-          email: email,
-          commissionRate: '30%',
-          clicks: 1,
-          monthClicks: 1,
-          ordersSuccess: 0,
-          ordersPending: 0,
-          pendingAmount: 0,
-          receivedAmount: 0,
-          bankName: '',
-          bankNum: '',
-          bankHolder: '',
-          orders: []
-        };
-        store.partners.push(partner);
-        saveAffStore(store);
-      }
-
-      try {
-        localStorage.setItem(AFF_CURRENT_USER_KEY, JSON.stringify({
-          name: partner.name,
-          email: partner.email,
-          role: 'partner'
-        }));
-      } catch (err) {}
-
-      showAffToast(`Xin chào ${partner.name}! Đăng nhập thành công với mức hoa hồng ${partner.commissionRate || '20% - 30%'}.`);
-      renderDashboardData(partner);
-      showView('dashboard');
-    }
-
-    // Quick Demo Login
-    function quickDemoLogin() {
-      const store = getAffStore();
-      const demo = store.partners[0];
-      if (demo) {
-        authenticatePartner(demo.email, demo.name);
-      }
-    }
-
-    // Handle Form Submit: Register
-    function handleAffiliateRegister(e) {
-      e.preventDefault();
-      const name = document.getElementById('aff-input-fullname').value.trim();
-      const phone = document.getElementById('aff-input-phone').value.trim();
-      const type = document.getElementById('aff-input-type')?.value || 'individual';
-      let refCode = document.getElementById('aff-input-refcode').value.trim();
-      const email = document.getElementById('aff-input-email').value.trim();
-      const pass = document.getElementById('aff-input-pass').value.trim();
-
-      if (!refCode) {
-        refCode = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '');
-      }
-
-      const store = getAffStore();
-      let partner = store.partners.find(p => p.email && p.email.toLowerCase() === email.toLowerCase());
-
-      if (partner) {
-        partner.name = name;
-        partner.phone = phone;
-        partner.code = refCode;
-        partner.pass = pass;
-        partner.type = type;
-      } else {
-        partner = {
-          name,
-          phone,
-          type,
-          code: refCode,
-          email,
-          pass,
-          commissionRate: '30%',
-          clicks: 1,
-          monthClicks: 1,
-          ordersSuccess: 0,
-          ordersPending: 0,
-          pendingAmount: 0,
-          receivedAmount: 0,
-          bankName: '',
-          bankNum: '',
-          bankHolder: '',
-          orders: []
-        };
-        store.partners.push(partner);
-      }
-      saveAffStore(store);
-
-      try {
-        localStorage.setItem(AFF_CURRENT_USER_KEY, JSON.stringify({
-          name: partner.name,
-          email: partner.email,
-          phone: partner.phone,
-          role: 'partner'
-        }));
-      } catch (err) {}
-
-      showAffToast('🎉 Chúc mừng bạn đã đăng ký Đối Tác Tiếp Thị thành công với mức hoa hồng 20% - 30%!');
-      renderDashboardData(partner);
-      showView('dashboard');
-    }
-
-    // Handle Form Submit: Login
-    function handleAffiliateLogin(e) {
-      e.preventDefault();
-      const emailOrPhone = document.getElementById('aff-login-email').value.trim().toLowerCase();
-      const pass = document.getElementById('aff-login-pass').value.trim();
-
-      const store = getAffStore();
-      const partner = store.partners.find(p => 
-        (p.email && p.email.toLowerCase() === emailOrPhone) || 
-        (p.phone && p.phone === emailOrPhone)
-      );
-
-      if (partner) {
-        try {
-          localStorage.setItem(AFF_CURRENT_USER_KEY, JSON.stringify({
-            name: partner.name,
-            email: partner.email,
-            phone: partner.phone,
-            role: 'partner'
-          }));
-        } catch (err) {}
-
-        showAffToast(`Đăng nhập thành công! Chào mừng ${partner.name}.`);
-        renderDashboardData(partner);
-        showView('dashboard');
-      } else {
-        showAffToast('Tài khoản chưa tồn tại! Đang tạo hồ sơ đối tác mới cho bạn...', 'info');
-        authenticatePartner(emailOrPhone.includes('@') ? emailOrPhone : emailOrPhone + '@ivypartner.vn', 'Đối Tác Tiếp Thị');
-      }
-    }
-
-    // Logout
-    function handleAffiliateLogout() {
-      try {
-        localStorage.removeItem(AFF_CURRENT_USER_KEY);
-      } catch (e) {}
-      showAffToast('Đã đăng xuất khỏi Dashboard Đối Tác.', 'info');
-      showView('register');
-    }
-
-    // Copy Ref Link
-    function copyMyAffiliateLink() {
-      if (!currentAffiliate) return;
-      const fullLink = getAffiliateBaseUrl() + '/?ref=' + encodeURIComponent(currentAffiliate.code || 'nguyenduong');
-      navigator.clipboard.writeText(fullLink).then(() => {
-        const btnText = document.getElementById('aff-btn-copy-ref-text');
-        if (btnText) {
-          btnText.textContent = 'Đã sao chép! ✓';
-          setTimeout(() => { btnText.textContent = 'Sao chép Link Ref'; }, 2000);
-        }
-        showAffToast('Đã sao chép đường link giới thiệu của bạn!');
-      }).catch(() => {
-        showAffToast(fullLink, 'info');
-      });
-    }
-
-    function copyInputVal(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.select();
-      navigator.clipboard.writeText(el.value).then(() => {
-        showAffToast('Đã sao chép đường link tiếp thị của bạn! Bạn có thể gửi ngay cho khách hàng.');
-      });
-    }
-
-    // Download QR Code
-    function downloadAffiliateQR() {
-      const qrImg = document.getElementById('dash-qr-img');
-      if (!qrImg || !qrImg.src) return;
-      const a = document.createElement('a');
-      a.href = qrImg.src;
-      a.download = 'IVY_LUXE_SPA_QR_' + (currentAffiliate ? currentAffiliate.code : 'AFF') + '.png';
-      a.target = '_blank';
-      a.click();
-      showAffToast('Đang tải mã QR tiếp thị về máy...');
-    }
-
-    function downloadVoucherCard() {
-      showAffToast('Đã sẵn sàng mã Voucher VIP! Bạn có thể chụp màn hình hoặc gửi mã trực tiếp cho khách.');
-    }
-
-    // Quick Shares
-    function shareViaZalo() {
-      const link = document.getElementById('dash-full-ref-link')?.value || getAffiliateBaseUrl();
-      const code = currentAffiliate ? currentAffiliate.code : 'IVY';
-      const msg = `Dạ em gửi anh/chị ưu đãi trải nghiệm Massage Body & Spa tại IVY LUXE SPA (Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI). Đặt qua link riêng này được GIẢM 10% & TẶNG NGÂM CHÂN THẢO DƯỢC HOÀNG CUNG: ${link} (Mã: ${code}) - Hotline: 098 9713660.`;
-      navigator.clipboard.writeText(msg).then(() => {
-        showAffToast('Đã sao chép tin nhắn Zalo kèm link giới thiệu! Đang mở Zalo...');
-        window.open('https://chat.zalo.me/', '_blank');
-      });
-    }
-
-    function shareViaWhatsApp() {
-      const link = document.getElementById('dash-full-ref-link')?.value || getAffiliateBaseUrl();
-      const code = currentAffiliate ? currentAffiliate.code : 'IVY';
-      const msg = `IVY LUXE SPA (Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI) - 10% VIP Discount & Free Herbal Foot Soak: ${link} (Code: ${code}) - WhatsApp: +84989713660`;
-      window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
-    }
-
-    function shareViaFacebook() {
-      const link = document.getElementById('dash-full-ref-link')?.value || getAffiliateBaseUrl();
-      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(link), '_blank');
-    }
-
-    function copyTemplateMsg(lang = 'vi') {
-      const id = lang === 'en' ? 'dash-tpl-msg-en' : 'dash-tpl-msg';
-      const tpl = document.getElementById(id);
-      if (tpl) {
-        navigator.clipboard.writeText(tpl.innerText).then(() => {
-          showAffToast('Đã sao chép nội dung tin nhắn soạn sẵn! Bạn có thể dán và gửi cho khách.');
-        });
-      }
-    }
-
-    // Filter Performance Days
-    function filterPerformanceDays(days, btn) {
-      document.querySelectorAll('.aff-time-pill').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-
-      const countEl = document.getElementById('perf-clicks-count');
-      const labelEl = document.getElementById('perf-sub-label');
-      const xLabels = document.getElementById('chart-x-labels');
-
-      const baseClicks = currentAffiliate ? (currentAffiliate.clicks || 0) : 0;
-      let multiplier = 1;
-      if (days === 30) multiplier = 4;
-      if (days === 60) multiplier = 8;
-      if (days === 90) multiplier = 12;
-
-      if (countEl) countEl.textContent = baseClicks * multiplier;
-      if (labelEl) labelEl.textContent = `lượt click qua link của bạn trong ${days} ngày qua`;
-
-      if (xLabels) {
-        if (days === 7) {
-          xLabels.innerHTML = '<span>Hôm nay</span><span>2 ngày trước</span><span>4 ngày trước</span><span>6 ngày trước</span><span>7 ngày trước</span>';
-        } else if (days === 30) {
-          xLabels.innerHTML = '<span>Tuần này</span><span>Tuần 2</span><span>Tuần 3</span><span>Tuần 4</span><span>30 ngày trước</span>';
-        } else if (days === 60) {
-          xLabels.innerHTML = '<span>Tháng này</span><span>Tháng trước</span><span>60 ngày trước</span>';
-        } else {
-          xLabels.innerHTML = '<span>Tháng này</span><span>Tháng 2</span><span>Tháng 3</span><span>90 ngày trước</span>';
-        }
-      }
-    }
-
-    // Bank Form Save
-    function saveBankInfo(e) {
-      e.preventDefault();
-      if (!currentAffiliate) return;
-      const bankName = document.getElementById('bank-name-input').value.trim();
-      const bankNum = document.getElementById('bank-account-num').value.trim();
-      const bankHolder = document.getElementById('bank-account-holder').value.trim().toUpperCase();
-
-      currentAffiliate.bankName = bankName;
-      currentAffiliate.bankNum = bankNum;
-      currentAffiliate.bankHolder = bankHolder;
-
-      const store = getAffStore();
-      const idx = store.partners.findIndex(p => p.email === currentAffiliate.email);
-      if (idx !== -1) {
-        store.partners[idx] = currentAffiliate;
-        saveAffStore(store);
-      }
-
-      showAffToast('✓ Đã lưu thông tin tài khoản ngân hàng thành công!');
-    }
-
-    // Payout Modals
-    function openPayoutModal() {
-      const modal = document.getElementById('aff-modal-payout');
-      const availEl = document.getElementById('payout-modal-amount');
-      const summaryEl = document.getElementById('payout-bank-summary');
-      const inputEl = document.getElementById('payout-withdraw-input');
-
-      const avail = currentAffiliate ? (currentAffiliate.receivedAmount || 0) : 0;
-      if (availEl) availEl.textContent = avail.toLocaleString('vi-VN') + 'đ';
-      if (inputEl) inputEl.value = avail > 0 ? avail : '';
-
-      if (summaryEl) {
-        if (currentAffiliate && currentAffiliate.bankName && currentAffiliate.bankNum) {
-          summaryEl.innerHTML = `
-            <div style="font-weight:700; color:#123826; margin-bottom:4px;"><i class="fa fa-university"></i> Ngân Hàng Nhận:</div>
-            <div style="font-size:0.9rem; color:#374151;">${currentAffiliate.bankName} - ${currentAffiliate.bankNum}</div>
-            <div style="font-size:0.85rem; color:#6B7280; font-weight:600;">Chủ TK: ${currentAffiliate.bankHolder || 'CHƯA CẬP NHẬT'}</div>
-          `;
-        } else {
-          summaryEl.innerHTML = `
-            <div style="color:#B45309; font-size:0.88rem;">
-              <i class="fa fa-exclamation-triangle"></i> Bạn chưa cập nhật tài khoản ngân hàng. Hãy chuyển sang tab <strong>Thanh toán</strong> để bổ sung trước khi rút tiền.
-            </div>
-          `;
-        }
-      }
-
-      if (modal) modal.style.display = 'flex';
-    }
-
-    function closePayoutModal() {
-      const modal = document.getElementById('aff-modal-payout');
-      if (modal) modal.style.display = 'none';
-    }
-
-    function confirmPayoutRequest() {
-      const avail = currentAffiliate ? (currentAffiliate.receivedAmount || 0) : 0;
-      const inputEl = document.getElementById('payout-withdraw-input');
-      const amount = parseInt(inputEl ? inputEl.value : 0) || 0;
-
-      if (avail <= 0) {
-        showAffToast('Số dư khả dụng hiện tại là 0đ. Vui lòng đợi đơn hàng được hoàn tất để rút tiền.', 'error');
-        return;
-      }
-
-      if (amount <= 0 || amount > avail) {
-        showAffToast(`Số tiền rút không hợp lệ! Tối đa có thể rút: ${avail.toLocaleString('vi-VN')}đ.`, 'error');
-        return;
-      }
-
-      currentAffiliate.receivedAmount = avail - amount;
-      const store = getAffStore();
-      const idx = store.partners.findIndex(p => p.email === currentAffiliate.email);
-      if (idx !== -1) {
-        store.partners[idx] = currentAffiliate;
-        saveAffStore(store);
-      }
-
-      closePayoutModal();
-      renderDashboardData(currentAffiliate);
-      showAffToast(`✓ Đã gửi lệnh rút ${amount.toLocaleString('vi-VN')}đ! Bộ phận kế toán IVY LUXE SPA sẽ xử lý chuyển khoản trong vòng 24 giờ.`);
-    }
-
-    // Cookie Banner Action
-    function handleCookieChoice(accepted) {
-      const banner = document.getElementById('aff-cookie-banner');
-      if (banner) banner.style.display = 'none';
-      try {
-        localStorage.setItem(COOKIE_CHOICE_KEY, accepted ? 'accepted' : 'denied');
-      } catch (e) {}
-    }
-
-    // Initialize Page on DOM Ready
-    document.addEventListener('DOMContentLoaded', () => {
-      // Check Cookie Consent
-      try {
-        if (localStorage.getItem(COOKIE_CHOICE_KEY)) {
-          const banner = document.getElementById('aff-cookie-banner');
-          if (banner) banner.style.display = 'none';
-        }
-      } catch (e) {}
-
-      // Check URL query parameters
-      const urlParams = new URLSearchParams(window.location.search);
-      const viewParam = urlParams.get('view') || urlParams.get('tab');
-
-      const store = getAffStore();
-      const defaultPartner = store.partners[0];
-
-      // Check current user
-      let loggedUser = null;
-      try {
-        loggedUser = JSON.parse(localStorage.getItem(AFF_CURRENT_USER_KEY));
-      } catch (e) {}
-
-      if (loggedUser && loggedUser.role === 'partner') {
-        const p = store.partners.find(x => x.email === loggedUser.email) || defaultPartner;
-        renderDashboardData(p);
-      } else {
-        renderDashboardData(defaultPartner);
-      }
-
-      if (viewParam === 'dashboard' || (loggedUser && loggedUser.role === 'partner')) {
-        showView('dashboard');
-      } else {
-        showView('register');
-      }
-
-      // Initialize Calculator
-      updateCommissionCalc(25);
-    });
-  </script>
+  <script src="js/vendor/qrcode.js"></script>
+  <script src="js/i18n-en.js"></script>
+  <script src="js/affiliate-page.js"></script>
 </body>
 </html>

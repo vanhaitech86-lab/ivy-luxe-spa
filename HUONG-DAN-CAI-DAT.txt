@@ -1,0 +1,34 @@
+IVYLUXE SPA & NAIL - BỘ MÃ NGUỒN WEBSITE (đóng gói 31/10/2026)
+Bản này giống website ivyluxe.com.vn tại thời điểm đóng gói: giao diện, 7 ngôn ngữ, bảng giá, ảnh,
+trang Affiliate, Dashboard quản trị, CRM, chat bot, bot Telegram.
+
+KHÔNG CÓ TRONG GÓI (cố ý, để an toàn):
+- Khách hàng, tài khoản, đơn đặt lịch, đối tác trong CRM: nằm trong kho dữ liệu của web đang chạy.
+- Các khoá bí mật (Gmail, Google, Gemini, Telegram, Redis): phải nhập lại, xem .env.example.
+- Liên kết dự án Vercel: để lúc đăng bản mới không ghi đè nhầm lên web đang chạy.
+
+CÁCH 1 - XEM THỬ TRÊN MÁY (2 phút, cần cài Node.js 20 trở lên từ nodejs.org)
+Mở Terminal, gõ cd rồi kéo thư mục IVYLUXE-SPA-NAIL vào cửa sổ, bấm Enter, sau đó chạy:
+   npm install
+   node server-local.js
+Mở Chrome vào http://localhost:3000
+Trang chủ, /affiliate, /admin, /privacy đều xem được. Thư xác nhận chỉ in ra Terminal.
+Muốn có quyền Chủ Spa khi chạy thử: tạo file .env.local có dòng OWNER_EMAILS=gmail-của-anh@gmail.com
+rồi đăng ký tài khoản bằng Gmail đó.
+Không mở index.html bằng cách bấm đúp: đăng nhập, đặt lịch, CRM cần máy chủ.
+
+CÁCH 2 - ĐƯA LÊN MẠNG BẰNG VERCEL (bản mới, tách khỏi web đang chạy)
+1. Trong thư mục này chạy: npx vercel deploy --prod   rồi đặt tên dự án MỚI.
+2. Vercel → Storage → tạo Upstash Redis (hoặc tạo tại upstash.com) → Connect vào dự án mới.
+3. Vercel → Settings → Environment Variables: nhập các biến trong .env.example.
+4. Chạy lại: npx vercel deploy --prod
+5. Dùng tên miền khác ivyluxe.com.vn thì phải sửa trước khi deploy:
+   - api/_lib/http.js: SITE và SITE_HOSTS sang tên miền mới.
+   - api/_lib/users.js: OWNER_EMAILS nếu đổi Chủ Spa.
+   - Google Cloud → OAuth client: thêm https://TÊN-MIỀN/api/auth/google/callback
+6. Vào /admin bằng Gmail Chủ Spa → Phân quyền → bấm Kết nối 2 bot Telegram.
+   Một bot Telegram chỉ gắn được 1 website: dùng bot này cho bản mới thì web cũ ngừng nhận tin.
+
+GHI CHÚ
+- tai-lieu/: bài kiến thức cho bot. Sửa nội dung bot ở api/_lib/bot-knowledge.js.
+- Các ảnh đăng thêm từ Dashboard và dữ liệu CRM nằm trong Redis, không nằm trong gói.

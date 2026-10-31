@@ -10,17 +10,17 @@
   <!-- OpenGraph -->
   <meta property="og:title" content="IVY LUXE SPA - Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI">
   <meta property="og:description" content="Massage Body & Wellness đẳng cấp tại Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI. Hotline: 098 9713660.">
-  <meta property="og:image" content="assets/images/spa_water_basin_hero.jpg">
+  <meta property="og:image" content="https://ivyluxe.com.vn/assets/images/spa_water_basin_hero.jpg">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="apple-touch-icon" href="assets/images/logo.png">
 
-  <!-- Google Fonts (Playfair Display & Montserrat & Plus Jakarta Sans with full Vietnamese support) -->
+  <!-- Google Fonts: Be Vietnam Pro (tiêu đề) & Arimo (chữ thường), hỗ trợ đầy đủ Tiếng Việt -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -30,6 +30,55 @@
 
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chat-widget.css">
+<link rel="canonical" href="https://ivyluxe.com.vn/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  "@id": "https://ivyluxe.com.vn/#ivy-luxe-spa",
+  "name": "IVY LUXE SPA",
+  "url": "https://ivyluxe.com.vn/",
+  "image": "https://ivyluxe.com.vn/assets/images/spa_water_basin_hero.jpg",
+  "description": "IVY LUXE SPA cung cấp massage body, foot massage, gội đầu dưỡng sinh, chăm sóc da mặt và nail tại khu vực Hoàn Kiếm, Hà Nội.",
+  "telephone": "+84989713660",
+  "email": "ivyspahanoi@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Số 48 phố Hà Trung",
+    "addressLocality": "Phường Hoàn Kiếm",
+    "addressRegion": "Hà Nội",
+    "addressCountry": "VN"
+  },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=48+Ha+Trung+Hoan+Kiem+Hanoi",
+  "areaServed": {
+    "@type": "City",
+    "name": "Hà Nội"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "23:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/ivyspahanoi/",
+    "https://www.tiktok.com/@ivyspahanoi"
+  ],
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://ivyluxe.com.vn/#booking-form-box",
+      "inLanguage": "vi"
+    },
+    "name": "Đặt lịch tại IVY LUXE SPA"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -112,6 +161,38 @@
         <button id="audio-zen-toggle" class="top-zen-btn" type="button" aria-label="Toggle Zen Music">
           <i class="fa fa-music"></i> <span data-i18n="top_zen_music">Nhạc Thiền</span>
         </button>
+      <div class="floating-lang-wrap top-lang-wrap" id="floating-lang-wrap">
+        <div class="floating-lang-popover" id="floating-lang-popover" role="listbox" aria-label="Chọn ngôn ngữ / Select Language">
+          <div class="fl-pop-title"><i class="fa fa-globe"></i> Chọn ngôn ngữ / Language</div>
+          <button type="button" class="fl-opt-item active" data-lang="vi" role="option">
+            <span class="fl-opt-flag">🇻🇳</span><span class="fl-opt-name">Tiếng Việt</span><span class="fl-opt-code">(VI)</span><i class="fa fa-check fl-opt-check"></i>
+          </button>
+          <button type="button" class="fl-opt-item" data-lang="en" role="option">
+            <span class="fl-opt-flag">🇬🇧</span><span class="fl-opt-name">English</span><span class="fl-opt-code">(EN)</span><i class="fa fa-check fl-opt-check"></i>
+          </button>
+          <button type="button" class="fl-opt-item" data-lang="zh" role="option">
+            <span class="fl-opt-flag">🇨🇳</span><span class="fl-opt-name">中文</span><span class="fl-opt-code">(ZH)</span><i class="fa fa-check fl-opt-check"></i>
+          </button>
+          <button type="button" class="fl-opt-item" data-lang="ja" role="option">
+            <span class="fl-opt-flag">🇯🇵</span><span class="fl-opt-name">日本語</span><span class="fl-opt-code">(JA)</span><i class="fa fa-check fl-opt-check"></i>
+          </button>
+          <button type="button" class="fl-opt-item" data-lang="ko" role="option">
+            <span class="fl-opt-flag">🇰🇷</span><span class="fl-opt-name">한국어</span><span class="fl-opt-code">(KO)</span><i class="fa fa-check fl-opt-check"></i>
+          </button>
+          <button type="button" class="fl-opt-item" data-lang="ru" role="option">
+            <span class="fl-opt-flag">🇷🇺</span><span class="fl-opt-name">Русский</span><span class="fl-opt-code">(RU)</span><i class="fa fa-check fl-opt-check"></i>
+          </button>
+          <button type="button" class="fl-opt-item" data-lang="fr" role="option">
+            <span class="fl-opt-flag">🇫🇷</span><span class="fl-opt-name">Français</span><span class="fl-opt-code">(FR)</span><i class="fa fa-check fl-opt-check"></i>
+          </button>
+        </div>
+        <button type="button" class="floating-lang-toggle" id="floating-lang-toggle" title="Chọn ngôn ngữ / Select Language" aria-haspopup="listbox" aria-expanded="false">
+          <span class="fl-globe"><i class="fa fa-globe"></i></span>
+          <span class="fl-flag" id="fl-current-flag">🇻🇳</span>
+          <span class="fl-code" id="fl-current-code">VI</span>
+          <i class="fa fa-caret-down fl-caret"></i>
+        </button>
+      </div>
       </div>
     </div>
   </div>
@@ -120,7 +201,66 @@
   <header class="main-header">
     <div class="container">
       <div class="header-inner">
-                <!-- Left Navigation Menu -->
+        <!-- Mobile Header Language Selector (Nút chọn ngôn ngữ to bên trái cho khách du lịch) -->
+        <div class="mobile-header-lang-wrap">
+          <button id="mobile-lang-btn" class="mobile-lang-btn" type="button" aria-label="Chọn ngôn ngữ / Select Language">
+            <span class="mobile-lang-flag" id="mobile-current-flag">🇻🇳</span>
+            <span class="mobile-lang-name" id="mobile-current-name">VI</span>
+            <i class="fa fa-angle-down"></i>
+          </button>
+          <!-- Mobile Dropdown Popover -->
+          <div class="mobile-lang-popover" id="mobile-lang-popover">
+            <div class="mobile-lang-popover-title">
+              <i class="fa fa-globe"></i> <span>Language / Ngôn ngữ</span>
+            </div>
+            <ul class="mobile-lang-list">
+              <li data-lang="vi" class="active">
+                <span class="flag-icon">🇻🇳</span>
+                <span class="lang-title">Tiếng Việt</span>
+                <span class="lang-code">(VI)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="en">
+                <span class="flag-icon">🇬🇧</span>
+                <span class="lang-title">English</span>
+                <span class="lang-code">(EN)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="zh">
+                <span class="flag-icon">🇨🇳</span>
+                <span class="lang-title">中文</span>
+                <span class="lang-code">(ZH)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="ja">
+                <span class="flag-icon">🇯🇵</span>
+                <span class="lang-title">日本語</span>
+                <span class="lang-code">(JA)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="ko">
+                <span class="flag-icon">🇰🇷</span>
+                <span class="lang-title">한국어</span>
+                <span class="lang-code">(KO)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="ru">
+                <span class="flag-icon">🇷🇺</span>
+                <span class="lang-title">Русский</span>
+                <span class="lang-code">(RU)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+              <li data-lang="fr">
+                <span class="flag-icon">🇫🇷</span>
+                <span class="lang-title">Français</span>
+                <span class="lang-code">(FR)</span>
+                <i class="fa fa-check lang-check"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Left Navigation Menu -->
         <ul class="nav-menu-left">
           <li><a href="#home" class="nav-item-link active" data-i18n="nav_home">Trang Chủ</a></li>
           <li><a href="#menu" class="nav-item-link" data-i18n="nav_menu">Bảng Dịch Vụ</a></li>
@@ -131,14 +271,14 @@
         <!-- Center Logo (Logo ở giữa) -->
         <a href="#home" class="header-logo-center">
           <img src="assets/images/logo.png" alt="IVY LUXE SPA" class="header-logo-img">
-          <span class="header-logo-text">IVY LUXE SPA</span>
+          <span class="header-logo-text">IVYLUXE SPA &amp; NAIL</span>
           <span class="header-logo-sub">MASSAGE BODY & WELLNESS</span>
         </a>
 
         <!-- Right Navigation Menu -->
         <ul class="nav-menu-right">
           <li><a href="#locations" class="nav-item-link" data-i18n-html="nav_about">Về Chúng Tôi <i class="fa fa-angle-down"></i></a></li>
-          <li><a href="affiliate.html" class="nav-item-link nav-affiliate-link" data-i18n="nav_affiliate" style="color: #000000; font-weight: 700;"><i class="fa fa-handshake-o"></i> Đối Tác Affiliate (20% - 30%)</a></li>
+          <li><a href="affiliate.html" class="nav-item-link nav-affiliate-link" data-i18n="nav_affiliate" style="color: #000000; font-weight: 700;"><i class="fa fa-handshake-o"></i> Đối Tác Affiliate (10%)</a></li>
           <li><a href="#contact" class="nav-item-link" data-i18n="nav_contact">Liên Hệ</a></li>
           <li><a href="#booking-form-box" class="nav-item-link js-open-booking" style="color: #123023; font-weight: 700;" data-i18n="nav_book">Đặt Lịch Trực Tuyến</a></li>
           
@@ -232,64 +372,6 @@
 
         <!-- Mobile Header Right Actions: Dedicated Book Button, Auth Pill & Dropdown -->
         <div class="mobile-header-right-group">
-          <!-- Mobile Header Language Selector (Nút chọn ngôn ngữ to bên trái cho khách du lịch) -->
-        <div class="mobile-header-lang-wrap">
-          <button id="mobile-lang-btn" class="mobile-lang-btn" type="button" aria-label="Chọn ngôn ngữ / Select Language">
-            <span class="mobile-lang-flag" id="mobile-current-flag">🇻🇳</span>
-            <span class="mobile-lang-name" id="mobile-current-name">VI</span>
-            <i class="fa fa-angle-down"></i>
-          </button>
-          <!-- Mobile Dropdown Popover -->
-          <div class="mobile-lang-popover" id="mobile-lang-popover">
-            <div class="mobile-lang-popover-title">
-              <i class="fa fa-globe"></i> <span>Language / Ngôn ngữ</span>
-            </div>
-            <ul class="mobile-lang-list">
-              <li data-lang="vi" class="active">
-                <span class="flag-icon">🇻🇳</span>
-                <span class="lang-title">Tiếng Việt</span>
-                <span class="lang-code">(VI)</span>
-                <i class="fa fa-check lang-check"></i>
-              </li>
-              <li data-lang="en">
-                <span class="flag-icon">🇬🇧</span>
-                <span class="lang-title">English</span>
-                <span class="lang-code">(EN)</span>
-                <i class="fa fa-check lang-check"></i>
-              </li>
-              <li data-lang="zh">
-                <span class="flag-icon">🇨🇳</span>
-                <span class="lang-title">中文</span>
-                <span class="lang-code">(ZH)</span>
-                <i class="fa fa-check lang-check"></i>
-              </li>
-              <li data-lang="ja">
-                <span class="flag-icon">🇯🇵</span>
-                <span class="lang-title">日本語</span>
-                <span class="lang-code">(JA)</span>
-                <i class="fa fa-check lang-check"></i>
-              </li>
-              <li data-lang="ko">
-                <span class="flag-icon">🇰🇷</span>
-                <span class="lang-title">한국어</span>
-                <span class="lang-code">(KO)</span>
-                <i class="fa fa-check lang-check"></i>
-              </li>
-              <li data-lang="ru">
-                <span class="flag-icon">🇷🇺</span>
-                <span class="lang-title">Русский</span>
-                <span class="lang-code">(RU)</span>
-                <i class="fa fa-check lang-check"></i>
-              </li>
-              <li data-lang="fr">
-                <span class="flag-icon">🇫🇷</span>
-                <span class="lang-title">Français</span>
-                <span class="lang-code">(FR)</span>
-                <i class="fa fa-check lang-check"></i>
-              </li>
-            </ul>
-          </div>
-        </div>
           <button type="button" class="mobile-header-book-btn js-open-booking" title="Đặt Lịch Trực Tuyến 48 Hà Trung">
             <i class="fa fa-calendar-check-o"></i> <span>Đặt Lịch</span>
           </button>
@@ -369,9 +451,9 @@
             <i class="fa fa-calendar-check-o"></i>
           </div>
           <div class="mbh-text">
-            <div class="mbh-tag"><i class="fa fa-bolt"></i> ĐẶT LỊCH TRỰC TUYẾN • GIẢM 20%</div>
-            <strong class="mbh-title">Đặt Chỗ Nhanh Tại Số 48 Phố Hà Trung</strong>
-            <span class="mbh-sub">Giữ phòng VIP • Chọn giờ & chuyên viên thư giãn</span>
+            <div class="mbh-tag"><i class="fa fa-bolt"></i> ĐẶT LỊCH TRỰC TUYẾN • GIẢM 10%</div>
+            <strong class="mbh-title">Giảm 10% tất cả dịch vụ khi thanh toán trước qua mã QR</strong>
+            <span class="mbh-sub">Đặt chỗ nhanh tại Số 48 Phố Hà Trung</span>
           </div>
         </div>
         <div class="mbh-right">
@@ -395,13 +477,16 @@
       <div class="hero-slide" style="background-image: linear-gradient(180deg, rgba(20,20,20,0.22) 0%, rgba(20,20,20,0.48) 100%), url('assets/images/spa_water_basin_hero.jpg');" data-index="4" role="img" aria-label="Ivy Luxe Spa - Chậu nước hoa trị liệu"></div>
     </div>
 
+    <!-- Dòng ưu đãi đặt lịch trực tuyến (máy tính) -->
+    <div class="hero-booking-offer"><i class="fa fa-gift"></i> <span><b>ĐẶT LỊCH TRỰC TUYẾN</b> · Giảm 10% tất cả dịch vụ khi thanh toán trước qua mã QR</span></div>
+
     <!-- Centered Floating Booking Bar (Exact Screenshot 1) -->
     <div id="booking-form-box" class="hero-booking-box">
       <!-- Field 1: Location -->
       <div class="hero-booking-field">
         <span class="booking-field-caption" data-i18n="hero_field_location">Cơ Sở Spa</span>
         <select id="hero-select-location" required>
-          <option value="SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI" selected>48 Hà Trung, Hoàn Kiếm, Hà Nội</option>
+          <option value="SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI" selected>Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</option>
         </select>
       </div>
 
@@ -462,7 +547,7 @@
     <div class="hero-welcome-text" data-i18n="hero_welcome">CHÀO MỪNG QUÝ KHÁCH ĐẾN VỚI IVY LUXE SPA HÀ NỘI</div>
     <div class="hero-mobile-cta-wrap">
       <button type="button" class="hero-mobile-cta-btn js-open-booking" title="Đặt lịch hẹn trực tuyến">
-        <i class="fa fa-calendar-check-o"></i> <span>ĐẶT LỊCH TRẢI NGHIỆM (GIẢM 20%)</span>
+        <i class="fa fa-calendar-check-o"></i> <span>ĐẶT LỊCH · TRẢ TRƯỚC QR GIẢM 10%</span>
       </button>
     </div>
   </section>
@@ -473,7 +558,7 @@
       <h1 class="sub-hero-title" data-i18n="subhero_title">MASSAGE & TRỊ LIỆU THÂN TÂM PHỐ CỔ HÀ NỘI</h1>
       <p class="sub-hero-desc">
         <span data-i18n="subhero_desc">Liệu trình chuyên sâu. Đôi bàn tay điêu luyện. Lòng hiếu khách thuần khiết Hà Nội.</span><br>
-        <span data-i18n-html="subhero_addr_line">Địa chỉ: <strong>SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</strong> &nbsp;|&nbsp; Hotline: <strong style="color:#B22222;">098 9713660</strong></span>
+        <span data-i18n-html="subhero_addr_line">Địa chỉ: <strong>SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</strong><br>Hotline: <strong style="color:#B22222;">098 9713660</strong></span>
       </p>
     </div>
   </div>
@@ -567,7 +652,7 @@
         <!-- Card 2: Khu Trị Liệu VIP Indochine -->
         <div class="location-orient-card">
           <div class="location-img-wrap">
-            <img src="assets/images/real_ivy_spa_nail_collage.jpg" alt="IVY LUXE Spa & Nail - Không Gian Trị Liệu & Làm Đẹp Thực Tế">
+            <img src="assets/images/real_ivy_spa_nail_wide.jpg" alt="IVY LUXE Spa & Nail - Không Gian Trị Liệu & Làm Đẹp Thực Tế" style="object-position:0 0; transform-origin:0 0;">
             <div class="location-inner-dots">
               <span class="loc-dot active"></span>
               <span class="loc-dot"></span>
@@ -637,6 +722,17 @@
           </a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ƯU ĐÃI & KHUYẾN MÃI MỚI (Admin tự đăng ảnh + mô tả từ Dashboard) -->
+  <section id="uu-dai" class="section-live-promos" hidden>
+    <div class="container">
+      <div class="orient-section-header">
+        <h2 class="orient-section-title" id="live-promos-title">ƯU ĐÃI &amp; KHUYẾN MÃI MỚI</h2>
+        <p class="orient-section-subtitle" id="live-promos-sub">Chương trình đang áp dụng tại IVYLUXE SPA &amp; NAIL – Số 48 phố Hà Trung, Hoàn Kiếm, Hà Nội</p>
+      </div>
+      <div class="live-promos-grid" id="live-promos-grid"></div>
     </div>
   </section>
 
@@ -864,7 +960,7 @@
   </section>
 
   <!-- 6. ĐÁNH GIÁ KHÁCH HÀNG: WHAT GUESTS ARE SAYING... -->
-  <section id="reviews" class="section-orient-reviews">
+  <section id="reviews" class="section-orient-reviews" hidden style="display:none">
     <div class="container">
       <div class="orient-section-header">
         <h2 class="orient-section-title" data-i18n="reviews_title">CẢM NHẬN TỪ KHÁCH HÀNG</h2>
@@ -994,8 +1090,8 @@
       
       <!-- Section Title & Link to full page -->
       <div class="section-title-wrap" style="margin-bottom: 36px; text-align: center;">
-        <span class="section-sub-gold" style="color:#F05A28; font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size:0.9rem;">HỢP TÁC KINH DOANH HOA HỒNG 20% - 30%</span>
-        <h2 class="section-main-title" style="color:#1E293B; font-size:2.2rem; font-weight:800; margin:8px 0 12px; font-family:'Plus Jakarta Sans', sans-serif;">ĐỐI TÁC TIẾP THỊ &amp; DASHBOARD AFFILIATE</h2>
+        <span class="section-sub-gold" style="color:#F05A28; font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size:0.9rem;">HỢP TÁC KINH DOANH · HOA HỒNG 10% (1 TẦNG)</span>
+        <h2 class="section-main-title" style="color:#1E293B; font-size:2.2rem; font-weight:800; margin:8px 0 12px; font-family:'Arimo', sans-serif;">ĐỐI TÁC TIẾP THỊ &amp; DASHBOARD AFFILIATE</h2>
         <div class="gold-leaf-divider" style="margin-bottom:14px;">
           <span class="gold-line" style="background:#F05A28;"></span>
           <i class="fa fa-handshake-o" style="color:#F05A28;"></i>
@@ -1025,9 +1121,9 @@
             <div class="aff-benefit-icon">
               <i class="fa fa-usd"></i>
             </div>
-            <h3 class="aff-benefit-title">Hoa hồng 20–30%</h3>
+            <h3 class="aff-benefit-title">Hoa hồng 10% · 1 tầng</h3>
             <p class="aff-benefit-desc">
-              Nhận 20–30% hoa hồng (tuỳ sản phẩm) cho mỗi đơn hàng thành công qua link giới thiệu của bạn.
+              Nhận 10% hoa hồng trên doanh thu của mỗi khách bạn giới thiệu trực tiếp (F1) qua link riêng — chỉ 1 tầng, minh bạch.
             </p>
           </div>
 
@@ -1114,6 +1210,8 @@
                 <input type="password" id="home-aff-pass" class="aff-input-field" placeholder="••••••" required minlength="6">
               </div>
 
+              <input type="text" id="home-aff-website" name="website" tabindex="-1" autocomplete="off" class="lead-hp" aria-hidden="true">
+
               <button type="submit" class="aff-btn-submit">
                 Đăng ký Affiliate
               </button>
@@ -1144,12 +1242,12 @@
       <!-- ===================================================================== -->
       <div id="home-aff-view-dashboard" style="display:none;">
         
-        <!-- Header (Ảnh 1: Dashboard của tôi | Hoa hồng 20% - 30% | email) -->
+        <!-- Header: Dashboard của tôi | Hoa hồng 10% | email -->
         <div class="aff-dash-header">
           <div class="aff-dash-header-info">
             <h3 class="aff-dash-title">Dashboard của tôi</h3>
             <div class="aff-dash-sub">
-              Hoa hồng 20% - 30% | <span id="home-dash-email-display">nguyenduong2018vn@gmail.com</span>
+              Hoa hồng 10% · 1 tầng | <span id="home-dash-email-display">Chưa đăng nhập</span>
             </div>
           </div>
           <div class="aff-dash-header-actions">
@@ -1260,7 +1358,92 @@
     </div>
   </section>
 
+  <!-- ========================================================================= -->
+  <!-- NHẮN TIN VỚI BOT (KHUNG IPHONE) — nội dung do js/chat-widget.js vẽ, chung cuộc trò chuyện với nút chat nổi -->
+  <!-- ========================================================================= -->
+  <section id="nhan-tin" class="section-phone-chat">
+    <div class="container">
+      <div id="ivy-phone-chat"></div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
+  <!-- ========================================================================= -->
+  <!-- ĐĂNG KÝ TƯ VẤN (LEADS → CRM DASHBOARD) -->
+  <!-- ========================================================================= -->
+  <section id="tu-van" class="section-lead-capture">
+    <div class="container">
+      <div class="lead-capture-card">
+        <div class="lead-capture-intro">
+          <span class="lead-capture-eyebrow"><i class="fa fa-leaf"></i> IVYLUXE SPA &amp; NAIL</span>
+          <h2 class="lead-capture-title">Nhận tư vấn &amp; ưu đãi riêng</h2>
+          <p class="lead-capture-sub">Get a free consultation &amp; special offer</p>
+          <ul class="lead-capture-points">
+            <li><i class="fa fa-check-circle"></i> Tư vấn liệu trình phù hợp trong 15 phút / Reply within 15 minutes</li>
+            <li><i class="fa fa-check-circle"></i> Giữ chỗ phòng VIP, nhóm &amp; cặp đôi / VIP, group &amp; couple rooms</li>
+            <li><i class="fa fa-check-circle"></i> Hotline / Zalo: <a href="tel:0989713660">098 971 3660</a></li>
+          </ul>
+        </div>
+        <form id="lead-capture-form" class="lead-capture-form" novalidate>
+          <div class="lead-form-grid">
+            <label class="lead-field">
+              <span>Họ và tên / Full name *</span>
+              <input type="text" id="lead-name" maxlength="80" autocomplete="name" required placeholder="Nguyễn Thị Lan">
+            </label>
+            <label class="lead-field">
+              <span>Số điện thoại / Phone *</span>
+              <input type="tel" id="lead-phone" maxlength="20" autocomplete="tel" required placeholder="0912 345 678 / +82 10…">
+            </label>
+            <label class="lead-field">
+              <span>Đến từ quốc gia / Country</span>
+              <input type="text" id="lead-country" maxlength="60" list="lead-country-list" autocomplete="country-name" placeholder="Việt Nam">
+              <datalist id="lead-country-list">
+              <option value="Việt Nam">🇻🇳 Việt Nam</option>
+              <option value="Hàn Quốc / Korea">🇰🇷 Hàn Quốc / Korea</option>
+              <option value="Trung Quốc / China">🇨🇳 Trung Quốc / China</option>
+              <option value="Nhật Bản / Japan">🇯🇵 Nhật Bản / Japan</option>
+              <option value="Mỹ / USA">🇺🇸 Mỹ / USA</option>
+              <option value="Úc / Australia">🇦🇺 Úc / Australia</option>
+              <option value="Anh / UK">🇬🇧 Anh / UK</option>
+              <option value="Pháp / France">🇫🇷 Pháp / France</option>
+              <option value="Đức / Germany">🇩🇪 Đức / Germany</option>
+              <option value="Nga / Russia">🇷🇺 Nga / Russia</option>
+              <option value="Đài Loan / Taiwan">🇹🇼 Đài Loan / Taiwan</option>
+              <option value="Singapore">🇸🇬 Singapore</option>
+              <option value="Thái Lan / Thailand">🇹🇭 Thái Lan / Thailand</option>
+              <option value="Malaysia">🇲🇾 Malaysia</option>
+              <option value="Ấn Độ / India">🇮🇳 Ấn Độ / India</option>
+              <option value="Canada">🇨🇦 Canada</option>
+              </datalist>
+            </label>
+            <label class="lead-field">
+              <span>Nơi sống / Where you stay</span>
+              <input type="text" id="lead-residence" maxlength="120" placeholder="Hoàn Kiếm, Hà Nội / Khách sạn…">
+            </label>
+          </div>
+          <div class="lead-field lead-field-full">
+            <span>Nhu cầu khi đến IVYLUXE SPA &amp; NAIL / What would you like?</span>
+            <div class="lead-chips">
+              <label class="lead-chip"><input type="checkbox" name="lead-need" value="Massage body toàn thân"><span>Massage body toàn thân</span></label>
+              <label class="lead-chip"><input type="checkbox" name="lead-need" value="Foot massage (chân)"><span>Foot massage (chân)</span></label>
+              <label class="lead-chip"><input type="checkbox" name="lead-need" value="Gội đầu dưỡng sinh"><span>Gội đầu dưỡng sinh</span></label>
+              <label class="lead-chip"><input type="checkbox" name="lead-need" value="Chăm sóc da mặt"><span>Chăm sóc da mặt</span></label>
+              <label class="lead-chip"><input type="checkbox" name="lead-need" value="Làm Nails"><span>Làm Nails</span></label>
+              <label class="lead-chip"><input type="checkbox" name="lead-need" value="Waxing"><span>Waxing</span></label>
+              <label class="lead-chip"><input type="checkbox" name="lead-need" value="Nối mi & chân mày"><span>Nối mi & chân mày</span></label>
+              <label class="lead-chip"><input type="checkbox" name="lead-need" value="Combo IVY Special"><span>Combo IVY Special</span></label>
+              <label class="lead-chip"><input type="checkbox" name="lead-need" value="Đi nhóm / cặp đôi"><span>Đi nhóm / cặp đôi</span></label>
+            </div>
+            <textarea id="lead-need" rows="2" maxlength="400" placeholder="Mong muốn khác, ngày giờ dự kiến, số người… / Other wishes, date, people…"></textarea>
+          </div>
+          <input type="text" id="lead-website" name="website" tabindex="-1" autocomplete="off" class="lead-hp" aria-hidden="true">
+          <button type="submit" class="lead-submit-btn"><i class="fa fa-paper-plane"></i> GỬI THÔNG TIN / SEND</button>
+          <p class="lead-form-msg" id="lead-form-msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <footer id="contact" class="orient-footer">
     <div class="container">
       <div class="footer-columns-grid">
@@ -1288,9 +1471,10 @@
             <li><a href="#menu" data-i18n="footer_link_menu">Bảng Dịch Vụ & Giá</a></li>
             <li><a href="#promotions" data-i18n="footer_link_promotions">Combo Ưu Đãi Đặc Biệt</a></li>
             <li><a href="#locations" data-i18n="footer_link_locations">Không Gian Tại Số 48 Phố Hà Trung</a></li>
-            <li><a href="#reviews" data-i18n="footer_link_reviews">Đánh Giá Của Khách Hàng</a></li>
-            <li><a href="affiliate.html" data-i18n="footer_link_affiliate">Chương Trình Đối Tác Affiliate (20% - 30%)</a></li>
+            <li><a href="affiliate.html" data-i18n="footer_link_affiliate">Chương Trình Đối Tác Affiliate (10%)</a></li>
             <li><a href="#booking-form-box" class="js-open-booking" data-i18n="footer_link_book">Đặt Lịch Trực Tuyến</a></li>
+            <li><a href="#tu-van">Đăng Ký Tư Vấn / Consultation</a></li>
+            <li><a href="/privacy">Chính Sách Bảo Mật / Privacy</a></li>
           </ul>
         </div>
 
@@ -1337,7 +1521,11 @@
   </footer>
 
   <!-- FLOATING RIGHT SPEED DIAL (THEO SCREENSHOT: FACEBOOK, INSTAGRAM, WHATSAPP, TIKTOK, ZALO, KAKAO, PHONE) -->
-  <div class="orient-floating-dock">
+  <div class="orient-floating-dock" id="orient-floating-dock">
+    <!-- Nút gom các kênh liên hệ (chỉ hiện trên điện thoại) -->
+    <button type="button" class="orient-dock-btn dock-btn-more" id="dock-btn-more" aria-label="Thêm kênh liên hệ" aria-expanded="false">
+      <i class="fa fa-commenting dock-more-open"></i><i class="fa fa-times dock-more-close"></i>
+    </button>
     <!-- Google Maps Directions Pin (48 Hà Trung, Hoàn Kiếm, Hà Nội) - Nút Trắng Bản Đồ Theo Yêu Cầu 1 -->
     <a href="https://www.google.com/maps?q=48+Ha+Trung+Hoan+Kiem+Hanoi" target="_blank" rel="noopener noreferrer" class="orient-dock-btn dock-btn-map" id="dock-btn-map" title="Bản đồ chỉ đường Google Maps - Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội">
       <i class="fa fa-map-marker"></i>
@@ -1400,24 +1588,10 @@
         <button type="button" class="ms-drawer-close" id="ms-drawer-close" aria-label="Đóng Menu">&times;</button>
       </div>
 
-      <!-- NGÔN NGỮ / LANGUAGE - Đặt ở trên cùng cho khách du lịch dễ nhìn -->
-      <div class="ms-drawer-lang-top">
-        <span class="ms-lang-label"><i class="fa fa-globe"></i> NGÔN NGỮ / LANGUAGE:</span>
-        <div class="ms-lang-pills">
-          <button type="button" class="ms-lang-pill active" data-lang="vi">🇻🇳 Tiếng Việt</button>
-          <button type="button" class="ms-lang-pill" data-lang="en">🇬🇧 English</button>
-          <button type="button" class="ms-lang-pill" data-lang="zh">🇨🇳 中文</button>
-          <button type="button" class="ms-lang-pill" data-lang="ja">🇯🇵 日本語</button>
-          <button type="button" class="ms-lang-pill" data-lang="ko">🇰🇷 한국어</button>
-          <button type="button" class="ms-lang-pill" data-lang="ru">🇷🇺 Русский</button>
-          <button type="button" class="ms-lang-pill" data-lang="fr">🇫🇷 Français</button>
-        </div>
-      </div>
-
       <!-- Promo Banner -->
       <div class="ms-drawer-promo-banner">
         <div class="ms-promo-badge">ƯU ĐÃI ĐẶT TRỰC TUYẾN</div>
-        <div class="ms-promo-text"><strong>GIẢM 20% TOÀN BỘ MENU</strong> + TẶNG NGÂM CHÂN THẢO DƯỢC</div>
+        <div class="ms-promo-text"><strong>GIẢM 10% TẤT CẢ DỊCH VỤ KHI TRẢ TRƯỚC QUA QR</strong> + TẶNG NGÂM CHÂN THẢO DƯỢC</div>
       </div>
 
       <!-- Category Filter Tabs -->
@@ -1464,8 +1638,8 @@
             <p class="ms-service-desc">Massage body chuyên sâu + Đá nóng + Tẩy tế bào chết lưng + Ngâm chân thảo dược miễn phí.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">1.000.000đ</span>
-                <span class="ms-price-discounted">800.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">800.000đ</span>
+                <span class="ms-price-discounted">720.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1489,8 +1663,8 @@
             <p class="ms-service-desc">Massage lưng cổ vai gáy + Massage chân thư giãn + Đá nóng giảm nhức mỏi.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">560.000đ</span>
-                <span class="ms-price-discounted">450.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">450.000đ</span>
+                <span class="ms-price-discounted">405.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="IVY SPECIAL - COMBO 2 - 70/75 PHÚT">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1514,8 +1688,8 @@
             <p class="ms-service-desc">Massage toàn thân 90' + Chăm sóc da mặt thảo mộc 30' + Tặng ngâm chân thảo dược.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">1.250.000đ</span>
-                <span class="ms-price-discounted">1.000.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">1.000.000đ</span>
+                <span class="ms-price-discounted">900.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="IVY SPECIAL - COMBO 3 - 120 PHÚT">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1539,8 +1713,8 @@
             <p class="ms-service-desc">Massage body + Tẩy tế bào chết + Gội đầu dưỡng sinh &amp; Vệ sinh tai + Chăm sóc da mặt.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">1.750.000đ</span>
-                <span class="ms-price-discounted">1.400.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">1.400.000đ</span>
+                <span class="ms-price-discounted">1.260.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="IVY SPECIAL - COMBO 4 - 150 PHÚT">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1564,8 +1738,8 @@
             <p class="ms-service-desc">Massage toàn thân chuyên sâu (75') + Chăm sóc phục hồi da mặt (45'). Thư giãn sâu cơ bắp và làn da.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">1.120.000đ</span>
-                <span class="ms-price-discounted">900.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">900.000đ</span>
+                <span class="ms-price-discounted">810.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="Gói Trị Liệu Hoàng Gia 2 Giờ">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1589,8 +1763,8 @@
             <p class="ms-service-desc">Massage toàn thân (90') + Chăm sóc da mặt &amp; Gội đầu dưỡng sinh (90') + Tặng kèm vệ sinh tai miễn phí.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">2.060.000đ</span>
-                <span class="ms-price-discounted">1.650.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">1.650.000đ</span>
+                <span class="ms-price-discounted">1.485.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="Gói Trị Liệu Hoàng Gia 3 Giờ">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1614,8 +1788,8 @@
             <p class="ms-service-desc">Massage body (90') + Tẩy tế bào chết (60') + Da mặt &amp; Dưỡng tóc (90') + Vệ sinh tai + Trà thảo mộc &amp; đồ ăn nhẹ.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">2.380.000đ</span>
-                <span class="ms-price-discounted">1.900.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">1.900.000đ</span>
+                <span class="ms-price-discounted">1.710.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="Gói Đế Vương VIP Toàn Diện 4 Giờ">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1639,8 +1813,8 @@
             <p class="ms-service-desc">Gội nước thảo dược cô đặc, xông đầu tuần hoàn ấm, massage đả thông kinh lạc vùng đầu - cổ - vai gáy.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">520.000đ</span>
-                <span class="ms-price-discounted">420.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">420.000đ</span>
+                <span class="ms-price-discounted">378.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="Nourishing Shampoo (Gội Đầu Dưỡng Sinh - Menu Mới)">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1664,8 +1838,8 @@
             <p class="ms-service-desc">Làm sạch da đầu với dầu gội hữu cơ cao cấp, kết hợp massage day ấn thái dương và gáy nhẹ nhàng.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">400.000đ</span>
-                <span class="ms-price-discounted">320.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">320.000đ</span>
+                <span class="ms-price-discounted">288.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="Shampoo (Gội Đầu Thư Giãn - Menu Mới)">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1689,8 +1863,8 @@
             <p class="ms-service-desc">Kỹ thuật lấy ráy tai êm ái nhẹ nhàng với bộ dụng cụ tiệt trùng y tế, mang lại cảm giác thư thái thông thoáng.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">250.000đ</span>
-                <span class="ms-price-discounted">200.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">200.000đ</span>
+                <span class="ms-price-discounted">180.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="Ear Cleaning (Lấy Ráy Tai Chuyên Nghiệp - Menu Mới)">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1714,8 +1888,8 @@
             <p class="ms-service-desc">Nhiệt lượng từ đá bazan giữ nhiệt kết hợp tinh dầu oải hương giúp đả thông kinh lạc, giảm đau mỏi vai gáy tức thì.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">780.000đ - 1.190.000đ</span>
-                <span class="ms-price-discounted">620.000đ - 950.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">620.000đ - 950.000đ</span>
+                <span class="ms-price-discounted">558.000đ - 855.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="Massage Trị Liệu Đá Nóng Núi Lửa (75' - 120')">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1727,7 +1901,7 @@
         <!-- 12. Aroma Herbal Massage -->
         <div class="ms-service-card" data-category="massage">
           <div class="ms-service-thumb">
-            <img src="assets/images/herbal_steam_bath.jpg" alt="Aroma Herbal Massage (Tinh Dầu Thảo Dược)" loading="lazy">
+            <img src="assets/images/hot_stone_massage.jpg" alt="Aroma Herbal Massage (Tinh Dầu Thảo Dược)" loading="lazy">
             <span class="ms-service-badge badge-popular">THẢO DƯỢC</span>
           </div>
           <div class="ms-service-content">
@@ -1739,8 +1913,8 @@
             <p class="ms-service-desc">Các động tác miết vuốt nhẹ nhàng với tinh dầu thiên nhiên cao cấp giúp thư giãn hệ thần kinh và làm mềm da.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">650.000đ</span>
-                <span class="ms-price-discounted">520.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">520.000đ</span>
+                <span class="ms-price-discounted">468.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="Aroma Herbal Massage (Massage Tinh Dầu Thảo Dược)">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1764,8 +1938,8 @@
             <p class="ms-service-desc">Bấm huyệt dọc các đường kinh lạc kết hợp động tác kéo giãn kiểu yoga, mở khóa các khớp bị tắc nghẽn.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">620.000đ</span>
-                <span class="ms-price-discounted">500.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">500.000đ</span>
+                <span class="ms-price-discounted">450.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="Traditional Thai Massage (Massage Thái Cổ Truyền)">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1789,8 +1963,8 @@
             <p class="ms-service-desc">Kỹ thuật massage chân bấm huyệt Việt Nam &amp; Thái Lan, ngâm chân thảo mộc, tẩy tế bào chết gót chân mịn màng.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">250.000đ - 550.000đ</span>
-                <span class="ms-price-discounted">200.000đ - 450.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">200.000đ - 450.000đ</span>
+                <span class="ms-price-discounted">180.000đ - 405.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="Foot VietNam Massage (Massage Chân Việt Nam)">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1814,8 +1988,8 @@
             <p class="ms-service-desc">Tẩy tế bào chết da tay/chân, cắt da tạo hình móng chuyên nghiệp, sơn gel bền đẹp bóng lâu với đèn LED UV.</p>
             <div class="ms-service-footer">
               <div class="ms-service-pricing">
-                <span class="ms-price-original">370.000đ</span>
-                <span class="ms-price-discounted">300.000đ <small>(-20%)</small></span>
+                <span class="ms-price-original">300.000đ</span>
+                <span class="ms-price-discounted">270.000đ <small>(trả trước QR -10%)</small></span>
               </div>
               <button type="button" class="ms-btn-book js-select-service-book" data-service="Gel Manicure &amp; Spa (Chăm Sóc Móng Gel)">
                 <i class="fa fa-calendar-check-o"></i> ĐẶT NGAY
@@ -1829,11 +2003,20 @@
       <div class="ms-drawer-footer">
         <div class="ms-drawer-quicklinks">
           <a href="#menu" class="ms-qlink" onclick="closeMobileServicesDrawer();"><i class="fa fa-book"></i> Menu Chi Tiết</a>
-          <a href="affiliate.html" class="ms-qlink" style="font-weight:700;"><i class="fa fa-handshake-o"></i> Đối Tác Affiliate (20% - 30%)</a>
+          <a href="affiliate.html" class="ms-qlink" style="font-weight:700;"><i class="fa fa-handshake-o"></i> Đối Tác Affiliate (10%)</a>
           <a href="tel:0989713660" class="ms-qlink" style="color:#25D366;"><i class="fa fa-phone"></i> 098 9713660</a>
         </div>
         
-
+        <div class="ms-drawer-lang-selector">
+          <span class="ms-lang-label"><i class="fa fa-globe"></i> Ngôn ngữ / Language:</span>
+          <div class="ms-lang-pills">
+            <button type="button" class="ms-lang-pill active" data-lang="vi">🇻🇳 Tiếng Việt</button>
+            <button type="button" class="ms-lang-pill" data-lang="en">🇬🇧 English</button>
+            <button type="button" class="ms-lang-pill" data-lang="zh">🇨🇳 中文</button>
+            <button type="button" class="ms-lang-pill" data-lang="ja">🇯🇵 日本語</button>
+            <button type="button" class="ms-lang-pill" data-lang="ko">🇰🇷 한국어</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2097,8 +2280,7 @@
 
         <div class="menu-board-lightbox-contact">
           <div><i class="fa fa-map-marker" style="color:#D4AF37;"></i> <strong>Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</strong></div>
-          <div><i class="fa fa-phone" style="color:#D4AF37;"></i> Hotline / Zalo: <a href="tel:0989713660" style="color:#ECC876; font-weight:700;">098 9713660</a> / <a href="tel:0971811669" style="color:#ECC876; font-weight:700;">0971 811 669</a> / <a href="tel:0973169599" style="color:#ECC876; font-weight:700;">0973 169 599</a></div>
-          <div><i class="fa fa-whatsapp" style="color:#25D366;"></i> WhatsApp / WeChat: <strong style="color:#ECC876;">0971 811 669</strong></div>
+          <div><i class="fa fa-phone" style="color:#D4AF37;"></i> Hotline / Zalo: <a href="tel:0989713660" style="color:#ECC876; font-weight:700;">098 9713660</a></div>
         </div>
       </div>
     </div>
@@ -2249,14 +2431,16 @@
             <span>HOẶC ĐĂNG NHẬP BẰNG TÀI KHOẢN</span>
           </div>
 
+          <div id="auth-login-notice" class="auth-login-notice" style="display:none;"></div>
+
           <form id="auth-login-form">
             <div class="modal-form-group">
-              <label class="field-label">Email hoặc Số Điện Thoại</label>
-              <input type="text" id="login-identifier" class="modal-input" placeholder="Nhập Email hoặc Số điện thoại" required>
+              <label class="field-label">Gmail hoặc Số Điện Thoại</label>
+              <input type="text" id="login-identifier" class="modal-input" placeholder="Nhập Gmail hoặc Số điện thoại" autocomplete="username" required>
             </div>
             <div class="modal-form-group" style="margin-bottom:6px;">
               <label class="field-label">Mật Khẩu</label>
-              <input type="password" id="login-password" class="modal-input" placeholder="••••••••" required>
+              <input type="password" id="login-password" class="modal-input" placeholder="••••••••" autocomplete="current-password" required>
             </div>
 
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -2302,20 +2486,25 @@
             </div>
             <div class="modal-form-row modal-form-group">
               <div>
-                <label class="field-label">Email</label>
-                <input type="email" id="reg-email" class="modal-input" placeholder="lan@example.com" required>
+                <label class="field-label">Gmail</label>
+                <input type="email" id="reg-email" class="modal-input" placeholder="lan@gmail.com" autocomplete="email" required>
               </div>
               <div>
-                <label class="field-label">Số Điện Thoại</label>
-                <input type="tel" id="reg-phone" class="modal-input" placeholder="0912345678" required>
+                <label class="field-label">Số Điện Thoại <span style="text-transform:none; font-weight:500; opacity:0.75;">(không bắt buộc)</span></label>
+                <input type="tel" id="reg-phone" class="modal-input" placeholder="0912345678" autocomplete="tel">
               </div>
             </div>
             <div class="modal-form-group">
               <label class="field-label">Mật Khẩu</label>
-              <input type="password" id="reg-password" class="modal-input" placeholder="Tối thiểu 6 ký tự" minlength="6" required>
+              <input type="password" id="reg-password" class="modal-input" placeholder="Tối thiểu 6 ký tự" minlength="6" autocomplete="new-password" required>
+            </div>
+            <div class="modal-form-group">
+              <label class="field-label">Nhập Lại Mật Khẩu</label>
+              <input type="password" id="reg-password-confirm" class="modal-input" placeholder="Nhập lại mật khẩu ở trên" minlength="6" autocomplete="new-password" required>
             </div>
             
             <input type="hidden" id="reg-role" value="customer">
+            <input type="text" id="reg-website" name="website" tabindex="-1" autocomplete="off" class="lead-hp" aria-hidden="true">
 
             <div class="reg-customer-benefit-pill">
               <i class="fa fa-star" style="color:#ECC876;"></i>
@@ -2326,13 +2515,33 @@
               <i class="fa fa-user-plus"></i> TẠO TÀI KHOẢN NGAY
             </button>
           </form>
+
+          <!-- Bước 2: Xác nhận đăng ký qua Gmail -->
+          <div id="auth-register-verify" class="auth-verify-panel" style="display:none;">
+            <div class="auth-verify-icon"><i class="fa fa-envelope-open-o"></i></div>
+            <h4 class="auth-verify-title">XÁC NHẬN ĐĂNG KÝ QUA GMAIL</h4>
+            <p class="auth-verify-text">IVY LUXE SPA vừa gửi thư xác nhận tới<br><strong id="auth-verify-email"></strong></p>
+            <ol class="auth-verify-steps">
+              <li>Mở Gmail và tìm thư <strong>"Xác nhận đăng ký tài khoản IVY LUXE SPA"</strong> (nếu không thấy, xem mục <strong>Spam / Quảng cáo</strong>).</li>
+              <li>Bấm nút <strong>XÁC NHẬN ĐĂNG KÝ</strong> trong thư.</li>
+              <li>Quay lại đây và đăng nhập bằng Gmail + mật khẩu vừa tạo.</li>
+            </ol>
+            <a href="https://mail.google.com/" target="_blank" rel="noopener" class="modal-confirm-btn auth-verify-open-gmail">
+              <i class="fa fa-envelope"></i> MỞ GMAIL NGAY
+            </a>
+            <div class="auth-verify-actions">
+              <button type="button" id="btn-verify-resend" class="auth-verify-link-btn"><i class="fa fa-refresh"></i> Gửi lại thư</button>
+              <button type="button" id="btn-verify-to-login" class="auth-verify-link-btn"><i class="fa fa-sign-in"></i> Đã xác nhận, đăng nhập</button>
+              <button type="button" id="btn-verify-edit" class="auth-verify-link-btn"><i class="fa fa-pencil"></i> Sửa Gmail</button>
+            </div>
+          </div>
         </div>
 
         <!-- TAB 3: FORGOT PASSWORD (QUÊN MẬT KHẨU) -->
         <div class="auth-tab-pane" id="auth-pane-forgot">
           <form id="auth-forgot-form">
             <p style="font-size:0.86rem; color:#DDE5E1; margin-bottom:14px; line-height:1.5;">
-              Nhập <strong>Gmail</strong> hoặc <strong>Số điện thoại</strong> đã đăng ký để lấy lại mật khẩu nhanh chóng qua mã OTP.
+              Nhập <strong>Gmail</strong> hoặc <strong>Số điện thoại</strong> đã đăng ký. Mã OTP sẽ được gửi tới <strong>Gmail</strong> của tài khoản.
             </p>
             <div class="modal-form-group">
               <label class="field-label">Gmail hoặc Số Điện Thoại</label>
@@ -2446,14 +2655,11 @@
   <!-- Official YouTube Iframe Player API -->
   <script src="https://www.youtube.com/iframe_api"></script>
   <script src="js/three-scene.js"></script>
+  <script src="js/menu-data.js"></script>
+  <script src="js/i18n-en.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/chat-widget.js"></script>
 
-  <!-- FLOATING QUICK LANGUAGE TOGGLE (ALWAYS VISIBLE & ACCESSIBLE) -->
-  <div class="floating-lang-toggle" id="floating-lang-toggle" title="Chọn ngôn ngữ / Select Language">
-    <span class="fl-globe"><i class="fa fa-globe"></i></span>
-    <span class="fl-flag" id="fl-current-flag">🇻🇳</span>
-    <span class="fl-code" id="fl-current-code">VI</span>
-  </div>
-
+  
 </body>
 </html>
