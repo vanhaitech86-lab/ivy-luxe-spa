@@ -11,7 +11,7 @@
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const money = (n) => (Number(n) || 0).toLocaleString('vi-VN') + 'đ';
-  const fmtDate = (ms) => (ms ? new Date(ms).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '');
+  const fmtDate = (ms) => (ms ? new Date(ms).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '');
   const setText = (id, v) => { const el = $(id); if (el) el.textContent = v; };
 
   function showAffToast(message, type = 'success') {
@@ -282,7 +282,7 @@
     box.innerHTML = rows.length ? rows.map((r) => `
       <div class="aff-leader-row${r.me ? ' is-me' : ''}">
         ${medal(r.rank)}
-        <img class="aff-leader-avatar" src="${esc(r.avatar || 'assets/images/logo.png')}" alt="${esc(r.name || 'IVY Luxe Spa Partner')}" loading="lazy">
+        <img class="aff-leader-avatar" src="${esc(r.avatar || 'assets/images/logo.png')}" alt="" loading="lazy">
         <div class="aff-leader-name"><strong data-no-i18n>${esc(r.name)}</strong>${r.me ? ' <span class="aff-me-tag">Bạn</span>' : ''}<small>${esc(r.type)}</small></div>
         <div class="aff-leader-stat"><b>${r.orders}</b><small>đơn</small></div>
         <div class="aff-leader-stat"><b>${r.clicks}</b><small>click</small></div>

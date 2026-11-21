@@ -55,6 +55,7 @@
       <nav class="side-nav">
         <button type="button" class="nav-btn c-forest active" data-view="overview"><i class="fa fa-th-large"></i><span>Tổng quan</span></button>
         <button type="button" class="nav-btn c-glow" data-view="leads"><i class="fa fa-users"></i><span>CRM Leads</span></button>
+        <button type="button" class="nav-btn c-green" data-view="bookings"><i class="fa fa-calendar-check-o"></i><span>Đặt lịch &amp; Thanh toán</span></button>
         <button type="button" class="nav-btn c-lime" data-view="promos" data-need="admin"><i class="fa fa-gift"></i><span>Ưu đãi</span></button>
         <button type="button" class="nav-btn c-amber" data-view="products" data-need="admin"><i class="fa fa-shopping-bag"></i><span>Sản phẩm</span></button>
         <button type="button" class="nav-btn c-pink" data-view="affiliates" data-need="admin"><i class="fa fa-handshake-o"></i><span>Affiliate</span></button>
@@ -115,6 +116,32 @@
         <div class="tier-filter" id="tier-filter"></div>
         <div id="leads-table-wrap" class="table-wrap"></div>
         <div id="leads-kanban" class="kanban" hidden></div>
+      </section>
+
+      <!-- ĐẶT LỊCH & THANH TOÁN -->
+      <section class="view" id="view-bookings" hidden>
+        <header class="view-head">
+          <div>
+            <p class="eyebrow">CRM · Mọi đơn đặt lịch &amp; thanh toán từ website (giờ Việt Nam GMT+7)</p>
+            <h1>Đặt lịch &amp; Thanh toán</h1>
+          </div>
+          <div class="head-actions">
+            <button type="button" class="btn-outline js-refresh"><i class="fa fa-refresh"></i> Làm mới</button>
+            <button type="button" class="btn-outline" id="btn-export-bookings"><i class="fa fa-download"></i> Xuất Excel (CSV)</button>
+          </div>
+        </header>
+        <div class="stat-row" id="bk-stats"></div>
+        <div class="toolbar">
+          <div class="search"><i class="fa fa-search"></i><input type="search" id="bk-search" placeholder="Tìm mã đơn, tên, SĐT, Gmail, dịch vụ…"></div>
+          <div class="seg" id="bk-filter">
+            <button type="button" class="seg-btn active" data-st="">Tất cả</button>
+            <button type="button" class="seg-btn" data-st="claimed">Chờ xác nhận tiền</button>
+            <button type="button" class="seg-btn" data-st="pending">Chờ thanh toán</button>
+            <button type="button" class="seg-btn" data-st="paid">Đã nhận tiền</button>
+            <button type="button" class="seg-btn" data-st="cancelled">Đã huỷ</button>
+          </div>
+        </div>
+        <div id="bookings-table-wrap" class="table-wrap"></div>
       </section>
 
       <!-- ƯU ĐÃI / PROMOTION -->
@@ -272,6 +299,7 @@
         <input type="hidden" id="lf-id">
         <label><span>Họ tên *</span><input id="lf-name" maxlength="80" required></label>
         <label><span>Số điện thoại *</span><input id="lf-phone" maxlength="20" required></label>
+        <label><span>Gmail</span><input id="lf-email" type="email" maxlength="120" placeholder="ten@gmail.com"></label>
         <label><span>Đến từ quốc gia</span><input id="lf-country" maxlength="60"></label>
         <label><span>Nơi sống</span><input id="lf-residence" maxlength="120"></label>
         <label class="full"><span>Nhu cầu khi đến IVYLUXE SPA &amp; NAIL</span><textarea id="lf-need" rows="3" maxlength="600"></textarea></label>

@@ -26,7 +26,9 @@ const routes = {
   // Đơn đặt dịch vụ: xác nhận đã nhận tiền (paid) / huỷ (cancelled) / đặt lại chờ (pending)
   'booking-set': ['POST', 'admin', async (ctx, b) => {
     const r = await C.setBookingStatus({ leadId: String(b.leadId || ''), code: String(b.code || ''), status: String(b.status || ''), by: ctx.user.email });
-    return { lead: r.lead };
+    // Spa xác nhận đã nhận tiền → gửi hoá đơn "đã thanh toán" cho khách qua Gmail
+    const mailed = r.changed && r.booking.status === 'paid' ? await require('./_lib/mail').sendBookingMail(r.lead, r.booking, 'paid') : false;
+    return { lead: r.lead, mailed };
   }],
   'lead-delete': ['POST', 'admin', async (ctx, b) => ({ ok: await C.deleteLead(String(b.id || '')) })],
 

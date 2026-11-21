@@ -365,3 +365,6 @@ button:disabled { opacity: .6; cursor: default; transform: none; }
 .nb-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
 .nb-code { background: #fff; border: 1.5px dashed var(--green); border-radius: 10px; padding: 12px; color: var(--text); font-size: .9rem; }
 .nb-code strong { font-size: 1.4rem; letter-spacing: 3px; color: var(--forest); }
+
+/* Lịch sử từng đơn đặt lịch */
+.bk-main small.bk-log { margin-top: 4px; padding-left: 8px; border-left: 2px solid var(--line); line-height: 1.5; }

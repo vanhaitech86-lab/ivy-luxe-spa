@@ -1,16 +1,23 @@
 // CRM & sản phẩm cho Dashboard quản trị. Khoá kho (tiền tố ivyw:):
-//   lead:<id>          → { id, name, phone, country, residence, need, tier, note, source, ref, revenue, completedAt, createdAt, updatedAt, history[] }
+//   lead:<id>          → { id, name, phone, email, country, residence, need, tier, note, source, ref, revenue, completedAt, createdAt, updatedAt, history[] }
 //   lead-ids           → [id, ...] (mới nhất trước)
 //   lead-phone:<sđt>   → id (gộp khách để không trùng)
 //   products           → [{ id, cat, name_vi, name_en, desc_vi, desc_en, duration_vi, duration_en, price_vnd, image, popular, hidden, ... }]
 //   img:<id>           → { type, b64 } (ảnh sản phẩm tải lên từ Dashboard)
-//   lead.bookings      → [{ code, service, guests, date, time, pay: 'qr'|'cash', gross, discount, total,
-//                            status: 'pending'|'claimed'|'paid'|'cancelled', createdAt, claimedAt, paidAt }]
+//   lead.bookings      → [{ code, service, guests, date, time, tz, pay: 'qr'|'cash', gross, discount, total,
+//                            name, phone, email, notes, branch, custTz, lang, ref, account, ip, ua,
+//                            status: 'pending'|'claimed'|'paid'|'cancelled', createdAt, claimedAt, paidAt, paidBy, cancelledAt, cancelledBy, log[] }]
+//   bk-code:<mã đơn>   → id khách (mã đơn không trùng giữa các khách)
 //                         Từng đơn đặt dịch vụ trên web — dùng để đo doanh số Affiliate theo từng đơn.
 //   menu-overrides     → { <id dịch vụ gốc>: { name_vi?, name_en?, price_vnd?, price_vnd_max?, image?, hidden?, updatedAt, updatedBy } }
 const { randomBytes } = require('node:crypto');
 const { getStore } = require('./store');
-const { normPhone } = require('./users');
+const { normPhone, EMAIL_RE, normEmail } = require('./users');
+
+// Múi giờ của spa: Việt Nam (Asia/Ho_Chi_Minh, GMT+7 — cùng giờ Bangkok, không đổi giờ mùa hè)
+const SPA_TZ = 'Asia/Ho_Chi_Minh';
+const vnNow = () => new Date(Date.now() + 7 * 3600000).toISOString(); // "YYYY-MM-DDTHH:MM…" theo giờ Việt Nam
+const vnToday = () => vnNow().slice(0, 10);
 
 // 9 tầng khách hàng — mỗi tầng một màu (nền tối → chữ sáng, nền sáng → chữ tối)
 const TIERS = [
@@ -68,6 +75,7 @@ function leadFields(b) {
   return {
     name: clean(b.name, 80),
     phone: validPhone(b.phone),
+    email: EMAIL_RE.test(normEmail(b.email)) ? normEmail(b.email).slice(0, 120) : '',
     country: clean(b.country, 60),
     residence: clean(b.residence, 120),
     need: cleanText(b.need, 600),
@@ -102,20 +110,43 @@ async function servicePrice(service) {
 }
 
 /** Đơn đặt từ web: tính lại giá theo Bảng giá × số khách; trả trước QR giảm 10%. */
-async function bookingFrom(b) {
+async function bookingFrom(b, who = {}) {
   const x = b && typeof b === 'object' ? b : {};
   const guests = Math.min(50, Math.max(1, parseInt(x.guests, 10) || 1));
   let unit = await servicePrice(x.service);
   if (!unit) unit = Math.min(50000000, Math.max(0, Math.round(Number(x.unit) || 0))); // dịch vụ không có trong Bảng giá
   const gross = unit * guests;
   const pay = x.pay === 'qr' ? 'qr' : 'cash';
+  // Ngày giờ hẹn luôn là giờ Việt Nam (GMT+7). Không cho đặt ngày đã qua hoặc giờ đã qua trong hôm nay.
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(String(x.date || '')) ? String(x.date) : '';
+  const time = /^([01]\d|2[0-3]):[0-5]\d$/.test(String(x.time || '')) ? String(x.time) : '';
+  if (!date || !time) throw Object.assign(new Error('Vui lòng chọn ngày và giờ hẹn.'), { status: 400 });
+  const now = vnNow();
+  if (date < now.slice(0, 10) || (date === now.slice(0, 10) && time < now.slice(11, 16))) {
+    throw Object.assign(new Error('Giờ hẹn đã qua theo giờ Việt Nam (GMT+7). Vui lòng chọn giờ khác.'), { status: 400 });
+  }
+  const langs = ['vi', 'en', 'zh', 'ja', 'ko', 'ru', 'fr'];
   const discount = pay === 'qr' ? Math.round(gross * QR_DISCOUNT) : 0;
+  // Mã đơn không được trùng với đơn của khách khác (trùng → tạo mã mới, web dùng mã máy chủ trả về)
+  let code = clean(x.code, 20).replace(/[^\w-]/g, '');
+  const store = getStore();
+  for (let i = 0; !code || (await store.get('bk-code:' + code)); i++) {
+    code = 'IVY' + (Math.floor(Math.random() * 900000) + 100000);
+    if (i > 5) { code = newId('IVY').slice(0, 16); break; }
+  }
+  const now0 = Date.now();
   return {
-    code: clean(x.code, 20).replace(/[^\w-]/g, '') || newId('B').slice(0, 10),
+    code,
     service: clean(x.service, 160).replace(/\s*\([^()]*(₫|đ)\)\s*$/, ''), // bỏ phần giá "(800.000 ₫)" ở cuối tên
-    guests, date: clean(x.date, 20), time: clean(x.time, 10), pay,
-    gross, discount, total: gross - discount,
-    status: 'pending', createdAt: Date.now(), claimedAt: 0, paidAt: 0,
+    guests, date, time, tz: SPA_TZ, pay, lang: langs.includes(x.lang) ? x.lang : 'vi',
+    gross, discount, total: gross - discount, unit,
+    // Thông tin khách lúc đặt (lưu theo từng đơn, kể cả khi sau này khách đổi tên/Gmail)
+    name: clean(who.name, 80), phone: validPhone(who.phone), email: EMAIL_RE.test(normEmail(who.email)) ? normEmail(who.email).slice(0, 120) : '',
+    notes: cleanText(x.notes, 500), branch: clean(x.branch, 160) || 'IVY LUXE SPA - 48 Hà Trung, Hoàn Kiếm, Hà Nội',
+    custTz: /^[A-Za-z_]+(\/[A-Za-z0-9_+\-]+){0,2}$/.test(String(x.custTz || '')) ? String(x.custTz).slice(0, 60) : '',
+    ref: clean(who.ref, 30), account: clean(who.account, 120), ip: clean(who.ip, 60), ua: clean(who.ua, 200),
+    status: 'pending', createdAt: now0, claimedAt: 0, paidAt: 0, paidBy: '', cancelledAt: 0, cancelledBy: '',
+    log: [{ at: now0, by: 'khách', text: 'Đặt dịch vụ trên web (' + (pay === 'qr' ? 'trả trước QR −10%' : 'trả tại quầy') + ')' }],
   };
 }
 
@@ -129,12 +160,15 @@ async function addLead(input, { source = 'form', tier = 'new', by = '', ref = ''
     const existingId = await store.get(phoneKey);
     const existing = existingId ? await store.get('lead:' + existingId) : null;
     if (existing) {
-      for (const k of ['name', 'country', 'residence']) if (f[k]) existing[k] = f[k];
+      for (const k of ['name', 'email', 'country', 'residence']) if (f[k]) existing[k] = f[k];
       if (f.need && !String(existing.need || '').includes(f.need)) {
         existing.need = cleanText((existing.need ? existing.need + '\n' : '') + f.need, 2000);
       }
       if (ref && !existing.ref) existing.ref = ref; // giữ đối tác giới thiệu đầu tiên
-      if (booking) existing.bookings = [booking, ...(existing.bookings || []).filter((x) => x.code !== booking.code)].slice(0, 50);
+      if (booking) {
+        existing.bookings = [booking, ...(existing.bookings || []).filter((x) => x.code !== booking.code)].slice(0, 50);
+        await store.set('bk-code:' + booking.code, existing.id);
+      }
       if (source === 'booking' && ['new', 'contacted', 'consulting', 'followup'].includes(existing.tier)) existing.tier = 'booked';
       existing.updatedAt = now;
       existing.history = [...(existing.history || []), { at: now, by: by || source, text: 'Để lại thông tin lần nữa (' + source + ')' }].slice(-30);
@@ -159,6 +193,7 @@ async function addLead(input, { source = 'form', tier = 'new', by = '', ref = ''
     };
     await store.set('lead:' + lead.id, lead);
     await store.set(phoneKey, lead.id);
+    if (booking) await store.set('bk-code:' + booking.code, lead.id);
     const ids = (await store.get('lead-ids')) || [];
     await store.set('lead-ids', [lead.id, ...ids].slice(0, 20000));
     return lead;
@@ -205,11 +240,15 @@ async function setBookingStatus({ phone, leadId, code, status, by = '' }) {
     if (!bk) throw Object.assign(new Error('Không tìm thấy đơn đặt dịch vụ.'), { status: 404 });
     const now = Date.now();
     if (status === 'claimed') {
-      if (bk.status !== 'pending') return { lead, booking: bk };
+      if (bk.status !== 'pending') return { lead, booking: bk, changed: false };
       bk.status = 'claimed'; bk.claimedAt = now;
+      bk.log = [...(bk.log || []), { at: now, by: 'khách', text: 'Khách báo đã chuyển khoản ' + bk.total.toLocaleString('vi-VN') + 'đ' }].slice(-20);
     } else if (status === 'paid' || status === 'cancelled' || status === 'pending') {
+      if (bk.status === status) return { lead, booking: bk, changed: false };
       bk.status = status;
-      if (status === 'paid') bk.paidAt = now;
+      if (status === 'paid') { bk.paidAt = now; bk.paidBy = by || ''; }
+      if (status === 'cancelled') { bk.cancelledAt = now; bk.cancelledBy = by || ''; }
+      bk.log = [...(bk.log || []), { at: now, by: by || 'web', text: { paid: 'Xác nhận đã nhận tiền', cancelled: 'Huỷ đơn', pending: 'Khôi phục đơn – chờ thanh toán' }[status] }].slice(-20);
     } else {
       throw Object.assign(new Error('Trạng thái không hợp lệ.'), { status: 400 });
     }
@@ -217,7 +256,7 @@ async function setBookingStatus({ phone, leadId, code, status, by = '' }) {
     lead.updatedAt = now;
     lead.history = [...(lead.history || []), { at: now, by: by || 'web', text: label + ' — đơn ' + code + ' (' + bk.total.toLocaleString('vi-VN') + 'đ)' }].slice(-30);
     await store.set('lead:' + lead.id, lead);
-    return { lead, booking: bk };
+    return { lead, booking: bk, changed: true };
   });
 }
 
@@ -225,7 +264,10 @@ async function deleteLead(id) {
   const store = getStore();
   return withLock('leads', async () => {
     const lead = await store.get('lead:' + id);
-    if (lead) await store.del('lead-phone:' + normPhone(lead.phone));
+    if (lead) {
+      await store.del('lead-phone:' + normPhone(lead.phone));
+      for (const bk of lead.bookings || []) await store.del('bk-code:' + bk.code);
+    }
     await store.del('lead:' + id);
     const ids = (await store.get('lead-ids')) || [];
     await store.set('lead-ids', ids.filter((x) => x !== id));
@@ -240,6 +282,7 @@ async function clearLeads() {
     for (const l of leads) {
       await store.del('lead:' + l.id);
       await store.del('lead-phone:' + normPhone(l.phone));
+      for (const bk of l.bookings || []) await store.del('bk-code:' + bk.code);
     }
     await store.set('lead-ids', []);
     return leads.length;
@@ -413,7 +456,7 @@ async function saveImage(dataUrl) {
 
 module.exports = {
   TIERS, TIER_KEYS, DONE_TIERS, CATEGORIES,
-  listLeads, addLead, updateLead, deleteLead, clearLeads, bookingFrom, setBookingStatus, QR_DISCOUNT,
+  SPA_TZ, vnToday, listLeads, addLead, updateLead, deleteLead, clearLeads, bookingFrom, setBookingStatus, QR_DISCOUNT,
   listProducts, saveProduct, deleteProduct, saveImage,
   listPromos, savePromo, deletePromo,
   listMenuOverrides, saveMenuOverride, resetMenuOverride,

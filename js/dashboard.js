@@ -26,7 +26,7 @@
   const rank = (r) => ({ customer: 0, staff: 1, admin: 2, owner: 3 }[r] || 0);
   const can = (need) => rank(state.role) >= rank(need);
   const tierOf = (key) => state.tiers.find((t) => t.key === key) || state.tiers[0] || { key: 'new', label: 'Lead mới' };
-  const fmtDate = (ms) => (ms ? new Date(ms).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '');
+  const fmtDate = (ms) => (ms ? new Date(ms).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : ''); // luôn hiện giờ Việt Nam (GMT+7)
   const fmtMoney = (n) => Number(n || 0).toLocaleString('vi-VN') + ' ₫';
 
   function toast(msg, err) {
@@ -166,14 +166,89 @@
     renderOverview();
     renderTierFilter();
     renderLeads();
+    renderBookings();
   }
+
+  // ---------- Đặt lịch & Thanh toán: mọi đơn web của mọi khách trong CRM ----------
+  const PAY_LABEL = { qr: 'Chuyển khoản QR (−10%)', cash: 'Trả tại quầy' };
+  const LANG_LABEL = { vi: 'Tiếng Việt', en: 'English', zh: '中文', ja: '日本語', ko: '한국어', ru: 'Русский', fr: 'Français' };
+  const VN_ZONES = ['Asia/Ho_Chi_Minh', 'Asia/Saigon', 'Asia/Bangkok'];
+  let bkFilter = '';
+  function allBookings() {
+    const out = [];
+    state.leads.forEach((l) => (l.bookings || []).forEach((b) => out.push({ ...b, lead: l,
+      name: b.name || l.name, phone: b.phone || l.phone, email: b.email || l.email || '', ref: b.ref || l.ref || '' })));
+    return out.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+  }
+  function filteredBookings() {
+    const q = String(($('#bk-search') || {}).value || '').trim().toLowerCase();
+    return allBookings().filter((b) => (!bkFilter || (b.status || 'pending') === bkFilter)
+      && (!q || [b.code, b.name, b.phone, b.email, b.service, b.notes, b.ref, b.account].some((v) => String(v || '').toLowerCase().includes(q))));
+  }
+  function renderBookings() {
+    const wrap = $('#bookings-table-wrap');
+    if (!wrap) return;
+    const all = allBookings();
+    const live = all.filter((b) => b.status !== 'cancelled');
+    const sum = (arr) => arr.reduce((t, b) => t + (b.total || 0), 0);
+    const paid = all.filter((b) => b.status === 'paid');
+    const claimed = all.filter((b) => b.status === 'claimed');
+    $('#bk-stats').innerHTML = [
+      { label: 'Tổng đơn web', value: all.length, note: 'Đang hiệu lực: ' + live.length, cls: 'c-forest' },
+      { label: 'Chờ xác nhận tiền', value: claimed.length, note: fmtMoney(sum(claimed)) + ' khách báo đã chuyển', cls: 'c-amber' },
+      { label: 'Đã nhận tiền', value: paid.length, note: fmtMoney(sum(paid)), cls: 'c-green' },
+      { label: 'Doanh thu dự kiến', value: fmtMoney(sum(live)), note: 'Mọi đơn chưa huỷ', cls: 'c-glow' },
+    ].map((s) => `<div class="stat ${s.cls}"><div class="stat-label">${esc(s.label)}</div><div class="stat-value">${esc(String(s.value))}</div><div class="stat-note">${esc(s.note)}</div></div>`).join('');
+    const list = filteredBookings();
+    const cols = ['Ngày đặt', 'Mã đơn', 'Khách hàng', 'Dịch vụ', 'Giờ hẹn (VN)', 'Thanh toán', 'Số tiền', 'Trạng thái', 'Ghi chú & nguồn'];
+    wrap.innerHTML = `<table class="lead-table">
+      <thead><tr>${cols.map((c, i) => `<th class="${PALETTE[i]}">${c}</th>`).join('')}</tr></thead>
+      <tbody>${list.length ? list.map((b) => {
+        const [label, cls] = BK_STATUS[b.status] || BK_STATUS.pending;
+        return `<tr data-lead="${esc(b.lead.id)}" style="cursor:pointer">
+          <td>${esc(fmtDate(b.createdAt))}</td>
+          <td><strong>${esc(b.code)}</strong></td>
+          <td><strong>${esc(b.name)}</strong><br><a href="tel:${esc(b.phone)}" data-stop>${esc(b.phone)}</a>${b.email ? `<br><a class="src" href="mailto:${esc(b.email)}" data-stop>${esc(b.email)}</a>` : ''}</td>
+          <td>${esc(b.service)}<br><span class="src">${esc(String(b.guests || 1))} khách</span></td>
+          <td><strong>${esc(b.time)}</strong> ${esc(b.date)}${b.custTz && !VN_ZONES.includes(b.custTz) ? `<br><span class="src">Khách ở múi giờ ${esc(b.custTz)}</span>` : ''}</td>
+          <td>${esc(PAY_LABEL[b.pay] || b.pay)}</td>
+          <td><strong>${fmtMoney(b.total)}</strong>${b.discount ? `<br><span class="src">Niêm yết ${fmtMoney(b.gross)} · giảm ${fmtMoney(b.discount)}</span>` : ''}</td>
+          <td><span class="tier-badge ${cls}">${label}</span>${b.claimedAt ? `<br><span class="src">Báo CK: ${esc(fmtDate(b.claimedAt))}</span>` : ''}${b.paidAt ? `<br><span class="src">Nhận tiền: ${esc(fmtDate(b.paidAt))}${b.paidBy ? ' · ' + esc(b.paidBy) : ''}</span>` : ''}${b.cancelledAt ? `<br><span class="src">Huỷ: ${esc(fmtDate(b.cancelledAt))}</span>` : ''}</td>
+          <td class="note">${esc(b.notes || '')}${b.ref ? `<br><span class="lead-ref c-pink">IVY-${esc(b.ref)}</span>` : ''}${b.account ? `<br><span class="src">Tài khoản: ${esc(b.account)}</span>` : ''}${b.lang ? `<br><span class="src">${esc(LANG_LABEL[b.lang] || b.lang)}</span>` : ''}</td>
+        </tr>`;
+      }).join('') : `<tr><td colspan="9"><div class="empty">${all.length ? 'Không có đơn khớp bộ lọc.' : 'Chưa có đơn đặt lịch nào. Khách đặt dịch vụ trên web sẽ tự hiện ở đây.'}</div></td></tr>`}</tbody></table>`;
+    $$('#bookings-table-wrap tr[data-lead]').forEach((tr) => tr.addEventListener('click', (e) => { if (!e.target.closest('[data-stop]')) openLead(tr.dataset.lead); }));
+  }
+  if ($('#bk-search')) $('#bk-search').addEventListener('input', renderBookings);
+  $$('#bk-filter .seg-btn').forEach((btn) => btn.addEventListener('click', () => {
+    bkFilter = btn.dataset.st;
+    $$('#bk-filter .seg-btn').forEach((x) => x.classList.toggle('active', x === btn));
+    renderBookings();
+  }));
+  function downloadCsv(rows, name) {
+    const csv = rows.map((r) => r.map((v) => {
+      let s = String(v == null ? '' : v);
+      if (/^[=+\-@]/.test(s)) s = "'" + s; // chặn công thức Excel
+      return '"' + s.replace(/"/g, '""') + '"';
+    }).join(',')).join('\r\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = name + '-' + new Date(Date.now() + 7 * 3600000).toISOString().slice(0, 10) + '.csv';
+    a.click();
+  }
+  if ($('#btn-export-bookings')) $('#btn-export-bookings').addEventListener('click', () => {
+    downloadCsv([['Ngày đặt (giờ VN)', 'Mã đơn', 'Họ tên', 'Số điện thoại', 'Gmail', 'Dịch vụ', 'Số khách', 'Ngày hẹn', 'Giờ hẹn (VN GMT+7)', 'Múi giờ của khách', 'Cách thanh toán', 'Giá niêm yết', 'Giảm giá', 'Thành tiền', 'Trạng thái', 'Khách báo CK lúc', 'Nhận tiền lúc', 'Người xác nhận', 'Huỷ lúc', 'Ghi chú khách', 'Đối tác giới thiệu', 'Tài khoản web', 'Ngôn ngữ', 'Địa điểm']]
+      .concat(filteredBookings().map((b) => [fmtDate(b.createdAt), b.code, b.name, b.phone, b.email, b.service, b.guests, b.date, b.time, b.custTz || '', PAY_LABEL[b.pay] || b.pay,
+        b.gross, b.discount, b.total, (BK_STATUS[b.status] || BK_STATUS.pending)[0], fmtDate(b.claimedAt), fmtDate(b.paidAt), b.paidBy || '', fmtDate(b.cancelledAt),
+        b.notes || '', b.ref ? 'IVY-' + b.ref : '', b.account || '', LANG_LABEL[b.lang] || b.lang || '', b.branch || ''])), 'IVYLUXE-DatLich-ThanhToan');
+  });
 
   function filteredLeads() {
     const q = state.search.trim().toLowerCase();
     return state.leads.filter((l) => {
       if (state.tierFilter && l.tier !== state.tierFilter) return false;
       if (!q) return true;
-      return [l.name, l.phone, l.country, l.residence, l.need, l.note].some((v) => String(v || '').toLowerCase().includes(q));
+      return [l.name, l.phone, l.email, l.country, l.residence, l.need, l.note].some((v) => String(v || '').toLowerCase().includes(q));
     });
   }
 
@@ -229,14 +304,14 @@
     $('#leads-table-wrap').hidden = state.layout !== 'table';
     $('#leads-kanban').hidden = state.layout !== 'kanban';
     if (state.layout === 'table') {
-      const cols = ['Họ tên', 'Số điện thoại', 'Quốc gia', 'Nơi sống', 'Nhu cầu', 'Tầng khách', 'Ngày & nguồn', 'Ghi chú', 'Thao tác'];
+      const cols = ['Họ tên', 'SĐT & Gmail', 'Quốc gia', 'Nơi sống', 'Nhu cầu', 'Tầng khách', 'Ngày & nguồn', 'Ghi chú', 'Thao tác'];
       $('#leads-table-wrap').innerHTML = `
         <table class="lead-table">
           <thead><tr>${cols.map((c, i) => `<th class="${PALETTE[i]}">${c}</th>`).join('')}</tr></thead>
           <tbody>${list.length ? list.map((l) => `
             <tr data-id="${esc(l.id)}">
               <td><strong>${esc(l.name)}</strong>${l.ref ? `<br><span class="lead-ref c-pink" title="Khách do đối tác giới thiệu">IVY-${esc(l.ref)}</span>` : ''}${l.revenue ? `<br><span class="src">Doanh thu: ${fmtMoney(l.revenue)}</span>` : ''}${(l.bookings || []).filter((b) => b.status !== 'cancelled').length ? `<br><span class="src">Đơn web: ${fmtMoney(l.bookings.filter((b) => b.status !== 'cancelled').reduce((t, b) => t + b.total, 0))}${l.bookings.some((b) => b.status === 'claimed') ? ' · <b style="color:#B45309">chờ xác nhận tiền</b>' : ''}</span>` : ''}</td>
-              <td class="phone"><a href="tel:${esc(l.phone)}" data-stop>${esc(l.phone)}</a></td>
+              <td class="phone"><a href="tel:${esc(l.phone)}" data-stop>${esc(l.phone)}</a>${l.email ? `<br><a class="src" href="mailto:${esc(l.email)}" data-stop>${esc(l.email)}</a>` : ''}</td>
               <td>${esc(l.country)}</td>
               <td>${esc(l.residence)}</td>
               <td class="need">${esc(l.need)}</td>
@@ -328,6 +403,7 @@
     $('#lf-id').value = lead ? lead.id : '';
     $('#lf-name').value = lead ? lead.name : '';
     $('#lf-phone').value = lead ? lead.phone : '';
+    $('#lf-email').value = lead ? lead.email || '' : '';
     $('#lf-country').value = lead ? lead.country : '';
     $('#lf-residence').value = lead ? lead.residence : '';
     $('#lf-need').value = lead ? lead.need : '';
@@ -355,7 +431,9 @@
       const [label, cls] = BK_STATUS[b.status] || BK_STATUS.pending;
       return `<div class="bk-item">
         <div class="bk-main"><strong>${esc(b.service)}${b.guests > 1 ? ' × ' + b.guests : ''}</strong>
-          <small>Mã ${esc(b.code)} · ${esc(b.date)} ${esc(b.time)} · ${b.pay === 'qr' ? 'Trả trước QR (−10%)' : 'Trả tại quầy'}</small></div>
+          <small>Mã ${esc(b.code)} · ${esc(b.time)} ngày ${esc(b.date)} (giờ VN) · ${b.pay === 'qr' ? 'Trả trước QR (−10%)' : 'Trả tại quầy'}</small>
+          ${b.email ? `<small>Gmail nhận hoá đơn: ${esc(b.email)}</small>` : ''}${b.notes ? `<small>Ghi chú: ${esc(b.notes)}</small>` : ''}
+          ${(b.log || []).length ? `<small class="bk-log">${b.log.map((h) => esc(fmtDate(h.at)) + ' · ' + esc(h.by || '') + ': ' + esc(h.text)).join('<br>')}</small>` : ''}</div>
         <div class="bk-money"><b>${fmtMoney(b.total)}</b>${b.discount ? `<small>Giá niêm yết ${fmtMoney(b.gross)}</small>` : ''}</div>
         <span class="tier-badge ${cls}">${label}</span>
         <div class="bk-actions">
@@ -368,12 +446,12 @@
       const label = { paid: 'xác nhận ĐÃ NHẬN TIỀN cho', cancelled: 'HUỶ', pending: 'khôi phục' }[btn.dataset.status];
       if (!confirm('Bạn chắc chắn ' + label + ' đơn ' + btn.dataset.code + '?')) return;
       try {
-        const { lead: saved } = await api('booking-set', { leadId: lead.id, code: btn.dataset.code, status: btn.dataset.status });
+        const { lead: saved, mailed } = await api('booking-set', { leadId: lead.id, code: btn.dataset.code, status: btn.dataset.status });
         const i = state.leads.findIndex((l) => l.id === saved.id);
         if (i >= 0) state.leads[i] = saved;
         renderAll();
         renderLeadBookings(saved);
-        toast('Đã cập nhật đơn ' + btn.dataset.code);
+        toast('Đã cập nhật đơn ' + btn.dataset.code + (mailed ? ' · đã gửi hoá đơn tới Gmail khách' : ''));
       } catch (e) {
         toast(e.message, true);
       }
@@ -384,7 +462,7 @@
     e.preventDefault();
     const body = {
       id: $('#lf-id').value || undefined,
-      name: $('#lf-name').value, phone: $('#lf-phone').value, country: $('#lf-country').value,
+      name: $('#lf-name').value, phone: $('#lf-phone').value, email: $('#lf-email').value, country: $('#lf-country').value,
       residence: $('#lf-residence').value, need: $('#lf-need').value, note: $('#lf-note').value, tier: pickedTier,
       revenue: $('#lf-revenue').value,
     };
@@ -421,8 +499,8 @@
 
   // Xuất CSV (mở được bằng Excel, giữ dấu tiếng Việt)
   $('#btn-export').addEventListener('click', () => {
-    const rows = [['Họ tên', 'Số điện thoại', 'Quốc gia', 'Nơi sống', 'Nhu cầu', 'Tầng khách', 'Nguồn', 'Ngày tạo', 'Ghi chú']]
-      .concat(filteredLeads().map((l) => [l.name, l.phone, l.country, l.residence, l.need, tierOf(l.tier).label, SOURCE_LABEL[l.source] || l.source, fmtDate(l.createdAt), l.note]));
+    const rows = [['Họ tên', 'Số điện thoại', 'Gmail', 'Quốc gia', 'Nơi sống', 'Nhu cầu', 'Tầng khách', 'Nguồn', 'Ngày tạo (giờ VN)', 'Ghi chú']]
+      .concat(filteredLeads().map((l) => [l.name, l.phone, l.email || '', l.country, l.residence, l.need, tierOf(l.tier).label, SOURCE_LABEL[l.source] || l.source, fmtDate(l.createdAt), l.note]));
     const csv = rows.map((r) => r.map((v) => {
       let s = String(v == null ? '' : v);
       if (/^[=+\-@]/.test(s)) s = "'" + s; // chặn công thức Excel
@@ -455,7 +533,7 @@
     const list = state.products;
     $('#product-list').innerHTML = list.length ? list.map((p, i) => `
       <article class="product-card">
-        <img src="${esc(p.image || 'assets/images/hero_spa_luxury.jpg')}" alt="${esc(p.name_vi || 'IVY Luxe Spa Service')}" loading="lazy">
+        <img src="${esc(p.image || 'assets/images/hero_spa_luxury.jpg')}" alt="" loading="lazy">
         <div class="product-body">
           <span class="product-cat ${PALETTE[(state.categories.findIndex((c) => c.key === p.cat) + 2) % PALETTE.length]}">${esc(catLabel(p.cat))}</span>
           <h3>${esc(p.name_vi)}</h3>
@@ -622,7 +700,7 @@
       if (!rows.length) return '';
       return `<div class="menu-group"><h3 class="menu-group-title">${esc(catLabel(c))} <span>${rows.length}</span></h3>${rows.map(({ item, e }) => `
         <div class="menu-row${e.hidden ? ' is-hidden' : ''}">
-          <img src="${esc(e.image)}" alt="${esc(e.name_vi || 'IVY Luxe Spa Treatment')}" loading="lazy">
+          <img src="${esc(e.image)}" alt="" loading="lazy">
           <div class="menu-row-main">
             <strong>${esc(e.name_vi)}</strong>
             <small>${esc(e.name_en)}</small>
@@ -729,7 +807,7 @@
       const expired = p.validUntil && p.validUntil < today;
       return `
       <article class="product-card promo-card">
-        <img src="${esc(p.image)}" alt="${esc(p.title_vi || 'IVY Luxe Spa Promotion')}" loading="lazy">
+        <img src="${esc(p.image)}" alt="" loading="lazy">
         ${p.badge ? `<span class="tier-badge c-amber promo-badge">${esc(p.badge)}</span>` : ''}
         <div class="product-body">
           <h3>${esc(p.title_vi)}</h3>

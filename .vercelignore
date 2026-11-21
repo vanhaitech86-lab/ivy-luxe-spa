@@ -5,3 +5,5 @@ assets/images/*_backup.jpg
 node_modules
 js/admin.js
 css/admin.css
+
+README.md

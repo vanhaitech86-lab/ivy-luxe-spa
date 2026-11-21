@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // State Management
   const state = {
-    language: (function () { try { var p = location.pathname || ''; if (/^\/vi(\/|$)/.test(p)) { localStorage.setItem('ivy_lang', 'vi'); localStorage.setItem('ivy_lang_default_en_v1', '1'); return 'vi'; } if (/^\/en(\/|$)/.test(p)) { localStorage.setItem('ivy_lang', 'en'); localStorage.setItem('ivy_lang_default_en_v1', '1'); return 'en'; } if (!localStorage.getItem('ivy_lang_default_en_v1')) { localStorage.setItem('ivy_lang', 'en'); localStorage.setItem('ivy_lang_default_en_v1', '1'); } return localStorage.getItem('ivy_lang') || 'en'; } catch (e) { return 'en'; } })(), // Mặc định Tiếng Anh (khách đã tự chọn ngôn ngữ khác thì giữ lựa chọn); hỗ trợ vi, en, zh, ja, ko, ru, fr
+    language: localStorage.getItem('ivy_lang') || 'en', // Mặc định Tiếng Anh; hỗ trợ vi, en, zh, ja, ko, ru, fr
     currency: 'vnd',     // vnd or usd (exchange rate: ~25,000 VND = 1 USD)
     rateVNDtoUSD: 25000,
     activeMenuTab: 'combos',
@@ -28,12 +28,46 @@ document.addEventListener('DOMContentLoaded', () => {
     audioPlaying: false
   };
 
+  // Múi giờ của spa: Việt Nam — Asia/Ho_Chi_Minh (GMT+7, cùng giờ Bangkok, không đổi giờ mùa hè).
+  // Mọi ngày/giờ hẹn trên web là giờ Việt Nam, kể cả khi khách mở web ở nước khác.
+  const SPA_TZ = 'Asia/Ho_Chi_Minh';
+  function vnNowParts() {
+    const iso = new Date(Date.now() + 7 * 3600000).toISOString();
+    return { date: iso.slice(0, 10), time: iso.slice(11, 16) };
+  }
+  const vnToday = () => vnNowParts().date;
+  const TZ_TEXT = {
+    vi: ['Giờ Việt Nam (GMT+7 · Hà Nội, TP. Hồ Chí Minh, cùng giờ Bangkok)', 'tương đương {t} giờ của bạn ({z})'],
+    en: ['Vietnam time (GMT+7 · Hanoi, Ho Chi Minh City, same as Bangkok)', 'that is {t} your time ({z})'],
+    zh: ['越南时间（GMT+7 · 河内、胡志明市，与曼谷同一时区）', '相当于您当地时间 {t}（{z}）'],
+    ja: ['ベトナム時間（GMT+7・ハノイ／ホーチミン、バンコクと同じ）', 'お客様の現地時間では {t}（{z}）'],
+    ko: ['베트남 시간 (GMT+7 · 하노이, 호치민, 방콕과 동일)', '고객님 현지 시간으로 {t} ({z})'],
+    ru: ['Время Вьетнама (GMT+7 · Ханой, Хошимин, как в Бангкоке)', 'это {t} по Вашему времени ({z})'],
+    fr: ['Heure du Vietnam (GMT+7 · Hanoï, Hô Chi Minh-Ville, comme Bangkok)', 'soit {t} à votre heure ({z})'],
+  };
+  const LOCALES = { vi: 'vi-VN', en: 'en-GB', zh: 'zh-CN', ja: 'ja-JP', ko: 'ko-KR', ru: 'ru-RU', fr: 'fr-FR' };
+  /** Dòng ghi chú múi giờ dưới ô "Giờ hẹn": giờ Việt Nam + giờ quy đổi theo nước khách đang ở. */
+  function tzNoteText(date, time) {
+    const L = TZ_TEXT[state.language] || TZ_TEXT.en;
+    let out = '🕒 ' + L[0];
+    try {
+      const at = Date.parse(`${date}T${time}:00+07:00`);
+      const zone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      const offsetMin = -new Date(at).getTimezoneOffset();
+      if (!isNaN(at) && zone && offsetMin !== 420) {
+        const local = new Date(at).toLocaleString(LOCALES[state.language] || 'en-GB', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', timeZoneName: 'short' });
+        out += ' — ' + L[1].replace('{t}', local).replace('{z}', zone.split('/').pop().replace(/_/g, ' '));
+      }
+    } catch (e) {}
+    return out;
+  }
+
   // =========================================================================
   // 1. MULTI-LANGUAGE DICTIONARY (VI, EN, ZH, JA, KO) - 100% PURE TRANSLATIONS
   // =========================================================================
   const translations = {
   "vi": {
-    "doc_title": "Massage Body, Foot Massage & Nail Phố Cổ Hà Nội | IVY Luxe Spa",
+    "doc_title": "IVY LUXE SPA - Massage Body & Wellness | Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI",
     "top_address": "<i class=\"fa fa-map-marker\"></i> <strong>Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</strong>",
     "top_hours": "<i class=\"fa fa-clock-o\"></i> Mở cửa hàng ngày: 09:00 Sáng - 11:00 Tối",
     "top_promo_ticker": "<i class=\"fa fa-tag\"></i> <strong>Ưu đãi đặt lịch trong khoảng thời gian từ 10h tới 15h được giảm 10%</strong>",
@@ -98,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "CHÀO MỪNG QUÝ KHÁCH ĐẾN VỚI IVY LUXE SPA HÀ NỘI",
     "subhero_title": "MASSAGE & TRỊ LIỆU THÂN TÂM PHỐ CỔ HÀ NỘI",
     "subhero_desc": "Liệu trình chuyên sâu. Đôi bàn tay điêu luyện. Lòng hiếu khách thuần khiết Hà Nội.",
-    "subhero_addr_line": "Địa chỉ: <strong>SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</strong> &nbsp;|&nbsp; Hotline: <strong style=\"color:#B22222;white-space:nowrap;\">098 9713660</strong>",
+    "subhero_addr_line": "Địa chỉ: <strong>SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</strong> &nbsp;|&nbsp; Hotline: <strong style=\"color:#B22222;\">098 9713660</strong>",
     "loc_title": "KHÔNG GIAN NGHỈ DƯỠNG TẠI 48 HÀ TRUNG",
     "loc_subtitle": "Không gian spa trị liệu sang trọng & biệt lập tại SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI",
     "loc_card1_title": "Ivy Luxe Spa (Sảnh Chờ & Tiếp Đón)",
@@ -214,6 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "modal_name_ph": "Ví dụ: Nguyễn Văn A",
     "modal_phone_label": "Số Điện Thoại / Zalo",
     "modal_phone_ph": "098 9713660",
+    "modal_email_label": "Gmail nhận hoá đơn",
+    "modal_email_hint": "Bill và lời chúc mừng sẽ gửi tới Gmail này",
     "modal_branch_label": "Địa Điểm",
     "modal_service_label": "Chọn Dịch Vụ",
     "modal_date_label": "Ngày Đến",
@@ -264,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   },
   "en": {
-    "doc_title": "Massage & Foot Massage in Hanoi Old Quarter | IVY Luxe Spa",
+    "doc_title": "IVY LUXE SPA - Body Massage & Wellness | 48 Ha Trung, Hoan Kiem, Hanoi",
     "top_address": "<i class=\"fa fa-map-marker\"></i> <strong>48 Ha Trung, Hoan Kiem, Hanoi</strong>",
     "top_hours": "<i class=\"fa fa-clock-o\"></i> Open Daily: 09:00 AM - 11:00 PM",
     "top_promo_ticker": "<i class=\"fa fa-tag\"></i> <strong>Happy Hours Offer: 10% Off for Bookings between 10:00 - 15:00</strong>",
@@ -329,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "WELCOME TO IVY LUXE SPA HANOI",
     "subhero_title": "MASSAGE & SPA IN HANOI OLD QUARTER",
     "subhero_desc": "Professional treatments. Skilled hands. Genuine Hanoi hospitality.",
-    "subhero_addr_line": "Official Address: <strong>48 Ha Trung, Hoan Kiem, Hanoi</strong><br>Hotline: <strong style=\"color:#B22222;white-space:nowrap;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "Official Address: <strong>48 Ha Trung, Hoan Kiem, Hanoi</strong><br>Hotline: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "OUR SANCTUARY AT 48 HA TRUNG",
     "loc_subtitle": "Exclusive luxury wellness sanctuary located at 48 Ha Trung, Hoan Kiem, Hanoi",
     "loc_card1_title": "Ivy Luxe Spa (Lounge & Reception)",
@@ -425,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "footer_hq_title": "IVY LUXE SPA (Flagship Sanctuary)",
     "footer_addr_line": "Address: 48 Ha Trung, Hoan Kiem, Hanoi <a href=\"https://maps.google.com/?q=48+Ha+Trung+Hoan+Kiem+Hanoi\" target=\"_blank\" rel=\"noopener\">(View map)</a>",
     "footer_hotline_prefix": "Hotline 24/7 / Zalo / WhatsApp:",
-    "footer_location_desc": "Central location in Hanoi Old Quarter, just minutes on foot from Hoan Kiem Lake and Hang Da Market. Massage Hanoi Old Quarter, foot massage near Hoan Kiem Lake and nail salon Hanoi Old Quarter.",
+    "footer_location_desc": "Central location in Hanoi Old Quarter, just minutes on foot from Hoan Kiem Lake and Hang Da Market.",
     "footer_about_title": "ABOUT IVY LUXE SPA",
     "footer_about_desc": "Ivy Luxe Spa - Premier massage & wellness sanctuary in Hanoi Old Quarter. Elegant Indochine architecture, expert master therapists, and pure botanical rituals.",
     "footer_quicklinks_title": "QUICK LINKS",
@@ -445,6 +481,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "modal_name_ph": "e.g. John Smith",
     "modal_phone_label": "Phone / WhatsApp / Kakao",
     "modal_phone_ph": "+84 98 9713660",
+    "modal_email_label": "Email (for your bill)",
+    "modal_email_hint": "Your bill and confirmation will be sent here",
     "modal_branch_label": "Location",
     "modal_service_label": "Selected Service",
     "modal_date_label": "Date",
@@ -516,7 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "热烈欢迎莅临河内常春藤奢华水疗 IVY LUXE SPA",
     "subhero_title": "河内老城区顶级按摩与养生水疗",
     "subhero_desc": "专业草本理疗。资深技师娴熟手法。地道河内热情款待。",
-    "subhero_addr_line": "官方正规地址：<strong>河内市还剑区河中村48号</strong><br>贵宾热线：<strong style=\"color:#B22222;white-space:nowrap;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "官方正规地址：<strong>河内市还剑区河中村48号</strong><br>贵宾热线：<strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "河中村48号私享疗愈圣境",
     "loc_subtitle": "位于河内还剑区核心黄金地段的高端私密法越风情水疗馆",
     "loc_card1_title": "Ivy Luxe Spa (接待大厅与贵宾休息室)",
@@ -631,6 +669,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "modal_name_ph": "例如：张先生 / 李女士",
     "modal_phone_label": "联系电话 / 微信 / WhatsApp",
     "modal_phone_ph": "+84 98 9713660",
+    "modal_email_label": "电子邮箱（接收账单）",
+    "modal_email_hint": "账单和确认信将发送到此邮箱",
     "modal_branch_label": "门店位置",
     "modal_service_label": "选择护理项目",
     "modal_date_label": "预约日期",
@@ -702,7 +742,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "ハノイ IVY LUXE SPA へようこそ",
     "subhero_title": "ハノイ旧市街の極上マッサージ＆スパ",
     "subhero_desc": "専門的なトリートメント。熟練セラピストの技。心温まるハノイのおもてなし。",
-    "subhero_addr_line": "公式所在地：<strong>ハノイ市ホアンキエム区ハチュン通り48番地</strong><br>ホットライン：<strong style=\"color:#B22222;white-space:nowrap;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "公式所在地：<strong>ハノイ市ホアンキエム区ハチュン通り48番地</strong><br>ホットライン：<strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "ハチュン48番地の癒しの空間",
     "loc_subtitle": "ハノイ・ホアンキエム区ハチュン通り48番地に佇むラグジュアリーな癒し空間",
     "loc_card1_title": "Ivy Luxe Spa (ラウンジ＆レセプション)",
@@ -817,6 +857,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "modal_name_ph": "例：山田 太郎",
     "modal_phone_label": "お電話番号 / LINE / WhatsApp",
     "modal_phone_ph": "+84 98 9713660",
+    "modal_email_label": "メールアドレス（領収書送付先）",
+    "modal_email_hint": "ご請求書と確認メールをお送りします",
     "modal_branch_label": "店舗",
     "modal_service_label": "ご希望コース",
     "modal_date_label": "ご来店日",
@@ -888,7 +930,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "하노이 IVY LUXE SPA에 오신 것을 환영합니다",
     "subhero_title": "하노이 올드쿼터 최고급 마사지 & 스파",
     "subhero_desc": "전문적인 테라피. 베테랑 테라피스트의 섬세한 손길. 따뜻한 하노이의 환대.",
-    "subhero_addr_line": "공식 주소: <strong>하노이 호안끼엠구 하쭝 48번지</strong><br>핫라인: <strong style=\"color:#B22222;white-space:nowrap;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "공식 주소: <strong>하노이 호안끼엠구 하쭝 48번지</strong><br>핫라인: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "하쭝 48번지의 프라이빗 힐링 공간",
     "loc_subtitle": "하노이 호안끼엠구 하쭝 48번지에 위치한 최고급 프라이빗 스파 공간",
     "loc_card1_title": "Ivy Luxe Spa (라운지 & 리셉션)",
@@ -1003,6 +1045,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "modal_name_ph": "예: 홍길동",
     "modal_phone_label": "연락처 / 카카오톡 ID",
     "modal_phone_ph": "+84 98 9713660",
+    "modal_email_label": "이메일 (영수증 수신)",
+    "modal_email_hint": "영수증과 예약 확인 메일이 발송됩니다",
     "modal_branch_label": "지점",
     "modal_service_label": "선택 코스",
     "modal_date_label": "방문 날짜",
@@ -1074,7 +1118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "ДОБРО ПОЖАЛОВАТЬ В IVY LUXE SPA ХАНОЙ",
     "subhero_title": "МАССАЖ И ОЗДОРОВЛЕНИЕ В СТАРОМ КВАРТАЛЕ ХАНОЯ",
     "subhero_desc": "Глубокие техники. Мастерские руки. Искреннее ханойское гостеприимство.",
-    "subhero_addr_line": "Официальный адрес: <strong>48 Ha Trung, Hoan Kiem, Ханой</strong><br>Горячая линия: <strong style=\"color:#B22222;white-space:nowrap;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "Официальный адрес: <strong>48 Ha Trung, Hoan Kiem, Ханой</strong><br>Горячая линия: <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "НАШ СПА-КОМПЛЕКС НА ХА ЧУНГ, 48",
     "loc_subtitle": "Эксклюзивный роскошный велнес-оазис в самом сердце Ханоя",
     "loc_card1_title": "Ivy Luxe Spa (Зона приема и лаундж)",
@@ -1190,6 +1234,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "modal_name_ph": "Например: Александр Иванов",
     "modal_phone_label": "Телефон / WhatsApp / Telegram",
     "modal_phone_ph": "+7 900 123 4567",
+    "modal_email_label": "E-mail (для счёта)",
+    "modal_email_hint": "Счёт и подтверждение придут на этот адрес",
     "modal_branch_label": "Локация",
     "modal_service_label": "Выбор процедуры",
     "modal_date_label": "Дата визита",
@@ -1261,7 +1307,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "hero_welcome": "BIENVENUE À IVY LUXE SPA HANOÏ",
     "subhero_title": "MASSAGE & BIEN-ÊTRE AU CŒUR DU VIEUX QUARTIER DE HANOÏ",
     "subhero_desc": "Soins experts. Mains attentives. Hospitalité authentique de Hanoï.",
-    "subhero_addr_line": "Adresse officielle : <strong>48 Ha Trung, Hoan Kiem, Hanoï</strong><br>Ligne directe : <strong style=\"color:#B22222;white-space:nowrap;\">(+84) 98 9713660</strong>",
+    "subhero_addr_line": "Adresse officielle : <strong>48 Ha Trung, Hoan Kiem, Hanoï</strong><br>Ligne directe : <strong style=\"color:#B22222;\">(+84) 98 9713660</strong>",
     "loc_title": "NOTRE SANCTUAIRE AU 48 HA TRUNG",
     "loc_subtitle": "Un havre de paix et de détente raffiné au cœur de Hanoï",
     "loc_card1_title": "Ivy Luxe Spa (Salon d'Accueil & Réception)",
@@ -1377,6 +1423,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "modal_name_ph": "Exemple : Jean Dupont",
     "modal_phone_label": "Téléphone / WhatsApp",
     "modal_phone_ph": "+33 6 12 34 56 78",
+    "modal_email_label": "E-mail (pour la facture)",
+    "modal_email_hint": "Votre facture et la confirmation seront envoyées ici",
     "modal_branch_label": "Établissement",
     "modal_service_label": "Soin Choisi",
     "modal_date_label": "Date Souhaitée",
@@ -1519,7 +1567,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!found) return;
     const lang = state.language;
     const name = found['name_' + lang] || found.name_en || found.name_vi;
-    if (typeof window.ivyOpenComboDetails === 'function' && window.ivyOpenComboDetails(id, lang, () => openBookingModalWithService(name))) return;
     openBookingModalWithService(name);
   }
 
@@ -2083,10 +2130,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalBranch = document.getElementById('modal-branch-select');
 
     if (heroDate && modalDate) {
-      modalDate.value = heroDate;
-      modalDate.min = new Date().toISOString().split('T')[0];
+      modalDate.value = heroDate < vnToday() ? vnToday() : heroDate;
+      modalDate.min = vnToday();
     } else if (modalDate && !modalDate.value) {
-      const today = new Date().toISOString().split('T')[0];
+      const today = vnToday();
       modalDate.value = today;
       modalDate.min = today;
     }
@@ -2163,6 +2210,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     updateModalBookingPriceAndQR();
+    if (window.updateBookingTzNote) window.updateBookingTzNote();
   }
 
   function getModeLabel(type) {
@@ -2728,7 +2776,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const phone = document.getElementById('modal-cust-phone')?.value.trim() || '';
       const branch = 'IVY LUXE SPA - SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI';
       const service = document.getElementById('modal-service-select')?.value || 'IVY SPECIAL - COMBO 1 (HOT) - 90 PHÚT';
-      const date = document.getElementById('modal-book-date')?.value || new Date().toISOString().split('T')[0];
+      const date = document.getElementById('modal-book-date')?.value || vnToday();
+      const email = (document.getElementById('modal-cust-email')?.value || '').trim().toLowerCase();
 
       const modalSelectTime = document.getElementById('modal-book-time');
       const modalCustomTime = document.getElementById('modal-custom-time');
@@ -2740,6 +2789,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const isCustomGuests = modalCustomGuests && modalCustomGuests.style.display !== 'none';
       let guests = isCustomGuests ? (modalCustomGuests.value ? `${modalCustomGuests.value} Khách` : '2 Khách') : (modalSelectGuests?.value || '2');
       if (guests === 'custom') guests = modalCustomGuests?.value ? `${modalCustomGuests.value} Khách` : '2 Khách';
+
+      // Gmail nhận hoá đơn + giờ hẹn không được ở quá khứ (theo giờ Việt Nam)
+      const failBooking = (msg, id) => { showToast(msg); const el = document.getElementById(id); if (el) { el.focus(); el.reportValidity && el.reportValidity(); } };
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        return failBooking(T('Vui lòng nhập Gmail để nhận hoá đơn (VD: ten@gmail.com).', 'Please enter your email to receive the bill (e.g. name@gmail.com).'), 'modal-cust-email');
+      }
+      const nowVN = vnNowParts();
+      if (date < nowVN.date || (date === nowVN.date && time < nowVN.time)) {
+        return failBooking(T('Giờ hẹn đã qua theo giờ Việt Nam (GMT+7). Vui lòng chọn giờ khác.', 'This time has already passed in Vietnam (GMT+7). Please choose a later time.'), 'modal-book-date');
+      }
 
       // Payment method
       const payMethodRadio = document.querySelector('input[name="modal-pay-method"]:checked');
@@ -2800,23 +2859,40 @@ document.addEventListener('DOMContentLoaded', () => {
       const notes = document.getElementById('modal-notes')?.value || '';
       const modalBody = document.querySelector('.modal-body');
       const data = {
-        bookingCode, name, phone, service: String(service).replace(/\s*\([^()]*(₫|đ|vnđ|vnd)\)\s*$/i, ''), branch, date, time,
+        bookingCode, name, phone, email, service: String(service).replace(/\s*\([^()]*(₫|đ|vnđ|vnd)\)\s*$/i, ''), branch, date, time,
         guests: state.language === 'vi' ? guestCount + ' khách' : guestCount + (guestCount > 1 ? ' guests' : ' guest'),
         totalPrice, discountAmount: totalPrice - payableAmount, payableAmount, payKind, affCode,
       };
-      if (modalBody) modalBody.innerHTML = `<div style="text-align:center;padding:60px 15px;color:#5A6560;"><i class="fa fa-spinner fa-spin" style="font-size:2rem;color:#D4AF37;"></i><p style="margin-top:14px;">${T('Đang tạo đơn đặt dịch vụ…', 'Creating your booking…')}</p></div>`;
+      // Ẩn form (không xoá) để nếu máy chủ báo lỗi thì khách sửa lại được ngay
+      const waitBox = document.createElement('div');
+      waitBox.innerHTML = `<div style="text-align:center;padding:60px 15px;color:#5A6560;"><i class="fa fa-spinner fa-spin" style="font-size:2rem;color:#D4AF37;"></i><p style="margin-top:14px;">${T('Đang tạo đơn đặt dịch vụ…', 'Creating your booking…')}</p></div>`;
+      bookingFormModal.style.display = 'none';
+      if (modalBody) modalBody.appendChild(waitBox);
       sendLead({
         name,
         phone,
+        email,
         need: `Đặt lịch: ${service} — ${date} ${time} — ${guests}${notes ? ' — Ghi chú: ' + notes : ''} (Mã ${bookingCode})`,
         source: 'booking',
-        booking: { code: bookingCode, service, guests: guestCount, date, time, pay: payKind, unit: basePrice },
+        booking: { code: bookingCode, service, guests: guestCount, date, time, pay: payKind, unit: basePrice, lang: state.language,
+          notes, branch, custTz: (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) { return ''; } })() },
       }).then(({ ok, data: res }) => {
+        if (!ok && res && res.error && /Gmail|Giờ hẹn|ngày và giờ/.test(res.error)) {
+          waitBox.remove();
+          bookingFormModal.style.display = '';
+          return failBooking(res.error, /Gmail/.test(res.error) ? 'modal-cust-email' : 'modal-book-date');
+        }
+        data.mailed = Boolean(ok && res.mailed);
+        if (ok && res.booking && res.booking.code) data.bookingCode = res.booking.code; // mã đơn chính thức do máy chủ cấp
         // Số tiền theo Bảng giá trên máy chủ (đã trừ 10% nếu trả trước QR)
         if (ok && res.booking) {
           data.totalPrice = res.booking.gross;
           data.discountAmount = res.booking.discount;
           data.payableAmount = res.booking.total;
+          // Google Ads: tính 1 chuyển đổi "Book appointment" khi đơn đã lưu trên máy chủ
+          try {
+            if (typeof window.gtag_report_conversion === 'function') window.gtag_report_conversion(undefined, data.payableAmount, data.bookingCode);
+          } catch (e) {}
         }
         if (payKind === 'qr') renderSePayPaymentScreen(modalBody, data);
         else renderBookingSuccess(modalBody, data);
@@ -2839,7 +2915,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return `<div class="ivy-invoice">
       ${row(T('Mã đơn', 'Booking code'), `<span style="color:#B8932A;">${authEscape(data.bookingCode)}</span>`)}
       ${row(T('Dịch vụ', 'Service'), authEscape(data.service))}
-      ${row(T('Thời gian', 'Time'), `${authEscape(data.date)} · ${authEscape(data.time)} · ${authEscape(String(data.guests))}`)}
+      ${row(T('Thời gian', 'Time'), `${authEscape(data.date)} · ${authEscape(data.time)} · ${authEscape(String(data.guests))}<br><small style="font-weight:400;color:#7E968C;">${T('Giờ Việt Nam (GMT+7)', 'Vietnam time (GMT+7)')}</small>`)}
+      ${data.email ? row(T('Gmail nhận hoá đơn', 'Bill sent to'), authEscape(data.email)) : ''}
       ${row(T('Giá niêm yết', 'Listed price'), vnd(data.totalPrice))}
       ${data.discountAmount ? row(T('Ưu đãi trả trước qua QR (−10%)', 'QR prepayment discount (−10%)'), '−' + vnd(data.discountAmount), 'ivy-inv-discount') : ''}
       ${row(paidLabel, vnd(data.payableAmount), 'ivy-inv-total')}
@@ -2922,7 +2999,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('/api/leads?a=paid', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ code: data.bookingCode, phone: data.phone }),
-        }).catch(() => {}).finally(() => {
+        }).then((r) => r.json()).then((r) => { if (r && r.mailed) data.mailed = true; }).catch(() => {}).finally(() => {
           try {
             const bookingsList = JSON.parse(localStorage.getItem('ivy_bookings') || '[]');
             const b = bookingsList.find(x => x.id === data.bookingCode);
@@ -2963,6 +3040,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>${T('Cảm ơn bạn đã sử dụng dịch vụ của IVY LUXE - Hẹn gặp bạn tại 48 Hà Trung - Phường Hoàn Kiếm - Thành phố Hà Nội để sử dụng dịch vụ của chúng tôi',
             'Thank you for choosing IVY LUXE - See you at 48 Ha Trung Street - Hoan Kiem Ward - Hanoi to enjoy our services')}</p>
         </div>
+        ${data.email ? `<p style="font-size:0.86rem;color:#2A5A44;margin:0 0 16px;"><i class="fa fa-envelope"></i> ${data.mailed
+          ? T('Hoá đơn và lời chúc mừng đã được gửi tới', 'Your bill has been emailed to') + ' <strong>' + authEscape(data.email) + '</strong>'
+          : T('Hoá đơn sẽ được gửi tới', 'Your bill will be sent to') + ' <strong>' + authEscape(data.email) + '</strong> ' + T('(nếu chưa thấy, xem thêm mục Thư rác/Quảng cáo)', '(check Spam/Promotions if you do not see it)')}</p>` : ''}
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
           <a href="${waUrl}" target="_blank" rel="noopener" class="nav-cta-btn" style="background:#25D366;color:#FFF;border:none;"><i class="fa fa-whatsapp"></i> WhatsApp</a>
           <a href="tel:0989713660" class="nav-cta-btn" style="background:linear-gradient(135deg,#ECC876,#D4AF37,#A4791E);color:#051A12;"><i class="fa fa-phone"></i> ${T('Gọi', 'Call')} 098 971 3660</a>
@@ -2977,56 +3057,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // USER AUTHENTICATION SYSTEM (LOGIN, REGISTER, ROLES & MY BOOKINGS)
   // =========================================================================
 
-  function getAuthUsers() {
-    let users = [];
+  // Bản cũ lưu danh sách tài khoản kèm mật khẩu (ivy_users) ngay trong trình duyệt.
+  // Đăng nhập giờ chỉ qua máy chủ (/api/account), nên xoá dữ liệu cũ đó và mọi mật khẩu còn sót.
+  function purgeLegacyAuthStorage() {
     try {
-      const stored = localStorage.getItem('ivy_users');
-      if (stored) users = JSON.parse(stored);
-    } catch (e) {}
-
-    const ALLOWED_ADMINS = ['ivyspahanoi@gmail.com', 'vanhaitech.86@gmail.com'];
-    const initialAdmins = [
-      { email: 'ivyspahanoi@gmail.com', phone: '0989713660', pass: '', name: 'Quản Trị Viên IVY LUXE', role: 'admin' },
-      { email: 'vanhaitech.86@gmail.com', phone: '0989713660', pass: '', name: 'Admin Kỹ Thuật (Văn Hải)', role: 'admin' }
-    ];
-
-    if (!Array.isArray(users) || users.length === 0) {
-      users = [
-        ...initialAdmins,
-        { email: 'partner@hotel.com', phone: '0912345678', pass: '', name: 'Khách Sạn Silk Hanoi', role: 'partner' },
-        { email: 'khach@gmail.com', phone: '0901234567', pass: '', name: 'Nguyễn Thu Trang', role: 'customer' }
-      ];
-    } else {
-      // Đảm bảo chỉ DUY NHẤT 2 email này được quyền admin với mật khẩu 
-      users.forEach(u => {
-        const uEmail = (u.email || '').toLowerCase().trim();
-        if (u.role === 'admin' && !ALLOWED_ADMINS.includes(uEmail)) {
-          u.role = 'customer';
-        }
-      });
-
-      // Cập nhật hoặc bổ sung 2 tài khoản admin
-      initialAdmins.forEach(adm => {
-        const idx = users.findIndex(u => (u.email || '').toLowerCase().trim() === adm.email);
-        if (idx !== -1) {
-          users[idx].role = 'admin';
-          users[idx].pass = '';
-          users[idx].name = adm.name;
-        } else {
-          users.unshift(adm);
-        }
-      });
-    }
-
-    try {
-      localStorage.setItem('ivy_users', JSON.stringify(users));
-    } catch (e) {}
-    return users;
-  }
-
-  function saveAuthUsers(users) {
-    try {
-      localStorage.setItem('ivy_users', JSON.stringify(users));
+      localStorage.removeItem('ivy_users');
+      const cur = JSON.parse(localStorage.getItem('ivy_current_user') || 'null');
+      if (cur && typeof cur === 'object' && ('pass' in cur || 'password' in cur)) localStorage.removeItem('ivy_current_user');
     } catch (e) {}
   }
 
@@ -3159,16 +3196,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.closeAuthModal = closeAuthModal;
 
+  // Đăng nhập Google chỉ qua trang của Google (máy chủ kiểm tra), không còn form nhập Gmail tự khai.
   function openGoogleAuthModal() {
-    const googleAuthModal = document.getElementById('google-auth-modal');
-    if (googleAuthModal) {
-      googleAuthModal.classList.add('active');
-      googleAuthModal.style.display = 'flex';
-      googleAuthModal.style.opacity = '1';
-      googleAuthModal.style.visibility = 'visible';
-      googleAuthModal.style.pointerEvents = 'auto';
-      document.body.style.overflow = 'hidden';
-    }
+    window.location.href = '/api/auth/google';
   }
   window.openGoogleAuthModal = openGoogleAuthModal;
 
@@ -3396,7 +3426,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function initAuthSystem() {
-    getAuthUsers(); // ensure seed data exists
+    purgeLegacyAuthStorage();
     updateHeaderAuthState();
     syncServerSession();
 
@@ -3511,19 +3541,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const target = btn.getAttribute('data-auth-tab');
         openAuthModalWithTab(target);
-      });
-    });
-
-    // Preset Demo Buttons
-    document.querySelectorAll('.auth-preset-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const email = btn.getAttribute('data-email');
-        const pass = btn.getAttribute('data-pass');
-        const emailInput = document.getElementById('login-identifier');
-        const passInput = document.getElementById('login-password');
-        if (emailInput) emailInput.value = email;
-        if (passInput) passInput.value = pass;
       });
     });
 
@@ -3690,101 +3707,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
-
-    // Handle selecting pre-set or custom Google account with strict role enforcement
-    function handleGoogleLoginSuccess(name, email) {
-      const cleanEmail = (email || '').toLowerCase().trim();
-      const ALLOWED_ADMINS = ['ivyspahanoi@gmail.com', 'vanhaitech.86@gmail.com'];
-      const isAdminEmail = ALLOWED_ADMINS.includes(cleanEmail);
-      const resolvedRole = isAdminEmail ? 'admin' : 'customer';
-      let resolvedName = name || 'Khách Hàng Google';
-      if (cleanEmail === 'ivyspahanoi@gmail.com') resolvedName = 'Quản Trị Viên IVY LUXE';
-      if (cleanEmail === 'vanhaitech.86@gmail.com') resolvedName = 'Admin Kỹ Thuật (Văn Hải)';
-
-      const users = getAuthUsers();
-      let user = users.find(u => u.email && u.email.toLowerCase() === cleanEmail);
-      if (!user) {
-        user = {
-          name: resolvedName,
-          email: cleanEmail,
-          phone: '',
-          pass: isAdminEmail ? '' : ('google_' + Math.random().toString(36).substring(2, 8)),
-          role: resolvedRole,
-          authProvider: 'google'
-        };
-        users.push(user);
-        saveAuthUsers(users);
-      } else {
-        user.authProvider = 'google';
-        user.role = resolvedRole; // Ensure correct role according to authorization rules
-        if (isAdminEmail) user.pass = '';
-        if (!user.name || isAdminEmail) user.name = resolvedName;
-        saveAuthUsers(users);
-      }
-
-      setCurrentUser(user);
-      updateHeaderAuthState();
-
-      closeGoogleAuthModal();
-      closeAuthModal();
-
-      alert(`Đăng nhập Google (${cleanEmail}) thành công!\nChào mừng ${user.name} đến với IVY LUXE SPA.`);
-
-      if (user.role === 'admin') {
-        const goToAdmin = confirm('Đăng nhập Quản Trị Viên thành công! Bạn có muốn mở Trang Quản Trị Admin ngay bây giờ?');
-        if (goToAdmin) window.location.href = 'admin.html';
-      } else if (user.role === 'partner') {
-        window.location.hash = '#affiliate';
-      }
-    }
-
-    // Google Sign-In Input Submission Handler (Đăng nhập riêng tư, không lộ thông tin)
-    const btnCustomGoogleSubmit = document.getElementById('btn-custom-google-submit');
-    const customGoogleEmail = document.getElementById('custom-google-email');
-    const customGoogleName = document.getElementById('custom-google-name');
-    const googleForm = document.getElementById('google-auth-direct-form');
-
-    function triggerGoogleLogin() {
-      const emailInput = customGoogleEmail?.value.trim() || '';
-      let nameInput = customGoogleName?.value.trim() || '';
-
-      if (!emailInput || !emailInput.includes('@')) {
-        alert('Vui lòng nhập địa chỉ Email hoặc Gmail hợp lệ.');
-        customGoogleEmail?.focus();
-        return;
-      }
-
-      if (!nameInput) {
-        nameInput = emailInput.split('@')[0];
-      }
-
-      handleGoogleLoginSuccess(nameInput, emailInput);
-    }
-
-    if (btnCustomGoogleSubmit) {
-      btnCustomGoogleSubmit.addEventListener('click', (e) => {
-        e.preventDefault();
-        triggerGoogleLogin();
-      });
-    }
-
-    if (googleForm) {
-      googleForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        triggerGoogleLogin();
-      });
-    }
-
-    [customGoogleEmail, customGoogleName].forEach(input => {
-      if (input) {
-        input.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            triggerGoogleLogin();
-          }
-        });
-      }
-    });
 
     // Quên mật khẩu: gửi mã OTP 6 số tới Gmail của tài khoản, nhập mã + mật khẩu mới
     let activeResetIdentifier = null;
@@ -4568,10 +4490,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (labelEl) labelEl.textContent = `clicks ${days} ngày qua`;
   };
 
+  // Ghi chú múi giờ dưới Giờ hẹn + điền sẵn Gmail của tài khoản đang đăng nhập
+  window.updateBookingTzNote = function() {
+    const note = document.getElementById('modal-tz-note');
+    if (!note) return;
+    const date = document.getElementById('modal-book-date')?.value || vnToday();
+    const custom = document.getElementById('modal-custom-time');
+    const time = custom && custom.style.display !== 'none' ? (custom.value || '14:30') : (document.getElementById('modal-book-time')?.value || '14:30');
+    note.textContent = tzNoteText(date, /^\d{2}:\d{2}$/.test(time) ? time : '14:30');
+    const emailEl = document.getElementById('modal-cust-email');
+    const u = getCurrentUser();
+    if (emailEl && !emailEl.value && u && /@/.test(u.email || '')) emailEl.value = u.email;
+  };
+  ['modal-book-date', 'modal-book-time', 'modal-custom-time'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) { el.addEventListener('change', window.updateBookingTzNote); el.addEventListener('input', window.updateBookingTzNote); }
+  });
+  document.addEventListener('click', (e) => { if (e.target.closest && e.target.closest('#modal-time-mode-btn')) setTimeout(window.updateBookingTzNote, 0); });
+  window.updateBookingTzNote();
+
   // Set default minimum date in hero datepicker
   const heroDate = document.getElementById('hero-select-date');
   if (heroDate) {
-    const today = new Date().toISOString().split('T')[0];
+    const today = vnToday(); // ngày hôm nay theo giờ Việt Nam
     heroDate.value = today;
     heroDate.min = today;
   }
@@ -4584,6 +4525,7 @@ document.addEventListener('DOMContentLoaded', () => {
     state.language = newLang;
     localStorage.setItem('ivy_lang', newLang);
     updatePageLanguage();
+    if (window.updateBookingTzNote) window.updateBookingTzNote();
     const conf = languageConfig[newLang];
     showToast(newLang === 'vi' ? `${conf.flag} Ngôn ngữ: ${conf.name}` : `${conf.flag} Language: ${conf.name}`);
     // Close popovers
@@ -4802,7 +4744,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return `
         <article class="live-promo-card">
           <div class="live-promo-img">
-            <img src="${esc(p.image)}" alt="${esc(pick(p, 'title') || 'IVY Luxe Spa Promotion in Hanoi Old Quarter')}" loading="lazy">
+            <img src="${esc(p.image)}" alt="${esc(pick(p, 'title'))}" loading="lazy">
             ${p.badge ? `<span class="live-promo-badge">${esc(p.badge)}</span>` : ''}
           </div>
           <div class="live-promo-body">

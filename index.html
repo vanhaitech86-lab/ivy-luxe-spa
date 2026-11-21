@@ -1,17 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
+  <!-- Google Tag Manager (GTM-KDFDQ47D): đo lượt xem, cuộc gọi, Zalo, đặt lịch cho Google Ads / GA4 / Facebook -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KDFDQ47D');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) – Google Ads AW-18562979820 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18562979820"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18562979820');
+  </script>
+  <!-- Event snippet for Book appointment conversion page.
+       js/app.js gọi gtag_report_conversion() khi máy chủ đã tạo đơn đặt lịch thành công
+       (truyền số tiền thật và mã đơn để Google Ads không đếm trùng). -->
+  <script>
+  function gtag_report_conversion(url, value, transactionId) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    var params = {
+        'send_to': 'AW-18562979820/tXRiCK7dprodEOyvwpNF',
+        'value': Number(value) > 0 ? Number(value) : 1.0,
+        'currency': 'VND',
+        'event_callback': callback
+    };
+    if (transactionId) params.transaction_id = String(transactionId);
+    gtag('event', 'conversion', params);
+    return false;
+  }
+  </script>
   <meta charset="UTF-8">
-  <script>try{var _p=location.pathname||'';if(/^\/vi(\/|$)/.test(_p)){localStorage.setItem("ivy_lang","vi");localStorage.setItem("ivy_lang_default_en_v1","1");}else if(/^\/en(\/|$)/.test(_p)){localStorage.setItem("ivy_lang","en");localStorage.setItem("ivy_lang_default_en_v1","1");}else if(!localStorage.getItem("ivy_lang_default_en_v1")){localStorage.setItem("ivy_lang","en");localStorage.setItem("ivy_lang_default_en_v1","1");}}catch(e){}</script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Massage &amp; Foot Massage in Hanoi Old Quarter | IVY Luxe Spa</title>
-  <meta name="description" content="IVY Luxe Spa at 48 Ha Trung, Hoan Kiem offers body massage, foot massage, head spa, facial care and nail services. Open daily 9 AM–11 PM.">
-  <meta name="keywords" content="Ivy Luxe Spa, massage Hanoi Old Quarter, foot massage near Hoan Kiem Lake, nail salon Hanoi Old Quarter, 48 ha trung, massage ha trung, spa pho co hanoi, orient spa hanoi, goi dau duong sinh, massage body">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>IVY LUXE SPA - Massage Body & Wellness | Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</title>
+  <meta name="description" content="IVY LUXE SPA - Massage Body & Wellness tại Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI. Dịch vụ massage body, gội đầu dưỡng sinh, foot care cao cấp. Hotline: 098 9713660.">
+  <meta name="keywords" content="Ivy Luxe Spa, 48 ha trung, massage ha trung, spa pho co hanoi, orient spa hanoi, goi dau duong sinh, massage body">
 
   <!-- OpenGraph -->
-  <meta property="og:title" content="Massage &amp; Foot Massage in Hanoi Old Quarter | IVY Luxe Spa">
-  <meta property="og:description" content="Body massage, foot massage, head spa, facial care and nail services at 48 Ha Trung, Hoan Kiem, Hanoi.">
-  <meta property="og:url" content="https://ivyluxe.com.vn/">
+  <meta property="og:title" content="IVY LUXE SPA - Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI">
+  <meta property="og:description" content="Massage Body & Wellness đẳng cấp tại Địa chỉ: SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI. Hotline: 098 9713660.">
   <meta property="og:image" content="https://ivyluxe.com.vn/assets/images/spa_water_basin_hero.jpg">
   <meta property="og:type" content="website">
 
@@ -33,60 +67,12 @@
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/chat-widget.css">
-  <link rel="canonical" href="https://ivyluxe.com.vn/">
-  <link rel="alternate" hreflang="en" href="https://ivyluxe.com.vn/">
-  <link rel="alternate" hreflang="vi" href="https://ivyluxe.com.vn/vi/">
-  <link rel="alternate" hreflang="x-default" href="https://ivyluxe.com.vn/">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HealthAndBeautyBusiness",
-  "@id": "https://ivyluxe.com.vn/#ivy-luxe-spa",
-  "name": "IVY LUXE SPA",
-  "url": "https://ivyluxe.com.vn/",
-  "image": "https://ivyluxe.com.vn/assets/images/spa_water_basin_hero.jpg",
-  "keywords": "massage Hanoi Old Quarter, foot massage near Hoan Kiem Lake, nail salon Hanoi Old Quarter",
-  "description": "IVY LUXE SPA at 48 Ha Trung, Hoan Kiem, Hanoi offers body massage, foot massage, nourishing head spa, facial care and nail services in Hanoi Old Quarter.",
-  "telephone": "+84989713660",
-  "email": "ivyspahanoi@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "48 Ha Trung Street",
-    "addressLocality": "Hoan Kiem",
-    "addressRegion": "Hanoi",
-    "addressCountry": "VN"
-  },
-  "hasMap": "https://www.google.com/maps/search/?api=1&query=48+Ha+Trung+Hoan+Kiem+Hanoi",
-  "areaServed": {
-    "@type": "City",
-    "name": "Hanoi"
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "09:00",
-      "closes": "23:00"
-    }
-  ],
-  "sameAs": [
-    "https://www.instagram.com/ivyspahanoi/",
-    "https://www.tiktok.com/@ivyspahanoi"
-  ],
-  "potentialAction": {
-    "@type": "ReserveAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://ivyluxe.com.vn/#booking-form-box",
-      "inLanguage": "en"
-    },
-    "name": "Book an appointment at IVY LUXE SPA"
-  }
-}
-</script>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDFDQ47D"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- Three.js 3D Ambient Dust Canvas -->
   <div id="three-canvas-container"></div>
@@ -564,7 +550,7 @@
       <h1 class="sub-hero-title" data-i18n="subhero_title">MASSAGE & TRỊ LIỆU THÂN TÂM PHỐ CỔ HÀ NỘI</h1>
       <p class="sub-hero-desc">
         <span data-i18n="subhero_desc">Liệu trình chuyên sâu. Đôi bàn tay điêu luyện. Lòng hiếu khách thuần khiết Hà Nội.</span><br>
-        <span data-i18n-html="subhero_addr_line">Địa chỉ: <strong>SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</strong><br>Hotline: <strong style="color:#B22222;white-space:nowrap;">098 9713660</strong></span>
+        <span data-i18n-html="subhero_addr_line">Địa chỉ: <strong>SỐ 48 PHỐ HÀ TRUNG, PHƯỜNG HOÀN KIẾM, THÀNH PHỐ HÀ NỘI</strong><br>Hotline: <strong style="color:#B22222;">098 9713660</strong></span>
       </p>
     </div>
   </div>
@@ -718,7 +704,7 @@
       <!-- Vintage Map Graphic with Pin at 48 Hà Trung (Screenshot 3) -->
       <div class="map-card-wrapper">
         <a href="https://maps.google.com/?q=48+Ha+Trung+Hoan+Kiem+Hanoi" target="_blank" rel="noopener" title="Xem trên Google Maps">
-          <img src="assets/images/hanoi_old_quarter_map.jpg" alt="Map of IVY LUXE SPA at 48 Ha Trung, Hoan Kiem, Hanoi Old Quarter, near Hoan Kiem Lake">
+          <img src="assets/images/hanoi_old_quarter_map.jpg" alt="Vị trí IVY LUXE SPA tại Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội">
         </a>
         <div class="map-overlay-badge">
           <h4 data-i18n="map_badge_title">IVY LUXE SPA - SỐ 48 PHỐ HÀ TRUNG</h4>
@@ -1066,57 +1052,6 @@
           <i class="fa fa-instagram guest-insta-icon"></i>
           <span class="guest-photo-overlay-tag">@ivyspahanoi</span>
         </a>
-        <!-- 10 ảnh thực tế tuyển chọn từ không gian IVY LUXE SPA & NAIL -->
-        <a href="assets/images/gallery/gallery_01_nail_polish_wall.jpg" class="guest-photo-item js-gallery-lightbox" data-idx="0" title="Kệ sơn gel cao cấp tại IVY LUXE SPA & NAIL">
-          <img src="assets/images/gallery/gallery_01_nail_polish_wall.jpg" alt="Kệ sơn gel cao cấp tại IVY LUXE SPA & NAIL - Nail Salon Hanoi Old Quarter" loading="lazy">
-          <i class="fa fa-search-plus guest-insta-icon"></i>
-          <span class="guest-photo-overlay-tag"><i class="fa fa-diamond" style="color:#D4AF37;"></i> Nail Studio</span>
-        </a>
-        <a href="assets/images/gallery/gallery_02_nail_polish_closeup.jpg" class="guest-photo-item js-gallery-lightbox" data-idx="1" title="Bộ sưu tập màu sơn gel chính hãng">
-          <img src="assets/images/gallery/gallery_02_nail_polish_closeup.jpg" alt="Bộ sưu tập sơn móng gel tại IVY LUXE SPA & NAIL" loading="lazy">
-          <i class="fa fa-search-plus guest-insta-icon"></i>
-          <span class="guest-photo-overlay-tag"><i class="fa fa-paint-brush" style="color:#D4AF37;"></i> Gel Polish</span>
-        </a>
-        <a href="assets/images/gallery/gallery_03_reception_lobby_wide.jpg" class="guest-photo-item js-gallery-lightbox" data-idx="2" title="Sảnh lễ tân & đón tiếp tại 48 Hà Trung">
-          <img src="assets/images/gallery/gallery_03_reception_lobby_wide.jpg" alt="Sảnh lễ tân IVY LUXE SPA tại 48 Hà Trung, Hoàn Kiếm, Hà Nội" loading="lazy">
-          <i class="fa fa-search-plus guest-insta-icon"></i>
-          <span class="guest-photo-overlay-tag"><i class="fa fa-building-o" style="color:#D4AF37;"></i> Reception Lounge</span>
-        </a>
-        <a href="assets/images/gallery/gallery_04_brand_card_reception.jpg" class="guest-photo-item js-gallery-lightbox" data-idx="3" title="Quầy lễ tân IVY LUXE SPA 48 Hà Trung">
-          <img src="assets/images/gallery/gallery_04_brand_card_reception.jpg" alt="Quầy lễ tân IVY LUXE SPA 48 Hà Trung" loading="lazy">
-          <i class="fa fa-search-plus guest-insta-icon"></i>
-          <span class="guest-photo-overlay-tag"><i class="fa fa-map-marker" style="color:#D4AF37;"></i> 48 Ha Trung</span>
-        </a>
-        <a href="assets/images/gallery/gallery_05_foot_massage_lounge.jpg" class="guest-photo-item js-gallery-lightbox" data-idx="4" title="Phòng Foot Massage thư giãn êm ái">
-          <img src="assets/images/gallery/gallery_05_foot_massage_lounge.jpg" alt="Phòng ghế Foot Massage near Hoan Kiem Lake tại IVY LUXE SPA" loading="lazy">
-          <i class="fa fa-search-plus guest-insta-icon"></i>
-          <span class="guest-photo-overlay-tag"><i class="fa fa-heart" style="color:#D4AF37;"></i> Foot Massage Lounge</span>
-        </a>
-        <a href="assets/images/gallery/gallery_06_massage_suite_golden.jpg" class="guest-photo-item js-gallery-lightbox" data-idx="5" title="Phòng trị liệu Massage Body ánh sáng ấm">
-          <img src="assets/images/gallery/gallery_06_massage_suite_golden.jpg" alt="Phòng Massage Body tại IVY LUXE SPA - Massage Hanoi Old Quarter" loading="lazy">
-          <i class="fa fa-search-plus guest-insta-icon"></i>
-          <span class="guest-photo-overlay-tag"><i class="fa fa-bed" style="color:#D4AF37;"></i> Body Massage Suite</span>
-        </a>
-        <a href="assets/images/gallery/gallery_07_private_massage_beds.jpg" class="guest-photo-item js-gallery-lightbox" data-idx="6" title="Không gian giường massage riêng tư có rèm che">
-          <img src="assets/images/gallery/gallery_07_private_massage_beds.jpg" alt="Giường massage riêng tư tại IVY LUXE SPA" loading="lazy">
-          <i class="fa fa-search-plus guest-insta-icon"></i>
-          <span class="guest-photo-overlay-tag"><i class="fa fa-star" style="color:#D4AF37;"></i> Private Suites</span>
-        </a>
-        <a href="assets/images/gallery/gallery_08_therapy_room_wide.jpg" class="guest-photo-item js-gallery-lightbox" data-idx="7" title="Phòng trị liệu rộng rãi, sạch thoáng">
-          <img src="assets/images/gallery/gallery_08_therapy_room_wide.jpg" alt="Phòng trị liệu toàn thân tại IVY LUXE SPA" loading="lazy">
-          <i class="fa fa-search-plus guest-insta-icon"></i>
-          <span class="guest-photo-overlay-tag"><i class="fa fa-leaf" style="color:#D4AF37;"></i> Therapy Room</span>
-        </a>
-        <a href="assets/images/gallery/gallery_09_cozy_treatment_suite.jpg" class="guest-photo-item js-gallery-lightbox" data-idx="8" title="Phòng chăm sóc cơ thể & da mặt ấm cúng">
-          <img src="assets/images/gallery/gallery_09_cozy_treatment_suite.jpg" alt="Phòng chăm sóc cơ thể và da mặt tại IVY LUXE SPA" loading="lazy">
-          <i class="fa fa-search-plus guest-insta-icon"></i>
-          <span class="guest-photo-overlay-tag"><i class="fa fa-heart-o" style="color:#D4AF37;"></i> Cozy Suite</span>
-        </a>
-        <a href="assets/images/gallery/gallery_10_plush_massage_bed.jpg" class="guest-photo-item js-gallery-lightbox" data-idx="9" title="Giường massage chuẩn bị chu đáo cho khách">
-          <img src="assets/images/gallery/gallery_10_plush_massage_bed.jpg" alt="Giường massage chuẩn bị chu đáo tại IVY LUXE SPA" loading="lazy">
-          <i class="fa fa-search-plus guest-insta-icon"></i>
-          <span class="guest-photo-overlay-tag"><i class="fa fa-check-circle" style="color:#D4AF37;"></i> Luxury Care</span>
-        </a>
       </div>
 
       <div style="text-align:center; margin-top:35px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; align-items:center;">
@@ -1147,6 +1082,7 @@
       
       <!-- Section Title & Link to full page -->
       <div class="section-title-wrap" style="margin-bottom: 36px; text-align: center;">
+        <span class="section-sub-gold" style="color:#F05A28; font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size:0.9rem;">HỢP TÁC KINH DOANH · HOA HỒNG 10% (1 TẦNG)</span>
         <h2 class="section-main-title" style="color:#1E293B; font-size:2.2rem; font-weight:800; margin:8px 0 12px; font-family:'Arimo', sans-serif;">ĐỐI TÁC TIẾP THỊ &amp; DASHBOARD AFFILIATE</h2>
         <div class="gold-leaf-divider" style="margin-bottom:14px;">
           <span class="gold-line" style="background:#F05A28;"></span>
@@ -2102,6 +2038,12 @@
             </div>
           </div>
 
+          <div class="modal-form-group">
+            <label class="field-label" for="modal-cust-email" data-i18n="modal_email_label">Gmail nhận hoá đơn</label>
+            <input type="email" id="modal-cust-email" class="modal-input" placeholder="ten@gmail.com" autocomplete="email" inputmode="email" maxlength="120" required>
+            <small class="modal-field-hint" data-i18n="modal_email_hint">Bill và lời chúc mừng sẽ gửi tới Gmail này</small>
+          </div>
+
           <div class="modal-form-row modal-form-group">
             <div>
               <label class="field-label" data-i18n="modal_branch_label">Địa Điểm</label>
@@ -2135,6 +2077,7 @@
               <input type="time" id="modal-custom-time" class="modal-input" min="09:00" max="23:00" step="900" style="display:none;" onclick="this.showPicker && this.showPicker()">
             </div>
           </div>
+          <p id="modal-tz-note" class="modal-tz-note" aria-live="polite"></p>
 
           <div class="modal-form-group">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
@@ -2641,49 +2584,6 @@
     </div>
   </div>
 
-  <!-- GOOGLE ACCOUNT CHOOSER MODAL -->
-  <div id="google-auth-modal" class="modal-overlay">
-    <div class="modal-box" style="max-width:440px; background:#FFFFFF; color:#202124; padding:0; border-radius:12px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.4);">
-      <div style="padding:18px 24px 16px; border-bottom:1px solid #E8EAED; display:flex; justify-content:space-between; align-items:center;">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <svg viewBox="0 0 48 48" width="22" height="22">
-            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-          </svg>
-          <span style="font-weight:700; font-size:1.05rem; color:#202124;">Đăng nhập với Google</span>
-        </div>
-        <span id="google-auth-modal-close" class="modal-close-btn" style="color:#5F6368; font-size:1.6rem; cursor:pointer; line-height:1;" onclick="closeGoogleAuthModal(); return false;">&times;</span>
-      </div>
-      <div style="padding:24px;">
-        <div style="text-align:center; margin-bottom:20px;">
-          <h4 style="margin:0 0 6px; font-size:1.15rem; font-weight:600; color:#202124;">Đăng nhập bằng tài khoản Google</h4>
-          <p style="margin:0; font-size:0.86rem; color:#5F6368;">Để tiếp tục đồng bộ và đặt lịch tại Ivy Luxe Spa (Số 48 phố Hà Trung, phường Hoàn Kiếm, thành phố Hà Nội)</p>
-        </div>
-        
-        <form id="google-auth-direct-form" onsubmit="return false;">
-          <div style="margin-bottom:14px;">
-            <label style="display:block; font-size:0.82rem; font-weight:600; color:#3C4043; margin-bottom:6px;">Email hoặc Số điện thoại Gmail</label>
-            <input type="email" id="custom-google-email" class="modal-input" placeholder="Nhập tài khoản Gmail của bạn" required style="background:#FFFFFF; color:#202124; border:1px solid #DADCE0; padding:12px 14px; border-radius:6px; font-size:0.95rem; width:100%; box-sizing:border-box;">
-          </div>
-
-          <div style="margin-bottom:18px;">
-            <label style="display:block; font-size:0.82rem; font-weight:600; color:#3C4043; margin-bottom:6px;">Họ và Tên (Tùy chọn)</label>
-            <input type="text" id="custom-google-name" class="modal-input" placeholder="Họ và tên của bạn" style="background:#FFFFFF; color:#202124; border:1px solid #DADCE0; padding:12px 14px; border-radius:6px; font-size:0.95rem; width:100%; box-sizing:border-box;">
-          </div>
-
-          <button type="button" id="btn-custom-google-submit" class="modal-confirm-btn" style="width:100%; background:#1A73E8; color:#FFF; font-weight:700; padding:12px; border-radius:6px; font-size:0.95rem; border:none; cursor:pointer; display:flex; justify-content:center; align-items:center; gap:8px;">
-            <i class="fa fa-arrow-right"></i> TIẾP TỤC ĐĂNG NHẬP
-          </button>
-        </form>
-
-        <p style="margin:18px 0 0; font-size:0.75rem; color:#70757A; line-height:1.45; text-align:center;">
-          Để tiếp tục, Google sẽ xác thực bảo mật và chia sẻ thông tin tài khoản với Ivy Luxe Spa.
-        </p>
-      </div>
-    </div>
-  </div>
     </div>
   </div>
 
@@ -2713,7 +2613,6 @@
   <script src="js/three-scene.js"></script>
   <script src="js/menu-data.js"></script>
   <script src="js/i18n-en.js"></script>
-<script src="js/combo-details.js"></script>
   <script src="js/app.js"></script>
   <script src="js/chat-widget.js"></script>
 

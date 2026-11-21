@@ -5,8 +5,9 @@ node_modules/
 .env*.local
 .data/
 
-_backup_truoc_khi_dong_bo/
-IVY_LUXE_SPA_FULL_CODE.zip
-
-scripts/apply_edits_31_10.ps1
-scripts/docx_noidung.txt
+# Không đưa lên GitHub
+.DS_Store
+js/admin.js
+css/admin.css
+HUONG_DAN_SU_DUNG.txt
+assets/images/*_backup.jpg

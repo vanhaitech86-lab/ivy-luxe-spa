@@ -40,8 +40,8 @@ const SOURCE = { form: 'Form tư vấn website', booking: 'Đặt lịch website
 function leadText(lead, { source, booking } = {}) {
   const b = booking;
   return (b ? '🗓 ĐẶT LỊCH MỚI' : '🆕 KHÁCH MỚI ĐỂ LẠI THÔNG TIN') + ' – IVYLUXE SPA & NAIL\n\n'
-    + line('Khách', lead.name) + line('SĐT', lead.phone) + line('Quốc gia', lead.country) + line('Nơi ở', lead.residence)
-    + (b ? line('Dịch vụ', b.service) + line('Thời gian', [b.time, b.date].filter(Boolean).join(' ngày ')) + line('Số khách', b.guests)
+    + line('Khách', lead.name) + line('SĐT', lead.phone) + line('Gmail', lead.email) + line('Quốc gia', lead.country) + line('Nơi ở', lead.residence)
+    + (b ? line('Dịch vụ', b.service) + line('Thời gian', [b.time, b.date].filter(Boolean).join(' ngày ') + ' (giờ VN, GMT+7)') + line('Số khách', b.guests)
       + line('Thành tiền', money(b.total) + (b.pay === 'qr' ? ' (chuyển khoản QR, đã giảm ' + money(b.discount) + ')' : ' (thanh toán tại spa)')) + line('Mã đơn', b.code) : '')
     + (!b ? line('Nhu cầu', String(lead.need || '').split('\n').pop()) : '')
     + line('Nguồn', SOURCE[source] || source) + (lead.ref ? line('Đối tác giới thiệu', 'IVY-' + lead.ref) : '')
@@ -51,7 +51,7 @@ function leadText(lead, { source, booking } = {}) {
 function paidText(lead, b) {
   return '💰 KHÁCH BÁO ĐÃ CHUYỂN KHOẢN – cần kiểm tra tài khoản\n\n'
     + line('Khách', lead.name) + line('SĐT', lead.phone) + line('Mã đơn', b.code) + line('Dịch vụ', b.service)
-    + line('Số tiền', money(b.total)) + line('Thời gian hẹn', [b.time, b.date].filter(Boolean).join(' ngày '))
+    + line('Số tiền', money(b.total)) + line('Thời gian hẹn', [b.time, b.date].filter(Boolean).join(' ngày ') + ' (giờ VN, GMT+7)')
     + '\n👉 Đối chiếu sao kê rồi bấm "Đã nhận tiền" tại ivyluxe.com.vn/admin';
 }
 
